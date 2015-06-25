@@ -3,7 +3,7 @@
   .input-group
     %span.input-group-addon
       %i.fa.fa-facebook
-    %input#fbtk(type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Ex: fb id, fb name, post id" value="#{params[:query]}")
+    %input#fbtk(type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Ex: fb id, fb name, post id" value="#{params[:query]}" autofocus="true")
     %a.input-group-addon.btn#btnGo GO
 
 .row#results
