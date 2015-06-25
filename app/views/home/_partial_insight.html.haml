@@ -6,19 +6,20 @@
           = data["title"]
   .panel-collapse.collapse{id: "collapse-#{idx}", "aria-labelledby" => "heading-#{idx}", :role => "tabpanel", class: "#{idx==0 ? 'in' : ''}"}
     .panel-body{style: "overflow-x: scroll;"}
-      = data["description"]
-      - if data['values'] && data['values'].length > 0 && (keys = data['values'].map{|x| x['value'].keys}.flatten.uniq)
-        %table.table
-          %thead
-            %tr
-              %th Date
-              - keys.each do |k|
-                %th= k
-          %tbody
-            - data['values'].each do |dt|
+      .col-sm-12
+        = data["description"]
+        - if data['values'] && data['values'].length > 0 && (keys = data['values'].map{|x| x['value'].keys}.flatten.uniq)
+          %table.table
+            %thead
               %tr
-                %td= Date.parse(dt['end_time']).to_s(:db)
+                %th Date
                 - keys.each do |k|
-                  %td
-                    - if dt['value'] && !dt['value'].blank?
-                      = dt["value"][k]
+                  %th= k
+            %tbody
+              - data['values'].each do |dt|
+                %tr
+                  %td= Date.parse(dt['end_time']).to_s(:db)
+                  - keys.each do |k|
+                    %td
+                      - if dt['value'] && !dt['value'].blank?
+                        = dt["value"][k]

@@ -46,13 +46,12 @@
       .row
         .col-lg-9
           = yield
-        - if current_user
+        - if current_user && Page.count > 0
           .col-lg-3
             .well.sidebar-nav
-              %h3 Sample Pages
+              %h3 Recents
               %ul.nav.nav-list
-                %li= link_to "Link 1", "/path1"
-                %li= link_to "Link 2", "/path2"
-                %li= link_to "Link 3", "/path3"
+                - Page.limit(6).each do |page|
+                  %li= link_to page.name, dashboard_path(query: page.username), title: page.name
       %footer{style: "position: fixed;  bottom: 0;"}
         %p &copy; FB Insights 2015
