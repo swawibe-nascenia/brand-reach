@@ -12,6 +12,10 @@ class InsightService < BaseService
 		response = nil
 		begin
 			response = @graph.get_object(page_id)
+			Page.create({
+				username: page_id,
+				name: response["about"].to_s[0..100]
+			})
 		rescue Exception => e
 			Rails.logger.error("!!!!ERROR: #{e.inspect}")
 			@is_error = true

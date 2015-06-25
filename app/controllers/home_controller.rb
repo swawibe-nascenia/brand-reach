@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 	layout 'landing'
-	before_action :set_service, except: [:index]
+	before_action :authenticate_user!, :set_service, except: [:index]
 
   def index
   	if current_user
@@ -19,6 +19,7 @@ class HomeController < ApplicationController
   		redirect_to root_path
   	end
   	@resp = @service.get_info(params[:query])
+    
   end
 
   def get_posts
