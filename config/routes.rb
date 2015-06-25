@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  get '/dashboard' => 'home#dashboard'
+  post '/search' => 'home#search'
+  get '/search' => 'home#search'
+  get '/get_posts' => 'home#get_posts'
+  get '/get_insights' => 'home#get_insights'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root to: 'home#index'

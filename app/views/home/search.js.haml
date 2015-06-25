@@ -1,0 +1,13 @@
+- if @service.is_error
+	alert("Could not found the ID. Try another ID");
+	$("#btnGo").removeAttr('disabled')
+- else
+	$("#results").html("")
+	- if @resp["username"].blank?
+		$("#results").append("#{escape_javascript(render partial: "post_info", locals: {resp: @resp})}");
+	- else
+		$("#results").append("#{escape_javascript(render partial: "page_info", locals: {resp: @resp})}");
+		$.get("/get_posts", {query: "#{params[:query]}"});
+	$.get("/get_insights", {query: "#{params[:query]}"});
+
+	$("#btnGo").removeAttr('disabled')
