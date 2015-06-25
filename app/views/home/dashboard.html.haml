@@ -1,0 +1,20 @@
+%h1== Hi #{current_user.name}
+.row
+  .input-group
+    %span.input-group-addon
+      %i.fa.fa-facebook
+    %input#fbtk(type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Ex: fb id, fb name, post id")
+    %a.input-group-addon.btn#btnGo GO
+
+.row#results
+
+:javascript
+  $(document).ready(function(){
+    $("#btnGo").click(function(){
+      var query = $('#fbtk').val();
+      if(query && query!=''){
+        $('#btnGo').attr('disabled', true);
+        $.get('/search', {query: query})
+      }
+    });
+  });

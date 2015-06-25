@@ -1,0 +1,5 @@
+- if @service.is_error
+	$("#btnGo").removeAttr('disabled')
+- else
+	$("#results").append("#{escape_javascript(render partial: "page_insights", locals: {resp: @resp})}");
+	$("#btnGo").removeAttr('disabled')
