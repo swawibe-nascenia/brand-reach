@@ -11,6 +11,11 @@ module Insight
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.autoload_paths += %W(#{config.root}/lib)
+
+    ['services', 'serializers', 'presenters'].each do |folder|
+      config.autoload_paths += Dir[config.root.join('app', folder)]
+    end
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
