@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
 		puts auth['credentials'].expires_at
 	  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
 	    user.email = auth.info.email
-	    user.access_token = auth.token
-	    user.uid = auth.id
+	    user.access_token = auth.credentials.token
+	    user.uid = auth.credentials.id
 	    user.token_expires_at = Time.at(auth.credentials.expires_at)
 	    user.password = Devise.friendly_token[0,20]
 	    user.name = auth.info.name
