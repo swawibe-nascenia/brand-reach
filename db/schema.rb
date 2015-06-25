@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150625054556) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "image"
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
