@@ -1,16 +1,47 @@
 class InsightService < BaseService
 	Koala.config.api_version = "v2.3"
+	attr :is_error, :error_message
+
 	def initialize(arg)
 		super(arg)
+		@is_error = false
 		@graph = Koala::Facebook::API.new @current_user.access_token
 	end
+
+	def get_info page_id="VoHoaiLinh"
+		response = nil
+		begin
+			response = @graph.get_object(page_id)
+		rescue Exception => e
+			Rails.logger.error("!!!!ERROR: #{e.inspect}")
+			@is_error = true
+		end
+		response
+	end
+
 	def get_posts page_id="VoHoaiLinh"
-		@graph.get_object("#{page_id}/posts")
+		response = nil
+		begin
+			response = @graph.get_object("#{page_id}/posts")
+		rescue Exception => e
+			Rails.logger.error("!!!!ERROR: #{e.inspect}")
+			@is_error = true		
+		end
+		response
 	end
 
 	def get_insights page_id="VoHoaiLinh"
-		params = {pretty: 0, since: 1.months.ago.to_i, suppress_http_code: 1, until: Time.now.to_i}
-		@graph.get_object("#{page_id}/insights")
+		response = nil
+		begin
+			params = {pretty: 0, since: 1.months.ago.to_i, suppress_http_code: 1, until: Time.now.to_i}
+			response = @graph.get_object("#{page_id}/insights", params)
+		rescue Exception => e
+			Rails.logger.error("!!!!ERROR: #{e.inspect}")
+			@is_error = true			
+		end
+		response
 	end
-	
+
+
+
 end

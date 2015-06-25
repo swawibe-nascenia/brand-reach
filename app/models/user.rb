@@ -8,18 +8,24 @@ class User < ActiveRecord::Base
 	
 	def self.from_omniauth(auth)
 		puts auth
-		puts '-------------------'
-		puts auth['credentials'].expires_at
-	  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-	    user.email = auth.info.email
-	    user.access_token = auth.credentials.token
-	    user.uid = auth.credentials.id
+		user = User.find_by(provider: auth.provider, uid: auth.uid)
+		if !user
+			user = User.new({
+				provider: auth.provider, 
+				uid: auth.uid,
+				email: auth.info.email,
+				password: Devise.friendly_token[0,20]
+			})
+		end
+    user.access_token = auth.credentials.token
+    if auth.credentials && auth.credentials.expires_at
 	    user.token_expires_at = Time.at(auth.credentials.expires_at)
-	    user.password = Devise.friendly_token[0,20]
-	    user.name = auth.info.name
-	    user.image = auth.info.image
+	  else
+	  	user.token_expires_at = 1.week.from_now
 	  end
+    user.name = auth.info.name
+    user.image = auth.info.image
+    user
 	end
 
 end
-# http://tech.pro/tutorial/1430/ruby-on-rails-4-authentication-with-facebook-and-omniauth
