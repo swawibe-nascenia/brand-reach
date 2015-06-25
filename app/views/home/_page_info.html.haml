@@ -1,0 +1,39 @@
+%br/
+.panel.panel-default
+  .panel-heading 
+    Page Info
+  .panel-body
+    %table.table.table-striped
+      %tbody
+        %tr
+          %th FB ID
+          %td= resp["id"]
+        %tr
+          %th FB Name
+          %td= resp["about"]
+        %tr
+          %th User Name
+          %td= resp["username"]
+        %tr
+          %th Location
+          %td
+            - if resp["location"]
+              = resp["location"].values.join(", ")
+        %tr
+          %th Talking About
+          %td= resp["talking_about_count"]
+        %tr
+          %th Category
+          %td= resp["category"]
+        %tr
+          %th Community Page?
+          %td= resp["is_community_page"]
+        %tr
+          %th Published Page?
+          %td= resp["is_published"]
+        %tr
+          %th Likes
+          %td= resp["likes"]
+        %tr
+          %th FB Link
+          %td= link_to resp["link"], resp["link"]

@@ -1,0 +1,6 @@
+%br/
+.panel-group#accordion(aria-multiselectable="true")
+  %h2  Page Insights
+  - resp.each_with_index do |data, idx|
+    = render partial: "partial_insight", locals: {data: data, idx: idx}
+
