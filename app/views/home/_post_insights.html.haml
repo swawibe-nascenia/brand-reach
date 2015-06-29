@@ -1,7 +1,25 @@
 %br/
 .panel.panel-default
-  .panel-heading 
+  .panel-heading
     Page Insights
   .panel-body
-    - resp.each do |data|
-    	= data
+    %table.table.table-striped
+      %thead
+        %tr
+          %th title
+          %th values
+          %th description
+      %tbody
+        - if !resp || resp.length == 0
+          %tr
+            %td{colspan: '3'}
+              Could not look up insights the post
+        - else
+          - resp.each do |data|
+            %tr
+              %td
+                = data['title']
+              %td
+                = raw data['values'].join('<br>')
+              %td
+                = data['description']

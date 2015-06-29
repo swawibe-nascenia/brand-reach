@@ -1,0 +1,35 @@
+%br/
+.panel.panel-default
+  .panel-heading
+    Post Info
+  .panel-body
+    %table.table.table-striped
+      %tbody
+        %tr
+          %th Page
+          %td= resp["from"]["name"]
+        %tr
+          %th FB ID
+          %td= resp["id"]
+        %tr
+          %th FB Message
+          %td= resp["message"]
+        %tr
+          %th FB Message
+          %td= resp["message"]
+        - if resp["picture"]
+          %tr
+            %th Photo
+            %td= image_tag resp["picture"]
+        %tr
+          %th FB Message
+          %td= simple_format resp["message"]
+        %tr
+          %th FB Message
+          %td
+            - if resp['likes'] && resp['likes']['data']
+              %tr
+                %th Likes
+                %td
+                  - resp['likes']['data'].each do |like|
+                    %div= like['name']

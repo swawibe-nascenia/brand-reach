@@ -19,7 +19,7 @@ class HomeController < ApplicationController
   		redirect_to root_path
   	end
   	@resp = @service.get_info(params[:query])
-    
+
   end
 
   def get_posts
@@ -27,6 +27,7 @@ class HomeController < ApplicationController
   end
 
   def get_insights
+		@post_insight = params[:insight] == 'post'
   	@resp = @service.get_insights(params[:query])
   end
 

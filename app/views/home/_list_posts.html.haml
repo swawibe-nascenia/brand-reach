@@ -1,19 +1,19 @@
 %br/
 .panel.panel-default
-  .panel-heading 
+  .panel-heading
     Recent Posts
   .panel-body
     - resp.each do |post|
       .row
         .col-sm-2
-          %a{href: post["link"], target: :_blank}
-            = image_tag post["picture"], title: post["message"]
-        .col-sm-8
+          %a{href: dashboard_path(query: post['id']), target: :_blank}
+            = image_tag post["picture"], title: 'View Insight'
+        .col-sm-8{title: post["message"]}
           = truncate(post["message"], length: 150)
-          = link_to "Continue", post["link"], target: :_blank
+          = link_to "read on FB", post["link"], target: :_blank
         .col-sm-2
           - if post["shares"]
-            %div 
+            %div
               Shared:
               = post["shares"]["count"].to_i
 
