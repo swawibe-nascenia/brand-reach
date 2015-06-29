@@ -1,3 +1,4 @@
+
 .panel.panel-default
   .panel-heading{:role => "tab", id: "heading-#{idx}"}
     .panel-heading
@@ -8,18 +9,38 @@
     .panel-body{style: "overflow-x: scroll;"}
       .col-sm-12
         = data["description"]
-        - if data['values'] && data['values'].length > 0 && (keys = data['values'].map{|x| x['value'].keys}.flatten.uniq)
-          %table.table
-            %thead
-              %tr
-                %th Date
-                - keys.each do |k|
-                  %th= k
-            %tbody
-              - data['values'].each do |dt|
+        - if data['values'] && data['values'].length > 0
+          - is_hash = data['values'][0]['value'].is_a?(Hash) ? true : false
+          - if is_hash
+            - keys = []
+            - data['values'].each{|x| keys.push(x['value'].keys) if(x && !x['value'].blank? && x['value'].is_a?(Hash)) }
+            - keys = keys.flatten.uniq
+            %table.table
+              %thead
                 %tr
-                  %td= Date.parse(dt['end_time']).to_s(:db)
+                  %th Date
                   - keys.each do |k|
+                    %th= k
+              %tbody
+                - data['values'].each do |dt|
+                  %tr
+                    %td= Date.parse(dt['end_time']).to_s(:db)
+                    - keys.each do |k|
+                      %td
+                        - if dt['value'] && !dt['value'].blank?
+                          = dt["value"][k]
+          - else
+            %table.table
+              %thead
+                %tr
+                  %th Date
+                  %th Value
+              %tbody
+                - data['values'].each do |dt|
+                  %tr
+                    %td= Date.parse(dt['end_time']).to_s(:db)
                     %td
-                      - if dt['value'] && !dt['value'].blank?
-                        = dt["value"][k]
+                      - if dt['value'] && dt['value'].is_a?(Array)
+                        = dt["value"].join(', ')
+                      - else
+                        = dt["value"]
