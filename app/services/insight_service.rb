@@ -11,10 +11,15 @@ class InsightService < BaseService
 	def get_info page_id="VoHoaiLinh"
 		response = nil
 		begin
+			puts @graph.access_token
 			response = @graph.get_object(page_id)
+			name = page_id
+			if response["about"] && response["about"].length > 0
+				name = response["about"].to_s[0..100]
+			end
 			Page.create({
 				username: page_id,
-				name: response["about"].to_s[0..100]
+				name: name
 			})
 		rescue Exception => e
 			Rails.logger.error("!!!!ERROR: #{e.inspect}")
@@ -26,10 +31,11 @@ class InsightService < BaseService
 	def get_posts page_id="VoHoaiLinh"
 		response = nil
 		begin
+			puts @graph.access_token
 			response = @graph.get_object("#{page_id}/posts")
 		rescue Exception => e
 			Rails.logger.error("!!!!ERROR: #{e.inspect}")
-			@is_error = true		
+			@is_error = true
 		end
 		response
 	end
@@ -38,10 +44,11 @@ class InsightService < BaseService
 		response = nil
 		begin
 			params = {pretty: 0, since: 1.months.ago.to_i, suppress_http_code: 1, until: Time.now.to_i}
+			puts @graph.access_token
 			response = @graph.get_object("#{page_id}/insights", params)
 		rescue Exception => e
 			Rails.logger.error("!!!!ERROR: #{e.inspect}")
-			@is_error = true			
+			@is_error = true
 		end
 		response
 	end
