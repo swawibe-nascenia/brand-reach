@@ -43,9 +43,16 @@ class InsightService < BaseService
 	def get_insights page_id="VoHoaiLinh"
 		response = nil
 		begin
+			@pages = @graph.get_object('me/accounts')
+			token = @current_user.access_token
 			params = {pretty: 0, since: 1.months.ago.to_i, suppress_http_code: 1, until: Time.now.to_i}
-			Rails.logger.info @graph.access_token
-			response = @graph.get_object("#{page_id}/insights", params)
+			@pages.each do |pg|
+				if pg['id']==page_id || pg['name'].to_s.downcase == page_id
+					token = pg['access_token']
+				end
+			end
+			grapher = Koala::Facebook::API.new token
+			response = grapher.get_object("#{page_id}/insights", params)
 		rescue Exception => e
 			Rails.logger.error("!!!!ERROR: #{e.inspect}")
 			@is_error = true

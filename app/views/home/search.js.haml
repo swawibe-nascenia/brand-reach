@@ -9,6 +9,6 @@
 	- else
 		$("#results").append("#{escape_javascript(render partial: "page_info", locals: {resp: @resp})}");
 		$.get("/get_posts", {query: "#{params[:query]}"});
-		$.get("/get_insights", {query: "#{params[:query]}", insight: 'page'});
+		$.get("/get_insights", {query: "#{@resp['id']||params[:query]}", insight: 'page'});
 
 	$("#btnGo").removeAttr('disabled')
