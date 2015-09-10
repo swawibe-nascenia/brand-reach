@@ -39,6 +39,8 @@ etutor-new.pem
 /coverage
 
 log/pids/
+.ruby-gemset
+
 
 # scm revert files
 **.orig
