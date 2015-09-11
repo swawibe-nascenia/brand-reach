@@ -14,37 +14,37 @@
 ActiveRecord::Schema.define(version: 20150625114851) do
 
   create_table "pages", force: :cascade do |t|
-    t.string   "name"
-    t.string   "username"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.string   "username",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "pages", ["username"], name: "index_pages_on_username"
+  add_index "pages", ["username"], name: "index_pages_on_username", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: ""
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: ""
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "image"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "name"
-    t.string   "access_token"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "image",                  limit: 255
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
+    t.string   "name",                   limit: 255
+    t.string   "access_token",           limit: 255
     t.datetime "token_expires_at"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email"
-  add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

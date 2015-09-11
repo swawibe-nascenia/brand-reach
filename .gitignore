@@ -33,6 +33,7 @@ invoker.ini
 nozama
 Gemfile.lock
 .env
+.ruby-gemset
 
 etutor-new.pem
 

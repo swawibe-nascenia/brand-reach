@@ -41,7 +41,7 @@ gem 'haml-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'mysql2'
+  gem 'mysql2', '~> 0.3.18'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -51,6 +51,6 @@ group :development, :test do
 end
 
 group :production do
-	gem 'pg'
+	# gem 'pg'
   gem 'rails_12factor'
 end
