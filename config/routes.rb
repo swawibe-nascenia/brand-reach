@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'influencers_home/index'
+
+  get 'brands_home/index'
+
   get '/dashboard' => 'home#dashboard'
   post '/search' => 'home#search'
   get '/search' => 'home#search'
@@ -7,7 +11,7 @@ Rails.application.routes.draw do
   get '/get_insights' => 'home#get_insights'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  root to: 'home#index'
+  root to: 'influencers_home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -34,6 +38,10 @@ Rails.application.routes.draw do
   #       get 'sold'
   #     end
   #   end
+
+  resources :brands_home, :influencers_home do
+
+  end
 
   # Example resource route with sub-resources:
   #   resources :products do
