@@ -1,6 +1,0 @@
-%h1 Welcome to Facebook Insights
-%p
-	- if current_user.blank?
-		= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
-	- else
-		== Hi #{current_user.name}

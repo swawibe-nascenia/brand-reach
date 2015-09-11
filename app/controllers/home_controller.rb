@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-	layout 'landing'
+	# layout 'landing'
 	before_action :authenticate_user!, :set_service, except: [:index]
 
   def index
