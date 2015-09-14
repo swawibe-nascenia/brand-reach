@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
 
 
 	def self.from_omniauth(auth)
-		puts auth
+    Rails.logger.info '############################ facebook authentication return'
+		Rails.logger.info auth.info
 		user = User.find_by(provider: auth.provider, uid: auth.uid)
 		if !user
 			user = User.new({

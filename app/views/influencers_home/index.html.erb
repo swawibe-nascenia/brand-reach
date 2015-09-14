@@ -19,8 +19,11 @@
           <li class="active"><a href="#">INFLUENCERS <span class="sr-only">(current)</span></a></li>
           <li><a href="#">BRANDS</a></li>
           <li><a href="#">ABOUT US</a></li>
-          <li><a href="#">LOGIN</a></li>
-          <li><%= link_to("SIGN UP FREE", search_path, :class => "btn-custom btn-theme text-white") %></li>
+          <% if user_signed_in? %>
+          <li><a href="<%= destroy_user_session_path %>">LOG OUT</a></li>
+          <% end %>
+          <li><a href="<%= new_user_session_path %>">LOGIN</a></li>
+          <li><%= link_to("SIGN UP FREE", new_user_registration_path, :class => "btn-custom btn-theme text-white") %></li>
         </ul>
       </div>
     </nav>
