@@ -1,0 +1,234 @@
+.brands-profile-page-wrapper {
+  font-family: "Raleway", sans-serif;
+  margin: 20px 10px;
+  background-color: rgba(255, 255, 255, 1);
+  -webkit-box-shadow: 0 0 2px #999999;
+  -moz-box-shadow: 0 0 2px #999999;
+  box-shadow: 0 0 2px #999999;
+  padding: 25px 4% 25px;
+  overflow: hidden;
+
+}
+
+@media (min-width: 768px) {
+  .brands-profile-page-wrapper {
+    padding-right: 5%;
+    margin: 25px 20px;
+  }
+}
+
+.display-inline {
+  display: inline-block;
+}
+
+/*.profile-page-border {*/
+/*border-radius: 3px;*/
+/*border: 1px solid #dddddd;*/
+/*box-shadow: 0px 1px 1px #dddddd;*/
+/*margin: 25px 20px;*/
+/*background-color: #FFFFFF;*/
+/*color: #797979;*/
+/*}*/
+
+.brands-profile-page-wrapper label {
+  padding-right: 15px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.personal-info-form .form-group {
+  text-align: right;
+  margin-bottom: 0;
+  line-height: 1;
+}
+
+.brands-profile-page-wrapper input, .brands-profile-page-wrapper select {
+  line-height: 1;
+  height: 30px;
+  border-radius: 0;
+  border: 1px solid #d9d9d9;
+  margin-bottom: 10px;
+}
+
+.personal-info-form .form-group textarea {
+  resize: none;
+  height: 110px;
+}
+
+.brands-profile-page-wrapper input, .brands-profile-page-wrapper select, .personal-info-form .form-group textarea {
+  width: 52%;
+}
+.personal-info-form .form-group textarea.short_bio{
+  width: 70%;
+}
+
+.personal-info-form .form-group .textarea-label {
+  vertical-align: top;
+  padding-top: 10px;
+}
+
+.street-address-textarea {
+  padding: 5px 0 0 5px;
+}
+
+.account-setup, .company-info, .personal-info  {
+  margin-bottom: 45px;
+  margin-top: 45px;
+  text-align: center;
+  color: #ff305a;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.social-account {
+  margin-bottom: 30px;
+  margin-top: 40px;
+  text-align: center;
+  color: #ff305a;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.personal-info {
+  margin-top: 30px;
+}
+
+
+.profile-picture {
+  border-radius: 50%;
+  border: 7px solid #30bfd0;
+  display: block;
+  margin: 0 auto;
+}
+
+.btn-update {
+  background-color: #f8c102;
+  height: 32px;
+  color: white;
+  font-family: "Raleway", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0px 20px 77px;
+  padding: 5px 30px;
+}
+
+.btn-account {
+  background-color: #f8c102;
+  height: 32px;
+  color: white;
+  font-family: "Raleway", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  float: right;
+  padding: 5px 15px;
+}
+
+.profile-dropdown-color {
+  background-color: white;
+}
+
+.personal-info-form .short-bio-row {
+  margin-bottom: 50px;
+}
+
+.brands-profile-page-wrapper .personal-info-form input, .brands-profile-page-wrapper .personal-info-form textarea {
+  padding-left: 5px;
+}
+
+.social-account-tab-content {
+  border: 1px solid #ddd ;
+  border-top: none;
+  padding-top: 35px;
+  padding-right: 30px;
+  padding-bottom: 80px;
+  margin-bottom: 100px;
+}
+
+.social-account-tabs {
+  padding-top: 30px;
+  margin-left: -3%;
+  margin-right: -4%;
+
+}
+.social-account-tabs .social-account-nav-tabs a {
+  color: #696969;
+}
+
+.social-account-tabs .social-account-nav-tabs li.active .social-account-fa-edit {
+  color: #3c8dbc;
+}
+
+.social-account-fa-edit {
+  font-size: 1.5em;
+  padding-right: 5px;
+}
+
+.social-account-tab-content .form-group input {
+  width: 33%;
+}
+
+.social-account-tabs .social-account-nav-tabs li a {
+  padding-right: 45px;
+}
+
+/* ============== page responsive stylesheet ================= */
+
+/* style for making compatible with 320 to 767 px devices */
+@media (min-width: 768px) {
+  .brands-profile-page-wrapper input, .brands-profile-page-wrapper select, .personal-info-form .form-group textarea {
+    width: 65%;
+  }
+
+  .personal-info-form .form-group textarea.short_bio{
+    width: 80%;
+  }
+
+  /*.personal-info-form .form-group textarea{*/
+  /*width: 53%;*/
+  /*}*/
+}
+
+/* style for making compatible with 992 to 1200 px devices */
+@media (min-width: 992px) {
+  .personal-info-form .form-group textarea.short_bio{
+    width: 83%;
+  }
+}
+
+/* style for making compatible with 1200 px to upper devices */
+@media (min-width: 1200px) {
+
+}
+
+@media (max-width: 1000px) {
+
+  .social-account-tabs .social-account-nav-tabs li {
+    margin-bottom: -3px;
+  }
+
+}
+
+@media (max-width: 900px) {
+
+  .social-account-tabs .social-account-nav-tabs li a {
+    padding-right: 10px;
+  }
+
+}
+
+@media (max-width: 1024px) {
+
+  .social-account-tabs .social-account-nav-tabs {
+    margin-top: 15px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .social-account-tabs .social-account-nav-tabs {
+    font-size: 11px;
+  }
+
+}
+
