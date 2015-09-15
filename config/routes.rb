@@ -8,10 +8,14 @@ Rails.application.routes.draw do
         get :profile
       end
   end
-  root to: 'influencers_home#index'
 
-  resources :brands_home, :influencers_home do
-
+  resources :public, only: [] do
+    collection do
+      get :home
+      get :brand_home
+      get :dashboard
+    end
   end
 
+  root to: 'public#home', as: :root
 end

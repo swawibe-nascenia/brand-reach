@@ -1,0 +1,196 @@
+<%= stylesheet_link_tag 'brands_home', media: 'all', 'data-turbolinks-track' => true %>
+
+<% title "BrandReach Influencers Home" %>
+
+<div class="header">
+  <div class="wrapper-content">
+    <%= image_tag('Logo.png', :class => 'logo', :alt => "logo") %>
+    <nav class="navbar">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" aria-expanded="true">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse home-menu" id="myNavbar">
+        <ul class="nav navbar-nav my-nav-bar">
+          <li class="active"><a href="#">INFLUENCERS <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">BRANDS</a></li>
+          <li><a href="#">ABOUT US</a></li>
+          <% if user_signed_in? %>
+              <li><a href="<%= destroy_user_session_path %>">LOG OUT</a></li>
+          <% else %>
+              <li><a href="<%= new_user_session_path %>">LOGIN</a></li>
+          <% end %>
+          <li><%= link_to "SIGN UP FREE", "#loginModal", "data-toggle" => "modal", :class => "btn-custom btn-theme text-white" %></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<%= render partial: "shared/login_social_network_modal"%>
+
+<div class="identity">
+  <div class="wrapper-content">
+    <div class="text-upper">
+      <div class="text-upper-identity">Identify, Initiate,</div>
+      <div class="text-upper-identity">Inspire.</div>
+    </div>
+    <div class="text-lower">
+      <div class="text-lower-identity">Enlist top creators & influencers to</div>
+      <div class="text-lower-identity">leverage your brand.</div>
+    </div>
+  </div>
+</div>
+
+<div class="statistics">
+  <div class="wrapper-content">
+
+    <div class="text-top"> Statistics</div>
+    <div class="stats-block">
+      <span class="numeric" style="color: #32ccfe">10,000</span>
+      <span class="textual"> BRANDS </span>
+    </div>
+    <div class="stats-block">
+      <span class="numeric" style="color: #fa5c8f">25,000</span>
+      <span class="textual"> INFLUENCERS </span>
+    </div>
+    <div class="stats-block">
+      <span class="numeric" style="color: #98cb00">120,000</span>
+      <span class="textual"> CAMPAIGNS </span>
+    </div>
+    <div class="stats-block">
+      <span class="numeric" style="color: #fecb32">248,000</span>
+      <span class="textual"> POSTS </span>
+    </div>
+  </div>
+</div>
+
+<div class="about-us">
+  <div class="wrapper-content">
+    <div class="text-top">
+      About Us
+    </div>
+
+    <div class="text-description"> We initiate branding</div>
+    <div class="text-description"> campaigns and advocate high</div>
+    <div class="text-description"> quality brand engagement.</div>
+
+    <div class="about-us-block-container">
+      <div class="about-us-block">
+        <span class="image"><%= image_tag('Identify.png') %></span>
+        <span class="textual"> Identify </span>
+      </div>
+      <div class="about-us-block">
+        <span class="image"> <%= image_tag('Leverage-Content.png') %></span>
+        <span class="textual leverage"> Leverage content across platforms</span>
+      </div>
+      <div class="about-us-block">
+        <span class="image"><%= image_tag('Scale-your-influence.png') %></span>
+        <span class="textual scale"> Scale your influence </span>
+      </div>
+      <div class="about-us-block">
+        <span class="image"><%= image_tag('Measure.png') %></span>
+        <span class="textual"> Measure </span>
+      </div>
+      <div class="about-us-block">
+        <span class="image"><%= image_tag('Technology.png') %></span>
+        <span class="textual"> Technology </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="brands">
+  <div class="wrapper-content">
+    <div class="text-top few-brand">Few of our Brands</div>
+    <div class="brands-block">
+      <span><a href="#" data-toggle="popover" title="Eagleboys Pizza"><%= image_tag('Brand1.png') %></a></span>
+      <span><a href="#" data-toggle="popover" title="Demo"><%= image_tag('Brand2.png') %></a></span>
+      <span><a href="#" data-toggle="popover" title="Cream Stone"><%= image_tag('Brand3.png') %></a></span>
+      <span><a href="#" data-toggle="popover" title="Harley Davidson"><%= image_tag('Brand4.png') %></a></span>
+      <span><a href="#" data-toggle="popover" title="Airtel"><%= image_tag('Brand5.png') %></a></span>
+    </div>
+  </div>
+</div>
+
+<div class="contact-us">
+  <div class="wrapper-content">
+
+    <div class="row contact-form">
+      <div class="col-md-7 col-sm-8 col-xs-12">
+        <div class="text-top col-md-12"> Get in touch!</div>
+        <form action="#" method="post">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="form-group">
+                <input type="text" class="form-control" name="full_name" placeholder="Full Name"/>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12 clear-padding-margin">
+              <div class="form-group">
+                <input type="email" class="form-control" name="email" placeholder="Email"/>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6 col-xs-12 clear-padding-margin only-right-padding">
+              <div class="form-group">
+                <input type="email" class="form-control" name="email" placeholder="Phone Number"/>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="form-group">
+                <textarea class="form-control" placeholder="Message" rows="6"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-submit ">SUBMIT</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer row">
+    <div class="wrapper-content">
+      <div class="col-md-6 col-sm-6 col-xs-12 footer-info-padding">
+        All Rights Reserved <span class="rights-reserved">&reg;</span> Brand Reach | Copyright 2015
+      </div>
+      <div class="col-md-2 col-sm-2  col-xs-12 col-md-offset-4 col-sm-offset-4">
+        <div class="fb-twitter">
+          <a href="#">
+            <i class="fa fa-lg fa-facebook"></i>
+          </a>
+          <span class="space"></span>
+          <a href="#">
+            <i class="fa fa-lg fa-twitter"></i>
+          </a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="popover"]').popover({trigger: 'hover', placement: "auto bottom"});
+    });
+
+
+</script>

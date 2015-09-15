@@ -1,12 +1,16 @@
-class HomeController < ApplicationController
+class PublicController < ApplicationController
 	# layout 'landing'
-	before_action :authenticate_user!, :set_service, except: [:index]
+  # before_action  :set_service, except: [:index]
+  skip_before_filter :authenticate_user!
 
-  def index
-  	# if current_user
-  	# 	redirect_to :dashboard
-  	# end
-    redirect_to root_path
+  respond_to :html
+
+  def home
+
+  end
+
+  def brand_home
+
   end
 
   def dashboard
@@ -34,6 +38,6 @@ class HomeController < ApplicationController
 
 protected
 	def set_service
-		@service = InsightService.new current_user
+		# @service = InsightService.new current_user
 	end
 end
