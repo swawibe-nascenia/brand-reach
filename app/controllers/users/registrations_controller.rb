@@ -1,21 +1,15 @@
-class ProfileController < ApplicationController
-  layout 'sidebar_header_layouts'
-  before_action :set_user, only: [:profile, :update]
+class Users::RegistrationsController < Devise::RegistrationsController
 
-  respond_to :html
+  before_action :set_user, only: [:update_user_profile, :edit_user_profile]
 
-  def profile
-    respond_with(@user)
+  def edit_user_profile
+    @user = User.find(params[:id])
   end
 
   def update_user_profile
     if @user.update(user_profile_params)
       flash[:success] = 'User information update success'
-    else
-      flash[:error] = 'User information update fail'
     end
-
-    respond_with(@user)
   end
 
   private
@@ -27,7 +21,8 @@ class ProfileController < ApplicationController
   def user_profile_params
     params.require(:user).permit(:first_name, :last_name, :email, :company_name, :company_email,
                                  :industry, :phone, :street_address, :landmark, :city, :state,
-                                 :country, :zip_code, :short_bio
-    )
+                                  :country, :zip_code, :short_bio
+                                )
   end
+
 end
