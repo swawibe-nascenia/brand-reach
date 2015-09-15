@@ -1,0 +1,170 @@
+.status-inbox {
+    background-color: #FF3059;
+}
+
+.btn-accept {
+    background-color: #00aeed;
+    color: white;
+    font-size: 13px;
+    padding: 3px 7px;
+}
+
+@media (max-width: 980px) {
+    .btn-accept {
+        font-size: 12px;
+        padding: 3px 5px;
+    }
+}
+
+
+.deny {
+    text-decoration: underline;
+    color: #fe5773;
+    padding-left: 20px;
+}
+
+.inbox-logo-responsive {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+.offer-textarea {
+    width: 100%;
+    border-radius: 4px;
+    resize: none;
+    padding: 4px;
+}
+
+.reply-box-image {
+    float: left;
+    height: 20px;
+    width: 20px;
+}
+
+.offers_table, .offers_table tbody tr td ,
+.starred_table, .starred_table tbody tr td {
+    border: none;
+}
+
+.offers_table tbody tr td:nth-child(n+5):nth-child(-n+7) ,
+.starred_table tbody tr td:nth-child(n+5):nth-child(-n+7) {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+}
+
+.offers_table > tbody > tr:nth-child(n+7):nth-child(-n+11) > td {
+    border-top: none;
+    border-bottom: none;
+    background: white;
+
+}
+
+.reply-message {
+    font-size: 0.92em;
+    display: block;
+    margin-left: 30px;
+}
+
+.btn-compose {
+    color: white;
+    margin: 25px 5px 5px 5px;
+    padding: 5px 26px;
+    background-color: #f8c102;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+
+@media (max-width: 800px) {
+    .btn-compose {
+        padding: 5px 20px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-compose {
+        padding: 5px 18px;
+        font-size: 11px;
+    }
+}
+
+@media
+only screen and (max-width: 540px) {
+    .offers_table tbody tr td ,
+    .starred_table tbody tr td {
+        display: block;
+    }
+}
+
+.star-del-ref-panel{
+    text-align: right;
+    margin-top: 15px;
+}
+
+.star-del-ref-panel a {
+    padding: 10px 12px;
+
+}
+
+.star-grey {
+    color: #d4d4d4;
+    font-size: 22px;
+}
+
+.star-yellow {
+    color: #f8c102;
+    font-size: 22px;
+}
+
+.status-inbox {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.inbox-tab {
+    margin: 0px 34px 0px 12px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    vertical-align: middle;
+    display: inline-block;
+    padding-bottom: 2px;
+}
+
+#starred_list .starred-tab {
+    margin: 0px 26px 0px 7px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    vertical-align: middle;
+    display: inline-block;
+    padding-top: 2px;
+
+}
+
+.inbox-tab, .starred-tab {
+    color: #555;
+}
+
+.offers_table tbody tr td:nth-child(n+1):nth-child(-n+4),
+.starred_table tbody tr td:nth-child(n+1):nth-child(-n+4) {
+    width:35px;
+}
+
+.panel-offers {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    padding: 20px 20px 0px 20px;
+}
+
+
+

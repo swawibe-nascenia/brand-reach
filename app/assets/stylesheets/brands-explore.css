@@ -1,0 +1,104 @@
+.brands-explore-content-wrapper{
+
+}
+
+.brands-explore-advance-search{
+    background-color: #FFFFFF;
+    padding: 5px;
+}
+
+.brands-explore-advance-search select{
+    width: 100%;
+    display: block;
+    height: 30px;
+    border-radius: 0;
+    border: 1px solid #d9d9d9;
+    background-color: #FFFFFF;
+}
+
+.brands-explore-content-wrapper hr{
+    height: 2px;
+    background-color: #ff3059;
+    margin-top: 0;
+}
+.search-result .row{
+    margin-right: -2px;
+    margin-left: 0;
+}
+
+.padding-less-column-parent > [class *='col-']{
+    padding-left: 0;
+    padding-right: 4px;
+}
+
+.search-result-item{
+    box-shadow: 0 0 1px #d9d9d9;
+    background-color: #FFFFFF;
+    padding: 5px;
+}
+
+/* =================== style sheet for brands profile show modal =======================*/
+
+.modal-profile .modal-header{
+    border-bottom: none;
+}
+
+.modal-profile .modal-body{
+    padding: 0 60px;
+    color: #000000;
+    font-family: 'Hind Regular', sans-serif;
+}
+
+.modal-profile .modal-dialog{
+    width: 88%;
+    margin: 40px auto;
+}
+.btn-box, .follower-box{
+    height: 80px;
+    border-radius: 2px;
+    font-size: 15px;
+    font-weight: bolder;
+    display: inline-block;
+}
+
+.btn-box{
+    margin-left: 8px;
+}
+
+.follower-box{
+    box-shadow: 0 0 2px #d9d9d9;
+    padding: 20px;
+}
+
+.follower-box .follower-number{
+    color: green;
+    font-size: 22px;
+    font-weight: 900;
+    padding-bottom: 11px;
+}
+
+.follower-box p{
+    font-size: 14px;
+    margin: 11px 0 0;
+}
+.btn-engage, .btn-message{
+    width: 138px;
+    height: 38px;
+    display: block;
+    color: #FFFFFF;
+}
+
+.btn-engage{
+    background-color: #d9d9d9;
+}
+
+.btn-message{
+    background-color: #f8c102;
+    margin-top: 3px;
+}
+
+.modal-profile .modal-body .profile-info{
+    padding: 28px 138px 34px 0;
+    width: 100%;
+    text-align: justify;
+}

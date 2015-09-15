@@ -1,0 +1,419 @@
+.content-wrapper {
+    height: 100%;
+    background-color: #f9f9f9;
+}
+
+.table > thead > tr.payment-header > th {
+    background-color: #eaeaea;
+    color: #666666;
+    font-family: 'Raleway', sans-serif;
+    font-size: 10pt;
+}
+
+.table > tbody > tr > td {
+    font-family: 'Hind', sans-serif;
+    font-weight: 400;
+    font-size: 10.5pt;
+    color: #666666;
+    vertical-align: middle;
+}
+
+.space {
+    margin-right: 4px;
+}
+
+.balance {
+    margin-left: 3px;
+    font-family: 'Hind', sans-serif;
+    font-weight: 300;
+}
+
+.payment-div {
+    margin: 0px 20px 20px 20px;
+    height: 40px;
+}
+
+.btn-download {
+    color: white;
+    margin: 25px 3px 5px 5px;
+    padding: 5px 20px 5px 20px;
+    background-color: #f8c102;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 11pt;
+}
+
+.btn-withdraw {
+    color: white;
+    margin: 25px 5px 5px 3px;
+    padding: 5px 30px 5px 30px;
+    background-color: #f8c102;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 11pt;
+}
+
+.payment-button-set {
+    text-align: right;
+}
+
+.payment-div > .payment-balance {
+    font-size: 15px;
+    margin-left: 20%;
+    display: block;
+    padding: 10px 10px 0 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 11pt;
+}
+
+#transaction-tabs {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 10pt;
+}
+
+.transaction-table {
+    font-size: 14px;
+    padding-left: 12px;
+    vertical-align: middle;
+}
+
+.glyphicon-credit-card {
+    color: #00AEEF;
+    font-size: 24px;
+    vertical-align: bottom;
+    padding: 5px 5px 0px 5px;
+}
+.panel-payment {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    /*-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);*/
+    /*box-shadow: 0 1px 1px rgba(0,0,0,.05);*/
+    padding: 24px 20px 0px 20px;
+}
+
+.status-circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.status-paid {
+    background-color: #33cd31;
+}
+
+.status-pending {
+    background-color: #fdc75d;
+}
+
+.status-failed {
+    background-color: #ed1b26;
+}
+
+
+th:nth-child(1), td:nth-child(1) {
+    text-align: center ;
+}
+
+.table > thead >.payment-header > th {
+    vertical-align: middle;
+    border-right-color: #dddddd;
+}
+
+.table > tbody > tr > td {
+    border-right-color: #dddddd;
+}
+
+.squaredFour input {
+    cursor: pointer;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    background: #cfcfcf;
+    background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+}
+
+@media
+only screen and (max-width: 980px) {
+
+    .btn-download {
+        font-size: 15px;
+        margin: 15px 2px 3px 5px;
+        padding: 5px 10px 5px 10px;
+    }
+
+    .btn-withdraw {
+        font-size: 15px;
+        margin: 15px 3px 3px 2px;
+        padding: 5px 15px 5px 15px;
+    }
+
+    .payment-div > .payment-balance {
+        font-size: 14px;
+        padding: 5px 5px 0 0;
+    }
+
+    .payment-div {
+        height: 32px;
+    }
+}
+
+@media
+only screen and (max-width: 800px) {
+
+    .btn-download {
+        font-size: 13px;
+        margin: 15px 2px 3px 5px;
+        padding: 3px 10px;
+    }
+
+    .btn-withdraw {
+        font-size: 13px;
+        margin: 15px 3px 3px 2px;
+        padding: 3px 10px;
+    }
+
+    .payment-div > .payment-balance {
+        font-size: 12px;
+        padding: 5px 5px 0 0;
+    }
+}
+
+@media
+only screen and (max-width: 380px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+        border: 1px solid #dddddd;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .btn-download {
+        font-size: 10px;
+        color: white;
+        margin: 15px 3px 3px 5px;
+        padding: 3px 10px;
+    }
+
+    .btn-withdraw {
+        font-size: 10px;
+        color: white;
+        margin: 15px 3px 3px 3px;
+        padding: 3px 10px;
+    }
+
+    .payment-div > .payment-balance {
+        font-size: 8px;
+        padding: 5px 5px 0 0;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    .payments_table > tbody > tr > td:nth-of-type(2):before { content: "Date Billed : "; font-weight: bold; }
+    .payments_table > tbody > tr > td:nth-of-type(3):before { content: "Transaction ID : ";  font-weight: bold; }
+    .payments_table > tbody > tr > td:nth-of-type(4):before { content: "Amount Recieved (USD) : ";  font-weight: bold; }
+    .payments_table > tbody > tr > td:nth-of-type(5):before { content: "Payment Status : ";  font-weight: bold; }
+}
+
+.payment-content {
+    min-height: 250px;
+    padding: 15px 20px;
+}
+
+.withdraw-modal-dialog {
+    padding-top: 9.3%;
+    height: 100%;
+    width: 60%;
+}
+
+@media
+only screen and (max-width: 480px) {
+    .withdraw-modal-dialog {
+        width: 95%;
+    }
+}
+
+.withdraw-modal-content {
+    height:460px;
+}
+
+.withdraw-modal-header {
+    background-color: #FF3059;
+    height: 100px;
+    padding: 32px 7%;
+}
+
+.withdraw-modal-header .withdraw-modal-close {
+    color: #ffffff;
+    font-size: 3em;
+    margin-top: -38px;
+    opacity: 1.5;
+    font-weight: 100;
+}
+
+.withdraw-modal-body {
+    padding: 40px 7% 0;
+}
+
+.modal-amount {
+    font-weight: normal;
+}
+
+.modal-amount-input {
+    border: none;
+    background-color: #e8e8e8;
+    width: 20%;
+    padding: 4px;
+}
+
+.bank-name {
+    background-color: #e8e8e8;
+    border: none;
+    padding: 4px;
+    font-family: 'Hind', sans-serif;
+    font-weight: 500;
+}
+
+.bank-dropdown {
+    background-color: #e8e8e8;
+    border: none;
+    padding: 0;
+}
+
+@media
+only screen and (max-width: 768px) {
+    .modal-amount-input {
+        width: 70px;
+    }
+}
+
+.withdraw-modal-continue{
+    color: white;
+    margin: 25px 3px 5px 5px;
+    background-color: #f8c102;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 11pt;
+    border-radius: 2px;
+
+}
+
+.withdraw-modal-cancel {
+    color: white;
+    margin: 25px 3px 5px 5px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 11pt;
+    background-color: #999999;
+    border-radius: 2px;
+
+}
+
+.without-first-line {
+    margin-top: 32px;
+}
+
+@media
+only screen and (max-width: 480px) {
+    .from-balance, .withdraw-modal-amount, .withdraw-modal-bank, .add-account {
+       font-size: 12px;
+    }
+}
+
+.withdraw-modal-amount{
+    margin-top: 5px;
+}
+
+
+.withdraw-modal-bank {
+    margin-top: 5px;
+}
+
+@media
+only screen and (max-width: 600px) {
+
+    .withdraw-modal-continue, .withdraw-modal-cancel  {
+        margin: 15px 3px 5px 5px;
+        padding: 5px 10px 5px 10px;
+        font-family: sans-serif;
+        font-weight: 400;
+        font-size: .7em;
+
+    }
+    .withdraw-modal-content {
+        height:560px;
+    }
+}
+
+@media
+only screen and (max-width: 340px) {
+
+    .withdraw-modal-continue, .withdraw-modal-cancel  {
+        font-family: sans-serif;
+        font-weight: 100;
+        margin: 5px 3px 5px 5px;
+        padding: 3px 3px;
+        font-size: .7em;
+
+    }
+    .withdraw-modal-content {
+        height:600px;
+    }
+}
+
+
+.withdraw-modal-body .add-bank {
+    text-decoration: underline;
+    margin: 10px 0;
+}
+
+.withdraw-modal-body .add-bank a {
+    color: #333333;
+}
+
+@media only screen and (min-width:720px) and (max-width: 770px) {
+    .without-first-line {
+        margin-left: -16%;
+    }
+}
+
+@media only screen and (min-width:771px) and (max-width: 820px) {
+    .without-first-line {
+        margin-left: -18%;
+    }
+}
+
+@media only screen and (min-width:960px) and (max-width: 1000px) {
+    .without-first-line {
+        margin-left: -28%;
+    }
+}
+
+@media only screen and (min-width:1260px) {
+    .without-first-line {
+        margin-left: -7%;
+    }
+}
+
+.padding-zero {
+    padding-left: 0;
+}
+
+
+
+

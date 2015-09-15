@@ -1,0 +1,179 @@
+
+/* on-off switching button style sheet */
+.onoffswitch {
+    position: relative;
+    width: 66px;
+    display: inline-block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+    display: none;
+}
+
+.onoffswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 50px;
+    width: 66px;
+    margin-bottom: 0;
+    box-shadow: 0 -1px 1px #000;
+    -webkit-box-shadow: 0 -1px 1px #000;
+    -moz-box-shadow: 0 -1px 1px #000;
+    -o-box-shadow: 0 -1px 1px #000;
+
+}
+
+.onoffswitch-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 25px;
+    padding: 0;
+    line-height: 25px;
+    font-size: 10px;
+    color: white;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: #ff3059;
+    color: #FFFFFF;
+}
+
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: #dedede;
+    color: #b9b9b9;
+    text-align: right;
+}
+
+.onoffswitch-switch {
+    display: block;
+    height: 20px;
+    width: 20px;
+    margin: 2.5px;
+    background: #F2F6F7;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 37px;
+    /*border: 2px solid #F5F0F0;*/
+    border-radius: 50px;
+    transition: all 0.3s ease-in 0s;
+    box-shadow: inset 0px 0px 0px 2px #ebebeb;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px;
+    background-color: #F2F6F7;
+}
+/* end of on-off switch style */
+
+
+.brands-setting-content-wrapper{
+    margin: 25px 22px;
+    background-color: #FFFFFF;
+    box-shadow: 1px 1px 3px 2px #ebebeb;
+    padding: 48px 0 69px 36px;
+    font-family: 'Hind Regular', sans-serif;
+    border-radius: 4px;
+}
+
+@media (max-width: 767px) {
+    .brands-setting-content-wrapper{
+        margin: 20px;
+        padding: 48px 0 69px 36px;
+    }
+}
+
+.brands-setting{
+    margin-bottom: 46px;
+}
+.deactive-brand-setting{
+    margin-bottom: 0;
+}
+.privacy-setting .setting-content {
+    padding-left: 67px;
+}
+@media  (max-width: 767px){
+    .privacy-setting .setting-content {
+        padding-left: 0px;
+    }
+}
+
+.brands-setting label, .brands-setting .info{
+    display: inline-block;
+    /*vertical-align: top;*/
+    font-size: 13px;
+    font-family: Hind, sans-serif;
+    font-weight: 400;
+    color: rgb(84, 84, 84);
+}
+
+.brands-setting label{
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-bottom: 5px ;
+}
+
+.brands-setting .info{
+    margin-left: 21px;
+    vertical-align: baseline;
+}
+.brands-setting header{
+    font-size: 15px;
+    color: #ff3059;
+    margin-bottom: 34px;
+    font-weight: 600;
+}
+.other-setting .section2{
+    margin-top: 15px;
+    padding-left: 4px;
+}
+.btn-deactive{
+    width: 196px;
+    height: 32px;
+    background-color: #666666;
+    color: #FFFFFF;
+    box-shadow: 0 0 1px #8b7a5c;
+    font-weight: 500;
+    font-size: 13px;
+
+}
+.btn-save{
+    background-color: #f8c102;
+    width: 130px;
+    height: 32px;
+    color: #FFFFFF;
+    margin-bottom: 69px;
+    margin-top: 27px;
+    margin-left: 20px;
+}
+
+/*
+
+
+
+
+
+*/

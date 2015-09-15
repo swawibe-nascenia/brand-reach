@@ -1,0 +1,121 @@
+<%= stylesheet_link_tag  'profile.css', media: 'all' %>
+
+<% title "BrandReach Profile" %>
+
+<div class="brands-profile-page-wrapper">
+  <%= image_tag('user2-160x160.jpg', :class => 'profile-picture', :alt => "profile-picture") %>
+  <h4 class="personal-info">PERSONAL INFORMATION</h4>
+
+  <form action="" class="form-horizontal personal-info-form">
+    <div class="form-group">
+      <div class="col-md-6">
+        <label for="first_name" class="control-label">First Name</label>
+        <input type="text" class="" name="first_name" id="first_name"/>
+      </div>
+      <div class="col-md-6">
+        <label for="last_name" class="control-label">Last Name</label>
+        <input type="text" class="" name="first_name" id="last_name"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-6">
+        <label for="company_name">Company Name</label>
+        <input type="text" class="" id="company_name" name="company_name"/>
+      </div>
+      <div class="col-md-6">
+        <label for="company_email">Company Email</label>
+        <input type="email" class="" id="company_email" name="company_email"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-6">
+        <label for="industry">Industry</label>
+        <input type="text" class="" id="industry"/>
+      </div>
+      <div class="col-md-6">
+        <label for="phone">Phone</label>
+        <input type="text" class="" id="phone"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-6">
+        <label for="country">Country</label>
+        <select class="profile-dropdown-color" id="country">
+          <option>Country 1</option>
+          <option>Country 2</option>
+          <option>Country 3</option>
+        </select>
+
+      </div>
+      <div class="col-md-6">
+        <label for="state">State</label>
+        <select class="profile-dropdown-color" id="state">
+          <option>State 1</option>
+          <option>State 2</option>
+          <option>State 3</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12">
+            <label for="city">City</label>
+            <input type="text" class="" id="city"/>
+          </div>
+          <div class="col-md-12">
+            <label for="zip">Zipcode</label>
+            <input type="text" class="" id="zip"/>
+          </div>
+          <div class="col-md-12">
+            <label for="land_mark" class="">Landmark</label>
+            <input type="text" class="" id="land_mark">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="street" class="textarea-label">Street Address</label>
+        <textarea class="street-address-textarea" id="street" rows="4" placeholder="Enter your address here"></textarea>
+      </div>
+    </div>
+
+    <h4 class="account-setup">ACCOUNT SETUP</h4>
+
+    <div class="form-group">
+      <div class="col-md-6">
+        <label for="old_password" class="">Old Password</label>
+        <input type="password" class="" id="old_password"/>
+      </div>
+      <div class="col-md-6">
+        <label>&nbsp;</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-6">
+        <label for="new_password" class="">New Password</label>
+        <input type="password" class="" id="new_password"/>
+      </div>
+      <div class="col-md-6">
+        <label for="retype_password" class="">Retype Password</label>
+        <input type="password" class="" id="retype_password"/>
+      </div>
+    </div>
+
+    <h4 class="company-info">COMPANY INFORMATION</h4>
+
+    <div class="form-group short-bio-row">
+      <div class="col-md-12">
+        <label for="short_bio" class="textarea-label">Short Bio</label>
+        <textarea class="short_bio" id="short_bio" rows="6"></textarea>
+      </div>
+    </div>
+
+  </form> <!-- end of form-->
+</div>
+<!-- end of main content -->
+<button class="btn btn-update" type="submit">UPDATE</button>

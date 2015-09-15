@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'profile/index'
+
   get 'influencers_home/index'
 
   get 'brands_home/index'
@@ -39,7 +41,7 @@ Rails.application.routes.draw do
   #     end
   #   end
 
-  resources :brands_home, :influencers_home do
+  resources :brands_home, :influencers_home, :profile do
 
   end
 
