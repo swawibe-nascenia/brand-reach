@@ -3,9 +3,10 @@ class HomeController < ApplicationController
 	before_action :authenticate_user!, :set_service, except: [:index]
 
   def index
-  	if current_user
-  		redirect_to :dashboard
-  	end
+  	# if current_user
+  	# 	redirect_to :dashboard
+  	# end
+    redirect_to root_path
   end
 
   def dashboard
