@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :profile do
       member do
         get :profile
+        put :update_password
       end
   end
 

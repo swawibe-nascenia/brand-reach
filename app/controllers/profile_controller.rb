@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
   layout 'sidebar_header_layouts'
-  before_action :set_user, only: [:profile, :update]
+  before_action :set_user, only: [:profile, :update, :update_password]
 
   respond_to :html
 
@@ -10,13 +10,26 @@ class ProfileController < ApplicationController
 
   def update
 
-    if @user.update_with_password(user_profile_params)
+    if @user.update(user_profile_params)
       flash[:success] = 'User information update success'
     else
       flash[:error] = 'User information update fail'
     end
 
     redirect_to profile_profile_path
+
+  end
+
+  def update_password
+
+    if @user.update_with_password(user_profile_params)
+      flash[:success] = 'User Password update success'
+    else
+      flash[:error] = 'Old Password was Not correct or Retype Password does Not match with New Password'
+    end
+
+    redirect_to profile_profile_path
+
   end
 
   private

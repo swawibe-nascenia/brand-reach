@@ -89,7 +89,7 @@
 
   <div class="divider-personal-info-password"></div>
 
-  <%= form_for @user, :url => {:controller => "profile", :action => "update"}, html: { class: "form-horizontal personal-info-form"} do |f| %>
+  <%= form_for @user, :url => {:controller => "profile", :action => "update_password" }, :method => :put, html: { class: "form-horizontal personal-info-form"} do |f| %>
 
       <h4 class="account-setup">ACCOUNT SETUP</h4>
 
