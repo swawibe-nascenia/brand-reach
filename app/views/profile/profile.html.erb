@@ -2,41 +2,42 @@
 
 <% title "BrandReach Profile" %>
 
-<div class="brands-profile-page-wrapper">
-  <%= image_tag('user2-160x160.jpg', :class => 'profile-picture', :alt => "profile-picture") %>
-  <h4 class="personal-info">PERSONAL INFORMATION</h4>
+<%= form_for @user, :url => {:controller => "profile", :action => "update"}, html: { class: "form-horizontal personal-info-form"} do |f| %>
 
-  <%= form_for :profile, html: { class: "form-horizontal personal-info-form"} do |f| %>
+    <div class="brands-profile-page-wrapper">
+      <%= image_tag('user2-160x160.jpg', :class => 'profile-picture', :alt => "profile-picture") %>
+
+      <h4 class="personal-info">PERSONAL INFORMATION</h4>
 
       <div class="form-group">
         <div class="col-md-6">
-          <%= f.label :first_name %>:
+          <%= f.label :first_name %>
           <%= f.text_field :first_name %>
         </div>
         <div class="col-md-6">
-          <%= f.label :last_name %>:
+          <%= f.label :last_name %>
           <%= f.text_field :last_name %>
         </div>
       </div>
 
       <div class="form-group">
         <div class="col-md-6">
-          <%= f.label :company_name %>:
+          <%= f.label :company_name %>
           <%= f.text_field :company_name %>
         </div>
         <div class="col-md-6">
-          <%= f.label :company_email %>:
-          <%= f.text_field :company_email %>
+          <%= f.label :email %>
+          <%= f.text_field :email %>
         </div>
       </div>
 
       <div class="form-group">
         <div class="col-md-6">
-          <%= f.label :industry %>:
+          <%= f.label :industry %>
           <%= f.text_field :industry %>
         </div>
         <div class="col-md-6">
-          <%= f.label :phone %>:
+          <%= f.label :phone %>
           <%= f.text_field :phone %>
         </div>
       </div>
@@ -52,12 +53,8 @@
 
         </div>
         <div class="col-md-6">
-          <label for="state">State</label>
-          <select class="profile-dropdown-color" id="state">
-            <option>State 1</option>
-            <option>State 2</option>
-            <option>State 3</option>
-          </select>
+          <%= f.label :state %>
+          <%= f.select(:state, [['State 1', 1], ['State 2', 2], ['State 3', 3], ['State 4', 4], ['State 5', 5]], {}, { :class => 'profile-dropdown-color'}) %>
         </div>
       </div>
 
@@ -65,23 +62,22 @@
         <div class="col-md-6">
           <div class="row">
             <div class="col-md-12">
-              <%= f.label :city %>:
+              <%= f.label :city %>
               <%= f.text_field :city %>
             </div>
             <div class="col-md-12">
-              <%= f.label :zip_code %>:
+              <%= f.label :zip_code %>
               <%= f.text_field :zip_code %>
             </div>
-            </div>
             <div class="col-md-12">
-              <%= f.label :landmark %>:
+              <%= f.label :landmark %>
               <%= f.text_field :landmark %>
             </div>
           </div>
         </div>
         <div class="col-md-6">
-          <%= f.label :street_address %>:
-          <%= f.text_area :street_address, rows: 4, class: 'street-address-textarea', id: 'street', placeholder: "Enter your address here" %>
+          <%= f.label :street_address, class: 'textarea-label' %>
+          <%= f.text_area :street_address, rows: 4, class: 'street-address-textarea', placeholder: "Enter your address here" %>
         </div>
       </div>
 
@@ -99,12 +95,12 @@
 
       <div class="form-group">
         <div class="col-md-6">
-          <label for="new_password" class="">New Password</label>
-          <input type="password" class="" id="new_password"/>
+          <%= f.label :password, "New Password" %>
+          <%= f.text_field :password %>
         </div>
         <div class="col-md-6">
-          <label for="retype_password" class="">Retype Password</label>
-          <input type="password" class="" id="retype_password"/>
+          <%= f.label :password_confirmation, "Retype Password" %>
+          <%= f.text_field :password_confirmation %>
         </div>
       </div>
 
@@ -112,14 +108,11 @@
 
       <div class="form-group short-bio-row">
         <div class="col-md-12">
-          <label for="short_bio" class="textarea-label">Short Bio</label>
-          <textarea class="short_bio" id="short_bio" rows="6"></textarea>
+          <%= f.label :short_bio, class: 'textarea-label' %>
+          <%= f.text_area :short_bio, rows: 6, class: 'short_bio' %>
         </div>
       </div>
+    </div>
+    <%= f.submit  "UPDATE", class: 'btn btn-update' %>
 
-      </div>
-
-      <%= f.submit  "UPDATE", class: 'btn btn-update' %>
-  <% end %>
-  <!-- end of main content -->
-</div>
+<% end %>

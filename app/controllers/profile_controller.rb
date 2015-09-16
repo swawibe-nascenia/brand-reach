@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
   layout 'sidebar_header_layouts'
-  before_action :set_user, only: [:profile, :update_user_profile]
+  before_action :set_user, only: [:profile, :update]
 
   respond_to :html
 
@@ -8,14 +8,14 @@ class ProfileController < ApplicationController
     respond_with(@user)
   end
 
-  def update_user_profile
+  def update
     if @user.update(user_profile_params)
       flash[:success] = 'User information update success'
     else
       flash[:error] = 'User information update fail'
     end
 
-    respond_with(@user)
+    redirect_to profile_profile_path
   end
 
   private
