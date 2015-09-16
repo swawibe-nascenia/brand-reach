@@ -1,13 +1,52 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
+  # ----------------------------------------------------------------------
+  # == Include Modules == #
+  # ----------------------------------------------------------------------
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+  # ----------------------------------------------------------------------
+  # == Constants == #
+  # ----------------------------------------------------------------------
+
   enum user_type: [:brand, :influencer]
 
+  enum gender: [:male, :female, :other]
+
+  # ----------------------------------------------------------------------
+  # == Attributes == #
+  # ----------------------------------------------------------------------
   attr_accessor :current_password
+
+
+  # ----------------------------------------------------------------------
+  # == File Uploader == #
+  # ----------------------------------------------------------------------
+
+  # ----------------------------------------------------------------------
+  # == Associations and Nested Attributes == #
+  # ----------------------------------------------------------------------
+
+  # ----------------------------------------------------------------------
+  # == Validations == #
+  # ----------------------------------------------------------------------
+
+  validates :email, presence: true
+
+  # ----------------------------------------------------------------------
+  # == Callbacks == #
+  # ----------------------------------------------------------------------
+
+  # ----------------------------------------------------------------------
+  # == Scopes and Other macros == #
+  # ----------------------------------------------------------------------
+
+  # ----------------------------------------------------------------------
+  # == Instance methods == #
+  # ----------------------------------------------------------------------
 
   # call this method to authenticate user by facebook
   def self.authenticate_user_by_facebook(auth, params)
@@ -15,6 +54,8 @@ class User < ActiveRecord::Base
 
     # create new user if user not found_by email
     unless user
+      Rails.logger.info '------------------------ user registration process initialize-------------'
+      Rails.logger.info auth.info
       user = User.new({
                           provider: auth.provider,
                           uid: auth.uid,
@@ -26,7 +67,13 @@ class User < ActiveRecord::Base
       user.image = auth.info.image
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
-      user.gender = auth.info.gender
+
+      user.gender = case auth.info.gender
+                      when 'male' then User.genders[:male]
+                      when 'female' then User.genders[:female]
+                      else  User.genders[:other]
+                    end
+
       user.country = auth.info.location
 
       if params[:brand]
@@ -52,5 +99,9 @@ class User < ActiveRecord::Base
 
     user
   end
+
+  # ----------------------------------------------------------------------
+  # == Private == #
+  # ----------------------------------------------------------------------
 
 end
