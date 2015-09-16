@@ -10,10 +10,15 @@
       <div class="modal-body login-modal-body">
         <p>Joining Brand Reach puts you in front of marketers from top brands that are searching to connect with influencers like you</p>
         <p>Connect all your accounts below: </p>
+
         <div class="social-accounts-logo">
-          <a href="<%= new_user_session_path %>">Facebook &nbsp; &nbsp; <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
-          <a href="<%= new_user_session_path %>">Twitter &nbsp; &nbsp; <%= image_tag('twitter-icon.png', :alt => "twitter") %></a>
-          <a href="<%= new_user_session_path %>">Email &nbsp; &nbsp; <%= image_tag('email-icon.jpeg', :alt => "email") %></a>
+          <% if params[:action] == 'brand_home' %>
+              <a href="<%= user_omniauth_authorize_path('facebook', brands: true) %>">Facebook &nbsp; &nbsp; <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
+          <% else %>
+              <a href="<%= user_omniauth_authorize_path('facebook') %>">Facebook &nbsp; &nbsp; <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
+          <%  end %>
+              <a href="<%= new_user_session_path %>">Twitter &nbsp; &nbsp; <%= image_tag('twitter-icon.png', :alt => "twitter") %></a>
+              <a href="<%= new_user_session_path %>">Email &nbsp; &nbsp; <%= image_tag('email-icon.jpeg', :alt => "email") %></a>
         </div>
 
 

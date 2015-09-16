@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'brands_home', media: 'all', 'data-turbolinks-track' => true %>
 
-<% title "BrandReach Brands Home" %>
+<% title 'BrandReach Brands Home' %>
 
 <div class="header">
   <div class="wrapper-content">
@@ -20,12 +20,16 @@
           <li><a href="#">BRANDS</a></li>
           <li><a href="#">ABOUT US</a></li>
           <li><a href="#">LOGIN</a></li>
-          <li><%= link_to("SIGN UP FREE", new_user_registration_path, :class => "btn-custom btn-theme text-white") %></li>
+          <% unless current_user %>
+            <li><%= link_to 'SIGN UP FREE', "#loginModal", "data-toggle" => "modal", :class => "btn-custom btn-theme text-white" %></li>
+          <% end %>
         </ul>
       </div>
     </nav>
   </div>
 </div>
+
+<%= render partial: 'shared/login_social_network_modal'%>
 
 <div class="identity">
   <div class="wrapper-content">
