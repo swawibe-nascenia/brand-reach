@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'brands_home', media: 'all', 'data-turbolinks-track' => true %>
 
-<% title "BrandReach Influencers Home" %>
+<% title 'BrandReach Influencers Home' %>
 
 <div class="header">
   <div class="wrapper-content">
@@ -23,8 +23,8 @@
               <li><a href="<%= destroy_user_session_path %>">LOG OUT</a></li>
           <% else %>
               <li><a href="<%= new_user_session_path %>">LOGIN</a></li>
-          <% end %>
-          <li><%= link_to "SIGN UP FREE", "#loginModal", "data-toggle" => "modal", :class => "btn-custom btn-theme text-white" %></li>
+              <li><%= link_to "SIGN UP FREE", "#loginModal", "data-toggle" => "modal", :class => "btn-custom btn-theme text-white" %></li>
+        <% end %>
         </ul>
       </div>
     </nav>

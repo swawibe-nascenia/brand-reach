@@ -10,6 +10,17 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require AdminLTE.min
+ *= require style
+ *= require home
+ *= require brands_home
+ *= require brands-explore
+ *= require brands-setting
+ *= require campaigns
+ *= require contact-us
+ *= require influencers_home
+ *= require offers
+ *= require payments
+ *= require profile
  *= require_self
  */
