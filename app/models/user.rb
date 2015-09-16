@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
       user.gender = auth.info.gender
-      user.country =
+      user.country = auth.info.location
 
       if params[:brand]
         user.user_type= User.user_types[:brand]
