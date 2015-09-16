@@ -101,14 +101,14 @@
   margin: 0 auto;
 }
 
-.btn-update {
+.personal-info-form .btn-update {
   background-color: #f8c102;
   height: 32px;
   color: white;
   font-family: "Raleway", sans-serif;
   font-size: 13px;
   font-weight: 600;
-  margin: 0px 20px 77px;
+  margin: 37px 20px 40px;
   padding: 5px 30px;
 }
 
