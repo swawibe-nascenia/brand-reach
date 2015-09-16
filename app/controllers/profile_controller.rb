@@ -10,6 +10,7 @@ class ProfileController < ApplicationController
 
   def update
     # if @user.update_with_password(user_profile_params)
+
     if @user.update(user_profile_params)
       flash[:success] = 'User information update success'
     else

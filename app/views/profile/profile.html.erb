@@ -84,8 +84,10 @@
           <%= f.text_area :short_bio, rows: 6, class: 'short_bio' %>
         </div>
       </div>
-      <%= f.submit  "UPDATE", class: 'btn btn-update' %>
+      <%= f.button  "UPDATE INFORMATION", class: 'btn btn-update' %>
   <% end %>
+
+  <div class="divider-personal-info-password"></div>
 
   <%= form_for @user, :url => {:controller => "profile", :action => "update"}, html: { class: "form-horizontal personal-info-form"} do |f| %>
 
@@ -111,6 +113,6 @@
           <%= f.password_field :password_confirmation %>
         </div>
       </div>
-      <%= f.submit  "UPDATE", class: 'btn btn-update' %>
+      <%= f.button  "UPDATE PASSWORD", class: 'btn btn-update' %>
   <% end %>
 </div>
