@@ -9,9 +9,8 @@ class ProfileController < ApplicationController
   end
 
   def update
-    # if @user.update_with_password(user_profile_params)
 
-    if @user.update(user_profile_params)
+    if @user.update_with_password(user_profile_params)
       flash[:success] = 'User information update success'
     else
       flash[:error] = 'User information update fail'
@@ -29,7 +28,7 @@ class ProfileController < ApplicationController
   def user_profile_params
     params.require(:user).permit(:first_name, :last_name, :email, :company_name, :company_email,
                                  :industry, :phone, :street_address, :landmark, :city, :state,
-                                 :country, :zip_code, :short_bio
+                                 :country, :zip_code, :short_bio, :password, :password_confirmation, :current_password
     )
   end
 end

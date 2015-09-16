@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   enum user_type: [:brand, :influencer]
 
+  attr_accessor :current_password
+
   # call this method to authenticate user by facebook
   def self.authenticate_user_by_facebook(auth, params)
     user = User.find_by(email: auth.info.email)
