@@ -5,7 +5,12 @@
 <div class="brands-profile-page-wrapper">
 
   <%= form_for @user, :url => {:controller => "profile", :action => "update"}, html: { class: "form-horizontal personal-info-form"} do |f| %>
-      <%= image_tag('user2-160x160.jpg', :class => 'profile-picture', :alt => "profile-picture") %>
+
+      <% if @user.image.present? %>
+          <%= image_tag(@user.image, :class => 'profile-picture', :alt => "profile-picture") %>
+      <% else %>
+          <%= image_tag('user2-160x160.jpg', :class => 'profile-picture', :alt => "profile-picture") %>
+      <% end %>
 
       <h4 class="personal-info">PERSONAL INFORMATION</h4>
 
