@@ -23,6 +23,7 @@ class ProfileController < ApplicationController
   def update_password
 
     if @user.update_with_password(user_profile_params)
+      sign_in @user, :bypass => true
       flash[:success] = 'User Password update success'
     else
       flash[:error] = 'Old Password was Not correct or Retype Password does Not match with New Password'
