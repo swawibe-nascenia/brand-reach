@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
   def self.add_facebook_to_user_account(auth, params)
     # me?fields=accounts
     user = User.find_by(id: params['user_id'].to_i)
-    social_account = user.social_accounts.build(provider: auth.provider, uid: auth.uid)
+    social_account = user.social_accounts.build(provider: auth.provider, uid: auth.uid, access_token: auth.credentials.token, token_expires_at: 8.weeks.from_now)
 
     social_account
   end
