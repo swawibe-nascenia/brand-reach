@@ -26,7 +26,12 @@
     <section class="sidebar">
       <div class="center-block profile-info">
         <a href="javascript:void(0)"><span class="fa fa-camera camera"></span></a>
-        <%= image_tag('user2-160x160.jpg', :class => 'img-circle profile-image center-block', :alt => "User Image") %>
+
+        <% if current_user.image.present? %>
+            <%= image_tag(@user.image, :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
+        <% else %>
+            <%= image_tag('user2-160x160.jpg', :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
+        <% end %>
 
         <div class="info">
           <p class="name"><%= current_user.name.present? ? current_user.name : 'USER' %></p>
@@ -50,7 +55,7 @@
       <br/>
 
       <ul class="sidebar-menu">
-        <li class="active">
+        <li class="<%=  (params[:controller] == 'profile' && params[:action] == 'profile') ? 'active' : '' %>">
           <a href="#">
             <i class="fa fa-user"></i> <span class="space-sidebar">PROFILE</span>
           </a>
