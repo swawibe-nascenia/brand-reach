@@ -50,6 +50,14 @@ class User < ActiveRecord::Base
   # == Instance methods == #
   # ----------------------------------------------------------------------
 
+  def is_facebook_authenticate?
+    return self.provider == 'facebook' && self.uid? && self.access_token?
+  end
+
+  # ----------------------------------------------------------------------
+  # == Class methods == #
+  # ----------------------------------------------------------------------
+
   # call this method to authenticate user by facebook
   def self.authenticate_user_by_facebook(auth, params)
     user = User.find_by(email: auth.info.email)
