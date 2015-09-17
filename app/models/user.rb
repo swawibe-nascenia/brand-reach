@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   validates :email, presence: true
+  validates_confirmation_of :password
 
   # ----------------------------------------------------------------------
   # == Callbacks == #

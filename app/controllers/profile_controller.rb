@@ -33,6 +33,10 @@ class ProfileController < ApplicationController
 
   end
 
+  def subregion_options
+    render partial: 'sub_region_select'
+  end
+
   private
 
   def set_user

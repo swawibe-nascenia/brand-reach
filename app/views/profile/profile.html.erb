@@ -50,12 +50,12 @@
       <div class="form-group">
         <div class="col-md-6">
           <%= f.label :country %>
-          <%= f.select(:country, [['Country 1', 1], ['Country 2', 2], ['Country 3', 3], ['Country 4', 4], ['Country 5', 5]], {}, { :class => 'profile-dropdown-color'}) %>
+          <%= f.country_select :country, {priority: %w(US CA IN)}, { :class => 'profile-dropdown-color'}, {} %>
         </div>
 
         <div class="col-md-6">
           <%= f.label :state %>
-          <%= f.select(:state, [['State 1', 1], ['State 2', 2], ['State 3', 3], ['State 4', 4], ['State 5', 5]], {}, { :class => 'profile-dropdown-color'}) %>
+          <%= render partial: 'sub_region_select', locals: {parent_region: f.object.country} %>
         </div>
       </div>
       <div class="form-group">
@@ -121,3 +121,20 @@
       <%= f.button  "UPDATE PASSWORD", class: 'btn btn-update' %>
   <% end %>
 </div>
+
+<script>
+
+$(document).ready(function(){
+    $('select#user_country').change(function() {
+
+        var country = 'country=' + $('select#user_country :selected').text();
+        jQuery.get('/profiles/subregion_options' + country, function(data){
+            jQuery("user_state").html( data);
+    })
+    return false;
+    });
+
+
+});
+
+</script>
