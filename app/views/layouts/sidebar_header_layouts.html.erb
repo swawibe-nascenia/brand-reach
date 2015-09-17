@@ -29,7 +29,7 @@
         <%= image_tag('user2-160x160.jpg', :class => 'img-circle profile-image center-block', :alt => "User Image") %>
 
         <div class="info">
-          <p class="name">Bhanu Prasad Madala </p>
+          <p class="name"><%= current_user.name.present? ? current_user.name : 'USER' %></p>
 
           <div class="dropdown small">
             <button class="btn center-block text-center user-status dropdown-toggle" type="button"
@@ -95,7 +95,7 @@
         <div class="about-welcome">
           <p class=" about">ABOUT</p>
 
-          <p class=" welcome"> Welcome back, Bhanu Prasad!</p>
+          <p class=" welcome"> Welcome back, <%= current_user.name.present? ? current_user.name : 'USER' %></p>
           <a href="<%= destroy_user_session_path %>" class="login-link">
             <p class="text-black text-center"><i class="fa fa-power-off"></i></p>
           </a>
