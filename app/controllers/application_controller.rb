@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
 
   def after_sign_in_path_for(resource)
-    request.env['omniauth.origin'] || stored_location_for(resource) || profile_profile_path(current_user)
+     profile_profile_path(current_user)
   end
 
 end
