@@ -37,6 +37,10 @@ class PublicController < ApplicationController
   	@resp = @service.get_insights(params[:query])
   end
 
+  def get_in_touch
+    redirect_to home_public_index_path
+  end
+
 protected
 	def set_service
 		# @service = InsightService.new current_user

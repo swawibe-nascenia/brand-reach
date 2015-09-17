@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get :home
       get :brand_home
       get :dashboard
+      post :get_in_touch
     end
   end
 
