@@ -164,6 +164,9 @@
 
       </div>
     </div>
+<% if current_user %>
+    <a href="<%= user_omniauth_authorize_path('facebook', add_facebook_to_account: true, user_id: current_user.id, origin: home_public_index_path) %>">Connect Facebook to my accoutn <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
+<% end %>
 
   </div>
   <div class="footer row">

@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
   # == Associations and Nested Attributes == #
   # ----------------------------------------------------------------------
 
+  has_many :social_accounts
+
   # ----------------------------------------------------------------------
   # == Validations == #
   # ----------------------------------------------------------------------
@@ -95,9 +97,11 @@ class User < ActiveRecord::Base
   end
 
   def self.add_facebook_to_user_account(auth, params)
-    user = User.find_by(id: params[:user_id])
+    # me?fields=accounts
+    user = User.find_by(id: params['user_id'].to_i)
+    social_account = user.social_accounts.build(provider: auth.provider, uid: auth.uid)
 
-    user
+    social_account
   end
 
   # ----------------------------------------------------------------------

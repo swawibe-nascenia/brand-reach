@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916114047) do
+ActiveRecord::Schema.define(version: 20150917075109) do
+
+  create_table "identities", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "provider",   limit: 255
+    t.string   "uid",        limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -21,6 +31,15 @@ ActiveRecord::Schema.define(version: 20150916114047) do
   end
 
   add_index "pages", ["username"], name: "index_pages_on_username", using: :btree
+
+  create_table "social_accounts", force: :cascade do |t|
+    t.string   "provider",     limit: 255
+    t.string   "uid",          limit: 255
+    t.string   "access_token", limit: 255
+    t.integer  "user_id",      limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: ""
@@ -63,4 +82,5 @@ ActiveRecord::Schema.define(version: 20150916114047) do
   add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "identities", "users"
 end
