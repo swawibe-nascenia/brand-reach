@@ -2,7 +2,7 @@ class ProfileController < ApplicationController
   # layout 'sidebar_header_layouts'
   before_action :set_user, only: [:profile, :update, :update_password]
 
-  respond_to :html
+  respond_to :html, :js
 
   def profile
     respond_with(@user)
@@ -35,6 +35,17 @@ class ProfileController < ApplicationController
 
   def add_social_site(provider)
 
+  end
+
+  def edit_profile_picture
+    Rails.logger.info '------------ with in image update method--------'
+    Rails.logger.info params
+    current_user.image = params[:user][:image]
+    if current_user.save
+      @success = true\
+     else
+      @success = false
+    end
   end
 
   private

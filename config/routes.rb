@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
     collection do
       get :subregion_options
+      post :edit_profile_picture
     end
   end
 
