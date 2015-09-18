@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
 
-
-
   def after_sign_in_path_for(resource)
     if current_user.influencer? && current_user.sign_in_count <= 1
 

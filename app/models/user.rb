@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   # == Associations and Nested Attributes == #
   # ----------------------------------------------------------------------
 
-  has_many :social_accounts
+  has_one :facebook, foreign_key: 'influencer_id', dependent: :destroy
 
   # ----------------------------------------------------------------------
   # == Validations == #
@@ -48,6 +48,9 @@ class User < ActiveRecord::Base
   # ----------------------------------------------------------------------
   # == Scopes and Other macros == #
   # ----------------------------------------------------------------------
+
+  scope :influencers, ->{ where( user_type: User.user_types[:influencer])}
+  scope :brands, ->{ where( user_type: User.user_types[:brand])}
 
   # ----------------------------------------------------------------------
   # == Instance methods == #
