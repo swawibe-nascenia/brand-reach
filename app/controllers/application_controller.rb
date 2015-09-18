@@ -4,8 +4,26 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :authenticate_user!
 
+  layout :layout_by_resource
+
+
+
   def after_sign_in_path_for(resource)
-     profile_profile_path(current_user)
+    if current_user.influencer? && current_user.sign_in_count <= 1
+
+    else
+      profile_profile_path(current_user)
+    end
+  end
+
+  protected
+
+  def layout_by_resource
+    if devise_controller?
+      'public'
+    else
+      'application'
+    end
   end
 
 end

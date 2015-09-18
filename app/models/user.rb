@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
                       else  User.genders[:other]
                     end
 
-      user.country = auth.info.location
+      # user.country = auth.info.location
 
       if params[:brand]
         user.user_type= User.user_types[:brand]

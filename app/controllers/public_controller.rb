@@ -1,5 +1,5 @@
 class PublicController < ApplicationController
-	# layout 'landing'
+	layout 'public'
   # before_action  :set_service, except: [:index]
   skip_before_filter :authenticate_user!
 

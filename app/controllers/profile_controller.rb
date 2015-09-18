@@ -1,5 +1,5 @@
 class ProfileController < ApplicationController
-  layout 'sidebar_header_layouts'
+  # layout 'sidebar_header_layouts'
   before_action :set_user, only: [:profile, :update, :update_password]
 
   respond_to :html
@@ -9,7 +9,6 @@ class ProfileController < ApplicationController
   end
 
   def update
-
     if @user.update(user_profile_params)
       flash[:success] = 'User information update success'
     else
@@ -17,11 +16,9 @@ class ProfileController < ApplicationController
     end
 
     redirect_to profile_profile_path
-
   end
 
   def update_password
-
     if @user.update_with_password(user_profile_params)
       sign_in @user, :bypass => true
       flash[:success] = 'User Password update success'
@@ -30,11 +27,14 @@ class ProfileController < ApplicationController
     end
 
     redirect_to profile_profile_path
-
   end
 
   def subregion_options
     render partial: 'sub_region_select'
+  end
+
+  def add_social_site(provider)
+
   end
 
   private

@@ -1,24 +1,148 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title><%= yield(:title) %></title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
+  <%= stylesheet_link_tag  'AdminLTE.min.css', media: 'all' %>
+  <%= stylesheet_link_tag  'style.css', media: 'all' %>
+  <%= javascript_include_tag 'application'%>
   <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Hind' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-  <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="skin-blue sidebar-mini">
+<div class="wrapper">
+  <header class="main-header visible-xs">
+    <nav class="navbar navbar-static-top" role="navigation">
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <section class="sidebar">
+      <div class="center-block profile-info">
+        <a href="javascript:void(0)"><span class="fa fa-camera camera"></span></a>
 
-<%= yield %>
+        <% if current_user && current_user.image.present? %>
+            <%= image_tag(@user.image, :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
+        <% else %>
+            <%= image_tag('user2-160x160.jpg', :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
+        <% end %>
+
+        <div class="info">
+          <p class="name"><%= current_user.try(:name).present? ? current_user.name : 'USER' %></p>
+
+          <div class="dropdown small">
+            <button class="btn center-block text-center user-status dropdown-toggle" type="button"
+                    data-toggle="dropdown"><i class="fa fa-circle text-color-follower"></i>&nbsp; Available
+              <i class="fa fa-angle-down "></i>
+            </button>
+            <ul class="dropdown-menu user-status ">
+              <li><a href="#">Invisible</a></li>
+              <li><a href="#">Busy</a></li>
+              <li><a href="#">Offline</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+        <p class="text-center font-hind">200,456 followers</p>
+      </div>
+
+      <br/>
+
+      <ul class="sidebar-menu">
+        <li class="<%=  (params[:controller] == 'profile' && params[:action] == 'profile') ? 'active' : '' %>">
+          <a href="#">
+            <i class="fa fa-user"></i> <span class="space-sidebar">PROFILE</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="glyphicon glyphicon-envelope"> </span><span class="space-sidebar">OFFERS</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-facebook"></i><span class="space-sidebar">FACEBOOK</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="glyphicon icon-horn"></span><span class="space-sidebar">CAMPAIGNS</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-dollar"></i><span class="space-sidebar">PAYMENTS</span>
+          </a>
+        </li>
+        <li >
+          <a href="#">
+            <i class="fa fa-phone"></i><span class="space-sidebar">CONTACT US</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-cog"></i><span class="space-sidebar">SETTINGS</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </aside>
+
+  <div class="content-wrapper">
+    <section class="header-content">
+      <div class="row">
+        <div class="about-welcome">
+          <p class=" about">ABOUT</p>
+
+          <p class=" welcome"> Welcome back, <%= current_user.try(:name).present? ? current_user.name : 'USER' %></p>
+          <a href="<%= destroy_user_session_path %>" class="login-link">
+            <p class="text-black text-center"><i class="fa fa-power-off"></i></p>
+          </a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+          <a href="<%= root_url %>"><%= image_tag('Logo.png', :class => 'image img-responsive header-logo', :alt => "Logo") %></a>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12 search-top-margin">
+          <!-- search form -->
+          <form action="#" method="get" class="form-group">
+            <button type="submit" class="btn-circle center-block pull-right">GO</button>
+            <input class="form-control rounded-input-box" type="search" placeholder="Enter Keywords..."/>
+            <span class="glyphicon glyphicon-search"></span>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="header-bottom-margin"></div>
+
+    <!-- main content -->
+    <div class="main-content">
+      <%= render partial: "shared/flash_messages", flash: flash %>
+
+      <%= yield %>
+
+    </div>
+
+  </div>
+
+</div>
+<!-- /.content-wrapper -->
+<footer class="main-footer">
+  <div class="text-center footer-content">
+    All Rights Reserved <span class="rights-reserved">&reg;</span> Brand Reach | Copyright 2015
+  </div>
+</footer>
 
 </body>
 </html>
+
