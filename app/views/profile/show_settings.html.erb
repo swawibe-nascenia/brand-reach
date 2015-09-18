@@ -1,0 +1,64 @@
+<%= stylesheet_link_tag  'brands-setting.css', media: 'all' %>
+
+<% title "Profile Settings" %>
+
+<div class="brands-setting-content-wrapper">
+  <div class="brands-setting privacy-setting">
+    <header>
+      PRIVACY SETTINGS
+    </header>
+
+    <div class="setting-content">
+      <label>Status</label>
+      <div class="onoffswitch">
+        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="setting-on-off-switch" checked>
+        <label class="onoffswitch-label" for="setting-on-off-switch">
+          <span class="onoffswitch-inner"></span>
+          <span class="onoffswitch-switch"></span>
+        </label>
+      </div>
+      <p class="info">Your online status is visible to the brand</p>
+    </div>
+  </div>
+
+  <!-- other settings -->
+  <div class="brands-setting other-setting">
+    <header>
+      OTHER SETTINGS
+    </header>
+
+    <div class="setting-content">
+      <div class="section1">
+        <label>Email Reminders</label>
+        <div class="onoffswitch">
+          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="other-setting-section1-on-off-switch" checked>
+          <label class="onoffswitch-label" for="other-setting-section1-on-off-switch">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+      </div>
+      <div class="section2">
+        <label>SMS Reminders</label>
+        <div class="onoffswitch">
+          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="other-setting-section2-on-off-switch" checked>
+          <label class="onoffswitch-label" for="other-setting-section2-on-off-switch">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- deactivate setting -->
+  <div class="brands-setting deactive-brand-setting">
+    <header>
+      DEACTIVATE ACCOUNT
+    </header>
+    <button class="btn btn-default btn-deactive">DEACTIVATE</button>
+  </div>
+
+</div>
+<button class="btn btn-default btn-save">SAVE</button>

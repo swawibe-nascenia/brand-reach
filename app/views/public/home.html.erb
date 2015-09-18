@@ -20,6 +20,7 @@
           <li><a href="#">BRANDS</a></li>
           <li><a href="#">ABOUT US</a></li>
           <% if user_signed_in? %>
+              <li><a href="<%= profile_profile_path(current_user) %>">PROFILE</a></li>
               <li><a href="<%= destroy_user_session_path %>">LOG OUT</a></li>
           <% else %>
               <li><a href="<%= new_user_session_path %>">LOGIN</a></li>

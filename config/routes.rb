@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     member do
       get :profile
       put :update_password
+      get :show_settings
     end
     collection do
       get :subregion_options

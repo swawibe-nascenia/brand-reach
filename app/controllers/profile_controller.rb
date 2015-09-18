@@ -37,6 +37,10 @@ class ProfileController < ApplicationController
 
   end
 
+  def show_settings
+
+  end
+
   private
 
   def set_user
