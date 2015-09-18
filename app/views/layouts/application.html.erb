@@ -28,7 +28,7 @@
         <a href="javascript:void(0)"><span class="fa fa-camera camera"></span></a>
 
         <% if current_user && current_user.image.present? %>
-            <%= image_tag(@user.image, :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
+            <%= image_tag(@user.image_url.to_s, :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
         <% else %>
             <%= image_tag('user2-160x160.jpg', :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
         <% end %>

@@ -57,6 +57,7 @@
 
 .brands-profile-page-wrapper input, .brands-profile-page-wrapper select, .personal-info-form .form-group textarea {
     width: 52%;
+    display: inline;
 }
 .personal-info-form .form-group textarea.short_bio{
     width: 70%;

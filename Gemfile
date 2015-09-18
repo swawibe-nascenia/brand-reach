@@ -33,6 +33,7 @@ gem 'twitter-bootstrap-rails'
 gem 'country_select'
 gem 'carmen-rails', '~> 1.0.1'
 gem 'carrierwave'
+gem 'mini_magick'
 
 # gem 'haml'
 # gem 'haml-rails'
