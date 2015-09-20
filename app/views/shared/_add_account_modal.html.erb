@@ -1,0 +1,21 @@
+<div class="modal fade" id="AddAccount" role="dialog">
+  <div class="modal-dialog account-modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content account-modal-content">
+      <div class="modal-header account-modal-header">
+        <a href="#"><%= image_tag('logo_white.png', :class => 'img-responsive login-modal-logo', :alt => "logo") %></a>
+        <button type="button" class="close account-modal-close" data-dismiss="modal">&times; </button>
+      </div>
+      <div class="modal-body account-modal-body">
+        <div class="add-another-account">Add another account</div>
+
+        <div class="account-content">
+          <p><%= image_tag('facebook-icon.png', :alt => "fb") %> &nbsp; &nbsp;<a href="<%= user_omniauth_authorize_path('facebook', add_facebook_to_account: true, user_id: current_user.id) %>">Add Facebook Account</a></p>
+          <p><%= image_tag('twitter-icon.png', :alt => "twitter") %> &nbsp; &nbsp;<a href="<%= new_user_session_path %>">Add Twitter Account</a></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
