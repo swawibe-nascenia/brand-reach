@@ -42,8 +42,6 @@ class ProfileController < ApplicationController
   end
 
   def edit_profile_picture
-    Rails.logger.info '------------ with in image update method--------'
-    Rails.logger.info params
     current_user.image = params[:user][:image]
     if current_user.save
       @success = true

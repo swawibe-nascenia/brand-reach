@@ -27,21 +27,7 @@
       <div class="center-block profile-info">
         <a href="#profile_image_upload_modal" data-toggle="modal"><span class="fa fa-camera camera"></span></a>
 
-<<<<<<< HEAD
-        <% if current_user && current_user.image.present? %>
-            <%= image_tag(current_user.image_url.to_s, :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
-        <% else %>
-            <%= image_tag('user2-160x160.jpg', :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
-        <% end %>
-||||||| merged common ancestors
-        <% if current_user && current_user.image.present? %>
-            <%= image_tag(@user.image_url.to_s, :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
-        <% else %>
-            <%= image_tag('user2-160x160.jpg', :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
-        <% end %>
-=======
             <%= image_tag(@user.profile_picture, :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
->>>>>>> feature/profile_pic_change
 
         <div class="info">
           <p class="name"><%= current_user.try(:name).present? ? current_user.name : 'USER' %></p>
@@ -66,7 +52,7 @@
 
       <ul class="sidebar-menu">
         <li class="<%=  (params[:controller] == 'profile' && params[:action] == 'profile') ? 'active' : '' %>">
-          <a href="<%= profile_profile_path %>">
+          <a href="<%= profile_profile_index_path %>">
             <i class="fa fa-user"></i> <span class="space-sidebar">PROFILE</span>
           </a>
         </li>
@@ -96,7 +82,7 @@
           </a>
         </li>
         <li class="<%=  (params[:controller] == 'profile' && params[:action] == 'show_settings') ? 'active' : '' %>">
-          <a href="<%= show_settings_profile_path %>">
+          <a href="#">
             <i class="fa fa-cog"></i><span class="space-sidebar">SETTINGS</span>
           </a>
         </li>
