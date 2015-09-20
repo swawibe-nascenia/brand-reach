@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   end
 
   def profile_picture(version = :thumb)
-      self.image.present? ? self.image.url(version).to_s : ActionController::Base.helpers.asset_path('default_profile_picture.jpg')
+      self.image.present? ? self.image.url(version).to_s : ActionController::Base.helpers.asset_path('default_profile_picture.png')
   end
 
   # ----------------------------------------------------------------------
@@ -103,12 +103,12 @@ class User < ActiveRecord::Base
       end
     end
 
-    user.access_token = auth.credentials.token
+    user.build_facebook(access_token: auth.credentials.token, uid: auth.uid)
 
     if auth.credentials && auth.credentials.expires_at
-      user.token_expires_at = Time.at(auth.credentials.expires_at)
+      user.facebook.token_expires_at = Time.at(auth.credentials.expires_at)
     else
-      user.token_expires_at = 8.weeks.from_now
+      user.facebook.token_expires_at = 8.weeks.from_now
     end
 
     user
