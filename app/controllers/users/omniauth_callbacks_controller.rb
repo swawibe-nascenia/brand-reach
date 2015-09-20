@@ -9,10 +9,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
       if social_account.save
         flash[:success] = 'Your social account has been added successfully'
-        redirect_to home_public_index_path
+        redirect_to profile_profile_index_path
       else
         flash[:error] = 'Social account adding has been fail'
-        redirect_to home_public_index_path
+        redirect_to profile_profile_index_path
       end
 
     else

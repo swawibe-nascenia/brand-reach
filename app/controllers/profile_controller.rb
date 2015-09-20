@@ -37,6 +37,10 @@ class ProfileController < ApplicationController
 
   end
 
+  def connect_facebook
+
+  end
+
   def show_settings
 
   end
