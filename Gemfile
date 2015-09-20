@@ -34,6 +34,7 @@ gem 'country_select'
 gem 'carmen-rails', '~> 1.0.1'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'remotipart', '~> 1.2'
 
 # gem 'haml'
 # gem 'haml-rails'

@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     if current_user.influencer? && current_user.sign_in_count <= 1
 
     else
-      profile_profile_path(current_user)
+      profile_profile_index_path
     end
   end
 

@@ -60,6 +60,10 @@ class User < ActiveRecord::Base
     return self.provider == 'facebook' && self.uid? && self.access_token?
   end
 
+  def profile_picture(version = :thumb)
+      self.image.present? ? self.image.url(version).to_s : ActionController::Base.helpers.asset_path('default_profile_picture.jpg')
+  end
+
   # ----------------------------------------------------------------------
   # == Class methods == #
   # ----------------------------------------------------------------------
