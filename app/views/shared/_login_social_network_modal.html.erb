@@ -15,11 +15,11 @@
           <% if params[:action] == 'brand_home' %>
               <a href="<%= user_omniauth_authorize_path('facebook', brands: true) %>">Facebook &nbsp; &nbsp; <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
               <a href="<%= new_user_session_path %>">Twitter &nbsp; &nbsp; <%= image_tag('twitter-icon.png', :alt => "twitter") %></a>
-              <a href="<%= new_user_registration_path(user_type: User.user_types[:brand]) %>">Email &nbsp; &nbsp; <%= image_tag('email-icon.jpeg', :alt => "email") %></a>
+              <a href="<%= new_user_registration_path(user_type: 'brand')%>">Email &nbsp; &nbsp; <%= image_tag('email-icon.jpeg', :alt => "email") %></a>
           <% else %>
               <a href="<%= user_omniauth_authorize_path('facebook') %>">Facebook &nbsp; &nbsp; <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
               <a href="<%= new_user_session_path %>">Twitter &nbsp; &nbsp; <%= image_tag('twitter-icon.png', :alt => "twitter") %></a>
-              <a href="<%= new_user_registration_path(user_type: User.user_types[:influencer]) %>">Email &nbsp; &nbsp; <%= image_tag('email-icon.jpeg', :alt => "email") %></a>
+              <a href="<%= new_user_registration_path(user_type: 'influencer') %>">Email &nbsp; &nbsp; <%= image_tag('email-icon.jpeg', :alt => "email") %></a>
           <%  end %>
 
         </div>

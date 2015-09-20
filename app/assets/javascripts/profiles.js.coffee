@@ -7,6 +7,6 @@ $ ->
 
     country_code = $(this).val()
 
-    url = "/profile/subregion_options?parent_region=#{country_code}"
+    url = "/subregion_options?parent_region=#{country_code}"
     console.log(url);
     select_wrapper.load(url)

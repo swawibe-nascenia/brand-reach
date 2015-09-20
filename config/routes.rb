@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
+  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks'}
   # get 'users/profile' => 'users/registrations#edit_user_profile'
 
   # map.connect '/:profile', controller: 'profile', action: 'profile'
