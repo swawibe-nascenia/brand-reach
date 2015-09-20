@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'brands_home', media: 'all', 'data-turbolinks-track' => true %>
 
-<% title 'BrandReach Brands Home' %>
+<% title 'BrandReach Brand Home' %>
 
 <div class="header">
   <div class="wrapper-content">
@@ -19,9 +19,12 @@
           <li class="active"><a href="#">INFLUENCERS <span class="sr-only">(current)</span></a></li>
           <li><a href="#">BRANDS</a></li>
           <li><a href="#">ABOUT US</a></li>
-          <li><a href="#">LOGIN</a></li>
-          <% unless current_user %>
-            <li><%= link_to 'SIGN UP FREE', "#loginModal", "data-toggle" => "modal", :class => "btn-custom btn-theme text-white" %></li>
+          <% if user_signed_in? %>
+              <li><a href="<%= profile_profile_path(current_user) %>">PROFILE</a></li>
+              <li><a href="<%= destroy_user_session_path %>">LOG OUT</a></li>
+          <% else %>
+              <li><a href="<%= new_user_session_path %>">LOGIN</a></li>
+              <li><%= link_to "SIGN UP FREE", "#loginModal", "data-toggle" => "modal", :class => "btn-custom btn-theme text-white" %></li>
           <% end %>
         </ul>
       </div>
@@ -121,47 +124,50 @@
     <div class="row contact-form">
       <div class="col-md-7 col-sm-8 col-xs-12">
         <div class="text-top col-md-12"> Get in touch!</div>
-        <form action="#" method="post">
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="form-group">
-                <input type="text" class="form-control" name="full_name" placeholder="Full Name"/>
-              </div>
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12 clear-padding-margin">
-              <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="Email"/>
+        <%= form_tag get_in_touch_public_index_path do %>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="full_name" placeholder="Full Name"/>
+                </div>
               </div>
             </div>
 
-            <div class="col-md-6 col-sm-6 col-xs-12 clear-padding-margin only-right-padding">
-              <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="Phone Number"/>
+            <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-12 clear-padding-margin">
+                <div class="form-group">
+                  <input type="email" class="form-control" name="email" placeholder="Email"/>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="form-group">
-                <textarea class="form-control" placeholder="Message" rows="6"></textarea>
+              <div class="col-md-6 col-sm-6 col-xs-12 clear-padding-margin only-right-padding">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="phone_number" placeholder="Phone Number"/>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-submit ">SUBMIT</button>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                  <textarea class="form-control" name="message" placeholder="Message" rows="6"></textarea>
+                </div>
               </div>
             </div>
-          </div>
-        </form>
+
+            <div class="row">
+              <div class="col-md-12">
+                <%= submit_tag "SUBMIT", class: "btn btn-primary btn-submit" %>
+              </div>
+            </div>
+        <% end %>
+
       </div>
     </div>
+    <% if current_user %>
+        <a href="<%= user_omniauth_authorize_path('facebook', add_facebook_to_account: true, user_id: current_user.id, origin: home_public_index_path) %>">Connect Facebook to my accoutn <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
+    <% end %>
 
   </div>
   <div class="footer row">
@@ -189,4 +195,6 @@
     $(document).ready(function () {
         $('[data-toggle="popover"]').popover({trigger: 'hover', placement: "auto bottom"});
     });
+
+
 </script>

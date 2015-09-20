@@ -8,4 +8,6 @@
     <%= f.submit 'Sign in' %>
 <% end %>
 
+<a href="<%= user_omniauth_authorize_path('facebook') %>"> Sign Up With Facebook  </a>
+<br>
 <%= render :partial => 'devise/shared/links' %>

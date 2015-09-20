@@ -37,12 +37,11 @@
 <div class="identity">
   <div class="wrapper-content">
     <div class="text-upper">
-      <div class="text-upper-identity">Identify, Initiate,</div>
-      <div class="text-upper-identity">Inspire.</div>
+      <div class="text-upper-identity">Get Listed,</div>
     </div>
     <div class="text-lower">
-      <div class="text-lower-identity">Enlist top creators & influencers to</div>
-      <div class="text-lower-identity">leverage your brand.</div>
+      <div class="text-lower-identity">Be an influencer and advocate</div>
+      <div class="text-lower-identity">Brands you love.</div>
     </div>
   </div>
 </div>
@@ -107,13 +106,13 @@
 
 <div class="brands">
   <div class="wrapper-content">
-    <div class="text-top few-brand">Few of our Brands</div>
+    <div class="text-top few-brand">Few of our Influencers</div>
     <div class="brands-block">
-      <span><a href="#" data-toggle="popover" title="Eagleboys Pizza"><%= image_tag('Brand1.png') %></a></span>
-      <span><a href="#" data-toggle="popover" title="Demo"><%= image_tag('Brand2.png') %></a></span>
-      <span><a href="#" data-toggle="popover" title="Cream Stone"><%= image_tag('Brand3.png') %></a></span>
-      <span><a href="#" data-toggle="popover" title="Harley Davidson"><%= image_tag('Brand4.png') %></a></span>
-      <span><a href="#" data-toggle="popover" title="Airtel"><%= image_tag('Brand5.png') %></a></span>
+      <span><a href="#" data-toggle="popover" title="2.3M Followers"><%= image_tag('tom-cruise.png', :class => 'influencers-picture') %></a></span>
+      <span><a href="#" data-toggle="popover" title="2.5M Followers"><%= image_tag('tom-hanks.png', :class => 'influencers-picture') %></a></span>
+      <span><a href="#" data-toggle="popover" title="2.9M Followers"><%= image_tag('shahrukh-khan.png', :class => 'influencers-picture') %></a></span>
+      <span><a href="#" data-toggle="popover" title="1.3M Followers"><%= image_tag('katrina-kaif.png', :class => 'influencers-picture') %></a></span>
+      <span><a href="#" data-toggle="popover" title="1.9M Followers"><%= image_tag('taylor-swift.png', :class => 'influencers-picture') %></a></span>
     </div>
   </div>
 </div>
@@ -166,7 +165,7 @@
       </div>
     </div>
 <% if current_user %>
-    <a href="<%= user_omniauth_authorize_path('facebook', add_facebook_to_account: true, user_id: current_user.id, origin: home_public_index_path) %>">Connect Facebook to my accoutn <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
+    <a href="<%= user_omniauth_authorize_path('facebook', add_facebook_to_account: true, user_id: current_user.id, origin: home_public_index_path) %>">Connect Facebook to my account <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
 <% end %>
 
   </div>

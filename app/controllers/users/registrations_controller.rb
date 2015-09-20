@@ -21,7 +21,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def user_profile_params
     params.require(:user).permit(:first_name, :last_name, :email, :company_name, :company_email,
                                  :industry, :phone, :street_address, :landmark, :city, :state,
-                                  :country, :zip_code, :short_bio
+                                  :country, :zip_code, :short_bio, :user_type
                                 )
   end
 

@@ -28,7 +28,11 @@
         <div class="login-modal-footer">
           <p>Note: </p>
           <p>Only the networks you connect will be visible to brands.</p>
-          <p>If you are brand, please reach out to us <%= link_to "here", brand_home_public_index_path %></p>
+          <% if params[:action] == 'brand_home' %>
+              <p>If you are Influencer, please reach out to us <%= link_to "here", home_public_index_path %></p>
+          <% else %>
+              <p>If you are brand, please reach out to us <%= link_to "here", brand_home_public_index_path %></p>
+          <%  end %>
         </div>
       </div>
     </div>

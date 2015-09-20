@@ -91,15 +91,15 @@
   border-bottom-color: #ebebeb;
 }
 
-
-
-
 .navbar-nav > li > a{
   color: #000000;
   margin: 0 16px;
   padding: 9px 0;
 }
 
+.navbar-nav > li:last-child  > a {
+  padding: 9px 9px;
+}
 
 @media all and (max-width: 767px) {
   .navbar-nav > li > a{
@@ -595,5 +595,17 @@ ul.menu-item li {
   .home-menu > ul > li:nth-child(1) {
     margin-top: 15px;
   }
+
+}
+
+.influencers-picture {
+  border-radius: 50%;
+  max-width:117px;
+  max-height:117px;
+  width: auto;
+  height: auto;
+}
+
+.brands-block img.resize {
 
 }

@@ -5,11 +5,12 @@ class PublicController < ApplicationController
 
   respond_to :html
 
-  # use this for go to influencer public home page
+  # use this for go to influencers public home page
   def home
 
   end
 
+  # use this for go to Brands public home page
   def brand_home
 
   end
