@@ -4,13 +4,9 @@
 
 <div class="brands-profile-page-wrapper">
 
-  <%= form_for @user, :url => {:controller => "profile", :action => "update"}, html: { class: "form-horizontal personal-info-form"} do |f| %>
+  <%= image_tag(@user.profile_picture, :class => 'profile-picture', :alt => "profile-picture") %>
 
-      <% if @user.image.present? %>
-          <%= image_tag(@user.image_url(:thumb).to_s, :class => 'profile-picture', :alt => "profile-picture") %>
-      <% else %>
-          <%= image_tag('user2-160x160.jpg', :class => 'profile-picture', :alt => "profile-picture") %>
-      <% end %>
+  <%= form_for @user, url: profile_path(@user), html: { class: 'form-horizontal personal-info-form'} do |f| %>
 
       <h4 class="personal-info">PERSONAL INFORMATION</h4>
 
@@ -101,7 +97,7 @@
 
   <div class="divider-personal-info-password"></div>
 
-  <%= form_for @user, :url => {:controller => "profile", :action => "update_password" }, :method => :put, html: { class: "form-horizontal personal-info-form"} do |f| %>
+  <%= form_for @user, url: update_password_profile_index_path, html: { class: "form-horizontal personal-info-form"} do |f| %>
 
       <h4 class="account-setup">ACCOUNT SETUP</h4>
 

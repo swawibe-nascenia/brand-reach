@@ -3,12 +3,14 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   # get 'users/profile' => 'users/registrations#edit_user_profile'
 
-  resources :profile do
+  # map.connect '/:profile', controller: 'profile', action: 'profile'
+
+  resources :profile, path: '', only: [:update] do
     member do
-      get :profile
-      put :update_password
     end
     collection do
+      put :update_password
+      get :profile
       get :subregion_options
       post :edit_profile_picture
     end

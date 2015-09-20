@@ -15,7 +15,7 @@ class ProfileController < ApplicationController
       flash[:error] = 'User information update fail'
     end
 
-    redirect_to profile_profile_path
+    redirect_to profile_profile_index_path
   end
 
   def update_password
@@ -26,7 +26,7 @@ class ProfileController < ApplicationController
       flash[:error] = 'Old Password was Not correct or Retype Password does Not match with New Password'
     end
 
-    redirect_to profile_profile_path
+    redirect_to profile_profile_index_path
   end
 
   def subregion_options
@@ -42,7 +42,7 @@ class ProfileController < ApplicationController
     Rails.logger.info params
     current_user.image = params[:user][:image]
     if current_user.save
-      @success = true\
+      @success = true
      else
       @success = false
     end
@@ -51,7 +51,7 @@ class ProfileController < ApplicationController
   private
 
   def set_user
-    @user = User.find params[:id]
+    @user = current_user
   end
 
   def user_profile_params
