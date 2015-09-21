@@ -18,11 +18,6 @@ class ProfileController < ApplicationController
       else
 
       end
-      # facebook_attributes =  user_params.delete('facebook')
-
-      # facebook = @user.facebook
-      # facebook.update(facebook_params)
-      # facebook.save
       flash[:success] = 'User information update success'
     else
       flash[:error] = 'User information update fail'
@@ -32,7 +27,7 @@ class ProfileController < ApplicationController
   end
 
   def update_password
-    if @user.update_with_password(user_profile_params)
+    if @user.update_with_password(user_params.except(:facebook))
       sign_in @user, :bypass => true
       flash[:success] = 'User Password update success'
     else
@@ -62,7 +57,7 @@ class ProfileController < ApplicationController
     current_user.image = params[:user][:image]
     if current_user.save
       @success = true
-     else
+    else
       @success = false
     end
   end
@@ -82,7 +77,7 @@ class ProfileController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email, :company_name, :company_email, :image,
                                  :industry, :phone, :street_address, :landmark, :city, :state,
                                  :country, :zip_code, :short_bio, :password, :password_confirmation, :current_password,
-                                 facebook: [:status_update_price, :profile_photo_price]
-                                )
+                                 facebook: [:status_update_price, :profile_photo_price, :banner_photo_price, :video_post_price]
+    )
   end
 end

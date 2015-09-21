@@ -28,7 +28,7 @@
         </div>
         <div class="col-md-6">
           <%= f.label :company_email, "Company Email" %>
-          <%= f.text_field :company_email %>
+          <%= f.email_field :company_email %>
         </div>
       </div>
 
@@ -102,9 +102,56 @@
                 </ul>
 
                 <%= f.fields_for @facebook do |g| %>
-                    <%= g.text_field :status_update_price %>
-                    <%= g.text_field :profile_photo_price %>
+
+                    <div class="tab-content social-account-tab-content">
+                      <div id="fb_bhanu" class="tab-pane fade in active">
+                        <div class="form-group">
+                          <div class="col-md-5 col-sm-8 col-xs-11">
+                            <%= g.label :status_update_price, "Status Update" %>$
+                            <%= g.text_field :status_update_price %> USD
+                          </div>
+                          <div class="col-md-6 col-sm-8 col-xs-11">
+                            <%= g.label :banner_photo_price, "Cover Photo" %>$
+                            <%= g.text_field :banner_photo_price %> USD
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-5 col-sm-8 col-xs-11">
+                            <%= g.label :profile_photo_price, "Profile Photo" %>$
+                            <%= g.text_field :profile_photo_price %> USD
+                          </div>
+                          <div class="col-md-6 col-sm-8 col-xs-11">
+                            <%= g.label :video_post_price, "Video Post" %>$
+                            <%= g.text_field :video_post_price %> USD
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                 <% end %>
+
+                <!--<div id="twitter_bhanu" class="tab-pane fade">-->
+                <!--<div class="form-group">-->
+                <!--<div class="col-md-5 col-sm-8 col-xs-11">-->
+                <!--<label for="twitter_bhanu_status_update">Status Update</label>$-->
+                <!--<input type="text" class="" id="twitter_bhanu_status_update"/> USD-->
+                <!--</div>-->
+                <!--<div class="col-md-6 col-sm-8 col-xs-11">-->
+                <!--<label for="twitter_bhanu_cover_photo">Cover Photo</label>$-->
+                <!--<input type="text" class="" id="twitter_bhanu_cover_photo"/> USD-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                <!--<div class="col-md-5 col-sm-8 col-xs-11">-->
+                <!--<label for="twitter_bhanu_profile_photo">Profile Photo</label>$-->
+                <!--<input type="text" class="" id="twitter_bhanu_profile_photo"/> USD-->
+                <!--</div>-->
+                <!--<div class="col-md-6 col-sm-8 col-xs-11">-->
+                <!--<label for="twitter_bhanu_video_post">Video Post</label>$-->
+                <!--<input type="text" class="" id="twitter_bhanu_video_post"/> USD-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+
 
               </div>
           <% end %>
@@ -117,7 +164,7 @@
 
   <div class="divider-personal-info-password"></div>
 
-  <%= form_for @user, url: update_password_profile_index_path, html: { class: "form-horizontal personal-info-form"} do |f| %>
+  <%= form_for @user, :url => {:controller => "profile", :action => "update_password" }, :method => :put, html: { class: "form-horizontal personal-info-form"} do |f| %>
 
       <h4 class="account-setup">ACCOUNT SETUP</h4>
 
@@ -147,19 +194,3 @@
   <%= render partial: 'shared/profile_image_upload'%>
 </div>
 
-<script>
-
-    $(document).ready(function(){
-        $('select#user_country').change(function() {
-
-            var country = 'country=' + $('select#user_country :selected').text();
-            jQuery.get('/profiles/subregion_options' + country, function(data){
-                jQuery("user_state").html( data);
-            })
-            return false;
-        });
-
-
-    });
-
-</script>

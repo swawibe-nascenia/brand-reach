@@ -11,7 +11,9 @@
         <div class="add-another-account">Add another account</div>
 
         <div class="account-content">
-          <p><%= image_tag('facebook-icon.png', :alt => "fb") %> &nbsp; &nbsp;<a href="<%= user_omniauth_authorize_path('facebook', add_facebook_to_account: true, user_id: current_user.id) %>">Add Facebook Account</a></p>
+          <% unless current_user.facebook.present? %>
+              <p><%= image_tag('facebook-icon.png', :alt => "fb") %> &nbsp; &nbsp;<a href="<%= user_omniauth_authorize_path('facebook', add_facebook_to_account: true, user_id: current_user.id) %>">Add Facebook Account</a></p>
+          <% end %>
           <p><%= image_tag('twitter-icon.png', :alt => "twitter") %> &nbsp; &nbsp;<a href="<%= new_user_session_path %>">Add Twitter Account</a></p>
         </div>
       </div>
