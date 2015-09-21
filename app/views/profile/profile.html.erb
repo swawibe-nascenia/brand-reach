@@ -77,13 +77,6 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <div class="col-md-6">
-          <%= f.label :image, "Image Upload" %>
-          <%= f.file_field :image %>
-        </div>
-      </div>
-
       <h4 class="company-info">COMPANY INFORMATION</h4>
 
       <div class="form-group short-bio-row">
@@ -108,53 +101,11 @@
                   <!--<li><a data-toggle="tab" href="#twitter_bhanu"><i class="social-account-fa-edit fa fa-twitter"></i> Bhanu Prasad</a></li>-->
                 </ul>
 
-                <div class="tab-content social-account-tab-content">
-                  <div id="fb_bhanu" class="tab-pane fade in active">
-                    <div class="form-group">
-                      <div class="col-md-5 col-sm-8 col-xs-11">
-                        <%= f.label :status_update_price, "Status Update" %>$
-                        <%= f.text_field :status_update_price %> USD
-                      </div>
-                      <div class="col-md-6 col-sm-8 col-xs-11">
-                        <%= f.label :banner_photo_price, "Cover Photo" %>$
-                        <%= f.text_field :banner_photo_price %> USD
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-md-5 col-sm-8 col-xs-11">
-                        <%= f.label :profile_photo_price, "Profile Photo" %>$
-                        <%= f.text_field :profile_photo_price %> USD
-                      </div>
-                      <div class="col-md-6 col-sm-8 col-xs-11">
-                        <%= f.label :video_post_price, "Video Post" %>$
-                        <%= f.text_field :video_post_price %> USD
-                      </div>
-                    </div>
-                  </div>
+                <%= f.fields_for @facebook do |g| %>
+                    <%= g.text_field :status_update_price %>
+                    <%= g.text_field :profile_photo_price %>
+                <% end %>
 
-                  <!--<div id="twitter_bhanu" class="tab-pane fade">-->
-                  <!--<div class="form-group">-->
-                  <!--<div class="col-md-5 col-sm-8 col-xs-11">-->
-                  <!--<label for="twitter_bhanu_status_update">Status Update</label>$-->
-                  <!--<input type="text" class="" id="twitter_bhanu_status_update"/> USD-->
-                  <!--</div>-->
-                  <!--<div class="col-md-6 col-sm-8 col-xs-11">-->
-                  <!--<label for="twitter_bhanu_cover_photo">Cover Photo</label>$-->
-                  <!--<input type="text" class="" id="twitter_bhanu_cover_photo"/> USD-->
-                  <!--</div>-->
-                  <!--</div>-->
-                  <!--<div class="form-group">-->
-                  <!--<div class="col-md-5 col-sm-8 col-xs-11">-->
-                  <!--<label for="twitter_bhanu_profile_photo">Profile Photo</label>$-->
-                  <!--<input type="text" class="" id="twitter_bhanu_profile_photo"/> USD-->
-                  <!--</div>-->
-                  <!--<div class="col-md-6 col-sm-8 col-xs-11">-->
-                  <!--<label for="twitter_bhanu_video_post">Video Post</label>$-->
-                  <!--<input type="text" class="" id="twitter_bhanu_video_post"/> USD-->
-                  <!--</div>-->
-                  <!--</div>-->
-                  <!--</div>-->
-                </div>
               </div>
           <% end %>
 

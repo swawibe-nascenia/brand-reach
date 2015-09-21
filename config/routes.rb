@@ -5,12 +5,6 @@ Rails.application.routes.draw do
 
   # map.connect '/:profile', controller: 'profile', action: 'profile'
 
-  resources :users do
-    resources :facebooks do
-
-    end
-  end
-
   resources :profile, path: '', only: [:update] do
     member do
     end

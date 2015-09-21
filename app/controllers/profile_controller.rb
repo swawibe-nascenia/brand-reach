@@ -5,11 +5,24 @@ class ProfileController < ApplicationController
   respond_to :html, :js
 
   def profile
+    @facebook = @user.facebook || Facebook.new
     respond_with(@user)
   end
 
   def update
-    if @user.update(user_profile_params)
+    if @user.update(user_params.except(:facebook))
+      if @user.facebook.present? & user_params[:facebook].present?
+        facebook = @user.facebook
+        facebook.update(user_params[:facebook])
+        facebook.save
+      else
+
+      end
+      # facebook_attributes =  user_params.delete('facebook')
+
+      # facebook = @user.facebook
+      # facebook.update(facebook_params)
+      # facebook.save
       flash[:success] = 'User information update success'
     else
       flash[:error] = 'User information update fail'
@@ -60,10 +73,11 @@ class ProfileController < ApplicationController
     @user = current_user
   end
 
-  def user_profile_params
+  def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :company_name, :company_email, :image,
                                  :industry, :phone, :street_address, :landmark, :city, :state,
-                                 :country, :zip_code, :short_bio, :password, :password_confirmation, :current_password
-    )
+                                 :country, :zip_code, :short_bio, :password, :password_confirmation, :current_password,
+                                 facebook: [:status_update_price, :profile_photo_price]
+                                )
   end
 end
