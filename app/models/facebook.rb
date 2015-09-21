@@ -42,6 +42,16 @@ class Facebook < ActiveRecord::Base
   # == Instance methods == #
   # ----------------------------------------------------------------------
 
+  def get_public_pages
+    graph = Koala::Facebook::API.new(self.access_token)
+    pages = []
+    graph.get_object('me?fields=accounts')['accounts']['data'].each do |page|
+      pages << page['name']
+    end
+
+    pages
+  end
+
 
   # ----------------------------------------------------------------------
   # == Class methods == #
