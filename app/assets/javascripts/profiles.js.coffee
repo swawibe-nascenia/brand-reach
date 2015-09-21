@@ -1,6 +1,5 @@
 $ ->
   $('select#user_country').change (event) ->
-    console.log("hello");
     select_wrapper = $('#user_state_code_wrapper')
 
     $('select', select_wrapper).attr('disabled', true)
