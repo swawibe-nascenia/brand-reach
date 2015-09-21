@@ -10,9 +10,10 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 
-Rails.application.config.assets.precompile += %w( home.css )
-Rails.application.config.assets.precompile += %w( brands_home.css )
-Rails.application.config.assets.precompile += %w( AdminLTE.min.css )
-Rails.application.config.assets.precompile += %w( style.css )
-Rails.application.config.assets.precompile += %w( profile.css )
-Rails.application.config.assets.precompile += %w( brands-setting.css )
+Rails.application.config.assets.precompile += %w( *.css )
+# Rails.application.config.assets.precompile += %w( brands_home.css )
+# Rails.application.config.assets.precompile += %w( AdminLTE.min.css )
+# Rails.application.config.assets.precompile += %w( style.css )
+# Rails.application.config.assets.precompile += %w( profile.css )
+# Rails.application.config.assets.precompile += %w( brands-setting.css )
+# Rails.application.config.assets.precompile += %w( contact-us.css )

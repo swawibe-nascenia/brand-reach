@@ -27,7 +27,7 @@
       <div class="center-block profile-info">
         <a href="#profile_image_upload_modal" data-toggle="modal"><span class="fa fa-camera camera"></span></a>
 
-            <%= image_tag(@user.profile_picture, :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
+            <%= image_tag(current_user.profile_picture, :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
 
         <div class="info">
           <p class="name"><%= current_user.try(:name).present? ? current_user.name : 'USER' %></p>
@@ -76,13 +76,13 @@
             <i class="fa fa-dollar"></i><span class="space-sidebar">PAYMENTS</span>
           </a>
         </li>
-        <li >
-          <a href="#">
+        <li class="<%=  (params[:controller] == 'profile' && params[:action] == 'contact_us') ? 'active' : '' %>">
+        <a href="<%= contact_us_profile_index_path %>">
             <i class="fa fa-phone"></i><span class="space-sidebar">CONTACT US</span>
           </a>
         </li>
         <li class="<%=  (params[:controller] == 'profile' && params[:action] == 'show_settings') ? 'active' : '' %>">
-          <a href="#">
+          <a href="<%= show_settings_profile_index_path %>">
             <i class="fa fa-cog"></i><span class="space-sidebar">SETTINGS</span>
           </a>
         </li>

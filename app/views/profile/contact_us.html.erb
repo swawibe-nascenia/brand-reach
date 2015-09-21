@@ -1,0 +1,36 @@
+<%= stylesheet_link_tag 'contact-us', media: 'all', 'data-turbolinks-track' => true %>
+
+<% title 'Contact Us' %>
+
+
+<div class="contact-us">
+  <div class="get-in-touch-form">
+    <div class="get-in-touch"> GET IN TOUCH </div>
+
+    <form action="#" method="post">
+
+      <div class="get-in-touch-category">
+        <label for="feedback" class="category-name display-inline">Category</label>
+        <select class="category-list display-inline" id="feedback">
+          <option>Feedback</option>
+          <option>Feedback 1</option>
+          <option>Feedback 2</option>
+        </select>
+      </div>
+
+      <div class="get-in-touch-message">
+        <label for="message-area" class="message-name display-inline">Message</label>
+        <textarea class="get-in-touch-message-textarea display-inline" id="message-area" rows="6"></textarea>
+      </div>
+
+      <div class="get-in-touch-submit">
+        <div class="form-group">
+          <button type="submit" class="btn get-in-touch-submit-button">SUBMIT</button>
+        </div>
+      </div>
+
+    </form>
+
+
+  </div>
+</div>

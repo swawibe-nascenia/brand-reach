@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       get :profile
       get :subregion_options
       post :edit_profile_picture
+      get :contact_us
+      get :show_settings
     end
   end
 

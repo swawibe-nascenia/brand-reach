@@ -67,6 +67,11 @@ class ProfileController < ApplicationController
     end
   end
 
+
+  def contact_us
+
+  end
+
   private
 
   def set_user
