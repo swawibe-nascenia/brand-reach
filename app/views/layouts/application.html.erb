@@ -27,7 +27,7 @@
       <div class="center-block profile-info">
         <a href="#profile_image_upload_modal" data-toggle="modal"><span class="fa fa-camera camera"></span></a>
 
-            <%= image_tag(current_user.profile_picture, :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
+        <%= image_tag(current_user.profile_picture, :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
 
         <div class="info">
           <p class="name"><%= current_user.try(:name).present? ? current_user.name : 'USER' %></p>
@@ -57,14 +57,26 @@
           </a>
         </li>
         <li>
-          <a href="#">
-            <span class="glyphicon glyphicon-envelope"> </span><span class="space-sidebar">OFFERS</span>
-          </a>
+          <% if current_user.brand? %>
+              <a href="#">
+                <span class="glyphicon glyphicon-envelope"> </span><span class="space-sidebar">MESSAGES</span>
+              </a>
+          <% else %>
+              <a href="#">
+                <span class="glyphicon glyphicon-envelope"> </span><span class="space-sidebar">OFFERS</span>
+              </a>
+          <% end %>
         </li>
         <li>
-          <a href="#">
-            <i class="fa fa-facebook"></i><span class="space-sidebar">FACEBOOK</span>
-          </a>
+          <% if current_user.brand? %>
+              <a href="#">
+                <span class="fa fa-search"> </span><span class="space-sidebar">EXPLORE</span>
+              </a>
+          <% else %>
+              <a href="#">
+                <i class="fa fa-facebook"></i><span class="space-sidebar">FACEBOOK</span>
+              </a>
+          <% end %>
         </li>
         <li>
           <a href="#">
@@ -77,7 +89,7 @@
           </a>
         </li>
         <li class="<%=  (params[:controller] == 'profile' && params[:action] == 'contact_us') ? 'active' : '' %>">
-        <a href="<%= contact_us_profile_index_path %>">
+          <a href="<%= contact_us_profile_index_path %>">
             <i class="fa fa-phone"></i><span class="space-sidebar">CONTACT US</span>
           </a>
         </li>
