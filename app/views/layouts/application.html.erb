@@ -56,28 +56,33 @@
             <i class="fa fa-user"></i> <span class="space-sidebar">PROFILE</span>
           </a>
         </li>
-        <li>
-          <% if current_user.brand? %>
+
+        <% if current_user.brand? %>
+            <li>
               <a href="#">
                 <span class="glyphicon glyphicon-envelope"> </span><span class="space-sidebar">MESSAGES</span>
               </a>
-          <% else %>
+            </li>
+
+            <li class="<%=  (params[:controller] == 'brands' && params[:action] == 'explore') ? 'active' : '' %>">
+              <a href="<%= explore_brands_path %>">
+                <span class="fa fa-search"> </span><span class="space-sidebar">EXPLORE</span>
+              </a>
+            </li>
+        <% else %>
+            <li>
               <a href="#">
                 <span class="glyphicon glyphicon-envelope"> </span><span class="space-sidebar">OFFERS</span>
               </a>
-          <% end %>
-        </li>
-        <li>
-          <% if current_user.brand? %>
-              <a href="#">
-                <span class="fa fa-search"> </span><span class="space-sidebar">EXPLORE</span>
-              </a>
-          <% else %>
+            </li>
+
+            <li>
               <a href="#">
                 <i class="fa fa-facebook"></i><span class="space-sidebar">FACEBOOK</span>
               </a>
-          <% end %>
-        </li>
+            </li>
+        <% end %>
+
         <li>
           <a href="#">
             <span class="glyphicon icon-horn"></span><span class="space-sidebar">CAMPAIGNS</span>
