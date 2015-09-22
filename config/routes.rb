@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :brands do
+  resources :brands, only: [] do
     collection do
       get :explore
     end
