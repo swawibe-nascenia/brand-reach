@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'influencers/index'
-
-  get 'influencer/index'
-
-  get 'influencer/index'
-
-  get 'influencer/index '
 
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks'}
   # get 'users/profile' => 'users/registrations#edit_user_profile'
@@ -16,6 +9,7 @@ Rails.application.routes.draw do
   resources :profile, path: '', only: [:update] do
     member do
     end
+
     collection do
       put :update_password
       get :profile
@@ -38,6 +32,12 @@ Rails.application.routes.draw do
   resources :brands do
     collection do
       get :explore
+    end
+  end
+
+  resources :influencers, only: [:show] do
+    collection do
+      # get :show_profile
     end
   end
 
