@@ -132,3 +132,12 @@
     width: 100%;
     text-align: justify;
 }
+
+.explore-influencer-picture {
+    border-radius: 50%;
+    border: 4px solid #cdcdcd;
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+}
