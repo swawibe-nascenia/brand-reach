@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'influencers/index'
+
+  get 'influencer/index'
+
+  get 'influencer/index'
+
+  get 'influencer/index '
+
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks'}
   # get 'users/profile' => 'users/registrations#edit_user_profile'
 
