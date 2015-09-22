@@ -49,8 +49,8 @@ class User < ActiveRecord::Base
   # == Scopes and Other macros == #
   # ----------------------------------------------------------------------
 
-  scope :influencers, ->{ where( user_type: User.user_types[:influencer])}
-  scope :brands, ->{ where( user_type: User.user_types[:brand])}
+  scope :influencers, ->{ where( user_type: user_types[:influencer])}
+  scope :brands, ->{ where( user_type: user_types[:brand])}
 
   # ----------------------------------------------------------------------
   # == Instance methods == #
@@ -122,7 +122,7 @@ class User < ActiveRecord::Base
     social_account
   end
 
-  def name
+  def full_name
     "#{first_name} #{last_name}"
   end
 

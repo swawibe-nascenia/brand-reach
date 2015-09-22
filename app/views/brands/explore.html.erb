@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag  'brands-explore.css', media: 'all' %>
+<%= stylesheet_link_tag 'brands-explore.css', media: 'all' %>
 
 <% title "Brand Explore" %>
 
@@ -77,373 +77,197 @@
   <hr/>
 
   <div class="search-result">
-    <div class="row padding-less-column-parent">
-      <div class="col-md-3 col-sm-6 col-sm-12">
-        <div class="search-result-item">
-          <img src="images/Logo.png" class="img-responsive">
-          <div class="influencer-data">
-            <div class="influencer-name"> John Doe</div>
+    <% @influncers.each_slice(4) do |influncer_group| %>
+        <div class="row padding-less-column-parent">
+          <% influncer_group.each do |influencer| %>
+              <div class="col-md-3 col-sm-6 col-sm-12">
+                <div class="search-result-item">
+                  <%= image_tag(influencer.profile_picture, class: 'img-responsive') %>
+                  <div class="influencer-data">
+                    <div class="influencer-name"> <%= influencer.full_name %> </div>
 
-            <p class="influencer-address"> San Francisco, CA</p>
+                    <p class="influencer-address"> <%= influencer.street_address %></p>
 
-            <p class="title"> Entrepreneur</p>
+                    <p class="title"> <%= influencer.industry %></p>
 
-            <p class="influencer-biography">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec quis massa diam. Integer non ornare felis.
-              Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
+                    <p class="influencer-biography"><%= influencer.short_bio %> </p>
 
-            <div>
-              <img src="images/pepsi-small.jpg"> <span class="number-of-follower">23,456</span>
-            </div>
-          </div>
-          <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
-            PROFILE
-          </button>
+                    <div>
+                      <img src="images/pepsi-small.jpg">
+                    <span class="number-of-follower">
+                      14623 Follower
+                    </span>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
+                    PROFILE
+                  </button>
+                </div>
+              </div>
+          <% end %>
         </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6 col-sm-12">
-        <div class="search-result-item">
-          <img src="images/Logo.png" class="img-responsive">
-          <div class="influencer-data">
-            <div class="influencer-name"> John Doe</div>
-
-            <p class="influencer-address"> San Francisco, CA</p>
-
-            <p class="title"> Entrepreneur</p>
-
-            <p class="influencer-biography">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec quis massa diam. Integer non ornare felis.
-              Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
-
-            <div>
-              <img src="images/pepsi-small.jpg"> <span class="number-of-follower">23,456</span>
-            </div>
-          </div>
-          <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
-            PROFILE
-          </button>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6 col-sm-12">
-        <div class="search-result-item">
-          <img src="images/Logo.png" class="img-responsive">
-          <div class="influencer-data">
-            <div class="influencer-name"> John Doe</div>
-
-            <p class="influencer-address"> San Francisco, CA</p>
-
-            <p class="title"> Entrepreneur</p>
-
-            <p class="influencer-biography">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec quis massa diam. Integer non ornare felis.
-              Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
-
-            <div>
-              <img src="images/pepsi-small.jpg"> <span class="number-of-follower">23,456</span>
-            </div>
-          </div>
-          <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
-            PROFILE
-          </button>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6 col-sm-12">
-        <div class="search-result-item">
-          <img src="images/Logo.png" class="img-responsive">
-          <div class="influencer-data">
-            <div class="influencer-name"> John Doe</div>
-
-            <p class="influencer-address"> San Francisco, CA</p>
-
-            <p class="title"> Entrepreneur</p>
-
-            <p class="influencer-biography">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec quis massa diam. Integer non ornare felis.
-              Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
-
-            <div>
-              <img src="images/pepsi-small.jpg"> <span class="number-of-follower">23,456</span>
-            </div>
-          </div>
-          <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
-            PROFILE
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="row padding-less-column-parent">
-      <div class="col-md-3 col-sm-6 col-sm-12">
-        <div class="search-result-item">
-          <img src="images/Logo.png" class="img-responsive">
-          <div class="influencer-data">
-            <div class="influencer-name"> John Doe</div>
-
-            <p class="influencer-address"> San Francisco, CA</p>
-
-            <p class="title"> Entrepreneur</p>
-
-            <p class="influencer-biography">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec quis massa diam. Integer non ornare felis.
-              Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
-
-            <div>
-              <img src="images/pepsi-small.jpg"> <span class="number-of-follower">23,456</span>
-            </div>
-          </div>
-          <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
-            PROFILE
-          </button>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6 col-sm-12">
-        <div class="search-result-item">
-          <img src="images/Logo.png" class="img-responsive">
-          <div class="influencer-data">
-            <div class="influencer-name"> John Doe</div>
-
-            <p class="influencer-address"> San Francisco, CA</p>
-
-            <p class="title"> Entrepreneur</p>
-
-            <p class="influencer-biography">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec quis massa diam. Integer non ornare felis.
-              Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
-
-            <div>
-              <img src="images/pepsi-small.jpg"> <span class="number-of-follower">23,456</span>
-            </div>
-          </div>
-          <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
-            PROFILE
-          </button>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6 col-sm-12">
-        <div class="search-result-item">
-          <img src="images/Logo.png" class="img-responsive">
-          <div class="influencer-data">
-            <div class="influencer-name"> John Doe</div>
-
-            <p class="influencer-address"> San Francisco, CA</p>
-
-            <p class="title"> Entrepreneur</p>
-
-            <p class="influencer-biography">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec quis massa diam. Integer non ornare felis.
-              Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
-
-            <div>
-              <img src="images/pepsi-small.jpg"> <span class="number-of-follower">23,456</span>
-            </div>
-          </div>
-          <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
-            PROFILE
-          </button>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6 col-sm-12">
-        <div class="search-result-item">
-          <img src="images/Logo.png" class="img-responsive">
-          <div class="influencer-data">
-            <div class="influencer-name"> John Doe</div>
-
-            <p class="influencer-address"> San Francisco, CA</p>
-
-            <p class="title"> Entrepreneur</p>
-
-            <p class="influencer-biography">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec quis massa diam. Integer non ornare felis.
-              Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
-
-            <div>
-              <img src="images/pepsi-small.jpg"> <span class="number-of-follower">23,456</span>
-            </div>
-          </div>
-          <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
-            PROFILE
-          </button>
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
-</div>
 
-<div class="modal fade modal-profile" id="show-brands-profile" tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-        aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"></h4>
-      </div>
-      <div class="modal-body">
-        <div class="row ">
-          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-                <img src="images/Logo.png" class="pull-right">
-              </div>
+  <%= paginate @influncers %>
 
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-                <h4>Bhanu Prasad</h4>
-
-                <p class="address"> San Francisco, CA</p>
-
-                <p class="title"> Entrepreneur</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
-            <div class="btn-box pull-right">
-              <button class="btn btn-engage"> ENGAGE</button>
-              <button class="btn btn-message"> MESSAGE</button>
-            </div>
-            <div class="follower-box pull-right">
-              <span class="follower-number"> 23,456 </span>
-
-              <p> Followers</p>
-            </div>
-          </div>
+  <div class="modal fade modal-profile" id="show-brands-profile" tabindex="-1" role="dialog"
+       aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel"></h4>
         </div>
+        <div class="modal-body">
+          <div class="row ">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+                  <img src="images/Logo.png" class="pull-right">
+                </div>
 
-        <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <p class="profile-info">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis massa diam. Integer non ornare felis. Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+                  <h4>Bhanu Prasad</h4>
+
+                  <p class="address"> San Francisco, CA</p>
+
+                  <p class="title"> Entrepreneur</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
+              <div class="btn-box pull-right">
+                <button class="btn btn-engage"> ENGAGE</button>
+                <button class="btn btn-message"> MESSAGE</button>
+              </div>
+              <div class="follower-box pull-right">
+                <span class="follower-number"> 23,456 </span>
+
+                <p> Followers</p>
+              </div>
+            </div>
           </div>
-        </div>
-        <!-- start of pricing section -->
-        <h2> Pricing</h2>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="social-account-tabs">
-              <ul class="nav nav-tabs social-account-nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#fb_bhanu"><i class="social-account-fa-edit fa fa-facebook"></i> Bhanu Prasad</a></li>
-                <li><a data-toggle="tab" href="#nirvana"><i class="social-account-fa-edit fa fa-facebook"></i> NirvanaLabs</a></li>
-                <li><a data-toggle="tab" href="#twitter_bhanu"><i class="social-account-fa-edit fa fa-twitter"></i> Bhanu Prasad</a></li>
-              </ul>
 
-              <div class="tab-content social-account-tab-content">
-                <div id="fb_bhanu" class="tab-pane fade in active">
-                  <div class="form-group">
-                    <div class="col-md-5 col-sm-8 col-xs-11">
-                      <label for="fb_bhanu_status_update">Status Update</label>$
-                      <input type="text" class="" id="fb_bhanu_status_update"/> USD
-                    </div>
-                    <div class="col-md-6 col-sm-8 col-xs-11">
-                      <label for="fb_bhanu_cover_photo">Cover Photo</label>$
-                      <input type="text" class="" id="fb_bhanu_cover_photo"/> USD
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-md-5 col-sm-8 col-xs-11">
-                      <label for="fb_bhanu_profile_photo">Profile Photo</label>$
-                      <input type="text" class="" id="fb_bhanu_profile_photo"/> USD
-                    </div>
-                    <div class="col-md-6 col-sm-8 col-xs-11">
-                      <label for="fb_bhanu_video_post">Video Post</label>$
-                      <input type="text" class="" id="fb_bhanu_video_post"/> USD
-                    </div>
-                  </div>
-                </div>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <p class="profile-info">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis massa diam. Integer non ornare
+                felis. Integer vel dolor ut mauris lobortis fringilla.
+                Curabitur convallis massa et commodo pellentesque.
+              </p>
+            </div>
+          </div>
+          <!-- start of pricing section -->
+          <h2> Pricing</h2>
 
-                <div id="nirvana" class="tab-pane fade">
-                  <div class="form-group">
-                    <div class="col-md-5 col-sm-8 col-xs-11">
-                      <label for="nirvana_status_update">Status Update</label>$
-                      <input type="text" class="" id="nirvana_status_update"/> USD
-                    </div>
-                    <div class="col-md-6 col-sm-8 col-xs-11">
-                      <label for="nirvana_cover_photo">Cover Photo</label>$
-                      <input type="text" class="" id="nirvana_cover_photo"/> USD
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-md-5 col-sm-8 col-xs-11">
-                      <label for="nirvana_profile_photo">Profile Photo</label>$
-                      <input type="text" class="" id="nirvana_profile_photo"/> USD
-                    </div>
-                    <div class="col-md-6 col-sm-8 col-xs-11">
-                      <label for="nirvana_video_post">Video Post</label>$
-                      <input type="text" class="" id="nirvana_video_post"/> USD
-                    </div>
-                  </div>
-                </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="social-account-tabs">
+                <ul class="nav nav-tabs social-account-nav-tabs">
+                  <li class="active">
+                    <a data-toggle="tab" href="#fb_bhanu"><i class="social-account-fa-edit fa fa-facebook"></i> Bhanu
+                      Prasad</a></li>
+                  <li><a data-toggle="tab" href="#nirvana"><i class="social-account-fa-edit fa fa-facebook"></i>
+                    NirvanaLabs</a></li>
+                  <li><a data-toggle="tab" href="#twitter_bhanu"><i class="social-account-fa-edit fa fa-twitter"></i>
+                    Bhanu Prasad</a></li>
+                </ul>
 
-                <div id="twitter_bhanu" class="tab-pane fade">
-                  <div class="form-group">
-                    <div class="col-md-5 col-sm-8 col-xs-11">
-                      <label for="twitter_bhanu_status_update">Status Update</label>$
-                      <input type="text" class="" id="twitter_bhanu_status_update"/> USD
+                <div class="tab-content social-account-tab-content">
+                  <div id="fb_bhanu" class="tab-pane fade in active">
+                    <div class="form-group">
+                      <div class="col-md-5 col-sm-8 col-xs-11">
+                        <label for="fb_bhanu_status_update">Status Update</label>$
+                        <input type="text" class="" id="fb_bhanu_status_update"/> USD
+                      </div>
+                      <div class="col-md-6 col-sm-8 col-xs-11">
+                        <label for="fb_bhanu_cover_photo">Cover Photo</label>$
+                        <input type="text" class="" id="fb_bhanu_cover_photo"/> USD
+                      </div>
                     </div>
-                    <div class="col-md-6 col-sm-8 col-xs-11">
-                      <label for="twitter_bhanu_cover_photo">Cover Photo</label>$
-                      <input type="text" class="" id="twitter_bhanu_cover_photo"/> USD
+                    <div class="form-group">
+                      <div class="col-md-5 col-sm-8 col-xs-11">
+                        <label for="fb_bhanu_profile_photo">Profile Photo</label>$
+                        <input type="text" class="" id="fb_bhanu_profile_photo"/> USD
+                      </div>
+                      <div class="col-md-6 col-sm-8 col-xs-11">
+                        <label for="fb_bhanu_video_post">Video Post</label>$
+                        <input type="text" class="" id="fb_bhanu_video_post"/> USD
+                      </div>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <div class="col-md-5 col-sm-8 col-xs-11">
-                      <label for="twitter_bhanu_profile_photo">Profile Photo</label>$
-                      <input type="text" class="" id="twitter_bhanu_profile_photo"/> USD
+
+                  <div id="nirvana" class="tab-pane fade">
+                    <div class="form-group">
+                      <div class="col-md-5 col-sm-8 col-xs-11">
+                        <label for="nirvana_status_update">Status Update</label>$
+                        <input type="text" class="" id="nirvana_status_update"/> USD
+                      </div>
+                      <div class="col-md-6 col-sm-8 col-xs-11">
+                        <label for="nirvana_cover_photo">Cover Photo</label>$
+                        <input type="text" class="" id="nirvana_cover_photo"/> USD
+                      </div>
                     </div>
-                    <div class="col-md-6 col-sm-8 col-xs-11">
-                      <label for="twitter_bhanu_video_post">Video Post</label>$
-                      <input type="text" class="" id="twitter_bhanu_video_post"/> USD
+                    <div class="form-group">
+                      <div class="col-md-5 col-sm-8 col-xs-11">
+                        <label for="nirvana_profile_photo">Profile Photo</label>$
+                        <input type="text" class="" id="nirvana_profile_photo"/> USD
+                      </div>
+                      <div class="col-md-6 col-sm-8 col-xs-11">
+                        <label for="nirvana_video_post">Video Post</label>$
+                        <input type="text" class="" id="nirvana_video_post"/> USD
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="twitter_bhanu" class="tab-pane fade">
+                    <div class="form-group">
+                      <div class="col-md-5 col-sm-8 col-xs-11">
+                        <label for="twitter_bhanu_status_update">Status Update</label>$
+                        <input type="text" class="" id="twitter_bhanu_status_update"/> USD
+                      </div>
+                      <div class="col-md-6 col-sm-8 col-xs-11">
+                        <label for="twitter_bhanu_cover_photo">Cover Photo</label>$
+                        <input type="text" class="" id="twitter_bhanu_cover_photo"/> USD
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-md-5 col-sm-8 col-xs-11">
+                        <label for="twitter_bhanu_profile_photo">Profile Photo</label>$
+                        <input type="text" class="" id="twitter_bhanu_profile_photo"/> USD
+                      </div>
+                      <div class="col-md-6 col-sm-8 col-xs-11">
+                        <label for="twitter_bhanu_video_post">Video Post</label>$
+                        <input type="text" class="" id="twitter_bhanu_video_post"/> USD
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div> <!-- end of pricing section -->
+          <!-- end of pricing section -->
 
-        <h2> Social Media Information</h2>
-        <p><span class="social-site">Facebook:</span> https://www.facebook.com/johnDoe</p>
-        <p><span class="social-site-twitter">Twitter:</span> @johnross</p>
+          <h2> Social Media Information</h2>
 
-        <div class="row">
-          <div class="col-md-6">
-            <h2> Industry</h2>
-            <p>Marketing, Production</p>
-          </div>
-          <div class="col-md-6">
-            <h2> Location</h2>
-            <p>Hyderabad, India</p>
+          <p><span class="social-site">Facebook:</span> https://www.facebook.com/johnDoe</p>
+
+          <p><span class="social-site-twitter">Twitter:</span> @johnross</p>
+
+          <div class="row">
+            <div class="col-md-6">
+              <h2> Industry</h2>
+
+              <p>Marketing, Production</p>
+            </div>
+            <div class="col-md-6">
+              <h2> Location</h2>
+
+              <p>Hyderabad, India</p>
+            </div>
           </div>
         </div>
       </div>

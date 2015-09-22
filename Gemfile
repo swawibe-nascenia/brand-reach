@@ -35,6 +35,7 @@ gem 'carmen-rails', '~> 1.0.1'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'remotipart', '~> 1.2'
+gem 'kaminari', '~> 0.16.3'
 
 # gem 'haml'
 # gem 'haml-rails'
