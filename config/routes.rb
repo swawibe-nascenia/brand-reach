@@ -27,5 +27,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :brands do
+    collection do
+      get :explore
+    end
+  end
+
   root to: 'public#home', as: :root
 end
