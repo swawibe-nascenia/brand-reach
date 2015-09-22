@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'brands/explore'
-
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks'}
   # get 'users/profile' => 'users/registrations#edit_user_profile'
 
@@ -26,6 +24,12 @@ Rails.application.routes.draw do
       get :brand_home
       get :dashboard
       post :get_in_touch
+    end
+  end
+
+  resources :brands do
+    collection do
+      get :explore
     end
   end
 
