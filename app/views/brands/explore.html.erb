@@ -96,9 +96,7 @@
                       <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;23,456
                     </div>
                   </div>
-                  <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
-                    PROFILE
-                  </button>
+                  <%= link_to 'VIEW PROFILE'.html_safe, "#show-brands-profile", "data-toggle" => "modal", :class => "btn btn-primary btn-view-profile" %>
                 </div>
               </div>
           <% end %>
