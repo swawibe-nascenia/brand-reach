@@ -44,7 +44,11 @@ gem 'mysql2', '~> 0.3.18'
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+group :development, :test do
+    gem 'capistrano-passenger'
+    gem 'capistrano-rails'
+    gem 'capistrano-rvm'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
