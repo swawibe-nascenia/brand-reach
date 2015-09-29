@@ -80,13 +80,13 @@
           <% influncer_group.each do |influencer| %>
               <div class="col-md-3 col-sm-6 col-sm-12">
                 <div class="search-result-item">
-                  <%= image_tag(influencer.profile_picture, class: 'img-responsive') %>
+                  <%= image_tag(influencer.profile_picture, class: 'img-responsive explore-search-image') %>
                   <div class="influencer-data">
-                    <div class="influencer-name"> <%= influencer.full_name %> </div>
+                    <div class="influencer-name"> <%= influencer.full_name.present? ? influencer.full_name : 'User' %> </div>
 
-                    <p class="influencer-address"> <%= influencer.street_address %></p>
+                    <p class="influencer-address"> <%= influencer.street_address.present? ? influencer.street_address : 'User Address'  %></p>
 
-                    <p class="title"> <%= influencer.industry %></p>
+                    <p class="title"> <%= influencer.industry.present? ? influencer.industry : 'Entrepreneur' %></p>
 
                     <p class="influencer-biography"><%= influencer.short_bio %> </p>
 
@@ -94,7 +94,7 @@
                       <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;23,456
                     </div>
                   </div>
-                  <%= link_to 'VIEW PROFILE', influencer_path(influencer), remote: true , :class => "btn btn-primary btn-view-profile" %>
+                  <%= link_to 'VIEW PROFILE'.html_safe, "#show-brands-profile", "data-toggle" => "modal", :class => "btn btn-primary btn-view-profile" %>
                 </div>
               </div>
           <% end %>
@@ -104,5 +104,6 @@
 
   <%= paginate @influncers %>
 
-  <div id="profile-modal"></div>
+  <%= render partial: 'brands/explore_influencers_profile' %>
+
 </div>
