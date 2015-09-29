@@ -17,7 +17,7 @@ class BrandsController < ApplicationController
   end
 
   def send_offer
-
+      
   end
 
   private

@@ -1,10 +1,13 @@
-<form action="<%= send_offer_brands_path %>" method="post">
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-  <p> <%= "Sender name is #{sender.id} and receiver name is #{receiver.id}" %></p>
-  <div class="form-group">
-    <label for="offer-message">Message</label>
-    <input type="text" class="form-control" id="offer-message" placeholder="Email">
-  </div>
 
-  <button type="submit" class="btn btn-primary">Login</button>
-</form>
+<%= form_for :offer, url: send_offer_brands_path, method: :post, class: 'form' do |f|%>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+    <p> <%= "Sender name is #{sender.id} and receiver name is #{receiver.id}" %></p>
+    <div class="form-group">
+      <%= f.label :message %>
+      <%= f.text_field :message, class: 'form-control' %>
+    </div>
+    <%= f.hidden_field :receiver_id, value: receiver.id %>
+
+    <%= f.submit  %>
+
+<% end %>
