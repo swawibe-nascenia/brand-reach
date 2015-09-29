@@ -94,7 +94,7 @@
                       <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;23,456
                     </div>
                   </div>
-                  <%= link_to 'VIEW PROFILE'.html_safe, "#show-brands-profile", "data-toggle" => "modal", :class => "btn btn-primary btn-view-profile" %>
+                  <%= link_to 'VIEW PROFILE', influencer_path(influencer), remote: true , :class => "btn btn-primary btn-view-profile" %>
                 </div>
               </div>
           <% end %>
@@ -104,4 +104,5 @@
 
   <%= paginate @influncers %>
 
-<%= render partial: 'brands/explore_influencers_profile' %>
+  <div id="profile-modal"></div>
+</div>
