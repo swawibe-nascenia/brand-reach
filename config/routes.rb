@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   resources :brands, only: [] do
     collection do
       get :explore
+      post :send_offer
+    end
+    member do
     end
   end
 
