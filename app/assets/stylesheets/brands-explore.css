@@ -21,6 +21,7 @@
 
 .brands-explore-advance-search label {
     margin-top: 15px;
+    font-size: 13px;
 }
 
 .brands-explore-content-wrapper hr{
@@ -68,6 +69,7 @@
     background-color: #FFFFFF;
     padding: 5px;
     margin: 3px;
+    box-shadow: 0px 3px 5px rgba(184,184,184,0.85)
 }
 
 /* =================== style sheet for brands profile show modal =======================*/
@@ -147,4 +149,44 @@
 
 .explore-search-image {
     height: 120px;
+}
+
+.advanced-search {
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.modal-profile .influencer-profile-modal {
+    width: 75%;
+    margin-left: auto;
+}
+
+.social-account-tab-content {
+    border: 1px solid #ddd ;
+    border-top: none;
+    padding-top: 35px;
+    padding-right: 30px;
+    padding-bottom: 80px;
+    margin-bottom: 20px;
+}
+
+.social-account-tabs .social-account-nav-tabs a {
+    color: #696969;
+}
+
+.social-account-tabs .social-account-nav-tabs li.active .social-account-fa-edit {
+    color: #3c8dbc;
+}
+
+.social-account-fa-edit {
+    font-size: 1.5em;
+    padding-right: 5px;
+}
+
+.social-account-tab-content .form-group input {
+    width: 33%;
+}
+
+.social-account-tabs .social-account-nav-tabs li a {
+    padding-right: 45px;
 }
