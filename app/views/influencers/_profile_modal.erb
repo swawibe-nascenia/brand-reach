@@ -1,31 +1,28 @@
-<div class="modal fade modal-profile" id="show-brands-profile" tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
+<div class="modal fade modal-profile" id="show-brands-profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog influencer-profile-modal" role="document">
+    <div class="modal-content view-profile-modal">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+        <button type="button" class="close view-profile-modal-close" data-dismiss="modal" aria-label="Close"><span
         aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel"></h4>
       </div>
       <div class="modal-body">
         <div class="row ">
-          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+          <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
             <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-                <img src="<%= influencer.profile_picture %>" class="pull-right">
+                <%= image_tag(influencer.profile_picture, :class => 'explore-influencer-picture', :alt => "profile-picture") %>
               </div>
 
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-                <h4><%= influencer.name %></h4>
-
-                <p class="address"> San Francisco, CA</p>
-
-                <p class="title"> Entrepreneur</p>
+                <h4><%= influencer.full_name.present? ? influencer.full_name : 'USER' %></h4>
+                <p class="title"> <%= influencer.industry.present? ? influencer.industry : 'Entrepreneur' %> </p>
+                <p class="influencer-address"> <%= influencer.street_address.present? ? influencer.street_address : 'User Address'  %></p>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
+          <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12">
             <div class="btn-box pull-right">
               <button class="btn btn-engage"> ENGAGE</button>
               <button class="btn btn-message"  data-toggle="modal" data-target="#offer-modal"> MESSAGE</button>
@@ -46,101 +43,58 @@
           </div>
         </div>
         <!-- start of pricing section -->
-        <h2> Pricing</h2>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="social-account-tabs">
-              <ul class="nav nav-tabs social-account-nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#fb_bhanu"><i class="social-account-fa-edit fa fa-facebook"></i> Bhanu Prasad</a></li>
-                <li><a data-toggle="tab" href="#nirvana"><i class="social-account-fa-edit fa fa-facebook"></i> NirvanaLabs</a></li>
-                <li><a data-toggle="tab" href="#twitter_bhanu"><i class="social-account-fa-edit fa fa-twitter"></i> Bhanu Prasad</a></li>
-              </ul>
 
-              <div class="tab-content social-account-tab-content">
-                <div id="fb_bhanu" class="tab-pane fade in active">
-                  <div class="form-group">
-                    <div class="col-md-5 col-sm-8 col-xs-11">
-                      <label for="fb_bhanu_status_update">Status Update</label>$
-                      <input type="text" class="" id="fb_bhanu_status_update"/> USD
-                    </div>
-                    <div class="col-md-6 col-sm-8 col-xs-11">
-                      <label for="fb_bhanu_cover_photo">Cover Photo</label>$
-                      <input type="text" class="" id="fb_bhanu_cover_photo"/> USD
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-md-5 col-sm-8 col-xs-11">
-                      <label for="fb_bhanu_profile_photo">Profile Photo</label>$
-                      <input type="text" class="" id="fb_bhanu_profile_photo"/> USD
-                    </div>
-                    <div class="col-md-6 col-sm-8 col-xs-11">
-                      <label for="fb_bhanu_video_post">Video Post</label>$
-                      <input type="text" class="" id="fb_bhanu_video_post"/> USD
-                    </div>
-                  </div>
-                </div>
+        <% if influencer.facebook.present? %>
 
-                <div id="nirvana" class="tab-pane fade">
-                  <div class="form-group">
-                    <div class="col-md-5 col-sm-8 col-xs-11">
-                      <label for="nirvana_status_update">Status Update</label>$
-                      <input type="text" class="" id="nirvana_status_update"/> USD
-                    </div>
-                    <div class="col-md-6 col-sm-8 col-xs-11">
-                      <label for="nirvana_cover_photo">Cover Photo</label>$
-                      <input type="text" class="" id="nirvana_cover_photo"/> USD
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-md-5 col-sm-8 col-xs-11">
-                      <label for="nirvana_profile_photo">Profile Photo</label>$
-                      <input type="text" class="" id="nirvana_profile_photo"/> USD
-                    </div>
-                    <div class="col-md-6 col-sm-8 col-xs-11">
-                      <label for="nirvana_video_post">Video Post</label>$
-                      <input type="text" class="" id="nirvana_video_post"/> USD
-                    </div>
-                  </div>
-                </div>
+            <h4> Pricing</h4>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="social-account-tabs">
+                  <ul class="nav nav-tabs social-account-nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#fb_bhanu"><i class="social-account-fa-edit fa fa-facebook"></i> Bhanu Prasad</a></li>
+                  </ul>
 
-                <div id="twitter_bhanu" class="tab-pane fade">
-                  <div class="form-group">
-                    <div class="col-md-5 col-sm-8 col-xs-11">
-                      <label for="twitter_bhanu_status_update">Status Update</label>$
-                      <input type="text" class="" id="twitter_bhanu_status_update"/> USD
-                    </div>
-                    <div class="col-md-6 col-sm-8 col-xs-11">
-                      <label for="twitter_bhanu_cover_photo">Cover Photo</label>$
-                      <input type="text" class="" id="twitter_bhanu_cover_photo"/> USD
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-md-5 col-sm-8 col-xs-11">
-                      <label for="twitter_bhanu_profile_photo">Profile Photo</label>$
-                      <input type="text" class="" id="twitter_bhanu_profile_photo"/> USD
-                    </div>
-                    <div class="col-md-6 col-sm-8 col-xs-11">
-                      <label for="twitter_bhanu_video_post">Video Post</label>$
-                      <input type="text" class="" id="twitter_bhanu_video_post"/> USD
+                  <div class="tab-content social-account-tab-content">
+                    <div id="fb_bhanu" class="tab-pane fade in active">
+                      <div class="form-group">
+                        <div class="col-md-5 col-sm-8 col-xs-11">
+                          <%= label_tag '', 'Status Update' %> $
+                          <%= text_field_tag  '', influencer.facebook.status_update_price, disabled: true %> USD
+                        </div>
+                        <div class="col-md-6 col-sm-8 col-xs-11">
+                          <%= label_tag '', 'Cover Photo' %> $
+                          <%= text_field_tag  '', influencer.facebook.banner_photo_price, disabled: true %> USD
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-5 col-sm-8 col-xs-11">
+                          <%= label_tag '', 'Profile Photo' %> $
+                          <%= text_field_tag  '', influencer.facebook.profile_photo_price, disabled: true %> USD
+                        </div>
+                        <div class="col-md-6 col-sm-8 col-xs-11">
+                          <%= label_tag '', 'Video Post' %> $
+                          <%= text_field_tag  '', influencer.facebook.video_post_price, disabled: true %> USD
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div> <!-- end of pricing section -->
+        <% end %>
 
-        <h2> Social Media Information</h2>
-        <p><span class="social-site">Facebook:</span> https://www.facebook.com/johnDoe</p>
-        <p><span class="social-site-twitter">Twitter:</span> @johnross</p>
+        <div class="social-media-info"> Social Media Information</div>
+        <p><span class="view-profile-fb-twitter-color">Facebook:</span> https://www.facebook.com/johnDoe</p>
+        <p><span class="view-profile-fb-twitter-color"> &nbsp;  &nbsp; Twitter:</span> @johnross</p>
 
         <div class="row">
           <div class="col-md-6">
-            <h2> Industry</h2>
+            <div class="view-profile-industry"> Industry</div>
             <p>Marketing, Production</p>
           </div>
           <div class="col-md-6">
-            <h2> Location</h2>
+            <div class="view-profile-industry"> Location</div>
             <p>Hyderabad, India</p>
           </div>
         </div>
