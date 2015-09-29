@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918052342) do
+ActiveRecord::Schema.define(version: 20150922051144) do
 
   create_table "facebooks", force: :cascade do |t|
     t.string   "uid",                 limit: 255,             null: false
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20150918052342) do
     t.integer  "banner_photo_price",  limit: 4,   default: 0
     t.integer  "line_price",          limit: 4,   default: 0
     t.integer  "influencer_id",       limit: 4,               null: false
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.boolean  "read",        limit: 1
+    t.boolean  "starred",     limit: 1
+    t.integer  "sender_id",   limit: 4
+    t.integer  "receiver_id", limit: 4
+    t.integer  "status",      limit: 4
+    t.string   "message",     limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "pages", force: :cascade do |t|

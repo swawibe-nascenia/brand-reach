@@ -1,10 +1,8 @@
-<%= stylesheet_link_tag  'brands-explore.css', media: 'all' %>
+<%= stylesheet_link_tag 'brands-explore.css', media: 'all' %>
 
 <% title "Brand Explore" %>
 
 <div class="brands-explore-content-wrapper">
-
-
   <div class="brands-explore-advance-search">
     <form action="" role="form" class="vertical">
       <h4>ADVANCED SEARCH</h4>
@@ -77,232 +75,33 @@
   <hr/>
 
   <div class="search-result">
-    <div class="row padding-less-column-parent">
-      <div class="col-md-3 col-sm-6 col-sm-12">
-        <div class="search-result-item">
-          <%= image_tag(current_user.image_url(:explore_image).to_s, :alt => "profile-picture") %>
+    <% @influncers.each_slice(4) do |influncer_group| %>
+        <div class="row padding-less-column-parent">
+          <% influncer_group.each do |influencer| %>
+              <div class="col-md-3 col-sm-6 col-sm-12">
+                <div class="search-result-item">
+                  <%= image_tag(influencer.profile_picture, class: 'img-responsive') %>
+                  <div class="influencer-data">
+                    <div class="influencer-name"> <%= influencer.full_name %> </div>
 
-          <div class="influencer-data">
-            <div class="influencer-name"> John Doe</div>
+                    <p class="influencer-address"> <%= influencer.street_address %></p>
 
-            <p class="influencer-address"> San Francisco, CA</p>
+                    <p class="title"> <%= influencer.industry %></p>
 
-            <p class="title"> Entrepreneur</p>
+                    <p class="influencer-biography"><%= influencer.short_bio %> </p>
 
-            <p class="influencer-biography">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec quis massa diam. Integer non ornare felis.
-              Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
-
-            <div>
-              <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;23,456
-            </div>
-          </div>
-          <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
-            PROFILE
-          </button>
+                    <div>
+                      <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;23,456
+                    </div>
+                  </div>
+                  <%= link_to 'VIEW PROFILE'.html_safe, "#show-brands-profile", "data-toggle" => "modal", :class => "btn btn-primary btn-view-profile" %>
+                </div>
+              </div>
+          <% end %>
         </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6 col-sm-12">
-        <div class="search-result-item">
-          <%= image_tag(current_user.image_url(:explore_image).to_s, :alt => "profile-picture") %>
-
-          <div class="influencer-data">
-            <div class="influencer-name"> John Doe</div>
-
-            <p class="influencer-address"> San Francisco, CA</p>
-
-            <p class="title"> Entrepreneur</p>
-
-            <p class="influencer-biography">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec quis massa diam. Integer non ornare felis.
-              Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
-
-            <div>
-              <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;23,456
-            </div>
-          </div>
-          <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
-            PROFILE
-          </button>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6 col-sm-12">
-        <div class="search-result-item">
-          <%= image_tag(current_user.image_url(:explore_image).to_s, :alt => "profile-picture") %>
-
-          <div class="influencer-data">
-            <div class="influencer-name"> John Doe</div>
-
-            <p class="influencer-address"> San Francisco, CA</p>
-
-            <p class="title"> Entrepreneur</p>
-
-            <p class="influencer-biography">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec quis massa diam. Integer non ornare felis.
-              Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
-
-            <div>
-              <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;23,456
-            </div>
-          </div>
-          <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
-            PROFILE
-          </button>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6 col-sm-12">
-        <div class="search-result-item">
-          <%= image_tag(current_user.image_url(:explore_image).to_s, :alt => "profile-picture") %>
-
-          <div class="influencer-data">
-            <div class="influencer-name"> John Doe</div>
-
-            <p class="influencer-address"> San Francisco, CA</p>
-
-            <p class="title"> Entrepreneur</p>
-
-            <p class="influencer-biography">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec quis massa diam. Integer non ornare felis.
-              Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
-
-            <div>
-              <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;23,456
-            </div>
-          </div>
-          <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
-            PROFILE
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="row padding-less-column-parent">
-      <div class="col-md-3 col-sm-6 col-sm-12">
-        <div class="search-result-item">
-          <%= image_tag(current_user.image_url(:explore_image).to_s, :alt => "profile-picture") %>
-
-          <div class="influencer-data">
-            <div class="influencer-name"> John Doe</div>
-
-            <p class="influencer-address"> San Francisco, CA</p>
-
-            <p class="title"> Entrepreneur</p>
-
-            <p class="influencer-biography">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec quis massa diam. Integer non ornare felis.
-              Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
-
-            <div>
-              <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;23,456
-            </div>
-          </div>
-          <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
-            PROFILE
-          </button>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6 col-sm-12">
-        <div class="search-result-item">
-          <%= image_tag(current_user.image_url(:explore_image).to_s, :alt => "profile-picture") %>
-
-          <div class="influencer-data">
-            <div class="influencer-name"> John Doe</div>
-
-            <p class="influencer-address"> San Francisco, CA</p>
-
-            <p class="title"> Entrepreneur</p>
-
-            <p class="influencer-biography">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec quis massa diam. Integer non ornare felis.
-              Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
-
-            <div>
-              <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;23,456
-            </div>
-          </div>
-          <%= link_to 'VIEW PROFILE'.html_safe, "#show-brands-profile", "data-toggle" => "modal", :class => "btn btn-primary btn-view-profile" %>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6 col-sm-12">
-        <div class="search-result-item">
-          <%= image_tag(current_user.image_url(:explore_image).to_s, :alt => "profile-picture") %>
-
-          <div class="influencer-data">
-            <div class="influencer-name"> John Doe</div>
-
-            <p class="influencer-address"> San Francisco, CA</p>
-
-            <p class="title"> Entrepreneur</p>
-
-            <p class="influencer-biography">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec quis massa diam. Integer non ornare felis.
-              Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
-
-            <div>
-              <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;23,456
-            </div>
-          </div>
-          <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
-            PROFILE
-          </button>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6 col-sm-12">
-        <div class="search-result-item">
-          <%= image_tag(current_user.image_url(:explore_image).to_s, :alt => "profile-picture") %>
-
-          <div class="influencer-data">
-            <div class="influencer-name"> John Doe</div>
-
-            <p class="influencer-address"> San Francisco, CA</p>
-
-            <p class="title"> Entrepreneur</p>
-
-            <p class="influencer-biography">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec quis massa diam. Integer non ornare felis.
-              Integer vel dolor ut mauris lobortis fringilla.
-              Curabitur convallis massa et commodo pellentesque.
-            </p>
-
-            <div>
-              <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;23,456
-            </div>
-          </div>
-          <button class="btn btn-primary btn-view-profile" data-target="#show-brands-profile" data-toggle="modal">VIEW
-            PROFILE
-          </button>
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
-</div>
+
+  <%= paginate @influncers %>
 
 <%= render partial: 'brands/explore_influencers_profile' %>

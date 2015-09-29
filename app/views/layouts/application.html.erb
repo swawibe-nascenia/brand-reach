@@ -30,7 +30,7 @@
         <%= image_tag(current_user.profile_picture, :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
 
         <div class="info">
-          <p class="name"><%= current_user.try(:name).present? ? current_user.name : 'USER' %></p>
+          <p class="name"><%= current_user.try(:full_name).present? ? current_user.full_name : 'USER' %></p>
 
           <div class="dropdown small">
             <button class="btn center-block text-center user-status dropdown-toggle" type="button"
@@ -113,7 +113,7 @@
         <div class="about-welcome">
           <p class=" about">ABOUT</p>
 
-          <p class=" welcome"> Welcome back, <%= current_user.try(:name).present? ? current_user.name : 'USER' %></p>
+          <p class=" welcome"> Welcome back, <%= current_user.try(:full_name).present? ? current_user.full_name : 'USER' %></p>
           <a href="<%= destroy_user_session_path %>" class="login-link">
             <p class="text-black text-center"><i class="fa fa-power-off"></i></p>
           </a>
