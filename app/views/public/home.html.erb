@@ -16,8 +16,8 @@
 
       <div class="collapse navbar-collapse home-menu" id="myNavbar">
         <ul class="nav navbar-nav my-nav-bar">
-          <li class="active"><a href="#">INFLUENCERS <span class="sr-only">(current)</span></a></li>
-          <li><a href="#">BRANDS</a></li>
+          <li><%= link_to "INFLUENCERS", home_public_index_path, class:  current_path(home_public_index_path) %></li>
+          <li><%= link_to "BRANDS", brand_home_public_index_path, class: current_path(brand_home_public_index_path) %></li>
           <li><a href="#">ABOUT US</a></li>
           <% if user_signed_in? %>
               <li><a href="<%= profile_profile_index_path %>">PROFILE</a></li>
