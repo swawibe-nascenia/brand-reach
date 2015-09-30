@@ -44,5 +44,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :offers do
+
+  end
+
   root to: 'public#home', as: :root
 end
