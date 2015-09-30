@@ -17,7 +17,12 @@ class BrandsController < ApplicationController
   end
 
   def send_offer
-      
+    offer = Offer.new(offer_atttibutes)
+    offer.sender_id = current_user.id
+    @success = true
+    unless offer.save
+      @success = false
+    end
   end
 
   private
