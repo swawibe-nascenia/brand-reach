@@ -16,6 +16,7 @@
 //= require twitter/bootstrap
 //= require bootstrap
 //= require profiles
+//= require nouislider
 // require turbolinks
 // require_tree .
 

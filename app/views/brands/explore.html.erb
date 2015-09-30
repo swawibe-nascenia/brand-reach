@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag 'brands-explore.css', media: 'all' %>
 
+
 <% title "Brand Explore" %>
 
 <div class="brands-explore-content-wrapper">
@@ -12,18 +13,15 @@
           <div class="row">
             <div class="col-md-12">
               <label for="category"> Category </label>
-              <select name="" id="category">
-                <option>Select a Category</option>
-                <option>Option2</option>
-              </select>
+              <%= select_tag :category, options_for_select(category_list), prompt: "Select a Category" %>
             </div>
 
             <div class="col-md-12">
               <label for="category"> Followers </label>
-              <select name="" id="follower">
-                <option>Choose a range</option>
-                <option>Option2</option>
-              </select>
+
+              <div id="followers-range" class="noUi-target noUi-ltr noUi-horizontal noUi-background"></div>
+              <span id="followers-range-value-lower">50.00</span>
+              <span id="followers-range-value-upper">5000.00</span>
             </div>
           </div>
         </div>
@@ -34,16 +32,18 @@
               <label for="social-media-platform"> Social Media Platform </label>
               <select name="social_media_platform" id="social-media-platform">
                 <option>Select a Social Media Platform</option>
+                <option>Facebook</option>
+                <option>Twitter</option>
                 <option>Linkedin</option>
               </select>
             </div>
 
             <div class="col-md-12">
               <label for="influencer_price"> Price </label>
-              <select name="social_media_platform" id="influencer_price">
-                <option>Choose a range</option>
-                <option>Linkedin</option>
-              </select>
+
+              <div id="influencer-price" class="noUi-target noUi-ltr noUi-horizontal noUi-background"></div>
+              <span id="influencer-price-value-lower">50.00</span>
+              <span id="influencer-price-value-upper">5000.00</span>
             </div>
           </div>
         </div>
@@ -51,18 +51,12 @@
         <div class="col-md-4">
           <div class="row">
             <div class="col-md-12">
-              <label for="location_country"> Location </label>
-              <select name="country" id="location_country">
-                <option>Select Country</option>
-                <option>USA</option>
-              </select>
+              <label for="influencer_country"> Country </label>
+              <%= country_select_tag :country, {priority: %w(US CA IN)}, {:class => 'profile-dropdown-color'} %>
               <br/>
 
               <div>
-                <select name="location_state" id="location_state">
-                  <option>Select State</option>
-                  <option>Option1</option>
-                </select>
+                <%# render partial: 'shared/sub_region_select', locals: {parent_region: f.object.country} %>
               </div>
             </div>
           </div>
@@ -104,4 +98,48 @@
 
   <%= paginate @influncers %>
 
-<%= render partial: 'brands/explore_influencers_profile' %>
+  <%= render partial: 'brands/explore_influencers_profile' %>
+</div>
+
+<script type="text/javascript">
+    var build_range = function (sliderObj, displayElementIdAry) {
+        noUiSlider.create(sliderObj, {
+            range: {
+                'min': 0,
+                '10%': 50,
+                '20%': 100,
+                '30%': 500,
+                '40%': 1000,
+                '50%': 1500,
+                '60%': 2000,
+                '70%': 2500,
+                '90%': 3000,
+                'max': 5000
+            },
+            snap: true,
+            start: [50, 5000]
+        });
+
+        setSliderDisplay(sliderObj, displayElementIdAry);
+    };
+
+    var setSliderDisplay = function (sliderObj, displayElementObjAry) {
+        var skipValues = [
+            document.getElementById(displayElementObjAry[0]),
+            document.getElementById(displayElementObjAry[1])
+        ];
+
+        sliderObj.noUiSlider.on('update', function (values, handle) {
+            skipValues[handle].innerHTML = values[handle];
+        });
+    };
+
+    var followers_slider = document.getElementById('followers-range');
+    var followers_slider_lbl_id = ['followers-range-value-lower', 'followers-range-value-upper'];
+    build_range(followers_slider, followers_slider_lbl_id);
+
+    var influencer_slider = document.getElementById('influencer-price');
+    var followers_slider_lbl_id = ['influencer-price-value-lower', 'influencer-price-value-upper'];
+    build_range(influencer_slider, followers_slider_lbl_id);
+
+</script>
