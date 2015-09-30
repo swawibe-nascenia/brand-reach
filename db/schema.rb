@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922051144) do
+ActiveRecord::Schema.define(version: 20150930073514) do
+
+  create_table "campaigns", force: :cascade do |t|
+    t.string  "campaign_name",              limit: 255
+    t.string  "campaign_text",              limit: 255
+    t.string  "campaign_headline",          limit: 255
+    t.string  "social_account_page_name",   limit: 255
+    t.date    "campaign_start_date"
+    t.date    "campaign_end_date"
+    t.integer "campaign_cost",              limit: 4,   default: 0
+    t.integer "social_account_activity_id", limit: 4,   default: 0
+    t.integer "campaign_post_type",         limit: 4,   default: 0
+    t.integer "number_of_likes",            limit: 4,   default: 0
+    t.integer "number_of_post_reach",       limit: 4,   default: 0
+    t.integer "number_of_comments",         limit: 4,   default: 0
+  end
 
   create_table "facebooks", force: :cascade do |t|
     t.string   "uid",                 limit: 255,             null: false

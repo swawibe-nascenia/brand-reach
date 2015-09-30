@@ -1,0 +1,434 @@
+<%= stylesheet_link_tag 'campaigns.css', media: 'all' %>
+
+<% title "Influencer Campaign" %>
+
+<div class="payment-div ">
+  <div class="payment-button-set pull-right">
+    <button class="btn btn-export">EXPORT</button>
+    <div class="dropdown" id="age_button">
+      <button class="btn btn-age dropdown-toggle" type="button" data-toggle="dropdown">Age
+        <i class="fa fa-angle-down angle-down-age "></i>
+      </button>
+      <ul class="dropdown-menu dropdown-color">
+        <li><a href="#">18-24</a></li>
+        <li><a href="#">25-34</a></li>
+        <li><a href="#">35-44</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="country_button" style="display: none;">
+      <button class="btn btn-country dropdown-toggle" type="button" data-toggle="dropdown">Country
+        <i class="fa fa-angle-down angle-down-country "></i>
+      </button>
+      <ul class="dropdown-menu dropdown-color">
+        <li><a href="#">India</a></li>
+        <li><a href="#">HongKong</a></li>
+        <li><a href="#">United Kingdom</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="campaign-content">
+
+  <ul class="nav nav-tabs" id="campaign-tabs">
+    <li class= "active" id="performance_list"><a href="#performance"><span id="performance-blue"><%= image_tag('Performance_blue.png') %></span><span id="performance-black" style="display: none"><%= image_tag('Performance.png') %></span> <span class="performance-tab"></span> Performance </a></li>
+    <li class= "" id="engagement_list"><a href="#engagement"><span id="engagement-black"><%= image_tag('Engagement_black.png') %></span><span id="engagement-blue" style="display: none"><%= image_tag('Engagement.png') %></span><span class="engagement-tab"></span> Engagement </a></li>
+  </ul>
+  <div class="tab-content panel panel-campaigns">
+    <div id="performance" class="tab-pane fade in active">
+      <table class="table table-striped table-bordered table-responsive performance_table">
+        <thead>
+        <tr class="payment-header">
+          <th class="squaredFour" id="select_all_performance"><input type="checkbox" class="payment-header" value="all"/></th>
+          <th></th>
+          <th>Campaign Name</th>
+          <th>Post Likes</th>
+          <th>Reach</th>
+          <th>Ends</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="id_1" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="cmn-toggle-1"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Status Update</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>NA</td>
+        </tr>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="id_2" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="cmn-toggle-2"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Profile Picture</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>July 21, 2015</td>
+        </tr>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="id_3" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="cmn-toggle-3" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="cmn-toggle-3"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Header Image</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>July 21, 2015</td>
+        </tr>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="id_4" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="cmn-toggle-4"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Post</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>NA</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><div class="pepsi-img-none"></div> 18 - 24</td>
+          <td>1,38,000</td>
+          <td>30,000</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><div class="pepsi-img-none"></div> 25 - 34</td>
+          <td>1,38,000</td>
+          <td>30,000</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><div class="pepsi-img-none"></div> 35 - 44</td>
+          <td>1,38,000</td>
+          <td>30,000</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><div class="pepsi-img-none"></div> 45 - 54</td>
+          <td>1,38,000</td>
+          <td>30,000</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><div class="pepsi-img-none"></div> 55 - 64</td>
+          <td>1,38,000</td>
+          <td>30,000</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><div class="pepsi-img-none"></div> 65+</td>
+          <td>1,38,000</td>
+          <td>30,000</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="id_5" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="cmn-toggle-5" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="cmn-toggle-5"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Post</td>
+          <td>24,000</td>
+          <td>6,30,537</td>
+          <td>NA</td>
+        </tr>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="id_6" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="cmn-toggle-6" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="cmn-toggle-6"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Profile Picture</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>July 21, 2015</td>
+        </tr>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="id_7" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="cmn-toggle-7"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Header Image</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>July 21, 2015</td>
+        </tr>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="id_8" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="cmn-toggle-8" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="cmn-toggle-8"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Post</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>NA</td>
+        </tr>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="id_9" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="cmn-toggle-9" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="cmn-toggle-9"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Post</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>NA</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div id="engagement" class="tab-pane fade">
+      <table class="table table-striped table-bordered table-responsive engagement_table">
+        <thead>
+        <tr class="payment-header">
+          <th class="squaredFour" id="selecct_all_engagement"><input type="checkbox" class="payment-header" value="all"/></th>
+          <th></th>
+          <th>Campaign Name</th>
+          <th>Likes</th>
+          <th>Comments</th>
+          <th>Shares</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="engagement_1" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="engagement_switch_1" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="engagement_switch_1"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Status Update</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>5,868</td>
+        </tr>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="engagement_2" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="engagement_switch_2" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="engagement_switch_2"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Profile Picture</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>5,868</td>
+        </tr>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="engagement_3" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="engagement_switch_3" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="engagement_switch_3"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Header Image</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>5,868</td>
+        </tr>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="engagement_4" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="engagement_switch_4" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="engagement_switch_4"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Post</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>5,868</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><div class="pepsi-img-none"></div> United Arab Emirates</td>
+          <td>1,38,000</td>
+          <td>30,000</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><div class="pepsi-img-none"></div> India</td>
+          <td>1,38,000</td>
+          <td>30,000</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><div class="pepsi-img-none"></div> HongKong</td>
+          <td>1,38,000</td>
+          <td>30,000</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><div class="pepsi-img-none"></div> Singapore</td>
+          <td>1,38,000</td>
+          <td>30,000</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><div class="pepsi-img-none"></div> United Kingdom</td>
+          <td>1,38,000</td>
+          <td>30,000</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><div class="pepsi-img-none"></div> Mexico</td>
+          <td>1,38,000</td>
+          <td>30,000</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="engagement_5" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="engagement_switch_5" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="engagement_switch_5"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Post</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>5,865</td>
+        </tr>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="engagement_6" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="engagement_switch_6" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="engagement_switch_6"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Profile Picture</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>5,865</td>
+        </tr>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="engagement_7" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="engagement_switch_7" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="engagement_switch_7"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Header Image</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>5,865</td>
+        </tr>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="engagement_8" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="engagement_switch_8" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="engagement_switch_8"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Post</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>5,865</td>
+        </tr>
+        <tr>
+          <td class="squaredFour"><input type="checkbox" id="engagement_9" value="1"/></td>
+          <td>
+            <div class="switch">
+              <input id="engagement_switch_9" class="cmn-toggle cmn-toggle-round" type="checkbox">
+              <label for="engagement_switch_9"></label>
+            </div>
+          </td>
+          <td><img src="images/pepsi-small.jpg" class="pepsi-img-responsive">&nbsp; Pepsi Co - Post</td>
+          <td>24,000</td>
+          <td>1,30,537</td>
+          <td>5,865</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $("#campaign-tabs a").click(function(e){
+            e.preventDefault();
+            $(this).tab('show');
+        });
+
+        $(document).on('click','#engagement_list',function(){
+            document.getElementById("age_button").style.display = 'none';
+            document.getElementById("country_button").style.display = 'block';
+            document.getElementById("performance-blue").style.display = 'none';
+            document.getElementById("performance-black").style.display = 'inline';
+            document.getElementById("engagement-black").style.display = 'none';
+            document.getElementById("engagement-blue").style.display = 'inline';
+        });
+
+        $(document).on('click','#performance_list',function(){
+            document.getElementById("country_button").style.display = 'none';
+            document.getElementById("age_button").style.display = 'block';
+            document.getElementById("performance-black").style.display = 'none';
+            document.getElementById("performance-blue").style.display = 'inline';
+            document.getElementById("engagement-blue").style.display = 'none';
+            document.getElementById("engagement-black").style.display = 'inline';
+        });
+    });
+
+
+</script>

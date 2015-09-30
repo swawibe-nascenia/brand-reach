@@ -44,5 +44,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :campaigns, only: [] do
+    collection do
+      get :influencer_campaign
+      get :brand_campaign
+    end
+    member do
+    end
+  end
+
   root to: 'public#home', as: :root
 end
