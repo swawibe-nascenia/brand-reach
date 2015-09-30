@@ -36,6 +36,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'remotipart', '~> 1.2'
 gem 'kaminari', '~> 0.16.3'
+gem 'mysql2', '~> 0.3.18'
 
 # gem 'haml'
 # gem 'haml-rails'
@@ -43,12 +44,15 @@ gem 'kaminari', '~> 0.16.3'
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+group :development, :test do
+    gem 'capistrano-passenger'
+    gem 'capistrano-rails'
+    gem 'capistrano-rvm'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug'
-  gem 'mysql2', '~> 0.3.18'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

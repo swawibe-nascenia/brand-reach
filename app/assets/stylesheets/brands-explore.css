@@ -14,10 +14,14 @@
     border-radius: 0;
     border: 1px solid #d9d9d9;
     background-color: #f9f9f9;
+    margin-bottom: 8px;
+    padding-left: 5px;
+    font-size: 13px;
 }
 
 .brands-explore-advance-search label {
     margin-top: 15px;
+    font-size: 13px;
 }
 
 .brands-explore-content-wrapper hr{
@@ -65,6 +69,7 @@
     background-color: #FFFFFF;
     padding: 5px;
     margin: 3px;
+    box-shadow: 0px 3px 5px rgba(184,184,184,0.85)
 }
 
 /* =================== style sheet for brands profile show modal =======================*/
@@ -140,4 +145,92 @@
     margin: 0 auto;
     width: 100px;
     height: 100px;
+}
+
+.explore-search-image {
+    height: 120px;
+}
+
+.advanced-search {
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.view-profile-modal {
+    width: 75%;
+    margin: auto;
+    padding-bottom: 35px;
+}
+
+.social-account-tab-content {
+    border: 1px solid #ddd ;
+    border-top: none;
+    padding-top: 35px;
+    padding-right: 30px;
+    padding-bottom: 80px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.social-account-tabs .social-account-nav-tabs a {
+    color: #696969;
+}
+
+.social-account-tabs .social-account-nav-tabs li.active .social-account-fa-edit {
+    color: #3c8dbc;
+}
+
+.social-account-fa-edit {
+    font-size: 1.5em;
+    padding-right: 5px;
+}
+
+.social-account-tab-content .form-group input {
+    width: 33%;
+}
+
+.social-account-tabs .social-account-nav-tabs li a {
+    padding-right: 45px;
+}
+
+.influencer-profile-modal label {
+    padding-right: 15px;
+    padding-left: 10%;
+    padding-bottom: 10px;
+    font-weight: 300;
+}
+
+.influencer-profile-modal input {
+    background-color: white;
+    padding: 4px;
+}
+
+.social-account-tab-content .form-group {
+    text-align: right;
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+.modal-header .view-profile-modal-close {
+    color: #d9d9d9;
+    font-size: 3.4em;
+    opacity: 1.5;
+    font-weight: 100;
+    margin-top: -20px;
+}
+
+.social-media-info {
+    font-size: 18px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.view-profile-fb-twitter-color {
+    color: #329995;
+}
+
+.view-profile-industry {
+    font-size: 18px;
+    padding-top: 20px;
+    padding-bottom: 15px;
 }

@@ -4343,8 +4343,8 @@ table.text-center, table.text-center td, table.text-center th {
 .chart {
     position: relative;
     overflow: hidden;
-    width: 100%
     padding: 0 15px 0 34px;
+    width: 100%;
 }
 
 .chart svg, .chart canvas {
