@@ -1,0 +1,18 @@
+<tr data-offer-id="<%= offer.id %>">
+  <td><span class="status-inbox status-inbox"></span></td>
+  <td class="squaredFour"><input type="checkbox"  value="1" class="select-offer"/></td>
+  <td class="inbox-star">
+    <%= link_to toggle_star_offers_path(ids: [offer.id], authenticity_token: form_authenticity_token), method: :put, remote: true do %>
+      <i class="fa fa-star <%= offer.starred_by_brand ? 'star-yellow' : 'star-grey' %>"></i>
+    <% end %>
+  </td>
+  <td><%= image_tag offer.sender.profile_picture, class: 'inbox-logo-responsive' %></td>
+  <td> <%= offer.sender.full_name %> </td>
+  <td class="standard-description"> <%= offer.message %></td>
+  <td>
+    <% if offer.accepted? %>
+        <%= link_to 'Engage', '#', class: 'btn btn-accept' %>
+    <% end %>
+  </td>
+  <td><%= offer.time %></td>
+</tr>

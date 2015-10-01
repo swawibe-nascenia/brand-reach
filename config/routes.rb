@@ -44,5 +44,17 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :offers do
+    collection do
+      put :toggle_star
+    end
+
+    member do
+      put :accept
+      put :deny
+      put :undo_deny
+    end
+  end
+
   root to: 'public#home', as: :root
 end

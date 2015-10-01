@@ -59,9 +59,9 @@
 
         <% if current_user.brand? %>
             <li>
-              <a href="#">
+              <%= link_to offers_path do %>
                 <span class="glyphicon glyphicon-envelope"> </span><span class="space-sidebar">MESSAGES</span>
-              </a>
+              <% end %>
             </li>
 
             <li class="<%=  (params[:controller] == 'brands' && params[:action] == 'explore') ? 'active' : '' %>">
@@ -71,9 +71,9 @@
             </li>
         <% else %>
             <li>
-              <a href="#">
-                <span class="glyphicon glyphicon-envelope"> </span><span class="space-sidebar">OFFERS</span>
-              </a>
+              <%= link_to offers_path do %>
+                  <span class="glyphicon glyphicon-envelope"> </span><span class="space-sidebar">OFFERS</span>
+              <% end %>
             </li>
 
             <li>
