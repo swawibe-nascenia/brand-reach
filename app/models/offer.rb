@@ -52,6 +52,9 @@ class Offer < ActiveRecord::Base
     end
   end
 
+  def deny_undo_able?
+    Time.now - denied_at <= 30
+  end
 
   # ----------------------------------------------------------------------
   # == Class methods == #

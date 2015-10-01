@@ -169,5 +169,9 @@ only screen and (max-width: 540px) {
     overflow: hidden;
 }
 
+.btn-column{
+    min-width: 200px;
+}
+
 
 

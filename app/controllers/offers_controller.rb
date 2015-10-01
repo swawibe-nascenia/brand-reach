@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [:show, :edit, :update, :destroy]
+  before_action :set_offer, only: [:show, :edit, :update, :destroy, :accept, :deny, :undo_deny]
 
   # GET /offers
   # GET /offers.json
@@ -88,7 +88,17 @@ class OffersController < ApplicationController
     # redirect_to offers_path
   end
 
+  def accept
+    @offer.update_attribute(:status, Offer.statuses[:accepted])
+  end
 
+  def deny
+    @offer.update_attributes({status: Offer.statuses[:denied], denied_at: Time.now })
+  end
+
+  def undo_deny
+    @offer.update_attribute(:status, Offer.statuses[:waiting])
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
