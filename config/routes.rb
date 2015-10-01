@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :campaigns, only: [] do
+  resources :campaigns, only: [:new, :create] do
     collection do
       get :influencer_campaign
       get :brand_campaign

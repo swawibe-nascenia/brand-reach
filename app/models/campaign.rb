@@ -8,6 +8,9 @@ class Campaign < ActiveRecord::Base
   # == Constants == #
   # ----------------------------------------------------------------------
 
+  enum campaign_post_type: [:post, :status, :profile_picture, :cover_picture]
+  enum schedule_type: [:daily, :date_range]
+  enum card_expiration_month: [:january, :february, :march, :april, :may, :june, :july, :august, :september, :october, :november, :december]
 
   # ----------------------------------------------------------------------
   # == Attributes == #
@@ -22,6 +25,7 @@ class Campaign < ActiveRecord::Base
   # == Associations and Nested Attributes == #
   # ----------------------------------------------------------------------
 
+  belongs_to :offer
 
   # ----------------------------------------------------------------------
   # == Validations == #

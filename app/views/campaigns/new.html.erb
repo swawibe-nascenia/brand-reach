@@ -1,0 +1,182 @@
+<%= stylesheet_link_tag  'campaigns', media: 'all' %>
+<%= stylesheet_link_tag  'bootstrap-datetimepicker.min', media: 'all' %>
+<%= javascript_include_tag 'bootstrap-datetimepicker.min' %>
+
+<% title "Influencer Campaign" %>
+
+<div class="campaign-create-wrapper">
+
+  <div class="row ">
+    <div class="col-lg-3 col-md-6 col-sm-8 col-xs-8">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-5">
+          <%= image_tag(@influencer.profile_picture, :class => 'campaign-influencer-picture', :alt => "profile-picture") %>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-7">
+          <h4><%= @influencer.full_name.present? ? @influencer.full_name : 'USER' %></h4>
+          <p class="influencer-title"> <%= @influencer.industry.present? ? @influencer.industry : 'Entrepreneur' %> </p>
+          <p class="influencer-address"> <%= @influencer.street_address.present? ? @influencer.street_address : 'User Address'  %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-9 col-md-6 col-sm-4 col-xs-4">
+      <div class="btn-box pull-right">
+        <button class="btn btn-message"  data-toggle="modal" data-target="#offer-modal"> MESSAGE</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <p class="profile-info">
+        <%= @influencer.short_bio %>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+      </p>
+    </div>
+  </div>
+
+  <% if @influencer.facebook.present? %>
+
+      <%= form_for :campaign, :url => {:controller => "campaigns", :action => "create" }, html: { class: ""} do |f| %>
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="social-account-tabs">
+                <ul class="nav nav-tabs social-account-nav-tabs">
+                  <li class="active"><a data-toggle="tab" href="#fb_bhanu"><i class="social-account-fa-edit fa fa-facebook"></i> Bhanu Prasad</a></li>
+                </ul>
+
+                <div class="tab-content social-account-tab-content">
+                  <div id="fb_bhanu" class="tab-pane fade in active">
+
+                    <div class="form-group">
+                      <div class="col-md-9">
+
+                        <%= f.label :campaign_post_type, "Choose the type of post" %>
+                        <%= f.select :campaign_post_type, Campaign.campaign_post_types.map{ |type, value| [type.titleize, value] }, { :include_blank => true }, { :class => 'type-of-post' } %>
+
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-md-9">
+
+                        <%= f.label :campaign_cost, "Cost" %>
+                        <%= f.text_field :campaign_cost, class: 'campaign-cost-input' %>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col-md-9">
+                        <div class="row">
+                          <%= f.label '', 'Schedule Post' %>
+
+                          <%= f.radio_button :schedule_type, 'daily', :checked => true %>
+                          <%= f.label :schedule_type, 'Run my ad set continuously starting today', :value => 'daily' %>
+                        </div>
+                        <div class="row">
+                          <%= f.radio_button :schedule_type, 'date_range' %>
+                          <%= f.label :schedule_type, 'Set a start and end date', :value => 'date_range' %>
+                        </div>
+
+                        <div class="row">
+                          <%= f.label :campaign_start_date, "Start" %>
+                          <%= f.text_field :campaign_start_date, class: 'campaign_date' %>
+                        </div>
+                        <div class="row">
+                          <%= f.label :campaign_end_date, "End" %>
+                          <%= f.text_field :campaign_end_date, class: 'datepicker' %>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col-md-9">
+
+                        <%= f.label :campaign_name, "Enter Campaign Name" %>
+                        <%= f.text_field :campaign_name %>
+                      </div>
+                    </div>
+                    <div class="">
+                      <% offer_id = rand(100) %>
+                      <%= f.hidden_field :offer_id, {value: offer_id} %>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-pink">WHAT TEXT AND LINKS DO YOU WANT TO USE?</div>
+
+          <div class="text-headline-form">
+
+            <div class="row">
+              <%= f.label :campaign_text, "Text" %>
+            </div>
+            <div class="row">
+              <%= f.text_area :campaign_text, rows: 4 %>
+            </div>
+
+            <div class="row">
+              <%= f.label :campaign_headline, "Headline" %>
+            </div>
+            <div class="row">
+              <%= f.text_field :campaign_headline %>
+            </div>
+
+          </div>
+
+
+          <div class="text-pink">PAYMENT</div>
+
+          <div class="payment-form">
+
+            <div class="row">
+              <%= f.label :card_number, "Card number" %>
+            </div>
+            <div class="row">
+              <%= f.text_field :card_number,  class: 'card-number'%>
+            </div>
+
+            <div class="row">
+            <%= f.label '', 'Expiration date' %>
+            </div>
+            <div class="row">
+              <%= f.select :card_expiration_month, Campaign.card_expiration_months.map{ |type, value| [type.titleize, value] }, {} %>
+              <%= select_year(Date.today, start_year: Time.now.year, end_year: Time.now.year+10, field_name: :card_expiration_year) %>
+            </div>
+
+            <div class="row">
+              <%= f.label :card_holder_name, "Cardholder name" %>
+            </div>
+            <div class="row">
+              <%= f.text_field :card_holder_name, class: 'card-holder-name' %>
+            </div>
+
+          </div>
+
+
+          <%= f.button  "BOOK NOW", class: 'btn btn-book-now' %>
+          <%= link_to "CANCEL", '', class: 'btn btn-book-now grey-color' %>
+      <% end %>
+
+
+  <% end %>
+</div>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".campaign_date").datepicker({
+            dateFormat: 'yy-mm-dd'
+        });
+
+    });
+</script>
