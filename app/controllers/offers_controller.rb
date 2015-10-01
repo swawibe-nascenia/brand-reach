@@ -5,11 +5,11 @@ class OffersController < ApplicationController
   # GET /offers.json
   def index
     if current_user.influencer?
-      @offers = current_user.offers_received.where(starred: false)
-      @stared_offers = current_user.offers_received.where(starred: true)
+      @offers = current_user.offers_received
+      @stared_offers = current_user.offers_received.where(starred_by_influencer: true)
     else
-      @offers = current_user.offers_sent.where(starred: false)
-      @stared_offers = current_user.offers_sent.where(starred: true)
+      @offers = current_user.offers_sent
+      @stared_offers = current_user.offers_sent.where(starred_by_brand: true)
     end
   end
 
@@ -67,6 +67,29 @@ class OffersController < ApplicationController
     end
   end
 
+  # take array of offer ids and make those stared
+  #  target_column may be 'starred_by_brand' of 'starred_by_influencer'
+  def toggle_star
+    target_column = current_user.brand? ? :starred_by_brand : :starred_by_influencer
+    ids = params[:ids].map(&:to_i)
+    offers = Offer.where(id: ids)
+
+    if offers.count == offers.where(target_column => true).count
+      # all offers are stared
+      reset_star(offers, target_column)
+    elsif offers.count == offers.where(target_column => false).count
+      # all offers are non stared
+      set_star(offers, target_column)
+    else
+      # make all stared
+      set_star(offers, target_column)
+    end
+
+    # redirect_to offers_path
+  end
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_offer
@@ -77,4 +100,12 @@ class OffersController < ApplicationController
     def offer_params
       params[:offer]
     end
+
+  def set_star(offers, target_column)
+    offers.update_all(target_column => true)
+  end
+
+  def reset_star(offers, target_column)
+    offers.update_all(target_column => false)
+  end
 end

@@ -1,0 +1,14 @@
+<tr>
+  <td><span class="status-inbox status-inbox"></span></td>
+  <td class="squaredFour"><input type="checkbox"  value="1"/></td>
+  <td class="inbox-star"><a href="#"><i class="fa fa-star star-yellow"></i></a></td>
+  <td><%= image_tag offer.sender.profile_picture, class: 'inbox-logo-responsive' %></td>
+  <td> <%= offer.sender.full_name %> </td>
+  <td class="standard-description"> <%= offer.message %></td>
+  <td>
+    <button class="btn btn-accept" type="button" data-toggle="dropdown">Accept
+    </button>
+    <a href="#"><span class="deny">Deny</span></a>
+  </td>
+  <td><%= offer.time %></td>
+</tr>

@@ -45,7 +45,9 @@ Rails.application.routes.draw do
   end
 
   resources :offers do
-
+    collection do
+      put :toggle_star
+    end
   end
 
   root to: 'public#home', as: :root

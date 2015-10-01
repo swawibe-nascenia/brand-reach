@@ -8,6 +8,7 @@ class Offer < ActiveRecord::Base
   # == Constants == #
   # ----------------------------------------------------------------------
 
+  enum status: [:waiting, :accepted, :denied]
 
   # ----------------------------------------------------------------------
   # == Attributes == #
@@ -42,6 +43,14 @@ class Offer < ActiveRecord::Base
   # ----------------------------------------------------------------------
   # == Instance methods == #
   # ----------------------------------------------------------------------
+
+  def time
+    if created_at.to_date == Date.today
+       created_at.strftime('%H:%M:%P')
+    else
+      created_at.strftime('%d:%m:%Y')
+    end
+  end
 
 
   # ----------------------------------------------------------------------

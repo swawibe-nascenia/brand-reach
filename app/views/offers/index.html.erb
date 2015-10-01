@@ -2,8 +2,6 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Offers</h1>
-
 <div class="header-bottom-margin"></div>
 <div class="payment-div ">
   <div class="payment-button-set pull-right">
@@ -20,223 +18,103 @@
 
   <ul class="nav nav-tabs" id="campaign-tabs">
     <li class= "active" id="inbox_list">
-      <a href="#performance" data-toggle="tab">
+      <a href="#inbox" data-toggle="tab">
                         <span id="performance-blue"><img src="<%= asset_path('Inbox-blue.png') %>">
                         </span><span id="performance-black" style="display: none"><img src="<%= asset_path('Inbox.png') %>"></span>
         <span class="inbox-tab">Inbox</span>
       </a>
     </li>
     <li class= "" id="starred_list">
-      <a href="#engagement" data-toggle="tab">
+      <a href="#stared_inbox" data-toggle="tab">
         <span id="engagement-black"><img src="<%= asset_path('Starred.png') %>"></span>
         <span id="engagement-blue" style="display: none"><img src="<%= asset_path('Starred-blue.png') %>"></span>
         <span class="starred-tab">Starred</span>
       </a>
     </li>
   </ul>
+
+  <!-- print tab elements -->
   <div class="tab-content panel panel-offers">
-    <div id="performance" class="tab-pane fade in active">
+    <div id="inbox" class="tab-pane fade in active">
       <table class="table table-striped table-bordered table-responsive offers_table">
         <tbody>
-        <tr>
-          <td><span class="status-inbox status-inbox"></span></td>
-          <td class="squaredFour"><input type="checkbox"  value="1"/></td>
-          <td class="inbox-star"><a href="#"><i class="fa fa-star star-yellow"></i></a></td>
-          <td><img src="images/pepsi-small.jpg" class="inbox-logo-responsive"></td>
-          <td>Pepsi Co </td>
-          <td>We would like to hire you ...</td>
-          <td>
-            <button class="btn btn-accept" type="button" data-toggle="dropdown">Accept
-            </button>
-            <a href="#"><span class="deny">Deny</span></a>
-          </td>
-          <td>9:43pm</td>
-        </tr>
-        <tr>
-          <td><span class="status-inbox status-inbox"></span></td>
-          <td class="squaredFour"><input type="checkbox"  value="1"/></td>
-          <td class="inbox-star"><a href="#"><i class="fa fa-star star-yellow"></i></a></td>
-          <td><img src="images/pepsi-small.jpg" class="inbox-logo-responsive"></td>
-          <td>Pepsi Co </td>
-          <td>Can u meet me today?</td>
-          <td>
-            <button class="btn btn-accept" type="button" data-toggle="dropdown">Accept
-            </button>
-            <a href="#"><span class="deny">Deny</span></a>
-          </td>
-          <td>9:43pm</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="squaredFour"><input type="checkbox"  value="1"/></td>
-          <td class="inbox-star"><a href="#"><i class="fa fa-star star-grey"></i></a></td>
-          <td><img src="images/Starbucks.png" class="inbox-logo-responsive"></td>
-          <td>Starbucks</td>
-          <td>Can u meet me today?</td>
-          <td></td>
-          <td>9:43pm</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="squaredFour"><input type="checkbox"  value="1"/></td>
-          <td class="inbox-star"><a href="#"><i class="fa fa-star star-grey"></i></a></td>
-          <td><img src="images/Creamstone.png" class="inbox-logo-responsive"></td>
-          <td>Creamstone</td>
-          <td>Can u meet me today?</td>
-          <td></td>
-          <td>04-06-2015</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="squaredFour"><input type="checkbox"  value="1"/></td>
-          <td class="inbox-star"><a href="#"><i class="fa fa-star star-grey"></i></a></td>
-          <td><img src="images/Harley-Davidson.png" class="inbox-logo-responsive"></td>
-          <td>Harley David- </td>
-          <td>Can u meet me today?</td>
-          <td></td>
-          <td>9:43pm</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="squaredFour"><input type="checkbox"  value="1"/></td>
-          <td class="inbox-star"><a href="#"><i class="fa fa-star star-grey"></i></a></td>
-          <td><img src="images/TakeOff.png" class="inbox-logo-responsive"></td>
-          <td>TakeOff</td>
-          <td>We would like to hire you ...</td>
-          <td></td>
-          <td>9:43pm</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td colspan=3><textarea class="offer-textarea" rows="3" placeholder="Start typing your message here"></textarea></td>
-          <td>
-            <button class="btn btn-accept" type="button" data-toggle="dropdown">Reply
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td colspan=3>
-            <img src="images/pepsi-small.jpg" class="reply-box-image"><span class="reply-message">It has been a pleasure working with you</span>
-          </td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td colspan=3><img src="images/TakeOff.png" class="reply-box-image"><span class="reply-message">We would like you to tweet about our new marketing campaign for Organic Foods.</span></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td colspan=3><img src="images/pepsi-small.jpg" class="reply-box-image"><span class="reply-message">Yes, I would like to do business with you. Please let me know what you need. </span> </td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td colspan=3><img src="images/TakeOff.png" class="reply-box-image"><span class="reply-message">We would like to hire you to tweet for us. Please let us know if you are interested in doing business with us.</span></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="squaredFour"><input type="checkbox"  value="1"/></td>
-          <td class="inbox-star"><a href="#"><i class="fa fa-star star-grey"></i></a></td>
-          <td><img src="images/Philips.png" class="inbox-logo-responsive"></td>
-          <td>Philips</td>
-          <td>Can u meet me today?</td>
-          <td></td>
-          <td>9:43pm</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="squaredFour"><input type="checkbox"  value="1"/></td>
-          <td class="inbox-star"><a href="#"><i class="fa fa-star star-grey"></i></a></td>
-          <td><img src="images/Levis.png" class="inbox-logo-responsive"></td>
-          <td>Levi's</td>
-          <td>Can u meet me today?</td>
-          <td></td>
-          <td>9:43pm</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="squaredFour"><input type="checkbox"  value="1"/></td>
-          <td class="inbox-star"><a href="#"><i class="fa fa-star star-grey"></i></a></td>
-          <td><img src="images/ITC.png" class="inbox-logo-responsive"></td>
-          <td>ITC</td>
-          <td>Can u meet me today?</td>
-          <td></td>
-          <td>9:43pm</td>
-        </tr>
+        <% @offers.each do |offer|  %>
+            <% if current_user.influencer? %>
+                <%= render partial: 'offers/influencer_offer_view', locals: { offer: offer} %>
+               <% else %>
+                <%= render partial: 'offers/brand_offer_veiw', locals: { offer: offer} %>
+            <% end %>
+
+            <% if current_user.influencer? || offer.accepted? %>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td colspan=3><textarea class="offer-textarea" rows="3" placeholder="Start typing your message here"></textarea></td>
+                  <td>
+                    <button class="btn btn-accept" type="button" data-toggle="dropdown">Reply
+                    </button>
+                  </td>
+                </tr>
+            <% end %>
+
+            <%# offer.messages.each do |offer|  %>
+                <!--<tr>-->
+                  <!--<td></td>-->
+                  <!--<td></td>-->
+                  <!--<td></td>-->
+                  <!--<td></td>-->
+                  <!--<td colspan=3>-->
+                    <!--<img src="images/pepsi-small.jpg" class="reply-box-image"><span class="reply-message">It has been a pleasure working with you</span>-->
+                  <!--</td>-->
+                  <!--<td></td>-->
+                <!--</tr>-->
+            <%# end %>
+        <% end %>
+
         </tbody>
       </table>
     </div>
 
 
-    <div id="engagement" class="tab-pane fade">
+    <div id="stared_inbox" class="tab-pane fade">
       <table class="table table-striped table-bordered table-responsive starred_table">
         <tbody>
-        <tr>
-          <td><span class="status-inbox status-inbox"></span></td>
-          <td class="squaredFour"><input type="checkbox"  value="1"/></td>
-          <td class="inbox-star"><a href="#"><i class="fa fa-star star-yellow"></i></a></td>
-          <td><img src="images/pepsi-small.jpg" class="inbox-logo-responsive"></td>
-          <td>Pepsi Co </td>
-          <td>We would like to hire you ...</td>
-          <td>
-            <button class="btn btn-accept" type="button" data-toggle="dropdown">Accept
-            </button>
-            <a href="#"><span class="deny">Deny</span></a>
-          </td>
-          <td>9:43pm</td>
-        </tr>
-        <tr>
-          <td><span class="status-inbox status-inbox"></span></td>
-          <td class="squaredFour"><input type="checkbox"  value="1"/></td>
-          <td class="inbox-star"><a href="#"><i class="fa fa-star star-yellow"></i></a></td>
-          <td><img src="images/pepsi-small.jpg" class="inbox-logo-responsive"></td>
-          <td>Pepsi Co </td>
-          <td>Can u meet me today?</td>
-          <td>
-            <button class="btn btn-accept" type="button" data-toggle="dropdown">Accept
-            </button>
-            <a href="#"><span class="deny">Deny</span></a>
-          </td>
-          <td>9:43pm</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="squaredFour"><input type="checkbox"  value="1"/></td>
-          <td class="inbox-star"><a href="#"><i class="fa fa-star star-grey"></i></a></td>
-          <td><img src="images/Starbucks.png" class="inbox-logo-responsive"></td>
-          <td>Starbucks</td>
-          <td>Can u meet me today?</td>
-          <td></td>
-          <td>9:43pm</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="squaredFour"><input type="checkbox"  value="1"/></td>
-          <td class="inbox-star"><a href="#"><i class="fa fa-star star-grey"></i></a></td>
-          <td><img src="images/Creamstone.png" class="inbox-logo-responsive"></td>
-          <td>Creamstone</td>
-          <td>Can u meet me today?</td>
-          <td></td>
-          <td>04-06-2015</td>
-        </tr>
+        <% @stared_offers.each do |offer|  %>
+            <% if current_user.influencer? %>
+                <%= render partial: 'offers/influencer_offer_view', locals: { offer: offer} %>
+            <% else %>
+                <%= render partial: 'offers/brand_offer_veiw', locals: { offer: offer} %>
+            <% end %>
+
+            <% if current_user.influencer? || offer.accepted? %>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td colspan=3><textarea class="offer-textarea" rows="3" placeholder="Start typing your message here"></textarea></td>
+                  <td>
+                    <button class="btn btn-accept" type="button" data-toggle="dropdown">Reply
+                    </button>
+                  </td>
+                </tr>
+            <% end %>
+
+            <%# offer.messages.each do |offer|  %>
+            <!--<tr>-->
+            <!--<td></td>-->
+            <!--<td></td>-->
+            <!--<td></td>-->
+            <!--<td></td>-->
+            <!--<td colspan=3>-->
+            <!--<img src="images/pepsi-small.jpg" class="reply-box-image"><span class="reply-message">It has been a pleasure working with you</span>-->
+            <!--</td>-->
+            <!--<td></td>-->
+            <!--</tr>-->
+            <%# end %>
+        <% end %>
         </tbody>
       </table>
     </div>
@@ -277,12 +155,12 @@
 
 
 </script>
-<% if params[:ok] %>
-    <script>
-      alert('you are ok');
-    </script>
-<% else %>
-    <script>
-        alert('you are not ok');
-    </script>
-<% end %>
+<%# if params[:ok] %>
+    <!--<script>-->
+//      alert('you are ok');
+    <!--</script>-->
+<%# else %>
+    <!--<script>-->
+//        alert('you are not ok');
+    <!--</script>-->
+<%# end %>
