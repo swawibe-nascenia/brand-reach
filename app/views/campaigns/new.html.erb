@@ -98,11 +98,11 @@
 
                         <div class="row">
                           <%= f.label :start_date, "Start" %>
-                          <%= f.text_field :start_date, class: 'campaign_date' %>
+                          <%= f.text_field :start_date, { value: Time.now, class: 'campaign_date' } %>
                         </div>
                         <div class="row">
                           <%= f.label :end_date, "End" %>
-                          <%= f.text_field :end_date, class: 'datepicker' %>
+                          <%= f.text_field :end_date, { value: Time.now+1.month, class: 'datepicker'} %>
                         </div>
                       </div>
                     </div>
