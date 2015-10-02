@@ -96,14 +96,17 @@
                           <%= f.label :schedule_type, 'Set a start and end date', :value => 'date_range' %>
                         </div>
 
-                        <div class="row">
-                          <%= f.label :start_date, "Start" %>
-                          <%= f.text_field :start_date, { value: Time.now, class: 'campaign_date' } %>
+                        <div class="campaign-date">
+                          <div class="row">
+                            <%= f.label :start_date, "Start" %>
+                            <%= f.text_field :start_date, { value: Time.now.strftime("%d/%m/%Y"), class: 'campaign_date' } %>
+                          </div>
+                          <div class="row">
+                            <%= f.label :end_date, "End" %>
+                            <%= f.text_field :end_date, { value: (Time.now + 1.month).strftime("%d/%m/%Y"), class: 'datepicker'} %>
+                          </div>
                         </div>
-                        <div class="row">
-                          <%= f.label :end_date, "End" %>
-                          <%= f.text_field :end_date, { value: Time.now+1.month, class: 'datepicker'} %>
-                        </div>
+
                       </div>
                     </div>
 
@@ -112,6 +115,7 @@
 
                         <%= f.label :name, "Enter Campaign Name" %>
                         <%= f.text_field :name %>
+
                       </div>
                     </div>
                     <div class="">
