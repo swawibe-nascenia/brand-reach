@@ -37,6 +37,7 @@ gem 'mini_magick'
 gem 'remotipart', '~> 1.2'
 gem 'kaminari', '~> 0.16.3'
 gem 'mysql2', '~> 0.3.18'
+gem 'pubnub', '~> 3.7.9'
 
 # gem 'haml'
 # gem 'haml-rails'

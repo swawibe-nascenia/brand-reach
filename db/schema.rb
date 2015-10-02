@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001094828) do
+ActiveRecord::Schema.define(version: 20151002100318) do
 
   create_table "facebooks", force: :cascade do |t|
     t.string   "uid",                 limit: 255,             null: false
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20151001094828) do
     t.string   "short_bio",              limit: 255
     t.integer  "user_type",              limit: 4,   default: 0
     t.integer  "gender",                 limit: 4
+    t.string   "channel_name",           limit: 255,                null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
