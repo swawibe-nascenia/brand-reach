@@ -8,15 +8,20 @@ $(function(){
     $('.make-all-stared').click(function(){
         var selected_offer_ids = seleted_offer_ids();
         console.log('selected ids' + selected_offer_ids);
-        $.ajax({
-            type: 'put',
-            url: '/offers/toggle_star',
-            dataType: "script",
-            data: {ids: selected_offer_ids, 'authenticity_token': $('meta[name="csrf-token"]').attr('content')},
-            success: function(data) {
-                console.log(data)
-            }
-        });
+        if(selected_offer_ids.length > 0){
+            $.ajax({
+                type: 'put',
+                url: '/offers/toggle_star',
+                dataType: "script",
+                data: {ids: selected_offer_ids, 'authenticity_token': $('meta[name="csrf-token"]').attr('content')},
+                success: function(data) {
+                    console.log(data)
+                }
+            });
+        }else{
+            alert('At least one offer has to be selected');
+        }
+
 
     });
 
