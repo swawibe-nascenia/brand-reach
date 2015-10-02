@@ -524,3 +524,28 @@ only screen and (max-width: 460px) {
     background-color: #999999;
 }
 
+#error_explanation {
+    width: 450px;
+    border: 2px solid #ff3a38;
+    padding: 7px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 14px;
+    margin: -7px -7px 0 -7px;
+    background-color: #ff3a38;
+    color: #fff;
+}
+
+#error_explanation ul li {
+    font-size: 13px;
+    list-style: square;
+    padding-top: 5px;
+}
+
+

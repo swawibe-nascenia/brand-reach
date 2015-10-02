@@ -12,7 +12,7 @@ class CampaignsController < ApplicationController
 
   def new
     @influencer = current_user
-    @campaign = Campaign.last
+    @campaign = Campaign.new
   end
 
   def create
@@ -20,9 +20,14 @@ class CampaignsController < ApplicationController
     @campaign.post_type = campaign_params[:post_type].to_i
     @campaign.card_expiration_month = campaign_params[:card_expiration_month].to_i
     @campaign.card_expiration_year = campaign_params[:card_expiration_year].to_i
-    @campaign.save
 
-    redirect_to new_campaign_path
+    if @campaign.save
+      redirect_to @campaign
+    else
+      @influencer = current_user
+      render 'new'
+    end
+
   end
 
   private

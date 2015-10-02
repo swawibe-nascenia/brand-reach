@@ -41,6 +41,20 @@
 
       <%= form_for :campaign , url: campaigns_path , html: { class: ""} do |f| %>
 
+          <% if @campaign.errors.any? %>
+              <div id="error_explanation">
+                <h2>
+                  <%= pluralize(@campaign.errors.count, "error") %> prohibited
+                  this article from being saved:
+                </h2>
+                <ul>
+                  <% @campaign.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+
 
           <div class="row">
             <div class="col-md-12">
