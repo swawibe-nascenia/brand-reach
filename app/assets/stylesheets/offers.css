@@ -173,5 +173,9 @@ only screen and (max-width: 540px) {
     min-width: 200px;
 }
 
+.make-all-stared{
+    cursor: pointer;
+}
+
 
 

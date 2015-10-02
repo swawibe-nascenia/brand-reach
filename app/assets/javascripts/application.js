@@ -17,6 +17,7 @@
 //= require bootstrap
 //= require profiles
 //= require nouislider
+//= require custom
 // require turbolinks
 // require_tree .
 
