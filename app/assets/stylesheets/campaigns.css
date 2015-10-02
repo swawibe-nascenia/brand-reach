@@ -450,10 +450,6 @@ only screen and (max-width: 460px) {
     padding-right: 5px;
 }
 
-.social-account-tab-content .form-group {
-    text-align: right;
-}
-
 .social-account-tab-content label {
     padding-right: 15px;
 }
@@ -554,6 +550,10 @@ only screen and (max-width: 460px) {
     width: 280px;
     background-color: #dbd9da;
     padding: 10px 20px;
+}
+
+.social-account-tab-content  input#campaign_cost{
+    width: 150px;
 }
 
 

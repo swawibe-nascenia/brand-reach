@@ -39,7 +39,7 @@
 
   <% if @influencer.facebook.present? %>
 
-      <%= form_for :campaign , url: campaigns_path , html: { class: ""} do |f| %>
+      <%= form_for :campaign , url: campaigns_path , html: { class: 'form-horizontal'} do |f| %>
 
           <% if @campaign.errors.any? %>
               <div id="error_explanation">
@@ -56,7 +56,7 @@
           <% end %>
 
 
-          <div class="row">
+
             <div class="col-md-12">
               <div class="social-account-tabs">
                 <ul class="nav nav-tabs social-account-nav-tabs">
@@ -67,41 +67,39 @@
                   <div id="fb_bhanu" class="tab-pane fade in active">
 
                     <div class="form-group">
-                      <div class="col-md-9">
-
-                        <%= f.label :post_type, "Choose the type of post" %>
-                        <%= f.select :post_type, options_for_select(Campaign.post_types.map{ |type, value| [type.titleize, value] }) , { :include_blank => true }, { :class => 'type-of-post' } %>
-                        <%#= f.select :post_type, options_for_select(Campaign.post_types.map{ |type, value| [type.titleize, value] }, Campaign.post_types[@campaign.post_type]) , { :include_blank => true }, { :class => 'type-of-post' } %>
-
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-md-9">
-
-                        <%= f.label :cost, "Cost" %>
-                        <%= f.text_field :cost, class: 'campaign-cost-input' %>
+                      <%= f.label :post_type, 'Choose the type of post', class: 'control-label col-md-4' %>
+                      <div class="col-sm-8">
+                        <%= f.select :post_type, options_for_select(Campaign.post_types.map{ |type, value| [type.titleize, value] }) , { :include_blank => true }, { :class => 'form-control type-of-post' } %>
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <div class="col-md-9">
-                        <div class="row">
-                          <%= f.label '', 'Schedule Post' %>
+                      <%= f.label :cost, "Cost", class: 'control-label col-md-4' %>
+                      <div class="col-md-8">
+                        <%= f.text_field :cost, class: 'form-control campaign-cost-input' %>
+                      </div>
+                    </div>
 
+                    <div class="form-group">
+                      <%= f.label '', 'Schedule Post', class: 'control-label col-md-4' %>
+                      <div class="col-md-8">
+                        <div>
                           <%= f.radio_button :schedule_type, 'daily', :checked => true %>
-                          <%= f.label :schedule_type, 'Run my ad set continuously starting today', :value => 'daily' %>
+                          <span>Run my ad set continuously starting today</span>
                         </div>
-                        <div class="row">
+
+                        <div>
                           <%= f.radio_button :schedule_type, 'date_range' %>
-                          <%= f.label :schedule_type, 'Set a start and end date', :value => 'date_range' %>
+                          <span>Set a start and end date</span>
                         </div>
 
                         <div class="campaign-date">
-                          <div class="row">
+                          <div>
                             <%= f.label :start_date, "Start" %>
                             <%= f.text_field :start_date, { value: Time.now.strftime("%d/%m/%Y"), class: 'campaign_date' } %>
                           </div>
-                          <div class="row">
+
+                          <div>
                             <%= f.label :end_date, "End" %>
                             <%= f.text_field :end_date, { value: (Time.now + 1.month).strftime("%d/%m/%Y"), class: 'datepicker'} %>
                           </div>
@@ -110,14 +108,15 @@
                       </div>
                     </div>
 
+
+
                     <div class="form-group">
-                      <div class="col-md-9">
-
-                        <%= f.label :name, "Enter Campaign Name" %>
+                        <%= f.label :name, "Enter Campaign Name", class: 'control-label col-md-4' %>
+                      <div class="col-md-8">
                         <%= f.text_field :name %>
-
                       </div>
                     </div>
+
                     <div class="">
                       <% offer_id = 1 %>
                       <%= f.hidden_field :offer_id, {value: offer_id} %>
@@ -128,7 +127,7 @@
                 </div>
               </div>
             </div>
-          </div>
+
 
           <div class="text-pink">WHAT TEXT AND LINKS DO YOU WANT TO USE?</div>
 
