@@ -14,22 +14,22 @@
 ActiveRecord::Schema.define(version: 20150930073514) do
 
   create_table "campaigns", force: :cascade do |t|
-    t.string  "campaign_name",              limit: 255
-    t.string  "campaign_text",              limit: 255
-    t.string  "campaign_headline",          limit: 255
+    t.string  "name",                       limit: 255
+    t.string  "text",                       limit: 255
+    t.string  "headline",                   limit: 255
     t.string  "social_account_page_name",   limit: 255
-    t.date    "campaign_start_date"
-    t.date    "campaign_end_date"
+    t.date    "start_date"
+    t.date    "end_date"
     t.boolean "campaign_active",            limit: 1,   default: true
-    t.integer "campaign_cost",              limit: 4,   default: 0
+    t.integer "cost",                       limit: 4,   default: 0
     t.integer "social_account_activity_id", limit: 4,   default: 0
-    t.integer "campaign_post_type",         limit: 4,   default: 0
+    t.integer "post_type",                  limit: 4,   default: 0
     t.integer "number_of_likes",            limit: 4,   default: 0
     t.integer "number_of_post_reach",       limit: 4,   default: 0
     t.integer "number_of_comments",         limit: 4,   default: 0
     t.integer "number_of_shares",           limit: 4,   default: 0
     t.string  "card_number",                limit: 255
-    t.integer "card_expiration_month",      limit: 4,   default: 0
+    t.integer "card_expiration_month",      limit: 4
     t.integer "card_expiration_year",       limit: 4
     t.string  "card_holder_name",           limit: 255
     t.integer "schedule_type",              limit: 4,   default: 0

@@ -8,7 +8,7 @@ class Campaign < ActiveRecord::Base
   # == Constants == #
   # ----------------------------------------------------------------------
 
-  enum campaign_post_type: [:post, :status, :profile_picture, :cover_picture]
+  enum post_type: [:post, :status, :profile_picture, :cover_picture]
   enum schedule_type: [:daily, :date_range]
   enum card_expiration_month: [:january, :february, :march, :april, :may, :june, :july, :august, :september, :october, :november, :december]
 
@@ -31,6 +31,7 @@ class Campaign < ActiveRecord::Base
   # == Validations == #
   # ----------------------------------------------------------------------
 
+  validates :cost, :numericality => { :greater_than_or_equal_to => 0 }
 
   # ----------------------------------------------------------------------
   # == Callbacks == #

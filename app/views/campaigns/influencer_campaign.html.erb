@@ -58,10 +58,10 @@
                       <label for="cmn-toggle-'<%= campaign.id %>'"></label>
                     </div>
                   </td>
-                  <td><%= image_tag( campaign.offer.sender.image , :class => 'pepsi-img-responsive' ) %> &nbsp; <%= campaign.campaign_name %></td>
+                  <td><%= image_tag( campaign.offer.sender.image , :class => 'pepsi-img-responsive' ) %> &nbsp; <%= campaign.name %></td>
                   <td><%= campaign.number_of_likes %></td>
                   <td><%= campaign.number_of_post_reach %></td>
-                  <td><%= campaign.campaign_end_date.present? ? campaign.campaign_end_date : 'NA' %></td>
+                  <td><%= campaign.end_date.present? ? campaign.end_date : 'NA' %></td>
                 </tr>
             <% end %>
             </tbody>
@@ -95,7 +95,7 @@
                       <label for="engagement_switch_'<%= campaign.id %>'"></label>
                     </div>
                   </td>
-                  <td><%= image_tag( campaign.offer.sender.image , :class => 'pepsi-img-responsive' ) %> &nbsp; <%= campaign.campaign_name %></td>
+                  <td><%= image_tag( campaign.offer.sender.image , :class => 'pepsi-img-responsive' ) %> &nbsp; <%= campaign.name %></td>
                   <td><%= campaign.number_of_likes %></td>
                   <td><%= campaign.number_of_comments %></td>
                   <td><%= campaign.number_of_shares %></td>

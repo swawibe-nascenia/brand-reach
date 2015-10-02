@@ -1,6 +1,5 @@
 <%= stylesheet_link_tag  'campaigns', media: 'all' %>
 <%= stylesheet_link_tag  'bootstrap-datetimepicker.min', media: 'all' %>
-<%= javascript_include_tag 'bootstrap-datetimepicker.min' %>
 
 <% title "Influencer Campaign" %>
 
@@ -40,7 +39,7 @@
 
   <% if @influencer.facebook.present? %>
 
-      <%= form_for :campaign, :url => {:controller => "campaigns", :action => "create" }, html: { class: ""} do |f| %>
+      <%= form_for :campaign , url: campaigns_path , html: { class: ""} do |f| %>
 
 
           <div class="row">
@@ -56,16 +55,17 @@
                     <div class="form-group">
                       <div class="col-md-9">
 
-                        <%= f.label :campaign_post_type, "Choose the type of post" %>
-                        <%= f.select :campaign_post_type, Campaign.campaign_post_types.map{ |type, value| [type.titleize, value] }, { :include_blank => true }, { :class => 'type-of-post' } %>
+                        <%= f.label :post_type, "Choose the type of post" %>
+                        <%= f.select :post_type, options_for_select(Campaign.post_types.map{ |type, value| [type.titleize, value] }) , { :include_blank => true }, { :class => 'type-of-post' } %>
+                        <%#= f.select :post_type, options_for_select(Campaign.post_types.map{ |type, value| [type.titleize, value] }, Campaign.post_types[@campaign.post_type]) , { :include_blank => true }, { :class => 'type-of-post' } %>
 
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="col-md-9">
 
-                        <%= f.label :campaign_cost, "Cost" %>
-                        <%= f.text_field :campaign_cost, class: 'campaign-cost-input' %>
+                        <%= f.label :cost, "Cost" %>
+                        <%= f.text_field :cost, class: 'campaign-cost-input' %>
                       </div>
                     </div>
 
@@ -83,12 +83,12 @@
                         </div>
 
                         <div class="row">
-                          <%= f.label :campaign_start_date, "Start" %>
-                          <%= f.text_field :campaign_start_date, class: 'campaign_date' %>
+                          <%= f.label :start_date, "Start" %>
+                          <%= f.text_field :start_date, class: 'campaign_date' %>
                         </div>
                         <div class="row">
-                          <%= f.label :campaign_end_date, "End" %>
-                          <%= f.text_field :campaign_end_date, class: 'datepicker' %>
+                          <%= f.label :end_date, "End" %>
+                          <%= f.text_field :end_date, class: 'datepicker' %>
                         </div>
                       </div>
                     </div>
@@ -96,8 +96,8 @@
                     <div class="form-group">
                       <div class="col-md-9">
 
-                        <%= f.label :campaign_name, "Enter Campaign Name" %>
-                        <%= f.text_field :campaign_name %>
+                        <%= f.label :name, "Enter Campaign Name" %>
+                        <%= f.text_field :name %>
                       </div>
                     </div>
                     <div class="">
@@ -117,17 +117,17 @@
           <div class="text-headline-form">
 
             <div class="row">
-              <%= f.label :campaign_text, "Text" %>
+              <%= f.label :text, "Text" %>
             </div>
             <div class="row">
-              <%= f.text_area :campaign_text, rows: 4 %>
+              <%= f.text_area :text, rows: 4 %>
             </div>
 
             <div class="row">
-              <%= f.label :campaign_headline, "Headline" %>
+              <%= f.label :headline, "Headline" %>
             </div>
             <div class="row">
-              <%= f.text_field :campaign_headline %>
+              <%= f.text_field :headline %>
             </div>
 
           </div>
@@ -145,11 +145,13 @@
             </div>
 
             <div class="row">
-            <%= f.label '', 'Expiration date' %>
+              <%= f.label '', 'Expiration date' %>
             </div>
             <div class="row">
-              <%= f.select :card_expiration_month, Campaign.card_expiration_months.map{ |type, value| [type.titleize, value] }, {} %>
-              <%= select_year(Date.today, start_year: Time.now.year, end_year: Time.now.year+10, field_name: :card_expiration_year) %>
+              <%= f.select :card_expiration_month,  options_for_select(Campaign.card_expiration_months.map{ |type, value| [type.titleize, value] } ), { :include_blank => true }, {} %>
+              <%#= f.select :card_expiration_month,  options_for_select(Campaign.card_expiration_months.map{ |type, value| [type.titleize, value] }, Campaign.card_expiration_months[@campaign.card_expiration_month] ), { :include_blank => true }, {} %>
+              <%= f.select :card_expiration_year, options_for_select((Time.now.year)..(Time.now.year+10)), { :include_blank => true } %>
+              <%#= f.select :card_expiration_year, options_for_select((Time.now.year)..(Time.now.year+10), @campaign.card_expiration_year), { :include_blank => true } %>
             </div>
 
             <div class="row">
@@ -171,12 +173,12 @@
 </div>
 
 </div>
+<%= javascript_include_tag 'bootstrap-datetimepicker.min' %>
+
 
 <script type="text/javascript">
-    $(document).ready(function(){
-        $(".campaign_date").datepicker({
-            dateFormat: 'yy-mm-dd'
-        });
+    $(document).ready(function() {
 
-    });
+        $('.datepicker').datepicker();
+    })
 </script>
