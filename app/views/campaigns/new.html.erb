@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag  'campaigns', media: 'all' %>
-<%= stylesheet_link_tag  'bootstrap-datetimepicker.min', media: 'all' %>
+
 
 <% title "Influencer Campaign" %>
 
@@ -190,12 +190,22 @@
 </div>
 
 </div>
-<%= javascript_include_tag 'bootstrap-datetimepicker.min' %>
 
 
 <script type="text/javascript">
     $(document).ready(function() {
 
-        $('.datepicker').datepicker();
+        $('.datepicker').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            numberOfMonths: 1,
+            showOn: "both",
+            buttonImageOnly: false,
+            dateFormat: "dd/mm/yy",
+            altField: "#forminp1",
+            onSelect: function(dateText, inst) {
+                $(this).attr('value',dateText);
+            }
+        });
     })
 </script>

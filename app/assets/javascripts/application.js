@@ -16,6 +16,7 @@
 //= require twitter/bootstrap
 //= require bootstrap
 //= require profiles
+//= require jquery-ui
 // require turbolinks
 // require_tree .
 
