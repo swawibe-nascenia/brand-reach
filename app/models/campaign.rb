@@ -34,8 +34,8 @@ class Campaign < ActiveRecord::Base
   # == Validations == #
   # ----------------------------------------------------------------------
 
-  validates :cost, :numericality => { :greater_than_or_equal_to => 0 }
-  validates :card_number, presence: true,  credit_card_number: true
+  validates :cost, :numericality => { :greater_than_or_equal_to => 0 }, allow_blank: true
+  validates :card_number, credit_card_number: true, allow_blank: true
 
   # ----------------------------------------------------------------------
   # == Callbacks == #

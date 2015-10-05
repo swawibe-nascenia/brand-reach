@@ -85,24 +85,24 @@
                       <%= f.label '', 'Schedule Post', class: 'control-label col-md-4' %>
                       <div class="col-md-8">
                         <div>
-                          <%= f.radio_button :schedule_type, 'daily', :checked => true %>
+                          <%= f.radio_button :schedule_type, 'daily', { :checked => true, class: 'daily' } %>
                           <span>Run my ad set continuously starting today</span>
                         </div>
 
                         <div>
-                          <%= f.radio_button :schedule_type, 'date_range' %>
+                          <%= f.radio_button :schedule_type, 'date_range', class: 'date-range' %>
                           <span>Set a start and end date</span>
                         </div>
 
-                        <div class="campaign-date">
+                        <div class="campaign-date" id="start_end">
                           <div>
                             <%= f.label :start_date, "Start" %>
-                            <%= f.text_field :start_date, { value: Time.now.strftime("%d/%m/%Y"), class: 'start_date' } %>
+                            <%= f.text_field :start_date, { value: Time.now.strftime("%d/%m/%Y"), class: 'start_date', disabled: 'disabled' }%>
                           </div>
 
                           <div>
                             <%= f.label :end_date, "End" %>
-                            <%= f.text_field :end_date, { value: (Time.now + 1.month).strftime("%d/%m/%Y"), class: 'end_date'} %>
+                            <%= f.text_field :end_date, { value: (Time.now + 1.month).strftime("%d/%m/%Y"), class: 'end_date', disabled: 'disabled'} %>
                           </div>
                         </div>
 
@@ -208,6 +208,14 @@
             onSelect: function(dateText, inst) {
                 $(this).attr('value',dateText);
             }
+        });
+
+        $('.daily').click(function() {
+            $('#start_end').find('*').attr('disabled', true);
+        });
+
+        $('.date-range').click(function() {
+            $('#start_end').find('*').attr('disabled', false);
         });
     })
 </script>

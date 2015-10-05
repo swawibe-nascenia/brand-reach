@@ -22,7 +22,7 @@ class CampaignsController < ApplicationController
     @campaign.card_expiration_month = campaign_params[:card_expiration_month].to_i
     @campaign.card_expiration_year = campaign_params[:card_expiration_year].to_i
     if @campaign.daily?
-      @campaign.end_date = nil
+      @campaign.start_date = Time.now.strftime('%d/%m/%Y')
     end
 
     if @campaign.save
