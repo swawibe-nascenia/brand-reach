@@ -248,12 +248,12 @@ input.cmn-toggle-round:checked + label:after {
     padding-left: 35px;
 }
 
-.performance_table > tbody > tr:nth-child(n+4):nth-child(-n+10) > td,
-.engagement_table > tbody > tr:nth-child(n+4):nth-child(-n+10) > td {
-    border-top: none;
-    border-bottom: none;
-    background: white;
-}
+/*.performance_table > tbody > tr:nth-child(n+4):nth-child(-n+10) > td,*/
+/*.engagement_table > tbody > tr:nth-child(n+4):nth-child(-n+10) > td {*/
+    /*border-top: none;*/
+    /*border-bottom: none;*/
+    /*background: white;*/
+/*}*/
 
 @media
 only screen and (max-width: 1130px) {

@@ -2,6 +2,9 @@ class Campaign < ActiveRecord::Base
   # ----------------------------------------------------------------------
   # == Include Modules == #
   # ----------------------------------------------------------------------
+  # include validations for loading card number validations
+
+  include ActiveModel::Validations
 
 
   # ----------------------------------------------------------------------
@@ -16,9 +19,6 @@ class Campaign < ActiveRecord::Base
   # == Attributes == #
   # ----------------------------------------------------------------------
 
-  # include validations for loading card number validations
-
-  include ActiveModel::Validations
 
   # ----------------------------------------------------------------------
   # == File Uploader == #
@@ -41,6 +41,8 @@ class Campaign < ActiveRecord::Base
   # == Callbacks == #
   # ----------------------------------------------------------------------
 
+  before_save :date_validation
+
   # ----------------------------------------------------------------------
   # == Scopes and Other macros == #
   # ----------------------------------------------------------------------
@@ -48,5 +50,14 @@ class Campaign < ActiveRecord::Base
   # ----------------------------------------------------------------------
   # == Instance methods == #
   # ----------------------------------------------------------------------
+
+  def date_validation
+    if self[:end_date] < self[:start_date]
+      errors[:end_date] << " Must Be greater than Start Date"
+      return false
+    else
+      return true
+    end
+  end
 
 end
