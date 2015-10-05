@@ -1,4 +1,5 @@
 <%= stylesheet_link_tag  'campaigns', media: 'all' %>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
 
 <% title "Influencer Campaign" %>
@@ -96,12 +97,12 @@
                         <div class="campaign-date">
                           <div>
                             <%= f.label :start_date, "Start" %>
-                            <%= f.text_field :start_date, { value: Time.now.strftime("%d/%m/%Y"), class: 'campaign_date' } %>
+                            <%= f.text_field :start_date, { value: Time.now.strftime("%d/%m/%Y"), class: 'start_date' } %>
                           </div>
 
                           <div>
                             <%= f.label :end_date, "End" %>
-                            <%= f.text_field :end_date, { value: (Time.now + 1.month).strftime("%d/%m/%Y"), class: 'datepicker'} %>
+                            <%= f.text_field :end_date, { value: (Time.now + 1.month).strftime("%d/%m/%Y"), class: 'end_date'} %>
                           </div>
                         </div>
 
@@ -195,14 +196,15 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        $('.datepicker').datepicker({
-            changeMonth: true,
-            changeYear: true,
-            numberOfMonths: 1,
-            showOn: "both",
-            buttonImageOnly: false,
+        $('.start_date').datepicker({
             dateFormat: "dd/mm/yy",
-            altField: "#forminp1",
+            onSelect: function(dateText, inst) {
+                $(this).attr('value',dateText);
+            }
+        });
+
+        $('.end_date').datepicker({
+            dateFormat: "dd/mm/yy",
             onSelect: function(dateText, inst) {
                 $(this).attr('value',dateText);
             }

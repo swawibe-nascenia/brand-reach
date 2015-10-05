@@ -3,8 +3,8 @@ class CampaignsController < ApplicationController
   respond_to :html, :js
 
   def influencer_campaign
-      @campaigns = Campaign.all
-      # @campaigns = Campaign.where(offer_id: current_user.offers_received_ids) || []
+    @campaigns = Campaign.all
+    # @campaigns = Campaign.where(offer_id: current_user.offers_received_ids) || []
   end
 
   def brand_campaign
@@ -21,6 +21,9 @@ class CampaignsController < ApplicationController
     @campaign.post_type = campaign_params[:post_type].to_i
     @campaign.card_expiration_month = campaign_params[:card_expiration_month].to_i
     @campaign.card_expiration_year = campaign_params[:card_expiration_year].to_i
+    if @campaign.daily?
+      @campaign.end_date = nil
+    end
 
     if @campaign.save
       redirect_to new_campaign_path
@@ -35,9 +38,9 @@ class CampaignsController < ApplicationController
 
   def campaign_params
     params.require(:campaign).permit(:name, :text, :headline, :social_account_page_name, :start_date,
-                                 :end_date, :campaign_active, :cost, :social_account_activity_id,
-                                 :post_type, :number_of_likes, :number_of_post_reach, :number_of_comments,
-                                 :number_of_shares, :card_number, :card_expiration_month, :card_expiration_year, :card_holder_name, :offer_id, :schedule_type
+                                     :end_date, :campaign_active, :cost, :social_account_activity_id,
+                                     :post_type, :number_of_likes, :number_of_post_reach, :number_of_comments,
+                                     :number_of_shares, :card_number, :card_expiration_month, :card_expiration_year, :card_holder_name, :offer_id, :schedule_type
     )
   end
 

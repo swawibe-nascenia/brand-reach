@@ -16,6 +16,9 @@ class Campaign < ActiveRecord::Base
   # == Attributes == #
   # ----------------------------------------------------------------------
 
+  # include validations for loading card number validations
+
+  include ActiveModel::Validations
 
   # ----------------------------------------------------------------------
   # == File Uploader == #
@@ -32,6 +35,7 @@ class Campaign < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   validates :cost, :numericality => { :greater_than_or_equal_to => 0 }
+  validates :card_number, presence: true,  credit_card_number: true
 
   # ----------------------------------------------------------------------
   # == Callbacks == #

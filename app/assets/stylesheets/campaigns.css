@@ -550,6 +550,7 @@ only screen and (max-width: 460px) {
     width: 280px;
     background-color: #dbd9da;
     padding: 10px 20px;
+    margin: 20px 0 0 7px;
 }
 
 .social-account-tab-content  input#campaign_cost{
