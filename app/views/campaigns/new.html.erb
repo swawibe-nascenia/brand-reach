@@ -107,8 +107,6 @@
                       </div>
                     </div>
 
-
-
                     <div class="form-group">
                         <%= f.label :name, "Enter Campaign Name", class: 'control-label col-md-4' %>
                       <div class="col-md-8">
@@ -116,12 +114,9 @@
                       </div>
                     </div>
 
-                    <div class="">
-                      <%= f.hidden_field :offer_id %>
-                    </div>
-
+                    <%= f.hidden_field :sender_id %>
+                    <%= f.hidden_field :receiver_id %>
                   </div>
-
                 </div>
               </div>
             </div>
