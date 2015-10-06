@@ -28,6 +28,7 @@ class CampaignsController < ApplicationController
     if @campaign.save
       redirect_to brand_campaign_campaigns_path
     else
+      @influencer = current_user
       render 'new'
     end
 
