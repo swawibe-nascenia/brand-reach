@@ -51,11 +51,11 @@
             <tbody>
             <% @campaigns.each do |campaign| %>
                 <tr>
-                  <td class="squaredFour"><input type="checkbox" id="id_'<%= campaign.id %>'" value="1"/></td>
+                  <td class="squaredFour"><input type="checkbox" data-id="performance_<%= campaign.id %>" value="1"/></td>
                   <td>
                     <div class="switch">
-                      <input id="cmn-toggle-'<%= campaign.id %>'" class="cmn-toggle cmn-toggle-round" type="checkbox" value="<%= campaign.campaign_active %>">
-                      <label for="cmn-toggle-'<%= campaign.id %>'"></label>
+                      <input id="performance_switch_<%= campaign.id %>" class="cmn-toggle cmn-toggle-round" type="checkbox" value="<%= campaign.campaign_active %>">
+                      <label for="performance_switch_<%= campaign.id %>"></label>
                     </div>
                   </td>
                   <td><%= image_tag( campaign.offer.sender.profile_picture , :class => 'pepsi-img-responsive' ) %> &nbsp; <%= campaign.name %></td>
@@ -88,11 +88,11 @@
             <tbody>
             <% @campaigns.each do |campaign| %>
                 <tr>
-                  <td class="squaredFour"><input type="checkbox" id="engagement_'<%= campaign.id %>'" value="1"/></td>
+                  <td class="squaredFour"><input type="checkbox" data-id="engagement_<%= campaign.id %>" value="1"/></td>
                   <td>
                     <div class="switch">
-                      <input id="engagement_switch_'<%= campaign.id %>'" class="cmn-toggle cmn-toggle-round" type="checkbox" value="<%= campaign.campaign_active %>">
-                      <label for="engagement_switch_'<%= campaign.id %>'"></label>
+                      <input id="engagement_switch_<%= campaign.id %>" class="cmn-toggle cmn-toggle-round" type="checkbox" value="<%= campaign.campaign_active %>">
+                      <label for="engagement_switch_<%= campaign.id %>"></label>
                     </div>
                   </td>
                   <td><%= image_tag( campaign.offer.sender.image , :class => 'pepsi-img-responsive' ) %> &nbsp; <%= campaign.name %></td>
@@ -136,6 +136,11 @@
             document.getElementById("performance-blue").style.display = 'inline';
             document.getElementById("engagement-blue").style.display = 'none';
             document.getElementById("engagement-black").style.display = 'inline';
+        });
+
+        $(document).on('click','.switch',function(){
+
+
         });
     });
 
