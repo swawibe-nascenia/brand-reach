@@ -47,6 +47,8 @@ class User < ActiveRecord::Base
   # == Callbacks == #
   # ----------------------------------------------------------------------
 
+  after_save :generate_channel_name
+
   # ----------------------------------------------------------------------
   # == Scopes and Other macros == #
   # ----------------------------------------------------------------------
@@ -131,5 +133,14 @@ class User < ActiveRecord::Base
   # ----------------------------------------------------------------------
   # == Private == #
   # ----------------------------------------------------------------------
+  private
+
+  def generate_channel_name
+    self.update_column(:channel_name, generate_channel_postfix) if self.channel_name.blank?
+  end
+
+  def generate_channel_postfix
+    rand(36**15).to_s(36) + self.id.to_s
+  end
 
 end

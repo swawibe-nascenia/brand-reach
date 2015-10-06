@@ -38,6 +38,7 @@ gem 'kaminari', '~> 0.16.3'
 gem 'mysql2', '~> 0.3.18'
 gem 'orm_adapter'
 gem 'credit_card_validations'
+gem 'pubnub', '~> 3.7.9'
 
 # gem 'haml'
 # gem 'haml-rails'

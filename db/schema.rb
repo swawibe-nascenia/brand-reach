@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20151002100318) do
     t.integer "offer_id",                   limit: 4,                  null: false
   end
 
-
   create_table "facebooks", force: :cascade do |t|
     t.string   "uid",                 limit: 255,             null: false
     t.string   "access_token",        limit: 255,             null: false
