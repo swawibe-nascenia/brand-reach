@@ -33,8 +33,8 @@ class User < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   has_one :facebook, foreign_key: 'influencer_id', dependent: :destroy
-  has_many :offers_sent, class_name: 'Offer', foreign_key: 'sender_id', dependent: :destroy
-  has_many :offers_received, class_name: 'Offer', foreign_key: 'receiver_id', dependent: :destroy
+  has_many :campaigns_sent, class_name: 'Campaign', foreign_key: 'sender_id', dependent: :destroy
+  has_many :campaigns_received, class_name: 'Campaign', foreign_key: 'receiver_id', dependent: :destroy
 
   # ----------------------------------------------------------------------
   # == Validations == #

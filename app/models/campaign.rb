@@ -29,6 +29,8 @@ class Campaign < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   has_many :messages
+  belongs_to :sender, class_name: 'User', foreign_key: :sender_id
+  belongs_to :receiver, class_name: 'User', foreign_key: :receiver_id
 
   # ----------------------------------------------------------------------
   # == Validations == #
@@ -36,6 +38,7 @@ class Campaign < ActiveRecord::Base
 
   validates :cost, :numericality => { :greater_than_or_equal_to => 0 }, allow_blank: true
   validates :card_number, credit_card_number: true, allow_blank: true
+  validates :sender_id, :receiver_id, presence: true
 
   # ----------------------------------------------------------------------
   # == Callbacks == #
