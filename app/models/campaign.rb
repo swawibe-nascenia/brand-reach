@@ -52,8 +52,8 @@ class Campaign < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   def date_validation
-    if self[:end_date] < self[:start_date]
-      errors[:end_date] << " Must Be greater than Start Date"
+    if self[:end_date].present? && ( self[:end_date] < self[:start_date] )
+      errors[:End] << "Date must be greater than Start Date"
       return false
     else
       return true
