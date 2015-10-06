@@ -13,7 +13,7 @@ class CampaignsController < ApplicationController
 
   def new
     @influencer = current_user
-    @campaign = Campaign.new
+    @campaign = Campaign.new(offer_id: params[:offer_id])
   end
 
   def create
@@ -26,9 +26,8 @@ class CampaignsController < ApplicationController
     end
 
     if @campaign.save
-      redirect_to new_campaign_path
+      redirect_to brand_campaign_campaigns_path
     else
-      @influencer = current_user
       render 'new'
     end
 

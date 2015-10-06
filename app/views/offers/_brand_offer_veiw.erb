@@ -11,7 +11,7 @@
   <td class="standard-description"> <%= offer.message %></td>
   <td>
     <% if offer.accepted? %>
-        <%= link_to 'Engage', '#', class: 'btn btn-accept' %>
+        <%= link_to 'Engage', new_campaign_path(offer_id: offer.id), class: 'btn btn-accept' %>
     <% end %>
   </td>
   <td><%= offer.time %></td>

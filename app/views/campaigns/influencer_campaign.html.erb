@@ -58,7 +58,7 @@
                       <label for="cmn-toggle-'<%= campaign.id %>'"></label>
                     </div>
                   </td>
-                  <td><%= image_tag( campaign.offer.sender.image.present? ? campaign.offer.sender.image : 'default_profile_picture.png' , :class => 'pepsi-img-responsive' ) %> &nbsp; <%= campaign.name %></td>
+                  <td><%= image_tag( campaign.offer.sender.profile_picture , :class => 'pepsi-img-responsive' ) %> &nbsp; <%= campaign.name %></td>
                   <td><%= campaign.number_of_likes %></td>
                   <td><%= campaign.number_of_post_reach %></td>
                   <td><%= campaign.end_date.present? ? campaign.end_date.strftime("%B %d, %Y") : 'NA' %></td>

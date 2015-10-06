@@ -38,9 +38,7 @@
     </div>
   </div>
 
-  <% if @influencer.facebook.present? %>
-
-      <%= form_for :campaign , url: campaigns_path , html: { class: 'form-horizontal'} do |f| %>
+      <%= form_for @campaign , url: campaigns_path , html: { class: 'form-horizontal'} do |f| %>
 
           <% if @campaign.errors.any? %>
               <div id="error_explanation">
@@ -57,7 +55,7 @@
           <% end %>
 
 
-
+           <%= csrf_meta_tag %>
             <div class="col-md-12">
               <div class="social-account-tabs">
                 <ul class="nav nav-tabs social-account-nav-tabs">
@@ -119,8 +117,7 @@
                     </div>
 
                     <div class="">
-                      <% offer_id = 1 %>
-                      <%= f.hidden_field :offer_id, {value: offer_id} %>
+                      <%= f.hidden_field :offer_id %>
                     </div>
 
                   </div>
@@ -185,9 +182,6 @@
           <%= f.button  "BOOK NOW", class: 'btn btn-book-now' %>
           <%= link_to "CANCEL", '', class: 'btn btn-book-now grey-color' %>
       <% end %>
-
-
-  <% end %>
 </div>
 
 </div>
