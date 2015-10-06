@@ -18,6 +18,7 @@
 //= require profiles
 //= require nouislider
 //= require custom
+//= require jquery-ui
 // require turbolinks
 // require_tree .
 

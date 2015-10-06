@@ -22,5 +22,6 @@
  *= require offers
  *= require payments
  *= require profile
+ * require bootstrap-datetimepicker.min
  *= require_self
  */

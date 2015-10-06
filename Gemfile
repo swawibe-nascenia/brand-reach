@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'
 gem 'devise'
@@ -37,6 +36,8 @@ gem 'mini_magick'
 gem 'remotipart', '~> 1.2'
 gem 'kaminari', '~> 0.16.3'
 gem 'mysql2', '~> 0.3.18'
+gem 'orm_adapter'
+gem 'credit_card_validations'
 
 # gem 'haml'
 # gem 'haml-rails'

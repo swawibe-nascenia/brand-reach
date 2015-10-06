@@ -82,6 +82,9 @@ GEM
     country_select (2.3.0)
       countries (~> 1.0.0)
       sort_alphabetical (~> 1.0)
+    credit_card_validations (3.0.0)
+      activemodel (>= 3, < 5)
+      activesupport (>= 3, < 5)
     currencies (0.4.2)
     debug_inspector (0.0.2)
     devise (3.5.2)
@@ -195,8 +198,15 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
+<<<<<<< HEAD
       json (~> 1.4)
     ref (2.0.0)
+||||||| merged common ancestors
+    ref (1.0.5)
+=======
+      json (~> 1.4)
+    ref (1.0.5)
+>>>>>>> feature/campaigns
     remotipart (1.2.1)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
@@ -268,6 +278,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.1.0)
   country_select
+  credit_card_validations
   devise
   jbuilder (~> 2.0)
   jquery-rails
@@ -278,6 +289,7 @@ DEPENDENCIES
   mysql2 (~> 0.3.18)
   omniauth
   omniauth-facebook
+  orm_adapter
   rails (= 4.2.2)
   rails_12factor
   remotipart (~> 1.2)
