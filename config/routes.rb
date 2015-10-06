@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     collection do
       get :influencer_campaign
       get :brand_campaign
+      post :campaign_status_change
     end
     member do
     end

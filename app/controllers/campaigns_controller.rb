@@ -33,6 +33,14 @@ class CampaignsController < ApplicationController
 
   end
 
+  def campaign_status_change
+    campaign = Campaign.find(params[:id])
+    campaign.campaign_active = params[:campaign_active]
+    campaign.save
+    nil
+
+  end
+
   private
 
   def campaign_params
