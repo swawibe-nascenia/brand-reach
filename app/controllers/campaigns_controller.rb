@@ -1,6 +1,6 @@
 class CampaignsController < ApplicationController
 
-  respond_to :html, :js
+  respond_to :html, :js, :csv
 
   def influencer_campaign
     @campaigns = Campaign.all
@@ -39,6 +39,17 @@ class CampaignsController < ApplicationController
     campaign.campaign_active = params[:campaign_active]
     campaign.save
     nil
+
+  end
+
+  def export_campaigns
+    campaign_ids = params[:campaign_ids].uniq
+    @campaigns = Campaign.where(id: campaign_ids)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @campaigns.as_csv }
+    end
 
   end
 
