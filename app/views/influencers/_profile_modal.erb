@@ -24,8 +24,7 @@
 
           <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12">
             <div class="btn-box pull-right">
-              <button class="btn btn-engage"> ENGAGE</button>
-              <button class="btn btn-message"  data-toggle="modal" data-target="#offer-modal"> MESSAGE</button>
+              <%= link_to 'Send Request', new_campaign_path(receiver_id: influencer.id), class: 'btn btn-message' %>
             </div>
             <div class="follower-box pull-right">
               <span class="follower-number"> 23,456 </span>
@@ -103,22 +102,3 @@
   </div>
 </div>
 
-<!-- modal code for message/new offer modal -->
-
-<div id="offer-modal" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">New offer </h4>
-      </div>
-      <div class="modal-body">
-        <%= render partial: 'shared/offer', locals: { sender: current_user, receiver: influencer } %>
-      </div>
-      <div class="modal-footer">
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--- end of message/new offer modal-->

@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20151002100318) do
+ActiveRecord::Schema.define(version: 20151006122930) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string  "name",                       limit: 255
@@ -34,7 +33,13 @@ ActiveRecord::Schema.define(version: 20151002100318) do
     t.integer "card_expiration_year",       limit: 4
     t.string  "card_holder_name",           limit: 255
     t.integer "schedule_type",              limit: 4,   default: 0
-    t.integer "offer_id",                   limit: 4,                  null: false
+    t.integer "status",                     limit: 4,   default: 0
+    t.integer "sender_id",                  limit: 4
+    t.integer "receiver_id",                limit: 4
+    t.boolean "starred_by_brand",           limit: 1,   default: false
+    t.boolean "starred_by_influencer",      limit: 1,   default: false
+    t.boolean "deleted_by_brand",           limit: 1,   default: false
+    t.boolean "deleted_by_influencer",      limit: 1,   default: false
   end
 
   create_table "facebooks", force: :cascade do |t|
@@ -48,6 +53,17 @@ ActiveRecord::Schema.define(version: 20151002100318) do
     t.integer  "banner_photo_price",  limit: 4,   default: 0
     t.integer  "line_price",          limit: 4,   default: 0
     t.integer  "influencer_id",       limit: 4,               null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "sender_id",        limit: 4
+    t.integer  "receiver_id",      limit: 4
+    t.boolean  "read_by_sender",   limit: 1
+    t.boolean  "read_by_receiver", limit: 1
+    t.integer  "campaign_id",      limit: 4
+    t.string   "body",             limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "offers", force: :cascade do |t|

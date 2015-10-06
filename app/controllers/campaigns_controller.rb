@@ -12,8 +12,8 @@ class CampaignsController < ApplicationController
   end
 
   def new
-    @influencer = current_user
-    @campaign = Campaign.new(offer_id: params[:offer_id])
+    @influencer = User.find(params[:receiver_id].to_i)
+    @campaign = Campaign.new(sender_id: current_user.id, receiver_id: params[:receiver_id])
   end
 
   def create
@@ -45,7 +45,7 @@ class CampaignsController < ApplicationController
   private
 
   def campaign_params
-    params.require(:campaign).permit(:name, :text, :headline, :social_account_page_name, :start_date,
+    params.require(:campaign).permit(:name, :text, :headline, :social_account_page_name, :start_date, :receiver_id, :sender_id,
                                      :end_date, :campaign_active, :cost, :social_account_activity_id,
                                      :post_type, :number_of_likes, :number_of_post_reach, :number_of_comments,
                                      :number_of_shares, :card_number, :card_expiration_month, :card_expiration_year, :card_holder_name, :offer_id, :schedule_type
