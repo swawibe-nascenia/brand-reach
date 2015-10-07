@@ -20,8 +20,16 @@
     color: #666666;
 }
 
-.table > thead > tr > th:nth-child(2) {
-    width: 62px;
+.performance_table thead tr th:nth-child(2), .engagement_table thead tr th:nth-child(2) {
+    width: 85px;
+}
+
+.brand_campaign_engagement_table thead tr th:nth-child(2), .brand_campaign_performance_table thead tr th:nth-child(2) {
+    width: auto;
+}
+
+.brand_campaign_engagement_table tr td:nth-child(1), .brand_campaign_performance_table tr td:nth-child(1), .brand_campaign_engagement_table tr th:nth-child(1),  .brand_campaign_performance_table tr th:nth-child(1) {
+    text-align: left;
 }
 
 .payment-div {

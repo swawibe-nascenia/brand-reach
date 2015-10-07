@@ -110,7 +110,7 @@
       </ul>
       <div class="tab-content panel panel-campaigns">
         <div id="performance" class="tab-pane fade in active">
-          <table class="table table-striped table-bordered table-responsive performance_table">
+          <table class="table table-striped table-bordered table-responsive performance_table brand_campaign_performance_table">
             <thead>
             <tr class="payment-header">
               <th>Campaign Name</th>
@@ -136,7 +136,7 @@
 
 
         <div id="engagement" class="tab-pane fade">
-          <table class="table table-striped table-bordered table-responsive engagement_table">
+          <table class="table table-striped table-bordered table-responsive engagement_table brand_campaign_engagement_table">
             <thead>
             <tr class="payment-header">
               <th>Campaign Name</th>
@@ -198,8 +198,6 @@
         });
 
         $(document).on('click','#engagement_list',function(){
-            document.getElementById("age_button").style.display = 'none';
-            document.getElementById("country_button").style.display = 'block';
             document.getElementById("performance-blue").style.display = 'none';
             document.getElementById("performance-black").style.display = 'inline';
             document.getElementById("engagement-black").style.display = 'none';
@@ -207,8 +205,6 @@
         });
 
         $(document).on('click','#performance_list',function(){
-            document.getElementById("country_button").style.display = 'none';
-            document.getElementById("age_button").style.display = 'block';
             document.getElementById("performance-black").style.display = 'none';
             document.getElementById("performance-blue").style.display = 'inline';
             document.getElementById("engagement-blue").style.display = 'none';
