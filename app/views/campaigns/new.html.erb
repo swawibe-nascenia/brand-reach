@@ -1,7 +1,6 @@
 <%= stylesheet_link_tag  'campaigns', media: 'all' %>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
-
 <% title "Influencer Campaign" %>
 
 <div class="campaign-create-wrapper">
@@ -18,12 +17,6 @@
           <p class="influencer-title"> <%= @influencer.industry.present? ? @influencer.industry : 'Entrepreneur' %> </p>
           <p class="influencer-address"> <%= @influencer.street_address.present? ? @influencer.street_address : 'User Address'  %></p>
         </div>
-      </div>
-    </div>
-
-    <div class="col-lg-9 col-md-6 col-sm-4 col-xs-4">
-      <div class="btn-box pull-right">
-        <button class="btn btn-message"  data-toggle="modal" data-target="#offer-modal"> MESSAGE</button>
       </div>
     </div>
   </div>
