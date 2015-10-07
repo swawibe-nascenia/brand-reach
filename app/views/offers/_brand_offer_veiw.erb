@@ -8,7 +8,7 @@
   </td>
   <td><%= image_tag offer.sender.profile_picture, class: 'inbox-logo-responsive' %></td>
   <td> <%= offer.sender.full_name %> </td>
-  <td class="standard-description"> <%= offer.message %></td>
+  <td class="standard-description"> <%= offer.messages.first.try(:body) %></td>
   <td>
     <% if offer.accepted? %>
         <%= link_to 'Engage', new_campaign_path(offer_id: offer.id), class: 'btn btn-accept' %>

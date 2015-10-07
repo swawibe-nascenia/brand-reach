@@ -12,6 +12,53 @@
   <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Hind' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tag %>
+  <!-- pubnub seubscription with event binding -->
+
+  <script type="text/javascript">
+    // global variable for pubnub
+      var PUBNUB_CLIENT = null;
+      var current_user_id = <%= current_user.id %>;
+
+      $(document).ready(function () {
+
+          //var PUBNUB_CLIENT = null;
+          <% if Rails.env.beta? || Rails.env.production? %>
+          PUBNUB_CLIENT = PUBNUB.init({
+              subscribe_key: '<%= CONFIG[:pubnub_subscribe_key] %>',
+              uuid: current_user_id,
+              ssl: true
+          });
+          <% else %>
+          PUBNUB_CLIENT = PUBNUB.init({
+              subscribe_key: '<%= CONFIG[:pubnub_subscribe_key] %>',
+              uuid: current_user_id
+          });
+          <% end %>
+
+
+
+          PUBNUB_CLIENT.subscribe({
+              channel: ['<%= current_user.channel_name %>'],
+              message: function (m) {
+                  PUBNUB_CLIENT.events.fire(m.event, m);
+                  console.log('subscribe user to pubnub channel' + m);
+              }
+          });
+
+          PUBNUB_CLIENT.events.bind("MESSAGE", function (message) {
+              console.log("MESSAGE EVENT FIRED with " + message);
+              //CHECKING FOR BLOCKED USER
+
+//              var commentTemplate = Handlebars.compile($('#new-post-comment-template').html());
+//              var outputHtml = commentTemplate(message.attributes);
+//              $('.comments_container_' + message.attributes.post_id).append(outputHtml);
+//              $('#post_comment_count_' + message.attributes.post_id).html(message.attributes.commentable_comments_count);
+          });
+
+      });
+  </script>
+
+  <!-- end of pubnub setting -->
 </head>
 <body class="skin-blue sidebar-mini">
 <div class="wrapper">
