@@ -5,11 +5,11 @@ class OffersController < ApplicationController
   # GET /offers.json
   def index
     if current_user.influencer?
-      @offers = current_user.offers_received
-      @stared_offers = current_user.offers_received.where(starred_by_influencer: true)
+      @offers = current_user.campaigns_received
+      @stared_offers = current_user.campaigns_received.where(starred_by_influencer: true)
     else
-      @offers = current_user.offers_sent
-      @stared_offers = current_user.offers_sent.where(starred_by_brand: true)
+      @offers = current_user.campaigns_sent
+      @stared_offers = current_user.campaigns_sent.where(starred_by_brand: true)
     end
   end
 
@@ -72,7 +72,7 @@ class OffersController < ApplicationController
   def toggle_star
     target_column = current_user.brand? ? :starred_by_brand : :starred_by_influencer
     ids = params[:ids].map(&:to_i)
-    offers = Offer.where(id: ids)
+    offers = Campaign.where(id: ids)
 
     if offers.count == offers.where(target_column => true).count
       # all offers are stared
@@ -89,26 +89,26 @@ class OffersController < ApplicationController
   end
 
   def accept
-    @offer.update_attribute(:status, Offer.statuses[:accepted])
+    @offer.update_attribute(:status, Campaign.statuses[:accepted])
   end
 
   def deny
-    @offer.update_attributes({status: Offer.statuses[:denied], denied_at: Time.now })
+    @offer.update_attributes({status: Campaign.statuses[:denied], denied_at: Time.now })
   end
 
   def undo_deny
-    @offer.update_attribute(:status, Offer.statuses[:waiting])
+    @offer.update_attribute(:status, Campaign.statuses[:waiting])
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_offer
-      @offer = Offer.find(params[:id])
+      @offer = Campaign.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def offer_params
-      params[:offer]
+      params[:campaign]
     end
 
   def set_star(offers, target_column)

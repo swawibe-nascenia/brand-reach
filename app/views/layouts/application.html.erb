@@ -41,12 +41,12 @@
               channel: ['<%= current_user.channel_name %>'],
               message: function (m) {
                   PUBNUB_CLIENT.events.fire(m.event, m);
-                  console.log(m);
+                  console.log('subscribe user to pubnub channel' + m);
               }
           });
 
           PUBNUB_CLIENT.events.bind("MESSAGE", function (message) {
-              console.log("MESSAGE EVENT FIRED");
+              console.log("MESSAGE EVENT FIRED with " + message);
               //CHECKING FOR BLOCKED USER
 
 //              var commentTemplate = Handlebars.compile($('#new-post-comment-template').html());

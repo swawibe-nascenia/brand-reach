@@ -11,35 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006122930) do
+ActiveRecord::Schema.define(version: 20151007065438) do
 
   create_table "campaigns", force: :cascade do |t|
-    t.string  "name",                       limit: 255
-    t.string  "text",                       limit: 255
-    t.string  "headline",                   limit: 255
-    t.string  "social_account_page_name",   limit: 255
-    t.date    "start_date"
-    t.date    "end_date"
-    t.boolean "campaign_active",            limit: 1,   default: true
-    t.integer "cost",                       limit: 4,   default: 0
-    t.integer "social_account_activity_id", limit: 4,   default: 0
-    t.integer "post_type",                  limit: 4,   default: 0
-    t.integer "number_of_likes",            limit: 4,   default: 0
-    t.integer "number_of_post_reach",       limit: 4,   default: 0
-    t.integer "number_of_comments",         limit: 4,   default: 0
-    t.integer "number_of_shares",           limit: 4,   default: 0
-    t.string  "card_number",                limit: 255
-    t.integer "card_expiration_month",      limit: 4
-    t.integer "card_expiration_year",       limit: 4
-    t.string  "card_holder_name",           limit: 255
-    t.integer "schedule_type",              limit: 4,   default: 0
-    t.integer "status",                     limit: 4,   default: 0
-    t.integer "sender_id",                  limit: 4
-    t.integer "receiver_id",                limit: 4
-    t.boolean "starred_by_brand",           limit: 1,   default: false
-    t.boolean "starred_by_influencer",      limit: 1,   default: false
-    t.boolean "deleted_by_brand",           limit: 1,   default: false
-    t.boolean "deleted_by_influencer",      limit: 1,   default: false
+    t.string   "name",                       limit: 255
+    t.string   "text",                       limit: 255
+    t.string   "headline",                   limit: 255
+    t.string   "social_account_page_name",   limit: 255
+    t.date     "start_date"
+    t.date     "end_date"
+    t.boolean  "campaign_active",            limit: 1,   default: true
+    t.integer  "cost",                       limit: 4,   default: 0
+    t.integer  "social_account_activity_id", limit: 4,   default: 0
+    t.integer  "post_type",                  limit: 4,   default: 0
+    t.integer  "number_of_likes",            limit: 4,   default: 0
+    t.integer  "number_of_post_reach",       limit: 4,   default: 0
+    t.integer  "number_of_comments",         limit: 4,   default: 0
+    t.integer  "number_of_shares",           limit: 4,   default: 0
+    t.string   "card_number",                limit: 255
+    t.integer  "card_expiration_month",      limit: 4
+    t.integer  "card_expiration_year",       limit: 4
+    t.string   "card_holder_name",           limit: 255
+    t.integer  "schedule_type",              limit: 4,   default: 0
+    t.integer  "status",                     limit: 4,   default: 0
+    t.integer  "sender_id",                  limit: 4
+    t.integer  "receiver_id",                limit: 4
+    t.boolean  "starred_by_brand",           limit: 1,   default: false
+    t.boolean  "starred_by_influencer",      limit: 1,   default: false
+    t.boolean  "deleted_by_brand",           limit: 1,   default: false
+    t.boolean  "deleted_by_influencer",      limit: 1,   default: false
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
   end
 
   create_table "facebooks", force: :cascade do |t|

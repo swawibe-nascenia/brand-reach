@@ -14,6 +14,7 @@ class Campaign < ActiveRecord::Base
   enum post_type: [:post, :status, :profile_picture, :cover_picture]
   enum schedule_type: [:daily, :date_range]
   enum card_expiration_month: [:january, :february, :march, :april, :may, :june, :july, :august, :september, :october, :november, :december]
+  enum status: [:waiting, :accepted, :denied]
 
   # ----------------------------------------------------------------------
   # == Attributes == #
@@ -53,6 +54,18 @@ class Campaign < ActiveRecord::Base
   # ----------------------------------------------------------------------
   # == Instance methods == #
   # ----------------------------------------------------------------------
+
+  def time
+    if created_at.to_date == Date.today
+      created_at.strftime('%H:%M:%P')
+    else
+      created_at.strftime('%d:%m:%Y')
+    end
+  end
+
+  def deny_undo_able?
+    Time.now - denied_at <= 30
+  end
 
   def date_validation
     if self[:end_date].present? && ( self[:end_date] < self[:start_date] )

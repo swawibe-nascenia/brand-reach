@@ -19,6 +19,7 @@
 //= require nouislider
 //= require custom
 //= require jquery-ui
+//= require pubnub
 // require turbolinks
 // require_tree .
 
