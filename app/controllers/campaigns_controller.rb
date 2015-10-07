@@ -21,7 +21,7 @@ class CampaignsController < ApplicationController
     @campaign.post_type = campaign_params[:post_type].to_i
     @campaign.card_expiration_month = campaign_params[:card_expiration_month].to_i
     @campaign.card_expiration_year = campaign_params[:card_expiration_year].to_i
-    if @campaign.daily?
+    unless @campaign.date_range?
       @campaign.start_date = Time.now.strftime('%d/%m/%Y')
     end
 
@@ -29,7 +29,7 @@ class CampaignsController < ApplicationController
       redirect_to brand_campaign_campaigns_path
     else
       @influencer = current_user
-      render 'new'
+      render :action => 'new', :sender_id => current_user.id, :receiver_id => params[:receiver_id].to_i
     end
 
   end
