@@ -1,0 +1,27 @@
+development:
+  fb_app_id: 416032111928640
+  fb_secret: 88f2c5b51e762fb672566f3c45c2f809
+  pubnub_subscribe_key: "sub-c-726bd9f8-3a48-11e4-87bf-02ee2ddab7fe"
+  pubnub_publish_key: "pub-c-0da552d0-4fd6-4ec6-b841-7ed3b689312a"
+  pubnub_secret_key: "sec-c-YjM1N2M1YzQtZDU3YS00NjM2LWFmNDYtMGJmMGI3ZTVlMzEx"
+
+staging:
+  fb_app_id: 416032111928640
+  fb_secret: 88f2c5b51e762fb672566f3c45c2f809
+  pubnub_subscribe_key: "sub-c-726bd9f8-3a48-11e4-87bf-02ee2ddab7fe"
+  pubnub_publish_key: "pub-c-0da552d0-4fd6-4ec6-b841-7ed3b689312a"
+  pubnub_secret_key: "sec-c-YjM1N2M1YzQtZDU3YS00NjM2LWFmNDYtMGJmMGI3ZTVlMzEx"
+
+test:
+  fb_app_id: 416032111928640
+  fb_secret: 88f2c5b51e762fb672566f3c45c2f809
+  pubnub_subscribe_key: "sub-c-726bd9f8-3a48-11e4-87bf-02ee2ddab7fe"
+  pubnub_publish_key: "pub-c-0da552d0-4fd6-4ec6-b841-7ed3b689312a"
+  pubnub_secret_key: "sec-c-YjM1N2M1YzQtZDU3YS00NjM2LWFmNDYtMGJmMGI3ZTVlMzEx"
+
+production:
+  fb_app_id: 416032111928640
+  fb_secret: 88f2c5b51e762fb672566f3c45c2f809
+  pubnub_subscribe_key: "sub-c-726bd9f8-3a48-11e4-87bf-02ee2ddab7fe"
+  pubnub_publish_key: "pub-c-0da552d0-4fd6-4ec6-b841-7ed3b689312a"
+  pubnub_secret_key: "sec-c-YjM1N2M1YzQtZDU3YS00NjM2LWFmNDYtMGJmMGI3ZTVlMzEx"
