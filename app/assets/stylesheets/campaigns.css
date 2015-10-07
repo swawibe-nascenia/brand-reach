@@ -557,4 +557,42 @@ only screen and (max-width: 460px) {
     width: 150px;
 }
 
+.download-campaign {
+    text-align: center;
+    margin: 20px 0;
+    padding-top: 20px;
+}
+
+.info-box-custom {
+    border-top: 1px solid #eaeaea;
+}
+
+.btn-download-campaign {
+    background-color:  #ff305a;
+    color: white;
+    width: 90%;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.campaign-view label {
+    padding-left: 50px;
+    padding-right: 20px;
+}
+
+.campaign-view select {
+    padding: 5px;
+    background-color: white;
+    width: 60%;
+}
+
+.btn-campaign-view {
+    color: white;
+    padding: 5px 40px;
+    margin-left: 15px;
+    background-color: #f8c102;
+    font-weight: 600;
+    font-size: 13px;
+}
+
 

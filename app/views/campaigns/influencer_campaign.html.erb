@@ -28,6 +28,7 @@
     </div>
   </div>
 </div>
+
 <div class="campaign-content">
 
   <ul class="nav nav-tabs" id="campaign-tabs">
@@ -89,7 +90,7 @@
             <tbody>
             <% @campaigns.each do |campaign| %>
                 <tr>
-                  <td class="squaredFour"><input type="checkbox" data-id="<%= campaign.id %>" value="1" checked/></td>
+                  <td class="squaredFour"><input type="checkbox" data-id="<%= campaign.id %>" value="1"/></td>
                   <td>
                     <div class="switch">
                       <input id="engagement_switch_<%= campaign.id %>" data-id="<%= campaign.id %>"  class="cmn-toggle cmn-toggle-round" type="checkbox" <%= campaign.campaign_active? ? 'checked' : '' %>>

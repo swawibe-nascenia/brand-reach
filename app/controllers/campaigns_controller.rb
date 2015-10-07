@@ -8,7 +8,7 @@ class CampaignsController < ApplicationController
   end
 
   def brand_campaign
-
+    @campaigns = Campaign.all
   end
 
   def new
