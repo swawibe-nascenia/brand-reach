@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007065438) do
+ActiveRecord::Schema.define(version: 20151007102023) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "name",                       limit: 255
@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 20151007065438) do
     t.string   "short_bio",              limit: 255
     t.integer  "user_type",              limit: 4,   default: 0
     t.integer  "gender",                 limit: 4
-    t.string   "channel_name",           limit: 255,                null: false
+    t.string   "channel_name",           limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
