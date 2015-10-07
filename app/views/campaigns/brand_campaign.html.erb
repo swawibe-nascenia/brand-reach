@@ -1,1 +1,221 @@
-Brand Campaign
+<%= stylesheet_link_tag 'campaigns.css', media: 'all' %>
+<%= stylesheet_link_tag 'jquery-jvectormap-1.2.2', media: 'all' %>
+
+<% title "Brand Campaign" %>
+
+<section class="influence-facebook-content">
+  <div class="row campaign-view">
+    <%= label_tag :name, "Choose a Campaign" %>
+    <%= select_tag "name", options_from_collection_for_select(@campaigns, "id", "name") , prompt: "Choose a campaign to view the statistics" %>
+    <%= button_tag "VIEW", class: 'btn btn-campaign-view' %>
+  </div>
+  <div class="br-container">
+    <!-- Info boxes -->
+
+    <div class="row download-campaign">
+
+      <%= link_to "DOWNLOAD THIS CAMPAIGN'S REPORT", '', remote: true, :class => 'btn btn-download-campaign', id: 'download_campaigns' %>
+
+    </div>
+
+    <div class="row info-box-container">
+      <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
+        <div class="info-box-content">
+          <p class="info-box-data total-follower-data-color">24,000</p>
+
+          <p class="info-box-text ">MALE</p>
+
+        </div>
+
+      </div>
+      <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
+        <div class="info-box-content">
+          <p class="info-box-data page-view-data-color">7,582</p>
+
+          <p class="info-box-text">FEMALE</p>
+        </div>
+      </div>
+
+      <!-- fix for small devices only -->
+      <div class="clearfix visible-sm-block"></div>
+      <div class="clearfix visible-xs-block"></div>
+
+      <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
+        <div class="info-box-content">
+          <p class="info-box-data total-post-data-color">150</p>
+          <p class="info-box-text">TOTAL REACH</p>
+        </div>
+      </div>
+      <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
+        <div class="info-box-content">
+          <p class="info-box-data post-reach-data-color">4,260</p>
+          <p class="info-box-text">AVERAGE AGE GROUP</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-chart">
+      <div class="box">
+        <div class="box-body">
+          <div class="pad">
+            <!-- Map will be created here -->
+            <div id="world-map-markers" style="height: 325px;"></div>
+          </div>
+        </div>
+      </div>
+      <section class="chart-info">
+        <span class="color-gray stat-gender">STATISTICS BY GENDER</span>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="font-below-statistic clearfix">
+            <div class="gender-stat-legend unit-in">
+              <span>Units in 1000s</span>
+            </div>
+            <div class="gender-stat-legend facebook-female">
+              <span class="square-box bg-color-pink"></span>
+              Female
+            </div>
+            <div class="gender-stat-legend">
+              <span class="square-box bg-color-blue chart-male"></span>
+              Male
+            </div>
+            <div class="gender-stat-legend">
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle custom-drop-down-button" type="button" data-toggle="dropdown">This Week
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">This Month</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Main row -->
+      <div class="chart">
+        <!-- Sales Chart Canvas -->
+        <canvas id="salesChart" height="180"></canvas>
+      </div>
+      <!-- /.chart-responsive -->
+    </div>
+
+      <br>
+      <br>
+
+    <div class="campaign-content">
+
+      <ul class="nav nav-tabs" id="campaign-tabs">
+        <li class= "active" id="performance_list"><a href="#performance"><span id="performance-blue"><%= image_tag('Performance_blue.png') %></span><span id="performance-black" style="display: none"><%= image_tag('Performance.png') %></span> <span class="performance-tab"></span> Performance </a></li>
+        <li class= "" id="engagement_list"><a href="#engagement"><span id="engagement-black"><%= image_tag('Engagement_black.png') %></span><span id="engagement-blue" style="display: none"><%= image_tag('Engagement.png') %></span><span class="engagement-tab"></span> Engagement </a></li>
+      </ul>
+      <div class="tab-content panel panel-campaigns">
+        <div id="performance" class="tab-pane fade in active">
+          <table class="table table-striped table-bordered table-responsive performance_table">
+            <thead>
+            <tr class="payment-header">
+              <th>Campaign Name</th>
+              <th>Post Likes</th>
+              <th>Reach</th>
+            </tr>
+            </thead>
+
+            <% if @campaigns.present? %>
+                <tbody>
+                <% @campaigns.each do |campaign| %>
+                    <tr>
+                      <td><%= image_tag(campaign.sender.profile_picture , :class => 'pepsi-img-responsive') %> &nbsp; <%= campaign.name %></td>
+                      <td><%= campaign.number_of_likes %></td>
+                      <td><%= campaign.number_of_post_reach %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+            <% end %>
+
+          </table>
+        </div>
+
+
+        <div id="engagement" class="tab-pane fade">
+          <table class="table table-striped table-bordered table-responsive engagement_table">
+            <thead>
+            <tr class="payment-header">
+              <th>Campaign Name</th>
+              <th>Likes</th>
+              <th>Comments</th>
+              <th>Shares</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% if @campaigns.present? %>
+                <tbody>
+                <% @campaigns.each do |campaign| %>
+                    <tr>
+                      <td><%= image_tag(campaign.sender.profile_picture , :class => 'pepsi-img-responsive') %> &nbsp; <%= campaign.name %></td>
+                      <td><%= campaign.number_of_likes %></td>
+                      <td><%= campaign.number_of_comments %></td>
+                      <td><%= campaign.number_of_shares %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+            <% end %>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- @below section is needed for showing map -->
+    <div class="col-md-4">
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="chart-responsive hidden">
+              <canvas id="pieChart" height="150"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<%= javascript_include_tag 'jquery-jvectormap-1.2.2.min' %>
+<%= javascript_include_tag 'jquery-jvectormap-world-mill-en' %>
+<%= javascript_include_tag 'Chart.min' %>
+<%= javascript_include_tag 'dashboard2' %>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $("#campaign-tabs a").click(function(e){
+            e.preventDefault();
+            $(this).tab('show');
+        });
+
+        $(document).on('click','#engagement_list',function(){
+            document.getElementById("age_button").style.display = 'none';
+            document.getElementById("country_button").style.display = 'block';
+            document.getElementById("performance-blue").style.display = 'none';
+            document.getElementById("performance-black").style.display = 'inline';
+            document.getElementById("engagement-black").style.display = 'none';
+            document.getElementById("engagement-blue").style.display = 'inline';
+        });
+
+        $(document).on('click','#performance_list',function(){
+            document.getElementById("country_button").style.display = 'none';
+            document.getElementById("age_button").style.display = 'block';
+            document.getElementById("performance-black").style.display = 'none';
+            document.getElementById("performance-blue").style.display = 'inline';
+            document.getElementById("engagement-blue").style.display = 'none';
+            document.getElementById("engagement-black").style.display = 'inline';
+        });
+    });
+
+
+</script>
+
