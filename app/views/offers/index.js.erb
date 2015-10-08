@@ -1,1 +1,29 @@
-window.location.reload();
+<% if params[:starred]%>
+
+$('#stared_inbox').html("<%= escape_javascript (render partial: 'offer', collection: @stared_offers) %>");
+$('#stared_inbox').addClass('in active');
+$('#inbox_list').removeClass('active');
+$('#starred_list').addClass('active');
+$('#inbox').removeClass('in active');
+
+$('#star-blue').show();
+$('#star-black').hide();
+$('#inbox-black').show();
+$('#inbox-blue').hide();
+
+<% else %>
+
+$('#inbox').html("<%= escape_javascript (render partial: 'offer', collection: @offers) %>");
+$('#inbox').addClass('in active');
+$('#inbox_list').addClass('active');
+$('#starred_list').removeClass('active');
+$('#stared_inbox').removeClass('in active');
+
+$('#star-blue').hide();
+$('#star-black').show();
+$('#inbox-blue').show();
+$('#inbox-black').hide();
+
+<% end %>
+
+

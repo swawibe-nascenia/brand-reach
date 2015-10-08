@@ -22,7 +22,7 @@ $(function(){
             alert('At least one offer has to be selected');
         }
 
-
+        return false;
     });
 
     function seleted_offer_ids(){
@@ -33,6 +33,20 @@ $(function(){
 
         return jQuery.unique(ids);
     }
+//    ======================= Offer controller javascript
+//    control collapsing offer in offer index page
+    $(document).on('click', '.offer_header', function(e) {
+        e.preventDefault();
+        var $this = $(this).parent();
+        var $collapse = $this.find('.collapse');
+        $collapse.collapse('toggle');
+    });
+
+    //prevent checkbox from event propagation for tab pan collapse
+    $(document).on('click', '.select-offer', function(e){
+        e.stopPropagation();
+    });
+
 
 });
 

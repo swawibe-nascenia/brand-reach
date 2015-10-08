@@ -177,5 +177,61 @@ only screen and (max-width: 540px) {
     cursor: pointer;
 }
 
+.offer_box{
+    padding: 5px 0;
+    font-family: "Raleway",sans-serif;
+    font-size: 13px;
+}
+.offer_box:nth-child(odd){
+    background-color: #f6f6f6;
+}
+
+.offer_box:nth-child(even){
+    background-color: #ffffff;
+}
+.offer_header{
+
+}
+.offer_header div{
+    display: inline-block;
+    padding: 10px 0 6px;
+}
+
+.read-status, .select-offer, .make-star{
+    width: 30px;
+}
+
+.title{
+    margin-left: 10px;
+}
+.offer-text{
+    min-width: 50%;
+    margin-left: 10px;
+    text-align: center;
+}
+.offer-time{
+    float: right;
+    margin-right: 10px;
+}
+.offer-body{
+    padding-left: 110px;
+    margin-top: 20px;
+
+}
+.message{
+    margin-top: 15px;
+    font-size: 0.92em;
+}
+.message .title{
+
+}
+.comment-box .offer-textarea{
+    width: 90%;
+}
+.comment-box .btn-accept{
+    margin-top: -72px;
+    margin-left: 5px;
+}
+
 
 

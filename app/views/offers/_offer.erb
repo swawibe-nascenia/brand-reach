@@ -1,0 +1,8 @@
+<div class="offer_box  offer_box_<%= offer.id %> collapse-group">
+  <% if current_user.influencer? %>
+      <%= render partial: 'offers/influencer_offer_view', locals: { offer: offer} %>
+  <% else %>
+      <%= render partial: 'offers/brand_offer_veiw', locals: { offer: offer} %>
+  <% end %>
+  <%= render partial: 'offers/offer_body_view', locals: { offer: offer} %>
+</div>

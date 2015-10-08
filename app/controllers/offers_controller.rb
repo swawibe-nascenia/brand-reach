@@ -5,8 +5,8 @@ class OffersController < ApplicationController
   # GET /offers.json
   def index
     if current_user.influencer?
-      @offers = current_user.campaigns_received
-      @stared_offers = current_user.campaigns_received.where(starred_by_influencer: true)
+      @offers = current_user.campaigns_received.includes(:messages)
+      @stared_offers = current_user.campaigns_received.where(starred_by_influencer: true).includes(:messages)
     else
       @offers = current_user.campaigns_sent
       @stared_offers = current_user.campaigns_sent.where(starred_by_brand: true)

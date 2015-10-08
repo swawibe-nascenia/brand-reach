@@ -1,15 +1,29 @@
-<tr>
-  <td><span class="status-inbox status-inbox"></span></td>
-  <td class="squaredFour"><input type="checkbox"  value="1" class="select-offer" data-id="<%=offer.id %>"/></td>
-  <td class="inbox-star">
+
+<div class="offer_header">
+  <div class="read-status">
+    <span class="status-inbox"></span>
+  </div>
+
+  <div class="select-offer">
+    <input type="checkbox"  value="1" class="select-offer" data-id="<%=offer.id %>"/>
+  </div>
+
+  <div class="make-star">
     <%= link_to toggle_star_offers_path(ids: [offer.id], authenticity_token: form_authenticity_token), method: :put, remote: true do %>
         <i class="fa fa-star <%= offer.starred_by_influencer ? 'star-yellow' : 'star-grey' %>"></i>
     <% end %>
-  </td>
-  <td><%= image_tag offer.sender.profile_picture, class: 'inbox-logo-responsive' %></td>
-  <td> <%= offer.sender.full_name %> </td>
-  <td class="standard-description"> <%= offer.messages.first.body %></td>
-  <td class="btn-column">
+  </div>
+
+  <div >
+    <%= image_tag offer.sender.profile_picture, class: 'inbox-logo-responsive' %>
+    <span class="title"><%= offer.sender.full_name %> </span>
+  </div>
+
+  <div class="offer-text">
+    <p><%= offer.name %></p>
+  </div>
+
+  <div class="action">
     <% if  offer.waiting? %>
         <%= link_to 'Accept', accept_offer_path(offer, authenticity_token: form_authenticity_token), class: 'btn btn-accept', method: :put, remote: true %>
         &nbsp;
@@ -17,11 +31,9 @@
     <% elsif offer.denied? && offer.deny_undo_able? %>
         <%= link_to 'Undo Deny', undo_deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'deny', method: :put, remote: true %>
     <% end %>
-  </td>
-  <td><%= offer.time %></td>
-  <!--<td>-->
-    <!--<button class="btn btn-accept" type="button" data-toggle="dropdown">Accept-->
-    <!--</button>-->
-    <!--<a href="#"><span class="deny">Deny</span></a>-->
-  <!--</td>-->
-</tr>
+  </div>
+
+  <div class="offer-time">
+    <%= offer.time %>
+  </div>
+</div>

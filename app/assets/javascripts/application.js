@@ -20,6 +20,7 @@
 //= require custom
 //= require jquery-ui
 //= require pubnub
+//= require handlebars
 // require turbolinks
 // require_tree .
 

@@ -47,12 +47,9 @@
 
           PUBNUB_CLIENT.events.bind("MESSAGE", function (message) {
               console.log("MESSAGE EVENT FIRED with " + message);
-              //CHECKING FOR BLOCKED USER
-
-//              var commentTemplate = Handlebars.compile($('#new-post-comment-template').html());
-//              var outputHtml = commentTemplate(message.attributes);
-//              $('.comments_container_' + message.attributes.post_id).append(outputHtml);
-//              $('#post_comment_count_' + message.attributes.post_id).html(message.attributes.commentable_comments_count);
+              var messageTemplate = Handlebars.compile($('#message-template').html());
+              var outputHtml = messageTemplate(message.attributes);
+              $('.comments_container_' + message.attributes.post_id).append(outputHtml);
           });
 
       });
@@ -218,4 +215,18 @@
 
 </body>
 </html>
+
+<script id="message-template" type="text/x-handlebars-template">
+  <tr class="message message_{{id}}" >
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td colspan=3>
+      <img src="{{sender_profile_picture_url}}" class="reply-box-image"><span class="reply-message">{{body}}</span>
+    </td>
+    <td></td>
+  </tr>
+
+</script>
 
