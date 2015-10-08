@@ -35,7 +35,7 @@ $(function(){
     }
 //    ======================= Offer controller javascript
 //    control collapsing offer in offer index page
-    $(document).on('click', '.offer_header', function(e) {
+    $(document).on('click', '.offer-header', function(e) {
         e.preventDefault();
         var $this = $(this).parent();
         var $collapse = $this.find('.collapse');

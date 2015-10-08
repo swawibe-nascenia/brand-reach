@@ -177,28 +177,28 @@ only screen and (max-width: 540px) {
     cursor: pointer;
 }
 
-.offer_box{
+.offer-box{
     padding: 5px 0;
     font-family: "Raleway",sans-serif;
     font-size: 13px;
 }
-.offer_box:nth-child(odd){
+.offer-box:nth-child(odd){
     background-color: #f6f6f6;
 }
 
-.offer_box:nth-child(even){
+.offer-box:nth-child(even){
     background-color: #ffffff;
 }
-.offer_header{
+.offer-header{
 
 }
-.offer_header div{
+.offer-header div{
     display: inline-block;
     padding: 10px 0 6px;
 }
 
 .read-status, .select-offer, .make-star{
-    width: 30px;
+    margin-right: 20px;
 }
 
 .title{

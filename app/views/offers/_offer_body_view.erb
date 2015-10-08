@@ -1,10 +1,10 @@
-<div class="offer-body offer-body_<%= offer.id %> collapse">
+<div class="offer-body offer-body-<%= offer.id %> collapse">
   <div class="comment-box comment-box_id">
     <textarea class="offer-textarea" rows="3" placeholder="Start typing your message here"></textarea>
     <a class="btn btn-accept" type="button" href="#">Reply</a>
   </div>
   <% offer.messages.each do |message| %>
-      <div class="message message_<%= message.id %>">
+      <div class="message message-<%= message.id %>">
         <%= image_tag offer.sender.profile_picture, class: 'inbox-logo-responsive' %>
         <span class="title"><%= message.body %> </span>
       </div>
