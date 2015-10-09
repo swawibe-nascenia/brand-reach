@@ -31,113 +31,115 @@
     </div>
   </div>
 
-      <%= form_for @campaign , url: campaigns_path , html: { class: 'form-horizontal'} do |f| %>
+  <%= form_for @campaign , url: campaigns_path , html: { class: 'form-horizontal'} do |f| %>
 
-          <% if @campaign.errors.any? %>
-              <div id="error_explanation">
-                <h2>
-                  <%= pluralize(@campaign.errors.count, "error") %> prohibited
-                  this article from being saved:
-                </h2>
-                <ul>
-                  <% @campaign.errors.full_messages.each do |msg| %>
-                      <li><%= msg %></li>
-                  <% end %>
-                </ul>
-              </div>
-          <% end %>
+      <% if @campaign.errors.any? %>
+          <div id="error_explanation">
+            <h2>
+              <%= pluralize(@campaign.errors.count, "error") %> prohibited
+              this article from being saved:
+            </h2>
+            <ul>
+              <% @campaign.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
 
 
-           <%= csrf_meta_tag %>
-            <div class="col-md-12">
-              <div class="social-account-tabs">
-                <ul class="nav nav-tabs social-account-nav-tabs">
-                  <li class="active"><a data-toggle="tab" href="#fb_bhanu"><i class="social-account-fa-edit fa fa-facebook"></i> Bhanu Prasad</a></li>
-                </ul>
+      <%= csrf_meta_tag %>
+      <div class="col-md-12">
+        <div class="social-account-tabs">
+          <ul class="nav nav-tabs social-account-nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#fb_bhanu"><i class="social-account-fa-edit fa fa-facebook"></i> Bhanu Prasad</a></li>
+          </ul>
 
-                <div class="tab-content social-account-tab-content">
-                  <div id="fb_bhanu" class="tab-pane fade in active">
+          <div class="tab-content social-account-tab-content">
+            <div id="fb_bhanu" class="tab-pane fade in active">
 
-                    <div class="form-group">
-                      <%= f.label :post_type, 'Choose the type of post', class: 'control-label col-md-4' %>
-                      <div class="col-sm-8">
-                        <%= f.select :post_type, options_for_select(Campaign.post_types.map{ |type, value| [type.titleize, value] }) , { :include_blank => true }, { :class => 'form-control type-of-post' } %>
-                      </div>
-                    </div>
+              <div id="costs" data-costs="<%= @costs %>"></div>
 
-                    <div class="form-group">
-                      <%= f.label :cost, "Cost", class: 'control-label col-md-4' %>
-                      <div class="col-md-8">
-                        <%= f.text_field :cost, class: 'form-control campaign-cost-input' %>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <%= f.label '', 'Schedule Post', class: 'control-label col-md-4' %>
-                      <div class="col-md-8">
-                        <div>
-                          <%= f.radio_button :schedule_type, 'daily', { :checked => true, class: 'daily' } %>
-                          <span>Run my ad set continuously starting today</span>
-                        </div>
-
-                        <div>
-                          <%= f.radio_button :schedule_type, 'date_range', class: 'date-range' %>
-                          <span>Set a start and end date</span>
-                        </div>
-
-                        <div class="campaign-date" id="start_end">
-                          <div>
-                            <%= f.label :start_date, "Start" %>
-                            <%= f.text_field :start_date, { value: Time.now.strftime("%d/%m/%Y"), class: 'start_date', disabled: 'disabled' }%>
-                          </div>
-
-                          <div>
-                            <%= f.label :end_date, "End" %>
-                            <%= f.text_field :end_date, { value: (Time.now + 1.month).strftime("%d/%m/%Y"), class: 'end_date', disabled: 'disabled'} %>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                        <%= f.label :name, "Enter Campaign Name", class: 'control-label col-md-4' %>
-                      <div class="col-md-8">
-                        <%= f.text_field :name %>
-                      </div>
-                    </div>
-
-                    <%= f.hidden_field :sender_id %>
-                    <%= f.hidden_field :receiver_id %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :post_type, 'Choose the type of post', class: 'control-label col-md-4' %>
+                <div class="col-sm-8">
+                  <%= f.select :post_type, options_for_select(Campaign.post_types.map{ |type, value| [type.titleize, value] }) , { :include_blank => true }, { :class => 'form-control type-of-post', :id => 'post_type' } %>
                 </div>
               </div>
+
+              <div class="form-group">
+                <%= f.label :cost, "Cost", class: 'control-label col-md-4' %>
+                <div class="col-md-8">
+                  <%= f.text_field :cost, { class: 'form-control campaign-cost-input', disabled: true, id: 'post_cost' } %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label '', 'Schedule Post', class: 'control-label col-md-4' %>
+                <div class="col-md-8">
+                  <div>
+                    <%= f.radio_button :schedule_type, 'daily', { :checked => true, class: 'daily' } %>
+                    <span>Run my ad set continuously starting today</span>
+                  </div>
+
+                  <div>
+                    <%= f.radio_button :schedule_type, 'date_range', class: 'date-range' %>
+                    <span>Set a start and end date</span>
+                  </div>
+
+                  <div class="campaign-date" id="start_end">
+                    <div>
+                      <%= f.label :start_date, "Start" %>
+                      <%= f.text_field :start_date, { value: Time.now.strftime("%d/%m/%Y"), class: 'start_date', disabled: 'disabled' }%>
+                    </div>
+
+                    <div>
+                      <%= f.label :end_date, "End" %>
+                      <%= f.text_field :end_date, { value: (Time.now + 1.month).strftime("%d/%m/%Y"), class: 'end_date', disabled: 'disabled'} %>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :name, "Enter Campaign Name", class: 'control-label col-md-4' %>
+                <div class="col-md-8">
+                  <%= f.text_field :name %>
+                </div>
+              </div>
+
+              <%= f.hidden_field :sender_id %>
+              <%= f.hidden_field :receiver_id %>
             </div>
-
-
-          <div class="text-pink">WHAT TEXT AND LINKS DO YOU WANT TO USE?</div>
-
-          <div class="text-headline-form">
-
-            <div class="row">
-              <%= f.label :text, "Text" %>
-            </div>
-            <div class="row">
-              <%= f.text_area :text, rows: 4 %>
-            </div>
-
-            <div class="row">
-              <%= f.label :headline, "Headline" %>
-            </div>
-            <div class="row">
-              <%= f.text_field :headline %>
-            </div>
-
           </div>
+        </div>
+      </div>
 
-          <%= f.button  "BOOK NOW", class: 'btn btn-book-now' %>
-          <%= link_to "CANCEL", '', class: 'btn btn-book-now grey-color' %>
-      <% end %>
+
+      <div class="text-pink">WHAT TEXT AND LINKS DO YOU WANT TO USE?</div>
+
+      <div class="text-headline-form">
+
+        <div class="row">
+          <%= f.label :text, "Text" %>
+        </div>
+        <div class="row">
+          <%= f.text_area :text, rows: 4 %>
+        </div>
+
+        <div class="row">
+          <%= f.label :headline, "Headline" %>
+        </div>
+        <div class="row">
+          <%= f.text_field :headline %>
+        </div>
+
+      </div>
+
+      <%= f.button  "BOOK NOW", class: 'btn btn-book-now' %>
+      <%= link_to "CANCEL", '', class: 'btn btn-book-now grey-color' %>
+  <% end %>
 </div>
 
 </div>
@@ -166,6 +168,13 @@
 
         $('.date-range').click(function() {
             $('#start_end').find('*').attr('disabled', false);
+        });
+
+       var costs = '<%= @costs %>';
+        console.log(costs);
+
+        $('#post_type').change(function() {
+            
         });
     })
 </script>

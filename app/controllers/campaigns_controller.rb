@@ -13,6 +13,8 @@ class CampaignsController < ApplicationController
 
   def new
     @influencer = User.find(params[:receiver_id].to_i)
+    # @costs =   User.find(params[:receiver_id].to_i).facebook_accounts.pluck(:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost)
+    @costs =   [1,2,3]
     @campaign = Campaign.new(sender_id: current_user.id, receiver_id: params[:receiver_id])
   end
 
