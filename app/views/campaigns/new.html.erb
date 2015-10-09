@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag  'campaigns', media: 'all' %>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
-<% title "Influencer Campaign" %>
+<% title 'Brand Campaign' %>
 
 <div class="campaign-create-wrapper">
 
@@ -134,38 +134,6 @@
             </div>
 
           </div>
-
-
-          <div class="text-pink">PAYMENT</div>
-
-          <div class="payment-form">
-
-            <div class="row">
-              <%= f.label :card_number, "Card number" %>
-            </div>
-            <div class="row">
-              <%= f.text_field :card_number,  class: 'card-number'%>
-            </div>
-
-            <div class="row">
-              <%= f.label '', 'Expiration date' %>
-            </div>
-            <div class="row">
-              <%= f.select :card_expiration_month,  options_for_select(Campaign.card_expiration_months.map{ |type, value| [type.titleize, value] } ), { :include_blank => true }, {} %>
-              <%#= f.select :card_expiration_month,  options_for_select(Campaign.card_expiration_months.map{ |type, value| [type.titleize, value] }, Campaign.card_expiration_months[@campaign.card_expiration_month] ), { :include_blank => true }, {} %>
-              <%= f.select :card_expiration_year, options_for_select((Time.now.year)..(Time.now.year+10)), { :include_blank => true } %>
-              <%#= f.select :card_expiration_year, options_for_select((Time.now.year)..(Time.now.year+10), @campaign.card_expiration_year), { :include_blank => true } %>
-            </div>
-
-            <div class="row">
-              <%= f.label :card_holder_name, "Cardholder name" %>
-            </div>
-            <div class="row">
-              <%= f.text_field :card_holder_name, class: 'card-holder-name' %>
-            </div>
-
-          </div>
-
 
           <%= f.button  "BOOK NOW", class: 'btn btn-book-now' %>
           <%= link_to "CANCEL", '', class: 'btn btn-book-now grey-color' %>
