@@ -54,6 +54,22 @@ class CampaignsController < ApplicationController
 
   end
 
+  def new_brand_payment
+    # @campaign = Campaign.find(params[:id])
+    @campaign = Campaign.last
+  end
+
+  def create_brand_payment
+    @campaign = Campaign.find(params[:campaign][:id])
+
+    if @campaign.update(campaign_params)
+      redirect_to brand_campaign_campaigns_path
+    else
+      render :action => 'new_brand_payment'
+    end
+
+  end
+
   private
 
   def campaign_params
