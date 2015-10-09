@@ -1,11 +1,91 @@
 class InsightService < BaseService
-  Koala.config.api_version = "v2.3"
-  attr :is_error, :error_message
+  Koala.config.api_version = 'v2.4'
 
-  def initialize(arg)
-    super(arg)
-    @is_error = false
-    @graph = Koala::Facebook::API.new @current_user.access_token
+  def initialize(access_token)
+    @graph = Koala::Facebook::API.new(access_token)
+  end
+
+  def get_page_info(id)
+    page_info = {}
+    data = @graph.get_object("#{id}?fields=name,access_token")
+    page_info[:name] = data['name']
+    page_info[:access_token] = data['access_token']
+
+    service = InsightService.new(data['access_token'])
+
+    page_info[:number_of_followers] = service.get_number_of_likes(data['id'])
+    page_info[:daily_page_views] = service.get_daily_page_views(data['id'])
+    page_info[:number_of_posts] = service.get_number_of_posts(data['id'])
+    page_info[:post_reach] = service.get_post_reach(data['id'])
+
+    page_info
+  end
+
+  def get_pages(id)
+    pages = []
+    @graph.get_object("#{id}/accounts").each do |d|
+      service = InsightService.new(d['access_token'])
+
+      pages += {
+          id: d['id'],
+          name: d['name'],
+          followers: service.get_number_of_likes(d['id']),
+      }
+    end
+    pages
+  end
+
+  def get_number_of_likes(id)
+    data = @graph.get_object("#{id}?fields=likes")
+    data['likes']
+  end
+
+  def get_number_of_followers(id)
+    count = 0
+
+    @graph.get_object("#{id}/insights/page_follower_adds_unique/day").each do |d|
+      count += d['values'].last['value']
+    end
+
+    @graph.get_object("#{id}/insights/page_follower_removes_unique/day").each do |d|
+      count -= d['values'].last['value']
+    end
+
+    count
+  end
+
+  def get_daily_page_views(id)
+    count = 0
+    @graph.get_object("#{id}/insights/page_views/day").each do |d|
+      count += d['values'].last['value']
+    end
+    count
+  end
+
+  def get_number_of_posts(id)
+    count = 0
+    self.paginate(@graph.get_object("#{id}/posts")) do |data|
+      count += data.count
+    end
+    count
+  end
+
+  def get_post_reach(id)
+    count = 0
+
+    @graph.get_object("#{id}/insights/page_impressions/day").each do |d|
+      count += d['values'].last['value']
+    end
+
+    count
+  end
+
+  def paginate(resp)
+    loop do
+      break if resp.count == 0
+      yield resp
+      resp = resp.next_page
+    end
   end
 
   def get_info(page_id = 'VoHoaiLinh')

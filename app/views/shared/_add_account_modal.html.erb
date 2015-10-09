@@ -19,3 +19,60 @@
 
   </div>
 </div>
+
+<%= render 'profile/add_facebook_account' %>
+
+<script>
+    (function() {
+        $.getScript('//connect.facebook.net/en_UK/all.js', function(){
+            FB.init({
+                appId: '<%= CONFIG[:fb_app_id] %>',
+                xfbml: true,
+                version: 'v2.4'
+            });
+
+            var createForm = function(authResp) {
+                console.log(authResp);
+                FB.api('/me/accounts?fields=id,name,picture', function(resp) {
+                    var html = template({
+                        accounts: resp.data
+                    });
+                    $('#AddFacebookAccount').remove();
+                    $('body').append(html);
+                    $('#AddFacebookAccount').modal().find('[name="access_token"]').val(authResp.accessToken);
+                    $('#AddFacebookAccount').find('[name="expires_in"]').val(authResp.expiresIn);
+                });
+            };
+
+            var template;
+            $(document).ready(function () {
+                var source = $("#add-facebook-account-template").html();
+                template = Handlebars.compile(source);
+            });
+            $(document).on('click', '[data-target="AddFacebookAccount"]', function () {
+                FB.getLoginStatus(function(resp) {
+                    if (resp.status === 'connected') {
+                        createForm(resp.authResponse);
+                    }
+                    else {
+                        FB.login(function(resp) {
+                            if (resp.authResponse) {
+                                createForm(resp.authResponse);
+                            } else {
+                                // todo: alert?
+                            }
+                        });
+                    }
+                });
+            });
+
+            $(document).on('click', '.js-clickable', function(event) {
+                var ip = $(this).find('input[type="checkbox"]');
+                if (ip.get(0) != event.target) {
+                    ip.prop('checked', !ip.prop('checked'));
+                    return false;
+                }
+            });
+        });
+    })();
+</script>

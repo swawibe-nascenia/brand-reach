@@ -103,6 +103,11 @@ GEM
       multipart-post (>= 1.2, < 3)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    handlebars_assets (0.19.1)
+      execjs (>= 1.2.9)
+      multi_json
+      sprockets (>= 2.0.3)
+      tilt
     hashie (3.4.2)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -279,6 +284,7 @@ DEPENDENCIES
   country_select
   credit_card_validations
   devise
+  handlebars_assets
   jbuilder (~> 2.0)
   jquery-rails
   kaminari (~> 0.16.3)

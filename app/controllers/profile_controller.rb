@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
   # layout 'sidebar_header_layouts'
-  before_action :set_user, only: [:profile, :update, :update_password]
+  before_action :set_user, only: [:profile, :update, :update_accounts, :update_password]
 
   respond_to :html, :js
 
@@ -54,6 +54,30 @@ class ProfileController < ApplicationController
     end
   end
 
+  def update_accounts
+    graph = InsightService.new(params[:access_token])
+    params[:accounts].each do |account_id|
+      page_info = graph.get_page_info(account_id)
+      account = @user.facebook_accounts.build({
+                                                  name: page_info[:name],
+                                                  account_id: account_id,
+                                                  access_token: page_info[:access_token],
+                                                  token_expires_at: params[:expires_in].to_i.seconds.from_now,
+
+                                                  number_of_followers: page_info[:number_of_followers],
+                                                  daily_page_views: page_info[:daily_page_views],
+                                                  number_of_posts: page_info[:number_of_posts],
+                                                  post_reach: page_info[:post_reach],
+                                              })
+    end
+    if @user.save
+      flash[:success] = 'Accounts added successfully'
+    else
+      flash[:error] = 'Could not add account'
+    end
+
+    redirect_to profile_profile_index_path
+  end
 
   def contact_us
 

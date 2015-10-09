@@ -39,6 +39,7 @@ gem 'mysql2', '~> 0.3.18'
 gem 'orm_adapter'
 gem 'credit_card_validations'
 gem 'pubnub', '~> 3.7.9'
+gem 'handlebars_assets'
 
 # gem 'haml'
 # gem 'haml-rails'

@@ -246,32 +246,24 @@
 
 }
 
-#AddAccount {
-    z-index: 1060;
-}
-
-.account-modal-dialog {
-    padding-top: 9.3%;
+.modal-dialog {
+    padding-top: 100px;
     height: 100%;
     width: 60%;
     font-family: 'Raleway', sans-serif;
 }
 
-.account-modal-content {
+.modal-content {
     height: 460px;
 }
 
-#AddAccount .account-modal-header {
+.modal-header {
     height: 100px;
-    padding: 32px 7%;
+    padding: 32px 54px;
     background-color: #00c9f3;
 }
 
-#AddAccount .account-modal-body {
-    padding: 32px 8%;
-}
-
-.account-modal-content .account-modal-header .account-modal-close {
+.modal-header .close {
     color: #FFFFFF;
     font-size: 3em;
     margin-top: -38px;
@@ -279,8 +271,25 @@
     font-weight: 100;
 }
 
-.account-modal-body {
-    padding: 40px 7% 0;
+.modal-body {
+    padding: 40px 54px 0;
+}
+
+.modal-body .btn-primary {
+    background-color: #00c9f3;
+    border: 0;
+    border-radius: 0;
+    color: #fff;
+    padding-left: 68px;
+    padding-right: 68px;
+}
+
+.media-body{
+    width: 1000px;
+}
+
+.js-clickable {
+    cursor: pointer;
 }
 
 .add-another-account {
