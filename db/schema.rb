@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009092213) do
+ActiveRecord::Schema.define(version: 20151009094513) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "name",                       limit: 255
@@ -42,6 +42,20 @@ ActiveRecord::Schema.define(version: 20151009092213) do
     t.boolean  "deleted_by_influencer",      limit: 1,   default: false
     t.datetime "created_at",                                             null: false
     t.datetime "updated_at",                                             null: false
+  end
+
+  create_table "facebook_accounts", force: :cascade do |t|
+    t.string   "name",               limit: 255
+    t.string   "account_id",         limit: 255
+    t.integer  "influencer_id",      limit: 4,               null: false
+    t.string   "access_token",       limit: 255,             null: false
+    t.datetime "token_expires_at",                           null: false
+    t.integer  "status_update_cost", limit: 4,   default: 0
+    t.integer  "profile_photo_cost", limit: 4,   default: 0
+    t.integer  "cover_photo_cost",   limit: 4,   default: 0
+    t.integer  "video_post_cost",    limit: 4,   default: 0
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
   create_table "facebooks", force: :cascade do |t|
