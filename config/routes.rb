@@ -53,6 +53,8 @@ Rails.application.routes.draw do
       put :accept
       put :deny
       put :undo_deny
+      post :reply_message
+      post :make_messages_read
     end
   end
 

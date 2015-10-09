@@ -1,6 +1,6 @@
 
 <div class="offer-header">
-  <div class="read-status">
+  <div class="read-status read-status-<%= offer.id %> <%= offer.messages.where(receiver_id: current_user.id, read: false).count > 0 ? '': 'invisible'%>">
     <span class="status-inbox"></span>
   </div>
 
@@ -13,7 +13,6 @@
         <i class="fa fa-star <%= offer.starred_by_brand ? 'star-yellow' : 'star-grey' %>"></i>
     <% end %>
   </div>
-
   <div >
     <%= image_tag offer.sender.profile_picture, class: 'inbox-logo-responsive' %>
     <span class="title"><%= offer.sender.full_name %> </span>

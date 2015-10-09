@@ -1,4 +1,4 @@
-<div class="offer-box  offer-box-<%= offer.id %> collapse-group">
+<div class="offer-box  offer-box-<%= offer.id %> collapse-group" data-id="<%= offer.id %>">
   <% if current_user.influencer? %>
       <%= render partial: 'offers/influencer_offer_view', locals: { offer: offer} %>
   <% else %>

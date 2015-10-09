@@ -46,10 +46,15 @@
           });
 
           PUBNUB_CLIENT.events.bind("MESSAGE", function (message) {
-              console.log("MESSAGE EVENT FIRED with " + message);
               var messageTemplate = Handlebars.compile($('#message-template').html());
               var outputHtml = messageTemplate(message.attributes);
-              $('.comments_container_' + message.attributes.post_id).append(outputHtml);
+              $('.message-container-' + message.attributes.campaign_id).prepend(outputHtml);
+
+              if( $('.offer-box-' + message.attributes.campaign_id).children('.offer-body.in').length ){
+                  makeMessageRead(message.attributes.campaign_id);
+              }else{
+                  $('.read-status-' + message.attributes.campaign_id).removeClass('invisible');
+              }
           });
 
       });
@@ -217,16 +222,9 @@
 </html>
 
 <script id="message-template" type="text/x-handlebars-template">
-  <tr class="message message_{{id}}" >
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td colspan=3>
-      <img src="{{sender_profile_picture_url}}" class="reply-box-image"><span class="reply-message">{{body}}</span>
-    </td>
-    <td></td>
-  </tr>
-
+  <div class="message message-{{campaign_id}}">
+    <img src="{{sender_profile_picture_url}}" class='inbox-logo-responsive'>
+    <span class="title">{{body}}</span>
+  </div>
 </script>
 

@@ -1,6 +1,6 @@
 
 <div class="offer-header">
-  <div class="read-status">
+  <div class="read-status read-status-<%= offer.id %> <%= offer.messages.where(receiver_id: current_user.id, read: false).count > 0 ? '': 'invisible'%>">
     <span class="status-inbox"></span>
   </div>
 
