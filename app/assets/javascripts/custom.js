@@ -3,7 +3,6 @@
  */
 $(function(){
 
-
 //    toggle star of selected offers
     $('.make-all-stared').click(function(){
         var selected_offer_ids = seleted_offer_ids();
@@ -22,7 +21,7 @@ $(function(){
             alert('At least one offer has to be selected');
         }
 
-
+        return false;
     });
 
     function seleted_offer_ids(){
@@ -33,6 +32,93 @@ $(function(){
 
         return jQuery.unique(ids);
     }
+//    ======================= Offer controller javascript
+//    control collapsing offer in offer index page
+    $(document).on('click', '.offer-header', function(e) {
+
+        e.preventDefault();
+        var $offerBOx = $(this).parent();
+
+        if( $offerBOx.find('.offer-body.in').length ){
+            // already read all messages
+        }else{
+            //    make all message read to this message thread
+            makeMessageRead($offerBOx.data('id'));
+        }
+        var $collapse = $offerBOx.find('.collapse');
+        $collapse.collapse('toggle');
+    });
+
+    //prevent checkbox from event propagation for tab pan collapse
+    $(document).on('click', '.select-offer', function(e){
+        e.stopPropagation();
+    });
+
+//    reply message feature
+    $(document).on('click', '.message-reply-button', function(e){
+        var body = $(this).prev('.message-body').val();
+        var offer_id = $(this).data('offer-id');
+        var receiver_id = $(this).data('receiver-id');
+
+        if(body.length > 0){
+            $.ajax({
+                type: 'post',
+                url: '/offers/' + offer_id +'/reply_message',
+                dataType: 'json',
+                data: {'authenticity_token': $('meta[name="csrf-token"]').attr('content'), id: offer_id, receiver_id: receiver_id, body: body },
+                success: function(data) {
+                    if(data.success){
+                        console.log(data);
+                        $('.offer-textarea-' + data.id).val('');
+                        console.log($('.offer-textarea-' + data.id));
+                    }else{
+                        alert('Some error have been  occur');
+                    }
+
+                }
+            });
+        }else{
+            alert('Message body must be present ');
+        }
+
+    });
+
+//    make all message read
+    function makeMessageRead(campainId){
+
+        if (campainId === undefined || campainId === null) {
+            //no campaign id passed
+        }else{
+            $.ajax({
+                type: 'post',
+                url: '/offers/' + campainId +'/make_messages_read',
+                dataType: 'json',
+                data: {'authenticity_token': $('meta[name="csrf-token"]').attr('content')},
+                success: function(data) {
+                        $('.read-status-' + data.id).addClass('invisible');
+                }
+            });
+        }
+
+    }
 
 });
+
+function makeMessageRead(campainId){
+
+    if (campainId === undefined || campainId === null) {
+        //no campaign id passed
+    }else{
+        $.ajax({
+            type: 'post',
+            url: '/offers/' + campainId +'/make_messages_read',
+            dataType: 'json',
+            data: {'authenticity_token': $('meta[name="csrf-token"]').attr('content')},
+            success: function(data) {
+                $('.read-status-' + data.id).addClass('invisible');
+            }
+        });
+    }
+
+}
 

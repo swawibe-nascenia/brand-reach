@@ -1,15 +1,15 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [:show, :edit, :update, :destroy, :accept, :deny, :undo_deny]
+  before_action :set_offer, only: [:show, :edit, :update, :destroy, :accept, :deny, :undo_deny, :reply_message, :make_messages_read]
 
   # GET /offers
   # GET /offers.json
   def index
     if current_user.influencer?
-      @offers = current_user.campaigns_received
-      @stared_offers = current_user.campaigns_received.where(starred_by_influencer: true)
+      @offers = current_user.campaigns_received.includes(:messages).order('messages.created_at desc')
+      @stared_offers = current_user.campaigns_received.where(starred_by_influencer: true).includes(:messages).order('messages.created_at desc')
     else
-      @offers = current_user.campaigns_sent
-      @stared_offers = current_user.campaigns_sent.where(starred_by_brand: true)
+      @offers = current_user.campaigns_sent.includes(:messages).order('messages.created_at desc')
+      @stared_offers = current_user.campaigns_sent.where(starred_by_brand: true).includes(:messages).order('messages.created_at desc')
     end
   end
 
@@ -100,6 +100,30 @@ class OffersController < ApplicationController
     @offer.update_attribute(:status, Campaign.statuses[:waiting])
   end
 
+  def reply_message
+      message = @offer.messages.new(sender_id: current_user.id, receiver_id: params[:receiver_id], body: params[:body])
+
+      if message.save
+        success = true
+        id = @offer.id
+      else
+        success = false
+        id = @offer.id
+      end
+
+      respond_to do |format|
+        format.json { render :json => {success: success, id: id }}
+      end
+  end
+
+  def make_messages_read
+      @offer.messages.where(receiver_id: current_user.id, read: false).update_all(:read => true)
+
+      respond_to do |format|
+        format.json { render :json => { id: @offer.id }}
+      end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_offer
@@ -110,6 +134,12 @@ class OffersController < ApplicationController
     def offer_params
       params[:campaign]
     end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def message_params
+    params.require(:user).permit(:body, :sender_id, :receiver_id, :campaign_id)
+  end
+
 
   def set_star(offers, target_column)
     offers.update_all(target_column => true)

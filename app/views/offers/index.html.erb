@@ -17,105 +17,30 @@
 
   <ul class="nav nav-tabs" id="campaign-tabs">
     <li class= "active" id="inbox_list">
-      <a href="#inbox" data-toggle="tab">
-                        <span id="performance-blue"><img src="<%= asset_path('Inbox-blue.png') %>">
-                        </span><span id="performance-black" style="display: none"><img src="<%= asset_path('Inbox.png') %>"></span>
+      <%= link_to offers_path, remote: true do %>
+                        <span id="inbox-blue"><img src="<%= asset_path('Inbox-blue.png') %>">
+                        </span><span id="inbox-black" style="display: none"><img src="<%= asset_path('Inbox.png') %>"></span>
         <span class="inbox-tab">Inbox</span>
-      </a>
+      <% end %>
     </li>
     <li class= "" id="starred_list">
-      <a href="#stared_inbox" data-toggle="tab">
-        <span id="engagement-black"><img src="<%= asset_path('Starred.png') %>"></span>
-        <span id="engagement-blue" style="display: none"><img src="<%= asset_path('Starred-blue.png') %>"></span>
+      <%= link_to offers_path(starred: true), remote: true, data: { target: ''} do %>
+        <span id="star-black"><img src="<%= asset_path('Starred.png') %>"></span>
+        <span id="star-blue" style="display: none"><img src="<%= asset_path('Starred-blue.png') %>"></span>
         <span class="starred-tab">Starred</span>
-      </a>
+      <% end %>
     </li>
   </ul>
 
   <!-- print tab elements -->
   <div class="tab-content panel panel-offers">
     <div id="inbox" class="tab-pane fade in active">
-      <table class="table table-striped table-bordered table-responsive offers_table">
-        <tbody>
-        <% @offers.each do |offer|  %>
-            <% if current_user.influencer? %>
-                <%= render partial: 'offers/influencer_offer_view', locals: { offer: offer} %>
-               <% else %>
-                <%= render partial: 'offers/brand_offer_veiw', locals: { offer: offer} %>
-            <% end %>
-
-            <% if current_user.influencer? || offer.accepted? %>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td colspan=3><textarea class="offer-textarea" rows="3" placeholder="Start typing your message here"></textarea></td>
-                  <td>
-                    <button class="btn btn-accept" type="button" data-toggle="dropdown">Reply
-                    </button>
-                  </td>
-                </tr>
-            <% end %>
-
-            <%# offer.messages.each do |offer|  %>
-                <!--<tr>-->
-                  <!--<td></td>-->
-                  <!--<td></td>-->
-                  <!--<td></td>-->
-                  <!--<td></td>-->
-                  <!--<td colspan=3>-->
-                    <!--<img src="images/pepsi-small.jpg" class="reply-box-image"><span class="reply-message">It has been a pleasure working with you</span>-->
-                  <!--</td>-->
-                  <!--<td></td>-->
-                <!--</tr>-->
-            <%# end %>
-        <% end %>
-
-        </tbody>
-      </table>
+      <%= render partial: 'offer', collection: @offers %>
     </div>
 
 
     <div id="stared_inbox" class="tab-pane fade">
-      <table class="table table-striped table-bordered table-responsive starred_table">
-        <tbody>
-        <% @stared_offers.each do |offer|  %>
-            <% if current_user.influencer? %>
-                <%= render partial: 'offers/influencer_offer_view', locals: { offer: offer} %>
-            <% else %>
-                <%= render partial: 'offers/brand_offer_veiw', locals: { offer: offer} %>
-            <% end %>
-
-            <% if current_user.influencer? || offer.accepted? %>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td colspan=3><textarea class="offer-textarea" rows="3" placeholder="Start typing your message here"></textarea></td>
-                  <td>
-                    <button class="btn btn-accept" type="button" data-toggle="dropdown">Reply
-                    </button>
-                  </td>
-                </tr>
-            <% end %>
-
-            <%# offer.messages.each do |offer|  %>
-            <!--<tr>-->
-            <!--<td></td>-->
-            <!--<td></td>-->
-            <!--<td></td>-->
-            <!--<td></td>-->
-            <!--<td colspan=3>-->
-            <!--<img src="images/pepsi-small.jpg" class="reply-box-image"><span class="reply-message">It has been a pleasure working with you</span>-->
-            <!--</td>-->
-            <!--<td></td>-->
-            <!--</tr>-->
-            <%# end %>
-        <% end %>
-        </tbody>
-      </table>
+      <%#= render partial: 'offer', collection: @stared_offers %>
     </div>
   </div>
 
@@ -124,33 +49,3 @@
 
 <!-- /.content -->
 </div><!-- /.content-wrapper -->
-
-<script type="text/javascript">
-    $(document).ready(function(){
-
-        $(document).on('click','#starred_list',function(){
-            document.getElementById("performance-blue").style.display = 'none';
-            document.getElementById("performance-black").style.display = 'inline';
-            document.getElementById("engagement-black").style.display = 'none';
-            document.getElementById("engagement-blue").style.display = 'inline';
-        });
-
-        $(document).on('click','#inbox_list',function(){
-            document.getElementById("performance-black").style.display = 'none';
-            document.getElementById("performance-blue").style.display = 'inline';
-            document.getElementById("engagement-blue").style.display = 'none';
-            document.getElementById("engagement-black").style.display = 'inline';
-        });
-
-//        $(".inbox-star").click(function (e) {
-//            e.preventDefault();
-//
-//            var $this = $(this).find("a > i");
-//
-//            $this.toggleClass("star-grey");
-////            $this.toggleClass("star-yellow");
-//        });
-    });
-
-
-</script>
