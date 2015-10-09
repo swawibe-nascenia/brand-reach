@@ -45,13 +45,8 @@ class FacebookAccount < ActiveRecord::Base
   # == Instance methods == #
   # ----------------------------------------------------------------------
 
-  def get_pages
-    graph = InsightService.new(self.facebook.access_token)
-    graph.get_pages(self.account_id)
-  end
-
   def fetch_insights
-    graph = InsightService.new(self.facebook.access_token)
+    graph = InsightService.new(self.influencer.access_token)
     pages = []
 
     self.number_of_followers = graph.get_number_of_followers(self.account_id)

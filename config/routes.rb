@@ -39,6 +39,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :facebook do
+    collection do
+      get :insights
+    end
+  end
+
   resources :influencers, only: [:show] do
     collection do
       # get :show_profile

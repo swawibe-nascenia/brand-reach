@@ -1,0 +1,168 @@
+<section class="influence-facebook-content">
+  <div class=" row filter-bar">
+    <div class="col-md-3 col-sm-4 col-xs-6 filter-item filter-item-select">Lorem ipsum... <a class="close-filter-item close-filter-item-select">&times;</a></div>
+    <% @accounts.each do |account| %>
+        <div class="col-md-3 col-sm-4 col-xs-6 filter-item "><%= account.name %> <a class="close-filter-item ">&times;</a></div>
+    <% end %>
+  </div>
+  <div class="br-container">
+    <!-- Info boxes -->
+    <div class="row info-box-container">
+      <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
+        <div class="info-box-content">
+          <p class="info-box-data total-follower-data-color">24,000</p>
+
+          <p class="info-box-text ">TOTAL FOLLOWERS</p>
+
+        </div>
+
+      </div>
+      <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
+        <div class="info-box-content">
+          <p class="info-box-data page-view-data-color">7,582</p>
+
+          <p class="info-box-text">DAILY PAGE VIEWS</p>
+        </div>
+      </div>
+
+      <!-- fix for small devices only -->
+      <div class="clearfix visible-sm-block"></div>
+      <div class="clearfix visible-xs-block"></div>
+
+      <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
+        <div class="info-box-content">
+          <p class="info-box-data total-post-data-color">150</p>
+          <p class="info-box-text">TOTAL POSTS</p>
+        </div>
+      </div>
+      <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
+        <div class="info-box-content">
+          <p class="info-box-data post-reach-data-color">4,260</p>
+          <p class="info-box-text">POST REACH</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-chart">
+      <div class="box">
+        <div class="box-body">
+          <div class="pad">
+            <!-- Map will be created here -->
+            <div id="world-map-markers" style="height: 325px;"></div>
+          </div>
+        </div>
+      </div>
+      <section class="chart-info">
+        <span class="color-gray stat-gender">STATISTICS BY GENDER</span>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="font-below-statistic clearfix">
+            <div class="gender-stat-legend unit-in">
+              <span>Units in 1000s</span>
+            </div>
+            <div class="gender-stat-legend facebook-female">
+              <span class="square-box bg-color-pink"></span>
+              Female
+            </div>
+            <div class="gender-stat-legend">
+              <span class="square-box bg-color-blue chart-male"></span>
+              Male
+            </div>
+            <div class="gender-stat-legend">
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle custom-drop-down-button" type="button" data-toggle="dropdown">This Week
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">This Month</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Main row -->
+      <div class="chart">
+        <!-- Sales Chart Canvas -->
+        <canvas id="salesChart" height="180"></canvas>
+      </div>
+      <!-- /.chart-responsive -->
+    </div>
+
+    <!-- TABLE: LATEST ORDERS -->
+
+    <div class="color-gray stat-country bg-white">
+
+      <br>
+      <br>
+      STATISTICS BY COUNTRY / CITIES
+    </div>
+
+    <div class="box box-info">
+      <div class="box-body">
+        <table class="table no-margin table-striped table-responsive statistic-table">
+          <thead>
+          <tr>
+            <th>
+
+              <div class="dropdown">
+                <label class="drop-down-label">VIEW BY:</label>
+                <button class="btn view-country dropdown-toggle" type="button" data-toggle="dropdown">
+                  <i class="fa fa-angle-down angle-down-cities pull-right"></i>
+                  COUNTRY
+                </button>
+                <ul class="dropdown-menu custom-dropdown-menu">
+                  <li><a href="#">CITIES</a></li>
+                </ul>
+              </div>
+            </th>
+            <th> <span class="glyphicon icon-love"></span> &nbsp;Followers </th>
+            <th> <span class="glyphicon icon-comment"></span> &nbsp;Post Reach </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><span class="flag-icon flag-icon-in"></span> &nbsp; INDIA</td>
+            <td>20,348</td>
+            <td>1,00000</td>
+          </tr>
+          <tr>
+            <td><span class="flag-icon flag-icon-au"></span> &nbsp; AUSTRALIA</td>
+            <td>20,348</td>
+            <td>1,00000</td>
+          </tr>
+          <tr>
+            <td><span class="flag-icon flag-icon-us"></span> &nbsp; USA</td>
+            <td>20,348</td>
+            <td>1,00000</td>
+          </tr>
+          <tr>
+            <td><span class="flag-icon flag-icon-au"></span> &nbsp; AUSTRALIA</td>
+            <td>20,348</td>
+            <td>1,00000</td>
+          </tr>
+          <tr>
+            <td><span class="flag-icon flag-icon-us"></span> &nbsp; USA</td>
+            <td>20,348</td>
+            <td>1,00000</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- /.box-header -->
+
+
+    <!-- @below section is needed for showing map -->
+    <div class="col-md-4">
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="chart-responsive hidden">
+              <canvas id="pieChart" height="150"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
