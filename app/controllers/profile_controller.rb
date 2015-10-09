@@ -38,7 +38,7 @@ class ProfileController < ApplicationController
   end
 
   def subregion_options
-    render partial: 'sub_region_select'
+    render partial: 'shared/sub_region_select'
   end
 
   def add_social_site(provider)
