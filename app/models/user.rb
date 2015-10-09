@@ -32,9 +32,11 @@ class User < ActiveRecord::Base
   # == Associations and Nested Attributes == #
   # ----------------------------------------------------------------------
 
-  has_one :facebook, foreign_key: 'influencer_id', dependent: :destroy
+  has_many :facebook_accounts, foreign_key: 'influencer_id', dependent: :destroy
   has_many :campaigns_sent, class_name: 'Campaign', foreign_key: 'sender_id', dependent: :destroy
   has_many :campaigns_received, class_name: 'Campaign', foreign_key: 'receiver_id', dependent: :destroy
+
+  accepts_nested_attributes_for :facebook_accounts
 
   # ----------------------------------------------------------------------
   # == Validations == #
@@ -107,23 +109,38 @@ class User < ActiveRecord::Base
       end
     end
 
-    user.build_facebook(access_token: auth.credentials.token, uid: auth.uid)
-
-    if auth.credentials && auth.credentials.expires_at
-      user.facebook.token_expires_at = Time.at(auth.credentials.expires_at)
-    else
-      user.facebook.token_expires_at = 8.weeks.from_now
-    end
+    add_or_update_facebook_account(auth, user)
 
     user
   end
 
   def self.add_facebook_to_user_account(auth, params)
-    # me?fields=accounts
-    user = User.find_by(id: params['user_id'].to_i)
-    social_account = user.build_facebook(uid: auth.uid, access_token: auth.credentials.token, token_expires_at: 8.weeks.from_now)
+    user = User.find_by(email: auth.info.email)
 
-    social_account
+    account = add_or_update_facebook_account(auth, user)
+
+    account
+  end
+
+  def self.add_or_update_facebook_account(auth, user)
+    account = user.facebook_accounts.where(account_id: auth.uid).first
+    account_params = {
+        name: user.name,
+        account_id: user.uid,
+        access_token: auth.credentials.token,
+    }
+    if account.blank?
+      account = user.facebook_accounts.build(account_params)
+    else
+      account.assign_attributes(account_params)
+    end
+
+    if auth.credentials && auth.credentials.expires_at
+      account.token_expires_at = Time.at(auth.credentials.expires_at)
+    else
+      account.token_expires_at = 8.weeks.from_now
+    end
+    account
   end
 
   def full_name

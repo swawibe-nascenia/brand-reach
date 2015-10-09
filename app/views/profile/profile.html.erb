@@ -94,39 +94,41 @@
 
           <%= render partial: 'shared/add_account_modal'%>
 
-          <% if @user.facebook.present? %>
               <div class="social-account-tabs">
                 <ul class="nav nav-tabs social-account-nav-tabs">
-                  <li class="active"><a data-toggle="tab" href="#fb_bhanu"><i class="social-account-fa-edit fa fa-facebook"></i> Bhanu Prasad</a></li>
+                  <% @user.facebook_accounts.each do |account| %>
+                  <li><a data-toggle="tab" href="#fb_<%= account.account_id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %></a></li>
+                  <% end %>
                   <!--<li><a data-toggle="tab" href="#twitter_bhanu"><i class="social-account-fa-edit fa fa-twitter"></i> Bhanu Prasad</a></li>-->
                 </ul>
 
-                <%= f.fields_for @facebook do |g| %>
+                <%= f.fields_for :facebook_accounts do |g| %>
 
                     <div class="tab-content social-account-tab-content">
-                      <div id="fb_bhanu" class="tab-pane fade in active">
+                      <div id="fb_<%= g.object.account_id %>" class="tab-pane">
                         <div class="form-group">
                           <div class="col-md-5 col-sm-8 col-xs-11">
-                            <%= g.label :status_update_price, "Status Update" %>$
-                            <%= g.text_field :status_update_price %> USD
+                            <%= g.label :status_update_cost, "Status Update" %>$
+                            <%= g.text_field :status_update_cost %> USD
                           </div>
                           <div class="col-md-6 col-sm-8 col-xs-11">
-                            <%= g.label :banner_photo_price, "Cover Photo" %>$
-                            <%= g.text_field :banner_photo_price %> USD
+                            <%= g.label :cover_photo_cost, "Cover Photo" %>$
+                            <%= g.text_field :cover_photo_cost %> USD
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="col-md-5 col-sm-8 col-xs-11">
-                            <%= g.label :profile_photo_price, "Profile Photo" %>$
-                            <%= g.text_field :profile_photo_price %> USD
+                            <%= g.label :profile_photo_cost, "Profile Photo" %>$
+                            <%= g.text_field :profile_photo_cost %> USD
                           </div>
                           <div class="col-md-6 col-sm-8 col-xs-11">
-                            <%= g.label :video_post_price, "Video Post" %>$
-                            <%= g.text_field :video_post_price %> USD
+                            <%= g.label :video_post_cost, "Video Post" %>$
+                            <%= g.text_field :video_post_cost %> USD
                           </div>
                         </div>
                       </div>
                     </div>
+
                 <% end %>
 
                 <!--<div id="twitter_bhanu" class="tab-pane fade">-->
@@ -152,9 +154,11 @@
                 <!--</div>-->
                 <!--</div>-->
 
-
               </div>
-          <% end %>
+
+          <script>
+              $('.social-account-nav-tabs a:first').tab('show');
+          </script>
 
       <% end %>
 
