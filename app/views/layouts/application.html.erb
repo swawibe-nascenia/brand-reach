@@ -151,8 +151,8 @@
               </a>
             </li>
 
-            <li>
-              <a href="#">
+            <li class="<%=  (params[:controller] == 'payment_transactions') ? 'active' : '' %>">
+              <a href="<%= influencer_payment_payment_transactions_path %>">
                 <i class="fa fa-dollar"></i><span class="space-sidebar">PAYMENTS</span>
               </a>
             </li>
