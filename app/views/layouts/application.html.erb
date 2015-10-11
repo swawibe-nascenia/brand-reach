@@ -132,7 +132,7 @@
               <% end %>
             </li>
 
-            <li>
+            <li class="<%= (params[:controller] == 'facebook' && params[:action] == 'insights') ? 'active' : '' %>">
               <a href="<%= insights_facebook_index_path %>">
                 <i class="fa fa-facebook"></i><span class="space-sidebar">FACEBOOK</span>
               </a>

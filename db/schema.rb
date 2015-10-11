@@ -45,17 +45,21 @@ ActiveRecord::Schema.define(version: 20151009094513) do
   end
 
   create_table "facebook_accounts", force: :cascade do |t|
-    t.string   "name",               limit: 255
-    t.string   "account_id",         limit: 255
-    t.integer  "influencer_id",      limit: 4,               null: false
-    t.string   "access_token",       limit: 255,             null: false
-    t.datetime "token_expires_at",                           null: false
-    t.integer  "status_update_cost", limit: 4,   default: 0
-    t.integer  "profile_photo_cost", limit: 4,   default: 0
-    t.integer  "cover_photo_cost",   limit: 4,   default: 0
-    t.integer  "video_post_cost",    limit: 4,   default: 0
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.string   "name",                limit: 255
+    t.string   "account_id",          limit: 255
+    t.integer  "influencer_id",       limit: 4,               null: false
+    t.string   "access_token",        limit: 255,             null: false
+    t.datetime "token_expires_at",                            null: false
+    t.integer  "status_update_cost",  limit: 4,   default: 0
+    t.integer  "profile_photo_cost",  limit: 4,   default: 0
+    t.integer  "cover_photo_cost",    limit: 4,   default: 0
+    t.integer  "video_post_cost",     limit: 4,   default: 0
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.integer  "number_of_followers", limit: 4
+    t.integer  "daily_page_views",    limit: 4
+    t.integer  "number_of_posts",     limit: 4
+    t.integer  "post_reach",          limit: 4
   end
 
   create_table "facebooks", force: :cascade do |t|
