@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   has_many :facebook_accounts, foreign_key: 'influencer_id', dependent: :destroy
   has_many :campaigns_sent, class_name: 'Campaign', foreign_key: 'sender_id', dependent: :destroy
   has_many :campaigns_received, class_name: 'Campaign', foreign_key: 'receiver_id', dependent: :destroy
+  has_many :bank_accounts
 
   accepts_nested_attributes_for :facebook_accounts
 
