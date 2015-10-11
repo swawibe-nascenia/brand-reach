@@ -53,8 +53,13 @@
     font-size: 11pt;
 }
 
-.payment-button-set {
-    text-align: right;
+.payment-button-set label {
+    padding-right: 15px;
+}
+
+.payment-button-set input {
+   padding: 5px;
+
 }
 
 .payment-div > .payment-balance {
@@ -414,6 +419,10 @@ only screen and (max-width: 340px) {
     padding-left: 0;
 }
 
-
+.bank-accounts {
+    background: #fff;
+    padding: 15px 20px;
+    margin: 20px;
+}
 
 

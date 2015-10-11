@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151011052512) do
+ActiveRecord::Schema.define(version: 20151011094932) do
+
+  create_table "bank_accounts", force: :cascade do |t|
+    t.string  "bank_name",      limit: 255
+    t.string  "address",        limit: 255
+    t.string  "city",           limit: 255
+    t.string  "state",          limit: 255
+    t.string  "zip",            limit: 255
+    t.string  "country",        limit: 255
+    t.string  "account_name",   limit: 255
+    t.string  "account_number", limit: 255
+    t.string  "currency",       limit: 255
+    t.string  "routing_number", limit: 255
+    t.string  "bic",            limit: 255
+    t.string  "iban",           limit: 255
+    t.integer "user_id",        limit: 4,   null: false
+  end
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "name",                       limit: 255

@@ -7,7 +7,8 @@ class PaymentTransactionsController < ApplicationController
   end
 
   def influencer_payment
-
+    @transactions = PaymentTransaction.all
+    @bank_accounts = BankAccount.all
   end
 
   def export_payments
