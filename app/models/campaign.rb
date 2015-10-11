@@ -29,7 +29,7 @@ class Campaign < ActiveRecord::Base
   # == Associations and Nested Attributes == #
   # ----------------------------------------------------------------------
 
-  has_many :messages
+  has_many :messages, dependent: :destroy
   belongs_to :sender, class_name: 'User', foreign_key: :sender_id
   belongs_to :receiver, class_name: 'User', foreign_key: :receiver_id
   has_one :payment_transaction
