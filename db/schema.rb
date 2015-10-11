@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009094513) do
+ActiveRecord::Schema.define(version: 20151011052512) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "name",                       limit: 255
@@ -106,6 +106,14 @@ ActiveRecord::Schema.define(version: 20151009094513) do
   end
 
   add_index "pages", ["username"], name: "index_pages_on_username", using: :btree
+
+  create_table "payment_transactions", force: :cascade do |t|
+    t.date    "billed_date"
+    t.integer "amount_billed",  limit: 4, default: 0
+    t.integer "status",         limit: 4, default: 0
+    t.integer "transaction_id", limit: 4, default: 0
+    t.integer "campaign_id",    limit: 4,             null: false
+  end
 
   create_table "social_accounts", force: :cascade do |t|
     t.string   "provider",         limit: 255

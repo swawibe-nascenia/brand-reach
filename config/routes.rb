@@ -78,5 +78,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :payment_transactions, only: [] do
+    collection do
+      get :brand_payment
+      get :influencer_payment
+      post :export_payments
+    end
+  end
+
   root to: 'public#home', as: :root
 end

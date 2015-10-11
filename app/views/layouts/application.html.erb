@@ -125,6 +125,13 @@
                 <span class="glyphicon icon-horn"></span><span class="space-sidebar">CAMPAIGNS</span>
               </a>
             </li>
+
+            <li  class="<%=  (params[:controller] == 'payment_transactions') ? 'active' : '' %>">
+              <a href="<%= brand_payment_payment_transactions_path %>">
+                <i class="fa fa-dollar"></i><span class="space-sidebar">PAYMENTS</span>
+              </a>
+            </li>
+
         <% else %>
             <li>
               <%= link_to offers_path do %>
@@ -143,13 +150,15 @@
                 <span class="glyphicon icon-horn"></span><span class="space-sidebar">CAMPAIGNS</span>
               </a>
             </li>
+
+            <li>
+              <a href="#">
+                <i class="fa fa-dollar"></i><span class="space-sidebar">PAYMENTS</span>
+              </a>
+            </li>
+
         <% end %>
 
-        <li>
-          <a href="#">
-            <i class="fa fa-dollar"></i><span class="space-sidebar">PAYMENTS</span>
-          </a>
-        </li>
         <li class="<%=  (params[:controller] == 'profile' && params[:action] == 'contact_us') ? 'active' : '' %>">
           <a href="<%= contact_us_profile_index_path %>">
             <i class="fa fa-phone"></i><span class="space-sidebar">CONTACT US</span>
