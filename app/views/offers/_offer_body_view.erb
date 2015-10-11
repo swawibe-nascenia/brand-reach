@@ -1,14 +1,18 @@
 <div class="offer-body offer-body-<%= offer.id %> collapse">
   <div class="comment-box comment-box-<%= offer.id %>">
     <textarea name="message-body" class="offer-textarea message-body offer-textarea-<%= offer.id %> " rows="3" placeholder="Start typing your message here"></textarea>
-    <button data-offer-id='<%= offer.id %>' data-receiver-id='<%= current_user.id == offer.sender_id ? offer.receiver_id : offer.sender_id %>' class="message-reply-button btn btn-accept" type="button" >Reply</button>
+    <% if offer.accepted? %>
+        <button data-offer-id='<%= offer.id %>' data-receiver-id='<%= current_user.id == offer.sender_id ? offer.receiver_id : offer.sender_id %>' class="message-reply-button btn btn-accept" type="button" >Reply</button>
+    <% else %>
+        <button data-offer-id='<%= offer.id %>' data-receiver-id='<%= current_user.id == offer.sender_id ? offer.receiver_id : offer.sender_id %>' class="message-reply-button btn btn-accept" type="button" disabled>Reply</button>
+  <% end %>
   </div>
 
   <div class="message-container-<%= offer.id %>">
     <% offer.messages.each do |message| %>
         <div class="message message-<%= message.id %>">
           <%= image_tag offer.sender.profile_picture, class: 'inbox-logo-responsive' %>
-          <span class="title"><%= message.body %> </span>
+          <span class="title"><%= simple_format(message.body) %> </span>
         </div>
     <% end %>
   </div>

@@ -27,7 +27,7 @@ class CampaignsController < ApplicationController
     end
 
     if @campaign.save
-      create_message_for_campaign(@campaign)
+      @campaign.create_first_method
       redirect_to brand_campaign_campaigns_path
     else
       @influencer = current_user
@@ -79,10 +79,6 @@ class CampaignsController < ApplicationController
                                      :post_type, :number_of_likes, :number_of_post_reach, :number_of_comments,
                                      :number_of_shares, :card_number, :card_expiration_month, :card_expiration_year, :card_holder_name, :schedule_type
     )
-  end
-
-  def create_message_for_campaign(campaign)
-    campaign.messages.create(sender_id: campaign.sender_id, receiver_id: campaign.receiver_id, body: 'I want to hire you' );
   end
 
 end
