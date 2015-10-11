@@ -66,14 +66,19 @@
    padding: 5px;
 
 }
+.influencer-payment-div .btn-withdraw{
+    float: right;
+    margin-top: 0;
+}
 
-.payment-div > .payment-balance {
+.influencer-payment-div > .payment-balance {
     font-size: 15px;
     margin-left: 20%;
     display: block;
     padding: 10px 10px 0 0;
     font-family: 'Raleway', sans-serif;
     font-size: 11pt;
+    text-align: right;
 }
 
 #transaction-tabs {
