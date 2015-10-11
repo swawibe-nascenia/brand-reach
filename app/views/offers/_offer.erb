@@ -1,8 +1,8 @@
-<div class="offer-box  offer-box-<%= offer.id %> collapse-group" data-id="<%= offer.id %>">
+<div class="offer-box  offer-box-<%= offer.id %> collapse-group" data-id="<%= offer.id %>" data-star-page="<%= star_page %>">
   <% if current_user.influencer? %>
-      <%= render partial: 'offers/influencer_offer_view', locals: { offer: offer} %>
+      <%= render partial: 'offers/influencer_offer_view', locals: { offer: offer, star: star_page } %>
   <% else %>
-      <%= render partial: 'offers/brand_offer_veiw', locals: { offer: offer} %>
+      <%= render partial: 'offers/brand_offer_veiw', locals: { offer: offer, star: star_page } %>
   <% end %>
   <%= render partial: 'offers/offer_body_view', locals: { offer: offer} %>
 </div>

@@ -71,12 +71,15 @@ class OffersController < ApplicationController
   #  target_column may be 'starred_by_brand' of 'starred_by_influencer'
   def toggle_star
     target_column = current_user.brand? ? :starred_by_brand : :starred_by_influencer
-    ids = params[:ids].map(&:to_i)
-    offers = Campaign.where(id: ids)
+    @ids = params[:ids].map(&:to_i)
+    offers = Campaign.where(id: @ids)
+
+    @reset = nil
 
     if offers.count == offers.where(target_column => true).count
       # all offers are stared
       reset_star(offers, target_column)
+      @reset = true
     elsif offers.count == offers.where(target_column => false).count
       # all offers are non stared
       set_star(offers, target_column)

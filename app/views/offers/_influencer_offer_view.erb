@@ -9,7 +9,7 @@
   </div>
 
   <div class="make-star">
-    <%= link_to toggle_star_offers_path(ids: [offer.id], authenticity_token: form_authenticity_token), method: :put, remote: true do %>
+    <%= link_to toggle_star_offers_path(ids: [offer.id], authenticity_token: form_authenticity_token, star_page: star), method: :put, remote: true do %>
         <i class="fa fa-star <%= offer.starred_by_influencer ? 'star-yellow' : 'star-grey' %>"></i>
     <% end %>
   </div>
