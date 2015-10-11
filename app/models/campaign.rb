@@ -38,7 +38,7 @@ class Campaign < ActiveRecord::Base
   # == Validations == #
   # ----------------------------------------------------------------------
 
-  validates :cost, :numericality => { :greater_than_or_equal_to => 0 }, allow_blank: true
+  validates :cost, :numericality => {:greater_than_or_equal_to => 0}, allow_blank: true
   validates :card_number, credit_card_number: true, allow_blank: true
   validates :sender_id, :receiver_id, presence: true
 
@@ -69,12 +69,34 @@ class Campaign < ActiveRecord::Base
   end
 
   def date_validation
-    if self[:end_date].present? && ( self[:end_date] < self[:start_date] )
+    if self[:end_date].present? && (self[:end_date] < self[:start_date])
       errors[:End] << 'Date must be greater than Start Date'
       return false
     else
       return true
     end
+  end
+
+  def create_first_method
+        messages.create(sender_id: self.sender_id, receiver_id: self.receiver_id, body: first_message_body);
+  end
+
+  private
+
+  def first_message_body
+    <<MESSAGE
+      The brand has requested the following campaign. Please accept or deny to proceed.
+
+      <strong>Campaign Name:</strong> #{self.name}
+      <strong>Type of Post:</strong> #{self.post_type.camelize}
+      <strong>Start Date:</strong> #{self.start_date}
+      <strong>End Date:</strong> #{self.end_date}
+      <strong>Payment:</strong> #{self.cost}$
+
+      <strong>Campaign Heading:</strong> #{self.headline}
+      <strong>Campaign Description:</strong> #{self.text}
+
+MESSAGE
   end
 
 end

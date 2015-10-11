@@ -1,4 +1,23 @@
-window.location.reload();
+<% if @reset %>
+        if( $('#starred_list.active').length){
+
+            <% @ids.each do |id|%>
+                $('.offer-box-<%= id %>').hide();
+            <% end %>
+        }else{
+            <% @ids.each do |id|%>
+                $('.offer-box-<%= id %>').find('.fa-star').removeClass('star-yellow');
+                $('.offer-box-<%= id %>').find('.fa-star').addClass('star-grey');
+            <% end %>
+        }
+
+<% else %>
+    <% @ids.each do |id|%>
+        $('.offer-box-<%= id %>').find('.fa-star').removeClass('star-grey');
+        $('.offer-box-<%= id %>').find('.fa-star').addClass('star-yellow');
+    <% end %>
+<% end %>
+
 $(function(){
     $('.select-offer:checkbox:checked').each(function(){
         this.checked = false;

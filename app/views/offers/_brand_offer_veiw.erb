@@ -23,6 +23,11 @@
   </div>
 
   <div class="action">
+    <% if offer.accepted? %>
+        <%= link_to 'Engage', '#', class: 'btn btn-accept', method: :put, remote: true %>
+  <% else  %>
+       Pending request
+  <% end %>
 
   </div>
 

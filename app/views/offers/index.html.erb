@@ -35,7 +35,7 @@
   <!-- print tab elements -->
   <div class="tab-content panel panel-offers">
     <div id="inbox" class="tab-pane fade in active">
-      <%= render partial: 'offer', collection: @offers %>
+      <%= render partial: 'offer', collection: @offers, locals: { star_page: nil } %>
     </div>
 
 

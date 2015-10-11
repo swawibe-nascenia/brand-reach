@@ -12,7 +12,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20151011052512) do
-
   create_table "campaigns", force: :cascade do |t|
     t.string   "name",                       limit: 255
     t.string   "text",                       limit: 255
@@ -79,10 +78,10 @@ ActiveRecord::Schema.define(version: 20151011052512) do
     t.integer  "sender_id",   limit: 4
     t.integer  "receiver_id", limit: 4
     t.integer  "campaign_id", limit: 4
-    t.string   "body",        limit: 255
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.boolean  "read",        limit: 1,   default: false
+    t.text     "body",        limit: 65535
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.boolean  "read",        limit: 1,     default: false
   end
 
   create_table "offers", force: :cascade do |t|
