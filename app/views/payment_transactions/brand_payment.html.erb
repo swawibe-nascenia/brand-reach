@@ -5,13 +5,10 @@
 <div class="payment-div ">
   <div class="payment-button-set">
     <%= link_to 'DOWNLOAD INVOICE', '', :class => 'btn btn-download', id: 'export_payments' %>
-    <button class="btn btn-withdraw" data-toggle="modal" data-target="#withdrawModal">WITHDRAW</button>
   </div>
-  <div class="nav payment-balance pull-right">Available<span class="space"></span>Balance:<span class="balance">$2500</span><span class="space"></span>USD</div>
 </div>
 
 <div class="payment-content">
-
   <ul class="nav nav-tabs" id="transaction-tabs">
     <li class= "active">
       <a href="#payment">
@@ -62,77 +59,6 @@
     </div>
   </div>
 
-</div>
-
-<!-- Withdraw Modal -->
-<div class="modal fade" id="withdrawModal" role="dialog">
-  <div class="modal-dialog withdraw-modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content withdraw-modal-content">
-      <div class="modal-header withdraw-modal-header">
-        <a href="#"><%= image_tag('logo_white.png', :class => 'img-responsive withdraw-modal-logo') %></a>
-        <button type="button" class="close withdraw-modal-close" data-dismiss="modal">&times; </button>
-      </div>
-      <div class="modal-body withdraw-modal-body">
-        <p>The money will be in your bank account in 3-4 business days, depending on your bank.</p>
-
-        <div class="without-first-line">
-          <div class="row from-balance">
-            <div class="col-md-3 col-xs-5">
-              <p class="pull-right">From this balance</p>
-            </div>
-            <div class="col-md-9 col-xs-7 padding-zero">
-              <span class="balance">$ 2500</span> USD</span>
-            </div>
-          </div>
-
-
-          <div class="row withdraw-modal-amount">
-            <label for="amount" class="modal-amount col-md-3 col-xs-5">
-              <p class="pull-right">Amount</p>
-            </label>
-            <span class="col-md-9 col-xs-7 padding-zero"><input type="text" class="modal-amount-input" id="amount">&nbsp;&nbsp;USD</span>
-          </div>
-
-
-          <div class="row withdraw-modal-bank">
-            <div class="col-md-3 col-xs-5">
-              <p class="pull-right">To</p>
-            </div>
-            <div class="col-md-9 col-xs-7 padding-zero">
-              <button class="dropdown-toggle bank-name" type="button" data-toggle="dropdown">J.P. MORGAN CHASE BANK, N.A.Checking x - 4536
-                <i class="fa fa-sort"></i>
-              </button>
-              <ul class="dropdown-menu bank-dropdown">
-                <li><a href="#">J.P. MORGAN CHASE BANK, N.A.Checking x - 4537</a></li>
-                <li><a href="#">J.P. MORGAN CHASE BANK, N.A.Checking x - 4538</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="row add-account">
-            <div class="col-md-3 col-xs-5">
-            </div>
-            <div class="col-md-9 col-xs-7 add-bank padding-zero">
-              <a href="#">Add Bank Account</a>
-            </div>
-          </div>
-
-
-          <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-2">
-            </div>
-            <div class="col-lg-9 col-md-9 col-sm-7 col-xs-10 padding-zero">
-              <button type="button" class="btn withdraw-modal-continue col-lg-3 col-md-4 col-sm-4 col-xs-5" data-dismiss="modal">CONTINUE</button>
-              <button type="button" class="btn withdraw-modal-cancel col-lg-3 col-md-4 col-sm-4 col-xs-5" data-dismiss="modal">CANCEL</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
 </div>
 
 </div>
