@@ -24,7 +24,7 @@
 
           <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12">
             <div class="btn-box pull-right">
-              <%= link_to 'Send Request', new_campaign_path(receiver_id: influencer.id), class: 'btn btn-message' %>
+              <%= link_to 'Send Request', new_campaign_path(receiver_id: influencer.id), class: 'btn btn-message', data: {href: new_campaign_path(receiver_id: influencer.id)} %>
             </div>
             <div class="follower-box pull-right">
               <span class="follower-number"> 23,456 </span>
@@ -50,34 +50,40 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="social-account-tabs">
-                  <ul class="nav nav-tabs social-account-nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#fb_bhanu"><i class="social-account-fa-edit fa fa-facebook"></i> Bhanu Prasad</a></li>
+                  <ul class="nav nav-tabs social-account-nav-tabs influencer-social-account-nav-tabs">
+                    <% influencer.facebook_accounts.each do |account| %>
+                        <li class="influencer-social-account-tab" data-id="<%= account.id %>"><a data-toggle="tab" href="#fb_<%= account.id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %></a></li>
+                    <% end %>
                   </ul>
 
                   <div class="tab-content social-account-tab-content">
-                    <div id="fb_bhanu" class="tab-pane fade in active">
-                      <div class="form-group">
-                        <div class="col-md-5 col-sm-8 col-xs-11">
-                          <%= label_tag '', 'Status Update' %> $
-                          <%= text_field_tag  '', influencer.facebook.status_update_price, disabled: true %> USD
+                    <% influencer.facebook_accounts.each do |account| %>
+                        <div id="fb_<%= account.id %>" class="tab-pane">
+                          <div class="form-group">
+                            <div class="col-md-5 col-sm-8 col-xs-11">
+                              <%= label_tag :status_update_cost, "Status Update" %>$
+                              <%= text_field_tag '', account.status_update_cost %> USD
+                            </div>
+                            <div class="col-md-6 col-sm-8 col-xs-11">
+                              <%= label_tag :cover_photo_cost, "Cover Photo" %>$
+                              <%= text_field_tag '', account.cover_photo_cost %> USD
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-md-5 col-sm-8 col-xs-11">
+                              <%= label_tag :profile_photo_cost, "Profile Photo" %>$
+                              <%= text_field_tag '', account.profile_photo_cost %> USD
+                            </div>
+                            <div class="col-md-6 col-sm-8 col-xs-11">
+                              <%= label_tag :video_post_cost, "Video Post" %>$
+                              <%= text_field_tag '', account.video_post_cost %> USD
+                            </div>
+                          </div>
                         </div>
-                        <div class="col-md-6 col-sm-8 col-xs-11">
-                          <%= label_tag '', 'Cover Photo' %> $
-                          <%= text_field_tag  '', influencer.facebook.banner_photo_price, disabled: true %> USD
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="col-md-5 col-sm-8 col-xs-11">
-                          <%= label_tag '', 'Profile Photo' %> $
-                          <%= text_field_tag  '', influencer.facebook.profile_photo_price, disabled: true %> USD
-                        </div>
-                        <div class="col-md-6 col-sm-8 col-xs-11">
-                          <%= label_tag '', 'Video Post' %> $
-                          <%= text_field_tag  '', influencer.facebook.video_post_price, disabled: true %> USD
-                        </div>
-                      </div>
-                    </div>
+                       <% end %>
+
                   </div>
+
                 </div>
               </div>
             </div>
@@ -101,4 +107,6 @@
     </div>
   </div>
 </div>
-
+<script>
+    $('.social-account-nav-tabs a:first').tab('show');
+</script>
