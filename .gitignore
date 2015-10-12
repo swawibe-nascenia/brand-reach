@@ -18,6 +18,7 @@
 /tmp
 .elasticbeanstalk/
 
+/public/uploads
 
 tags
 

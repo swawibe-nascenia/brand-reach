@@ -91,7 +91,6 @@ class User < ActiveRecord::Base
                       })
 
       user.name = auth.info.name
-      user.image = auth.info.image
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
 
@@ -100,6 +99,9 @@ class User < ActiveRecord::Base
                       when 'female' then User.genders[:female]
                       else  User.genders[:other]
                     end
+
+      graph = InsightService.new(auth.credentials.token)
+      user.remote_image_url = graph.get_profile_picture
 
       # user.country = auth.info.location
 

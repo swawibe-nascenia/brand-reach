@@ -5,6 +5,11 @@ class InsightService < BaseService
     @graph = Koala::Facebook::API.new(access_token)
   end
 
+  def get_profile_picture
+    resp = @graph.get_object('/me/picture', { width: 200, redirect: false })
+    resp['data']['url']
+  end
+
   def get_page_info(id)
     page_info = {}
     data = @graph.get_object("#{id}?fields=name,access_token")
