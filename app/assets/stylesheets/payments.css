@@ -29,7 +29,7 @@
 }
 
 .payment-div {
-    margin: 0px 20px 20px 20px;
+    margin: 0px 20px 0px 20px;
     height: 40px;
 }
 
@@ -58,12 +58,16 @@
 }
 
 
-.payment-button-set label {
+.amount-withdraw label {
     padding-right: 15px;
+    color: #666666;
+    font-weight: 300;
+
 }
 
-.payment-button-set input {
+.amount-withdraw input {
    padding: 5px;
+    width: 30%;
 
 }
 .influencer-payment-div .btn-withdraw{
@@ -253,7 +257,7 @@ only screen and (max-width: 380px) {
 .withdraw-modal-dialog {
     padding-top: 9.3%;
     height: 100%;
-    width: 60%;
+    width: 40%;
 }
 
 @media
@@ -433,6 +437,27 @@ only screen and (max-width: 340px) {
     background: #fff;
     padding: 15px 20px;
     margin: 20px;
+}
+
+.bank_accounts_table {
+    margin-top : 25px;
+}
+
+.btn-influencer-download {
+    color: white;
+    margin: -5px 3px 15px 5px;
+    padding: 5px 20px 5px 20px;
+    background-color: #f8c102;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 11pt;
+}
+
+.add-bank-account {
+    color: #FF3059;
+    padding-left: 8px;
+    padding-top: 15px;
+    display: inline-block;
 }
 
 
