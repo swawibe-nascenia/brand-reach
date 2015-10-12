@@ -32,7 +32,7 @@
               <td><input type="radio" name="bank_account" id="bank_account_<%= bank_account.id %>" value="1">&nbsp;&nbsp;<%= bank_account.account_name %></td>
               <td><%= bank_account.account_number %></td>
               <td><%= bank_account.bank_name %></td>
-              <td><%= bank_account.country %></td>
+              <td><%= Carmen::Country.coded(bank_account.country) %></td>
               <td><%= bank_account.currency %></td>
               <td><%= link_to image_tag('trash-icon.png'), bank_account_path(bank_account.id), method: :delete, data: { confirm: 'Are you sure to delete Bank Account ?' } %></td>
             </tr>
