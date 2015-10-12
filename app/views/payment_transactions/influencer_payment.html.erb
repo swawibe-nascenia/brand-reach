@@ -9,7 +9,7 @@
     <div class="amount-withdraw">
       <%= label_tag 'withdraw_amount', 'Amount to Withdraw' %>
       <%= text_field_tag 'withdraw_amount', '' %>
-      <button class="btn btn-withdraw" data-toggle="modal" data-target="#AddBankAccount">WITHDRAW</button>
+      <%= link_to 'WITHDRAW', '', :class => 'btn btn-withdraw', id: 'withdraw_amount' %>
     </div>
   </div>
 
@@ -26,27 +26,24 @@
     </thead>
 
     <% if @bank_accounts.present? %>
-
         <tbody>
         <% @bank_accounts.each do |bank_account| %>
-            <tr data-id="<%= bank_account.id %>" >
-              <td><%= bank_account.account_name %></td>
+            <tr id="<%= bank_account.id %>">
+              <td><input type="radio" name="bank_account" id="bank_account_<%= bank_account.id %>" value="1">&nbsp;&nbsp;<%= bank_account.account_name %></td>
               <td><%= bank_account.account_number %></td>
               <td><%= bank_account.bank_name %></td>
               <td><%= bank_account.country %></td>
               <td><%= bank_account.currency %></td>
-              <td><%= link_to image_tag('trash-icon.png'),  post,  method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to image_tag('trash-icon.png'), bank_account_path(bank_account.id), method: :delete, data: { confirm: 'Are you sure to delete Bank Account ?' } %></td>
             </tr>
         <% end %>
         </tbody>
     <% end %>
-
   </table>
 
-  <a class="add-bank-account" data-toggle="modal" data-target="#withdrawModal"><i class="fa fa-plus"></i>&nbsp; Add Bank Account</a>
+  <a class="add-bank-account" data-toggle="modal" data-target="#AddBankAccount"><i class="fa fa-plus"></i>&nbsp; Add Bank Account</a>
 
 </div>
-
 
 <div class="payment-content">
 
@@ -68,7 +65,6 @@
           </thead>
 
           <% if @transactions.present? %>
-
               <tbody>
               <% @transactions.each do |transaction| %>
                   <tr>
@@ -101,8 +97,7 @@
 <div class="modal fade" id="AddBankAccount" role="dialog">
   <div class="modal-dialog withdraw-modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content withdraw-modal-content">
+    <div class="modal-content">
 
       <div class="modal-header withdraw-modal-header">
         <a href="#"><%= image_tag('logo_white.png', :class => 'img-responsive withdraw-modal-logo') %></a>
@@ -110,57 +105,113 @@
       </div>
 
       <div class="modal-body withdraw-modal-body">
-        <p>The money will be in your bank account in 3-4 business days, depending on your bank.</p>
 
-        <div class="without-first-line">
-          <div class="row from-balance">
-            <div class="col-md-3 col-xs-5">
-              <p class="pull-right">From this balance</p>
-            </div>
-            <div class="col-md-9 col-xs-7 padding-zero">
-              <span class="balance">$ 2500</span> USD</span>
-            </div>
-          </div>
+        <%= form_for BankAccount.new, url: bank_accounts_path, html: { class: 'form-horizontal bank-account-modal'} do |f| %>
 
-          <div class="row withdraw-modal-amount">
-            <label for="amount" class="modal-amount col-md-3 col-xs-5">
-              <p class="pull-right">Amount</p>
-            </label>
-            <span class="col-md-9 col-xs-7 padding-zero"><input type="text" class="modal-amount-input" id="amount">&nbsp;&nbsp;USD</span>
-          </div>
+            <div class="row">
+              <div class="col-md-4 bank_location">Bank and Location</div>
+            </div>
 
-          <div class="row withdraw-modal-bank">
-            <div class="col-md-3 col-xs-5">
-              <p class="pull-right">To</p>
+            <div class="col-md-4">
+              <%= f.label :bank_name, "Bank Name" %>
             </div>
-            <div class="col-md-9 col-xs-7 padding-zero">
-              <button class="dropdown-toggle bank-name" type="button" data-toggle="dropdown">J.P. MORGAN CHASE BANK, N.A.Checking x - 4536
-                <i class="fa fa-sort"></i>
-              </button>
-              <ul class="dropdown-menu bank-dropdown">
-                <li><a href="#">J.P. MORGAN CHASE BANK, N.A.Checking x - 4537</a></li>
-                <li><a href="#">J.P. MORGAN CHASE BANK, N.A.Checking x - 4538</a></li>
-              </ul>
+            <div class="col-md-8">
+              <%= f.text_field :bank_name %>
             </div>
-          </div>
 
-          <div class="row add-account">
-            <div class="col-md-3 col-xs-5">
+            <div class="col-md-4">
+              <%= f.label :address, "Address" %>
             </div>
-            <div class="col-md-9 col-xs-7 add-bank padding-zero">
-              <a href="#">Add Bank Account</a>
+            <div class="col-md-8">
+              <%= f.text_field :address %>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-2">
+            <div class="col-md-4">
+              <%= f.label :city, "City" %>
             </div>
-            <div class="col-lg-9 col-md-9 col-sm-7 col-xs-10 padding-zero">
-              <button type="button" class="btn withdraw-modal-continue col-lg-3 col-md-4 col-sm-4 col-xs-5" data-dismiss="modal">CONTINUE</button>
-              <button type="button" class="btn withdraw-modal-cancel col-lg-3 col-md-4 col-sm-4 col-xs-5" data-dismiss="modal">CANCEL</button>
+            <div class="col-md-8">
+              <%= f.text_field :city %>
             </div>
-          </div>
-        </div>
+
+            <div class="col-md-4">
+              <%= f.label :zip, "ZIP/Postal Code" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :zip %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :country, "Country" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.country_select :country, {priority: %w(US CA IN)}, { :class => 'bank-account-country'}, {} %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :state, "State/Region" %>
+            </div>
+            <div class="col-md-8">
+              <%#= render partial: 'shared/sub_region_select', locals: {parent_region: f.object.country } %>
+              <%= f.text_field :state %>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 bank_location">Account Details</div>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :account_name, "Account Name" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :account_name %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :account_number, "Account Number" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :account_number %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :currency, "Currency" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :currency %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :routing_number, "Routing Number" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :routing_number %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :bic, "BIC(Swift Code)" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :bic %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :iban, "IBAN" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :iban %>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <%= f.button  'SAVE', class: 'btn btn-withdraw pull-right' %>
+              </div>
+              <div class="col-md-8">
+                <%= link_to 'CANCEL', '', class: 'btn btn-withdraw btn-close' %>
+              </div>
+
+            </div>
+
+        <% end %>
       </div>
     </div>
   </div>
@@ -189,6 +240,10 @@
             });
 
 
+        });
+
+        $('.bank_accounts_table tr').click(function() {
+            $(this).find('td input:radio').prop('checked', true);
         });
 
 

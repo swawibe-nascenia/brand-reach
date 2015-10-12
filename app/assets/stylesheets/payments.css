@@ -286,7 +286,7 @@ only screen and (max-width: 480px) {
 }
 
 .withdraw-modal-body {
-    padding: 40px 7% 0;
+    padding: 25px 20px;
 }
 
 .modal-amount {
@@ -458,6 +458,37 @@ only screen and (max-width: 340px) {
     padding-left: 8px;
     padding-top: 15px;
     display: inline-block;
+}
+
+.btn-close {
+    background-color: #999999;
+}
+
+.bank-account-modal label {
+    float: right;
+}
+
+.bank-account-modal label, .bank-account-modal input, .bank-account-modal select {
+    padding: 5px 3px;
+    margin: 3px 0;
+    font-size: 12px;
+    color: #666666;
+}
+
+.bank-account-modal .bank-account-country {
+    width: 140px;
+    background-color: white;
+}
+
+.bank_location {
+    font-size: 14px;
+    padding: 15px 0;
+    font-weight: 600;
+    text-align: right;
+}
+
+.bank_accounts_table td input[type=radio] {
+    vertical-align: sub;
 }
 
 

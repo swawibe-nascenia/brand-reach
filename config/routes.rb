@@ -86,5 +86,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :bank_accounts, only: [:create, :destroy] do
+    collection do
+    end
+  end
+
   root to: 'public#home', as: :root
 end
