@@ -90,17 +90,17 @@
         <% end %>
 
         <div class="social-media-info"> Social Media Information</div>
-        <p><span class="view-profile-fb-twitter-color">Facebook:</span> https://www.facebook.com/johnDoe</p>
-        <p><span class="view-profile-fb-twitter-color"> &nbsp;  &nbsp; Twitter:</span> @johnross</p>
+        <p><span class="view-profile-fb-twitter-color">Facebook:</span> <%= influencer.facebook_profile_url %></p>
+        <p><span class="view-profile-fb-twitter-color"> &nbsp;  &nbsp; Twitter:</span> <%= %></p>
 
         <div class="row">
           <div class="col-md-6">
             <div class="view-profile-industry"> Industry</div>
-            <p>Marketing, Production</p>
+            <p><%= influencer.industry %></p>
           </div>
           <div class="col-md-6">
             <div class="view-profile-industry"> Location</div>
-            <p>Hyderabad, India</p>
+            <p><%= "#{ Carmen::Country.coded(influencer.country).subregions.coded(influencer.state)}, #{ Carmen::Country.coded(influencer.country) }" %></p>
           </div>
         </div>
       </div>
