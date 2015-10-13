@@ -1,4 +1,4 @@
-class PaymentTransaction < ActiveRecord::Base
+class BrandPayment < ActiveRecord::Base
   # ----------------------------------------------------------------------
   # == Include Modules == #
   # ----------------------------------------------------------------------

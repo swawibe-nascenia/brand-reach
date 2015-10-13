@@ -93,7 +93,6 @@
 
 </div>
 
-<!-- Withdraw Modal -->
 <div class="modal fade" id="AddBankAccount" role="dialog">
   <div class="modal-dialog withdraw-modal-dialog">
 
@@ -231,14 +230,13 @@
             });
 
             $.ajax({
-                url: "<%= export_payments_payment_transactions_path %>",
+                url: "<%= export_payments_brand_payments_path %>",
                 type: 'post',
                 dataType: 'script',
                 data: {
                     payment_ids: payment_ids
                 }
             });
-
 
         });
 

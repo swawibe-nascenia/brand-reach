@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012085240) do
+ActiveRecord::Schema.define(version: 20151012121127) do
 
   create_table "bank_accounts", force: :cascade do |t|
     t.string  "bank_name",      limit: 255
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 20151012085240) do
     t.string  "bic",            limit: 255
     t.string  "iban",           limit: 255
     t.integer "user_id",        limit: 4,   null: false
+  end
+
+  create_table "brand_payments", force: :cascade do |t|
+    t.date    "billed_date"
+    t.integer "amount_billed",  limit: 4, default: 0
+    t.integer "status",         limit: 4, default: 0
+    t.integer "transaction_id", limit: 4, default: 0
+    t.integer "campaign_id",    limit: 4,             null: false
   end
 
   create_table "campaigns", force: :cascade do |t|
@@ -91,6 +99,15 @@ ActiveRecord::Schema.define(version: 20151012085240) do
     t.integer  "influencer_id",       limit: 4,               null: false
   end
 
+  create_table "influencer_payments", force: :cascade do |t|
+    t.date    "billed_date"
+    t.integer "amount_billed",   limit: 4, default: 0
+    t.integer "status",          limit: 4, default: 0
+    t.integer "transaction_id",  limit: 4, default: 0
+    t.integer "user_id",         limit: 4,             null: false
+    t.integer "bank_account_id", limit: 4,             null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.integer  "sender_id",   limit: 4
     t.integer  "receiver_id", limit: 4
@@ -122,14 +139,6 @@ ActiveRecord::Schema.define(version: 20151012085240) do
   end
 
   add_index "pages", ["username"], name: "index_pages_on_username", using: :btree
-
-  create_table "payment_transactions", force: :cascade do |t|
-    t.date    "billed_date"
-    t.integer "amount_billed",  limit: 4, default: 0
-    t.integer "status",         limit: 4, default: 0
-    t.integer "transaction_id", limit: 4, default: 0
-    t.integer "campaign_id",    limit: 4,             null: false
-  end
 
   create_table "social_accounts", force: :cascade do |t|
     t.string   "provider",         limit: 255
@@ -177,7 +186,6 @@ ActiveRecord::Schema.define(version: 20151012085240) do
     t.integer  "user_type",              limit: 4,   default: 0
     t.integer  "gender",                 limit: 4
     t.string   "channel_name",           limit: 255
-    t.string   "facebook_profile_url",   limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
