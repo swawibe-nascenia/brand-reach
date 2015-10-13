@@ -186,6 +186,7 @@ ActiveRecord::Schema.define(version: 20151012121127) do
     t.integer  "user_type",              limit: 4,   default: 0
     t.integer  "gender",                 limit: 4
     t.string   "channel_name",           limit: 255
+    t.string   "facebook_profile_url",   limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

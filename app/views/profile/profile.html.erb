@@ -94,16 +94,17 @@
 
           <%= render partial: 'shared/add_account_modal'%>
 
+          <% if @user.facebook_accounts.present? %>
               <div class="social-account-tabs">
                 <ul class="nav nav-tabs social-account-nav-tabs">
                   <% @user.facebook_accounts.each do |account| %>
-                  <li><a data-toggle="tab" href="#fb_<%= account.account_id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %></a></li>
+                      <li><a data-toggle="tab" href="#fb_<%= account.account_id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %></a></li>
                   <% end %>
                   <!--<li><a data-toggle="tab" href="#twitter_bhanu"><i class="social-account-fa-edit fa fa-twitter"></i> Bhanu Prasad</a></li>-->
                 </ul>
 
                 <div class="tab-content social-account-tab-content">
-                <%= f.fields_for :facebook_accounts do |g| %>
+                  <%= f.fields_for :facebook_accounts do |g| %>
 
                       <div id="fb_<%= g.object.account_id %>" class="tab-pane">
                         <div class="form-group">
@@ -128,7 +129,7 @@
                         </div>
                       </div>
 
-                <% end %>
+                  <% end %>
                 </div>
 
                 <!--<div id="twitter_bhanu" class="tab-pane fade">-->
@@ -156,10 +157,11 @@
 
               </div>
 
-          <script>
-              $('.social-account-nav-tabs a:first').tab('show');
-          </script>
+              <script>
+                  $('.social-account-nav-tabs a:first').tab('show');
+              </script>
 
+          <% end %>
       <% end %>
 
 
