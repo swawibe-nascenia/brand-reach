@@ -114,8 +114,8 @@
               <% end %>
             </li>
 
-            <li class="<%=  (params[:controller] == 'brands' && params[:action] == 'explore') ? 'active' : '' %>">
-              <a href="<%= explore_brands_path %>">
+            <li class="<%=  (params[:controller] == 'explores' && params[:action] == 'show') ? 'active' : '' %>">
+              <a href="<%= explores_path %>">
                 <span class="fa fa-search"> </span><span class="space-sidebar">EXPLORE</span>
               </a>
             </li>

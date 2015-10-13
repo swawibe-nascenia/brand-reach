@@ -30,15 +30,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :brands, only: [] do
-    collection do
-      get :explore
-      post :send_offer
-    end
-    member do
-    end
-  end
-
   resources :facebook do
     collection do
       get :insights
@@ -91,5 +82,6 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :explores, only: [:show]
   root to: 'public#home', as: :root
 end
