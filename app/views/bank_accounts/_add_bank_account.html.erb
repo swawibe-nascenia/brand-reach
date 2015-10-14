@@ -1,0 +1,122 @@
+<div class="modal fade" id="AddBankAccount" role="dialog">
+  <div class="modal-dialog withdraw-modal-dialog">
+
+    <div class="modal-content">
+
+      <div class="modal-header withdraw-modal-header">
+        <a href="#"><%= image_tag('logo_white.png', :class => 'img-responsive withdraw-modal-logo') %></a>
+        <button type="button" class="close withdraw-modal-close" data-dismiss="modal">&times; </button>
+      </div>
+
+      <div class="modal-body withdraw-modal-body">
+
+        <%= form_for bank_account, url: bank_accounts_path, html: { class: 'form-horizontal bank-account-modal'}, remote: true do |f| %>
+
+            <div class="row">
+              <div class="col-md-4 bank_location">Bank and Location</div>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :bank_name, "Bank Name" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :bank_name %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :address, "Address" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :address %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :city, "City" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :city %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :zip, "ZIP/Postal Code" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :zip %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :country, "Country" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.country_select :country, {priority: %w(US CA IN)}, { :class => 'bank-account-country'}, {} %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :state, "State/Region" %>
+            </div>
+            <div class="col-md-8">
+              <%#= render partial: 'shared/sub_region_select', locals: {parent_region: f.object.country } %>
+              <%= f.text_field :state %>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 bank_location">Account Details</div>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :account_name, "Account Name" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :account_name %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :account_number, "Account Number" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :account_number %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :currency, "Currency" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :currency %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :routing_number, "Routing Number" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :routing_number %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :bic, "BIC(Swift Code)" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :bic %>
+            </div>
+
+            <div class="col-md-4">
+              <%= f.label :iban, "IBAN" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :iban %>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <%= f.button  'SAVE', class: 'btn btn-withdraw pull-right' %>
+              </div>
+              <div class="col-md-8">
+                <%= link_to 'CANCEL', '', class: 'btn btn-withdraw btn-close' %>
+              </div>
+
+            </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -439,6 +439,10 @@ only screen and (max-width: 340px) {
     margin: 20px;
 }
 
+.bank-accounts a {
+    cursor: pointer;
+}
+
 .bank_accounts_table {
     margin-top : 25px;
 }

@@ -31,6 +31,7 @@ class CampaignsController < ApplicationController
       redirect_to brand_campaign_campaigns_path
     else
       @influencer = current_user
+      @costs = User.find(params[:campaign][:receiver_id]).facebook_accounts.pluck(:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost)
       render :action => 'new', :sender_id => current_user.id, :receiver_id => params[:receiver_id].to_i
     end
 

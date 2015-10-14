@@ -1,0 +1,10 @@
+if (<%= @is_save %>)
+{
+   window.location.reload();
+}
+
+if ($('#AddBankAccount #error_explanation').length)
+{
+    $('#AddBankAccount #error_explanation').remove();
+}
+$('#AddBankAccount .modal-body').prepend('<%=j render 'shared/show_errors', :object => @bank_account %>');

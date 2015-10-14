@@ -83,7 +83,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :bank_accounts, only: [:create, :destroy] do
+  resources :bank_accounts, only: [:new, :create, :destroy] do
     collection do
     end
   end
