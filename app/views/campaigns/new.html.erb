@@ -50,11 +50,13 @@
               <div class="form-group">
                 <%= f.label :social_account_activity_id, 'Choose Social Account Name', class: 'control-label col-md-4' %>
                 <div class="col-sm-8">
-                  <%= f.select :social_account_activity_id, options_for_select(User.find(params[:campaign][:receiver_id]).facebook_accounts.map{ |account| [account.name, account.id] }) , { :include_blank => true }, { :class => 'form-control type-of-post', :id => '' } %>
+                  <%= f.select :social_account_activity_id, options_for_select(@influencer.facebook_accounts.map{ |account| [account.name, account.id] }) , { :include_blank => true }, { :class => 'form-control type-of-post', :id => '' } %>
                 </div>
               </div>
 
               <div class="form-group">
+
+
                 <%= f.label :post_type, 'Choose the type of post', class: 'control-label col-md-4' %>
                 <div class="col-sm-8">
                   <%= f.select :post_type, options_for_select(Campaign.post_types.map{ |type, value| [type.titleize, value] }) , { :include_blank => true }, { :class => 'form-control type-of-post', :id => 'post_type' } %>
@@ -132,12 +134,11 @@
       </div>
 
       <%= f.button  "BOOK NOW", class: 'btn btn-book-now' %>
-      <%= link_to "CANCEL", '', class: 'btn btn-book-now grey-color' %>
+      <%= link_to "CANCEL", explore_brands_path, class: 'btn btn-book-now grey-color' %>
   <% end %>
 </div>
 
 </div>
-
 
 <script type="text/javascript">
     $(document).ready(function() {

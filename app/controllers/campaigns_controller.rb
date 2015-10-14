@@ -15,6 +15,7 @@ class CampaignsController < ApplicationController
     @influencer = User.find(params[:receiver_id].to_i)
     @costs = User.find(params[:receiver_id].to_i).facebook_accounts.pluck(:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost)
     @campaign = Campaign.new(sender_id: current_user.id, receiver_id: params[:receiver_id])
+
   end
 
   def create
@@ -22,6 +23,7 @@ class CampaignsController < ApplicationController
     @campaign.post_type = campaign_params[:post_type].to_i
     @campaign.card_expiration_month = campaign_params[:card_expiration_month].to_i
     @campaign.card_expiration_year = campaign_params[:card_expiration_year].to_i
+
     unless @campaign.date_range?
       @campaign.start_date = Time.now.strftime('%d/%m/%Y')
     end
@@ -30,9 +32,9 @@ class CampaignsController < ApplicationController
       @campaign.create_first_method
       redirect_to brand_campaign_campaigns_path
     else
-      @influencer = current_user
+      @influencer =  User.find(params[:campaign][:receiver_id])
       @costs = User.find(params[:campaign][:receiver_id]).facebook_accounts.pluck(:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost)
-      render :action => 'new', :sender_id => current_user.id, :receiver_id => params[:receiver_id].to_i
+      render :action => 'new'
     end
 
   end
