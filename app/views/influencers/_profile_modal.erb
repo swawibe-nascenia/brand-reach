@@ -100,7 +100,7 @@
           </div>
           <div class="col-md-6">
             <div class="view-profile-industry"> Location</div>
-            <p><%= "#{ Carmen::Country.coded(influencer.country).subregions.coded(influencer.state)}, #{ Carmen::Country.coded(influencer.country) }" %></p>
+            <p><%= "#{ Carmen::Country.coded(influencer.country).subregions.coded(influencer.state)}, #{ Carmen::Country.coded(influencer.country).name }" %></p>
           </div>
         </div>
       </div>

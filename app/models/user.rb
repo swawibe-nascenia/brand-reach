@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   # == Callbacks == #
   # ----------------------------------------------------------------------
 
-  after_save :generate_channel_name
+  after_save :generate_channel_name, :save_actual_country_state
 
   # ----------------------------------------------------------------------
   # == Scopes and Other macros == #
@@ -134,6 +134,11 @@ class User < ActiveRecord::Base
 
   def generate_channel_postfix
     rand(36**15).to_s(36) + self.id.to_s
+  end
+
+  def save_actual_country_state
+    self.update_column(:country_name, Carmen::Country.coded(self.country).name)
+    self.update_column(:state_name, Carmen::Country.coded(self.country).subregions.coded(self.state).name )
   end
 
 end

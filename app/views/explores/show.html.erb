@@ -1,11 +1,11 @@
 <%= stylesheet_link_tag 'brands-explore.css', media: 'all' %>
 
 
-<% title "Brand Explore" %>
+<% title 'Brand Explore' %>
 
 <div class="brands-explore-content-wrapper">
   <div class="brands-explore-advance-search">
-    <form action="" role="form" class="vertical">
+    <form action="<%= explores_path %>" role="form" class="vertical" method="get">
       <div class="advanced-search">ADVANCED SEARCH</div>
 
       <div class="row">
@@ -31,7 +31,7 @@
             <div class="col-md-12">
               <label for="social-media-platform"> Social Media Platform </label>
               <select name="social_media_platform" id="social-media-platform">
-                <option>Select a Social Media Platform</option>
+                <option value="">Select a Social Media Platform</option>
                 <option>Facebook</option>
                 <option>Twitter</option>
                 <option>Linkedin</option>
@@ -59,6 +59,11 @@
                 <%# render partial: 'shared/sub_region_select', locals: {parent_region: f.object.country} %>
               </div>
             </div>
+            <div class="col-md-12">
+              <%= button_tag 'Search Influencer', class: 'btn btn-success'%>
+              <%= hidden_field_tag 'advance_search', true %>
+            </div>
+
           </div>
         </div>
       </div>
@@ -69,7 +74,7 @@
   <hr/>
 
   <div class="search-result">
-    <% @influncers.each_slice(4) do |influncer_group| %>
+    <% @influencers.each_slice(4) do |influncer_group| %>
         <div class="row padding-less-column-parent">
           <% influncer_group.each do |influencer| %>
               <div class="col-md-3 col-sm-6 col-sm-12">
@@ -96,7 +101,7 @@
     <% end %>
   </div>
 
-  <%= paginate @influncers %>
+  <%= paginate @influencers %>
 
   <div id="profile-modal"></div>
 </div>
