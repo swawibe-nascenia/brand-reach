@@ -35,6 +35,8 @@ class FacebookAccount < ActiveRecord::Base
   # == Callbacks == #
   # ----------------------------------------------------------------------
 
+  after_save :update_influencer_fb_average_cost
+
 
   # ----------------------------------------------------------------------
   # == Scopes and Other macros == #
@@ -63,6 +65,16 @@ class FacebookAccount < ActiveRecord::Base
     pages
   end
 
+
+  private
+
+  def update_influencer_fb_average_cost
+    cost_array = influencer.facebook_accounts.pluck(:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost)
+    Rails.logger.info "===================== array #{cost_array.inject(:+)} "
+    avg_cost = cost_array.inject(:+).inject(:+) / (cost_array.inject(:+).length)
+    Rails.logger.info "total amoutn is #{cost_array.inject(:+).inject(:+)} and field #{cost_array.inject(:+).length}"
+    influencer.update_column(:fb_average_cost, avg_cost)
+  end
   # ----------------------------------------------------------------------
   # == Class methods == #
   # ----------------------------------------------------------------------

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014085307) do
+ActiveRecord::Schema.define(version: 20151014123721) do
 
   create_table "bank_accounts", force: :cascade do |t|
     t.string  "bank_name",      limit: 255
@@ -189,6 +189,7 @@ ActiveRecord::Schema.define(version: 20151014085307) do
     t.string   "facebook_profile_url",   limit: 255
     t.string   "country_name",           limit: 255
     t.string   "state_name",             limit: 255
+    t.integer  "fb_average_cost",        limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

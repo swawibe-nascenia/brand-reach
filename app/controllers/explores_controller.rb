@@ -8,7 +8,9 @@ class ExploresController < ApplicationController
       wildcard_search = "%#{params[:search_key]}%"
       @influencers = @influencers.where('industry LIKE :search OR country_name LIKE :search OR state_name LIKE :search', search: wildcard_search)
     elsif params[:advance_search].present?
-      @influencers
+      @influencers = @influencers.where(industry: params[:category]) if params[:category].present?
+      @influencers = @influencers.where(country: params[:country])
+      @influencers = @influencers.where(industry: params[:category]) if params[:category].present?
     end
     # Rails.logger.info @influencers.inspect
     @influencers = @influencers.order(:name).page params[:page]
