@@ -1,3 +1,8 @@
+if (<%= @is_save %>)
+{
+   window.location.reload();
+}
+
 if ($('#AddBankAccount #error_explanation').length)
 {
     $('#AddBankAccount #error_explanation').remove();

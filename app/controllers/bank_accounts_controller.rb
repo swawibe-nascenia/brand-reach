@@ -9,10 +9,7 @@ class BankAccountsController < ApplicationController
   def create
     @bank_account = BankAccount.new(bank_accounts_params)
     @bank_account.user_id = current_user.id
-
-    if  @bank_account.save
-      redirect_to influencer_payment_influencer_payments_path
-    end
+    @is_save = @bank_account.save
   end
 
   def destroy
