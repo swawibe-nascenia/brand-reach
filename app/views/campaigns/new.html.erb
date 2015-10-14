@@ -159,19 +159,22 @@
 
         console.log( <%= @costs %>);
         $('#post_type').change(function() {
-            if (this.value == 0) {
-                $('#post_cost').val(<%= @costs[0][0] %>);
-            }
-            else if (this.value == 1) {
-                $('#post_cost').val(<%= @costs[0][1] %>);
-            }
-            else if (this.value == 2) {
-                $('#post_cost').val(<%= @costs[0][2] %>);
-            }
-            else {
-                $('#post_cost').val(<%= @costs[0][3] %>);
-            }
+            if (<%= @costs.present? %>) {
 
+                if (this.value == 0) {
+                    $('#post_cost').val(<%= @costs[0][0] %>);
+                }
+                else if (this.value == 1) {
+                    $('#post_cost').val(<%= @costs[0][1] %>);
+                }
+                else if (this.value == 2) {
+                    $('#post_cost').val(<%= @costs[0][2] %>);
+                }
+                else {
+                    $('#post_cost').val(<%= @costs[0][3] %>);
+                }
+
+            }
 
         });
     })

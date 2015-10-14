@@ -29,7 +29,7 @@ class BankAccount < ActiveRecord::Base
   # == Validations == #
   # ----------------------------------------------------------------------
 
-  validates :bank_name, presence: true
+  validates :bank_name, :city, :country, :account_name, :account_number, :routing_number, :bic, :iban, presence: true
 
   # ----------------------------------------------------------------------
   # == Callbacks == #
