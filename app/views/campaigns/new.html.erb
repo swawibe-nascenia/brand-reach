@@ -165,16 +165,17 @@
             $('#start_end').find('*').attr('disabled', false);
         });
 
-        console.log( <%= @costs %>);
-
         var social_account_index = 0 ;
+        var costs = <%= @costs %>;
 
         $('#social_account').change(function() {
-             social_account_index = $('#social_account').find('option:selected').index()
+            social_account_index = $('#social_account').find('option:selected').index();
+            $('#post_type option:first').attr("selected", true);
+            $('#post_cost').val(0);
         });
 
         $('#post_type').change(function() {
-            if (<%= @costs.present? %>) {
+            if (costs.length) {
 
                 if (this.value == 0) {
                     $('#post_cost').val(costs[social_account_index][0]);
