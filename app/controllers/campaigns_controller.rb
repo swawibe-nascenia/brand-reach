@@ -3,12 +3,11 @@ class CampaignsController < ApplicationController
   respond_to :html, :js, :csv
 
   def influencer_campaign
-    @campaigns = Campaign.all
-    # @campaigns = Campaign.where(offer_id: current_user.offers_received_ids) || []
+    @campaigns = current_user.campaigns_received
   end
 
   def brand_campaign
-    @campaigns = Campaign.all
+    @campaigns = current_user.campaigns_sent
   end
 
   def new

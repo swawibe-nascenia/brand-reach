@@ -45,6 +45,7 @@
           <th>Campaign Name</th>
           <th>Post Likes</th>
           <th>Reach</th>
+          <th>Starts</th>
           <th>Ends</th>
         </tr>
         </thead>
@@ -63,6 +64,7 @@
                   <td><%= image_tag(campaign.sender.profile_picture , :class => 'pepsi-img-responsive') %> &nbsp; <%= campaign.name %></td>
                   <td><%= campaign.number_of_likes %></td>
                   <td><%= campaign.number_of_post_reach %></td>
+                  <td><%= campaign.start_date.present? ? campaign.start_date.strftime("%B %d, %Y") : 'NA' %></td>
                   <td><%= campaign.end_date.present? ? campaign.end_date.strftime("%B %d, %Y") : 'NA' %></td>
                 </tr>
             <% end %>
