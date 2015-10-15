@@ -9,8 +9,9 @@ class ExploresController < ApplicationController
       @influencers = @influencers.where('industry LIKE :search OR country_name LIKE :search OR state_name LIKE :search', search: wildcard_search)
     elsif params[:advance_search].present?
       @influencers = @influencers.where(industry: params[:category]) if params[:category].present?
-      @influencers = @influencers.where(country: params[:country])
-      @influencers = @influencers.where(industry: params[:category]) if params[:category].present?
+      @influencers = @influencers.where(country: params[:country]) if params[:country].present?
+      # @influencers = @influencers.where(fb_average_cost: [params['followers-range-value-lower']..params['followers-range-value-upper']])
+      @influencers = @influencers.where(fb_average_cost: [params['influencer-price-value-lower']..params['influencer-price-value-upper']])
     end
     # Rails.logger.info @influencers.inspect
     @influencers = @influencers.order(:name).page params[:page]
