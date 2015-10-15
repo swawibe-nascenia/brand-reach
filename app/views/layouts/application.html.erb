@@ -80,14 +80,18 @@
 
           <div class="dropdown small">
             <button class="btn center-block text-center user-status dropdown-toggle" type="button"
-                    data-toggle="dropdown"><i class="fa fa-circle text-color-follower"></i>&nbsp; Available
+                    data-toggle="dropdown"><i class="fa fa-circle <%= current_user.is_available? ? 'text-color-follower': '' %>"></i>&nbsp; <span><%= current_user.is_available? ? 'Available': 'Unavailable' %></span>
               <i class="fa fa-angle-down "></i>
             </button>
+
             <ul class="dropdown-menu user-status ">
-              <li><a href="#">Invisible</a></li>
-              <li><a href="#">Busy</a></li>
-              <li><a href="#">Offline</a></li>
+              <% if current_user.is_available? %>
+                  <li><%= link_to 'Unavailable', toggle_available_profile_index_path, remote: true %></li>
+              <% else %>
+                  <li><%= link_to 'Available', toggle_available_profile_index_path(available: true), remote: true %></li>
+              <% end %>
             </ul>
+
           </div>
         </div>
         <hr>

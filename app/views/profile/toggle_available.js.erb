@@ -1,0 +1,13 @@
+var availableUrl = '<%= link_to 'Available', toggle_available_profile_index_path(available: true), remote: true %>';
+var unavailableUrl = '<%= link_to 'Unavailable', toggle_available_profile_index_path, remote: true %>';
+
+<% if params[:available] %>
+    $('ul.user-status > li').html(unavailableUrl);
+    $('button span').text('Available');
+    $('button .fa.fa-circle').addClass('text-color-follower');
+
+<% else %>
+    $('ul.user-status > li').html(availableUrl);
+    $('button span').text('Unavailable');
+    $('button .fa.fa-circle').removeClass('text-color-follower');
+<% end %>

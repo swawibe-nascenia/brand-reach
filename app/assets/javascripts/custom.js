@@ -102,11 +102,6 @@ $(function(){
 
     }
 
-//    toggle both influencer and brand availability
-
-    $('.user-status > li').click(function(){
-        $('button.user-status ');
-    });
 
 });
 // end of document.ready() method

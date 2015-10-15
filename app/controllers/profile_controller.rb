@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
   # layout 'sidebar_header_layouts'
-  before_action :set_user, only: [:profile, :update, :update_accounts, :update_password]
+  before_action :set_user, only: [:profile, :update, :update_accounts, :update_password, :toggle_available]
 
   respond_to :html, :js
 
@@ -86,6 +86,14 @@ class ProfileController < ApplicationController
 
   def contact_us
 
+  end
+
+  def toggle_available
+    if params[:available]
+      @user.update_column(:is_available, true)
+    else
+      @user.update_column(:is_available, false)
+    end
   end
 
   private
