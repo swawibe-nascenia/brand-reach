@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       get :contact_us
       get :show_settings
       get :toggle_available
+      post :deactivate_account
     end
   end
 

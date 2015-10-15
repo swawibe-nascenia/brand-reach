@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   # == Scopes and Other macros == #
   # ----------------------------------------------------------------------
 
-  scope :influencers, ->{ where( user_type: user_types[:influencer])}
+  scope :influencers, ->{ where( user_type: user_types[:influencer], is_active: true)}
   scope :brands, ->{ where( user_type: user_types[:brand])}
 
   # ----------------------------------------------------------------------

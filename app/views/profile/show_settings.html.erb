@@ -57,7 +57,8 @@
     <header>
       DEACTIVATE ACCOUNT
     </header>
-    <button class="btn btn-default btn-deactive">DEACTIVATE</button>
+    <%= link_to 'DEACTIVATE', deactivate_account_profile_index_path, method: :post, data: { confirm: 'Are you sure to Deactivate your Account ?' },class:'btn btn-default btn-deactive' %>
+
   </div>
 
 </div>
