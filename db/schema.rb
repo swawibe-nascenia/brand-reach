@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151015050040) do
+ActiveRecord::Schema.define(version: 20151015114108) do
 
   create_table "bank_accounts", force: :cascade do |t|
     t.string  "bank_name",      limit: 255
@@ -191,6 +191,8 @@ ActiveRecord::Schema.define(version: 20151015050040) do
     t.string   "state_name",             limit: 255
     t.integer  "fb_average_cost",        limit: 4
     t.boolean  "is_active",              limit: 1,   default: true
+    t.boolean  "email_remainder_active", limit: 1,   default: true
+    t.boolean  "sms_remainder_active",   limit: 1,   default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
