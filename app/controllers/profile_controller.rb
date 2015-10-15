@@ -1,7 +1,6 @@
 class ProfileController < ApplicationController
   # layout 'sidebar_header_layouts'
-  before_action :set_user, only: [:profile, :update, :update_accounts, :update_password, :toggle_available]
-  before_action :set_user, only: [:profile, :update, :update_accounts, :update_password, :deactivate_account]
+  before_action :set_user, only: [:profile, :update, :update_accounts, :update_password, :toggle_available, :deactivate_account]
 
   respond_to :html, :js
 
