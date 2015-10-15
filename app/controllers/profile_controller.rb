@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
   # layout 'sidebar_header_layouts'
-  before_action :set_user, only: [:profile, :update, :update_accounts, :update_password]
+  before_action :set_user, only: [:profile, :update, :update_accounts, :update_password, :deactivate_account]
 
   respond_to :html, :js
 
@@ -88,6 +88,16 @@ class ProfileController < ApplicationController
 
   end
 
+  def deactivate_account
+    @user.is_active = false
+    if @user.save
+      redirect_to destroy_user_session_path
+      flash[:success] = 'Account Deactivated successfully'
+    else
+      flash[:error] = 'Account could not Deactivated'
+    end
+  end
+
   private
 
   def set_user
@@ -97,7 +107,7 @@ class ProfileController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :company_name, :company_email, :image,
                                  :industry, :phone, :street_address, :landmark, :city, :state,
-                                 :country, :zip_code, :short_bio, :password, :password_confirmation, :current_password,
+                                 :country, :zip_code, :short_bio, :password, :password_confirmation, :current_password, :is_active,
                                  facebook_accounts_attributes: [:id, :status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost]
     )
   end

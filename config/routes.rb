@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       post :update_accounts
       get :contact_us
       get :show_settings
+      post :deactivate_account
     end
   end
 
