@@ -254,7 +254,7 @@
 }
 
 .modal-content {
-    height: 460px;
+    min-height: 460px;
 }
 
 .modal-header {
@@ -306,5 +306,11 @@
 
 .account-content a {
     color: #8f8f8f;
+}
+.help-note{
+    padding: 60px 0 30px;
+}
+.help-note p{
+    line-height: 0.8;
 }
 
