@@ -5,7 +5,7 @@
 <div class="brands-setting-content-wrapper">
   <div class="brands-setting privacy-setting">
 
-    <%= form_for @user, url: update_profile_settings_profile_index_path, html: { class: ''} do |f| %>
+    <%= form_for @user, url: update_profile_settings_profile_index_path, method: :post, html: { class: ''} do |f| %>
         <header>
           PRIVACY SETTINGS
         </header>
