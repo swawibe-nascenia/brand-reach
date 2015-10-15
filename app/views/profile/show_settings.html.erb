@@ -4,62 +4,62 @@
 
 <div class="brands-setting-content-wrapper">
   <div class="brands-setting privacy-setting">
-    <header>
-      PRIVACY SETTINGS
-    </header>
 
-    <div class="setting-content">
-      <label>Status</label>
-      <div class="onoffswitch">
-        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="setting-on-off-switch" checked>
-        <label class="onoffswitch-label" for="setting-on-off-switch">
-          <span class="onoffswitch-inner"></span>
-          <span class="onoffswitch-switch"></span>
-        </label>
-      </div>
-      <p class="info">Your online status is visible to the brand</p>
-    </div>
-  </div>
+    <%= form_for @user, url: update_profile_settings_profile_index_path, html: { class: ''} do |f| %>
+        <header>
+          PRIVACY SETTINGS
+        </header>
 
-  <!-- other settings -->
-  <div class="brands-setting other-setting">
-    <header>
-      OTHER SETTINGS
-    </header>
-
-    <div class="setting-content">
-      <div class="section1">
-        <label>Email Reminders</label>
-        <div class="onoffswitch">
-          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="other-setting-section1-on-off-switch" checked>
-          <label class="onoffswitch-label" for="other-setting-section1-on-off-switch">
-            <span class="onoffswitch-inner"></span>
-            <span class="onoffswitch-switch"></span>
-          </label>
+        <div class="setting-content">
+          <label>Status</label>
+          <div class="onoffswitch">
+            <%= f.check_box :is_available , class:'onoffswitch-checkbox', id: 'setting-on-off-switch' %>
+            <label class="onoffswitch-label" for="setting-on-off-switch">
+              <span class="onoffswitch-inner"></span>
+              <span class="onoffswitch-switch"></span>
+            </label>
+          </div>
+          <p class="info">Your online status is visible to the brand</p>
         </div>
-      </div>
-      <div class="section2">
-        <label>SMS Reminders</label>
-        <div class="onoffswitch">
-          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="other-setting-section2-on-off-switch" checked>
-          <label class="onoffswitch-label" for="other-setting-section2-on-off-switch">
-            <span class="onoffswitch-inner"></span>
-            <span class="onoffswitch-switch"></span>
-          </label>
         </div>
-      </div>
 
-    </div>
-  </div>
+        <div class="brands-setting other-setting">
+          <header>
+            OTHER SETTINGS
+          </header>
 
-  <!-- deactivate setting -->
-  <div class="brands-setting deactive-brand-setting">
-    <header>
-      DEACTIVATE ACCOUNT
-    </header>
-    <%= link_to 'DEACTIVATE', deactivate_account_profile_index_path, method: :post, data: { confirm: 'Are you sure to Deactivate your Account ?' },class:'btn btn-default btn-deactive' %>
+          <div class="setting-content">
+            <div class="section1">
+              <label>Email Reminders</label>
+              <div class="onoffswitch">
+                <%= f.check_box :email_remainder_active , class:'onoffswitch-checkbox', id: 'other-setting-section1-on-off-switch' %>
+                <label class="onoffswitch-label" for="other-setting-section1-on-off-switch">
+                  <span class="onoffswitch-inner"></span>
+                  <span class="onoffswitch-switch"></span>
+                </label>
+              </div>
+            </div>
+            <div class="section2">
+              <label>SMS Reminders</label>
+              <div class="onoffswitch">
+                <%= f.check_box :sms_remainder_active , class:'onoffswitch-checkbox', id: 'other-setting-section2-on-off-switch' %>
+                <label class="onoffswitch-label" for="other-setting-section2-on-off-switch">
+                  <span class="onoffswitch-inner"></span>
+                  <span class="onoffswitch-switch"></span>
+                </label>
+              </div>
+            </div>
 
-  </div>
+          </div>
+        </div>
 
-</div>
-<button class="btn btn-default btn-save">SAVE</button>
+        <div class="brands-setting deactive-brand-setting">
+          <header>
+            DEACTIVATE ACCOUNT
+          </header>
+          <%= link_to 'DEACTIVATE', deactivate_account_profile_index_path, method: :post, data: { confirm: 'Are you sure to Deactivate your Account ?' },class:'btn btn-default btn-deactive' %>
+        </div>
+
+        </div>
+        <%= f.button  'SAVE', class: 'btn btn-default btn-save' %>
+    <% end %>

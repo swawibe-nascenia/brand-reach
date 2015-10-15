@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
   # layout 'sidebar_header_layouts'
-  before_action :set_user, only: [:profile, :update, :update_accounts, :update_password, :toggle_available, :deactivate_account]
+  before_action :set_user, only: [:profile, :update, :update_accounts, :update_password, :toggle_available, :deactivate_account, :show_settings]
 
   respond_to :html, :js
 
@@ -86,6 +86,16 @@ class ProfileController < ApplicationController
 
   def contact_us
 
+  end
+
+  def update_profile_settings
+    if @user.update(user_params)
+      flash[:success] = 'User information update success'
+    else
+      flash[:error] = 'User information update fail'
+    end
+
+    redirect_to show_settings_profile_index_path
   end
 
   def toggle_available
