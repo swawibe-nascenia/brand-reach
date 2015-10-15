@@ -5,8 +5,12 @@ class FacebookController < ApplicationController
     # end
 
     @accounts = current_user.facebook_accounts
-    @accounts.each do |account|
-      account.fetch_insights
+
+    if @accounts.blank?
+      return redirect_to profile_profile_index_path
     end
+
+    @account = params[:id].present? ? @accounts.find(params[:id]) : @accounts.first
+    @account.fetch_insights
   end
 end

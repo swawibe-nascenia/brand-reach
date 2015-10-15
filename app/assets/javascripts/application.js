@@ -21,6 +21,7 @@
 //= require jquery-ui
 //= require pubnub
 //= require handlebars
+//= require Chart
 // require turbolinks
 // require_tree .
 

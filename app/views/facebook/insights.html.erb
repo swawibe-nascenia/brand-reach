@@ -1,8 +1,14 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag  'ammap/ammap', media: 'all' %>
+    <%= javascript_include_tag 'ammap/ammap' %>
+    <%= javascript_include_tag 'ammap/maps/js/continentsLow' %>
+<% end %>
+
 <section class="influence-facebook-content">
-  <div class=" row filter-bar">
-    <div class="col-md-3 col-sm-4 col-xs-6 filter-item filter-item-select">Lorem ipsum... <a class="close-filter-item close-filter-item-select">&times;</a></div>
+  <div class="row filter-bar" >
     <% @accounts.each do |account| %>
-        <div class="col-md-3 col-sm-4 col-xs-6 filter-item "><%= account.name %> <a class="close-filter-item ">&times;</a></div>
+        <a class="col-md-3 col-sm-4 col-xs-6 filter-item <%= @account.id == account.id ? 'filter-item-select' : '' %>"
+            href="<%= insights_facebook_index_path(id: account.id) %>"><%= account.name %></a>
     <% end %>
   </div>
   <div class="br-container">
@@ -10,7 +16,7 @@
     <div class="row info-box-container">
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
-          <p class="info-box-data total-follower-data-color">24,000</p>
+          <p class="info-box-data total-follower-data-color"><%= @account.number_of_followers %></p>
 
           <p class="info-box-text ">TOTAL FOLLOWERS</p>
 
@@ -19,7 +25,7 @@
       </div>
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
-          <p class="info-box-data page-view-data-color">7,582</p>
+          <p class="info-box-data page-view-data-color"><%= @account.daily_page_views %></p>
 
           <p class="info-box-text">DAILY PAGE VIEWS</p>
         </div>
@@ -31,13 +37,13 @@
 
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
-          <p class="info-box-data total-post-data-color">150</p>
+          <p class="info-box-data total-post-data-color"><%= @account.number_of_posts %></p>
           <p class="info-box-text">TOTAL POSTS</p>
         </div>
       </div>
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
-          <p class="info-box-data post-reach-data-color">4,260</p>
+          <p class="info-box-data post-reach-data-color"><%= @account.post_reach %></p>
           <p class="info-box-text">POST REACH</p>
         </div>
       </div>
@@ -49,9 +55,99 @@
           <div class="pad">
             <!-- Map will be created here -->
             <div id="world-map-markers" style="height: 325px;"></div>
+
+            <script>
+                (function() {
+                    var map = AmCharts.makeChart( "world-map-markers", {
+                        type: "map",
+                        dragMap: false,
+
+                        areasSettings: {
+                            autoZoom: false,
+                            rollOverOutlineColor: "#000000",
+                            selectedColor: "#000000",
+                            outlineAlpha: 1,
+                            outlineColor: "#FFFFFF",
+                            outlineThickness: 1,
+                            color: "#000000"
+                        },
+
+                        dataProvider: {
+                            map: "continentsLow",
+
+                            areas: ['africa', 'asia', 'australia', 'europe', 'north_america', 'south_america'].map(function(continent) {
+                                return {
+                                    id: continent,
+                                    mouseEnabled: false,
+                                    pattern: {
+                                        url: '<%= image_url('map-pattern.png') %>',
+                                        width: 5,
+                                        height: 5
+                                    }
+                                };
+                            }),
+
+                            images: <%= @account.country_map_data.map{ |data| data[:imageURL] = image_path('map-marker.svg'); data }.to_json.html_safe %>
+                        },
+                        zoomControl: {
+                            panControlEnabled: false,
+                            zoomControlEnabled: false,
+                            homeButtonEnabled:false
+                        }
+                    } );
+
+                    // add events to recalculate map position when the map is moved or zoomed
+//                    map.addListener("positionChanged", updateCustomMarkers);
+
+                    // this function will take current images on the map and create HTML elements for them
+                    function updateCustomMarkers (event) {
+                        // get map object
+                        var map = event.chart;
+
+                        // go through all of the images
+                        for (var x in map.dataProvider.images) {
+                            // get MapImage object
+                            var image = map.dataProvider.images[x];
+
+                            // check if it has corresponding HTML element
+                            if ('undefined' == typeof image.externalElement)
+                                image.externalElement = createCustomMarker(image);
+
+                            // reposition the element accoridng to coordinates
+                            image.externalElement.style.top = map.latitudeToY(image.latitude) + 'px';
+                            image.externalElement.style.left = map.longitudeToX(image.longitude) + 'px';
+                        }
+                    }
+
+                    // this function creates and returns a new marker element
+                    function createCustomMarker(image) {
+                        // create holder
+                        var holder = document.createElement('div');
+                        holder.className = 'map-marker';
+                        holder.title = image.title;
+                        holder.style.position = 'absolute';
+
+                        // create dot
+                        var dot = document.createElement('div');
+                        dot.className = 'dot';
+                        holder.appendChild(dot);
+
+                        // create pulse
+                        var pulse = document.createElement('div');
+                        pulse.className = 'pulse';
+                        holder.appendChild(pulse);
+
+                        // append the marker to the map container
+                        image.chart.chartDiv.appendChild(holder);
+
+                        return holder;
+                    }
+                })();
+            </script>
           </div>
         </div>
       </div>
+
       <section class="chart-info">
         <span class="color-gray stat-gender">STATISTICS BY GENDER</span>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -88,6 +184,59 @@
       <!-- /.chart-responsive -->
     </div>
 
+    <script>
+        // Get context with jQuery - using jQuery's .get() method.
+        var salesChartCanvas = $("#salesChart").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        var salesChart = new Chart(salesChartCanvas);
+
+        var salesChartData = {
+            labels: <%= @account.gender_line_chart_data[:labels].to_json.html_safe %>,
+            datasets: <%= @account.gender_line_chart_data[:datasets].to_json.html_safe %>
+        };
+
+        var salesChartOptions = {
+            //Boolean - If we should show the scale at all
+            showScale: true,
+            //Boolean - Whether grid lines are shown across the chart
+            scaleShowGridLines: true,
+            //String - Colour of the grid lines
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+            //Number - Width of the grid lines
+            scaleGridLineWidth: 1,
+            //Boolean - Whether to show horizontal lines (except X axis)
+            scaleShowHorizontalLines: true,
+            //Boolean - Whether to show vertical lines (except Y axis)
+            scaleShowVerticalLines: false,
+            //Boolean - Whether the line is curved between points
+            bezierCurve: true,
+            //Number - Tension of the bezier curve between points
+            bezierCurveTension: 0.3,
+            //Boolean - Whether to show a dot for each point
+            pointDot: false,
+            //Number - Radius of each point dot in pixels
+            pointDotRadius: 4,
+            //Number - Pixel width of point dot stroke
+            pointDotStrokeWidth: 1,
+            //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+            pointHitDetectionRadius: 20,
+            //Boolean - Whether to show a stroke for datasets
+            datasetStroke: true,
+            //Number - Pixel width of dataset stroke
+            datasetStrokeWidth: 2,
+            //Boolean - Whether to fill the dataset with a color
+            datasetFill: true,
+            //String - A legend template
+            //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+            maintainAspectRatio: false,
+            //Boolean - whether to make the chart responsive to window resizing
+            responsive: true
+        };
+
+        //Create the line chart
+        salesChart.Line(salesChartData, salesChartOptions);
+    </script>
+
     <!-- TABLE: LATEST ORDERS -->
 
     <div class="color-gray stat-country bg-white">
@@ -99,11 +248,10 @@
 
     <div class="box box-info">
       <div class="box-body">
-        <table class="table no-margin table-striped table-responsive statistic-table">
+        <table class="table no-margin table-striped table-responsive statistic-table active" id="stats-countries">
           <thead>
           <tr>
             <th>
-
               <div class="dropdown">
                 <label class="drop-down-label">VIEW BY:</label>
                 <button class="btn view-country dropdown-toggle" type="button" data-toggle="dropdown">
@@ -111,42 +259,62 @@
                   COUNTRY
                 </button>
                 <ul class="dropdown-menu custom-dropdown-menu">
-                  <li><a href="#">CITIES</a></li>
+                  <li><a href="#stats-cities" class="js-stats-toggle">CITIES</a></li>
                 </ul>
               </div>
             </th>
-            <th> <span class="glyphicon icon-love"></span> &nbsp;Followers </th>
+            <th> <span class="glyphicon icon-love"></span> &nbsp;Likes </th>
             <th> <span class="glyphicon icon-comment"></span> &nbsp;Post Reach </th>
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td><span class="flag-icon flag-icon-in"></span> &nbsp; INDIA</td>
-            <td>20,348</td>
-            <td>1,00000</td>
-          </tr>
-          <tr>
-            <td><span class="flag-icon flag-icon-au"></span> &nbsp; AUSTRALIA</td>
-            <td>20,348</td>
-            <td>1,00000</td>
-          </tr>
-          <tr>
-            <td><span class="flag-icon flag-icon-us"></span> &nbsp; USA</td>
-            <td>20,348</td>
-            <td>1,00000</td>
-          </tr>
-          <tr>
-            <td><span class="flag-icon flag-icon-au"></span> &nbsp; AUSTRALIA</td>
-            <td>20,348</td>
-            <td>1,00000</td>
-          </tr>
-          <tr>
-            <td><span class="flag-icon flag-icon-us"></span> &nbsp; USA</td>
-            <td>20,348</td>
-            <td>1,00000</td>
-          </tr>
+          <% @account.country_data.each do |country_name, data| %>
+            <tr>
+              <td><span class="flag-icon flag-icon-<%= data[:country_code].downcase %>"></span> <%= country_name %></td>
+              <td><%= number_with_delimiter(data[:likes]) %></td>
+              <td><%= number_with_delimiter(data[:reach]) %></td>
+            </tr>
+          <% end %>
           </tbody>
         </table>
+
+        <table class="table no-margin table-striped table-responsive statistic-table" id="stats-cities">
+          <thead>
+          <tr>
+            <th>
+              <div class="dropdown">
+                <label class="drop-down-label">VIEW BY:</label>
+                <button class="btn view-country dropdown-toggle" type="button" data-toggle="dropdown">
+                  <i class="fa fa-angle-down angle-down-cities pull-right"></i>
+                  Cities
+                </button>
+                <ul class="dropdown-menu custom-dropdown-menu">
+                  <li><a href="#stats-countries" class="js-stats-toggle">Country</a></li>
+                </ul>
+              </div>
+            </th>
+            <th> <span class="glyphicon icon-love"></span> &nbsp;Likes </th>
+            <th> <span class="glyphicon icon-comment"></span> &nbsp;Post Reach </th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @account.city_data.each do |city_name, data| %>
+            <tr>
+              <td><%= city_name %></td>
+              <td><%= number_with_delimiter(data[:likes]) %></td>
+              <td><%= number_with_delimiter(data[:reach]) %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+        <script>
+          $('.js-stats-toggle').click(function() {
+              $('.statistic-table').removeClass('active');
+              $($(this).attr('href')).addClass('active');
+              return false;
+          });
+        </script>
       </div>
     </div>
     <!-- /.box-header -->

@@ -6,9 +6,8 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
-  <%= stylesheet_link_tag  'AdminLTE.min.css', media: 'all' %>
-  <%= stylesheet_link_tag  'style.css', media: 'all' %>
-  <%= javascript_include_tag 'application'%>
+  <%= stylesheet_link_tag  'application.css', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Hind' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tag %>
@@ -57,6 +56,8 @@
   </script>
 
   <!-- end of pubnub setting -->
+
+  <%= yield :head %>
 </head>
 <body class="skin-blue sidebar-mini">
 <div class="wrapper">

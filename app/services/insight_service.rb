@@ -85,6 +85,44 @@ class InsightService < BaseService
     count
   end
 
+  def get_likes_by_country(id)
+    get_aggregate_by_region(id, 'likes', 'country')
+  end
+
+  def get_reach_by_country(id)
+    get_aggregate_by_region(id, 'impressions', 'country')
+  end
+
+  def get_likes_by_city(id)
+    get_aggregate_by_region(id, 'likes', 'city')
+  end
+
+  def get_reach_by_city(id)
+    get_aggregate_by_region(id, 'impressions', 'city')
+  end
+
+  def get_likes_by_gender(id, since)
+    labels = {}
+    datasets = {}
+
+    @graph.get_object("#{id}/insights/page_fans_gender_age", { since: since }).each do |data|
+      data['values'].each do |d|
+        t = d['end_time'].to_date.strftime('%m.%y')
+        labels[t] = true
+
+        d['value'].each do |k, v|
+          g, a = k.split('.')
+
+          datasets[g] = {} if datasets[g].blank?
+          datasets[g][t] = 0 if datasets[g][t].blank?
+          datasets[g][t] += v
+        end
+      end
+    end
+
+    { labels: labels.keys, datasets: datasets }
+  end
+
   def paginate(resp)
     loop do
       break if resp.count == 0
@@ -148,5 +186,24 @@ class InsightService < BaseService
       @is_error = true
     end
     response
+  end
+
+  private
+
+  def get_aggregate_by_region(id, metric, region)
+    metric_name = metric == 'likes' ? "page_fans_#{region}" : "page_impressions_by_#{region}_unique"
+
+    resp = {}
+
+    @graph.get_object("#{id}/insights/#{metric_name}", { since: 1.month.ago.to_i }).each do |data|
+      data['values'].each do |d|
+        d['value'].each do |k, v|
+          resp[k] = 0 if resp[k].blank?
+          resp[k] += v
+        end
+      end
+    end
+
+    resp
   end
 end
