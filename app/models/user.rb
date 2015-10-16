@@ -156,7 +156,7 @@ class User < ActiveRecord::Base
       end
     end
 
-    unless self.facebook_accounts.present?
+    if self.influencer? && self.facebook_accounts.blank?
       update_column(:profile_complete, false)
       return
     end

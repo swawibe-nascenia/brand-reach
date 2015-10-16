@@ -13,5 +13,6 @@
  *= require AdminLTE.min
  *= require style
  *= require flag_icon_css
+ *= require common
  *= require_self
  */
