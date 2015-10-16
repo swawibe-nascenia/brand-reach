@@ -137,8 +137,8 @@ class User < ActiveRecord::Base
   end
 
   def save_actual_country_state
-    self.update_column(:country_name, Carmen::Country.coded(self.country).name)
-    self.update_column(:state_name, Carmen::Country.coded(self.country).subregions.coded(self.state).name )
+    self.update_column(:country_name, Carmen::Country.coded(self.country).name) if self.country.present?
+    self.update_column(:state_name, Carmen::Country.coded(self.country).subregions.coded(self.state).name ) if self.country.present? && self.state.present?
   end
 
 end
