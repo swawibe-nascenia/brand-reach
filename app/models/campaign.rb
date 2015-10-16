@@ -58,9 +58,9 @@ class Campaign < ActiveRecord::Base
 
   def time
     if created_at.to_date == Date.today
-      created_at.strftime('%H:%M:%P')
+      created_at.strftime('%H:%M%P')
     else
-      created_at.strftime('%d:%m:%Y')
+      created_at.strftime('%d-%m-%Y')
     end
   end
 

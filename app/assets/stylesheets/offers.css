@@ -178,10 +178,15 @@ only screen and (max-width: 540px) {
 }
 
 .offer-box{
-    padding: 5px 0;
+    margin: 5px 0;
     font-family: "Raleway",sans-serif;
     font-size: 13px;
 }
+
+.offer-box:last-child{
+    margin-bottom: 40px;
+}
+
 .offer-box:nth-child(odd){
     background-color: #f6f6f6;
 }
@@ -212,6 +217,7 @@ only screen and (max-width: 540px) {
 .offer-time{
     float: right;
     margin-right: 10px;
+    margin-top: 10px;
 }
 .offer-body{
     padding-left: 110px;
@@ -234,7 +240,7 @@ only screen and (max-width: 540px) {
 }
 .delete-selected-offer{
     cursor: pointer;
-    padding: 0 10px;
+    padding: 0 10px 0 20px;
 }
 /* checkbox design */
 input[type=checkbox].select-offer{
@@ -243,7 +249,7 @@ input[type=checkbox].select-offer{
 }
 
 .offer-content{
-    padding: 15px 20px;
+    padding: 40px 20px;
 }
 
 
