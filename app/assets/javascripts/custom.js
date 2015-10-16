@@ -102,6 +102,28 @@ $(function(){
 
     }
 
+//    delete selected offers
+
+    $('.delete-selected-offer').click(function(){
+        var selected_offer_ids = seleted_offer_ids();
+        console.log('selected ids' + selected_offer_ids);
+        if(selected_offer_ids.length > 0){
+            $.ajax({
+                type: 'put',
+                url: '/offers/delete_offers',
+                dataType: "script",
+                data: {ids: selected_offer_ids, 'authenticity_token': $('meta[name="csrf-token"]').attr('content')},
+                success: function(data) {
+                    console.log(data)
+                }
+            });
+        }else{
+            alert('At least one offer has to be selected');
+        }
+
+        return false;
+    });
+
 
 });
 // end of document.ready() method

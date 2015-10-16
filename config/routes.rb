@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   resources :offers do
     collection do
       put :toggle_star
+      put :delete_offers
     end
 
     member do

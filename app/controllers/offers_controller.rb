@@ -4,13 +4,8 @@ class OffersController < ApplicationController
   # GET /offers
   # GET /offers.json
   def index
-    if current_user.influencer?
-      @offers = current_user.campaigns_received.includes(:messages).order('messages.created_at desc')
-      @stared_offers = current_user.campaigns_received.where(starred_by_influencer: true).includes(:messages).order('messages.created_at desc')
-    else
-      @offers = current_user.campaigns_sent.includes(:messages).order('messages.created_at desc')
-      @stared_offers = current_user.campaigns_sent.where(starred_by_brand: true).includes(:messages).order('messages.created_at desc')
-    end
+      @offers = Offer.get_active_offer(current_user).includes(:messages).order('messages.created_at desc')
+      @stared_offers =  Offer.get_stared_offer(current_user).includes(:messages).order('messages.created_at desc')
   end
 
   # GET /offers/1
@@ -125,6 +120,14 @@ class OffersController < ApplicationController
       respond_to do |format|
         format.json { render :json => { id: @offer.id }}
       end
+  end
+
+  def delete_offers
+    target_column = current_user.brand? ? :deleted_by_brand : :deleted_by_influencer
+    @ids = params[:ids].map(&:to_i)
+    offers = Campaign.where(id: @ids)
+
+    offers.update_all(target_column => true)
   end
 
   private

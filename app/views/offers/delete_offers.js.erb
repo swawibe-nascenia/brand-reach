@@ -1,0 +1,14 @@
+console.log('Selected offers has been selected successfully');
+
+$(function(){
+//    remove deleted offers
+    <% @ids.each do |id|%>
+    $('.offer-box-<%= id %>').hide();
+    <% end %>
+
+//    uncheck all select checkbox
+    $('.select-offer:checkbox:checked').each(function(){
+        this.checked = false;
+    });
+
+});
