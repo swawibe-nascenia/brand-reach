@@ -12,17 +12,6 @@
  *
  *= require AdminLTE.min
  *= require style
- * require home
- * require brands_home
- * require brands-explore
- * require brands-setting
- * require campaigns
- * require contact-us
- * require influencers_home
- * require offers
- * require payments
- * require profile
  *= require flag_icon_css
- * require bootstrap-datetimepicker.min
  *= require_self
  */

@@ -13,7 +13,7 @@
   <%= csrf_meta_tag %>
 
   <script type="text/javascript">
-    // global variable for pubnub
+      // global variable for pubnub
       var PUBNUB_CLIENT = null;
       var current_user_id = <%= current_user.id %>;
 
@@ -135,7 +135,7 @@
             </li>
 
         <% else %>
-            <li>
+            <li class="<%=  (params[:controller] == 'offers') ? 'active' : '' %>">
               <%= link_to offers_path do %>
                   <span class="glyphicon glyphicon-envelope"> </span><span class="space-sidebar">OFFERS</span>
               <% end %>
@@ -190,12 +190,7 @@
 
       <div class="row">
         <div class="col-md-3 col-sm-3 col-xs-12">
-          <% if current_user.brand? %>
-              <a href="<%= brand_home_public_index_path %>"><%= image_tag('Logo.png', :class => 'image img-responsive header-logo', :alt => "Logo") %></a>
-          <% else %>
-              <a href="<%= root_url %>"><%= image_tag('Logo.png', :class => 'image img-responsive header-logo', :alt => "Logo") %></a>
-          <% end %>
-
+          <a href="<%= root_url %>"><%= image_tag('Logo.png', :class => 'image img-responsive header-logo', :alt => "Logo") %></a>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12 search-top-margin">
           <!-- search form -->

@@ -50,7 +50,7 @@
               <div class="form-group">
                 <%= f.label :social_account_activity_id, 'Choose Social Account Name', class: 'control-label col-md-4' %>
                 <div class="col-sm-8">
-                  <%= f.select :social_account_activity_id, options_for_select(@influencer.facebook_accounts.map{ |account| [account.name, account.id] }) , {}, { :class => 'form-control type-of-post', :id => 'social_account' } %>
+                  <%= f.select :social_account_activity_id, options_for_select(@influencer.facebook_accounts.map{ |account| [account.name, account.id] }, @campaign.social_account_activity_id), {}, { :class => 'form-control type-of-post', :id => 'social_account' } %>
                 </div>
               </div>
 
@@ -59,7 +59,7 @@
 
                 <%= f.label :post_type, 'Choose the type of post', class: 'control-label col-md-4' %>
                 <div class="col-sm-8">
-                  <%= f.select :post_type, options_for_select(Campaign.post_types.map{ |type, value| [type.titleize, value] }) , { :include_blank => true }, { :class => 'form-control type-of-post', :id => 'post_type' } %>
+                  <%= f.select :post_type, options_for_select(Campaign.post_types.map{ |type, value| [type.titleize, value] }, Campaign.post_types[@campaign.post_type]), { include_blank: true }, { :class => 'form-control type-of-post', :id => 'post_type' } %>
                 </div>
               </div>
 
@@ -176,7 +176,7 @@
 
         $('#post_type').change(function() {
             if (costs.length) {
-
+                // Dont change value 0..3 here, they are post types of campaign. if need any change then synchronize with enum in Campaign model
                 if (this.value == 0) {
                     $('#post_cost').val(costs[social_account_index][0]);
                 }
