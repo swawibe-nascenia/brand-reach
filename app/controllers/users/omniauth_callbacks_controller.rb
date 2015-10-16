@@ -4,17 +4,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     authentication_params = request.env['omniauth.params']
     authentication_info =  request.env['omniauth.auth']
 
-    if authentication_params['add_facebook_to_account'] == 'true'
-      account = User.add_facebook_to_user_account(authentication_info, authentication_params)
-
-      if account.save
-        flash[:success] = 'Your social account has been added successfully'
-        redirect_to profile_profile_index_path
-      else
-        flash[:error] = 'Social account adding has been fail'
-        redirect_to profile_profile_index_path
-      end
-    else
       @user = User.authenticate_user_by_facebook(authentication_info, authentication_params)
 
       if @user.save
@@ -26,6 +15,5 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         session['devise.facebook_data'] = request.env['omniauth.auth']
         redirect_to new_user_registration_url
       end
-    end
   end
 end
