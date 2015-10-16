@@ -3,15 +3,8 @@
 <p id="notice"><%= notice %></p>
 
 <div class="header-bottom-margin"></div>
-<div class="payment-div ">
-  <div class="payment-button-set pull-right">
-    <div class="star-del-ref-panel">
-      <%= image_tag  asset_path('star-icon.png'), class: 'make-all-stared'%>
-      <%= image_tag  asset_path('trash-icon.png'), class: 'delete-selected-offer'%>
-    </div>
-  </div>
-</div>
-<div class="campaign-content">
+
+<div class="offer-content">
 
   <ul class="nav nav-tabs" id="campaign-tabs">
     <li class= "active" id="inbox_list">
@@ -27,6 +20,12 @@
         <span id="star-blue" style="display: none"><img src="<%= asset_path('Starred-blue.png') %>"></span>
         <span class="starred-tab">Starred</span>
       <% end %>
+    </li>
+    <li class="pull-right">
+      <div class="star-del-ref-panel">
+        <%= image_tag  asset_path('star-icon.png'), class: 'make-all-stared'%>
+        <%= image_tag  asset_path('trash-icon.png'), class: 'delete-selected-offer'%>
+      </div>
     </li>
   </ul>
 

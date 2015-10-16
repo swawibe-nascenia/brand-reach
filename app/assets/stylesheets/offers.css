@@ -236,6 +236,15 @@ only screen and (max-width: 540px) {
     cursor: pointer;
     padding: 0 10px;
 }
+/* checkbox design */
+input[type=checkbox].select-offer{
+    width: 20px;
+    height: 20px;
+}
+
+.offer-content{
+    padding: 15px 20px;
+}
 
 
 
