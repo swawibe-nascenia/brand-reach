@@ -127,7 +127,7 @@ class FacebookAccount < ActiveRecord::Base
               pointStrokeColor: color,
               pointHighlightFill: color,
               pointHighlightStroke: color,
-              data: data.values
+              data: data.values.map { |value| value/1000 }
           }
         end,
     }
