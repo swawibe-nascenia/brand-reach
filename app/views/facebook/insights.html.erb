@@ -5,10 +5,11 @@
 <% end %>
 
 <section class="influence-facebook-content">
-  <div class="row filter-bar" >
-    <% @accounts.each do |account| %>
-        <a class="col-md-3 col-sm-4 col-xs-6 filter-item <%= @account.id == account.id ? 'filter-item-select' : '' %>"
-            href="<%= insights_facebook_index_path(id: account.id) %>"><%= account.name %></a>
+  <div class="row campaign-view">
+    <%= form_tag(nil, method: 'get') do %>
+        <%= label_tag :name, 'Choose an account' %>
+        <%= select_tag 'id', options_from_collection_for_select(@accounts, 'id', 'name', @account.id), prompt: 'Choose an account to view the statistics' %>
+        <%= button_tag 'VIEW', class: 'btn btn-campaign-view' %>
     <% end %>
   </div>
   <div class="br-container">
