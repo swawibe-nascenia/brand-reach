@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
 
   enum gender: [:male, :female, :other]
 
+  PROFILE_COMPLETENESS = [:company_name, :company_email, :industry, :phone, :street_address,
+                            :landmark, :city, :state, :country, :zip_code, :short_bio, :country_name,
+                            :first_name, :last_name]
+
   # ----------------------------------------------------------------------
   # == Attributes == #
   # ----------------------------------------------------------------------
@@ -52,6 +56,7 @@ class User < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   after_save :generate_channel_name, :save_actual_country_state
+  after_update :profile_completion_status
 
   # ----------------------------------------------------------------------
   # == Scopes and Other macros == #
@@ -139,6 +144,25 @@ class User < ActiveRecord::Base
   def save_actual_country_state
     self.update_column(:country_name, Carmen::Country.coded(self.country).name) if self.country.present?
     self.update_column(:state_name, Carmen::Country.coded(self.country).subregions.coded(self.state).name ) if self.country.present? && self.state.present?
+  end
+
+  def profile_completion_status
+    PROFILE_COMPLETENESS.each do |field|
+      Rails.logger.info "Checking present field #{field}"
+
+      unless send("#{field}?")
+        update_column(:profile_complete, false)
+        return
+      end
+    end
+
+    unless self.facebook_accounts.present?
+      update_column(:profile_complete, false)
+      return
+    end
+
+    Rails.logger.info "Successfully user #{self} completed his profile"
+    update_column(:profile_complete, true)
   end
 
 end

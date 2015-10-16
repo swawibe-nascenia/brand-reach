@@ -1,5 +1,6 @@
 class ProfileController < ApplicationController
   # layout 'sidebar_header_layouts'
+  skip_before_action :check_profile_completion
   before_action :set_user, only: [:profile, :update, :update_accounts, :update_password, :toggle_available, :deactivate_account, :show_settings, :update_profile_settings]
 
   respond_to :html, :js

@@ -136,9 +136,9 @@
 
         <% else %>
             <li class="<%=  (params[:controller] == 'offers') ? 'active' : '' %>">
-              <%= link_to offers_path do %>
-                  <span class="glyphicon glyphicon-envelope"> </span><span class="space-sidebar">OFFERS</span>
-              <% end %>
+              <a href="<%= offers_path %>">
+                <span class="glyphicon glyphicon-envelope"> </span><span class="space-sidebar">OFFERS</span>
+              </a>
             </li>
 
             <li class="<%= (params[:controller] == 'facebook' && params[:action] == 'insights') ? 'active' : '' %>">

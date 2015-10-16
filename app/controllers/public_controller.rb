@@ -1,7 +1,7 @@
 class PublicController < ApplicationController
 	layout 'public'
   # before_action  :set_service, except: [:index]
-  skip_before_filter :authenticate_user!
+  skip_before_filter :authenticate_user!, :check_profile_completion
 
   respond_to :html
 
