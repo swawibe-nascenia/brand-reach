@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :authenticate_user!, :initialize_server_subscription, :check_profile_completion
   before_action :configure_permitted_parameters, if: :devise_controller?
+  skip_before_action :check_profile_completion, if: :devise_controller?
 
   layout :layout_by_resource
 
