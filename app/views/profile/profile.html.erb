@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag  'profile.css', media: 'all' %>
+<%= stylesheet_link_tag 'profile.css', media: 'all' %>
 
 <% title "BrandReach Profile" %>
 
@@ -6,7 +6,7 @@
 
   <%= image_tag(@user.profile_picture, :class => 'profile-picture', :alt => "profile-picture") %>
 
-  <%= form_for @user, url: profile_path(@user), html: { class: 'form-horizontal personal-info-form'} do |f| %>
+  <%= form_for @user, url: profile_path(@user), html: {class: 'form-horizontal personal-info-form'} do |f| %>
 
       <h4 class="personal-info">PERSONAL INFORMATION</h4>
 
@@ -46,7 +46,7 @@
       <div class="form-group">
         <div class="col-md-6">
           <%= f.label :country %>
-          <%= f.country_select :country, {priority: %w(US CA IN)}, { :class => 'profile-dropdown-color'}, {} %>
+          <%= f.country_select :country, {priority: %w(US CA IN)}, {:class => 'profile-dropdown-color'}, {} %>
         </div>
 
         <div class="col-md-6">
@@ -92,13 +92,15 @@
 
           <%= link_to '<i class="fa fa-plus"></i> ADD ACCOUNT'.html_safe, "#AddAccount", "data-toggle" => "modal", :class => "btn btn-account" %>
 
-          <%= render partial: 'shared/add_account_modal'%>
+          <%= render partial: 'shared/add_account_modal' %>
 
           <% if @user.facebook_accounts.present? %>
               <div class="social-account-tabs">
                 <ul class="nav nav-tabs social-account-nav-tabs">
                   <% @user.facebook_accounts.each do |account| %>
-                      <li><a data-toggle="tab" href="#fb_<%= account.account_id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %></a></li>
+                      <li>
+                        <a data-toggle="tab" href="#fb_<%= account.account_id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %>
+                        </a></li>
                   <% end %>
                   <!--<li><a data-toggle="tab" href="#twitter_bhanu"><i class="social-account-fa-edit fa fa-twitter"></i> Bhanu Prasad</a></li>-->
                 </ul>
@@ -128,33 +130,8 @@
                           </div>
                         </div>
                       </div>
-
                   <% end %>
                 </div>
-
-                <!--<div id="twitter_bhanu" class="tab-pane fade">-->
-                <!--<div class="form-group">-->
-                <!--<div class="col-md-5 col-sm-8 col-xs-11">-->
-                <!--<label for="twitter_bhanu_status_update">Status Update</label>$-->
-                <!--<input type="text" class="" id="twitter_bhanu_status_update"/> INR-->
-                <!--</div>-->
-                <!--<div class="col-md-6 col-sm-8 col-xs-11">-->
-                <!--<label for="twitter_bhanu_cover_photo">Cover Photo</label>$-->
-                <!--<input type="text" class="" id="twitter_bhanu_cover_photo"/> INR-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                <!--<div class="col-md-5 col-sm-8 col-xs-11">-->
-                <!--<label for="twitter_bhanu_profile_photo">Profile Photo</label>$-->
-                <!--<input type="text" class="" id="twitter_bhanu_profile_photo"/> INR-->
-                <!--</div>-->
-                <!--<div class="col-md-6 col-sm-8 col-xs-11">-->
-                <!--<label for="twitter_bhanu_video_post">Video Post</label>$-->
-                <!--<input type="text" class="" id="twitter_bhanu_video_post"/> INR-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-
               </div>
 
               <script>
@@ -165,38 +142,40 @@
       <% end %>
 
 
-      <%= f.button  "UPDATE INFORMATION", class: 'btn btn-update' %>
+      <%= f.button "UPDATE INFORMATION", class: 'btn btn-update' %>
   <% end %>
 
-  <div class="divider-personal-info-password"></div>
+  <% unless current_user.provider? || current_user.uid? %>
+      <div class="divider-personal-info-password"></div>
 
-  <%= form_for @user, :url => {:controller => "profile", :action => "update_password" }, :method => :put, html: { class: "form-horizontal personal-info-form"} do |f| %>
+      <%= form_for @user, :url => {:controller => "profile", :action => "update_password"}, :method => :put, html: {class: "form-horizontal personal-info-form"} do |f| %>
 
-      <h4 class="account-setup">ACCOUNT SETUP</h4>
+          <h4 class="account-setup">ACCOUNT SETUP</h4>
 
-      <div class="form-group">
-        <div class="col-md-6">
-          <%= f.label :current_password, "Old Password" %>
-          <%= f.password_field :current_password %>
-        </div>
-        <div class="col-md-6">
-          <label>&nbsp;</label>
-        </div>
-      </div>
+          <div class="form-group">
+            <div class="col-md-6">
+              <%= f.label :current_password, "Old Password" %>
+              <%= f.password_field :current_password %>
+            </div>
+            <div class="col-md-6">
+              <label>&nbsp;</label>
+            </div>
+          </div>
 
-      <div class="form-group">
-        <div class="col-md-6">
-          <%= f.label :password, "New Password" %>
-          <%= f.password_field :password %>
-        </div>
-        <div class="col-md-6">
-          <%= f.label :password_confirmation, "Retype Password" %>
-          <%= f.password_field :password_confirmation %>
-        </div>
-      </div>
-      <%= f.button  "UPDATE PASSWORD", class: 'btn btn-update' %>
+          <div class="form-group">
+            <div class="col-md-6">
+              <%= f.label :password, "New Password" %>
+              <%= f.password_field :password %>
+            </div>
+            <div class="col-md-6">
+              <%= f.label :password_confirmation, "Retype Password" %>
+              <%= f.password_field :password_confirmation %>
+            </div>
+          </div>
+          <%= f.button "UPDATE PASSWORD", class: 'btn btn-update' %>
+      <% end %>
   <% end %>
 
-  <%= render partial: 'shared/profile_image_upload'%>
+  <%= render partial: 'shared/profile_image_upload' %>
 </div>
 
