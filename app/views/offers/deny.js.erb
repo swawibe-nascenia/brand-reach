@@ -1,1 +1,5 @@
-window.location.reload();
+$('.offer-box-<%= @offer.id %>').find('.undo-deny').removeClass('hidden');
+$('.offer-box-<%= @offer.id  %>').find('.deny').addClass('hidden');
+$('.offer-box-<%= @offer.id  %>').find('.btn-accept').addClass('hidden');
+
+setTimeout(function() { $('.offer-box-<%= @offer.id %>').find('.undo-deny').addClass('hidden'); }, 10000);

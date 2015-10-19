@@ -65,7 +65,7 @@ class Campaign < ActiveRecord::Base
   end
 
   def deny_undo_able?
-    Time.now - denied_at <= 30
+    Time.now - denied_at <= 10
   end
 
   def date_validation
