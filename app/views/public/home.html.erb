@@ -18,7 +18,7 @@
         <ul class="nav navbar-nav my-nav-bar">
           <li><%= link_to 'INFLUENCERS', home_public_index_path, class:  current_path(home_public_index_path) %></li>
           <li><%= link_to 'BRANDS', brand_home_public_index_path, class: current_path(brand_home_public_index_path) %></li>
-          <li><a href="#about_us">ABOUT US</a></li>
+          <li id="about"><a href="#about_us">ABOUT US</a></li>
           <% if user_signed_in? %>
               <li><a href="<%= profile_profile_index_path %>">PROFILE</a></li>
               <li><a href="<%= destroy_user_session_path %>">LOG OUT</a></li>
@@ -191,13 +191,12 @@
     $(document).ready(function () {
         $('[data-toggle="popover"]').popover({trigger: 'hover', placement: "auto bottom"});
 
-        $('a').click(function(){
+        $('#about a').click(function(){
             $('html, body').animate({
                 scrollTop: $( $.attr(this, 'href') ).offset().top
             }, 1000);
             return false;
         });
     });
-
 
 </script>
