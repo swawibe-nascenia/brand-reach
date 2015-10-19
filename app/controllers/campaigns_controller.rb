@@ -28,7 +28,8 @@ class CampaignsController < ApplicationController
     end
 
     if @campaign.save
-      @campaign.create_first_method
+      @campaign.create_first_message
+      CampaignMailer.new_campaign_notification(@campaign).deliver if @campaign.receiver.email_remainder_active?
       redirect_to brand_campaign_campaigns_path
     else
       @influencer =  User.find(params[:campaign][:receiver_id])

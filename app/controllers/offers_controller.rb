@@ -8,61 +8,7 @@ class OffersController < ApplicationController
       @stared_offers =  Offer.get_stared_offer(current_user).includes(:messages).order('messages.created_at desc')
   end
 
-  # GET /offers/1
-  # GET /offers/1.json
-  def show
-  end
-
-  # GET /offers/new
-  def new
-    @offer = Offer.new
-  end
-
-  # GET /offers/1/edit
-  def edit
-  end
-
-  # POST /offers
-  # POST /offers.json
-  def create
-    @offer = Offer.new(offer_params)
-
-    respond_to do |format|
-      if @offer.save
-        format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
-        format.json { render :show, status: :created, location: @offer }
-      else
-        format.html { render :new }
-        format.json { render json: @offer.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /offers/1
-  # PATCH/PUT /offers/1.json
-  def update
-    respond_to do |format|
-      if @offer.update(offer_params)
-        format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @offer }
-      else
-        format.html { render :edit }
-        format.json { render json: @offer.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /offers/1
-  # DELETE /offers/1.json
-  def destroy
-    @offer.destroy
-    respond_to do |format|
-      format.html { redirect_to offers_url, notice: 'Offer was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  # take array of offer ids and make those stared
+ # take array of offer ids and make those stared
   #  target_column may be 'starred_by_brand' of 'starred_by_influencer'
   def toggle_star
     target_column = current_user.brand? ? :starred_by_brand : :starred_by_influencer
@@ -88,14 +34,17 @@ class OffersController < ApplicationController
 
   def accept
     @offer.update_attribute(:status, Campaign.statuses[:accepted])
+    CampaignMailer.campaign_accept_notification(@offer).deliver if @offer.sender.email_remainder_active?
   end
 
   def deny
     @offer.update_attributes({status: Campaign.statuses[:denied], denied_at: Time.now })
+    CampaignMailer.campaign_deny_notification(@offer).deliver if @offer.sender.email_remainder_active?
   end
 
   def undo_deny
     @offer.update_attribute(:status, Campaign.statuses[:waiting])
+    CampaignMailer.campaign_deny_undo_notification(@offer).deliver if @offer.sender.email_remainder_active?
   end
 
   def reply_message
@@ -104,6 +53,7 @@ class OffersController < ApplicationController
       if message.save
         success = true
         id = @offer.id
+        CampaignMailer.campaign_new_message_notification(message).deliver if message.receiver.email_remainder_active?
       else
         success = false
         id = @offer.id
