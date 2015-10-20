@@ -16,9 +16,8 @@ class User < ActiveRecord::Base
 
   enum gender: [:male, :female, :other]
 
-  PROFILE_COMPLETENESS = [:company_name, :company_email, :industry, :phone, :street_address,
-                            :landmark, :city, :state, :country, :zip_code, :short_bio, :country_name,
-                            :first_name, :last_name]
+  PROFILE_COMPLETENESS = [:company_name, :company_email, :industry, :phone, :street_address, :landmark,
+                          :city, :state, :country, :zip_code, :short_bio, :first_name, :last_name]
 
   # ----------------------------------------------------------------------
   # == Attributes == #
@@ -54,8 +53,8 @@ class User < ActiveRecord::Base
   # ----------------------------------------------------------------------
   # == Callbacks == #
   # ----------------------------------------------------------------------
-
-  after_save :generate_channel_name, :save_actual_country_state
+  after_create :generate_channel_name
+  after_save :save_actual_country_state
   after_update :profile_completion_status
 
   # ----------------------------------------------------------------------
@@ -148,15 +147,16 @@ class User < ActiveRecord::Base
 
   def profile_completion_status
     PROFILE_COMPLETENESS.each do |field|
-      Rails.logger.info "Checking present field #{field}"
 
       unless send("#{field}?")
         update_column(:profile_complete, false)
+        Rails.logger.info  "=====================================Checking present field fail for #{field}"
         return
       end
     end
 
     if self.influencer? && self.facebook_accounts.blank?
+      Rails.logger.info  "=====================================User is Influencer and social accounts are blank"
       update_column(:profile_complete, false)
       return
     end
