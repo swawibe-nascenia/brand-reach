@@ -53,7 +53,7 @@ class OffersController < ApplicationController
       if message.save
         success = true
         id = @offer.id
-        CampaignMailer.campaign_new_message_notification(message).deliver if message.receiver.email_remainder_active?
+        # CampaignMailer.campaign_new_message_notification(message).deliver if message.receiver.email_remainder_active?
       else
         success = false
         id = @offer.id
