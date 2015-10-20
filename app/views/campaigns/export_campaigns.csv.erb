@@ -1,0 +1,5 @@
+<%- headers = ['Campaign Name', 'Text'] -%>
+<%= CSV.generate_line headers %>
+<% @campaigns.each do |campaign| %>
+    <%= CSV.generate_line([campaign.name, campaign.text]) %>
+<% end %>

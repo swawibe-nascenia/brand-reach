@@ -52,7 +52,10 @@ class CampaignsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data @campaigns.as_csv }
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"campaign_list.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
     end
 
   end
