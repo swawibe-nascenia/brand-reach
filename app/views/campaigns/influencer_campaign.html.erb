@@ -4,7 +4,7 @@
 
 <div class="payment-div ">
   <div class="payment-button-set pull-right">
-    <%= link_to 'EXPORT', export_campaigns_campaigns_path(format: :csv), method: :post, :class => 'btn btn-export', id: 'export_campaigns' %>
+    <%= link_to 'EXPORT', '#', :class => 'btn btn-export', id: 'export_campaigns' %>
 
     <div class="dropdown" id="age_button">
       <button class="btn btn-age dropdown-toggle" type="button" data-toggle="dropdown">Age
@@ -165,14 +165,16 @@
             });
             console.log(campaign_ids);
 
-            $.ajax({
-                url: "<%= export_campaigns_campaigns_path %>",
-                type: 'post',
-                dataType: 'text',
-                data: {
-                    campaign_ids: campaign_ids
-                }
-            });
+            window.location.href  = "<%= export_campaigns_campaigns_path(format: :csv) %>?campaign_ids=" + campaign_ids;
+
+//            $.ajax({
+//                url: "<%#= export_campaigns_campaigns_path(format: :csv) %>",
+//                type: 'post',
+//                dataType: 'csv',
+//                data: {
+//                    campaign_ids: campaign_ids
+//                }
+//            });
 
 
         });

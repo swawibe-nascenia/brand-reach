@@ -48,8 +48,12 @@ class CampaignsController < ApplicationController
   end
 
   def export_campaigns
-    campaign_ids = params[:campaign_ids].uniq
-    @campaigns = Campaign.where(id: campaign_ids)
+    if params[:campaign_ids].present?
+      campaign_ids = params[:campaign_ids].split(',').uniq
+      @campaigns = Campaign.where(id: campaign_ids)
+    else
+      @campaigns = Campaign.all
+    end
 
     respond_to do |format|
       format.html
