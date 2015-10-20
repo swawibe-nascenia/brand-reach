@@ -75,7 +75,7 @@ class ProfileController < ApplicationController
                                     post_reach: page_info[:post_reach],
                                 })
     end
-    if @user.save
+    if @user.save(validate: false)
       flash[:success] = 'Accounts added successfully'
     else
       flash[:error] = 'Could not add account'
