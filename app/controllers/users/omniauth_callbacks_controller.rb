@@ -3,6 +3,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     authentication_params = request.env['omniauth.params']
     authentication_info =  request.env['omniauth.auth']
+    Rails.logger.info(authentication_info, authentication_params)
 
       @user = User.authenticate_user_by_facebook(authentication_info, authentication_params)
 
