@@ -16,7 +16,10 @@ class User < ActiveRecord::Base
 
   enum gender: [:male, :female, :other]
 
-  PROFILE_COMPLETENESS = [:company_name, :company_email, :industry, :phone, :street_address, :landmark,
+  BRAND_PROFILE_COMPLETENESS = [:company_name, :company_email, :industry, :phone, :street_address, :landmark,
+                          :city, :state, :country, :zip_code, :short_bio, :first_name, :last_name]
+
+  INFLUENCER_PROFILE_COMPLETENESS = [:company_name, :industry, :phone, :street_address, :landmark,
                           :city, :state, :country, :zip_code, :short_bio, :first_name, :last_name]
 
   # ----------------------------------------------------------------------
@@ -115,6 +118,7 @@ class User < ActiveRecord::Base
         user.user_type= User.user_types[:brand]
       else
         user.user_type = User.user_types[:influencer]
+        user.company_email = auth.info.email
       end
     end
 
@@ -146,19 +150,25 @@ class User < ActiveRecord::Base
   end
 
   def profile_completion_status
-    PROFILE_COMPLETENESS.each do |field|
+    if self.influencer?
+      return if self.facebook_accounts.blank?
 
-      unless send("#{field}?")
-        update_column(:profile_complete, false)
-        Rails.logger.info  "=====================================Checking present field fail for #{field}"
-        return
+      INFLUENCER_PROFILE_COMPLETENESS.each do |field|
+        unless send("#{field}?")
+          update_column(:profile_complete, false)
+          Rails.logger.info  "=====================================Checking present field fail for #{field}"
+          return
+        end
       end
-    end
 
-    if self.influencer? && self.facebook_accounts.blank?
-      Rails.logger.info  "=====================================User is Influencer and social accounts are blank"
-      update_column(:profile_complete, false)
-      return
+    else
+      BRAND_PROFILE_COMPLETENESS.each do |field|
+        unless send("#{field}?")
+          update_column(:profile_complete, false)
+          Rails.logger.info  "=====================================Checking present field fail for #{field}"
+          return
+        end
+      end
     end
 
     Rails.logger.info "Successfully user #{self} completed his profile"
