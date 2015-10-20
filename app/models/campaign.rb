@@ -77,7 +77,7 @@ class Campaign < ActiveRecord::Base
     end
   end
 
-  def create_first_method
+  def create_first_message
         messages.create(sender_id: self.sender_id, receiver_id: self.receiver_id, body: first_message_body);
   end
 
