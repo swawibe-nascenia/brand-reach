@@ -4,6 +4,7 @@
 
 <div class="brands-profile-page-wrapper">
 
+  <%= render 'shared/show_errors', :object => @user%>
   <%= image_tag(@user.profile_picture, :class => 'profile-picture', :alt => "profile-picture") %>
 
   <%= form_for @user, url: profile_path(@user), html: {class: 'form-horizontal personal-info-form'} do |f| %>

@@ -12,11 +12,10 @@ class ProfileController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = 'User information update success'
+      redirect_to profile_profile_index_path
     else
-      flash[:error] = 'User information update fail'
+     render 'profile'
     end
-
-    redirect_to profile_profile_index_path
   end
 
   def update_password

@@ -38,6 +38,8 @@ class FacebookAccount < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   validates :access_token, presence: true
+  validates :status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost, :numericality => {:greater_than => 0}, presence: true
+
 
   # ----------------------------------------------------------------------
   # == Callbacks == #
