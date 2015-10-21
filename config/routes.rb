@@ -43,7 +43,7 @@ Rails.application.routes.draw do
 
   resources :influencers, only: [:show] do
     collection do
-      # get :show_profile
+      get :search
     end
   end
 

@@ -210,7 +210,7 @@ only screen and (max-width: 540px) {
     margin-left: 10px;
 }
 .offer-text{
-    min-width: 50%;
+    min-width: 40%;
     margin-left: 10px;
     text-align: center;
 }

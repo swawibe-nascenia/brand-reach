@@ -46,3 +46,20 @@
 
 <!-- /.content -->
 </div><!-- /.content-wrapper -->
+
+<script>
+  $(function(){
+      <% if params[:offer_id] %>
+          var $offerBody = $('.offer-body-<%= params[:offer_id] %>');
+          $offerBody.addClass('in');
+          var searchKey = '<%= params[:search_key] %>';
+          var replaceWord ='<span class=text-danger>' + searchKey + '</span>';
+          var regex = new RegExp(searchKey,'gi');
+
+          $offerBody.find('.message').each(function(){
+            $(this).children('.title').html($(this).children('.title').html().replace(regex, replaceWord));
+          });
+      <% end %>
+  });
+
+</script>
