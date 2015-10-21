@@ -136,7 +136,7 @@
 }
 
 
-th:nth-child(1), td:nth-child(1) {
+.payments_table th:nth-child(1), .payments_table td:nth-child(1) {
     text-align: center ;
 }
 
