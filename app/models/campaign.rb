@@ -52,6 +52,8 @@ class Campaign < ActiveRecord::Base
   # == Scopes and Other macros == #
   # ----------------------------------------------------------------------
 
+  scope :active_campaigns_for,  ->(user) { where(status: self.statuses[:accepted], receiver: user) }
+
   # ----------------------------------------------------------------------
   # == Instance methods == #
   # ----------------------------------------------------------------------

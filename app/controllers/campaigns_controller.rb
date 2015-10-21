@@ -3,7 +3,7 @@ class CampaignsController < ApplicationController
   respond_to :html, :js, :csv
 
   def influencer_campaign
-    @campaigns = current_user.campaigns_received
+    @campaigns = Campaign.active_campaigns_for(current_user)
   end
 
   def brand_campaign
