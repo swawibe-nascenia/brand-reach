@@ -24,9 +24,7 @@
           <p class="info-box-data total-follower-data-color"><%= @account.number_of_followers %></p>
 
           <p class="info-box-text ">TOTAL FOLLOWERS</p>
-
         </div>
-
       </div>
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
@@ -97,56 +95,9 @@
                         zoomControl: {
                             panControlEnabled: false,
                             zoomControlEnabled: false,
-                            homeButtonEnabled:false
+                            homeButtonEnabled: false
                         }
-                    } );
-
-                    // add events to recalculate map position when the map is moved or zoomed
-//                    map.addListener("positionChanged", updateCustomMarkers);
-
-                    // this function will take current images on the map and create HTML elements for them
-                    function updateCustomMarkers (event) {
-                        // get map object
-                        var map = event.chart;
-
-                        // go through all of the images
-                        for (var x in map.dataProvider.images) {
-                            // get MapImage object
-                            var image = map.dataProvider.images[x];
-
-                            // check if it has corresponding HTML element
-                            if ('undefined' == typeof image.externalElement)
-                                image.externalElement = createCustomMarker(image);
-
-                            // reposition the element accoridng to coordinates
-                            image.externalElement.style.top = map.latitudeToY(image.latitude) + 'px';
-                            image.externalElement.style.left = map.longitudeToX(image.longitude) + 'px';
-                        }
-                    }
-
-                    // this function creates and returns a new marker element
-                    function createCustomMarker(image) {
-                        // create holder
-                        var holder = document.createElement('div');
-                        holder.className = 'map-marker';
-                        holder.title = image.title;
-                        holder.style.position = 'absolute';
-
-                        // create dot
-                        var dot = document.createElement('div');
-                        dot.className = 'dot';
-                        holder.appendChild(dot);
-
-                        // create pulse
-                        var pulse = document.createElement('div');
-                        pulse.className = 'pulse';
-                        holder.appendChild(pulse);
-
-                        // append the marker to the map container
-                        image.chart.chartDiv.appendChild(holder);
-
-                        return holder;
-                    }
+                    });
                 })();
             </script>
           </div>
@@ -231,7 +182,6 @@
             datasetStrokeWidth: 2,
             //Boolean - Whether to fill the dataset with a color
             datasetFill: true,
-            //String - A legend template
             //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
             maintainAspectRatio: false,
             //Boolean - whether to make the chart responsive to window resizing
@@ -323,19 +273,5 @@
       </div>
     </div>
     <!-- /.box-header -->
-
-
-    <!-- @below section is needed for showing map -->
-    <div class="col-md-4">
-      <div class="box-body">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="chart-responsive hidden">
-              <canvas id="pieChart" height="150"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>

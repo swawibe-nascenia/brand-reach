@@ -47,7 +47,6 @@ class FacebookAccount < ActiveRecord::Base
 
   after_save :update_influencer_fb_average_cost
 
-
   # ----------------------------------------------------------------------
   # == Scopes and Other macros == #
   # ----------------------------------------------------------------------
@@ -135,7 +134,6 @@ class FacebookAccount < ActiveRecord::Base
     }
   end
 
-
   private
 
   def update_influencer_fb_average_cost
@@ -145,6 +143,7 @@ class FacebookAccount < ActiveRecord::Base
     Rails.logger.info "total amoutn is #{cost_array.inject(:+).inject(:+)} and field #{cost_array.inject(:+).length}"
     influencer.update_column(:fb_average_cost, avg_cost)
   end
+
   # ----------------------------------------------------------------------
   # == Class methods == #
   # ----------------------------------------------------------------------
