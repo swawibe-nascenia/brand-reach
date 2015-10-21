@@ -124,6 +124,28 @@ $(function(){
         return false;
     });
 
+//    withdraw request send  by influencer
+
+    $('#btn-amount-withdraw').click(function(){
+        var BankAccountId = $('input[name="bank_account"]:checked').val();
+        var withdrawAmmount =  parseInt($('input#withdraw_amount').val());
+        if(BankAccountId === undefined || BankAccountId === null || isNaN(withdrawAmmount)){
+            alert('Select Bank account or give withdraw amount first ');
+        }else{
+            $.ajax({
+                type: 'post',
+                url: '/payments/withdraw_payment',
+                dataType: "script",
+                data: {amount: withdrawAmmount, bank_account_id: BankAccountId, 'authenticity_token': $('meta[name="csrf-token"]').attr('content')},
+                success: function(data) {
+                    console.log(data)
+                }
+            });
+        }
+
+        return false;
+    });
+
 
 });
 // end of document.ready() method
