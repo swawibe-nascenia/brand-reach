@@ -77,9 +77,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :brand_payments, path: 'payments', only: [] do
+  resources :brand_payments, path: 'payments', only: [:index] do
     collection do
-      get :brand_payment
       post :export_payments
     end
   end

@@ -2,8 +2,8 @@ class BrandPaymentsController < ApplicationController
 
   respond_to :html, :js
 
-  def brand_payment
-    @transactions = BrandPayment.where(campaign_id: current_user.campaigns_sent.ids)
+  def index
+    @transactions = BrandPayment.where(campaign_id: current_user.campaigns_sent.pluck(:id))
   end
 
   def export_payments
