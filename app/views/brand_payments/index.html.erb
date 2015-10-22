@@ -23,7 +23,7 @@
         <table class="table table-striped table-bordered table-responsive payments_table">
           <thead>
           <tr class="payment-header">
-            <th class="squaredFour" id="selecctall"><input type="checkbox" class="payment-header" value="all"/></th>
+            <th class="squaredFour" id="select_all_brand_payment"><input type="checkbox" class="payment-header" value="all"/></th>
             <th>Date Billed</th>
             <th>Transaction ID</th>
             <th>Amount Billed (USD)</th>
@@ -36,7 +36,7 @@
               <tbody>
               <% @transactions.each do |transaction| %>
                   <tr>
-                    <td class="squaredFour"><input type="checkbox" data-id="<%= transaction.id %>" value="1"/></td>
+                    <td class="squaredFour"><input type="checkbox" class="BrandPaymentCheckBox" data-id="<%= transaction.id %>" value="1"/></td>
                     <td><%= transaction.billed_date.present? ? transaction.billed_date.strftime("%B %d, %Y") : 'NA' %></td>
                     <td><%= sprintf("BP%05d" ,transaction.id) %></td>
                     <td><%= transaction.amount_billed %></td>
@@ -67,6 +67,10 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+
+        $("#select_all_brand_payment").change(function () {
+            $(".BrandPaymentCheckBox").prop('checked', $("#select_all_brand_payment input:checked").length);
+        });
 
         $('#export_payments').click(function() {
             var payment_ids = [];
