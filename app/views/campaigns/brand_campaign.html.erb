@@ -5,16 +5,16 @@
 
 <section class="influence-facebook-content">
   <div class="row campaign-view">
-    <%= label_tag :name, "Choose a Campaign" %>
-    <%= select_tag "name", options_from_collection_for_select(@campaigns, "id", "name") , prompt: "Choose a campaign to view the statistics" %>
-    <%= button_tag "VIEW", class: 'btn btn-campaign-view' %>
+    <%= label_tag :name, 'Choose a Campaign' %>
+    <%= select_tag 'name', options_from_collection_for_select(@campaigns, 'id', 'name') , prompt: 'Choose a campaign to view the statistics',  id: 'campaign_id' %>
+    <%= button_tag 'VIEW', class: 'btn btn-campaign-view' %>
   </div>
   <div class="br-container">
     <!-- Info boxes -->
 
     <div class="row download-campaign">
 
-      <%= link_to "DOWNLOAD THIS CAMPAIGN'S REPORT", '', remote: true, :class => 'btn btn-download-campaign', id: 'download_campaigns' %>
+      <%= link_to "DOWNLOAD THIS CAMPAIGN'S REPORT", '#', :class => 'btn btn-download-campaign', id: 'download_campaigns' %>
 
     </div>
 
@@ -210,6 +210,14 @@
             document.getElementById("engagement-blue").style.display = 'none';
             document.getElementById("engagement-black").style.display = 'inline';
         });
+
+        $('#download_campaigns').click(function() {
+            var campaign_id = $('#campaign_id option:selected').val();
+
+            window.location.href  = "<%= export_brand_campaigns_campaigns_path(format: :csv) %>?campaign_id=" + campaign_id;
+
+        });
+
     });
 
 

@@ -47,7 +47,7 @@ class CampaignsController < ApplicationController
 
   end
 
-  def export_campaigns
+  def export_influencer_campaigns
     if params[:campaign_ids].present?
       campaign_ids = params[:campaign_ids].split(',').uniq
       @campaigns = Campaign.where(id: campaign_ids)
@@ -58,11 +58,26 @@ class CampaignsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do
-        headers['Content-Disposition'] = "attachment; filename=\"campaign_list.csv\""
+        headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_influencer.csv\""
         headers['Content-Type'] ||= 'text/csv'
       end
     end
+  end
 
+  def export_brand_campaigns
+    if params[:campaign_id].present?
+      @campaigns = Campaign.where(id: params[:campaign_id])
+    else
+      @campaigns = current_user.campaigns_sent
+    end
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_brand.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
   end
 
   def new_brand_payment
