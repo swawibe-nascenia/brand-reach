@@ -70,7 +70,7 @@ Rails.application.routes.draw do
       post :campaign_status_change
       get :export_influencer_campaigns
       get :export_brand_campaigns
-      get :new_brand_payment
+      post :new_brand_payment
       patch :create_brand_payment
     end
     member do
