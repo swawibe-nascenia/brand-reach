@@ -24,7 +24,11 @@
 
   <div class="action">
     <% if offer.accepted? %>
-        <%= link_to 'Engage', new_brand_payment_campaigns_path(offer.id), class: 'btn btn-accept', method: :post %>
+        <% unless offer.card_number? %>
+            <%= link_to 'Engage', new_brand_payment_campaigns_path(offer.id), class: 'btn btn-accept', method: :post %>
+        <% else %>
+            <span class="text-success">Running Campaign</span>
+        <% end %>
   <% else  %>
        Pending request
   <% end %>
