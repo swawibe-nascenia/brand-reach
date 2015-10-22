@@ -102,7 +102,7 @@
       <br/>
 
       <ul class="sidebar-menu">
-        <li class="<%=  (params[:controller] == 'profile') ? 'active' : '' %>">
+        <li class="<%= ((params[:controller] == 'profile' && params[:action] == 'update') || (params[:controller] == 'profile' && params[:action] == 'profile')) ? 'active' : '' %>">
           <a href="<%= profile_profile_index_path %>">
             <i class="fa fa-user"></i> <span class="space-sidebar">PROFILE</span>
           </a>

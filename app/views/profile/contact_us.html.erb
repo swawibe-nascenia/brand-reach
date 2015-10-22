@@ -2,35 +2,31 @@
 
 <% title 'Contact Us' %>
 
-
 <div class="contact-us">
   <div class="get-in-touch-form">
+
+    <%= render 'shared/show_errors', :object => @contact_us%>
+
     <div class="get-in-touch"> GET IN TOUCH </div>
 
-    <form action="#" method="post">
+    <%= form_for @contact_us, url: contact_us_save_profile_index_path, method: :post, html: {class: ''} do |f| %>
 
-      <div class="get-in-touch-category">
-        <label for="feedback" class="category-name display-inline">Category</label>
-        <select class="category-list display-inline" id="feedback">
-          <option>Feedback</option>
-          <option>Feedback 1</option>
-          <option>Feedback 2</option>
-        </select>
-      </div>
-
-      <div class="get-in-touch-message">
-        <label for="message-area" class="message-name display-inline">Message</label>
-        <textarea class="get-in-touch-message-textarea display-inline" id="message-area" rows="6"></textarea>
-      </div>
-
-      <div class="get-in-touch-submit">
-        <div class="form-group">
-          <button type="submit" class="btn get-in-touch-submit-button">SUBMIT</button>
+        <div class="get-in-touch-category">
+          <%= f.label :category, 'Category', class: 'category-name display-inline' %>
+          <%= f.select :category, options_for_select(ContactUs.categories.map{ |type, value| [type.titleize, value]} ), {}, { :class => 'category-list display-inline' } %>
         </div>
-      </div>
 
-    </form>
+        <div class="get-in-touch-message">
+          <%= f.label :message, "Message", class: 'message-name display-inline' %>
+          <%= f.text_area :message, rows: 6, class: 'get-in-touch-message-textarea display-inline' %>
+        </div>
 
+        <div class="get-in-touch-submit">
+          <div class="form-group">
+            <%= f.button 'SUBMIT', class: 'btn get-in-touch-submit-button' %>
+          </div>
+        </div>
+    <% end %>
 
   </div>
 </div>

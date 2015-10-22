@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
   has_many :campaigns_received, class_name: 'Campaign', foreign_key: 'receiver_id', dependent: :destroy
   has_many :bank_accounts
   has_many :influencer_payments
+  has_many :contact_uses
 
   accepts_nested_attributes_for :facebook_accounts
 

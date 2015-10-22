@@ -1,7 +1,7 @@
 class ProfileController < ApplicationController
   # layout 'sidebar_header_layouts'
   skip_before_action :check_profile_completion
-  before_action :set_user, only: [:profile, :update, :update_accounts, :update_password, :toggle_available, :deactivate_account, :show_settings, :update_profile_settings]
+  before_action :set_user, only: [:profile, :update, :update_accounts, :update_password, :toggle_available, :deactivate_account, :show_settings, :update_profile_settings, :contact_us_save]
 
   respond_to :html, :js
 
@@ -14,7 +14,7 @@ class ProfileController < ApplicationController
       flash[:success] = 'User information update success'
       redirect_to profile_profile_index_path
     else
-     render 'profile'
+      render 'profile'
     end
   end
 
@@ -85,7 +85,20 @@ class ProfileController < ApplicationController
   end
 
   def contact_us
+    @contact_us = ContactUs.new
+  end
 
+  def contact_us_save
+    @contact_us = ContactUs.new(contact_us_params.except(:category))
+    @contact_us.category = params[:contact_us][:category].to_i
+    @contact_us.user_id = current_user.id
+
+    if @contact_us.save
+      flash[:success] = 'Message Sent Successfully'
+      redirect_to contact_us_profile_index_path
+    else
+      render 'contact_us'
+    end
   end
 
   def update_profile_settings
@@ -128,5 +141,9 @@ class ProfileController < ApplicationController
                                  :country, :zip_code, :short_bio, :password, :password_confirmation, :current_password, :is_active,
                                  facebook_accounts_attributes: [:id, :status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost]
     )
+  end
+
+  def contact_us_params
+    params.require(:contact_us).permit(:category, :message)
   end
 end

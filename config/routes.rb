@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get :toggle_available
       post :deactivate_account
       post :update_profile_settings
+      post :contact_us_save
     end
   end
 
