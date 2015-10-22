@@ -77,17 +77,17 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :brand_payments, path: 'payments', only: [:index] do
-    collection do
-      get :brand_payment
-      get :export_brand_payments
-    end
-  end
-
   resources :influencer_payments, path: 'payments', only: [:index] do
     collection do
       post :export_payments
       post :withdraw_payment
+    end
+  end
+
+  resources :brand_payments, only: [:index] do
+    collection do
+      get :brand_payment
+      get :export_brand_payments
     end
   end
 
