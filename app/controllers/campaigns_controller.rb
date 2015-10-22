@@ -7,7 +7,14 @@ class CampaignsController < ApplicationController
   end
 
   def brand_campaign
-    @campaigns = current_user.campaigns_sent
+    @campaigns = Campaign.active_campaigns_from(current_user)
+
+    if @campaigns.blank?
+      return redirect_to profile_profile_index_path
+    end
+
+    @campaign = params[:id].present? ? @campaigns.find(params[:id]) : @campaigns.first
+    @campaign.fetch_insights
   end
 
   def new
@@ -45,6 +52,14 @@ class CampaignsController < ApplicationController
     campaign.save
     nil
 
+  end
+
+  def update_activity
+    campaign = Campaign.find(params[:id])
+    campaign.social_account_activity_id = params[:activity_id]
+    campaign.save
+
+    redirect_to influencer_campaign_campaigns_path
   end
 
   def export_influencer_campaigns
@@ -101,7 +116,7 @@ class CampaignsController < ApplicationController
 
   def campaign_params
     params.require(:campaign).permit(:name, :text, :headline, :social_account_page_name, :start_date, :receiver_id, :sender_id,
-                                     :end_date, :campaign_active, :cost, :social_account_activity_id,
+                                     :end_date, :campaign_active, :cost, :facebook_account_id,
                                      :post_type, :number_of_likes, :number_of_post_reach, :number_of_comments,
                                      :number_of_shares, :card_number, :card_expiration_month, :card_expiration_year, :card_holder_name, :schedule_type
     )

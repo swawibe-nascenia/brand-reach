@@ -5,9 +5,11 @@
 
 <section class="influence-facebook-content">
   <div class="row campaign-view">
-    <%= label_tag :name, 'Choose a Campaign' %>
-    <%= select_tag 'name', options_from_collection_for_select(@campaigns, 'id', 'name') , prompt: 'Choose a campaign to view the statistics',  id: 'campaign_id' %>
-    <%= button_tag 'VIEW', class: 'btn btn-campaign-view' %>
+    <%= form_tag(nil, method: 'get') do %>
+        <%= label_tag :name, 'Choose a Campaign' %>
+        <%= select_tag 'id', options_from_collection_for_select(@campaigns, 'id', 'name', @campaign.id) , prompt: 'Choose a campaign to view the statistics' %>
+        <%= button_tag 'VIEW', class: 'btn btn-campaign-view' %>
+    <% end %>
   </div>
   <div class="br-container">
     <!-- Info boxes -->

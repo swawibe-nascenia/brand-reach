@@ -48,9 +48,9 @@
               <div id="costs" data-costs="<%= @costs %>"></div>
 
               <div class="form-group">
-                <%= f.label :social_account_activity_id, 'Choose Social Account Name', class: 'control-label col-md-4' %>
+                <%= f.label :facebook_account_id, 'Choose Social Account Name', class: 'control-label col-md-4' %>
                 <div class="col-sm-8">
-                  <%= f.select :social_account_activity_id, options_for_select(@influencer.facebook_accounts.map{ |account| [account.name, account.id] }, @campaign.social_account_activity_id), {}, { :class => 'form-control type-of-post', :id => 'social_account' } %>
+                  <%= f.select :facebook_account_id, options_for_select(@influencer.facebook_accounts.map{ |account| [account.name, account.facebook_id] }, @campaign.facebook_account_id), {}, { :class => 'form-control type-of-post', :id => 'social_account' } %>
                 </div>
               </div>
 

@@ -1,0 +1,97 @@
+<script type="text/x-handlebars" id="set-facebook-activity-template">
+    <div class="modal fade" id="SetFacebookActivity" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <a href="#"><%= image_tag('logo_white.png', :class => 'img-responsive login-modal-logo', :alt => "logo") %></a>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="add-another-account">Set facebook activity</div>
+
+            <div class="account-content facebook-feed-content">
+                <form method="POST" action="<%= update_activity_campaigns_path %>">
+                    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                    <input type="hidden" name="access_token"/>
+                    <input type="hidden" name="id"/>
+                    {{#each accounts}}
+                        <div class="media js-clickable">
+                          {{#if picture}}
+                          <div class="media-left media-middle">
+                            <img class="media-object" src="{{picture}}">
+                          </div>
+                          {{/if}}
+                          <div class="media-body media-middle">
+                            <h4 class="media-heading">{{story}}{{message}}</h4>
+                          </div>
+                          <div class="media-right media-middle">
+                            <input type="radio" name="activity_id" value="{{id}}">
+                          </div>
+                        </div>
+                    {{/each}}
+
+                    <br/>
+
+                    <input class="btn btn-primary" type="submit" value="CONNECT"/>
+                </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</script>
+
+<script>
+    (function() {
+        $.getScript('//connect.facebook.net/en_US/all.js', function(){
+            FB.init({
+                appId: '<%= CONFIG[:fb_app_id] %>',
+                version: 'v2.4'
+            });
+
+            var createForm = function(authResp, campaignId, pageId) {
+                FB.api('/'+ pageId +'/feed?fields=id,message,status_type,story,picture', function(resp) {
+                    var html = template({
+                        accounts: resp.data
+                    });
+                    $('#SetFacebookActivity').remove();
+                    $('body').append(html);
+                    $('#SetFacebookActivity').modal().find('[name="access_token"]').val(authResp.accessToken);
+                    $('#SetFacebookActivity').modal().find('[name="id"]').val(campaignId);
+                });
+            };
+
+            var source = $("#set-facebook-activity-template").html();
+            var template = Handlebars.compile(source);
+
+            $(document).on('click', '[data-target="SetFacebookActivity"]', function () {
+                var campaignId = $(this).data('campaign');
+                var pageId = $(this).data('page');
+
+                FB.getLoginStatus(function(resp) {
+                    if (resp.status === 'connected') {
+                        createForm(resp.authResponse, campaignId, pageId);
+                    }
+                    else {
+                        FB.login(function(resp) {
+                            if (resp.authResponse) {
+                                createForm(resp.authResponse, campaignId, pageId);
+                            } else {
+                                // todo: alert?
+                            }
+                        });
+                    }
+                });
+            });
+
+            $(document).on('click', '.js-clickable', function(event) {
+                var ip = $(this).find('input[type="radio"]');
+                if (ip.get(0) != event.target) {
+                    ip.prop('checked', true);
+                    return false;
+                }
+            });
+        });
+    })();
+</script>

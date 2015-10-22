@@ -21,9 +21,20 @@ class InsightService < BaseService
     page_info[:number_of_followers] = service.get_number_of_likes(data['id'])
     page_info[:daily_page_views] = service.get_daily_page_views(data['id'])
     page_info[:number_of_posts] = service.get_number_of_posts(data['id'])
-    page_info[:post_reach] = service.get_post_reach(data['id'])
+    page_info[:post_reach] = service.get_page_reach(data['id'])
 
     page_info
+  end
+
+  def get_post_info(post_id)
+    post_info = {}
+    data = @graph.get_object("#{post_id}?fields=likes,comments,shares")
+
+    post_info[:number_of_likes] = data['likes'].present? ? data['likes']['data'].length : 0
+    post_info[:number_of_comments] = data['comments'].present? ? data['comments']['data'].length : 0
+    post_info[:number_of_shares] = data['shares'].present? ? data['shares']['count'] : 0
+
+    post_info
   end
 
   def get_pages(id)
@@ -75,10 +86,20 @@ class InsightService < BaseService
     count
   end
 
-  def get_post_reach(id)
+  def get_page_reach(id)
     count = 0
 
     @graph.get_object("#{id}/insights/page_impressions/day").each do |d|
+      count += d['values'].last['value']
+    end
+
+    count
+  end
+
+  def get_post_reach(post_id)
+    count = 0
+
+    @graph.get_object("#{post_id}/insights/post_impressions_unique").each do |d|
       count += d['values'].last['value']
     end
 
