@@ -6,6 +6,6 @@ module BrandsHelper
       user_group.each { |user| results << user.industry }
     end
 
-    results.compact!.uniq.sort
+    results.compact.uniq.sort
   end
 end
