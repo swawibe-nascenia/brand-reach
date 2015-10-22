@@ -24,8 +24,21 @@ class InfluencerPaymentsController < ApplicationController
     end
   end
 
-  def export_payments
-    payment_ids = params[:payment_ids]
+  def export_influencer_payments
+    if params[:payment_ids].present?
+      payment_ids = params[:payment_ids].split(',').uniq
+      @influencer_payments = InfluencerPayment.where(id: payment_ids)
+    else
+      @influencer_payments = current_user.influencer_payments
+    end
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"payments_list_influencer.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
   end
 
 end

@@ -1,0 +1,5 @@
+<%- headers = ['Date Billed', 'Transaction ID', 'Amount Received(INR)', 'Payment Status'] -%>
+<%= CSV.generate_line headers %>
+<% @influencer_payments.each do |payment| %>
+    <%= CSV.generate_line([ payment.billed_date.present? ? payment.billed_date.strftime("%B %d, %Y") : 'NA', sprintf('BP%05d' ,payment.id), payment.amount_billed, payment.status ])%>
+<% end %>
