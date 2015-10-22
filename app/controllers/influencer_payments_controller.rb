@@ -3,8 +3,8 @@ class InfluencerPaymentsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @transactions = InfluencerPayment.all
-    @bank_accounts = BankAccount.all
+    @transactions = current_user.influencer_payments
+    @bank_accounts = current_user.bank_accounts
   end
 
   def withdraw_payment

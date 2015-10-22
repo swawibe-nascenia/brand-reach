@@ -52,7 +52,7 @@ class CampaignsController < ApplicationController
       campaign_ids = params[:campaign_ids].split(',').uniq
       @campaigns = Campaign.where(id: campaign_ids)
     else
-      @campaigns = Campaign.all
+      @campaigns = current_user.campaigns_received
     end
 
     respond_to do |format|
@@ -72,8 +72,9 @@ class CampaignsController < ApplicationController
 
   def create_brand_payment
     @campaign = Campaign.find(params[:campaign][:id])
+    @campaign.card_expiration_month = campaign_params[:card_expiration_month].to_i
 
-    if @campaign.update(campaign_params)
+    if  @campaign.update(campaign_params.except(:card_expiration_month))
       redirect_to brand_campaign_campaigns_path
     else
       render :action => 'new_brand_payment'

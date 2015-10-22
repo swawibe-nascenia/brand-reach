@@ -6,19 +6,7 @@
 
   <%= form_for @campaign , url: create_brand_payment_campaigns_path, method: :patch , html: { class: 'form-horizontal'} do |f| %>
 
-      <% if @campaign.errors.any? %>
-          <div id="error_explanation">
-            <h2>
-              <%= pluralize(@campaign.errors.count, "error") %> prohibited
-              this article from being saved:
-            </h2>
-            <ul>
-              <% @campaign.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-      <% end %>
+      <%= render 'shared/show_errors', :object => @campaign%>
 
       <div class="text-pink">PAYMENT</div>
 
@@ -35,10 +23,10 @@
           <%= f.label '', 'Expiration date' %>
         </div>
         <div class="row">
-          <%= f.select :card_expiration_month,  options_for_select(Campaign.card_expiration_months.map{ |type, value| [type.titleize, value] } ), { :include_blank => true }, {} %>
-          <%#= f.select :card_expiration_month,  options_for_select(Campaign.card_expiration_months.map{ |type, value| [type.titleize, value] }, Campaign.card_expiration_months[@campaign.card_expiration_month] ), { :include_blank => true }, {} %>
-          <%= f.select :card_expiration_year, options_for_select((Time.now.year)..(Time.now.year+10)), { :include_blank => true } %>
-          <%#= f.select :card_expiration_year, options_for_select((Time.now.year)..(Time.now.year+10), @campaign.card_expiration_year), { :include_blank => true } %>
+          <%#= f.select :card_expiration_month,  options_for_select(Campaign.card_expiration_months.map{ |type, value| [type.titleize, value] } ), { :include_blank => true }, {} %>
+          <%= f.select :card_expiration_month,  options_for_select(Campaign.card_expiration_months.map{ |type, value| [type.titleize, value] }, Campaign.card_expiration_months[@campaign.card_expiration_month] ), { :include_blank => true }, {} %>
+          <%#= f.select :card_expiration_year, options_for_select((Time.now.year)..(Time.now.year+10)), { :include_blank => true } %>
+          <%= f.select :card_expiration_year, options_for_select((Time.now.year)..(Time.now.year+10), @campaign.card_expiration_year), { :include_blank => true } %>
         </div>
 
         <div class="row">

@@ -3,7 +3,7 @@ class BrandPaymentsController < ApplicationController
   respond_to :html, :js
 
   def brand_payment
-    @transactions = BrandPayment.all
+    @transactions = BrandPayment.where(campaign_id: current_user.campaigns_sent.ids)
   end
 
   def export_payments
