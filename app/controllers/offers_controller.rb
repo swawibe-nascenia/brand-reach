@@ -34,17 +34,17 @@ class OffersController < ApplicationController
 
   def accept
     @offer.update_attribute(:status, Campaign.statuses[:accepted])
-    CampaignMailer.campaign_accept_notification(@offer).deliver if @offer.sender.email_remainder_active?
+    CampaignMailer.campaign_accept_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
   end
 
   def deny
     @offer.update_attributes({status: Campaign.statuses[:denied], denied_at: Time.now })
-    CampaignMailer.campaign_deny_notification(@offer).deliver if @offer.sender.email_remainder_active?
+    CampaignMailer.campaign_deny_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
   end
 
   def undo_deny
     @offer.update_attribute(:status, Campaign.statuses[:waiting])
-    CampaignMailer.campaign_deny_undo_notification(@offer).deliver if @offer.sender.email_remainder_active?
+    CampaignMailer.campaign_deny_undo_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
   end
 
   def reply_message

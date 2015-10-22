@@ -42,4 +42,10 @@ class CampaignMailer < ApplicationMailer
     Rails.logger.info "========================== Campaign start notification send to #{@receiver.full_name}================"
     mail(to: @receiver.email, subject: 'New message to campaign')
   end
+
+  def contact_us_mail(contact_us)
+    @message = contact_us.message
+    Rails.logger.info "========================== Contact us mail send to .............================"
+    mail(to: 'swawibe@bdipo.com', subject: contact_us.category)
+  end
 end
