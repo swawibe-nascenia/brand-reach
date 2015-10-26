@@ -50,7 +50,7 @@
               <div class="form-group">
                 <%= f.label :facebook_account_id, 'Choose Social Account Name', class: 'control-label col-md-4' %>
                 <div class="col-sm-8">
-                  <%= f.select :facebook_account_id, options_for_select(@influencer.facebook_accounts.map{ |account| [account.name, account.facebook_id] }, @campaign.facebook_account_id), {}, { :class => 'form-control type-of-post', :id => 'social_account' } %>
+                  <%= f.select :facebook_account_id, options_for_select(@influencer.facebook_accounts.map{ |account| [account.name, account.account_id] }, @campaign.facebook_account_id), {}, { :class => 'form-control type-of-post', :id => 'social_account' } %>
                 </div>
               </div>
 
@@ -170,7 +170,7 @@
 
         $('#social_account').change(function() {
             social_account_index = $('#social_account').find('option:selected').index();
-            $('#post_type option:first').attr("selected", true);
+            $('#post_type option:first').attr('selected', 'selected');
             $('#post_cost').val(costs[social_account_index][0]);
         });
 
