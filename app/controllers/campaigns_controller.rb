@@ -38,7 +38,7 @@ class CampaignsController < ApplicationController
     if @campaign.save
       @campaign.create_first_message
       CampaignMailer.new_campaign_notification(@campaign).deliver_now if @campaign.receiver.email_remainder_active?
-      redirect_to brand_campaign_campaigns_path
+      redirect_to brand_campaign_campaigns_path(id: @campaign.id)
     else
       @influencer =  User.find(params[:campaign][:receiver_id])
       @costs = User.find(params[:campaign][:receiver_id]).facebook_accounts.pluck(:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost)
