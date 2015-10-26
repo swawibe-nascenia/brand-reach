@@ -142,6 +142,8 @@ class FacebookAccount < ActiveRecord::Base
     avg_cost = cost_array.inject(:+).inject(:+) / (cost_array.inject(:+).length)
     Rails.logger.info "total amoutn is #{cost_array.inject(:+).inject(:+)} and field #{cost_array.inject(:+).length}"
     influencer.update_column(:fb_average_cost, avg_cost)
+  rescue exception
+    return
   end
 
   # ----------------------------------------------------------------------
