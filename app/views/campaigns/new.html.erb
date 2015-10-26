@@ -168,7 +168,7 @@
 
         $('#social_account').change(function() {
             social_account_index = $('#social_account').find('option:selected').index();
-            $('#post_type option:first').attr('selected', 'selected');
+            $('#post_type option:first').prop('selected', 'selected');
             $('#post_cost').val(costs[social_account_index][0]);
         });
 
