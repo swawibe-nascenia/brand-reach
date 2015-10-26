@@ -165,9 +165,6 @@ only screen and (max-width: 540px) {
     border-radius: 0;
     padding: 20px 20px 0px 20px;
 }
-.payment-div {
-    overflow: hidden;
-}
 
 .btn-column{
     min-width: 200px;
