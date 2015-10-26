@@ -16,7 +16,7 @@ class BankAccountsController < ApplicationController
     @bank_account = BankAccount.find(params[:id])
     @bank_account.destroy
     respond_to do |format|
-      format.html { redirect_to influencer_payment_influencer_payments_path, notice: 'Bank Account was successfully destroyed.' }
+      format.html { redirect_to influencer_payments_path, notice: 'Bank Account was successfully destroyed.' }
     end
   end
 
