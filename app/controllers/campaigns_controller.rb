@@ -10,6 +10,7 @@ class CampaignsController < ApplicationController
     @campaigns = Campaign.active_campaigns_from(current_user)
 
     if @campaigns.blank?
+      flash[:error] = 'You have no campaign'
       return redirect_to profile_profile_index_path
     end
 
