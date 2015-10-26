@@ -247,8 +247,7 @@
 }
 
 .modal-dialog {
-    padding-top: 100px;
-    height: 100%;
+    padding: 100px 0;
     width: 60%;
     font-family: 'Raleway', sans-serif;
 }
