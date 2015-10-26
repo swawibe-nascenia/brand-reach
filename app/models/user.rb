@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
   INFLUENCER_PROFILE_COMPLETENESS = [:company_name, :industry, :phone, :street_address, :landmark,
                           :city, :state, :country, :zip_code, :short_bio, :first_name, :last_name]
 
+  FACEBOOK_ACCOUNT_COMPLETENESS = [:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost]
+
   # ----------------------------------------------------------------------
   # == Attributes == #
   # ----------------------------------------------------------------------
@@ -153,6 +155,17 @@ class User < ActiveRecord::Base
   def profile_completion_status
     if self.influencer?
       return if self.facebook_accounts.blank?
+
+      facebook_accounts.each do |facebook_account|
+        FACEBOOK_ACCOUNT_COMPLETENESS.each do |field|
+          unless facebook_account.send("#{field}?")
+            update_column(:profile_complete, false)
+            Rails.logger.info  "=================== Facebook Account #{facebook_account.name} is incomplete for field #{field}"
+            return
+          end
+        end
+      end
+
 
       INFLUENCER_PROFILE_COMPLETENESS.each do |field|
         unless send("#{field}?")
