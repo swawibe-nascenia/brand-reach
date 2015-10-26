@@ -232,12 +232,17 @@ hr {
 
 }
 .icon-horn {
-    background: image-url("horn.png") no-repeat;
+    background: image-url("horn.png") no-repeat center top;
     display: inline-block;
     width: 30px;
     height: 15px;
     content: '';
     padding-left: 0;
+
+  .skin-blue .sidebar-menu li:hover &,
+  .skin-blue .sidebar-menu li.active &{
+    background-position: center bottom;
+  }
 }
 .icon-comment{
     background: rgba(0, 0, 0, 0) image-url("post-reach.png") no-repeat scroll 0 0;
