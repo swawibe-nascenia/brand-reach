@@ -7,7 +7,7 @@
   <div class="row campaign-view">
     <%= form_tag(nil, method: 'get') do %>
         <%= label_tag :name, 'Choose a Campaign' %>
-        <%= select_tag 'id', options_from_collection_for_select(@campaigns, 'id', 'name', @campaign.id) , prompt: 'Choose a campaign to view the statistics' %>
+        <%= select_tag 'id', options_from_collection_for_select(@campaigns, 'id', 'name', @campaign.id) , prompt: 'Choose a campaign to view the statistics', id: 'campaign_id'%>
         <%= button_tag 'VIEW', class: 'btn btn-campaign-view' %>
     <% end %>
   </div>
@@ -23,18 +23,18 @@
     <div class="row info-box-container">
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
-          <p class="info-box-data total-follower-data-color">24,000</p>
+          <p class="info-box-data total-follower-data-color"><%= number_with_delimiter(@campaign.number_of_likes) %></p>
 
-          <p class="info-box-text ">MALE</p>
+          <p class="info-box-text ">LIKES</p>
 
         </div>
 
       </div>
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
-          <p class="info-box-data page-view-data-color">7,582</p>
+          <p class="info-box-data page-view-data-color"><%= number_with_delimiter(@campaign.number_of_post_reach) %></p>
 
-          <p class="info-box-text">FEMALE</p>
+          <p class="info-box-text">POST REACH</p>
         </div>
       </div>
 
@@ -44,65 +44,17 @@
 
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
-          <p class="info-box-data total-post-data-color">150</p>
-          <p class="info-box-text">TOTAL REACH</p>
+          <p class="info-box-data total-post-data-color"><%= number_with_delimiter(@campaign.number_of_comments) %></p>
+          <p class="info-box-text">COMMENTS</p>
         </div>
       </div>
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
-          <p class="info-box-data post-reach-data-color">4,260</p>
-          <p class="info-box-text">AVERAGE AGE GROUP</p>
+          <p class="info-box-data post-reach-data-color"><%= number_with_delimiter(@campaign.number_of_shares) %></p>
+          <p class="info-box-text">SHARES</p>
         </div>
       </div>
     </div>
-
-    <div class="map-chart">
-      <div class="box">
-        <div class="box-body">
-          <div class="pad">
-            <!-- Map will be created here -->
-            <div id="world-map-markers" style="height: 325px;"></div>
-          </div>
-        </div>
-      </div>
-      <section class="chart-info">
-        <span class="color-gray stat-gender">STATISTICS BY GENDER</span>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="font-below-statistic clearfix">
-            <div class="gender-stat-legend unit-in">
-              <span>Units in 1000s</span>
-            </div>
-            <div class="gender-stat-legend facebook-female">
-              <span class="square-box bg-color-pink"></span>
-              Female
-            </div>
-            <div class="gender-stat-legend">
-              <span class="square-box bg-color-blue chart-male"></span>
-              Male
-            </div>
-            <div class="gender-stat-legend">
-              <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle custom-drop-down-button" type="button" data-toggle="dropdown">This Week
-                  <i class="fa fa-angle-down"></i>
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">This Month</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Main row -->
-      <div class="chart">
-        <!-- Sales Chart Canvas -->
-        <canvas id="salesChart" height="180"></canvas>
-      </div>
-      <!-- /.chart-responsive -->
-    </div>
-
-    <br>
-    <br>
 
     <div class="campaign-content">
 
@@ -121,17 +73,13 @@
             </tr>
             </thead>
 
-            <% if @campaigns.present? %>
-                <tbody>
-                <% @campaigns.each do |campaign| %>
-                    <tr>
-                      <td><%= image_tag(campaign.receiver.profile_picture , :class => 'pepsi-img-responsive') %> &nbsp; <%= campaign.name %></td>
-                      <td><%= campaign.number_of_likes %></td>
-                      <td><%= campaign.number_of_post_reach %></td>
-                    </tr>
-                <% end %>
-                </tbody>
-            <% end %>
+            <tbody>
+            <tr>
+              <td><%= image_tag(@campaign.receiver.profile_picture , :class => 'pepsi-img-responsive') %> &nbsp; <%= @campaign.name %></td>
+              <td><%= @campaign.number_of_likes %></td>
+              <td><%= @campaign.number_of_post_reach %></td>
+            </tr>
+            </tbody>
 
           </table>
         </div>
@@ -148,18 +96,14 @@
             </tr>
             </thead>
             <tbody>
-            <% if @campaigns.present? %>
-                <tbody>
-                <% @campaigns.each do |campaign| %>
-                    <tr>
-                      <td><%= image_tag(campaign.receiver.profile_picture , :class => 'pepsi-img-responsive') %> &nbsp; <%= campaign.name %></td>
-                      <td><%= campaign.number_of_likes %></td>
-                      <td><%= campaign.number_of_comments %></td>
-                      <td><%= campaign.number_of_shares %></td>
-                    </tr>
-                <% end %>
-                </tbody>
-            <% end %>
+            <tbody>
+            <tr>
+              <td><%= image_tag(@campaign.receiver.profile_picture , :class => 'pepsi-img-responsive') %> &nbsp; <%= @campaign.name %></td>
+              <td><%= @campaign.number_of_likes %></td>
+              <td><%= @campaign.number_of_comments %></td>
+              <td><%= @campaign.number_of_shares %></td>
+            </tr>
+            </tbody>
 
             </tbody>
           </table>
@@ -168,28 +112,8 @@
 
     </div>
 
-    <!-- @below section is needed for showing map -->
-    <div class="col-md-4">
-      <div class="box-body">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="chart-responsive hidden">
-              <canvas id="pieChart" height="150"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
-
-<%= javascript_include_tag 'jquery-jvectormap-1.2.2.min' %>
-<%= javascript_include_tag 'jquery-jvectormap-world-mill-en' %>
-<%= javascript_include_tag 'Chart.min' %>
-<%= javascript_include_tag 'dashboard2' %>
-
-
 
 <script type="text/javascript">
     $(document).ready(function(){
