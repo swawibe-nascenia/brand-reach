@@ -1,6 +1,10 @@
 <%= stylesheet_link_tag 'offers.css', media: 'all' %>
 
-<% title 'Influencer Offers' %>
+<% if current_user.brand? %>
+    <% title 'Messages' %>
+<% else %>
+    <% title 'Offers' %>
+<% end %>
 
 <p id="notice"><%= notice %></p>
 
@@ -13,14 +17,14 @@
       <%= link_to offers_path, remote: true do %>
                         <span id="inbox-blue"><img src="<%= asset_path('Inbox-blue.png') %>">
                         </span><span id="inbox-black" style="display: none"><img src="<%= asset_path('Inbox.png') %>"></span>
-        <span class="inbox-tab">Inbox</span>
+          <span class="inbox-tab">Inbox</span>
       <% end %>
     </li>
     <li class= "" id="starred_list">
       <%= link_to offers_path(starred: true), remote: true, data: { target: ''} do %>
-        <span id="star-black"><img src="<%= asset_path('Starred.png') %>"></span>
-        <span id="star-blue" style="display: none"><img src="<%= asset_path('Starred-blue.png') %>"></span>
-        <span class="starred-tab">Starred</span>
+          <span id="star-black"><img src="<%= asset_path('Starred.png') %>"></span>
+          <span id="star-blue" style="display: none"><img src="<%= asset_path('Starred-blue.png') %>"></span>
+          <span class="starred-tab">Starred</span>
       <% end %>
     </li>
     <li class="pull-right">
@@ -50,18 +54,18 @@
 </div><!-- /.content-wrapper -->
 
 <script>
-  $(function(){
-      <% if params[:offer_id] %>
-          var $offerBody = $('.offer-body-<%= params[:offer_id] %>');
-          $offerBody.addClass('in');
-          var searchKey = '<%= params[:search_key] %>';
-          var replaceWord ='<span class=text-danger>' + searchKey + '</span>';
-          var regex = new RegExp(searchKey,'gi');
+    $(function(){
+        <% if params[:offer_id] %>
+        var $offerBody = $('.offer-body-<%= params[:offer_id] %>');
+        $offerBody.addClass('in');
+        var searchKey = '<%= params[:search_key] %>';
+        var replaceWord ='<span class=text-danger>' + searchKey + '</span>';
+        var regex = new RegExp(searchKey,'gi');
 
-          $offerBody.find('.message').each(function(){
+        $offerBody.find('.message').each(function(){
             $(this).children('.title').html($(this).children('.title').html().replace(regex, replaceWord));
-          });
-      <% end %>
-  });
+        });
+        <% end %>
+    });
 
 </script>
