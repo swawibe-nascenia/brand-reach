@@ -2,7 +2,7 @@ class ExploresController < ApplicationController
   before_filter :is_brand?, only: [:show]
 
   def show
-    @influencers = User.influencers
+    @influencers = User.influencers.where(profile_complete: true)
 
     if params[:search_key].present?
       wildcard_search = "%#{params[:search_key]}%"
