@@ -14,7 +14,7 @@ class CampaignsController < ApplicationController
       return redirect_to profile_profile_index_path
     end
 
-    @campaign = params[:id].present? ? @campaigns.find(params[:id]) : @campaigns.first
+    @campaign = params[:id].present? ? @campaigns.find_by_id(params[:id]) : @campaigns.first
     @campaign.fetch_insights
   end
 

@@ -75,9 +75,9 @@
 
                 <tbody>
                     <tr>
-                      <td><%= image_tag(@campaign.sender.profile_picture , :class => 'pepsi-img-responsive') %> &nbsp; <%= @campaign.name %></td>
-                      <td><%= @campaign.number_of_likes %></td>
-                      <td><%= @campaign.number_of_post_reach %></td>
+                      <td><%= image_tag(campaign.receiver.profile_picture , :class => 'pepsi-img-responsive') %> &nbsp; <%= campaign.name %></td>
+                      <td><%= campaign.number_of_likes %></td>
+                      <td><%= campaign.number_of_post_reach %></td>
                     </tr>
                 </tbody>
 
@@ -98,10 +98,10 @@
             <tbody>
                 <tbody>
                     <tr>
-                      <td><%= image_tag(@campaign.sender.profile_picture , :class => 'pepsi-img-responsive') %> &nbsp; <%= @campaign.name %></td>
-                      <td><%= @campaign.number_of_likes %></td>
-                      <td><%= @campaign.number_of_comments %></td>
-                      <td><%= @campaign.number_of_shares %></td>
+                      <td><%= image_tag(campaign.receiver.profile_picture , :class => 'pepsi-img-responsive') %> &nbsp; <%= campaign.name %></td>
+                      <td><%= campaign.number_of_likes %></td>
+                      <td><%= campaign.number_of_comments %></td>
+                      <td><%= campaign.number_of_shares %></td>
                     </tr>
                 </tbody>
 
