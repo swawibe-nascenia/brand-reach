@@ -245,7 +245,7 @@ only screen and (max-width: 380px) {
 
     .payments_table > tbody > tr > td:nth-of-type(2):before { content: "Date Billed : "; font-weight: bold; }
     .payments_table > tbody > tr > td:nth-of-type(3):before { content: "Transaction ID : ";  font-weight: bold; }
-    .payments_table > tbody > tr > td:nth-of-type(4):before { content: "Amount Recieved (INR) : ";  font-weight: bold; }
+    .payments_table > tbody > tr > td:nth-of-type(4):before { content: "Amount Billed (INR) : ";  font-weight: bold; }
     .payments_table > tbody > tr > td:nth-of-type(5):before { content: "Payment Status : ";  font-weight: bold; }
 }
 
