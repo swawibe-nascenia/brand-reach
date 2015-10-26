@@ -113,21 +113,21 @@
                         <div class="form-group">
                           <div class="col-md-5 col-sm-8 col-xs-11">
                             <%= g.label :status_update_cost, "Status Update" %>$
-                            <%= g.text_field :status_update_cost %> INR
+                            <%= g.number_field :status_update_cost, required: true %> INR
                           </div>
                           <div class="col-md-6 col-sm-8 col-xs-11">
                             <%= g.label :cover_photo_cost, "Cover Photo" %>$
-                            <%= g.text_field :cover_photo_cost %> INR
+                            <%= g.number_field :cover_photo_cost, required: true %> INR
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="col-md-5 col-sm-8 col-xs-11">
                             <%= g.label :profile_photo_cost, "Profile Photo" %>$
-                            <%= g.text_field :profile_photo_cost %> INR
+                            <%= g.number_field :profile_photo_cost, required: true %> INR
                           </div>
                           <div class="col-md-6 col-sm-8 col-xs-11">
                             <%= g.label :video_post_cost, "Video Post" %>$
-                            <%= g.text_field :video_post_cost %> INR
+                            <%= g.number_field :video_post_cost, required: true %> INR
                           </div>
                         </div>
                       </div>
@@ -143,7 +143,7 @@
       <% end %>
 
 
-      <%= f.button "UPDATE INFORMATION", class: 'btn btn-update' %>
+      <%= f.button 'UPDATE INFORMATION', class: 'btn btn-update' %>
   <% end %>
 
   <% unless current_user.provider? || current_user.uid? %>
