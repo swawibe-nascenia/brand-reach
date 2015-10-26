@@ -20,7 +20,7 @@ class InfluencerPaymentsController < ApplicationController
         flash[:error] = 'Your withdraw request has been failed.'
       end
     else
-      flash[:error] = 'Un-sufficient withdraw balance'
+      flash[:error] = 'Insufficient withdraw balance'
     end
   end
 
