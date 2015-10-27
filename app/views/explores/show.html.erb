@@ -79,7 +79,9 @@
           <% influncer_group.each do |influencer| %>
               <div class="col-md-3 col-sm-6 col-sm-12">
                 <div class="search-result-item">
-                  <%= image_tag(influencer.profile_picture, class: 'img-responsive explore-search-image') %>
+                  <div class="search-result-image">
+                    <%= image_tag(influencer.profile_picture, class: 'img-responsive explore-search-image') %>
+                  </div>
                   <div class="influencer-data">
                     <div class="influencer-name"> <%= influencer.full_name.present? ? influencer.full_name : 'User' %> </div>
 

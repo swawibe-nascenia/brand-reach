@@ -72,6 +72,11 @@
     box-shadow: 0px 3px 5px rgba(184,184,184,0.85)
 }
 
+.search-result-image{
+    height: 120px;
+    overflow: hidden;
+}
+
 /* =================== style sheet for brands profile show modal =======================*/
 
 .modal-profile .modal-header{
@@ -148,7 +153,9 @@
 }
 
 .explore-search-image {
-    height: 120px;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
 }
 
 .advanced-search {
