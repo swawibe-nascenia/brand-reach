@@ -1,6 +1,5 @@
 <%= stylesheet_link_tag 'brands-explore.css', media: 'all' %>
 
-
 <% title 'Brand Explore' %>
 
 <div class="brands-explore-content-wrapper">
@@ -91,7 +90,7 @@
                     <p class="influencer-biography"><%= influencer.short_bio %> </p>
 
                     <div>
-                      <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;23,456
+                      <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;<%= influencer.facebook_accounts.pluck(:number_of_followers).max %>
                     </div>
                   </div>
                   <%= link_to 'VIEW PROFILE', influencer_path(influencer), remote: true, :class => "btn btn-primary btn-view-profile" %>

@@ -27,7 +27,7 @@
               <%= link_to 'Send Request', new_campaign_path(receiver_id: influencer.id), class: 'btn btn-message', data: {href: new_campaign_path(receiver_id: influencer.id)} %>
             </div>
             <div class="follower-box pull-right">
-              <span class="follower-number"> 23,456 </span>
+              <span class="follower-number"><%= influencer.facebook_accounts.pluck(:number_of_followers).max %></span>
 
               <p> Followers</p>
             </div>
