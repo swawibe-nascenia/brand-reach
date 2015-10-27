@@ -214,11 +214,15 @@ only screen and (max-width: 540px) {
 }
 .offer-time{
     float: right;
-    margin-right: 10px;
+    margin-right: 20px;
     margin-top: 10px;
+    font-family: 'Hind', sans-serif;
+    font-weight: 500;
+    font-size: 10.4pt;
+    color: #666666;
 }
 .offer-body{
-    padding-left: 110px;
+    padding-left: 158px;
     margin-top: 20px;
 
 }
@@ -230,11 +234,11 @@ only screen and (max-width: 540px) {
 
 }
 .comment-box .offer-textarea{
-    width: 90%;
+    width: 75%;
 }
 .comment-box .btn-accept{
     margin-top: -72px;
-    margin-left: 5px;
+    margin-left: 33px;
 }
 .delete-selected-offer{
     cursor: pointer;
