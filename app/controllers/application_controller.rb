@@ -39,8 +39,25 @@ class ApplicationController < ActionController::Base
   end
 
   def check_profile_completion
-     unless current_user.profile_complete?
-      flash[:error] = 'Please complete your profile page'
+    error_messages = []
+
+    unless current_user.profile_complete?
+      error_messages << 'Please complete your profile to use other pages'
+      error_messages << 'Connect your facebook account with value to complete your profile.' if current_user.facebook_accounts.blank?
+
+      User::BRAND_PROFILE_COMPLETENESS.each do |field|
+         error_messages << "*  #{field.to_s.camelize(:lower)} is required field" unless current_user.send("#{field}?")
+       end
+
+       current_user.facebook_accounts.each do |facebook_account|
+         User::FACEBOOK_ACCOUNT_COMPLETENESS.each do |field|
+           unless facebook_account.send("#{field}").present?
+             error_messages << "*  #{field.to_s.camelize} of #{facebook_account.name} is required field" unless facebook_account.send("#{field}").present?
+           end
+         end
+       end
+
+      flash[:error] = error_messages
       redirect_to profile_profile_index_path
      end
   end
