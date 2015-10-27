@@ -38,6 +38,14 @@
             </div>
 
             <div class="col-md-4">
+              <%= f.label :state, "State/Region" %>
+            </div>
+            <div class="col-md-8">
+              <%#= render partial: 'shared/sub_region_select', locals: {parent_region: f.object.country } %>
+              <%= f.text_field :state %>
+            </div>
+
+            <div class="col-md-4">
               <%= f.label :zip, "ZIP/Postal Code" %>
             </div>
             <div class="col-md-8">
@@ -49,14 +57,6 @@
             </div>
             <div class="col-md-8">
               <%= f.country_select :country, {priority: %w(US CA IN)}, { :class => 'bank-account-country'}, {} %>
-            </div>
-
-            <div class="col-md-4">
-              <%= f.label :state, "State/Region" %>
-            </div>
-            <div class="col-md-8">
-              <%#= render partial: 'shared/sub_region_select', locals: {parent_region: f.object.country } %>
-              <%= f.text_field :state %>
             </div>
 
             <div class="row">
@@ -92,7 +92,7 @@
             </div>
 
             <div class="col-md-4">
-              <%= f.label :bic, "BIC(Swift Code)" %>
+              <%= f.label :bic, "BIC (Swift Code)" %>
             </div>
             <div class="col-md-8">
               <%= f.text_field :bic %>
