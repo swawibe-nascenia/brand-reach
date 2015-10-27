@@ -8,7 +8,7 @@ class InfluencerPaymentsController < ApplicationController
   end
 
   def withdraw_payment
-    if current_user.balance >= params[:amount].to_i
+    if params[:amount].to_i > 0 && current_user.balance >= params[:amount].to_i
       influencer_payment = current_user.influencer_payments.create(amount_billed: params[:amount].to_i, bank_account_id: params[:bank_account_id], billed_date: Time.now)
 
       if influencer_payment.valid?
@@ -20,7 +20,7 @@ class InfluencerPaymentsController < ApplicationController
         flash[:error] = 'Your withdraw request has been failed.'
       end
     else
-      flash[:error] = 'Insufficient withdraw balance'
+      flash[:error] = 'Insufficient/wrong withdraw balance'
     end
   end
 

@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   # == Validations == #
   # ----------------------------------------------------------------------
 
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
   validates_confirmation_of :password
 
   # ----------------------------------------------------------------------
