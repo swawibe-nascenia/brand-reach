@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag 'influencers_home', media: 'all' %>
+
 <div class="modal fade" id="loginModal" role="dialog">
   <div class="modal-dialog login-modal-dialog">
 
@@ -13,12 +15,9 @@
 
         <div class="social-accounts-logo">
           <% if params[:action] == 'brand_home' %>
-              <a href="<%= user_omniauth_authorize_path('facebook', brands: true) %>">Facebook &nbsp; &nbsp; <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
-              <a href="<%= new_user_session_path %>">Twitter &nbsp; &nbsp; <%= image_tag('twitter-icon.png', :alt => "twitter") %></a>
               <a href="<%= new_user_registration_path(user_type: 'brand')%>">Email &nbsp; &nbsp; <%= image_tag('email-icon.jpg', :alt => "email") %></a>
           <% else %>
               <a href="<%= user_omniauth_authorize_path('facebook') %>">Facebook &nbsp; &nbsp; <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
-              <a href="<%= new_user_session_path %>">Twitter &nbsp; &nbsp; <%= image_tag('twitter-icon.png', :alt => "twitter") %></a>
           <%  end %>
 
         </div>
