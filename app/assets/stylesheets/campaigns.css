@@ -152,10 +152,7 @@
 }
 
 
-.performance_table th:nth-child(1),
-.performance_table td:nth-child(1)
-.engagement_table th:nth-child(1),
-.engagement_table td:nth-child(1) {
+.performance_table th:nth-child(1), .performance_table td:nth-child(1), .engagement_table th:nth-child(1), .engagement_table td:nth-child(1) {
     text-align: center ;
 }
 
