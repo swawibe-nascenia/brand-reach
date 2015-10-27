@@ -96,7 +96,11 @@
           </div>
         </div>
         <hr>
-        <p class="text-center font-hind">200,456 followers</p>
+        <% if current_user.influencer? %>
+            <p class="text-center font-hind">
+              <%= number_with_delimiter(current_user.facebook_accounts.sum(:number_of_followers)) %> followers
+            </p>
+        <% end %>
       </div>
 
       <br/>
