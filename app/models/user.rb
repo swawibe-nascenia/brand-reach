@@ -159,7 +159,7 @@ class User < ActiveRecord::Base
 
       facebook_accounts.each do |facebook_account|
         FACEBOOK_ACCOUNT_COMPLETENESS.each do |field|
-          unless facebook_account.send("#{field}?")
+          unless facebook_account.send("#{field}").present?
             update_column(:profile_complete, false)
             Rails.logger.info  "=================== Facebook Account #{facebook_account.name} is incomplete for field #{field}"
             return
