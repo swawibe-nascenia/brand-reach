@@ -7,6 +7,7 @@ class FacebookController < ApplicationController
     @accounts = current_user.facebook_accounts
 
     if @accounts.blank?
+      flash[:error] = 'You must add at least one social account before you can view insights'
       return redirect_to profile_profile_index_path
     end
 
