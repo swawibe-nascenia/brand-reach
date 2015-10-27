@@ -78,7 +78,9 @@
         </div>
       </div>
 
-      <h4 class="company-info">COMPANY INFORMATION</h4>
+      <h4 class="company-info">
+        <%= @user.influencer? ? 'PROFESSIONAL INFORMATION' : 'COMPANY INFORMATION' %>
+      </h4>
 
       <div class="form-group short-bio-row">
         <div class="col-md-12">
