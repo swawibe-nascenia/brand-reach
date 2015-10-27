@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   BRAND_PROFILE_COMPLETENESS = [:company_name, :company_email, :industry, :phone, :street_address, :landmark,
                           :city, :state, :country, :zip_code, :short_bio, :first_name, :last_name]
 
-  INFLUENCER_PROFILE_COMPLETENESS = [:company_name, :industry, :phone, :street_address, :landmark,
+  INFLUENCER_PROFILE_COMPLETENESS = [:industry, :phone, :street_address, :landmark,
                           :city, :state, :country, :zip_code, :short_bio, :first_name, :last_name]
 
   FACEBOOK_ACCOUNT_COMPLETENESS = [:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost]
