@@ -90,8 +90,13 @@
         <% end %>
 
         <div class="social-media-info"> Social Media Information</div>
-        <p><span class="view-profile-fb-twitter-color">Facebook:</span> <%= influencer.facebook_profile_url %></p>
-        <p><span class="view-profile-fb-twitter-color"> &nbsp;  &nbsp; Twitter:</span> <%= %></p>
+        <p>
+          <span class="view-profile-fb-twitter-color">Facebook:</span>
+          <a href="<%= "https://www.facebook.com/app_scoped_user_id/#{influencer.uid}/" %>">
+            <%= "https://www.facebook.com/app_scoped_user_id/#{influencer.uid}/" %>
+          </a>
+        </p>
+        <p><span class="view-profile-fb-twitter-color"> &nbsp;  &nbsp; Twitter:</span> N/A</p>
 
         <div class="row">
           <div class="col-md-6">
