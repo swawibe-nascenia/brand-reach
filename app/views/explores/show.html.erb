@@ -32,7 +32,8 @@
             <div class="col-md-12">
               <label for="social-media-platform"> Social Media Platform </label>
               <select name="social_media_platform" id="social-media-platform">
-                <option selected>Facebook</option>
+                <option value="">Select a Social Media Platform</option>
+                <option value="fb">Facebook</option>
               </select>
             </div>
 
@@ -51,8 +52,8 @@
         <div class="col-md-4">
           <div class="row">
             <div class="col-md-12">
-              <label for="influencer_country"> Country </label>
-              <%= country_select_tag :country,  params[:country].present? ? [params[:country]] : ['IN'], {:class => 'profile-dropdown-color'} %>
+              <label for="influencer_country"> Location </label>
+              <%= country_select_tag :country,  params[:country].present? ? [params[:country]] : ['IN'], {:class => 'profile-dropdown-color', prompt: 'Select a Country' } %>
               <br/>
 
               <div>
