@@ -1,3 +1,10 @@
+.offer-header{
+    font-size: 0;
+}
+.offer-header *{
+    font-size: 13px;
+}
+
 .status-inbox {
     background-color: #FF3059;
 }
@@ -191,9 +198,6 @@ only screen and (max-width: 540px) {
 
 .offer-box:nth-child(even){
     background-color: #ffffff;
-}
-.offer-header{
-
 }
 .offer-header div{
     display: inline-block;
