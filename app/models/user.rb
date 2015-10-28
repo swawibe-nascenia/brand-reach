@@ -135,6 +135,10 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def location
+    "#{city}, #{ISO3166::Country[country].name}"
+  end
+
   # ----------------------------------------------------------------------
   # == Private == #
   # ----------------------------------------------------------------------

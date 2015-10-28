@@ -16,8 +16,8 @@
 
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                 <h4><%= influencer.full_name.present? ? influencer.full_name : 'USER' %></h4>
-                <p class="title"> <%= influencer.industry.present? ? influencer.industry : 'Entrepreneur' %> </p>
-                <p class="influencer-address"> <%= influencer.street_address.present? ? influencer.street_address : 'User Address'  %></p>
+                <p class="title"> <%= influencer.industry %> </p>
+                <p class="influencer-address"> <%= influencer.location  %></p>
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@
           </div>
           <div class="col-md-6">
             <div class="view-profile-industry"> Location</div>
-            <p><%= "#{ Carmen::Country.coded(influencer.country).subregions.coded(influencer.state)}, #{ Carmen::Country.coded(influencer.country).name }" %></p>
+            <p><%= influencer.location %></p>
           </div>
         </div>
       </div>
