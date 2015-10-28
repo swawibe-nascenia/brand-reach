@@ -74,14 +74,14 @@
       <div class="center-block profile-info">
         <a href="#profile_image_upload_modal" data-toggle="modal"><span class="fa fa-camera camera"></span></a>
 
-        <%= image_tag(current_user.profile_picture, :class => 'img-circle profile-image center-block', :alt => "profile-picture") %>
+        <%= image_tag(current_user.profile_picture, :class => 'img-circle profile-image center-block', :alt => 'profile-picture') %>
 
         <div class="info">
           <p class="name"><%= current_user.try(:full_name).present? ? current_user.full_name : 'USER' %></p>
 
           <div class="dropdown small">
-            <button class="btn center-block text-center user-status dropdown-toggle" type="button"
-                    data-toggle="dropdown"><i class="fa fa-circle <%= current_user.is_available? ? 'text-color-follower': '' %>"></i>&nbsp; <span><%= current_user.is_available? ? 'Available': 'Unavailable' %></span>
+            <button class="btn center-block text-center user-status dropdown-toggle" type="button" data-toggle="dropdown">
+              <i class="fa fa-circle <%= current_user.is_available? ? 'text-color-follower': '' %>"></i>&nbsp; <span><%= current_user.is_available? ? 'Available': 'Unavailable' %></span>
               <i class="fa fa-angle-down "></i>
             </button>
 
