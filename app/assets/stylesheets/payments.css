@@ -2,6 +2,9 @@
     height: 100%;
     background-color: #f9f9f9;
 }
+.payment-main-content{
+    padding: 20px;
+}
 
 .table > thead > tr.payment-header > th {
     background-color: #eaeaea;
@@ -250,8 +253,7 @@ only screen and (max-width: 380px) {
 }
 
 .payment-content {
-    min-height: 250px;
-    padding: 15px 20px;
+    box-shadow: 0 0 2px #9a9a9a;
 }
 
 .withdraw-modal-dialog {
@@ -433,9 +435,10 @@ only screen and (max-width: 340px) {
 }
 
 .bank-accounts {
-    background: #fff;
-    padding: 15px 20px;
-    margin: 20px;
+    background: #fff none repeat scroll 0 0;
+    box-shadow: 0 0 2px #9a9a9a;
+    margin-bottom: 10px;
+    padding: 20px;
 }
 
 .bank-accounts a {
