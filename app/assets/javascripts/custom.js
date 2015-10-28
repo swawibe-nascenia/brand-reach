@@ -146,6 +146,11 @@ $(function(){
         return false;
     });
 
+//    make hand burger button active
+    $('.sidebar-toggle').click(function () {
+        $('.skin-blue.sidebar-mini').toggleClass('sidebar-open');
+    });
+
 
 });
 // end of document.ready() method
