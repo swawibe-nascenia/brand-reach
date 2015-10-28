@@ -46,35 +46,37 @@
 
       <div class="form-group">
         <div class="col-md-6">
-          <%= f.label :country %>
-          <%= f.country_select :country, {priority: %w(US CA IN)}, {:class => 'profile-dropdown-color'}, {} %>
+          <%= f.label :street_address, class: 'textarea-label' %>
+          <%= f.text_area :street_address, rows: 4, class: 'street-address-textarea', placeholder: "Enter your address here" %>
         </div>
-
-        <div class="col-md-6">
-          <%= f.label :state %>
-          <%= render partial: 'shared/sub_region_select', locals: {parent_region: f.object.country} %>
-        </div>
-      </div>
-      <div class="form-group">
         <div class="col-md-6">
           <div class="row">
+            <div class="col-md-12">
+              <%= f.label :landmark %>
+              <%= f.text_field :landmark %>
+            </div>
             <div class="col-md-12">
               <%= f.label :city %>
               <%= f.text_field :city %>
             </div>
             <div class="col-md-12">
-              <%= f.label :zip_code %>
-              <%= f.text_field :zip_code %>
-            </div>
-            <div class="col-md-12">
-              <%= f.label :landmark %>
-              <%= f.text_field :landmark %>
+              <%= f.label :country %>
+              <%= f.country_select :country, {priority: %w(US CA IN)}, {:class => 'profile-dropdown-color'}, {} %>
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="form-group">
+
         <div class="col-md-6">
-          <%= f.label :street_address, class: 'textarea-label' %>
-          <%= f.text_area :street_address, rows: 4, class: 'street-address-textarea', placeholder: "Enter your address here" %>
+          <%= f.label :zip_code %>
+          <%= f.text_field :zip_code %>
+        </div>
+
+        <div class="col-md-6">
+          <%= f.label :state %>
+          <%= render partial: 'shared/sub_region_select', locals: {parent_region: f.object.country} %>
         </div>
       </div>
 
