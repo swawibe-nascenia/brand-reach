@@ -1,8 +1,58 @@
 <div id="offer-<%= offer.id %>" class="offer-box  offer-box-<%= offer.id %> collapse-group" data-id="<%= offer.id %>">
-  <% if current_user.influencer? %>
-      <%= render partial: 'offers/influencer_offer_view', locals: { offer: offer } %>
-  <% else %>
-      <%= render partial: 'offers/brand_offer_veiw', locals: { offer: offer } %>
-  <% end %>
+  <div class="offer-header">
+    <div class="read-status read-status-<%= offer.id %> <%= offer.messages.where(receiver_id: current_user.id, read: false).count > 0 ? '': 'invisible'%>">
+      <span class="status-inbox"></span>
+    </div>
+
+    <div class="select-offer">
+      <input type="checkbox"  value="1" class="select-offer" data-id="<%=offer.id %>"/>
+      <label></label>
+    </div>
+
+    <div class="make-star">
+      <%= link_to toggle_star_offers_path(ids: [offer.id], authenticity_token: form_authenticity_token), method: :put, remote: true do %>
+          <i class="fa fa-star <%= (current_user.influencer? ? offer.starred_by_influencer : offer.starred_by_brand) ? 'star-yellow' : 'star-grey' %>"></i>
+      <% end %>
+    </div>
+
+    <div class="offer-message-sender">
+      <%= image_tag (current_user.influencer? ? offer.sender : offer.receiver).profile_picture, class: 'inbox-logo-responsive' %>
+      <span class="title"><%= (current_user.influencer? ? offer.sender : offer.receiver).full_name %> </span>
+    </div>
+
+    <div class="offer-text"><%= offer.name %></div>
+
+    <div class="action">
+      <% if current_user.influencer? %>
+          <% if offer.waiting? %>
+              <%= link_to 'Accept', accept_offer_path(offer, authenticity_token: form_authenticity_token), class: 'btn btn-accept', method: :put, remote: true %>
+              &nbsp;
+              <%= link_to 'Deny', deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'deny', method: :put, remote: true %>
+              <%= link_to 'Undo Deny', undo_deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'undo-deny hidden', method: :put, remote: true %>
+          <% elsif offer.denied? && offer.deny_undo_able? %>
+              <%= link_to 'Accept', accept_offer_path(offer, authenticity_token: form_authenticity_token), class: 'btn btn-accept hidden', method: :put, remote: true %>
+              <%= link_to 'Deny', deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'deny hidden', method: :put, remote: true %>
+              <%= link_to 'Undo Deny', undo_deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'undo-deny', method: :put, remote: true %>
+          <% else %>
+              <span class="text-success">Accepted Campaign</span>
+          <% end %>
+      <% else %>
+          <% if offer.accepted? %>
+              <% unless offer.card_number? %>
+                  <%= link_to 'Engage', new_brand_payment_campaigns_path(offer.id), class: 'btn btn-accept', method: :post %>
+              <% else %>
+                  <span class="text-success">Running Campaign</span>
+              <% end %>
+          <% else  %>
+              Pending request
+          <% end %>
+      <% end %>
+    </div>
+
+    <div class="offer-time">
+      <%= offer.time %>
+    </div>
+  </div>
+
   <%= render partial: 'offers/offer_body_view', locals: { offer: offer} %>
 </div>
