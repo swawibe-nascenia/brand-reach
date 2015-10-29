@@ -86,7 +86,7 @@
                   <div class="influencer-data">
                     <div class="influencer-name"> <%= influencer.full_name.present? ? influencer.full_name : 'User' %> </div>
 
-                    <p class="influencer-address"> <%= influencer.city.present? ? influencer.city : 'City' %>, &nbsp;<%= influencer.country.present? ? influencer.country : 'Country' %></p>
+                    <p class="influencer-address"><%= influencer.location %></p>
 
                     <p class="title"> <%= influencer.industry.present? ? influencer.industry : 'Entrepreneur' %></p>
 

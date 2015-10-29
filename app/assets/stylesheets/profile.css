@@ -313,3 +313,17 @@
     line-height: 0.8;
 }
 
+.profile-image-modal-content {
+    min-height: 200px;
+}
+
+.profile-image-modal-header {
+    height: auto;
+    padding: 32px 54px;
+    background-color: white;
+}
+
+.profile-image-modal-header .close {
+    color: #aaaaaa;
+    margin-top: -15px;
+}

@@ -35,6 +35,8 @@
     color: #ff3059;
     font-size: 16px;
     font-weight: 600;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .brands-explore-content-wrapper .influencer-address {
