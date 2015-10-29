@@ -256,6 +256,10 @@ only screen and (max-width: 380px) {
     box-shadow: 0 0 2px #9a9a9a;
 }
 
+.brand-payment-content {
+    padding: 0 20px;
+}
+
 .withdraw-modal-dialog {
     padding: 100px 0;
     width: 40%;

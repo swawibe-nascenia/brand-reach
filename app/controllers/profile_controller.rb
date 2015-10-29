@@ -10,8 +10,16 @@ class ProfileController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-      flash[:success] = 'User information update success'
+    if @user.update(user_params.except(:current_password, :password, :password_confirmation))
+      if user_params[:current_password].present? && user_params[:password].present?
+        if @user.update_with_password(user_params.except(:facebook))
+          sign_in @user, :bypass => true
+          flash[:success] = 'User Password update success'
+        else
+          flash[:error] = 'Old Password was Not correct or Retype Password does Not match with New Password'
+        end
+      end
+      flash[:success] = 'User Information update success' if flash[:error].nil?
       redirect_to profile_profile_index_path
     else
       render 'profile'
@@ -19,14 +27,14 @@ class ProfileController < ApplicationController
   end
 
   def update_password
-    if @user.update_with_password(user_params.except(:facebook))
-      sign_in @user, :bypass => true
-      flash[:success] = 'User Password update success'
-    else
-      flash[:error] = 'Old Password was Not correct or Retype Password does Not match with New Password'
-    end
-
-    redirect_to profile_profile_index_path
+    # if @user.update_with_password(user_params.except(:facebook))
+    #   sign_in @user, :bypass => true
+    #   flash[:success] = 'User Password update success'
+    # else
+    #   flash[:error] = 'Old Password was Not correct or Retype Password does Not match with New Password'
+    # end
+    #
+    # redirect_to profile_profile_index_path
   end
 
   def subregion_options

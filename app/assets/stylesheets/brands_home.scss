@@ -600,10 +600,9 @@ ul.menu-item li {
 
 .influencers-picture {
   border-radius: 50%;
-  max-width:117px;
-  max-height:117px;
-  width: auto;
-  height: auto;
+  width:117px;
+  height:117px;
+  overflow: hidden;
 }
 
 .brands-block img.resize {
