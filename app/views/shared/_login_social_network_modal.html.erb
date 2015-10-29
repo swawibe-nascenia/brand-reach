@@ -1,39 +1,151 @@
 <%= stylesheet_link_tag 'influencers_home', media: 'all' %>
 
-<div class="modal fade" id="loginModal" role="dialog">
-  <div class="modal-dialog login-modal-dialog">
+<style>
+    .colored-label {
+        background: #fbbb46 none repeat scroll 0 0;
+        color: #fff;
+    }
 
-    <!-- Modal content-->
-    <div class="modal-content login-modal-content">
-      <div class="modal-header login-modal-header">
-        <a href="#"><%= image_tag('Logo.png', :class => 'img-responsive login-modal-logo', :alt => "logo") %></a>
-        <button type="button" class="close login-modal-close" data-dismiss="modal">&times; </button>
+    .input_container {
+        float: left;
+        margin: 0 0 10px;
+        width: 100%;
+    }
+
+    .modal .label_l {
+        background: #fbbb46 none repeat scroll 0 0;
+        color: #fff;
+        float: left;
+        min-width: 96px;
+        padding: 6px 8px;
+    }
+
+    .modal .login_input {
+        background: #eeeeed none repeat scroll 0 0;
+        border: medium none;
+        color: #666;
+        float: left;
+        font-family: "Open Sans", sans-serif;
+        outline: medium none;
+        padding: 6px 8px;
+        width: 228px;
+    }
+    #brand-signup{
+        margin: 30px 0;
+    }
+
+    #signup .modal-content {
+        width: 568px;
+    }
+
+    #signup .modal-header {
+        border-bottom: medium none;
+        padding: 20px 30px;
+    }
+
+    .modal-header .close {
+        background: image-url("modal_close_btn.png") no-repeat;
+        height: 20px;
+        opacity: 1;
+        width: 20px;
+    }
+
+    .modal-header .close {
+        margin-top: -2px;
+    }
+
+    #signup label {
+        color: #666;
+        font-weight: normal;
+        font-size: 15px;
+        margin-left: 10px;
+    }
+</style>
+
+<div aria-hidden="false" class="modal fade in" id="signup">
+  <div style="height: 863px;" class="modal-backdrop fade in"></div>
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button area-label="Close" class="close first_close" data-dismiss="modal" tyle="button">×</button>
+        <h3 class="modal-title">Create an Account</h3>
       </div>
-      <div class="modal-body login-modal-body">
-        <p>Joining Brand Reach puts you in front of marketers from top brands that are searching to connect with influencers like you</p>
-        <p>Connect all your accounts below: </p>
-
-        <div class="social-accounts-logo">
-          <% if params[:action] == 'brand_home' %>
-              <a href="<%= new_user_registration_path(user_type: 'brand')%>">Email &nbsp; &nbsp; <%= image_tag('email-icon.jpg', :alt => "email") %></a>
-          <% else %>
-              <a href="<%= user_omniauth_authorize_path('facebook') %>">Facebook &nbsp; &nbsp; <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
-          <%  end %>
-
+      <div class="modal-body model-iner">
+        <div class="row">
+          <div class="col-md-12">
+            <input name="role" id="role_seeker" value="1" class="signup-role" checked="checked" type="radio">
+            <label for="role_seeker">I'm an Influencer</label>
+            <br>
+            <input name="role" id="role_pilot" value="0" class="signup-role" type="radio">
+            <label for="role_pilot">I'm a Brand</label>
+          </div>
         </div>
+        <div class="row hidden" id="brand-signup">
+          <div class="col-md-12">
+            <p>Account Set Up</p>
 
+            <div class="input_container">
+              <div class="label_l">Email</div>
+              <input data-parsley-id="6021" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[email]" id="user_email" type="text">
+              <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
+            </div>
+            <div class="input_container">
+              <div class="label_l">Password</div>
+              <input data-parsley-id="6194" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[password]" id="user_password" type="password">
+              <ul id="parsley-id-6194" class="parsley-errors-list"></ul>
+            </div>
+            <div class="input_container">
+              <div class="label_l">Re-type Password</div>
+              <input data-parsley-id="1949" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[password_confirmation]" id="user_password_confirmation" type="password">
+              <ul id="parsley-id-1949" class="parsley-errors-list"></ul>
+            </div>
+            <p>Agreement</p>
 
-        <div class="login-modal-footer">
-          <p>Note: </p>
-          <p>Only the networks you connect will be visible to brands.</p>
-          <% if params[:action] == 'brand_home' %>
-              <p>If you are Influencer, please reach out to us <%= link_to "here", home_public_index_path %></p>
-          <% else %>
-              <p>If you are brand, please reach out to us <%= link_to "here", brand_home_public_index_path %></p>
-          <%  end %>
+            <div class="remember">
+              <div class="checkbox checkbox-primary">
+                <input data-parsley-id="2981" data-parsley-multiple="agreement" name="agreement" id="agreement" value="{:class=&gt;&quot;styled&quot;}" type="checkbox">
+                <label for="agreement">
+                  I have read Takeoff's
+                  <a data-toggle="modal" href="#terms">Terms &amp; Conditions</a>
+                  and agree with them
+                </label>
+              </div>
+              <ul id="parsley-id-multiple-agreement" class="parsley-errors-list"></ul>
+            </div>
+            <button class="btn btn-default save_btn" type="submit">SUBMIT</button>
+            </form>
+          </div>
+        </div>
+        <div class="row" id="influencer-signup">
+          <div class="col-md-12">
+            <div class="col-md-12 no-left">
+              <p>Takeoff accepts pilots only on invitation. If you think your worth to
+                be a pilot kindly send us your details. We would contact you.</p>
+            </div>
+            <form novalidate="" data-parsley-validate="true" action="/request_account" accept-charset="UTF-8" data-remote="true" method="post">
+
+              <button class="btn btn-default save_btn" type="submit">SUBMIT</button>
+            </form>
+
+          </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
+
+<script>
+    $(function () {
+        $("input[name='role']").change(function () {
+            var value = $("input[name='role']:checked").val();
+            console.log('selected user type is ' + value);
+            if (value == '1') {
+                $('#brand-signup').addClass('hidden');
+                $('#influencer-signup').removeClass('hidden');
+            } else {
+                $('#brand-signup').removeClass('hidden');
+                $('#influencer-signup').addClass('hidden');
+            }
+        });
+    });
+</script>
