@@ -80,6 +80,34 @@
         </div>
       </div>
 
+
+      <% unless current_user.provider? || current_user.uid? %>
+          <div class="divider-personal-info-password"></div>
+
+          <h4 class="account-setup">ACCOUNT SETUP</h4>
+
+          <div class="form-group">
+            <div class="col-md-6">
+              <%= f.label :current_password, "Old Password" %>
+              <%= f.password_field :current_password %>
+            </div>
+            <div class="col-md-6">
+              <label>&nbsp;</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-6">
+              <%= f.label :password, "New Password" %>
+              <%= f.password_field :password %>
+            </div>
+            <div class="col-md-6">
+              <%= f.label :password_confirmation, "Retype Password" %>
+              <%= f.password_field :password_confirmation %>
+            </div>
+          </div>
+      <% end %>
+
       <h4 class="company-info">
         <%= @user.influencer? ? 'PROFESSIONAL INFORMATION' : 'COMPANY INFORMATION' %>
       </h4>
@@ -146,41 +174,8 @@
           <% end %>
       <% end %>
 
-
-      <%= f.button 'UPDATE INFORMATION', class: 'btn btn-update' %>
+      <%#= render partial: 'shared/profile_image_upload', locals: { user: current_user } %>
+      </div>
+      <%= f.button 'UPDATE', class: 'btn btn-update' %>
   <% end %>
-
-  <% unless current_user.provider? || current_user.uid? %>
-      <div class="divider-personal-info-password"></div>
-
-      <%= form_for @user, :url => {:controller => "profile", :action => "update_password"}, :method => :put, html: {class: "form-horizontal personal-info-form"} do |f| %>
-
-          <h4 class="account-setup">ACCOUNT SETUP</h4>
-
-          <div class="form-group">
-            <div class="col-md-6">
-              <%= f.label :current_password, "Old Password" %>
-              <%= f.password_field :current_password %>
-            </div>
-            <div class="col-md-6">
-              <label>&nbsp;</label>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-md-6">
-              <%= f.label :password, "New Password" %>
-              <%= f.password_field :password %>
-            </div>
-            <div class="col-md-6">
-              <%= f.label :password_confirmation, "Retype Password" %>
-              <%= f.password_field :password_confirmation %>
-            </div>
-          </div>
-          <%= f.button "UPDATE PASSWORD", class: 'btn btn-update' %>
-      <% end %>
-  <% end %>
-
-  <%#= render partial: 'shared/profile_image_upload', locals: { user: current_user } %>
-</div>
 

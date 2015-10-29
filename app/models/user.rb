@@ -54,6 +54,7 @@ class User < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   validates :email, presence: true, uniqueness: true
+  validates :phone, format: { with: /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/, message: 'Number format is not correct, Use at least 10 digits' }
   validates_confirmation_of :password
 
   # ----------------------------------------------------------------------

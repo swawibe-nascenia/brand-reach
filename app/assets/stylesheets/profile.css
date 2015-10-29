@@ -102,14 +102,14 @@
     margin: 0 auto;
 }
 
-.personal-info-form .btn-update {
+.btn-update {
     background-color: #f8c102;
     height: 32px;
     color: white;
     font-family: "Raleway", sans-serif;
     font-size: 13px;
     font-weight: 600;
-    margin: 37px 20px 40px;
+    margin: 10px 20px 40px;
     padding: 5px 30px;
 }
 
@@ -138,9 +138,9 @@
 }
 
 .divider-personal-info-password {
-    border-color: #DDDDDD;
-    border-style: solid none;
-    border-width: 1px 0;
+    /*border-color: #DDDDDD;*/
+    /*border-style: solid none;*/
+    /*border-width: 1px 0;*/
     margin-left: -40px;
     margin-right: -50px;
 }
