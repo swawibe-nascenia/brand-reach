@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'helps/index'
 
-  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks'}
+  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations', sessions: 'sessions' }
   # get 'users/profile' => 'users/registrations#edit_user_profile'
 
   # map.connect '/:profile', controller: 'profile', action: 'profile'

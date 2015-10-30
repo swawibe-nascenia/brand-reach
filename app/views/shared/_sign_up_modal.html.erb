@@ -83,7 +83,8 @@
         <div class="row hidden" id="brand-signup">
           <div class="col-md-12">
             <p>Account Set Up</p>
-            <form>
+
+            <form id="ajax-signup" method="post" accept-charset="UTF-8" action="/users" data-remote="true" >
             <div class="input_container">
               <div class="label_l">Email</div>
               <input data-parsley-id="6021" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[email]" id="user_email" type="text">
