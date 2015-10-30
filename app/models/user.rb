@@ -54,8 +54,9 @@ class User < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   validates :email, presence: true, uniqueness: true
-  # validates :phone, format: { with: /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/, message: 'Number format is not correct, Use at least 10 digits' }
+  validates :phone, format: { with: /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/, message: 'Number format is not correct, Use at least 10 digits' }, if: 'phone.present?'
   validates_confirmation_of :password
+  validates :zip_code, zipcode: { country_code_attribute: :country }, if: 'zip_code.present?'
 
   # ----------------------------------------------------------------------
   # == Callbacks == #
@@ -128,6 +129,7 @@ class User < ActiveRecord::Base
     end
 
     user.access_token = auth.credentials.token
+    user.is_active = true
 
     user
   end
