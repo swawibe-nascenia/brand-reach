@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       post :deactivate_account
       post :update_profile_settings
       post :contact_us_save
+      get :faqs
     end
   end
 

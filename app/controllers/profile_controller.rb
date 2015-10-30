@@ -138,6 +138,10 @@ class ProfileController < ApplicationController
     end
   end
 
+  def faqs
+
+  end
+
   private
 
   def set_user

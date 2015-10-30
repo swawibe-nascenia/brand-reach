@@ -98,7 +98,7 @@
         <hr>
         <% if current_user.influencer? %>
             <p class="text-center font-hind">
-              <%= number_with_delimiter(current_user.facebook_accounts.pluck(:number_of_followers).max) %> likes
+              <%= number_with_delimiter(current_user.facebook_accounts.pluck(:number_of_followers).max) %> Likes
             </p>
         <% end %>
       </div>
@@ -106,7 +106,7 @@
       <br/>
 
       <ul class="sidebar-menu">
-        <li class="<%= ((params[:controller] == 'profile' && params[:action] == 'update') || (params[:controller] == 'profile' && params[:action] == 'profile')) ? 'active' : '' %>">
+        <li class="<%= ((params[:controller] == 'profile' && params[:action] == 'update') || (params[:controller] == 'profile' && params[:action] == 'profile') || (params[:controller] == 'profile' && params[:action] == 'faqs')) ? 'active' : '' %>">
           <a href="<%= profile_profile_index_path %>">
             <i class="fa fa-user"></i> <span class="space-sidebar">PROFILE</span>
           </a>
@@ -185,7 +185,7 @@
     <section class="header-content">
       <div class="row">
         <div class="about-welcome">
-          <%= link_to "FAQs", '', class: 'about' %>
+          <%= link_to 'FAQs', faqs_profile_index_path, class: 'about' %>
 
           <p class=" welcome"> Welcome back, <%= current_user.try(:full_name).present? ? current_user.full_name : 'USER' %></p>
           <a href="<%= destroy_user_session_path %>" class="login-link">
