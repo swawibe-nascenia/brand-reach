@@ -2,5 +2,6 @@
         window.location.reload();
 
 <% else %>
-    alert('Login in fails');
+    $('#validation-error').html("<%= @message %>" );
+    console.log("-------------------------------<%= @message %>");
 <% end %>
