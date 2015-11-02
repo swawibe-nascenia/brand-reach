@@ -175,6 +175,8 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    parsley-rails (2.0.7.0)
+      railties (>= 3.0.0)
     pubnub (3.7.9)
       eventmachine (~> 1.0)
       json (~> 1.8)
@@ -301,6 +303,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   orm_adapter
+  parsley-rails
   pubnub (~> 3.7.9)
   rails (= 4.2.2)
   rails_12factor

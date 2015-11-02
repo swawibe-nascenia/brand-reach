@@ -42,6 +42,8 @@ gem 'pubnub', '~> 3.7.9'
 gem 'handlebars_assets'
 gem 'flag_icon_css_rails'
 gem 'chart-js-rails'
+gem 'parsley-rails'
+
 
 # gem 'haml'
 # gem 'haml-rails'

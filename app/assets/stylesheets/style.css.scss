@@ -756,6 +756,73 @@ th{
   list-style: square;
   padding-top: 5px;
 }
+/* new Log in and Sign up page design style sheet */
+
+.colored-label {
+  background: #fbbb46 none repeat scroll 0 0;
+  color: #fff;
+}
+
+.input_container {
+  float: left;
+  margin: 0 0 10px;
+  width: 100%;
+}
+
+.modal .label_l {
+  background: #fbbb46 none repeat scroll 0 0;
+  color: #fff;
+  float: left;
+  min-width: 96px;
+  padding: 6px 8px;
+}
+
+.modal .login_input {
+  background: #eeeeed none repeat scroll 0 0;
+  border: medium none;
+  color: #666;
+  float: left;
+  font-family: "Open Sans", sans-serif;
+  outline: medium none;
+  padding: 6px 8px;
+  width: 228px;
+}
+#brand-signup{
+  margin: 30px 0;
+}
+
+#signup .modal-content {
+  width: 568px;
+}
+
+#signup .modal-header {
+  border-bottom: medium none;
+  padding: 20px 30px;
+}
+
+.modal-header .close {
+  background: image-url("modal_close_btn.png") no-repeat;
+  height: 20px;
+  opacity: 1;
+  width: 20px;
+}
+
+.modal-header .close {
+  margin-top: -2px;
+}
+
+#signup label {
+  color: #666;
+  font-weight: normal;
+  font-size: 15px;
+  margin-left: 10px;
+}
+
+.parsley-errors-list li {
+  color: #e23f3a;
+  font-size: 80%;
+  list-style-type: none;
+}
 
 
 

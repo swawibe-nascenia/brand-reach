@@ -1,73 +1,11 @@
 <%= stylesheet_link_tag 'influencers_home', media: 'all' %>
 
-<style>
-    .colored-label {
-        background: #fbbb46 none repeat scroll 0 0;
-        color: #fff;
-    }
-
-    .input_container {
-        float: left;
-        margin: 0 0 10px;
-        width: 100%;
-    }
-
-    .modal .label_l {
-        background: #fbbb46 none repeat scroll 0 0;
-        color: #fff;
-        float: left;
-        min-width: 96px;
-        padding: 6px 8px;
-    }
-
-    .modal .login_input {
-        background: #eeeeed none repeat scroll 0 0;
-        border: medium none;
-        color: #666;
-        float: left;
-        font-family: "Open Sans", sans-serif;
-        outline: medium none;
-        padding: 6px 8px;
-        width: 228px;
-    }
-    #brand-signup{
-        margin: 30px 0;
-    }
-
-    #signup .modal-content {
-        width: 568px;
-    }
-
-    #signup .modal-header {
-        border-bottom: medium none;
-        padding: 20px 30px;
-    }
-
-    .modal-header .close {
-        background: image-url("modal_close_btn.png") no-repeat;
-        height: 20px;
-        opacity: 1;
-        width: 20px;
-    }
-
-    .modal-header .close {
-        margin-top: -2px;
-    }
-
-    #signup label {
-        color: #666;
-        font-weight: normal;
-        font-size: 15px;
-        margin-left: 10px;
-    }
-</style>
-
 <div aria-hidden="false" class="modal fade in" id="signin">
   <div class="modal-backdrop fade in"></div>
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <button area-label="Close" class="close first_close" data-dismiss="modal" tyle="button">×</button>
+        <button area-label="Close" class="close first_close" data-dismiss="modal" tyle="button"></button>
         <h3 class="modal-title">Sign In</h3>
       </div>
       <div class="modal-body model-iner">
@@ -82,7 +20,7 @@
         </div>
         <div class="row hidden" id="brand-signin">
           <div class="col-md-12">
-            <form method="post" accept-charset="UTF-8" action="/users/sign_in" data-remote="true">
+            <form method="post" accept-charset="UTF-8" action="/users/sign_in" data-remote="true" data-parsley-validate="">
             <div class="input_container">
               <div class="label_l">Email</div>
               <input data-parsley-id="6021" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[email]" id="user_email" type="text">
@@ -103,7 +41,7 @@
           <div class="col-md-12">
             <div class="col-md-12 no-left">
             </div>
-            <a href="<%= user_omniauth_authorize_path('facebook') %>"> Sign Up With Facebook  </a>
+            <a href="<%= user_omniauth_authorize_path('facebook') %>">Facebook &nbsp; &nbsp; <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
           </div>
         </div>
       </div>
