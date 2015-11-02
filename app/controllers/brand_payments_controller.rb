@@ -22,5 +22,4 @@ class BrandPaymentsController < ApplicationController
       end
     end
   end
-
 end

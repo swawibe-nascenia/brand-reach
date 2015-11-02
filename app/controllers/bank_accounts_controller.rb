@@ -27,5 +27,4 @@ class BankAccountsController < ApplicationController
                                          :account_number, :currency, :routing_number, :bic, :iban
     )
   end
-
 end

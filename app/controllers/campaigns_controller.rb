@@ -13,7 +13,6 @@ class CampaignsController < ApplicationController
       flash[:error] = 'You have no campaign'
       return redirect_to profile_profile_index_path
     end
-
     @campaign = @campaigns.find_by_id(params[:id]) if params[:id].present?
     @campaign = @campaigns.last if @campaign.nil?
     @campaign.fetch_insights
@@ -23,7 +22,6 @@ class CampaignsController < ApplicationController
     @influencer = User.find(params[:receiver_id].to_i)
     @costs = User.find(params[:receiver_id].to_i).facebook_accounts.pluck(:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost)
     @campaign = Campaign.new(sender_id: current_user.id, receiver_id: params[:receiver_id])
-
   end
 
   def create
@@ -45,7 +43,6 @@ class CampaignsController < ApplicationController
       @costs = User.find(params[:campaign][:receiver_id]).facebook_accounts.pluck(:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost)
       render :action => 'new'
     end
-
   end
 
   def campaign_status_change
@@ -53,7 +50,6 @@ class CampaignsController < ApplicationController
     campaign.campaign_active = params[:campaign_active]
     campaign.save
     nil
-
   end
 
   def update_activity
@@ -99,7 +95,6 @@ class CampaignsController < ApplicationController
 
   def new_brand_payment
     @campaign = Campaign.find(params[:format])
-    # @campaign = Campaign.last
   end
 
   def create_brand_payment
@@ -111,7 +106,6 @@ class CampaignsController < ApplicationController
     else
       render :action => 'new_brand_payment'
     end
-
   end
 
   private
@@ -123,5 +117,4 @@ class CampaignsController < ApplicationController
                                      :number_of_shares, :card_number, :card_expiration_month, :card_expiration_year, :card_holder_name, :schedule_type
     )
   end
-
 end

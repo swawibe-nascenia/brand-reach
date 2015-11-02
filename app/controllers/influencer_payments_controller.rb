@@ -40,5 +40,4 @@ class InfluencerPaymentsController < ApplicationController
       end
     end
   end
-
 end

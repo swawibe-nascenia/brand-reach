@@ -53,8 +53,6 @@
               </div>
 
               <div class="form-group">
-
-
                 <%= f.label :post_type, 'Choose the type of post', class: 'control-label col-md-4' %>
                 <div class="col-sm-8">
                   <%= f.select :post_type, options_for_select(Campaign.post_types.map{ |type, value| [type.titleize, value] }, Campaign.post_types[@campaign.post_type]), {}, { :class => 'form-control type-of-post', :id => 'post_type' } %>
@@ -109,7 +107,6 @@
           </div>
         </div>
       </div>
-
 
       <div class="text-pink">WHAT TEXT AND LINKS DO YOU WANT TO USE?</div>
 

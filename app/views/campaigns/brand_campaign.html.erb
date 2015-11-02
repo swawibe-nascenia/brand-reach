@@ -1,13 +1,13 @@
 <%= stylesheet_link_tag 'campaigns.css', media: 'all' %>
 <%= stylesheet_link_tag 'jquery-jvectormap-1.2.2', media: 'all' %>
 
-<% title "Brand Campaign" %>
+<% title 'Brand Campaign' %>
 
 <section class="influence-facebook-content">
   <div class="row campaign-view">
     <%= form_tag(nil, method: 'get') do %>
         <%= label_tag :name, 'Choose a Campaign' %>
-        <%= select_tag 'id', options_from_collection_for_select(@campaigns, 'id', 'name', @campaign.id) , prompt: 'Choose a campaign to view the statistics', id: 'campaign_id'%>
+        <%= select_tag 'id', options_from_collection_for_select(@campaigns, 'id', 'name', @campaign.id), prompt: 'Choose a campaign to view the statistics', id: 'campaign_id'%>
         <%= button_tag 'VIEW', class: 'btn btn-campaign-view' %>
     <% end %>
   </div>
@@ -15,16 +15,13 @@
     <!-- Info boxes -->
 
     <div class="row download-campaign">
-
       <%= link_to "DOWNLOAD THIS CAMPAIGN'S REPORT", '#', :class => 'btn btn-download-campaign', id: 'download_campaigns' %>
-
     </div>
 
     <div class="row info-box-container">
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
           <p class="info-box-data total-follower-data-color"><%= number_with_delimiter(@campaign.number_of_likes) %></p>
-
           <p class="info-box-text ">LIKES</p>
 
         </div>
@@ -33,7 +30,6 @@
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
           <p class="info-box-data page-view-data-color"><%= number_with_delimiter(@campaign.number_of_post_reach) %></p>
-
           <p class="info-box-text">POST REACH</p>
         </div>
       </div>
@@ -141,11 +137,8 @@
             var campaign_id = $('#campaign_id option:selected').val();
 
             window.location.href  = "<%= export_brand_campaigns_campaigns_path(format: :csv) %>?campaign_id=" + campaign_id;
-
         });
 
     });
-
-
 </script>
 
