@@ -11,7 +11,7 @@
       <div class="modal-body model-iner">
         <div class="row">
           <div class="col-md-12">
-            <input name="role" id="role_influencer" value="1" class="signup-role" checked="checked" type="radio">
+            <input name="role" id="role_influencer" value=1 class="signup-role" checked="checked" type="radio">
             <label for="role_influencer">I'm an Influencer</label>
             <br>
             <input name="role" id="role_brand" value="0" class="signup-role" type="radio">
@@ -38,19 +38,11 @@
               <input data-parsley-id="1949" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[password_confirmation]" id="user_password_confirmation" type="password">
               <ul id="parsley-id-1949" class="parsley-errors-list"></ul>
             </div>
-            <p>Agreement</p>
 
-            <div class="remember">
-              <div class="checkbox checkbox-primary">
-                <input data-parsley-id="2981" data-parsley-multiple="agreement" name="agreement" id="agreement" value="{:class=&gt;&quot;styled&quot;}" type="checkbox">
-                <label for="agreement">
-                  I have read BrandReach's
-                  <a data-toggle="modal" href="#terms">Terms &amp; Conditions</a>
-                  and agree with them
-                </label>
+              <div class="field">
+                <%= hidden_field_tag 'user[user_type]', '0'%>
               </div>
-              <ul id="parsley-id-multiple-agreement" class="parsley-errors-list"></ul>
-            </div>
+
             <button class="btn btn-default save_btn" type="submit">SUBMIT</button>
             </form>
           </div>

@@ -21,7 +21,7 @@ class SessionsController < Devise::SessionsController
           sign_in(resource_name, user)
 
           respond_to do |format|
-            format.js {}
+            format.js { redirect_to after_sign_in_path_for(resource) }
             format.html { redirect_to after_sign_in_path_for(resource) }
           end
         else
