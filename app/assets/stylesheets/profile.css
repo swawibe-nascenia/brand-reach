@@ -10,6 +10,10 @@
 
 }
 
+.brands-profile-page-wrapper .social-account-tabs {
+    margin-bottom: 80px;
+}
+
 @media (min-width: 768px) {
     .brands-profile-page-wrapper {
         padding-right: 5%;
@@ -96,10 +100,9 @@
 
 
 .profile-picture {
-    border-radius: 50%;
-    border: 7px solid #30bfd0;
-    display: block;
-    margin: 0 auto;
+    padding: 6px;
+    background: -webkit-linear-gradient(#35d0b4, #3678c6);
+    background: -moz-linear-gradient(#35d0b4, #3678c6);
 }
 
 .btn-update {
