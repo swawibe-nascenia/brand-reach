@@ -609,4 +609,8 @@ only screen and (max-width: 460px) {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
 }
 
+.display-none {
+    display: none;
+}
+
 

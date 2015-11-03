@@ -54,7 +54,6 @@ group :development, :test do
     gem 'capistrano-passenger'
     gem 'capistrano-rails'
     gem 'capistrano-rvm'
-    gem 'rubocop', require: false
 end
 
 group :development, :test do

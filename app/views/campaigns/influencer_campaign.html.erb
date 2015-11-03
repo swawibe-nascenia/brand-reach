@@ -16,7 +16,7 @@
         <li><a href="#">35-44</a></li>
       </ul>
     </div>
-    <div class="dropdown" id="country_button" style="display: none;">
+    <div class="dropdown display-none" id="country_button">
       <button class="btn btn-country dropdown-toggle" type="button" data-toggle="dropdown">Country
         <i class="fa fa-angle-down angle-down-country "></i>
       </button>
@@ -32,8 +32,8 @@
 <div class="campaign-content">
 
   <ul class="nav nav-tabs" id="campaign-tabs">
-    <li class="active" id="performance_list"><a href="#performance"><span id="performance-blue"><%= image_tag('Performance_blue.png') %></span><span id="performance-black" style="display: none"><%= image_tag('Performance.png') %></span><span class="performance-tab"></span> Performance </a></li>
-    <li class="" id="engagement_list"><a href="#engagement"><span id="engagement-black"><%= image_tag('Engagement_black.png') %></span><span id="engagement-blue" style="display: none"><%= image_tag('Engagement.png') %></span><span class="engagement-tab"></span> Engagement </a></li>
+    <li class="active" id="performance_list"><a href="#performance"><span id="performance-blue"><%= image_tag('Performance_blue.png') %></span><span id="performance-black" class="display-none"><%= image_tag('Performance.png') %></span><span class="performance-tab"></span> Performance </a></li>
+    <li class="" id="engagement_list"><a href="#engagement"><span id="engagement-black"><%= image_tag('Engagement_black.png') %></span><span id="engagement-blue" class="display-none"><%= image_tag('Engagement.png') %></span><span class="engagement-tab"></span> Engagement </a></li>
   </ul>
   <div class="tab-content panel panel-campaigns">
     <div id="performance" class="tab-pane fade in active">
