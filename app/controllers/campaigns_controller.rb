@@ -12,6 +12,7 @@ class CampaignsController < ApplicationController
       flash[:error] = 'You have no campaign'
       return redirect_to profile_profile_index_path
     end
+
     @campaign = @campaigns.find_by_id(params[:id]) if params[:id].present?
     @campaign = @campaigns.last if @campaign.nil?
     @campaign.fetch_insights

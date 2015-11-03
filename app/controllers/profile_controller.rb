@@ -1,5 +1,4 @@
 class ProfileController < ApplicationController
-  # layout 'sidebar_header_layouts'
   skip_before_action :check_profile_completion
   before_action :set_user, only: [:profile, :update, :update_accounts, :update_password, :toggle_available, :deactivate_account, :show_settings, :update_profile_settings, :contact_us_save]
 
@@ -39,14 +38,6 @@ class ProfileController < ApplicationController
 
   def subregion_options
     render partial: 'shared/sub_region_select'
-  end
-
-  def add_social_site(provider)
-
-  end
-
-  def connect_facebook
-
   end
 
   def show_settings
