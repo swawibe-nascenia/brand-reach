@@ -6,7 +6,7 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
-  <%= stylesheet_link_tag  'application.css', media: 'all' %>
+  <%= stylesheet_link_tag 'application.css', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Hind' rel='stylesheet' type='text/css'>
@@ -82,7 +82,7 @@
           <div class="dropdown small">
             <button class="btn center-block text-center user-status dropdown-toggle" type="button" data-toggle="dropdown">
               <i class="fa fa-circle <%= current_user.is_available? ? 'text-color-follower': '' %>"></i>&nbsp; <span><%= current_user.is_available? ? 'Available': 'Unavailable' %></span>
-              <i class="fa fa-angle-down "></i>
+              <i class="fa fa-angle-down"></i>
             </button>
 
             <ul class="dropdown-menu user-status ">
@@ -114,32 +114,33 @@
 
         <% if current_user.brand? %>
 
-            <li class="<%=  (params[:controller] == 'offers') ? 'active' : '' %>">
+            <li class="<%= (params[:controller] == 'offers') ? 'active' : '' %>">
               <a href="<%= offers_path %>">
                 <span class="glyphicon glyphicon-envelope"> </span><span class="space-sidebar">MESSAGES</span>
               </a>
             </li>
 
-            <li class="<%=  (params[:controller] == 'explores' && params[:action] == 'show') ? 'active' : '' %>">
+            <li class="<%= (params[:controller] == 'explores' && params[:action] == 'show') ? 'active' : '' %>">
               <a href="<%= explores_path %>">
                 <span class="fa fa-search"> </span><span class="space-sidebar">EXPLORE</span>
               </a>
             </li>
 
-            <li class="<%=  (params[:controller] == 'campaigns') ? 'active' : '' %>">
+            <li class="<%= (params[:controller] == 'campaigns') ? 'active' : '' %>">
               <a href="<%= brand_campaign_campaigns_path %>">
                 <span class="glyphicon icon-horn"></span><span class="space-sidebar">CAMPAIGNS</span>
               </a>
             </li>
 
-            <li  class="<%=  (params[:controller] == 'brand_payments') ? 'active' : '' %>">
+            <li  class="<%= (params[:controller] == 'brand_payments') ? 'active' : '' %>">
               <a href="<%= brand_payments_path %>">
                 <i class="fa fa-dollar"></i><span class="space-sidebar">PAYMENTS</span>
               </a>
             </li>
 
         <% else %>
-            <li class="<%=  (params[:controller] == 'offers') ? 'active' : '' %>">
+
+            <li class="<%= (params[:controller] == 'offers') ? 'active' : '' %>">
               <a href="<%= offers_path %>">
                 <span class="glyphicon glyphicon-envelope"> </span><span class="space-sidebar">OFFERS</span>
               </a>
@@ -151,13 +152,13 @@
               </a>
             </li>
 
-            <li class="<%=  (params[:controller] == 'campaigns') ? 'active' : '' %>">
+            <li class="<%= (params[:controller] == 'campaigns') ? 'active' : '' %>">
               <a href="<%= influencer_campaign_campaigns_path %>">
                 <span class="glyphicon icon-horn"></span><span class="space-sidebar">CAMPAIGNS</span>
               </a>
             </li>
 
-            <li class="<%=  (params[:controller] == 'influencer_payments') ? 'active' : '' %>">
+            <li class="<%= (params[:controller] == 'influencer_payments') ? 'active' : '' %>">
               <a href="<%= influencer_payments_path %>">
                 <i class="fa fa-dollar"></i><span class="space-sidebar">PAYMENTS</span>
               </a>
@@ -165,12 +166,12 @@
 
         <% end %>
 
-        <li class="<%=  (params[:controller] == 'profile' && params[:action] == 'contact_us') ? 'active' : '' %>">
+        <li class="<%= (params[:controller] == 'profile' && params[:action] == 'contact_us') ? 'active' : '' %>">
           <a href="<%= contact_us_profile_index_path %>">
             <i class="fa fa-phone"></i><span class="space-sidebar">CONTACT US</span>
           </a>
         </li>
-        <li class="<%=  (params[:controller] == 'profile' && params[:action] == 'show_settings') ? 'active' : '' %>">
+        <li class="<%= (params[:controller] == 'profile' && params[:action] == 'show_settings') ? 'active' : '' %>">
           <a href="<%= show_settings_profile_index_path %>">
             <i class="fa fa-cog"></i><span class="space-sidebar">SETTINGS</span>
           </a>
@@ -196,7 +197,7 @@
 
       <div class="row">
         <div class="col-md-3 col-sm-3 col-xs-12">
-          <a href="<%= root_url %>"><%= image_tag('Logo.png', :class => 'image img-responsive header-logo', :alt => "Logo") %></a>
+          <a href="<%= root_url %>"><%= image_tag('Logo.png', :class => 'image img-responsive header-logo', :alt => 'Logo') %></a>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12 search-top-margin">
           <!-- search form -->

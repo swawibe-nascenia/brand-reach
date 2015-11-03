@@ -76,7 +76,7 @@
                   <tr>
                     <td class="squaredFour"><input type="checkbox" class="InfluencerPaymentCheckBox" data-id="<%= transaction.id %>" value="1"/></td>
                     <td><%= transaction.billed_date.present? ? transaction.billed_date.strftime("%B %d, %Y") : 'NA' %></td>
-                    <td><%= sprintf("BP%05d", transaction.id) %></td>
+                    <td><%= sprintf('BP%05d', transaction.id) %></td>
                     <td><%= transaction.amount_billed %></td>
                     <td>
                       <% if transaction.pending? %>

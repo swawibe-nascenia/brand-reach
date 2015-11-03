@@ -16,8 +16,8 @@ class BrandPaymentsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do
-        headers['Content-Disposition'] = "attachment;
-                filename=\"payments_list_brand.csv\""
+        #  Don't Try to Put Headers into single line, it wont work
+        headers['Content-Disposition'] = "attachment; filename=\"payments_list_brand.csv\""
         headers['Content-Type'] ||= 'text/csv'
       end
     end

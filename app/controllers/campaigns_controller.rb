@@ -77,8 +77,8 @@ class CampaignsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do
-        headers['Content-Disposition'] = "attachment;
-                filename=\"campaigns_list_influencer.csv\""
+        #  Don't Try to Put Headers into single line, it wont work
+        headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_influencer.csv\""
         headers['Content-Type'] ||= 'text/csv'
       end
     end
@@ -94,8 +94,8 @@ class CampaignsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do
-        headers['Content-Disposition'] = "attachment;
-                filename=\"campaigns_list_brand.csv\""
+        #  Don't Try to Put Headers into single line, it wont work
+        headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_brand.csv\""
         headers['Content-Type'] ||= 'text/csv'
       end
     end

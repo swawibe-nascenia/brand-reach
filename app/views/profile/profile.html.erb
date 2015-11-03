@@ -1,11 +1,11 @@
 <%= stylesheet_link_tag 'profile.css', media: 'all' %>
 
-<% title "BrandReach Profile" %>
+<% title 'BrandReach Profile' %>
 
 <div class="brands-profile-page-wrapper">
 
   <%= render 'shared/show_errors', :object => @user%>
-  <%= image_tag(@user.profile_picture, :class => 'profile-picture center-block img-circle', :alt => "profile-picture") %>
+  <%= image_tag(@user.profile_picture, :class => 'profile-picture center-block img-circle', :alt => 'profile-picture') %>
 
   <%= form_for @user, url: profile_path(@user), html: {class: 'form-horizontal personal-info-form'} do |f| %>
 
@@ -76,7 +76,7 @@
 
         <div class="col-md-6">
           <%= f.label :state %>
-          <%= render partial: 'shared/sub_region_select', locals: {parent_region: f.object.country} %>
+          <%= render partial: 'shared/sub_region_select', locals: { parent_region: f.object.country } %>
         </div>
       </div>
 
@@ -123,7 +123,7 @@
 
           <h4 class="social-account">SOCIAL ACCOUNTS AND PRICING</h4>
 
-          <%= link_to '<i class="fa fa-plus"></i> ADD ACCOUNT'.html_safe, "#AddAccount", "data-toggle" => "modal", :class => "btn btn-account" %>
+          <%= link_to '<i class="fa fa-plus"></i> ADD ACCOUNT'.html_safe, '#AddAccount', 'data-toggle' => 'modal', :class => 'btn btn-account' %>
 
           <%= render partial: 'shared/add_account_modal' %>
 
@@ -135,7 +135,6 @@
                         <a data-toggle="tab" href="#fb_<%= account.account_id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %>
                         </a></li>
                   <% end %>
-                  <!--<li><a data-toggle="tab" href="#twitter_bhanu"><i class="social-account-fa-edit fa fa-twitter"></i> Bhanu Prasad</a></li>-->
                 </ul>
 
                 <div class="tab-content social-account-tab-content">

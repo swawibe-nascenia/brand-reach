@@ -1,10 +1,10 @@
 <%= stylesheet_link_tag  'campaigns', media: 'all' %>
 
-<% title "Brand Payment" %>
+<% title 'Brand Payment' %>
 
 <div class="campaign-create-wrapper">
 
-  <%= form_for @campaign , url: create_brand_payment_campaigns_path, method: :patch , html: { class: 'form-horizontal'} do |f| %>
+  <%= form_for @campaign, url: create_brand_payment_campaigns_path, method: :patch, html: { class: 'form-horizontal'} do |f| %>
 
       <%= render 'shared/show_errors', :object => @campaign%>
 
@@ -13,24 +13,22 @@
       <div class="payment-form">
 
         <div class="row">
-          <%= f.label :card_number, "Card number" %>
+          <%= f.label :card_number, 'Card number' %>
         </div>
         <div class="row">
-          <%= f.text_field :card_number,  class: 'card-number'%>
+          <%= f.text_field :card_number, class: 'card-number'%>
         </div>
 
         <div class="row">
           <%= f.label '', 'Expiration date' %>
         </div>
         <div class="row">
-          <%#= f.select :card_expiration_month,  options_for_select(Campaign.card_expiration_months.map{ |type, value| [type.titleize, value] } ), { :include_blank => true }, {} %>
-          <%= f.select :card_expiration_month,  options_for_select(Campaign.card_expiration_months.map{ |type, value| [type.titleize, value] }, Campaign.card_expiration_months[@campaign.card_expiration_month] ), { :include_blank => true }, {} %>
-          <%#= f.select :card_expiration_year, options_for_select((Time.now.year)..(Time.now.year+10)), { :include_blank => true } %>
+          <%= f.select :card_expiration_month, options_for_select(Campaign.card_expiration_months.map{ |type, value| [type.titleize, value] }, Campaign.card_expiration_months[@campaign.card_expiration_month] ), { :include_blank => true }, {} %>
           <%= f.select :card_expiration_year, options_for_select((Time.now.year)..(Time.now.year+10), @campaign.card_expiration_year), { :include_blank => true } %>
         </div>
 
         <div class="row">
-          <%= f.label :card_holder_name, "Cardholder name" %>
+          <%= f.label :card_holder_name, 'Cardholder name' %>
         </div>
         <div class="row">
           <%= f.text_field :card_holder_name, class: 'card-holder-name' %>
@@ -40,8 +38,7 @@
 
       </div>
 
-      <%= f.button  "BOOK NOW", class: 'btn btn-book-now' %>
-      <%#= link_to "CANCEL", '', class: 'btn btn-book-now grey-color' %>
+      <%= f.button 'BOOK NOW', class: 'btn btn-book-now' %>
   <% end %>
 
 </div>
