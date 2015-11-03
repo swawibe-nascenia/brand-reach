@@ -17,7 +17,6 @@ EOF
     else
       message = @user.errors.full_messages
       @success = false
-      flash['error'] = message
     end
 
     Rails.logger.info "----------------user is -----------------------#{@user}------------------"
