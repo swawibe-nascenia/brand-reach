@@ -769,7 +769,7 @@ th{
   width: 100%;
 }
 
-.modal .label_l {
+.sign-up-form .label_l, .modal .label_l {
   background: #fbbb46 none repeat scroll 0 0;
   color: #fff;
   float: left;
@@ -777,7 +777,7 @@ th{
   padding: 6px 8px;
 }
 
-.modal .login_input {
+.sign-up-form .login_input,.modal .login_input {
   background: #eeeeed none repeat scroll 0 0;
   border: medium none;
   color: #666;

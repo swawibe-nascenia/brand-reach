@@ -22,6 +22,7 @@
 //= require pubnub
 //= require handlebars
 //= require Chart
+//= require parsley
 // require turbolinks
 // require_tree .
 
