@@ -5,23 +5,25 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.create(user_params.except(:user_type))
 
     @success = true
-    @message = ''
+    message = []
 
     if @user.valid?
       @user.update_columns({ user_type: params[:user][:user_type], verified: false })
-
-      respond_to do |format|
-        flash[:success] = <<EOF
-                             Your information submitted successfully.
-                             When account activate we will notify to you email.
+      message << <<EOF
+                        Your information submitted successfully.
+                        When account activated we will notify you by email.
 EOF
-        format.js{  }
-        format.html { redirect_to new_user_registration_path  }
-      end
-      Rails.logger.info "------------------------------------Sign up successfull "
     else
-      Rails.logger.info "------------------------------------Sign up fail #{@user.errors.messages}"
+      message = @user.errors.full_messages
       @success = false
+    end
+
+    respond_to do |format|
+      format.js{ flash['notice'] = flash['notice'].to_a.concat message }
+      format.html do
+        flash['notice'] = flash['notice'].to_a.concat message
+        redirect_to new_user_registration_path
+      end
     end
   end
 
