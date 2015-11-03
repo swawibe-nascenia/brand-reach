@@ -149,10 +149,12 @@ class ProfileController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :company_name, :company_email, :image, :email_remainder_active, :sms_remainder_active,
-                                 :industry, :phone, :street_address, :landmark, :city, :state, :is_available,
-                                 :country, :zip_code, :short_bio, :password, :password_confirmation, :current_password, :is_active,
-                                 facebook_accounts_attributes: [:id, :status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost]
+    params.require(:user).permit(:first_name, :last_name, :email, :company_name,
+      :company_email, :image, :email_remainder_active, :sms_remainder_active,
+      :industry, :phone, :street_address, :landmark, :city, :state, :is_available,
+      :country, :zip_code, :short_bio, :password, :password_confirmation,
+      :current_password, :is_active,
+      facebook_accounts_attributes: [:id, :status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost]
     )
   end
 

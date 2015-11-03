@@ -1,5 +1,4 @@
 class InfluencerPaymentsController < ApplicationController
-
   respond_to :html, :js
 
   def index
@@ -9,7 +8,9 @@ class InfluencerPaymentsController < ApplicationController
 
   def withdraw_payment
     if params[:amount].to_i > 0 && current_user.balance >= params[:amount].to_i
-      influencer_payment = current_user.influencer_payments.create(amount_billed: params[:amount].to_i, bank_account_id: params[:bank_account_id], billed_date: Time.now)
+      influencer_payment = current_user.influencer_payments.create(
+        amount_billed: params[:amount].to_i, bank_account_id: params[:bank_account_id],
+        billed_date: Time.now)
 
       if influencer_payment.valid?
         new_balance = current_user.balance - params[:amount].to_i
@@ -35,7 +36,8 @@ class InfluencerPaymentsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do
-        headers['Content-Disposition'] = "attachment; filename=\"payments_list_influencer.csv\""
+        headers['Content-Disposition'] = "attachment;
+                filename=\"payments_list_influencer.csv\""
         headers['Content-Type'] ||= 'text/csv'
       end
     end

@@ -1,5 +1,4 @@
 class BankAccountsController < ApplicationController
-
   respond_to :html, :js
 
   def new
@@ -16,15 +15,18 @@ class BankAccountsController < ApplicationController
     @bank_account = BankAccount.find(params[:id])
     @bank_account.destroy
     respond_to do |format|
-      format.html { redirect_to influencer_payments_path, notice: 'Bank Account was successfully destroyed.' }
+      format.html {
+        redirect_to influencer_payments_path,
+                    notice: 'Bank Account was successfully destroyed.'
+      }
     end
   end
 
   private
 
   def bank_accounts_params
-    params.require(:bank_account).permit(:bank_name, :address, :city, :state, :zip, :country, :account_name,
-                                         :account_number, :currency, :routing_number, :bic, :iban
-    )
+    params.require(:bank_account).permit(:bank_name, :address, :city, :state,
+      :zip, :country, :account_name, :account_number, :currency,
+      :routing_number, :bic, :iban)
   end
 end

@@ -5,18 +5,20 @@
 
 <div class="campaign-create-wrapper">
 
-  <div class="row ">
+  <div class="row">
     <div class="col-lg-3 col-md-6 col-sm-8 col-xs-8">
       <div class="row">
+
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-5">
-          <%= image_tag(@influencer.profile_picture, :class => 'campaign-influencer-picture', :alt => "profile-picture") %>
+          <%= image_tag(@influencer.profile_picture, :class => 'campaign-influencer-picture', :alt => 'profile-picture') %>
         </div>
 
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-7">
           <h4><%= @influencer.full_name.present? ? @influencer.full_name : 'USER' %></h4>
           <p class="influencer-title"> <%= @influencer.industry.present? ? @influencer.industry : 'Entrepreneur' %> </p>
-          <p class="influencer-address"> <%= @influencer.street_address.present? ? @influencer.street_address : 'User Address'  %></p>
+          <p class="influencer-address"> <%= @influencer.street_address.present? ? @influencer.street_address : 'User Address'  %> </p>
         </div>
+
       </div>
     </div>
   </div>
@@ -29,11 +31,12 @@
     </div>
   </div>
 
-  <%= form_for @campaign , url: campaigns_path , html: { class: 'form-horizontal'} do |f| %>
+  <%= form_for @campaign, url: campaigns_path, html: { class: 'form-horizontal'} do |f| %>
 
-      <%= render 'shared/show_errors', :object => @campaign%>
+      <%= render 'shared/show_errors', :object => @campaign %>
 
       <%= csrf_meta_tag %>
+
       <div class="col-md-12">
         <div class="social-account-tabs">
           <ul class="nav nav-tabs social-account-nav-tabs">
@@ -60,7 +63,7 @@
               </div>
 
               <div class="form-group">
-                <%= f.label :cost, "Cost", class: 'control-label col-md-4' %>
+                <%= f.label :cost, 'Cost', class: 'control-label col-md-4' %>
                 <div class="col-md-8">
                   <%= f.text_field :cost, { class: 'form-control campaign-cost-input', value: @campaign.cost.present? ? @campaign.cost : @costs[0][0], readonly: true, id: 'post_cost' } %>
                 </div>
@@ -81,13 +84,13 @@
 
                   <div class="campaign-date" id="start_end">
                     <div>
-                      <%= f.label :start_date, "Start" %>
-                      <%= f.text_field :start_date, { value: Time.now.strftime("%d/%m/%Y"), class: 'start_date', disabled: 'disabled' }%>
+                      <%= f.label :start_date, 'Start' %>
+                      <%= f.text_field :start_date, { value: Time.now.strftime('%d/%m/%Y'), class: 'start_date', disabled: 'disabled' } %>
                     </div>
 
                     <div>
-                      <%= f.label :end_date, "End" %>
-                      <%= f.text_field :end_date, { value: (Time.now + 1.month).strftime("%d/%m/%Y"), class: 'end_date', disabled: 'disabled'} %>
+                      <%= f.label :end_date, 'End' %>
+                      <%= f.text_field :end_date, { value: (Time.now + 1.month).strftime('%d/%m/%Y'), class: 'end_date', disabled: 'disabled'} %>
                     </div>
                   </div>
 
@@ -95,7 +98,7 @@
               </div>
 
               <div class="form-group">
-                <%= f.label :name, "Enter Campaign Name", class: 'control-label col-md-4' %>
+                <%= f.label :name, 'Enter Campaign Name', class: 'control-label col-md-4' %>
                 <div class="col-md-8">
                   <%= f.text_field :name, required: true %>
                 </div>
@@ -113,14 +116,14 @@
       <div class="text-headline-form">
 
         <div class="row">
-          <%= f.label :text, "Text" %>
+          <%= f.label :text, 'Text' %>
         </div>
         <div class="row">
           <%= f.text_area :text, rows: 4, required: true %>
         </div>
 
         <div class="row">
-          <%= f.label :headline, "Headline" %>
+          <%= f.label :headline, 'Headline' %>
         </div>
         <div class="row">
           <%= f.text_field :headline, required: true %>
@@ -128,8 +131,8 @@
 
       </div>
 
-      <%= f.button  "BOOK NOW", class: 'btn btn-book-now' %>
-      <%= link_to "CANCEL", explores_path, class: 'btn btn-book-now grey-color' %>
+      <%= f.button  'BOOK NOW', class: 'btn btn-book-now' %>
+      <%= link_to 'CANCEL', explores_path, class: 'btn btn-book-now grey-color' %>
   <% end %>
 </div>
 

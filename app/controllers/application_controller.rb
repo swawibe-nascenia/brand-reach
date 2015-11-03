@@ -61,5 +61,4 @@ class ApplicationController < ActionController::Base
       redirect_to profile_profile_index_path
      end
   end
-
 end

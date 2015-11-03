@@ -19,11 +19,9 @@ class Campaign < ActiveRecord::Base
   # == Attributes == #
   # ----------------------------------------------------------------------
 
-
   # ----------------------------------------------------------------------
   # == File Uploader == #
   # ----------------------------------------------------------------------
-
 
   # ----------------------------------------------------------------------
   # == Associations and Nested Attributes == #
@@ -39,7 +37,7 @@ class Campaign < ActiveRecord::Base
   # == Validations == #
   # ----------------------------------------------------------------------
 
-  validates :cost, :numericality => {:greater_than_or_equal_to => 0}, allow_blank: true
+  validates :cost, :numericality => { :greater_than_or_equal_to => 0 }, allow_blank: true
   validates :card_number, credit_card_number: true, allow_blank: true
   validates :sender_id, :receiver_id, :name, :text, :headline, presence: true
 
