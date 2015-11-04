@@ -613,4 +613,36 @@ only screen and (max-width: 460px) {
     display: none;
 }
 
+/* set activity Modals' Css */
+
+.vertical-align-middle {
+    vertical-align: middle;
+}
+
+.fb-activity-img {
+    height: 35px;
+}
+
+.fb-activity-row {
+    height: 45px;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+.add-another-account {
+    margin-bottom: 15px;
+}
+
+.fb-activity-row:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.fb-activity-row:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+.fb-activity-post {
+    width: 350px;
+    padding-left: 10px;
+}
 

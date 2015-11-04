@@ -14,25 +14,29 @@
                     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
                     <input type="hidden" name="access_token"/>
                     <input type="hidden" name="id"/>
+
                     {{#each accounts}}
-                        <div class="media js-clickable">
+                        <div class="js-clickable fb-activity-row">
+
+                         <div class="media-left media-middle">
+                            <input type="radio" class="vertical-align-middle" name="activity_id" value="{{id}}">
+                          </div>
+
+                          <div class="media-left media-middle fb-activity-post">
+                            <h4 class="media-heading vertical-align-middle">{{story}}{{message}}</h4>
+                          </div>
+
                           {{#if picture}}
-                          <div class="media-left media-middle">
-                            <img class="media-object" src="{{picture}}">
+                          <div class="media-right media-middle">
+                            <img class="media-object fb-activity-img vertical-align-middle" src="{{picture}}">
                           </div>
                           {{/if}}
-                          <div class="media-body media-middle">
-                            <h4 class="media-heading">{{story}}{{message}}</h4>
-                          </div>
-                          <div class="media-right media-middle">
-                            <input type="radio" name="activity_id" value="{{id}}">
-                          </div>
                         </div>
                     {{/each}}
 
                     <br/>
 
-                    <input class="btn btn-primary" type="submit" value="CONNECT"/>
+                    <input class="btn btn-export" type="submit" value="CONNECT"/>
                 </form>
             </div>
 
