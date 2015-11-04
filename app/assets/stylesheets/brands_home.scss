@@ -262,7 +262,7 @@ ul.menu-item li {
 
 .statistics .stats-block {
   display: inline-block;
-  width: 24%;
+  width: 26%;
   text-align: left;
 }
 
@@ -628,4 +628,16 @@ ul.menu-item li {
 
 .few-brand {
   letter-spacing: -0.6px;
+}
+
+.statistics .posts-padding {
+  float: right;
+  width: auto;
+}
+
+@media screen and (max-width: 900px) {
+  .statistics .posts-padding {
+    clear: right;
+    width: 49%;
+  }
 }
