@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   # ----------------------------------------------------------------------
   after_create :generate_channel_name
   after_save :save_actual_country_state
-  after_update :profile_completion_status
+  after_update :update_profile_completion_status
 
   # ----------------------------------------------------------------------
   # == Scopes and Other macros == #
@@ -160,7 +160,7 @@ class User < ActiveRecord::Base
     self.update_column(:state_name, Carmen::Country.coded(self.country).subregions.coded(self.state).name ) if self.country.present? && self.state.present?
   end
 
-  def profile_completion_status
+  def update_profile_completion_status
     if self.influencer?
       return if self.facebook_accounts.blank?
 
