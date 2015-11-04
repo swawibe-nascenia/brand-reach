@@ -1,9 +1,12 @@
 <h4>Hi, Admin</h4>
 <P>Following sign up information had been submitted for new brand account</P>
-<p><strong>Company Name:</strong> <%= %></p>
-<p><strong>Contact Person:</strong> <%= %></p>
-<p><strong>Position:</strong> <%= %></p>
-<p><strong>Email:</strong> <%= %></p>
-<p><strong>Phone Number:</strong> <%= %></p>
-<p><strong>about their company:</strong> <%= %></p>
+<p><strong>Company Name:</strong> <%= @user.company_name %></p>
+<p><strong>Contact Person:</strong> <%= @user.full_name %></p>
+<p><strong>Position:</strong> <%= @user.phone %></p>
+<p><strong>Email:</strong> <%= @user.email %></p>
+<p><strong>Phone Number:</strong> <%= @user.phone %></p>
+<p><strong>about their company:</strong> <%= @user.short_bio %></p>
+</br>
+<p>To Activate this user click the following link</p> <a href="<%=  %>">click to activate </a>
+
 
