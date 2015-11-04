@@ -163,10 +163,10 @@ ul.menu-item li {
 }
 
 .identity .text-upper {
-  font-family: 'Helvetica Neue 35 Thin', sans-serif;
+  font-family: 'Helvetica Neue 45 Light', sans-serif;
   font-size: 74px;
-  letter-spacing: -4px;
-  padding-top: 160px;
+  letter-spacing: -0.6px;
+  padding-top: 145px;
   line-height: 1;
   padding-bottom: 10px;
 }
@@ -640,4 +640,8 @@ ul.menu-item li {
     clear: right;
     width: 49%;
   }
+}
+
+.helvetica-neue-light {
+  font-family: 'Helvetica Neue 45 Light', sans-serif;
 }
