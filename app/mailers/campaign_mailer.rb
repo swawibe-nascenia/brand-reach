@@ -1,5 +1,5 @@
 class CampaignMailer < ApplicationMailer
-  default from: 'dev.brandreach.com'
+  default from: 'hasanuzzaman@nascenia.com'
 
   def new_campaign_notification(campaign)
     @campaign = campaign
@@ -52,6 +52,6 @@ class CampaignMailer < ApplicationMailer
   def sing_up_notification_to_admin(user)
     @user = user
     Rails.logger.info "========================== Send User: #{user.inspect} sign up notification to admin.================"
-    mail(to: @user.email, subject: 'New user sign up to Bandreach')
+    mail(from: 'hasanuzzaman@nascenia.com', to: 'swawibe@bdipo.com', subject: 'New user sign up to Bandreach')
   end
 end
