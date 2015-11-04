@@ -11,17 +11,16 @@
 <div class="header-bottom-margin"></div>
 
 <div class="offer-content">
-
   <ul class="nav nav-tabs" id="campaign-tabs">
-    <li class= "active" id="inbox_list">
+    <li class="active" id="inbox_list">
       <%= link_to offers_path, remote: true do %>
                         <span id="inbox-blue"><img src="<%= asset_path('Inbox-blue.png') %>">
-                        </span><span id="inbox-black"><img  src="<%= asset_path('Inbox.png') %>"></span>
+                        </span><span id="inbox-black"><img src="<%= asset_path('Inbox.png') %>"></span>
           <span class="inbox-tab">Inbox</span>
       <% end %>
     </li>
-    <li class= "" id="starred_list">
-      <%= link_to offers_path(starred: true), remote: true, data: { target: ''} do %>
+    <li class="" id="starred_list">
+      <%= link_to offers_path(starred: true), remote: true, data: {target: ''} do %>
           <span id="star-black"><img src="<%= asset_path('Starred.png') %>"></span>
           <span id="star-blue"><img src="<%= asset_path('Starred-blue.png') %>"></span>
           <span class="starred-tab">Starred</span>
@@ -29,8 +28,8 @@
     </li>
     <li class="pull-right">
       <div class="star-del-ref-panel">
-        <%= image_tag  asset_path('star-icon.png'), class: 'make-all-stared'%>
-        <%= image_tag  asset_path('trash-icon.png'), class: 'delete-selected-offer'%>
+        <%= image_tag asset_path('star-icon.png'), class: 'make-all-stared' %>
+        <%= image_tag asset_path('trash-icon.png'), class: 'delete-selected-offer' %>
       </div>
     </li>
   </ul>
@@ -38,37 +37,30 @@
   <!-- print tab elements -->
   <div class="tab-content panel panel-offers">
     <div id="inbox" class="tab-pane fade in active">
-      <%= render partial: 'offer', collection: @offers, locals: { star_page: nil } %>
+      <%= render partial: 'offer', collection: @offers, locals: {star_page: nil} %>
     </div>
 
-
     <div id="stared_inbox" class="tab-pane fade">
-      <%#= render partial: 'offer', collection: @stared_offers %>
     </div>
   </div>
 
 </div>
-</div>
-
-<!-- /.content -->
-</div><!-- /.content-wrapper -->
 
 <script>
-    $(function(){
+    $(function () {
         <% if params[:offer_id] %>
         var $offerBody = $('.offer-body-<%= params[:offer_id] %>');
         $offerBody.addClass('in');
         var searchKey = '<%= params[:search_key] %>';
-        var replaceWord ='<span class=text-danger>' + searchKey + '</span>';
-        var regex = new RegExp(searchKey,'gi');
+        var replaceWord = '<span class=text-danger>' + searchKey + '</span>';
+        var regex = new RegExp(searchKey, 'gi');
 
-        $offerBody.find('.message').each(function(){
+        $offerBody.find('.message').each(function () {
             $(this).children('.title').html($(this).children('.title').html().replace(regex, replaceWord));
         });
         <% end %>
-<!--need to change proper style sheet -->
+        <!--need to change proper style sheet -->
         $('#star-blue').hide();
         $('inbox-black').hide();
     });
-
 </script>

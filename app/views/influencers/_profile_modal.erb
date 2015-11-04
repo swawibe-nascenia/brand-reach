@@ -16,8 +16,10 @@
 
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                 <h4><%= influencer.full_name.present? ? influencer.full_name : 'USER' %></h4>
+
                 <p class="title"> <%= influencer.industry %> </p>
-                <p class="influencer-address"> <%= influencer.location  %></p>
+
+                <p class="influencer-address"> <%= influencer.location %></p>
               </div>
             </div>
           </div>
@@ -47,12 +49,15 @@
 
             <h4> Pricing</h4>
             <br>
+
             <div class="row">
               <div class="col-md-12">
                 <div class="social-account-tabs">
                   <ul class="nav nav-tabs social-account-nav-tabs influencer-social-account-nav-tabs">
                     <% influencer.facebook_accounts.each do |account| %>
-                        <li class="influencer-social-account-tab" data-id="<%= account.id %>"><a data-toggle="tab" href="#fb_<%= account.id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %></a></li>
+                        <li class="influencer-social-account-tab" data-id="<%= account.id %>">
+                          <a data-toggle="tab" href="#fb_<%= account.id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %>
+                          </a></li>
                     <% end %>
                   </ul>
 
@@ -62,28 +67,26 @@
                           <div class="form-group">
                             <div class="col-md-5 col-sm-8 col-xs-11">
                               <%= label_tag :status_update_cost, "Status Update" %>
-                              <%= text_field_tag '', account.status_update_cost, :disabled=>true %> INR
+                              <%= text_field_tag '', account.status_update_cost, :disabled => true %> INR
                             </div>
                             <div class="col-md-6 col-sm-8 col-xs-11">
                               <%= label_tag :cover_photo_cost, "Cover Photo" %>
-                              <%= text_field_tag '', account.cover_photo_cost, :disabled=>true %> INR
+                              <%= text_field_tag '', account.cover_photo_cost, :disabled => true %> INR
                             </div>
                           </div>
                           <div class="form-group">
                             <div class="col-md-5 col-sm-8 col-xs-11">
                               <%= label_tag :profile_photo_cost, "Profile Photo" %>
-                              <%= text_field_tag '', account.profile_photo_cost, :disabled=>true %> INR
+                              <%= text_field_tag '', account.profile_photo_cost, :disabled => true %> INR
                             </div>
                             <div class="col-md-6 col-sm-8 col-xs-11">
                               <%= label_tag :video_post_cost, "Video Post" %>
-                              <%= text_field_tag '', account.video_post_cost, :disabled=>true %> INR
+                              <%= text_field_tag '', account.video_post_cost, :disabled => true %> INR
                             </div>
                           </div>
                         </div>
-                       <% end %>
-
+                    <% end %>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -96,6 +99,7 @@
             <%= "https://www.facebook.com/app_scoped_user_id/#{influencer.uid}/" %>
           </a>
         </p>
+
         <p><span class="view-profile-fb-twitter-color"> &nbsp;  &nbsp; Twitter:</span> N/A</p>
 
         <div class="row">
@@ -112,6 +116,7 @@
     </div>
   </div>
 </div>
+
 <script>
     $('.social-account-nav-tabs a:first').tab('show');
 </script>

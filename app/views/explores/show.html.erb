@@ -53,7 +53,7 @@
           <div class="row">
             <div class="col-md-12">
               <label for="influencer_country"> Location </label>
-              <%= country_select_tag :country,  params[:country].present? ? [params[:country]] : ['IN'], {:class => 'profile-dropdown-color', prompt: 'Select a Country' } %>
+              <%= country_select_tag :country, params[:country].present? ? [params[:country]] : ['IN'], {:class => 'profile-dropdown-color', prompt: 'Select a Country'} %>
               <br/>
 
               <div>
@@ -61,10 +61,9 @@
               </div>
             </div>
             <div class="col-md-12">
-              <%= button_tag 'Search Influencer', class: 'btn btn-success'%>
+              <%= button_tag 'Search Influencer', class: 'btn btn-success' %>
               <%= hidden_field_tag 'advance_search', true %>
             </div>
-
           </div>
         </div>
       </div>
@@ -85,13 +84,9 @@
                   </div>
                   <div class="influencer-data">
                     <div class="influencer-name"> <%= influencer.full_name.present? ? influencer.full_name : 'User' %> </div>
-
                     <p class="influencer-address"><%= influencer.location %></p>
-
                     <p class="title"> <%= influencer.industry.present? ? influencer.industry : 'Entrepreneur' %></p>
-
                     <p class="influencer-biography"><%= influencer.short_bio %> </p>
-
                     <div>
                       <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;<%= influencer.facebook_accounts.pluck(:number_of_followers).max %>
                     </div>
