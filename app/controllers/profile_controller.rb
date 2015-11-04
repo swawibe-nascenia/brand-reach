@@ -1,5 +1,6 @@
 class ProfileController < ApplicationController
   skip_before_action :check_profile_completion
+  skip_before_filter :authenticate_user!, only: [:verify_brand_profile]
   before_action :set_user, only: [:profile, :update, :update_accounts, :update_password, :toggle_available, :deactivate_account, :show_settings, :update_profile_settings, :contact_us_save]
 
   respond_to :html, :js
@@ -129,6 +130,23 @@ class ProfileController < ApplicationController
   end
 
   def faqs
+  end
+
+  def verify_brand_profile
+    token = params[:token]
+    user = User.find(params[:id])
+    @success = true
+
+    if user && user.channel_name == token
+      password = Devise.friendly_token.first(8)
+      user.password = password
+      user.password_confirmation = password
+      user.verified = true
+      user.save
+      CampaignMailer.account_activate_notification_to_user(user, password).deliver_now
+    else
+      @success = false
+    end
   end
 
   private

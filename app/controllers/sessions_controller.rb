@@ -17,11 +17,11 @@ class SessionsController < Devise::SessionsController
         if user
           # authentication success
           Rails.logger.info "------------------- current sign in success for #{ user.inspect }"
-          @login_success
+          @login_success = true
           sign_in(resource_name, user)
 
           respond_to do |format|
-            format.js { redirect_to after_sign_in_path_for(resource) }
+            format.js { }
             format.html { redirect_to after_sign_in_path_for(resource) }
           end
         else

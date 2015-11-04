@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       post :update_profile_settings
       post :contact_us_save
       get :faqs
+      get :verify_brand_profile
     end
   end
 

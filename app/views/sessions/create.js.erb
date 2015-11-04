@@ -1,6 +1,5 @@
 <% if @login_success %>
         window.location.reload();
-
 <% else %>
     $('#sign-in-validation-error').html("<%= @message %>" );
     console.log("-------------------------------<%= @message %>");
