@@ -152,7 +152,27 @@ $(function(){
     });
 
 
-});
+//     ajax sing up
+
+        $("form#ajax_signup").submit(function(e){
+            e.preventDefault(); //This prevents the form from submitting normally
+            var user_info = $(this).serializeObject();
+            console.log("About to post to /users: " + JSON.stringify(user_info));
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:3000/users",
+                data: user_info,
+                success: function(json){
+                    console.log("The Devise Response: " + JSON.stringify(json));
+                    //alert("The Devise Response: " + JSON.stringify(json));
+                },
+                dataType: "json"
+            });
+        });
+
+    });
+
+
 // end of document.ready() method
 
 function makeMessageRead(campainId){

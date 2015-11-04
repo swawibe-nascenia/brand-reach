@@ -23,8 +23,8 @@
               <li><a href="<%= profile_profile_index_path %>">PROFILE</a></li>
               <li><a href="<%= destroy_user_session_path %>">LOG OUT</a></li>
           <% else %>
-              <li><a href="<%= new_user_session_path %>">LOGIN</a></li>
-              <li><%= link_to 'SIGN UP FREE', '#loginModal', 'data-toggle' => 'modal', :class => 'btn-custom btn-theme text-white' %></li>
+              <li><a href="#signin", data-toggle='modal' >LOGIN</a></li>
+              <li><%= link_to 'SIGN UP FREE', '#signup', 'data-toggle' => 'modal', :class => 'btn-custom btn-theme text-white' %></li>
           <% end %>
         </ul>
       </div>
@@ -32,7 +32,8 @@
   </div>
 </div>
 
-<%= render partial: 'shared/login_social_network_modal'%>
+<%= render partial: 'shared/sign_up_modal'%>
+<%= render partial: 'shared/sign_in_modal'%>
 
 <div class="identity">
   <div class="wrapper-content">

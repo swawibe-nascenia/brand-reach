@@ -1,0 +1,7 @@
+<% if @login_success %>
+        window.location.reload();
+
+<% else %>
+    $('#validation-error').html("<%= @message %>" );
+    console.log("-------------------------------<%= @message %>");
+<% end %>

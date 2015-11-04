@@ -43,6 +43,7 @@ gem 'handlebars_assets'
 gem 'flag_icon_css_rails'
 gem 'chart-js-rails'
 gem 'validates_zipcode'
+gem 'parsley-rails'
 
 # gem 'haml'
 # gem 'haml-rails'

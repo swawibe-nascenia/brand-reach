@@ -1,6 +1,73 @@
-<h1>Editing Offer</h1>
+<div aria-hidden="false" style="display: block;" class="modal fade in" id="signup">
+  <div style="height: 863px;" class="modal-backdrop fade in"></div>
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button area-label="Close" class="close first_close" data-dismiss="modal" tyle="button"></button>
+        <h3 class="modal-title">Create an Account</h3>
+      </div>
+      <div class="modal-body model-iner">
+        <div class="row">
+          <div class="col-md-12">
+            <input name="role" id="role_seeker" value="seeker" class="signup-role" checked="checked" type="radio">
+            <label for="role_seeker" style="color: #666; font-weight: normal; font-size: 15px; margin-left: 10px;">I'm
+              an Advice Seeker</label>
+            <br>
+            <input name="role" id="role_pilot" value="pilot" class="signup-role" type="radio">
+            <label for="role_pilot" style="color: #666; font-weight: normal; font-size: 15px; margin-left: 10px;">I'm a
+              Pilot</label>
+          </div>
+        </div>
+        <div class="row" id="seeker-signup">
+          <div class="col-md-12" style="margin: 30px 0;">
+            <p>Account Set Up</p>
 
-<%= render 'form' %>
+            <div class="input_container">
+              <div class="label_l">Email</div>
+              <input data-parsley-id="6021" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[email]" id="user_email" type="text">
+              <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
+            </div>
+            <div class="input_container">
+              <div class="label_l">Password</div>
+              <input data-parsley-id="6194" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[password]" id="user_password" type="password">
+              <ul id="parsley-id-6194" class="parsley-errors-list"></ul>
+            </div>
+            <div class="input_container">
+              <div class="label_l">Re-type Password</div>
+              <input data-parsley-id="1949" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[password_confirmation]" id="user_password_confirmation" type="password">
+              <ul id="parsley-id-1949" class="parsley-errors-list"></ul>
+            </div>
+            <p>Agreement</p>
 
-<%= link_to 'Show', @offer %> |
-<%= link_to 'Back', offers_path %>
+            <div class="remember">
+              <div class="checkbox checkbox-primary">
+                <input data-parsley-id="2981" data-parsley-multiple="agreement" name="agreement" id="agreement" value="{:class=&gt;&quot;styled&quot;}" type="checkbox">
+                <label for="agreement">
+                  I have read Takeoff's
+                  <a data-toggle="modal" href="#terms">Terms &amp; Conditions</a>
+                  and agree with them
+                </label>
+              </div>
+              <ul id="parsley-id-multiple-agreement" class="parsley-errors-list"></ul>
+            </div>
+            <button class="btn btn-default save_btn" type="submit">SUBMIT</button>
+            </form>
+          </div>
+        </div>
+        <div class="row" id="pilot-signup" style="display: none">
+          <div class="col-md-12">
+            <div class="col-md-12 no-left">
+              <p>Takeoff accepts pilots only on invitation. If you think your worth to
+                be a pilot kindly send us your details. We would contact you.</p>
+            </div>
+            <form novalidate="" data-parsley-validate="true" action="/request_account" accept-charset="UTF-8" data-remote="true" method="post">
+
+              <button class="btn btn-default save_btn" type="submit">SUBMIT</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
