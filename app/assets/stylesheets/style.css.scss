@@ -51,7 +51,15 @@ body {
 .btn-circle:active{
     color: #000000;
 }
-
+.btn-modal-submit{
+  background-color: #e23f3a;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+.btn-modal-submit:hover{
+  color: #ffffff;
+}
 .rounded-input-box{
     border-radius: 20px !important;
     height: 36px;
@@ -117,7 +125,6 @@ body {
 
 .total-follower-data-color{
     color: #32ccff;
-
 }
 
 .page-view-data-color{
@@ -433,7 +440,7 @@ a.center-block.text-center.user-status.small
 .header-bottom-margin{
     margin-top: 3px;
     color: #dddddd;
-    box-shadow: 0px 1px 1px #dddddd;
+    box-shadow: 0 1px 1px #dddddd;
 }
 
 
@@ -756,7 +763,6 @@ th{
   list-style: square;
   padding-top: 5px;
 }
-<<<<<<< HEAD
 .color-brand{
   color: #32ccfe
 }
