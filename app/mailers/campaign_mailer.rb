@@ -59,6 +59,6 @@ class CampaignMailer < ApplicationMailer
     @user = user
     @password = password
     Rails.logger.info "========================== User: #{user.inspect} account has been successfully activated.================"
-    mail(from: 'hasanuzzaman@nascenia.com', to: user.email, subject: 'New user sign up to Bandreach')
+    mail(from: 'hasanuzzaman@nascenia.com', to: user.email, subject: 'Bandreach account activate')
   end
 end
