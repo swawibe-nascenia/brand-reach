@@ -481,7 +481,7 @@ ul.menu-item li {
   font-family: Varela;
   padding: 13px 17px;
 }
-.contact-us .contact-form input[type="text"],input[type="email"],input[type="number"]{
+.contact-us .contact-form input[type="text"],input[type="email"],input[type="tel"]{
   height: 48px;
 }
 .form-group{
@@ -624,4 +624,8 @@ ul.menu-item li {
 
 #myNavbar .current {
   color: #00aeef;
+}
+
+.few-brand {
+  letter-spacing: -0.6px;
 }
