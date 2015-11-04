@@ -1,19 +1,28 @@
 class RegistrationsController < Devise::RegistrationsController
   respond_to :html, :js, :json
 
+  def new
+    redirect_to root_path
+  end
+
   def create
-    @user = User.create(user_params.except(:user_type))
+    if  request.format.symbol == :html
+      redirect_to root_path
+    end
+    @user = User.new(user_params)
+    password = Devise.friendly_token.first(8)
+    @user.password = password
+    @user.password_confirmation = password
+    @user.user_type = 0
 
     @success = true
     message = []
 
-    if @user.valid?
-      @user.update_columns({ user_type: params[:user][:user_type], verified: false })
+    if @user.save
       message << <<EOF
                         Your information submitted successfully.
                         When account activated we will notify you by email.
 EOF
-      flash['notice'] = message
     else
       message = @user.errors.full_messages
       @success = false
@@ -23,12 +32,14 @@ EOF
     respond_to do |format|
       format.js{ @user = @user }
       format.html do
+        flash[:notice] = message
         redirect_to new_user_registration_path
+
       end
     end
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :user_type)
+    params.require(:user).permit(:email, :first_name, :last_name, :position, :company_name, :phone, :short_bio)
   end
 end

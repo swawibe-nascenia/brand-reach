@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   # ----------------------------------------------------------------------
   # == Callbacks == #
   # ----------------------------------------------------------------------
-  after_create :generate_channel_name
+  after_create :generate_channel_name, :send_mail
   after_save :save_actual_country_state
   after_update :update_profile_completion_status
 
@@ -194,6 +194,10 @@ class User < ActiveRecord::Base
 
     Rails.logger.info "Successfully user #{self} completed his profile"
     update_column(:profile_complete, true)
+  end
+
+  def send_mail
+
   end
 
 end

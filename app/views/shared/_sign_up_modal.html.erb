@@ -22,6 +22,8 @@
           <div class="col-md-12">
 
             <div id="validation-error" class="text-danger"></div>
+            <div id="success-message" class="text-success"></div>
+            </br>
             <form id="ajax-signup" method="post" accept-charset="UTF-8" action="/users" data-remote="true" data-parsley-validate="">
 
               <p>Sign up by creating an account</p>
@@ -44,26 +46,19 @@
                 <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
               </div>
 
-              <p>Account Set Up</p>
-
               <div class="input_container">
-                <div class="label_l">Email</div>
-                <input data-parsley-id="6021" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[email]" id="user_email" type="text">
+                <div class="label_l">Phone</div>
+                <input data-parsley-id="6021" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[phone]" id="user_phone" type="text">
                 <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
               </div>
               <div class="input_container">
-                <div class="label_l">Password</div>
-                <input data-parsley-id="6194" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[password]" id="user_password" type="password">
+                <div class="label_l">Company Name</div>
+                <input data-parsley-id="6194" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[company_name]" id="user_company_name" type="text">
                 <ul id="parsley-id-6194" class="parsley-errors-list"></ul>
               </div>
               <div class="input_container">
-                <div class="label_l">Re-type Password</div>
-                <input data-parsley-id="1949" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[password_confirmation]" id="user_password_confirmation" type="password">
-                <ul id="parsley-id-1949" class="parsley-errors-list"></ul>
-              </div>
-
-              <div class="field">
-                <%= hidden_field_tag 'user[user_type]', '0' %>
+                <textarea name="user[short_bio]" data-parsley-id="2000" rows="5" cols="50" placeholder="company short bio" required=""></textarea>
+                <ul id="parsley-id-2000" class="parsley-errors-list"></ul>
               </div>
 
               <button class="btn btn-modal-submit" type="submit">SUBMIT</button>

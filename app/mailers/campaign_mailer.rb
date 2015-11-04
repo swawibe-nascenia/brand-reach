@@ -48,4 +48,10 @@ class CampaignMailer < ApplicationMailer
     Rails.logger.info "========================== Contact us mail send to .............================"
     mail(to: 'swawibe@bdipo.com', subject: contact_us.category)
   end
+
+  def sing_up_notification_to_admin(user)
+    @user = user
+    Rails.logger.info "========================== Send User: #{use.inspect} sign up notification to admin.================"
+    mail(to: 'swawibe@bdipo.com', subject: 'New your sign up to Bandreach')
+  end
 end
