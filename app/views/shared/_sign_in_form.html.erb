@@ -1,0 +1,45 @@
+<div class="modal-body model-iner">
+  <div class="row">
+    <div class="col-md-12">
+      <input name="sign-in-role" id="signin-role_influencer" value="1" class="signin-role" checked="checked" type="radio">
+      <label for="signin-role_influencer">I'm an Influencer</label>
+      <br>
+      <input name="sign-in-role" id="signin-role_brand" value="0" class="signin-role" type="radio">
+      <label for="signin-role_brand">I'm a Brand</label>
+    </div>
+  </div>
+  <div class="row hidden" id="brand-signin">
+    <div class="col-md-12">
+      <div id="sign-in-validation-error" class="text-danger"></div>
+      <form method="post" accept-charset="UTF-8" action="/users/sign_in" data-remote="true" data-parsley-validate="">
+        <div class="input_container">
+          <div class="label_l">Email</div>
+          <input data-parsley-id="6021" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[email]" id="user_email" type="text">
+          <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
+        </div>
+        <div class="input_container">
+          <div class="label_l">Password</div>
+          <input data-parsley-id="6194" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[password]" id="user_password" type="password">
+          <ul id="parsley-id-6194" class="parsley-errors-list"></ul>
+        </div>
+         <div>
+           <input type="hidden" value="0" name="user[remember_me]">
+           <input id="user_remember_me" type="checkbox" name="user[remember_me]" value="1">
+           <label for="user_remember_me">Remember me</label>
+
+         </div>
+
+        <button class="btn btn-modal-submit" type="submit">SUBMIT</button>
+        <%= link_to 'Forgot your password', new_password_path(:user) %><br />
+      </form>
+    </div>
+  </div>
+
+  <div class="row" id="influencer-signin">
+    <div class="col-md-12">
+      <div class="col-md-12 no-left">
+      </div>
+      <a href="<%= user_omniauth_authorize_path('facebook') %>">Facebook &nbsp; &nbsp; <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
+    </div>
+  </div>
+</div>

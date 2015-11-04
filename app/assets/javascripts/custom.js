@@ -170,6 +170,28 @@ $(function(){
             });
         });
 
+    // ajax sign in
+
+    var value = $("input[name='sign-in-role']:checked").val();
+
+    showSignUpInfo(value);
+
+    $("input[name='sign-in-role']").change(function () {
+        var value = $("input[name='sign-in-role']:checked").val();
+        console.log('selected user type is ' + value);
+        showSignUpInfo(value);
+    });
+
+    function showSignUpInfo(id){
+        if (id == '1') {
+            $('#brand-signin').addClass('hidden');
+            $('#influencer-signin').removeClass('hidden');
+        } else {
+            $('#brand-signin').removeClass('hidden');
+            $('#influencer-signin').addClass('hidden');
+        }
+    }
+
     });
 
 
