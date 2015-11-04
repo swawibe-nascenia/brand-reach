@@ -5,14 +5,12 @@ class PublicController < ApplicationController
 
   respond_to :html
 
-  # use this for go to influencers public home page
+  # nfluencers public home page
   def home
-
   end
 
-  # use this for go to Brands public home page
+  # Brands public home page
   def brand_home
-
   end
 
   def dashboard
@@ -26,7 +24,6 @@ class PublicController < ApplicationController
   		redirect_to root_path
   	end
   	@resp = @service.get_info(params[:query])
-
   end
 
   def get_posts

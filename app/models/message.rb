@@ -47,8 +47,10 @@ class Message < ActiveRecord::Base
   def send_message_through_pubnub
     subscriber_chanels = User.where(id: [ sender_id, receiver_id]).pluck(:channel_name)
     sender_profile_picture_url = User.find(sender_id).profile_picture
+
     Rails.logger.info 'Send pubnub notification for message creation'
-   Rails.logger.info subscriber_chanels
+    Rails.logger.info subscriber_chanels
+
     subscriber_chanels.each do |channel|
       Rails.logger.info channel
       $pubnub_server_subscription.publish(
@@ -66,7 +68,6 @@ class Message < ActiveRecord::Base
           callback: lambda{ |info| Rails.logger.info 'Send message to pubnub channel' + info }
       )
     end
-
   end
 
   # ----------------------------------------------------------------------

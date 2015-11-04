@@ -41,7 +41,6 @@ class ProfileController < ApplicationController
   end
 
   def show_settings
-
   end
 
   def edit_profile_picture
@@ -130,7 +129,6 @@ class ProfileController < ApplicationController
   end
 
   def faqs
-
   end
 
   private

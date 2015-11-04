@@ -174,7 +174,6 @@ class User < ActiveRecord::Base
         end
       end
 
-
       INFLUENCER_PROFILE_COMPLETENESS.each do |field|
         unless send("#{field}?")
           update_column(:profile_complete, false)
