@@ -863,13 +863,27 @@ th {
   margin: 0 0 30px;
 }
 
-#signup .modal-content {
+#signup .modal-dialog {
   width: 568px;
 }
+
+#login .modal-dialog{
+  width: 400px;
+}
+
 
 #signup .modal-header {
   border-bottom: medium none;
   padding: 20px 30px;
+}
+
+@media (max-width: 550px) {
+  #signup .modal-dialog {
+    width: 95%;
+  }
+  #signup .modal-header {
+    padding: 20px 10px;
+  }
 }
 
 .modal-header .close {
@@ -933,6 +947,9 @@ th {
 
 #mfPreviewBar {
   display: none;
+}
+textarea#company-short-bio{
+  width: 100%;
 }
 
 
