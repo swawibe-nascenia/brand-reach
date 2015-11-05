@@ -38,12 +38,17 @@
   color: black;
   font-weight: lighter;
   padding-top: 16px;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 99;
-  background-color: white;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99;
+    background-color: white;
+  }
 }
 
 .navbar{
@@ -216,7 +221,7 @@ ul.menu-item li {
 .navbar-nav > li > a.btn-custom{
   margin-left: 20px;
   margin-right: 0;
-  padding: 10px;
+  padding: 9px 10px;
   height: 36px;
   font-weight: 600;
   font-size: 13px;
@@ -277,7 +282,7 @@ ul.menu-item li {
 }
 @media screen and (max-width: 500px) {
   .statistics .stats-block {
-    width: 90%;
+    width: 95%;
     text-align: center
   }
 }
@@ -358,24 +363,6 @@ ul.menu-item li {
   text-align: center;
 }
 
-@media screen and (max-width: 800px) {
-  .about-us-block .textual {
-    padding-left: 15%;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .about-us-block .textual {
-    padding-left: 0;
-  }
-}
-
-@media screen and (max-width: 360px) {
-  .about-us-block .textual {
-    padding-left: 9%;
-  }
-}
-
 .about-us-block .leverage {
   width: 60%;
   text-align: center;
@@ -386,34 +373,62 @@ ul.menu-item li {
   text-align: center;
 }
 
+//@media screen and (max-width: 800px) {
+//  .about-us-block .textual {
+//    padding-left: 15%;
+//  }
+//}
+//
+//@media screen and (max-width: 500px) {
+//  .about-us-block .textual {
+//    padding-left: 0;
+//  }
+//}
+//
+//@media screen and (max-width: 360px) {
+//  .about-us-block .textual {
+//    padding-left: 9%;
+//  }
+//}
+//
+//@media screen and (max-width: 750px) {
+//  .about-us-block {
+//    width: 100%;
+//  }
+//  .about-us-block-container {
+//    text-align: center;
+//  }
+//
+//  .about-us .text-description {
+//    font-size: 35px;
+//  }
+////}
+//
+
 @media screen and (max-width: 900px) {
   .about-us {
     padding-right: 20px;
   }
 }
-@media screen and (max-width: 750px) {
+
+@media screen and (max-width: 768px){
+
   .about-us-block {
-    width: 30%;
+    display: inline-block;
+    width: 95%;
   }
-  .about-us-block-container {
+
+  .about-us-block span {
     text-align: center;
   }
 
   .about-us .text-description {
-    font-size: 35px;
+    font-size: 28px;
   }
-}
 
-@media screen and (max-width: 500px){
-
-  .about-us .text-description {
-    font-size: 25px;
-  }
-  .about-us-block img {
-    width: 75px;
-  }
   .about-us-block .textual {
-    font-size: 12px;
+    padding-left: 0;
+    width: auto;
   }
 }
 
@@ -446,21 +461,35 @@ ul.menu-item li {
     padding-right: 20px;
   }
 }
-@media screen and (max-width: 750px) {
-  .brands-block span {
-    width: 30%;
-  }
+
+@media screen and (max-width: 768px){
   .brands-block {
+    display: inline-block;
+  }
+
+  .brands-block span {
     text-align: center;
+    width: 95%;
+    margin-bottom: 30px;
   }
 }
 
-@media screen and (max-width: 500px){
+//@media screen and (max-width: 750px) {
+//  .brands-block span {
+//    width: 30%;
+//  }
+//  .brands-block {
+//    text-align: center;
+//  }
+//}
+//
+//@media screen and (max-width: 500px){
+//
+//  .brands-block span img {
+//    width: 75px;
+//  }
+//}
 
-  .brands-block span img {
-    width: 75px;
-  }
-}
 
 
 .contact-us {
@@ -522,7 +551,7 @@ ul.menu-item li {
 }
 @media screen and (max-width: 600px){
   .footer {
-    height: 98px;
+    //height: 98px;
   }
 }
 
@@ -654,4 +683,49 @@ ul.menu-item li {
 
 #mfPreviewBar {
   display: none;
+}
+
+@media only screen and (max-width: 767px) {
+
+  .my-nav-bar{
+    float: none;
+    text-align: center;
+  }
+
+  .navbar-nav > li > a.btn-custom {
+    margin-right: 16px;
+  }
+
+  .navbar-collapse.in {
+    overflow-y: visible ;
+  }
+
+  .contact-form .btn-submit {
+    width: 100%;
+    margin-right: 10px;
+  }
+
+  .footer-info-padding, .contact-form .text-top, .brands .few-brand, .about-us .text-top, .statistics .text-top {
+    text-align: center;
+  }
+
+  .statistics {
+    padding-left: 20px;
+  }
+
+  .statistics .text-top {
+    margin-left: -30px;
+  }
+
+  .identity {
+    margin-top: 0;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+  .statistics .posts-padding {
+    width: 110%;
+  }
+
 }
