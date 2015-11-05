@@ -1,5 +1,6 @@
 <% if @success %>
-    $('#success-message').html('Your information submitted successfully.When account activated we will notify you by email.');
+    $('#request-sent').modal('show');
+    $('#signup').modal('hide');
 <% else %>
     console.log('---------------- render sign up errors-----------------------' );
     $('#success-message').html('');
