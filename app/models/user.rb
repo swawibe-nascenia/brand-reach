@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   scope :influencers, ->{ where( user_type: user_types[:influencer], is_active: true)}
-  scope :brands, ->{ where( user_type: user_types[:brand])}
+  scope :brands, ->{ where( user_type: user_types[:brand], is_active: true)}
 
   # ----------------------------------------------------------------------
   # == Instance methods == #
