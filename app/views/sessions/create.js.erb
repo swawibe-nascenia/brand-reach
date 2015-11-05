@@ -1,6 +1,6 @@
 <% if @login_success %>
         window.location.reload();
 <% else %>
-    $('#sign-in-validation-error').html("<%= @message %>" );
-    console.log("-------------------------------<%= @message %>");
+console.log("-------------------------------<%= @messages %>");
+$('#sign-in-validation-error').html("<%= j render(:partial => 'shared/errors', :locals => { messages: @messages }) %>" );
 <% end %>

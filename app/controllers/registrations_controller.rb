@@ -16,23 +16,23 @@ class RegistrationsController < Devise::RegistrationsController
     @user.user_type = 0
 
     @success = true
-    message = []
+    @messages = []
 
     if @user.save
-      message << <<EOF
+      @messages << <<EOF
                         Your information submitted successfully.
                         When account activated we will notify you by email.
 EOF
     else
-      message = @user.errors.full_messages
+      @messages = @user.errors.full_messages
       @success = false
     end
 
     Rails.logger.info "----------------user is -----------------------#{@user}------------------"
     respond_to do |format|
-      format.js{ @user = @user }
+      format.js{ }
       format.html do
-        flash[:notice] = message
+        flash[:notice] = @messages
         redirect_to new_user_registration_path
 
       end

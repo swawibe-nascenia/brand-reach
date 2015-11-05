@@ -6,7 +6,7 @@ class SessionsController < Devise::SessionsController
     temp_user = User.find_by_email(params[:user]['email'])
 
     @login_success = false
-
+    @messages = []
     Rails.logger.info "------------------- temporary user by email #{ temp_user.inspect }"
 
     if temp_user
@@ -29,21 +29,21 @@ class SessionsController < Devise::SessionsController
           Rails.logger.info "------------------- current sign in authentication fail for #{ user.inspect }"
 
           respond_to do |format|
-            format.js { @message = 'Email, password not matching' }
+            format.js { @messages << 'Email, password not matching' }
             format.html { flash.now[:error] = 'Email, password not matching' }
           end
         end
       else
         #   un verified user
         respond_to do |format|
-          format.js { @message = 'Your account is not active yet' }
+          format.js { @messages << 'Your account is not active yet' }
           format.html { flash.now[:error] = 'Your account is not active yet' }
         end
       end
     else
       #   user not found by email
       respond_to do |format|
-        format.js { @message = 'This e-mail ID was not found.' }
+        format.js { @messages << 'This e-mail ID was not found.' }
         format.html { flash.now[:error] = 'This e-mail ID was not found.' }
       end
     end

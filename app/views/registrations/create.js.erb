@@ -1,8 +1,7 @@
 <% if @success %>
     $('#success-message').html('Your information submitted successfully.When account activated we will notify you by email.');
-    $('#validation-error').html('');
 <% else %>
     console.log('---------------- render sign up errors-----------------------' );
     $('#success-message').html('');
-    $('#validation-error').html("<%= j render 'shared/show_errors', :object => @user %>");
+    $('#validation-error').html("<%= j render(:partial => 'shared/errors', :locals => { messages: @messages }) %>" );
 <% end %>

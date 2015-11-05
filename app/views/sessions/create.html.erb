@@ -1,13 +1,2 @@
-<h2>Sign in</h2>
 
-<%= form_for(:user, :url => session_path(:user)) do |f| %>
-    <%= f.text_field :email %>
-    <%= f.password_field :password %>
-    <%= f.check_box :remember_me %>
-    <%= f.label :remember_me %>
-    <%= f.submit 'Sign in' %>
-<% end %>
-
-<a href="<%= user_omniauth_authorize_path('facebook') %>"> Sign Up With Facebook  </a>
-<br>
-<%= render :partial => 'devise/shared/links' %>
+<%= render 'shared/sign_in_form' %>
