@@ -57,6 +57,7 @@ class User < ActiveRecord::Base
   validates :phone, format: { with: /(^[\+]?[0-9]+[-]?[0-9]+[-]?[0-9]+$)/, message: 'Number format is not correct.' }, if: 'phone.present?'
   validates_confirmation_of :password
   validates :zip_code, zipcode: { country_code_attribute: :country }, if: 'zip_code.present?'
+  # validates :first_name, :last_name, :company_name, :industry, :phone, :street_address, :city, :zip_code, presence: true
 
   # ----------------------------------------------------------------------
   # == Callbacks == #
