@@ -20,9 +20,11 @@
           <li><%= link_to 'BRANDS', brand_home_public_index_path, class: current_path(brand_home_public_index_path) %></li>
           <li id="about"><a href="#about_us">ABOUT US</a></li>
           <% if user_signed_in? %>
-              <li><a href="<%= profile_profile_index_path %>">PROFILE</a></li>
+              <li><a href="<%= profile_profile_index_path %>">DASHBOARD</a></li>
+              <li><a href="<%= faqs_public_index_path %>">FAQs</a></li>
               <li><a href="<%= destroy_user_session_path %>">LOG OUT</a></li>
           <% else %>
+              <li><a href="<%= faqs_public_index_path %>">FAQs</a></li>
               <li><a href='#signin'  data-toggle = 'modal'>LOGIN</a></li>
               <li><%= link_to 'SIGN UP FREE', '#signup', 'data-toggle' => 'modal', :class => 'btn-custom btn-theme text-white raleway-semibold' %></li>
           <% end %>

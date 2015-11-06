@@ -1,0 +1,112 @@
+<style>
+  .expandable{
+      cursor: pointer;
+  }
+</style>
+
+<div class="container">
+  <div class='panel-group'>
+    <div class='panel panel-primary'>
+      <div class='panel-heading panelHeading expandable'>
+        <h4 class='panel-title'>1. User Guide for All Members</h4>
+      </div>
+      <div class='panel-body panelBody' style='display:none;'>
+        <div class='panel-group'>
+          <div class='panel panel-primary'>
+            <div class='panel-heading panelHeading expandable'>
+              <h4 class='panel-title'>Q1</h4>
+
+            </div>
+            <div class='panel-body panelBody' style='display:none;'>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </div>
+          <div class='panel panel-primary'>
+            <div class='panel-heading panelHeading expandable'>
+              <h4 class='panel-title'>Q2</h4>
+
+            </div>
+            <div class='panel-body panelBody' style='display:none;'>
+              <p>Pellentesque est odio, hendrerit vitae nisi eget, bibendum porttitor tellus. Aliquam vel luctus
+                mauris.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- panel -->
+    <div class='panel panel-primary'>
+      <div class='panel-heading panelHeading expandable'>
+        <h4 class='panel-title'>2. A guide for Brand.</h4>
+
+      </div>
+      <div class='panel-body panelBody' style='display:none;'>
+        <div class='panel-group'>
+          <div class='panel panel-primary'>
+            <div class='panel-heading panelHeading expandable'>
+              <h4 class='panel-title'>Q1</h4>
+
+            </div>
+            <div class='panel-body panelBody' style='display:none;'>
+              <p>Duis vitae viverra dui.</p>
+            </div>
+          </div>
+          <div class='panel panel-primary'>
+            <div class='panel-heading panelHeading expandable'>
+              <h4 class='panel-title'>Q2</h4>
+
+            </div>
+            <div class='panel-body panelBody' style='display:none;'>
+              <p>Maecenas magna nisi, consequat quis felis sit amet, placerat blandit erat.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='panel panel-primary'>
+      <div class='panel-heading panelHeading expandable'>
+        <h4 class='panel-title'>3. A guide for Influencer.</h4>
+
+      </div>
+      <div class='panel-body panelBody' style='display:none;'>
+        <div class='panel-group'>
+          <div class='panel panel-primary'>
+            <div class='panel-heading panelHeading expandable'>
+              <h4 class='panel-title'>Q1</h4>
+            </div>
+            <div class='panel-body panelBody' style='display:none;'>
+              <p>Duis vitae viverra dui.</p>
+            </div>
+          </div>
+          <div class='panel panel-primary'>
+            <div class='panel-heading panelHeading expandable'>
+              <h4 class='panel-title'>Q2</h4>
+
+            </div>
+            <div class='panel-body panelBody' style='display:none;'>
+              <p>Maecenas magna nisi, consequat quis felis sit amet, placerat blandit erat.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.panelHeading').click(function (e) {
+            e.stopPropagation();
+            var $sliderContent = $(this).next('.panelBody'),
+                    $panelBody = $(this).closest('.panel-group').find('.panel-body');
+            $panelBody.not($sliderContent.slideToggle("fast", changeInnerState)).find('.panel-body:visible').addBack().slideUp();
+        });
+
+    });
+
+    function changeInnerState() {
+        var $this = $(this);
+        if ($this.is(':hidden')) $this.find('.panel-body').slideUp();
+    }
+</script>

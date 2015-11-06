@@ -39,6 +39,9 @@ class PublicController < ApplicationController
     redirect_to home_public_index_path
   end
 
+  def faqs
+  end
+
 protected
 	def set_service
 		# @service = InsightService.new current_user

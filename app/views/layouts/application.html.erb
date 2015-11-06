@@ -187,7 +187,7 @@
     <section class="header-content">
       <div class="row">
         <div class="about-welcome">
-          <%= link_to 'FAQs', faqs_profile_index_path, class: 'about' %>
+          <%= link_to 'FAQs', faqs_public_index_path, class: 'about' %>
 
           <p class=" welcome"> Welcome back, <%= current_user.try(:full_name).present? ? current_user.full_name : 'USER' %></p>
           <a href="<%= destroy_user_session_path %>" class="login-link">

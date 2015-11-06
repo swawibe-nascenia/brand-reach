@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       get :brand_home
       get :dashboard
       post :get_in_touch
+      get :faqs
     end
   end
 
