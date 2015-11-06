@@ -375,6 +375,15 @@ only screen and (max-width: 460px) {
     .engagement_table > tbody > tr > td:nth-of-type(3):before { content: "Likes : ";  font-weight: bold; }
     .engagement_table > tbody > tr > td:nth-of-type(4):before { content: "Comments : ";  font-weight: bold; }
     .engagement_table > tbody > tr > td:nth-of-type(5):before { content: "Shares: ";  font-weight: bold; }
+
+    .brand_campaign_performance_table > tbody > tr > td:nth-of-type(1):before { content: "Campaign Name : "; font-weight: bold; }
+    .brand_campaign_performance_table > tbody > tr > td:nth-of-type(2):before { content: "Post Likes : ";  font-weight: bold; }
+    .brand_campaign_performance_table > tbody > tr > td:nth-of-type(3):before { content: "Reach : ";  font-weight: bold; }
+
+    .brand_campaign_engagement_table > tbody > tr > td:nth-of-type(1):before { content: "Campaign Name : "; font-weight: bold; }
+    .brand_campaign_engagement_table > tbody > tr > td:nth-of-type(2):before { content: "Likes : ";  font-weight: bold; }
+    .brand_campaign_engagement_table > tbody > tr > td:nth-of-type(3):before { content: "Comments : ";  font-weight: bold; }
+    .brand_campaign_engagement_table > tbody > tr > td:nth-of-type(4):before { content: "Shares: ";  font-weight: bold; }
 }
 
 .campaign-content {
@@ -644,5 +653,16 @@ only screen and (max-width: 460px) {
 .fb-activity-post {
     width: 350px;
     padding-left: 10px;
+}
+
+@media
+only screen and (max-width: 420px) {
+    .brand-campaign-content {
+        padding: 10px 0px;
+    }
+
+    .brand-campaign-tabs {
+        font-size: 13px;
+    }
 }
 
