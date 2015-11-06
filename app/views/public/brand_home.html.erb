@@ -2,35 +2,6 @@
 
 <% title 'Brand Home' %>
 
-<div class="header">
-  <div class="wrapper-content">
-    <%= image_tag('Logo.png', :class => 'logo', :alt => 'logo') %>
-    <nav class="navbar">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="true">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-
-      <div class="collapse navbar-collapse home-menu" id="myNavbar">
-        <ul class="nav navbar-nav my-nav-bar">
-          <li><%= link_to 'INFLUENCERS', home_public_index_path, class: current_path(home_public_index_path) %></li>
-          <li><%= link_to 'BRANDS', brand_home_public_index_path, class: current_path(brand_home_public_index_path) %></li>
-          <li id="about"><a href="#about_us">ABOUT US</a></li>
-          <% if user_signed_in? %>
-              <li><a href="<%= profile_profile_index_path %>">PROFILE</a></li>
-              <li><a href="<%= destroy_user_session_path %>">LOG OUT</a></li>
-          <% else %>
-              <li><a href="#signin", data-toggle='modal' >LOGIN</a></li>
-              <li><%= link_to 'SIGN UP FREE', '#signup', 'data-toggle' => 'modal', :class => 'btn-custom btn-theme text-white raleway-semibold' %></li>
-          <% end %>
-        </ul>
-      </div>
-    </nav>
-  </div>
-</div>
 
 <%= render partial: 'shared/sign_up_modal'%>
 <%= render partial: 'shared/sign_in_modal'%>
@@ -116,76 +87,6 @@
       <span><a href="#" data-toggle="popover" title="Cream Stone"><%= image_tag('Brand3.png') %></a></span>
       <span><a href="#" data-toggle="popover" title="Harley Davidson"><%= image_tag('Brand4.png') %></a></span>
       <span><a href="#" data-toggle="popover" title="Airtel"><%= image_tag('Brand5.png') %></a></span>
-    </div>
-  </div>
-</div>
-
-<div class="contact-us">
-  <div class="wrapper-content">
-
-    <div class="row contact-form">
-      <div class="col-md-7 col-sm-8 col-xs-12">
-        <div class="text-top col-md-12 helvetica-neue-light"> Get in touch!</div>
-
-        <%= form_tag get_in_touch_public_index_path do %>
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="form-group">
-                  <input type="text" class="form-control" name="full_name" placeholder="Full Name"/>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6 col-sm-6 col-xs-12 clear-padding-margin">
-                <div class="form-group">
-                  <input type="email" class="form-control" name="email" placeholder="Email"/>
-                </div>
-              </div>
-
-              <div class="col-md-6 col-sm-6 col-xs-12 clear-padding-margin only-right-padding">
-                <div class="form-group">
-                  <input type="tel" pattern='(^[\+]?[0-9]+[-]?[0-9]+[-]?[0-9]+$)' class="form-control" name="phone_number" placeholder="Phone Number"/>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="form-group">
-                  <textarea class="form-control" name="message" placeholder="Message" rows="6"></textarea>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <%= submit_tag 'SUBMIT', class: 'btn btn-primary btn-submit raleway-semibold' %>
-              </div>
-            </div>
-        <% end %>
-
-      </div>
-    </div>
-
-  </div>
-  <div class="footer row">
-    <div class="wrapper-content">
-      <div class="col-md-6 col-sm-6 col-xs-12 footer-info-padding">
-        All Rights Reserved <span class="rights-reserved">&reg;</span> Brand Reach | Copyright 2015
-      </div>
-      <div class="col-md-2 col-sm-2  col-xs-12 col-md-offset-4 col-sm-offset-4">
-        <div class="fb-twitter">
-          <a href="#">
-            <i class="fa fa-lg fa-facebook"></i>
-          </a>
-          <span class="space"></span>
-          <a href="#">
-            <i class="fa fa-lg fa-twitter"></i>
-          </a>
-        </div>
-        <div class="clearfix"></div>
-      </div>
     </div>
   </div>
 </div>
