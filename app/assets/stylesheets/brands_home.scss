@@ -339,10 +339,10 @@ ul.menu-item li {
 
 .about-us-block {
   display: inline-block;
-  /*float: left;*/
   vertical-align: top;
   margin-top: 40px;
-  width: 18%;
+  width: 127px;
+  margin-right: 50px;
 }
 
 .about-us-block span {
@@ -357,53 +357,8 @@ ul.menu-item li {
   font-size: 20px;
   font-family: 'Varela', sans-serif;
   font-weight: 400;
-  padding-left: 14px;
-  text-align: left;
-  width: 60%;
   text-align: center;
 }
-
-.about-us-block .leverage {
-  width: 60%;
-  text-align: center;
-}
-
-.about-us-block .scale {
-  width: 70%;
-  text-align: center;
-}
-
-//@media screen and (max-width: 800px) {
-//  .about-us-block .textual {
-//    padding-left: 15%;
-//  }
-//}
-//
-//@media screen and (max-width: 500px) {
-//  .about-us-block .textual {
-//    padding-left: 0;
-//  }
-//}
-//
-//@media screen and (max-width: 360px) {
-//  .about-us-block .textual {
-//    padding-left: 9%;
-//  }
-//}
-//
-//@media screen and (max-width: 750px) {
-//  .about-us-block {
-//    width: 100%;
-//  }
-//  .about-us-block-container {
-//    text-align: center;
-//  }
-//
-//  .about-us .text-description {
-//    font-size: 35px;
-//  }
-////}
-//
 
 @media screen and (max-width: 900px) {
   .about-us {

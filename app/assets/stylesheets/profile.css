@@ -337,8 +337,9 @@
 }
 
 @media (max-width: 480px) {
-    .personal-info-without-fb label, .personal-info-without-fb input, .personal-info-without-fb select, .personal-info-without-fb .form-group textarea {
+    .personal-info-without-fb label, .personal-info-without-fb input, .personal-info-without-fb select, .personal-info-without-fb .form-group textarea, .personal-info-without-fb .form-group textarea.short_bio {
         display: block;
         text-align: left;
+        width: 100%;
     }
 }
