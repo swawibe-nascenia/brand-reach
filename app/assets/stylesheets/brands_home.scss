@@ -33,6 +33,7 @@
 .header {
   color: black;
   font-weight: lighter;
+  border-bottom: 1px solid #fbbb46;
 //  padding-top: 16px;
 }
 
@@ -742,4 +743,7 @@ ul.menu-item li {
 .navbar-toggle{
   padding-right: 0;
   margin-right: 0;
+}
+.last-nav-item{
+  margin-right: -15px;
 }
