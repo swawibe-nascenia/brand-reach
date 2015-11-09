@@ -22,43 +22,6 @@
 <%= stylesheet_link_tag 'brands_home', media: 'all', 'data-turbolinks-track' => true %>
 
 <%#= render partial: 'shared/flash_messages', flash: flash %>
-<style>
-
-    .welcome_bar {
-        background: rgba(0, 201, 243, 1) none repeat scroll 0 0;
-        color: #fff;
-        float: left;
-        font-size: 12px;
-        font-weight: 600;
-        padding: 14px 32px;
-        position: relative;
-        width: 100%;
-    }
-    .welcome_bar .left {
-        float: left;
-    }
-    .welcome_bar .right {
-        float: right;
-    }
-    .welcome_bar .right {
-        float: right;
-    }
-    .welcome_bar p {
-        float: left;
-        margin: 0;
-    }
-    .welcome_bar p a {
-        color: #fff;
-        margin: 0 35px 0 0;
-    }
-    .socialmedia {
-        float: right;
-        margin: 0 0 0 3px;
-    }
-        .socialmedia .space{
-            display: inline-block;
-        }
-</style>
 
 <div class="header">
   <div class="welcome_bar">
@@ -77,6 +40,14 @@
             <span class="space"></span>
             <a href="#">
               <i class="fa fa-lg fa-twitter"></i>
+            </a>
+            <span class="space"></span>
+            <a href="#">
+              <img width="14" height="14" src="<%= image_path('linkedin.png') %>" alt="Linkedin">
+            </a>
+            <span class="space"></span>
+            <a href="#">
+              <img width="14" height="14" src="<%= image_path('google_plus.png') %>" alt="Google Plus">
             </a>
           </div>
         </div>
@@ -188,5 +159,12 @@
   </div>
 </div>
 
+<script src="//cdn.jsdelivr.net/stickynavbar.js/1.1.2/jquery.stickyNavbar.min.js"></script>
+
 </body>
 </html>
+<script>
+    $(function () {
+        $('.logo-container').stickyNavbar();
+    });
+</script>
