@@ -22,9 +22,69 @@
 <%= stylesheet_link_tag 'brands_home', media: 'all', 'data-turbolinks-track' => true %>
 
 <%#= render partial: 'shared/flash_messages', flash: flash %>
+<style>
+
+    .welcome_bar {
+        background: rgba(0, 201, 243, 1) none repeat scroll 0 0;
+        color: #fff;
+        float: left;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 14px 32px;
+        position: relative;
+        width: 100%;
+    }
+    .welcome_bar .left {
+        float: left;
+    }
+    .welcome_bar .right {
+        float: right;
+    }
+    .welcome_bar .right {
+        float: right;
+    }
+    .welcome_bar p {
+        float: left;
+        margin: 0;
+    }
+    .welcome_bar p a {
+        color: #fff;
+        margin: 0 35px 0 0;
+    }
+    .socialmedia {
+        float: right;
+        margin: 0 0 0 3px;
+    }
+        .socialmedia .space{
+            display: inline-block;
+        }
+</style>
 
 <div class="header">
-  <div class="wrapper-content">
+  <div class="welcome_bar">
+    <div class="wrapper-content">
+      <div class="left">Welcome, Guest!</div>
+      <div class="right top_links">
+        <p>
+          <a class="hidden-xs" href="<%= faqs_public_index_path %>">FAQs</a>
+          <a class="hidden-xs" href='#signin'  data-toggle = 'modal'>Login</a>
+        </p>
+        <div class="socialmedia">
+          <div class="fb-twitter">
+            <a href="#">
+              <i class="fa fa-lg fa-facebook"></i>
+            </a>
+            <span class="space"></span>
+            <a href="#">
+              <i class="fa fa-lg fa-twitter"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  <div class="wrapper-content logo-container">
     <%= image_tag('Logo.png', :class => 'logo', :alt => 'logo') %>
     <nav class="navbar">
       <div class="navbar-header">
@@ -41,12 +101,12 @@
           <li><%= link_to 'BRANDS', brand_home_public_index_path, class: current_path(brand_home_public_index_path) %></li>
           <li id="about"><a href="#about_us">ABOUT US</a></li>
           <% if user_signed_in? %>
-              <li><a href="<%= profile_profile_index_path %>">DASHBOARD</a></li>
-              <li><a href="<%= faqs_public_index_path %>">FAQs</a></li>
-              <li><a href="<%= destroy_user_session_path %>">LOG OUT</a></li>
+              <li class="visible-xs-inline"><a href="<%= faqs_public_index_path %>">FAQs</a></li>
+              <li class="visible-xs-inline"><a href="<%= profile_profile_index_path %>">DASHBOARD</a></li>
+              <li class="visible-xs-inline"><a href="<%= destroy_user_session_path %>">LOG OUT</a></li>
           <% else %>
-              <li><a href="<%= faqs_public_index_path %>">FAQs</a></li>
-              <li><a href='#signin'  data-toggle = 'modal'>LOGIN</a></li>
+              <li class="visible-xs-inline"><a href="<%= faqs_public_index_path %>">FAQs</a></li>
+              <li class="visible-xs-inline"><a href='#signin'  data-toggle = 'modal'>LOGIN</a></li>
               <li><%= link_to 'SIGN UP FREE', '#signup', 'data-toggle' => 'modal', :class => 'btn-custom btn-theme text-white raleway-semibold' %></li>
           <% end %>
         </ul>
