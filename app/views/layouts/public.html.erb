@@ -22,38 +22,38 @@
 <%= stylesheet_link_tag 'brands_home', media: 'all', 'data-turbolinks-track' => true %>
 
 <%#= render partial: 'shared/flash_messages', flash: flash %>
-
-<div class="header">
-  <div class="welcome_bar">
-    <div class="wrapper-content">
-      <div class="left">Welcome, Guest!</div>
-      <div class="right top_links">
-        <p>
-          <a class="hidden-xs" href="<%= faqs_public_index_path %>">FAQs</a>
-          <a class="hidden-xs" href='#signin'  data-toggle = 'modal'>Login</a>
-        </p>
-        <div class="socialmedia">
-          <div class="fb-twitter">
-            <a href="#">
-              <i class="fa fa-lg fa-facebook"></i>
-            </a>
-            <span class="space"></span>
-            <a href="#">
-              <i class="fa fa-lg fa-twitter"></i>
-            </a>
-            <span class="space"></span>
-            <a href="#">
-              <img width="14" height="14" src="<%= image_path('linkedin.png') %>" alt="Linkedin">
-            </a>
-            <span class="space"></span>
-            <a href="#">
-              <img width="14" height="14" src="<%= image_path('google_plus.png') %>" alt="Google Plus">
-            </a>
-          </div>
+<div class="welcome_bar">
+  <div class="wrapper-content">
+    <div class="left">Welcome, Guest!</div>
+    <div class="right top_links">
+      <p>
+        <a class="hidden-xs" href="<%= faqs_public_index_path %>">FAQs</a>
+        <a class="hidden-xs" href='#signin'  data-toggle = 'modal'>Login</a>
+      </p>
+      <div class="socialmedia">
+        <div class="fb-twitter">
+          <a href="#">
+            <i class="fa fa-lg fa-facebook"></i>
+          </a>
+          <span class="space"></span>
+          <a href="#">
+            <i class="fa fa-lg fa-twitter"></i>
+          </a>
+          <span class="space"></span>
+          <a href="#">
+            <img width="14" height="14" src="<%= image_path('linkedin.png') %>" alt="Linkedin">
+          </a>
+          <span class="space"></span>
+          <a href="#">
+            <img width="14" height="14" src="<%= image_path('google_plus.png') %>" alt="Google Plus">
+          </a>
         </div>
       </div>
     </div>
-    </div>
+  </div>
+</div>
+<div class="header">
+
 
   <div class="wrapper-content logo-container">
     <%= image_tag('Logo.png', :class => 'logo', :alt => 'logo') %>
@@ -165,6 +165,24 @@
 </html>
 <script>
     $(function () {
-        $('.logo-container').stickyNavbar();
+
+        setTopNav();
+        $(document).scroll(function() {
+            setTopNav();
+        });
+
+        function setTopNav(){
+            var scrollTop = $(document).scrollTop();
+            var sPixel = 60;
+            var windowWidth = $( window ).width();
+            scrollTop = scrollTop > 55 ? 54 : scrollTop;
+            if(scrollTop < 55 && windowWidth > 767){
+                var setValue = sPixel - scrollTop;
+                $('.logo-container').css('padding-top', setValue);
+                console.log('with in onload and set top-padding ' + setValue);
+
+            }
+        }
+
     });
 </script>
