@@ -330,3 +330,8 @@
     color: #aaaaaa;
     margin-top: -15px;
 }
+
+.btn-update:hover, .btn-account:hover {
+    color: white;
+    background-color: #f1b242;
+}

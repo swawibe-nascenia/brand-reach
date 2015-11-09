@@ -501,4 +501,8 @@ only screen and (max-width: 340px) {
     vertical-align: sub;
 }
 
+.btn-download:hover, .btn-withdraw:hover, .btn-influencer-download:hover {
+    color: white;
+    background-color: #f1b242;
+}
 

@@ -282,7 +282,7 @@ ul.menu-item li {
 }
 @media screen and (max-width: 500px) {
   .statistics .stats-block {
-    width: 95%;
+    width: 100%;
     text-align: center
   }
 }
@@ -327,7 +327,7 @@ ul.menu-item li {
   font-family: Helvetica Neue,Roboto,sans-serif;
   font-size: 56px;
   font-weight: 200;
-  line-height: 1;
+  line-height: 1.2;
   margin-top: 15px;
 }
 
@@ -407,7 +407,7 @@ ul.menu-item li {
 
 @media screen and (max-width: 900px) {
   .about-us {
-    padding-right: 20px;
+    //padding-right: 20px;
   }
 }
 
@@ -415,7 +415,7 @@ ul.menu-item li {
 
   .about-us-block {
     display: inline-block;
-    width: 95%;
+    width: 100%;
   }
 
   .about-us-block span {
@@ -458,7 +458,7 @@ ul.menu-item li {
 /*//brand*/
 @media screen and (max-width: 900px) {
   .brands {
-    padding-right: 20px;
+    //padding-right: 20px;
   }
 }
 
@@ -469,7 +469,7 @@ ul.menu-item li {
 
   .brands-block span {
     text-align: center;
-    width: 95%;
+    width: 100%;
     margin-bottom: 30px;
   }
 }
@@ -588,7 +588,7 @@ ul.menu-item li {
 .fb-twitter {
   float: none;
   margin-top: 5px;
-  padding-left: 38%;
+  //padding-left: 38%;
 }
 .fb-twitter a{
   text-decoration: none;
@@ -705,16 +705,16 @@ ul.menu-item li {
     margin-right: 10px;
   }
 
-  .footer-info-padding, .contact-form .text-top, .brands .few-brand, .about-us .text-top, .statistics .text-top {
+  .footer-info-padding, .contact-form .text-top, .brands .few-brand, .about-us .text-top, .statistics .text-top, .identity, .about-us .text-description, .fb-twitter {
     text-align: center;
   }
 
   .statistics {
-    padding-left: 20px;
+    //padding-left: 20px;
   }
 
   .statistics .text-top {
-    margin-left: -30px;
+    //margin-left: -30px;
   }
 
   .identity {
@@ -725,7 +725,21 @@ ul.menu-item li {
 
 @media screen and (max-width: 500px) {
   .statistics .posts-padding {
-    width: 110%;
+    width: 100%;
   }
+}
 
+.influencer-text {
+  width: 460px;
+}
+
+@media screen and (max-width: 500px) {
+  .influencer-text {
+    width: 100%;
+  }
+}
+
+.about-us-block img {
+  height: 127px;
+  width: 127px;
 }

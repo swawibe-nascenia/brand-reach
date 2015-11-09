@@ -243,3 +243,8 @@
     padding-top: 20px;
     padding-bottom: 15px;
 }
+
+.btn-message:hover {
+    color: white;
+    background-color: #f1b242;
+}
