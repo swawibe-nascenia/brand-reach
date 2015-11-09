@@ -342,4 +342,8 @@
         text-align: left;
         width: 100%;
     }
+
+    .street-address-textarea {
+        margin-bottom: 7px;
+    }
 }

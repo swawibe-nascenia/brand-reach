@@ -125,7 +125,7 @@
 
           <h4 class="social-account">SOCIAL ACCOUNTS AND PRICING</h4>
 
-          <%= link_to '<i class="fa fa-plus"></i> ADD ACCOUNT'.html_safe, '#AddAccount', 'data-toggle' => 'modal', :class => 'btn btn-account' %>
+          <button type="button" class="btn btn-account" data-trigger="modal" data-target="AddFacebookAccount" href="javascript:" data-dismiss="modal">MANAGE ACCOUNT</button>
 
           <%= render partial: 'shared/add_account_modal' %>
 
