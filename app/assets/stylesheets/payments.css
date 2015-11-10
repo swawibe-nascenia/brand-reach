@@ -69,10 +69,23 @@
 }
 
 .amount-withdraw input {
-   padding: 5px;
+    padding: 5px;
     width: 30%;
 
 }
+
+@media
+only screen and (max-width: 480px) {
+    .amount-withdraw label, .amount-withdraw input {
+        display: block;
+    }
+
+    .amount-withdraw input {
+        width: 100%;
+    }
+
+}
+
 .influencer-payment-div .btn-withdraw{
     float: right;
     margin-top: 0;
@@ -86,6 +99,19 @@
     font-family: 'Raleway', sans-serif;
     font-size: 11pt;
     text-align: right;
+}
+
+@media only screen and (max-width: 480px) {
+
+    .influencer-payment-div > .payment-balance {
+        margin-left: 0;
+        text-align: left;
+    }
+
+    .influencer-payment-div .btn-withdraw {
+        float: left;
+        margin: 15px 0;
+    }
 }
 
 #transaction-tabs {
@@ -215,7 +241,7 @@ only screen and (max-width: 800px) {
 
 @media
 only screen and (max-width: 380px) {
-    table, thead, tbody, th, td, tr {
+    td, tr {
         display: block;
         border: 1px solid #dddddd;
     }
@@ -233,12 +259,13 @@ only screen and (max-width: 380px) {
         padding: 3px 10px;
     }
 
-    .btn-withdraw {
-        font-size: 10px;
-        color: white;
-        margin: 15px 3px 3px 3px;
-        padding: 3px 10px;
-    }
+    /*.btn-withdraw {*/
+        /*font-size: 10px;*/
+        /*color: white;*/
+        /*margin: 15px 3px 3px 3px;*/
+        /*padding: 3px 10px;*/
+
+    /*}*/
 
     .payment-div > .payment-balance {
         font-size: 8px;
@@ -250,6 +277,14 @@ only screen and (max-width: 380px) {
     .payments_table > tbody > tr > td:nth-of-type(3):before { content: "Transaction ID : ";  font-weight: bold; }
     .payments_table > tbody > tr > td:nth-of-type(4):before { content: "Amount Billed (INR) : ";  font-weight: bold; }
     .payments_table > tbody > tr > td:nth-of-type(5):before { content: "Payment Status : ";  font-weight: bold; }
+
+
+    .bank_accounts_table > tbody > tr > td:nth-of-type(1):before { content: "Account Name : "; font-weight: bold; }
+    .bank_accounts_table > tbody > tr > td:nth-of-type(2):before { content: "Account Number : ";  font-weight: bold; }
+    .bank_accounts_table > tbody > tr > td:nth-of-type(3):before { content: "Bank : ";  font-weight: bold; }
+    .bank_accounts_table > tbody > tr > td:nth-of-type(4):before { content: "Country : ";  font-weight: bold; }
+    .bank_accounts_table > tbody > tr > td:nth-of-type(5):before { content: "Currency : ";  font-weight: bold; }
+    .bank_accounts_table > tbody > tr > td:nth-of-type(6):before { content: "Delete Account : ";  font-weight: bold; }
 }
 
 .payment-content {
@@ -410,6 +445,20 @@ only screen and (max-width: 340px) {
     color: #333333;
 }
 
+.bank-account-modal label {
+    float: right;
+}
+
+@media
+only screen and (max-width: 480px) {
+
+    .bank-account-modal label, .bank-account-modal input, .bank-account-modal select {
+        display: block;
+        float: none;
+        width: 100%;
+    }
+}
+
 @media only screen and (min-width:720px) and (max-width: 770px) {
     .without-first-line {
         margin-left: -16%;
@@ -463,6 +512,16 @@ only screen and (max-width: 340px) {
     font-size: 11pt;
 }
 
+@media
+only screen and (max-width: 480px) {
+
+    .btn-influencer-download {
+        font-size: 11px;
+        margin: 15px 2px 3px 5px;
+        padding: 5px 10px 5px 10px;
+    }
+}
+
 .add-bank-account {
     color: #FF3059;
     padding-left: 8px;
@@ -480,9 +539,7 @@ only screen and (max-width: 340px) {
     font-size: 11pt;
 }
 
-.bank-account-modal label {
-    float: right;
-}
+
 
 .bank-account-modal label, .bank-account-modal input, .bank-account-modal select {
     padding: 5px 3px;
@@ -501,6 +558,23 @@ only screen and (max-width: 340px) {
     padding: 15px 0;
     font-weight: 600;
     text-align: right;
+}
+
+@media
+only screen and (max-width: 480px) {
+    .bank_location {
+        text-align: center;
+    }
+
+    .bank-account-modal .bank-account-country {
+        width: 100%;
+    }
+
+    .btn-withdraw, .btn-close {
+        font-size: 16px;
+        width: 100%;
+        padding: 0;
+    }
 }
 
 .bank_accounts_table td input[type=radio] {
