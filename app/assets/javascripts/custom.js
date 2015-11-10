@@ -192,7 +192,20 @@ $(function(){
         }
     }
 
+    $('.navbar-header button').click(function() {
+        if ($("#myNavbar.in").length)
+        {
+            $("#myNavbar").collapse('hide');
+
+        }
+        else
+        {
+            $("#myNavbar").collapse('show');
+        }
     });
+
+
+});
 
 
 // end of document.ready() method
