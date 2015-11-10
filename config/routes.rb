@@ -18,8 +18,8 @@ Rails.application.routes.draw do
       get :subregion_options
       post :edit_profile_picture
       post :update_accounts
-      get :contact_us
-      get :show_settings
+      get '/contact-us', to: 'profile#contact_us'
+      get '/settings', to: 'profile#show_settings'
       get :toggle_available
       post :deactivate_account
       post :update_profile_settings
@@ -30,8 +30,8 @@ Rails.application.routes.draw do
 
   resources :public, path: '', only: [] do
     collection do
-      get '/influencer-home/', to: 'public#home'
-      get '/brand-home/', to: 'public#brand_home'
+      get '/influencers', to: 'public#home', as: 'influencer_home'
+      get '/brands', to: 'public#brand_home', as: 'brand_home'
       get :dashboard
       post :get_in_touch
       get :faqs
@@ -44,9 +44,11 @@ Rails.application.routes.draw do
     end
   end
 
+  # named route for existing working code
+  get '/search', to: 'influencers#search', as: 'search_influencers'
+
   resources :influencers, only: [:show] do
     collection do
-      get :search
     end
   end
 
@@ -65,14 +67,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :campaigns, only: [:new, :create, :show] do
+  resources :campaigns, only: [:index, :new, :create, :show] do
     collection do
-      get :influencer_campaign
-      get :brand_campaign
+      # get :campaigns
+      # get :brand_campaign
       post :update_activity
       post :campaign_status_change
-      get :export_influencer_campaigns
-      get :export_brand_campaigns
+      get :export
       post :new_brand_payment
       patch :create_brand_payment
     end
@@ -80,26 +81,19 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :influencer_payments, path: 'payments', only: [:index] do
+  resources :payments, only: [:index] do
     collection do
-      get :export_influencer_payments
-      post :withdraw_payment
+      get :export
+      post :withdraw
     end
   end
 
-  resources :brand_payments, only: [:index] do
-    collection do
-      get :export_brand_payments
-      get :brand_payment
-    end
-  end
-
-  resources :bank_accounts, only: [:new, :create, :destroy] do
+  resources :bank_accounts, path:'bank-accounts', only: [:new, :create, :destroy] do
     collection do
     end
   end
 
-  resource :explores, only: [:show]
+  get '/explore', to: 'explores#show', as: 'explores'
   # root to: 'public#home', as: :root
   authenticated :user do
     root to: 'profile#profile', as: :authenticated_root

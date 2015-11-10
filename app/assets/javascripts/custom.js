@@ -134,7 +134,7 @@ $(function(){
         }else{
             $.ajax({
                 type: 'post',
-                url: '/payments/withdraw_payment',
+                url: '/payments/withdraw',
                 dataType: "script",
                 data: {amount: withdrawAmmount, bank_account_id: BankAccountId, 'authenticity_token': $('meta[name="csrf-token"]').attr('content')},
                 success: function(data) {

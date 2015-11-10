@@ -1,21 +1,12 @@
 class CampaignsController < ApplicationController
   respond_to :html, :js, :csv
 
-  def influencer_campaign
-    @campaigns = Campaign.active_campaigns_for(current_user)
-  end
-
-  def brand_campaign
-    @campaigns = Campaign.active_campaigns_from(current_user)
-
-    if @campaigns.blank?
-      flash[:error] = 'You have no campaign'
-      return redirect_to profile_profile_index_path
+  def index
+    if current_user.brand?
+      brand_campaign
+    else
+      influencer_campaign
     end
-
-    @campaign = @campaigns.find_by_id(params[:id]) if params[:id].present?
-    @campaign = @campaigns.last if @campaign.nil?
-    @campaign.fetch_insights
   end
 
   def new
@@ -66,38 +57,11 @@ class CampaignsController < ApplicationController
     redirect_to influencer_campaign_campaigns_path
   end
 
-  def export_influencer_campaigns
-    if params[:campaign_ids].present?
-      campaign_ids = params[:campaign_ids].split(',').uniq
-      @campaigns = Campaign.where(id: campaign_ids)
+  def export
+    if current_user.brand?
+      export_brand_campaigns
     else
-      @campaigns = current_user.campaigns_received
-    end
-
-    respond_to do |format|
-      format.html
-      format.csv do
-        #  Don't Try to Put Headers into single line, it wont work
-        headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_influencer.csv\""
-        headers['Content-Type'] ||= 'text/csv'
-      end
-    end
-  end
-
-  def export_brand_campaigns
-    if params[:campaign_id].present?
-      @campaigns = Campaign.where(id: params[:campaign_id])
-    else
-      @campaigns = current_user.campaigns_sent
-    end
-
-    respond_to do |format|
-      format.html
-      format.csv do
-        #  Don't Try to Put Headers into single line, it wont work
-        headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_brand.csv\""
-        headers['Content-Type'] ||= 'text/csv'
-      end
+      export_influencer_campaigns
     end
   end
 
@@ -126,5 +90,62 @@ class CampaignsController < ApplicationController
       :number_of_shares, :card_number, :card_expiration_month,
       :card_expiration_year, :card_holder_name, :schedule_type
     )
+  end
+
+  def influencer_campaign
+    @campaigns = Campaign.active_campaigns_for(current_user)
+    render 'campaigns/influencer_campaign'
+  end
+
+  def brand_campaign
+    @campaigns = Campaign.active_campaigns_from(current_user)
+
+    if @campaigns.blank?
+      flash[:error] = 'You have no campaign'
+      return redirect_to profile_profile_index_path
+    end
+
+    @campaign = @campaigns.find_by_id(params[:id]) if params[:id].present?
+    @campaign = @campaigns.last if @campaign.nil?
+    @campaign.fetch_insights
+
+    render 'campaigns/brand_campaign'
+  end
+
+  def export_influencer_campaigns
+    if params[:campaign_ids].present?
+      campaign_ids = params[:campaign_ids].split(',').uniq
+      @campaigns = Campaign.where(id: campaign_ids)
+    else
+      @campaigns = current_user.campaigns_received
+    end
+
+    respond_to do |format|
+      format.html{ render 'campaigns/export_influencer_campaigns'}
+      format.csv do
+        #  Don't Try to Put Headers into single line, it wont work
+        headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_influencer.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+        render 'campaigns/export_influencer_campaigns'
+      end
+    end
+  end
+
+  def export_brand_campaigns
+    if params[:campaign_id].present?
+      @campaigns = Campaign.where(id: params[:campaign_id])
+    else
+      @campaigns = current_user.campaigns_sent
+    end
+
+    respond_to do |format|
+      format.html{ render 'campaigns/export_brand_campaigns'}
+      format.csv do
+        #  Don't Try to Put Headers into single line, it wont work
+        headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_brand.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+        render 'campaigns/export_brand_campaigns'
+      end
+    end
   end
 end
