@@ -24,7 +24,7 @@
 <%#= render partial: 'shared/flash_messages', flash: flash %>
 <div class="welcome_bar">
   <div class="wrapper-content">
-    <div class="left">Welcome, Guest!</div>
+    <div class="left">Good <%= (0..11).include?(Time.now.hour) ? 'morning' : 'afternoon'%>, <%= user_signed_in? ? current_user.full_name : 'Guest' %>!</div>
     <div class="right top_links">
       <p>
         <a class="hidden-xs" href="<%= faqs_public_index_path %>">FAQs</a>

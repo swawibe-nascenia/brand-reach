@@ -4,7 +4,14 @@
       padding-top: 53px;
       width: 360px;
   }
+        @media (max-width: 767px) {
+            .sign-in-form-container{
+                margin-top: 0;
+                padding-top: 10px;
+                width: 360px;
+            }
+        }
 </style>
-<div class="sign-in-form-container">
+<div class="wrapper-content sign-in-form-container">
   <%= render 'shared/sign_in_form' %>
 </div>
