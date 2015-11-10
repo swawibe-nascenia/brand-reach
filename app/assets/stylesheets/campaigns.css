@@ -154,6 +154,7 @@
 
 .performance_table th:nth-child(1), .performance_table td:nth-child(1), .engagement_table th:nth-child(1), .engagement_table td:nth-child(1) {
     text-align: center ;
+    width: 50px;
 }
 
 .table > thead >.payment-header > th {
@@ -326,7 +327,7 @@ only screen and (max-width: 460px) {
         height: 64px;
     }
 
-    table, thead, tbody, th, td, tr {
+    tr, td {
         display: block;
         border: 1px solid #dddddd;
     }
@@ -335,6 +336,11 @@ only screen and (max-width: 460px) {
         position: absolute;
         top: -9999px;
         left: -9999px;
+    }
+
+    .performance_table th:nth-child(1), .performance_table td:nth-child(1), .engagement_table th:nth-child(1), .engagement_table td:nth-child(1) {
+        text-align: center ;
+        width: auto;
     }
 
     .btn-export {
