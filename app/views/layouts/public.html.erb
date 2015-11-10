@@ -31,7 +31,9 @@
         <% if user_signed_in? %>
             <a class="hidden-xs" href="<%= destroy_user_session_path %>">LOG OUT</a>
       <% else %>
-            <a class="hidden-xs" href='#signin'  data-toggle = 'modal'>Login</a>
+            <% unless params[:controller] == 'sessions' %>
+                <a class="hidden-xs" href='#signin'  data-toggle = 'modal'>Login</a>
+            <% end %>
       <% end %>
       </p>
       <div class="socialmedia">
@@ -163,6 +165,12 @@
     </div>
   </div>
 </div>
+<!-- partial rendering section -->
+
+<%= render partial: 'shared/sign_up_modal'%>
+<%= render partial: 'shared/sign_in_modal'%>
+<%= render partial: 'shared/sign_up_success_message'%>
+
 
 </body>
 </html>
