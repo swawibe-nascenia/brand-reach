@@ -24,15 +24,14 @@ Rails.application.routes.draw do
       post :deactivate_account
       post :update_profile_settings
       post :contact_us_save
-      get :faqs
       get :verify_brand_profile
     end
   end
 
-  resources :public, only: [] do
+  resources :public, path: '', only: [] do
     collection do
-      get :home
-      get :brand_home
+      get '/influencer-home/', to: 'public#home'
+      get '/brand-home/', to: 'public#brand_home'
       get :dashboard
       post :get_in_touch
       get :faqs
