@@ -33,7 +33,7 @@
 .header {
   color: black;
   font-weight: lighter;
-  border-bottom: 1px solid #fbbb46;
+  border-bottom: 1px solid #00c9f3;
 //  padding-top: 16px;
 }
 
@@ -57,7 +57,9 @@
 }
 
 .navbar{
-  margin-bottom: 5px;
+  margin-bottom: 0;
+  min-height: 30px;
+  padding-bottom: 3px;
 }
 .navbar-collapse{
   padding: 0;
