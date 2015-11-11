@@ -57,6 +57,7 @@
 .personal-info-form .form-group textarea {
     resize: none;
     height: 110px;
+    margin-bottom: 7px;
 }
 
 .brands-profile-page-wrapper input, .brands-profile-page-wrapper select, .personal-info-form .form-group textarea {

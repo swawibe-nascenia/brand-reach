@@ -50,7 +50,11 @@
           <div class="col-md-6">
             <%= f.label :street_address, class: 'textarea-label' %>
             <%= f.text_area :street_address, rows: 4, class: 'street-address-textarea', placeholder: 'Enter your address here', required: true %>
+
+            <%= f.label :zip_code %>
+            <%= f.text_field :zip_code, required: true %>
           </div>
+
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-12">
@@ -65,20 +69,11 @@
                 <%= f.label :country %>
                 <%= f.country_select :country, {priority: %w(US CA IN)}, {:class => 'profile-dropdown-color'}, {} %>
               </div>
+              <div class="col-md-12">
+                <%= f.label :state %>
+                <%= render partial: 'shared/sub_region_select', locals: { parent_region: f.object.country } %>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-
-          <div class="col-md-6">
-            <%= f.label :zip_code %>
-            <%= f.text_field :zip_code, required: true %>
-          </div>
-
-          <div class="col-md-6">
-            <%= f.label :state %>
-            <%= render partial: 'shared/sub_region_select', locals: { parent_region: f.object.country } %>
           </div>
         </div>
 
