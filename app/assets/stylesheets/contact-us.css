@@ -87,41 +87,30 @@
 
 }
 
-@media  (max-width: 480px){
+@media (max-width: 480px){
     .get-in-touch-form {
-        padding-left: 40px;
+        padding: 10px;
+    }
 
+    .get-in-touch {
+        text-align: center;
     }
 
     .category-list {
-        width: 150px;
+        display: block;
+        width: 100%;
         font-size: 12px;
     }
 
-    .get-in-touch-message-textarea {
-        width: 250px;
-    }
-
     .get-in-touch-submit {
-        padding-left: 80px;
-        font-size: 12px;
+        padding-left: 0;
     }
 
-}
-
-@media  (max-width: 420px){
-    .category-list {
-        display: block;
-        width: 120px;
+    .get-in-touch-submit-button {
+        margin: 0;
     }
 
-    .get-in-touch-message-textarea {
-        display: block;
-        width: 200px;
+    .get-in-touch-message-textarea, .get-in-touch-form button {
+        width: 100%;
     }
-
-    .get-in-touch-submit {
-        padding-left: 0px;
-    }
-
 }
