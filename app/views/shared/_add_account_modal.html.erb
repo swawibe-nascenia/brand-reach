@@ -24,8 +24,6 @@
 
 <script>
     (function() {
-        var selected = <%= @user.active_facebook_accounts.pluck(:account_id).to_json.html_safe %>;
-
         $.getScript('//connect.facebook.net/en_US/all.js', function(){
             FB.init({
                 appId: '<%= CONFIG[:fb_app_id] %>',
@@ -34,8 +32,12 @@
 
             var createForm = function(authResp) {
                 FB.api('/me/accounts?fields=id,name,picture', function(resp) {
+                    var selected = $('.social-account-tabs .tab-pane').map(function() {
+                      return $(this).attr('id');
+                    }).toArray();
+
                     var data = resp.data.map(function(page) {
-                        page.selected = $.inArray(page.id, selected) > -1;
+                        page.selected = $.inArray('fb_' + page.id, selected) > -1;
                         return page;
                     });
 

@@ -120,57 +120,15 @@
       </div>
 
       <% if @user.influencer? %>
-
           <h4 class="social-account">SOCIAL ACCOUNTS AND PRICING</h4>
 
           <button type="button" class="btn btn-account" data-trigger="modal" data-target="AddFacebookAccount" href="javascript:" data-dismiss="modal">MANAGE ACCOUNT</button>
 
           <%= render partial: 'shared/add_account_modal' %>
 
-          <% if @user.facebook_accounts.present? %>
-              <div class="social-account-tabs">
-                <ul class="nav nav-tabs social-account-nav-tabs">
-                  <% @user.facebook_accounts.each do |account| %>
-                      <li>
-                        <a data-toggle="tab" href="#fb_<%= account.account_id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %>
-                        </a></li>
-                  <% end %>
-                </ul>
-
-                <div class="tab-content social-account-tab-content">
-                  <%= f.fields_for :facebook_accounts do |g| %>
-
-                      <div id="fb_<%= g.object.account_id %>" class="tab-pane">
-                        <div class="form-group">
-                          <div class="col-md-4 col-sm-7 col-xs-10">
-                            <%= g.label :status_update_cost, 'Status Update' %>
-                            <%= g.number_field :status_update_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0 } %> INR
-                          </div>
-                          <div class="col-md-6 col-sm-7 col-xs-10">
-                            <%= g.label :cover_photo_cost, 'Cover Photo' %>
-                            <%= g.number_field :cover_photo_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0 } %> INR
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-md-4 col-sm-7 col-xs-10">
-                            <%= g.label :profile_photo_cost, 'Profile Photo' %>
-                            <%= g.number_field :profile_photo_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0 } %> INR
-                          </div>
-                          <div class="col-md-6 col-sm-7 col-xs-10">
-                            <%= g.label :video_post_cost, 'Video Post' %>
-                            <%= g.number_field :video_post_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0 } %> INR
-                          </div>
-                        </div>
-                      </div>
-                  <% end %>
-                </div>
-              </div>
-
-              <script>
-                  $('.social-account-nav-tabs a:first').tab('show');
-              </script>
-
-          <% end %>
+          <div class="social-account-tabs">
+              <%= render partial: 'social_account_tabs', locals: { f: f } %>
+          </div>
       <% end %>
 
       <%#= render partial: 'shared/profile_image_upload', locals: { user: current_user } %>

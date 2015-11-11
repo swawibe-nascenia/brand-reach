@@ -56,7 +56,7 @@ class ProfileController < ApplicationController
   def update_accounts
     graph = InsightService.new(params[:access_token])
 
-    @user.facebook_accounts.update_attributes(is_active: false)
+    @user.active_facebook_accounts.update_all(is_active: false)
 
     params[:accounts].each do |account_id|
       page_info = graph.get_page_info(account_id)
@@ -66,6 +66,7 @@ class ProfileController < ApplicationController
       end
 
       account.assign_attributes({
+                                    is_active: true,
                                     name: page_info[:name],
                                     account_id: account_id,
                                     access_token: page_info[:access_token],
@@ -76,14 +77,8 @@ class ProfileController < ApplicationController
                                     number_of_posts: page_info[:number_of_posts],
                                     post_reach: page_info[:post_reach],
                                 })
+      account.save(validate: false)
     end
-    if @user.save(validate: false)
-      flash[:success] = 'Accounts added successfully'
-    else
-      flash[:error] = 'Could not add account'
-    end
-
-    redirect_to profile_profile_index_path
   end
 
   def contact_us
