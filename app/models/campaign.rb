@@ -103,7 +103,7 @@ class Campaign < ActiveRecord::Base
 
   def first_message_body
     <<MESSAGE
-      The brand has requested the following campaign. Please accept or deny to proceed.
+      You have sent the following campaign request. Waiting for the influencers response.
 
       <strong>Campaign Name:</strong> #{self.name}
       <strong>Type of Post:</strong> #{self.post_type.camelize}
