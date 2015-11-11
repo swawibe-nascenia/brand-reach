@@ -82,19 +82,23 @@
   h5, .h5 {
       font-size: 14px;
   }
+  .faq-container .panel.panel-warning{
+      border: 0;
+      padding: 0;
+  }
 </style>
 
 <div class="wrapper-content faq-container">
-  <div class="inner_bg" id="faq" style="min-height: 500px;">
+  <div class="inner_bg" id="faq">
     <div class="container mtop20">
-      <div class="panel panel-warning" style="border: none; padding: 0">
+      <div class="panel panel-warning">
         <div class="panel-heading expandable" data-sub=".group-1-sub" data-target=".group-1">
           <h3 class="mleft20">1. User Guide for All Members</h3>
         </div>
-        <div class="panel-body expandable expanded group-1 closed" data-target=".group-1-a" style="display: none;">
+        <div class="panel-body expandable expanded group-1 closed hide" data-target=".group-1-a">
           <h4>a. Getting Started</h4>
         </div>
-        <ul class="list-group expanded group-1-sub group-1-a closed" style="display: none;">
+        <ul class="list-group expanded group-1-sub group-1-a closed hide">
           <li class="list-group-item">
             <h5>i) What is Takeoff?</h5>
             <p>Welcome to Takeoff! This is a multi-platform networking service that
@@ -401,6 +405,8 @@
         $('.panel-heading').click(function (e) {
             e.stopPropagation();
             var target = $(this).data('target');
+            var subTarget = $(this).data('sub');
+
             console.log(this + ' data target with ' + target);
 //            $(target).show();
 //            console.log('-------------' + target + '.closed');
@@ -410,6 +416,7 @@
                 console.log('all element with class ' + target + 'show');
             }else{
                 $(target).addClass('closed');
+                $(subTarget).addClass('closed');
                 console.log('all element with class ' + target + 'hide');
                 $(target).hide();
             }
