@@ -55,6 +55,9 @@ class ProfileController < ApplicationController
 
   def update_accounts
     graph = InsightService.new(params[:access_token])
+
+    @user.facebook_accounts.update_attributes(is_active: false)
+
     params[:accounts].each do |account_id|
       page_info = graph.get_page_info(account_id)
       account = @user.facebook_accounts.where(account_id: account_id).first

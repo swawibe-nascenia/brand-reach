@@ -77,6 +77,14 @@ class User < ActiveRecord::Base
   # == Instance methods == #
   # ----------------------------------------------------------------------
 
+  def active_facebook_accounts
+    facebook_accounts.where(is_active: true)
+  end
+
+  def max_followers
+    active_facebook_accounts.pluck(:number_of_followers).max
+  end
+
   def is_facebook_authenticate?
     return self.provider == 'facebook' && self.uid? && self.access_token?
   end
@@ -163,9 +171,9 @@ class User < ActiveRecord::Base
 
   def update_profile_completion_status
     if self.influencer?
-      return if self.facebook_accounts.blank?
+      return if active_facebook_accounts.blank?
 
-      facebook_accounts.each do |facebook_account|
+      active_facebook_accounts.each do |facebook_account|
         FACEBOOK_ACCOUNT_COMPLETENESS.each do |field|
           unless facebook_account.send("#{field}").present?
             update_column(:profile_complete, false)

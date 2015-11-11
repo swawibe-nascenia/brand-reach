@@ -99,7 +99,7 @@
         <hr>
         <% if current_user.influencer? %>
             <p class="text-center font-hind">
-              <%= number_with_delimiter(current_user.facebook_accounts.pluck(:number_of_followers).max) %> Likes
+              <%= number_with_delimiter(current_user.max_followers) %> Likes
             </p>
         <% end %>
       </div>

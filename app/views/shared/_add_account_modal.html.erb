@@ -24,7 +24,7 @@
 
 <script>
     (function() {
-        var selected = <%= @user.facebook_accounts.pluck(:account_id).to_json.html_safe %>;
+        var selected = <%= @user.active_facebook_accounts.pluck(:account_id).to_json.html_safe %>;
 
         $.getScript('//connect.facebook.net/en_US/all.js', function(){
             FB.init({

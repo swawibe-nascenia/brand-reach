@@ -29,7 +29,7 @@
               <%= link_to 'Send Request', new_campaign_path(receiver_id: influencer.id), class: 'btn btn-message', data: {href: new_campaign_path(receiver_id: influencer.id)} %>
             </div>
             <div class="follower-box pull-right">
-              <span class="follower-number"><%= influencer.facebook_accounts.pluck(:number_of_followers).max %></span>
+              <span class="follower-number"><%= influencer.max_followers %></span>
 
               <p> Likes</p>
             </div>
@@ -45,7 +45,7 @@
         </div>
         <!-- start of pricing section -->
 
-        <% if influencer.facebook_accounts.present? %>
+        <% if influencer.active_facebook_accounts.present? %>
 
             <h4> Pricing</h4>
             <br>
@@ -54,7 +54,7 @@
               <div class="col-md-12">
                 <div class="social-account-tabs">
                   <ul class="nav nav-tabs social-account-nav-tabs influencer-social-account-nav-tabs">
-                    <% influencer.facebook_accounts.each do |account| %>
+                    <% influencer.active_facebook_accounts.each do |account| %>
                         <li class="influencer-social-account-tab" data-id="<%= account.id %>">
                           <a data-toggle="tab" href="#fb_<%= account.id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %>
                           </a></li>
@@ -62,7 +62,7 @@
                   </ul>
 
                   <div class="tab-content social-account-tab-content">
-                    <% influencer.facebook_accounts.each do |account| %>
+                    <% influencer.active_facebook_accounts.each do |account| %>
                         <div id="fb_<%= account.id %>" class="tab-pane">
                           <div class="form-group">
                             <div class="col-md-5 col-sm-8 col-xs-11">

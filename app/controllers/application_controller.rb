@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
     unless current_user.profile_complete?
       error_messages << 'Please complete your profile to use other pages'
 
-      if current_user.influencer? && current_user.facebook_accounts.blank?
+      if current_user.influencer? && current_user.active_facebook_accounts.blank?
         error_messages << '* Connect your facebook account with value to complete your profile.'
       end
 
@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
          error_messages << "*  #{field.to_s.camelize(:lower)} is required field" unless current_user.send("#{field}?")
        end
 
-       current_user.facebook_accounts.each do |facebook_account|
+       current_user.active_facebook_accounts.each do |facebook_account|
          User::FACEBOOK_ACCOUNT_COMPLETENESS.each do |field|
            unless facebook_account.send("#{field}").present?
              error_messages << "*  #{field.to_s.camelize} of #{facebook_account.name} is required field" unless facebook_account.send("#{field}").present?
