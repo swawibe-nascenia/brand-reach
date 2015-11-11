@@ -141,21 +141,21 @@
                         <div class="form-group">
                           <div class="col-md-4 col-sm-7 col-xs-10">
                             <%= g.label :status_update_cost, "Status Update" %>
-                            <%= g.number_field :status_update_cost, required: true %> INR
+                            <%= g.number_field :status_update_cost, { inputmode: 'numeric', required: true, pattern: '[0-9]*', min: 0 } %> INR
                           </div>
                           <div class="col-md-6 col-sm-7 col-xs-10">
                             <%= g.label :cover_photo_cost, "Cover Photo" %>
-                            <%= g.number_field :cover_photo_cost, required: true %> INR
+                            <%= g.number_field :cover_photo_cost, { inputmode: 'numeric', required: true, pattern: '[0-9]*', min: 0 } %> INR
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="col-md-4 col-sm-7 col-xs-10">
                             <%= g.label :profile_photo_cost, "Profile Photo" %>
-                            <%= g.number_field :profile_photo_cost, required: true %> INR
+                            <%= g.number_field :profile_photo_cost, { inputmode: 'numeric', required: true, pattern: '[0-9]*', min: 0 } %> INR
                           </div>
                           <div class="col-md-6 col-sm-7 col-xs-10">
                             <%= g.label :video_post_cost, "Video Post" %>
-                            <%= g.number_field :video_post_cost, required: true %> INR
+                            <%= g.number_field :video_post_cost, { inputmode: 'numeric', required: true, pattern: '[0-9]*', min: 0 } %> INR
                           </div>
                         </div>
                       </div>
