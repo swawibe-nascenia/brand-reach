@@ -100,12 +100,12 @@ Rails.application.routes.draw do
   end
 
   resource :explores, only: [:show]
-  # root to: 'public#home', as: :root
-  authenticated :user do
-    root to: 'profile#profile', as: :authenticated_root
-  end
-
-  unauthenticated do
-    root to: 'public#home'
-  end
+  root to: 'public#home', as: :root
+  # authenticated :user do
+  #   root to: 'profile#profile', as: :authenticated_root
+  # end
+  #
+  # unauthenticated do
+  #   root to: 'public#home'
+  # end
 end
