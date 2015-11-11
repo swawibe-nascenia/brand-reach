@@ -2,117 +2,418 @@
   .expandable{
       cursor: pointer;
   }
-        .faq-container{
-            margin-bottom: 20px;
-            margin-top: 62px;
-            padding-top: 62px;
-        }
+    .faq-container{
+        margin-bottom: 20px;
+        margin-top: 62px;
+        padding-top: 62px;
+    }
 
-        @media (max-width: 767px){
-            .faq-container{
-                margin-top: 20px;
-                padding-top: 0;
-            }
+    @media (max-width: 767px){
+        .faq-container{
+            margin-top: 20px;
+            padding-top: 0;
         }
+    }
+  .inner_bg {
+      background: #fff none repeat scroll 0 0;
+      padding: 0 0 40px;
+      width: 100%;
+  }
+
+  .container {
+      width: 1030px;
+  }
+  #faq .panel-heading {
+      background-color: #ffb734;
+  }
+  /*working */
+  .panel-warning > .panel-heading {
+      background-color: #fcf8e3;
+      border-color: #faebcc;
+      color: #8a6d3b;
+  }
+  .expandable {
+      cursor: pointer;
+  }
+  .panel-heading {
+      border-bottom: 1px solid transparent;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      padding: 13px 0;
+  }
+/* working */
+  #faq .panel-body.expandable {
+      padding: 0 22px;
+  }
+  #faq .panel-body.expandable h4 {
+      color: #ffb734;
+      font-size: 15px;
+      font-weight: bold;
+  }
+  #faq .expanded {
+      padding: 5px 22px;
+  }
+  .panel > .list-group, .panel > .panel-collapse > .list-group {
+      margin-bottom: 0;
+  }
+  .list-group {
+      margin-bottom: 20px;
+      padding-left: 0;
+  }
+  .panel > .list-group .list-group-item, .panel > .panel-collapse > .list-group .list-group-item {
+      border-radius: 0;
+      border-width: 1px 0;
+  }
+  .list-group-item:first-child {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+  }
+  .list-group-item {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      display: block;
+      margin-bottom: -1px;
+      padding: 10px 15px;
+      position: relative;
+  }
+  #faq .expanded .list-group-item h5 {
+      color: #ffb734;
+  }
+  h5, .h5 {
+      font-size: 14px;
+  }
 </style>
 
 <div class="wrapper-content faq-container">
-  <div class='panel-group'>
-    <div class='panel panel-primary'>
-      <div class='panel-heading panelHeading expandable'>
-        <h4 class='panel-title'>1. User Guide for All Members</h4>
-      </div>
-      <div class='panel-body panelBody' style='display:none;'>
-        <div class='panel-group'>
-          <div class='panel panel-primary'>
-            <div class='panel-heading panelHeading expandable'>
-              <h4 class='panel-title'>Q1</h4>
-
-            </div>
-            <div class='panel-body panelBody' style='display:none;'>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-          </div>
-          <div class='panel panel-primary'>
-            <div class='panel-heading panelHeading expandable'>
-              <h4 class='panel-title'>Q2</h4>
-
-            </div>
-            <div class='panel-body panelBody' style='display:none;'>
-              <p>Pellentesque est odio, hendrerit vitae nisi eget, bibendum porttitor tellus. Aliquam vel luctus
-                mauris.</p>
-            </div>
-          </div>
+  <div class="inner_bg" id="faq" style="min-height: 500px;">
+    <div class="container mtop20">
+      <div class="panel panel-warning" style="border: none; padding: 0">
+        <div class="panel-heading expandable" data-sub=".group-1-sub" data-target=".group-1">
+          <h3 class="mleft20">1. User Guide for All Members</h3>
         </div>
-      </div>
-    </div>
-    <!-- panel -->
-    <div class='panel panel-primary'>
-      <div class='panel-heading panelHeading expandable'>
-        <h4 class='panel-title'>2. A guide for Brand.</h4>
-
-      </div>
-      <div class='panel-body panelBody' style='display:none;'>
-        <div class='panel-group'>
-          <div class='panel panel-primary'>
-            <div class='panel-heading panelHeading expandable'>
-              <h4 class='panel-title'>Q1</h4>
-
-            </div>
-            <div class='panel-body panelBody' style='display:none;'>
-              <p>Duis vitae viverra dui.</p>
-            </div>
-          </div>
-          <div class='panel panel-primary'>
-            <div class='panel-heading panelHeading expandable'>
-              <h4 class='panel-title'>Q2</h4>
-
-            </div>
-            <div class='panel-body panelBody' style='display:none;'>
-              <p>Maecenas magna nisi, consequat quis felis sit amet, placerat blandit erat.</p>
-            </div>
-          </div>
+        <div class="panel-body expandable expanded group-1 closed" data-target=".group-1-a" style="display: none;">
+          <h4>a. Getting Started</h4>
         </div>
-      </div>
-    </div>
-
-    <div class='panel panel-primary'>
-      <div class='panel-heading panelHeading expandable'>
-        <h4 class='panel-title'>3. A guide for Influencer.</h4>
-
-      </div>
-      <div class='panel-body panelBody' style='display:none;'>
-        <div class='panel-group'>
-          <div class='panel panel-primary'>
-            <div class='panel-heading panelHeading expandable'>
-              <h4 class='panel-title'>Q1</h4>
-            </div>
-            <div class='panel-body panelBody' style='display:none;'>
-              <p>Duis vitae viverra dui.</p>
-            </div>
-          </div>
-          <div class='panel panel-primary'>
-            <div class='panel-heading panelHeading expandable'>
-              <h4 class='panel-title'>Q2</h4>
-
-            </div>
-            <div class='panel-body panelBody' style='display:none;'>
-              <p>Maecenas magna nisi, consequat quis felis sit amet, placerat blandit erat.</p>
-            </div>
-          </div>
+        <ul class="list-group expanded group-1-sub group-1-a closed" style="display: none;">
+          <li class="list-group-item">
+            <h5>i) What is Takeoff?</h5>
+            <p>Welcome to Takeoff! This is a multi-platform networking service that
+              allows every entrepreneur (Advice Seeker) to connect and seek advice
+              from experts (Pilots) belonging to various career fields to grow and
+              develop your business.</p>
+          </li>
+          <li class="list-group-item">
+            <h5>ii) What are the guidelines and codes of conduct on Takeoff?</h5>
+            <p>Takeoff is a business networking portal that connects people on a
+              social level. It is very important for all users (both experts and
+              members) to maintain a professional decorum to avoid the risk of your
+              account being suspended or removed.</p>
+          </li>
+          <li class="list-group-item">
+            <h5>iii) Is Takeoff International?</h5>
+            <p>Yes, the Takeoff platform acts as a bridge connecting Pilots
+              (experts) and Advice Seekers (entrepreneurs) from all over the world.</p>
+          </li>
+        </ul>
+        <div class="panel-body expandable expanded group-1 closed" data-target=".group-1-b" style="display: none;">
+          <h4>b. Profile &amp; Account Settings - General Questions</h4>
         </div>
+        <ul class="list-group expanded group-1-sub group-1-b closed" style="display: none;">
+          <li class="list-group-item">
+            <h5>i) Why should I answer all the questions in my profile page?</h5>
+            <p>It is recommended all areas and questions on your profile are
+              answered to increase your credibility when trying to connect with a
+              Pilot (expert). We suggest you keep your profile up-to-date and as
+              honest as possible to help Pilots understand your line of work/business
+              and thus, help them advise you better.</p>
+          </li>
+          <li class="list-group-item">
+            <h5>ii) How do I edit my profile?</h5>
+            <p>
+              You can edit your profile by going to your <strong>Profile &gt; Edit Profile.</strong>
+            </p>
+            <p>
+              <em>Note: Please remember to save before you leave the page else the new data will not be saved.</em>
+            </p>
+          </li>
+          <li class="list-group-item">
+            <h5>iii) How do I change my Takeoff profile picture?</h5>
+            <p>Click on the camera icon near your name. Select a photo from the pop-up and click 'Open'.</p>
+          </li>
+          <li class="list-group-item">
+            <h5>iv) How can I change my password and manage notifications?</h5>
+            <p>Change your password in the <strong>Settings &gt; Change password</strong> (under Account Setup). Manage notifications in the <strong>Settings page</strong>. Slide the buttons to turn on or off the notifications and reminders.</p>
+          </li>
+          <li class="list-group-item">
+            <h5>v) Why did I not receive an email or SMS notification?</h5>
+            <p>Check if the notifications and reminders for your email or SMS were
+              turned off in your personal settings. To turn it back on, go to <strong>Settings</strong> page and slide the buttons to turn on or off the notifications and reminders. The buttons bar will turn yellow when on.</p>
+          </li>
+          <li class="list-group-item">
+            <h5>vi) Why do I have to connect my social accounts?</h5>
+            <p>Connecting your social accounts helps both Pilots and Advice Seekers
+              build trust and credibility within our community. The use of your social
+              accounts can help you connect and network better.</p>
+          </li>
+          <li class="list-group-item">
+            <h5>vii) How do I connect my social accounts?</h5>
+            <p>To connect social accounts to your Takeoff profile, go to your
+              Profile &gt; Social Media Information and copy paste your LinkedIn
+              and/or Twitter profile page URL.</p>
+          </li>
+          <li class="list-group-item">
+            <h5>viii) How do I delete or deactivate my account?</h5>
+            <p>
+              We are sorry to learn that you are thinking of parting ways with
+              Takeoff. If you have any complaints or feedback that you would like to
+              share with us, please email us at <strong>support@takeoffnow.com</strong>. We will take into account your feedback and comments to improve the Takeoff experience.
+            </p>
+            <p>
+              If you have decided to deactivate your account, you can do so by going to <strong>Settings &gt; Deactivate</strong>. We hope you will consider joining us back someday. Please contact us at <strong>support@takeoffnow.co</strong> to reactivate your account.
+            </p>
+          </li>
+        </ul>
+        <div class="panel-body expandable expanded group-1 closed" data-target=".group-1-c" style="display: none;">
+          <h4>c. Privacy &amp; Security</h4>
+        </div>
+        <ul class="list-group expanded group-1-sub group-1-c closed" style="display: none;">
+          <li class="list-group-item">
+            <h5>i) Is my contact information kept private?</h5>
+            <p>We consider trust, credibility, and security to be our highest
+              priority. We will not disclose any personal information to others. All
+              calls are routed through Takeoff in a secure manner without divulging
+              any personal details.</p>
+          </li>
+          <li class="list-group-item">
+            <h5>ii) Can I use my personal email to connect directly with a Pilot or Advice Seeker?</h5>
+            <p>We consider trust, credibility, and security to be our highest
+              priority. We refrain from disclosing any personal data. Even if you feel
+              comfortable sharing personal data, there are many users who are not
+              comfortable in disclosing personal information. If you do connect
+              directly with other users, we cannot be responsible for any issues that
+              arise in terms of safety, violation of privacy, or payment. Thus it is
+              important to keep all communication and transactions limited to the
+              Takeoff platform.</p>
+          </li>
+        </ul>
+        <div class="panel-heading expandable" data-sub=".group-2-sub" data-target=".group-2">
+          <h3 class="mleft20">2. A guide for all Advice Seekers (Entrepreneurs)</h3>
+        </div>
+        <div class="panel-body expandable expanded group-2 closed" data-target=".group-2-a" style="display: none;">
+          <h4>a. How does Takeoff work?</h4>
+        </div>
+        <div class="panel-body expanded group-2-sub group-2-a closed" style="display: none;">
+          <p>Takeoff is a very simple 5 step process</p>
+        </div>
+        <ul class="list-group expanded group-2-sub group-2-a closed" style="display: none;">
+          <li class="list-group-item">
+            <h5>i) Sign up</h5>
+            <p>Signing up is free. If you are looking for advice, this is the place
+              to be! The experts on our platform are fully credible and masters in
+              their particular fields. Communicating with these experts may help you
+              develop your business, as well as your own personal potential.</p>
+          </li>
+          <li class="list-group-item">
+            <h5>ii) Search for Pilots (Experts)</h5>
+            <p>You can easily find an expert related to your field by searching.
+              Optimize your search results by using the advanced search options. View
+              their profiles to see their work experience and area of expertise.</p>
+          </li>
+          <li class="list-group-item">
+            <h5>iii) Schedule a Call</h5>
+            <p>
+              Select the Pilot you want to talk to and click on the ’Book’ icon in
+              their profile. Fill in the required data and provide your Citrus account
+              information, which then verifies if there is sufficient balance in your
+              account. If you do not have sufficient balance, it will prompt you to
+              add money to your account. If you do not have a Citrus account, please
+              click here. You also have the option of letting the Pilot choose any
+              date and time for the call. If the Pilot accepts your request, he or she
+              can send you two options for the date and time. You can either accept
+              or deny. If you deny, you will have to reschedule the call again.
+            </p>
+            <p>
+              <em>Note: Payment will be taken from your account only after the call is
+                complete. Payment details are required at this stage to verify the
+                balance in your account.</em>
+            </p>
+          </li>
+          <li class="list-group-item">
+            <h5>iv) Call confirmation</h5>
+            <p>After the call is scheduled, you will be sent a confirmation
+              notification with a secure phone number, as well as a one-time access
+              code, that will enable you to connect at the time you have scheduled.</p>
+            <p>
+              <em>Note: Both the Advice Seeker and the Pilot still have the option of
+                cancelling or postponing the call. If an Advice Seeker forgets to take
+                the call or cancels the call two hours or less prior to the scheduled
+                time, a full fee for the call will be charged. However, there is no
+                cancellation fee if the call is cancelled more than two hours prior to
+                the scheduled time.</em>
+            </p>
+          </li>
+          <li class="list-group-item">
+            <h5>v) Connect</h5>
+            <p>Connect with the Pilot for the time duration you have selected. Once
+              the call is over, payment will be deducted from your account.</p>
+            <p>
+              <em>Note: The call will not cut when you complete the fixed time
+                duration. You can continue the call, provided you have sufficient money
+                in your account to pay for the extra duration of your call.</em>
+            </p>
+          </li>
+        </ul>
+        <div class="panel-body expandable expanded group-2 closed" data-target=".group-2-b" style="display: none;">
+          <h4>b. How do I search for a Pilot?</h4>
+        </div>
+        <div class="panel-body expanded group-2-sub group-2-b closed" style="display: none;">
+          <p>Go to <strong>Booking &gt; Search</strong> to easily find an expert
+            related to your field by searching. Optimize your search results by
+            using the advanced search options. View their profiles to see their work
+            experience and area of expertise.</p>
+        </div>
+        <div class="panel-body expandable expanded group-2 closed" data-target=".group-2-c" style="display: none;">
+          <h4>c. Why am I not able to find a pilot most suited to my requirements?</h4>
+        </div>
+        <div class="panel-body expanded group-2-sub group-2-c closed" style="display: none;">
+          <p>Optimize your search results by using the advanced search options.
+            View their profiles to see their work experience and area of expertise.
+            The advanced search allows you to narrow down to pilots of your choice
+            based on their expertise, fees, time, availability, location etc. This
+            will help you find a pilot most suited to your needs.</p>
+        </div>
+        <div class="panel-body expandable expanded group-2 closed" data-target=".group-2-d" style="display: none;">
+          <h4>d. Why do different pilots have different rates on Takeoff?</h4>
+        </div>
+        <div class="panel-body expanded group-2-sub group-2-d closed" style="display: none;">
+          <p>Every Pilot has the authority to set the price per minute they think
+            is best. We have a wide range of Pilots with various pricing rates.
+            Select the one most suited to your budget and expertise requirements.</p>
+        </div>
+        <div class="panel-body expandable expanded group-2 closed" data-target=".group-2-e" style="display: none;">
+          <h4>e. How do I request a call from the Pilot selected?</h4>
+        </div>
+        <div class="panel-body expanded group-2-sub group-2-e closed" style="display: none;">
+          <p>Select the Pilot you want to talk to and click on the ’Book’ icon in
+            their profile. Fill in the required data and provide your Citrus account
+            information, which then verifies if there is sufficient balance in your
+            account. If you do not have sufficient balance, it will prompt you to
+            add money to your account. If you do not have a Citrus account, please
+            click here. You also have the option of letting the Pilot choose any
+            date and time for the call. If the Pilot accepts your request, he or she
+            can send you two options for the date and time. You can either accept
+            or deny. If you deny, you will have to reschedule the call again.</p>
+          <p>
+            <em>Note: Payment will be taken from your account only after the call is
+              complete. Payment details are required at this stage to verify the
+              balance in your account.</em>
+          </p>
+        </div>
+        <div class="panel-body expandable expanded group-2 closed" data-target=".group-2-f" style="display: none;">
+          <h4>f. How does the call happen?</h4>
+        </div>
+        <div class="panel-body expanded group-2-sub group-2-f closed" style="display: none;">
+          <p>Once the Pilot confirms the meeting, you will be sent a confirmation
+            notification with a secure phone number and one time access code to
+            connect at the time you have scheduled.</p>
+          <p>
+            <em>Note: Both the Advice Seeker and the Pilot still have the option of
+              cancelling or postponing the call. If an Advice Seeker forgets to take
+              the call or tries to cancel the call two hours or less prior to the
+              call, a full fee for the call will be charged. However, there is no
+              cancellation fee if the call is cancelled more than two hours prior to
+              the scheduled time.</em>
+          </p>
+        </div>
+        <div class="panel-body expandable expanded group-2 closed" data-target=".group-2-g" style="display: none;">
+          <h4>g. Can I schedule multiple calls with the same expert?</h4>
+        </div>
+        <div class="panel-body expanded group-2-sub group-2-g closed" style="display: none;">
+          <p>Absolutely! If you have found the advice to be helpful and practical,
+            there is a lot of value to follow up calls and continued mentoring.</p>
+        </div>
+        <div class="panel-body expandable expanded group-2 closed" data-target=".group-2-h" style="display: none;">
+          <h4>h. What should I do before my call?</h4>
+        </div>
+        <div class="panel-body expanded group-2-sub group-2-h closed" style="display: none;">
+          <p>i) We recommend preparing to make the most out of the call.
+            Brainstorm a list of questions and points to cover that will help you
+            get the advice you are seeking.</p>
+          <p>ii) Be cognizant of your time. Make sure you try and cover all your
+            questions within the time frame. At the same time, we do recommend you
+            go for quality over quantity to ensure you get the most helpful answers
+            for your questions. The call will continue after the scheduled time
+            frame provided both parties are in agreement. You will be charged for
+            the continuation of the call, so plan accordingly.</p>
+        </div>
+        <div class="panel-body expandable expanded group-2 closed" data-target=".group-2-i" style="display: none;">
+          <h4>i. Can others join my call?</h4>
+        </div>
+        <div class="panel-body expanded group-2-sub group-2-i closed" style="display: none;">
+          <p>It’s up to you. You can sit in a conference room with your entire
+            team surrounding you, if you wish. At this time, the call must remain a
+            one-on-one call with the Pilot. We are not introducing the feature of
+            conference calling yet. We will let you know if and when we introduce
+            that feature on our platform.</p>
+        </div>
+        <div class="panel-body expandable expanded group-2 closed" data-target=".group-2-j" style="display: none;">
+          <h4>j. Can I pitch investors on Takeoff?</h4>
+        </div>
+        <div class="panel-body expanded group-2-sub group-2-j closed" style="display: none;">
+          <p>Yes, that is one of the best features of our platform. We support all
+            forms of networking and if you wish to pitch investors for any of the
+            amazing ideas you have, we say go for it!</p>
+        </div>
+        <div class="panel-body expandable expanded group-2 closed" data-target=".group-2-k" style="display: none;">
+          <h4>k. How do payments work on Takeoff?</h4>
+        </div>
+        <div class="panel-body expanded group-2-sub group-2-k closed" style="display: none;">
+          <p>When scheduling a call with a Pilot, you will be asked to provide
+            your Citrus account details, which verifies if you have sufficient
+            balance in your account. If you do not have sufficient balance, it will
+            prompt you to add money to your account. Payment will be taken from your
+            account only after the call is complete.</p>
+        </div>
+        <div class="panel-body expandable expanded group-2 closed" data-target=".group-2-l" style="display: none;">
+          <h4>l. What methods of payment do you accept?</h4>
+        </div>
+        <div class="panel-body expanded group-2-sub group-2-l closed" style="display: none;">
+          <p>
+            You need a Citrus account to pay. If you do not have a Citrus account,
+            <a target="_blank" href="http://www.citruspay.com/">click here.</a>
+          </p>
+        </div>
+        <div class="panel-body expandable expanded group-2 closed" data-target=".group-2-m" style="display: none;">
+          <h4>m. How do I view all transactions?</h4>
+        </div>
+        <div class="panel-body expanded group-2-sub group-2-m closed" style="display: none;">
+          <p>To view your transactions and money spent till date, go to <strong>Dashboard &gt; Total Money Spent</strong>. You will be able to view a detailed report of number of calls, duration of calls, and money spent.</p>
+        </div>
+
       </div>
     </div>
   </div>
+
 </div>
 
 <script>
     $(document).ready(function () {
-        $('.panelHeading').click(function (e) {
+        $('.panel-heading').click(function (e) {
             e.stopPropagation();
-            var $sliderContent = $(this).next('.panelBody'),
-                    $panelBody = $(this).closest('.panel-group').find('.panel-body');
-            $panelBody.not($sliderContent.slideToggle("fast", changeInnerState)).find('.panel-body:visible').addBack().slideUp();
+            var target = $(this).data('target');
+            console.log(this + ' data target with ' + target);
+//            $(target).show();
+//            console.log('-------------' + target + '.closed');
+            if($(target + '.closed').length > 0){
+                $(target).show();
+                $(target).removeClass('closed');
+                console.log('all element with class ' + target + 'show');
+            }else{
+                $(target).addClass('closed');
+                console.log('all element with class ' + target + 'hide');
+                $(target).hide();
+            }
+
         });
 
     });
