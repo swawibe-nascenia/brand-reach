@@ -105,11 +105,11 @@
               <%= f.text_field :iban %>
             </div>
 
-            <div class="row">
-              <div class="col-md-5 right-zero-padding">
-                <%= f.button  'SAVE', class: 'btn btn-withdraw pull-right ' %>
+            <div class="display-inline-block bank-btn-set">
+              <div class="pull-left">
+                <%= f.button  'SAVE', class: 'btn btn-withdraw pull-right' %>
               </div>
-              <div class="col-md-7 left-zero-padding">
+              <div class="pull-left">
                 <%= link_to 'CANCEL', '', class: 'btn btn-close' %>
               </div>
             </div>
