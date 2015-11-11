@@ -562,6 +562,10 @@ only screen and (max-width: 480px) {
     text-align: right;
 }
 
+.btn-save-account{
+    margin-left: 62px;
+}
+
 @media
 only screen and (max-width: 480px) {
     .bank_location {
@@ -578,6 +582,10 @@ only screen and (max-width: 480px) {
         padding: 5px 0;
         margin: 5px 0;
     }
+
+    .btn-save-account{
+        margin-left: 0;
+    }
 }
 
 .bank_accounts_table td input[type=radio] {
@@ -592,5 +600,9 @@ only screen and (max-width: 480px) {
 .btn-close:hover {
     color: white;
     background-color: #737373;
+}
+
+.bank-btn-set {
+    margin-left: 65px;
 }
 

@@ -104,25 +104,12 @@
             <div class="col-md-8">
               <%= f.text_field :iban %>
             </div>
-<style>
-  .remove-both-margin{
-      margin-right: 0;
-      margin-left: 0;
-  }
-        .btn-save-account{
-            margin-left: 100px;
-        }
-        @media (max-width: 767px) {
-            .btn-save-account{
-                margin-left: 0;
-            }
-        }
-</style>
+
             <div class="row remove-both-margin">
-              <div class="col-md-5 ">
+              <div class="col-md-4">
                 <%= f.button  'SAVE', class: 'btn btn-withdraw btn-save-account' %>
               </div>
-              <div class="col-md-7">
+              <div class="col-md-8">
                 <%= link_to 'CANCEL', '', class: 'btn btn-close' %>
               </div>
             </div>
