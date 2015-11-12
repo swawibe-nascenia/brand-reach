@@ -20,6 +20,10 @@ class SessionsController < Devise::SessionsController
           @login_success = true
           sign_in(resource_name, user)
 
+          unless user.is_active?
+            user.update_attribute(:is_active, true)
+          end
+
           respond_to do |format|
             format.js { }
             format.html { redirect_to after_sign_in_path_for(resource) }

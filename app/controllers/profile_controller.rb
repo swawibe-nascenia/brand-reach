@@ -119,12 +119,14 @@ class ProfileController < ApplicationController
 
   def deactivate_account
     @user.is_active = false
-    if @user.save
-      redirect_to destroy_user_session_path
+
+    if @user.save(validate: false)
       flash[:success] = 'Account Deactivated successfully'
     else
       flash[:error] = 'Account could not Deactivated'
     end
+
+    redirect_to destroy_user_session_path
   end
 
   def faqs
