@@ -85,7 +85,6 @@ $(function(){
 
 //    make all message read
     function makeMessageRead(campainId){
-
         if (campainId === undefined || campainId === null) {
             //no campaign id passed
         }else{
@@ -99,11 +98,9 @@ $(function(){
                 }
             });
         }
-
     }
 
 //    delete selected offers
-
     $('.delete-selected-offer').click(function(){
         var selected_offer_ids = seleted_offer_ids();
         console.log('selected ids' + selected_offer_ids);
@@ -142,7 +139,6 @@ $(function(){
                 }
             });
         }
-
         return false;
     });
 
@@ -151,9 +147,7 @@ $(function(){
         $('.skin-blue.sidebar-mini').toggleClass('sidebar-open');
     });
 
-
 //     ajax sing up
-
         $("form#ajax_signup").submit(function(e){
             e.preventDefault(); //This prevents the form from submitting normally
             var user_info = $(this).serializeObject();
@@ -171,7 +165,6 @@ $(function(){
         });
 
     // ajax sign in
-
     var value = $("input[name='sign-in-role']:checked").val();
 
     showSignUpInfo(value);
@@ -196,7 +189,6 @@ $(function(){
         if ($("#myNavbar.in").length)
         {
             $("#myNavbar").collapse('hide');
-
         }
         else
         {
@@ -222,8 +214,6 @@ $(function(){
 
 
 });
-
-
 // end of document.ready() method
 
 function makeMessageRead(campainId){
