@@ -25,15 +25,6 @@
     display: inline-block;
 }
 
-/*.profile-page-border {*/
-/*border-radius: 3px;*/
-/*border: 1px solid #dddddd;*/
-/*box-shadow: 0px 1px 1px #dddddd;*/
-/*margin: 25px 20px;*/
-/*background-color: #FFFFFF;*/
-/*color: #797979;*/
-/*}*/
-
 .brands-profile-page-wrapper label {
     padding-right: 15px;
     font-size: 13px;
@@ -61,7 +52,7 @@
 }
 
 .brands-profile-page-wrapper input, .brands-profile-page-wrapper select, .personal-info-form .form-group textarea {
-    width: 52%;
+    width: 70%;
     display: inline;
 }
 .personal-info-form .form-group textarea.short_bio{
@@ -192,7 +183,7 @@
 /* ============== page responsive stylesheet ================= */
 
 /* style for making compatible with 320 to 767 px devices */
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .brands-profile-page-wrapper input, .brands-profile-page-wrapper select, .personal-info-form .form-group textarea {
         width: 65%;
     }
@@ -200,10 +191,6 @@
     .personal-info-form .form-group textarea.short_bio{
         width: 80%;
     }
-
-    /*.personal-info-form .form-group textarea{*/
-    /*width: 53%;*/
-    /*}*/
 }
 
 /* style for making compatible with 992 to 1200 px devices */
@@ -211,11 +198,6 @@
     .personal-info-form .form-group textarea.short_bio{
         width: 83%;
     }
-}
-
-/* style for making compatible with 1200 px to upper devices */
-@media (min-width: 1200px) {
-
 }
 
 @media (max-width: 1000px) {

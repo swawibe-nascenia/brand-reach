@@ -48,11 +48,14 @@
 
         <div class="form-group">
           <div class="col-md-6">
-            <%= f.label :street_address, class: 'textarea-label' %>
-            <%= f.text_area :street_address, rows: 4, class: 'street-address-textarea', placeholder: 'Enter your address here' %>
-
-            <%= f.label :zip_code %>
-            <%= f.text_field :zip_code %>
+            <div>
+              <%= f.label :street_address, class: 'textarea-label' %>
+              <%= f.text_area :street_address, rows: 4, class: 'street-address-textarea', placeholder: 'Enter your address here' %>
+            </div>
+            <div>
+              <%= f.label :zip_code %>
+              <%= f.text_field :zip_code %>
+            </div>
           </div>
 
           <div class="col-md-6">

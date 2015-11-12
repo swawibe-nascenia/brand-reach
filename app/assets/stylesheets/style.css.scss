@@ -816,6 +816,22 @@ th {
   padding-top: 5px;
 }
 
+@media (max-width: 480px) {
+
+  #error_explanation {
+    width: 100%;
+  }
+
+  #error_explanation h2 {
+    font-size: 12px;
+  }
+
+  #error_explanation ul li {
+    font-size: 11px;
+  }
+
+}
+
 .color-brand {
   color: #32ccfe
 }
