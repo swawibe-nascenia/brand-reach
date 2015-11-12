@@ -6,7 +6,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
       @user = User.authenticate_user_by_facebook(authentication_info, authentication_params)
 
-      if @user.save
+      # Here Validation is false as when we are signing in with facebook for first time then User models validation will rise an presence true error. So for first time signing in we are bypassing it. But Validations will be check in Model.
+
+      if @user.save(validate: false)
         sign_in @user
         set_flash_message(:notice, :success, :kind => 'Facebook') if is_navigational_format?
         redirect_to profile_profile_index_path
