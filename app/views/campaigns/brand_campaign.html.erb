@@ -135,7 +135,7 @@
         $('#download_campaigns').click(function() {
             var campaign_id = $('#campaign_id option:selected').val();
 
-            window.location.href = "<%= export_brand_campaigns_campaigns_path(format: :csv) %>?campaign_id=" + campaign_id;
+            window.location.href = "<%= export_campaigns_path(format: :csv) %>?campaign_id=" + campaign_id;
         });
 
     });

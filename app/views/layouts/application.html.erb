@@ -128,13 +128,13 @@
             </li>
 
             <li class="<%= (params[:controller] == 'campaigns') ? 'active' : '' %>">
-              <a href="<%= brand_campaign_campaigns_path %>">
+              <a href="<%= campaigns_path %>">
                 <span class="glyphicon icon-horn"></span><span class="space-sidebar">CAMPAIGNS</span>
               </a>
             </li>
 
-            <li  class="<%= (params[:controller] == 'brand_payments') ? 'active' : '' %>">
-              <a href="<%= brand_payments_path %>">
+            <li  class="<%= (params[:controller] == 'payments') ? 'active' : '' %>">
+              <a href="<%= payments_path %>">
                 <i class="fa fa-dollar"></i><span class="space-sidebar">PAYMENTS</span>
               </a>
             </li>
@@ -154,13 +154,13 @@
             </li>
 
             <li class="<%= (params[:controller] == 'campaigns') ? 'active' : '' %>">
-              <a href="<%= influencer_campaign_campaigns_path %>">
+              <a href="<%= campaigns_path %>">
                 <span class="glyphicon icon-horn"></span><span class="space-sidebar">CAMPAIGNS</span>
               </a>
             </li>
 
-            <li class="<%= (params[:controller] == 'influencer_payments') ? 'active' : '' %>">
-              <a href="<%= influencer_payments_path %>">
+            <li class="<%= (params[:controller] == 'payments') ? 'active' : '' %>">
+              <a href="<%= payments_path %>">
                 <i class="fa fa-dollar"></i><span class="space-sidebar">PAYMENTS</span>
               </a>
             </li>
@@ -173,7 +173,7 @@
           </a>
         </li>
         <li class="<%= (params[:controller] == 'profile' && params[:action] == 'show_settings') ? 'active' : '' %>">
-          <a href="<%= show_settings_profile_index_path %>">
+          <a href="<%= settings_profile_index_path %>">
             <i class="fa fa-cog"></i><span class="space-sidebar">SETTINGS</span>
           </a>
         </li>

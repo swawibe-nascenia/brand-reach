@@ -165,7 +165,7 @@
                 campaign_ids.push($(this).data('id'));
             });
 
-            window.location.href = "<%= export_influencer_campaigns_campaigns_path(format: :csv) %>?campaign_ids=" + campaign_ids;
+            window.location.href = "<%= export_campaigns_path(format: :csv) %>?campaign_ids=" + campaign_ids;
 
         });
     });
