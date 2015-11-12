@@ -205,12 +205,11 @@ $(function(){
             <span class="spinner"><i class="fa fa-spinner fa-spin"></i></span>
             SUBMIT
            </button>
-
  */
-    $('.show-spinner-on-submit').submit(function() {
-        console.log('Form with spinner functionality has been submitted');
-        $(this).find('.has-spinner').addClass('active');
-    });
+    //$('.show-spinner-on-submit').submit(function() {
+    //    console.log('Form with spinner functionality has been submitted');
+    //    $(this).find('.has-spinner').addClass('active');
+    //});
 
 
 });
