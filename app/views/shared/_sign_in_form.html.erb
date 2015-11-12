@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<style>
+
+</style>
 <div class="modal-body model-iner">
   <div class="row">
     <div class="col-md-12">
@@ -30,10 +34,12 @@
            <input type="hidden" value="0" name="user[remember_me]">
            <input id="user_remember_me" type="checkbox" name="user[remember_me]" value="1">
            <label for="user_remember_me">Remember me</label>
-
          </div>
+        <button class="btn btn-modal-submit has-spinner" type="submit">
+          <span class="spinner"><i class="fa fa-spinner fa-spin"></i></span>
+          SUBMIT
+        </button>
 
-        <button class="btn btn-modal-submit" type="submit">SUBMIT</button>
         <%= link_to 'Forgot your password', new_password_path(:user) %><br />
       </form>
     </div>
@@ -47,3 +53,12 @@
     </div>
   </div>
 </div>
+
+
+<script>
+    $(function(){
+        $('.btn.has-spinner').click(function() {
+            $(this).addClass('active');
+        });
+    });
+</script>
