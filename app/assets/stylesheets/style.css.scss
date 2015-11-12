@@ -961,7 +961,7 @@ th {
 .alert a.close{
   text-decoration: none;
 }
-#signin .modal-header h3, #signup .modal-header h3{
+.global-modal .modal-header h3,#signin .modal-header h3, #signup .modal-header h3{
   color: #ffb734;
   font-weight: 600;
 }
@@ -1104,8 +1104,21 @@ h5, .h5 {
 
 .has-spinner.active .fa-spinner {
   opacity: 1;
-  max-width: 50px; /* More than it will ever come, notice that this affects on animation duration */
+  max-width: 50px;
 }
+/* success request notification */
+.success_icon{
+  background: image-url("success-icon.png") no-repeat ;
+  float: left;
+  line-height: 16px;
+  padding: 0 0 0 25px;
+  width: 100%;
+}
+.info_p {
+  font-size: 15px;
+  margin: -15px 0 20px !important;
+}
+.global-modal-title{
 
-
+}
 
