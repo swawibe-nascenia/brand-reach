@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
 
-
   get 'helps/index'
 
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations', sessions: 'sessions' }
-  # get 'users/profile' => 'users/registrations#edit_user_profile'
-
-  # map.connect '/:profile', controller: 'profile', action: 'profile'
 
   resources :profile, path: '', only: [:update] do
     member do
@@ -91,14 +87,6 @@ Rails.application.routes.draw do
   resources :bank_accounts, path:'bank-accounts', only: [:new, :create, :destroy] do
     collection do
     end
-  end
-
-  authenticated :user do
-    root to: 'profile#profile', as: :authenticated_root
-  end
-
-  unauthenticated do
-    root to: 'public#home'
   end
 
   get '/explore', to: 'explores#show', as: 'explores'
