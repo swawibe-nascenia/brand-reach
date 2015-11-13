@@ -254,19 +254,15 @@ only screen and (max-width: 415px) {
     }
 
     .btn-download {
-        font-size: 10px;
+        font-size: 11px;
         color: white;
         margin: 15px 3px 3px 5px;
-        padding: 3px 10px;
+        padding: 8px 10px;
     }
 
-    /*.btn-withdraw {*/
-        /*font-size: 10px;*/
-        /*color: white;*/
-        /*margin: 15px 3px 3px 3px;*/
-        /*padding: 3px 10px;*/
-
-    /*}*/
+    .transaction-table {
+        padding-left: 1px;
+    }
 
     .payment-div > .payment-balance {
         font-size: 8px;
@@ -305,6 +301,10 @@ only screen and (max-width: 415px) {
 only screen and (max-width: 480px) {
     .withdraw-modal-dialog {
         width: 95%;
+    }
+
+    .brand-payment-content {
+        padding: 35px 20px;
     }
 }
 
