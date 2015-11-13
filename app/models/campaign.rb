@@ -103,6 +103,7 @@ class Campaign < ActiveRecord::Base
 
   def first_message_body
     <<MESSAGE
+    <p class='first-message'>
       You have sent the following campaign request. Waiting for the influencers response.
 
       <strong>Campaign Name:</strong> #{self.name}
@@ -113,7 +114,7 @@ class Campaign < ActiveRecord::Base
 
       <strong>Campaign Heading:</strong> #{self.headline}
       <strong>Campaign Description:</strong> #{self.text}
-
+    </p>
 MESSAGE
   end
 end
