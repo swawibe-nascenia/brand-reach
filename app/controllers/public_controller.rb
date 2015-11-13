@@ -36,7 +36,7 @@ class PublicController < ApplicationController
   end
 
   def get_in_touch
-    redirect_to home_public_index_path
+    redirect_to influencer_home_public_index_path
   end
 
   def faqs

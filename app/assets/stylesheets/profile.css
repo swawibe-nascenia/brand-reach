@@ -196,7 +196,7 @@
 /* style for making compatible with 992 to 1200 px devices */
 @media (min-width: 992px) {
     .personal-info-form .form-group textarea.short_bio{
-        width: 83%;
+        width: 86%;
     }
 }
 
