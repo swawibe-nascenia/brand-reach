@@ -106,7 +106,7 @@ class ProfileController < ApplicationController
       flash[:error] = 'User information update fail'
     end
 
-    redirect_to show_settings_profile_index_path
+    redirect_to settings_profile_index_path
   end
 
   def toggle_available
