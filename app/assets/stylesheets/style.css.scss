@@ -513,7 +513,7 @@ a.center-block.text-center.user-status.small {
   margin-right: 25px;
 }
 
-@media (min-width: 460px) {
+@media (max-width: 460px) {
 
   .about {
     margin-right: 10px;
