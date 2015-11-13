@@ -180,6 +180,11 @@
     margin-left: 20px;
 }
 
+.btn-save:hover {
+    color: white;
+    background-color: #f1b242;
+}
+
 @media (max-width: 480px){
     .brands-setting .info {
         margin-left: 0;
