@@ -513,6 +513,14 @@ a.center-block.text-center.user-status.small {
   margin-right: 25px;
 }
 
+@media (min-width: 460px) {
+
+  .about {
+    margin-right: 10px;
+  }
+
+}
+
 .login-link {
   display: inline-block;
   /*float: right;*/
