@@ -670,6 +670,24 @@ only screen and (max-width: 420px) {
     .campaign-nav-tabs {
         font-size: 13px;
     }
+
+    .btn-download-campaign {
+        width: 96%;
+    }
+
+    .campaign-view label, .campaign-view select, .campaign-view button {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .campaign-view label {
+        padding: 0;
+    }
+
+    .campaign-view button {
+        margin-left: 0;
+    }
 }
 
 .btn-export:hover {
