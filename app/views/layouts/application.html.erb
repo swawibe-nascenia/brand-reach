@@ -50,12 +50,11 @@
                   makeMessageRead(message.attributes.campaign_id);
               }else{
                   $('.read-status-' + message.attributes.campaign_id).removeClass('invisible');
+                  updateUnreadMessage();
               }
           });
-
       });
   </script>
-
   <!-- end of pubnub setting -->
 
   <%= yield :head %>
@@ -117,7 +116,14 @@
 
             <li class="<%= (params[:controller] == 'offers') ? 'active' : '' %>">
               <a href="<%= offers_path %>">
-                <span class="glyphicon glyphicon-envelope"> </span><span class="space-sidebar">MESSAGES</span>
+                <span class="glyphicon glyphicon-envelope"> </span>
+                <span class="space-sidebar">MESSAGES
+                  <span class="unread-message">
+                    <% if current_user.unread_messages > 0 %>
+                       (<span class="unread-message-number"><%= current_user.unread_messages %></span>)
+                    <% end %>
+                  </span>
+                </span>
               </a>
             </li>
 
@@ -143,7 +149,15 @@
 
             <li class="<%= (params[:controller] == 'offers') ? 'active' : '' %>">
               <a href="<%= offers_path %>">
-                <span class="glyphicon glyphicon-envelope"> </span><span class="space-sidebar">OFFERS</span>
+                <span class="glyphicon glyphicon-envelope"> </span>
+                <span class="space-sidebar">
+                  OFFERS
+                <span class="unread-message">
+                    <% if current_user.unread_messages > 0 %>
+                       (<span class="unread-message-number"><%= current_user.unread_messages %></span>)
+                    <% end %>
+                  </span>
+                </span>
               </a>
             </li>
 

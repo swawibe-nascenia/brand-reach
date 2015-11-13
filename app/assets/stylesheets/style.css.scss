@@ -1132,6 +1132,11 @@ h5, .h5 {
 .title>p:first-child{
   display: inline-block;
 }
+.unread-message{
+  padding-left: 2px;
+  font-weight: bold;
+  font-size: 16px;
+}
 
 .button-border-yellow {
   color: white;

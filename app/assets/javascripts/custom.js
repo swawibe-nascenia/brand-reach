@@ -95,6 +95,13 @@ $(function(){
                 data: {'authenticity_token': $('meta[name="csrf-token"]').attr('content')},
                 success: function(data) {
                         $('.read-status-' + data.id).addClass('invisible');
+                    if(parseInt(data.unreadMessages) > 0){
+                        console.log('----------------We have unread message------------- ');
+                        $('span.unread-message').html("(<span class='unread-message-number'>" + data.unreadMessages + "</span>)");
+                    }else{
+                        console.log('----------------We have no unread message------------- ');
+                        $('span.unread-message').html('');
+                    }
                 }
             });
         }
@@ -231,5 +238,19 @@ function makeMessageRead(campainId){
         });
     }
 
+}
+
+/*================ Update side bar unread message counter ================*/
+function updateUnreadMessage(){
+    var presentUnreadMessages = parseInt($('span.unread-message-number').text());
+    console.log('current unread message ' + presentUnreadMessages );
+
+    if(isNaN(presentUnreadMessages)){
+        console.log('this is not a number');
+        $('span.unread-message').html("(<span class='unread-message-number'>" + 1 + "</span>)");
+    }else{
+        presentUnreadMessages += 1;
+            $('span.unread-message-number').text(presentUnreadMessages);
+    }
 }
 

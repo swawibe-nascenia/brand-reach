@@ -46,6 +46,7 @@ class User < ActiveRecord::Base
   has_many :bank_accounts
   has_many :influencer_payments
   has_many :contact_uses
+  has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id'
 
   accepts_nested_attributes_for :facebook_accounts
 
@@ -149,6 +150,10 @@ class User < ActiveRecord::Base
 
   def location
     "#{city}, #{ISO3166::Country[country].name}"
+  end
+
+  def unread_messages
+    self.received_messages.where(read: 0).count
   end
 
   # ----------------------------------------------------------------------
