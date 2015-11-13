@@ -62,6 +62,11 @@
     font-size: 13px;
 }
 
+.get-in-touch-submit-button:hover {
+    color: white;
+    background-color: #f1b242 ;
+}
+
 .display-inline {
     display: inline-block;
 }
