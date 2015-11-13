@@ -134,15 +134,9 @@ only screen and (max-width: 480px) {
     padding: 5px 5px 0px 5px;
 }
 .panel-payment {
-    /*margin-bottom: 20px;*/
     background-color: #fff;
-    /*border-left: 1px solid #ddd;*/
-    /*border-right: 1px solid #ddd;*/
-    /*border-bottom: 1px solid #ddd;*/
-    /*border-radius: 0;*/
-    /*-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);*/
-    /*box-shadow: 0 1px 1px rgba(0,0,0,.05);*/
     padding: 24px 20px 1px 20px;
+    margin-bottom: 0;
 }
 
 .status-circle {
@@ -290,6 +284,12 @@ only screen and (max-width: 415px) {
 
 .brand-payment-content {
     padding: 0 20px;
+}
+
+.brand-payment-content .tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 
 .withdraw-modal-dialog {
