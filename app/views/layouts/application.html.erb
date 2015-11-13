@@ -53,6 +53,20 @@
                   updateUnreadMessage();
               }
           });
+
+//          new offer pubnub event
+          PUBNUB_CLIENT.events.bind("NEW_OFFER", function (message) {
+              var messageTemplate = Handlebars.compile($('#message-template').html());
+              var outputHtml = messageTemplate(message.attributes);
+              $('.message-container-' + message.attributes.campaign_id).prepend(outputHtml);
+
+              if( $('.offer-box-' + message.attributes.campaign_id).children('.offer-body.in').length ){
+                  makeMessageRead(message.attributes.campaign_id);
+              }else{
+                  $('.read-status-' + message.attributes.campaign_id).removeClass('invisible');
+                  updateUnreadMessage();
+              }
+          });
       });
   </script>
   <!-- end of pubnub setting -->
@@ -249,7 +263,7 @@
 </body>
 </html>
 
-<script id="message-template" type="text/x-handlebars-template">
+<script id="offer-template" type="text/x-handlebars-template">
   <div class="message message-{{campaign_id}}">
     <img src="{{sender_profile_picture_url}}" class='inbox-logo-responsive'>
     <span class="title">{{body}}</span>
