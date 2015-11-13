@@ -8,7 +8,7 @@
     <%= form_tag(nil, method: 'get') do %>
         <%= label_tag :name, 'Choose a Campaign' %>
         <%= select_tag 'id', options_from_collection_for_select(@campaigns, 'id', 'name', @campaign.id), prompt: 'Choose a campaign to view the statistics', id: 'campaign_id'%>
-        <%= button_tag 'VIEW', class: 'btn btn-campaign-view' %>
+        <%= button_tag 'VIEW', class: 'btn btn-campaign-view button-border-yellow' %>
     <% end %>
   </div>
   <div class="br-container">

@@ -25,7 +25,7 @@
     <div class="action">
       <% if current_user.influencer? %>
           <% if offer.waiting? %>
-              <%= link_to 'Accept', accept_offer_path(offer, authenticity_token: form_authenticity_token), class: 'btn btn-accept', method: :put, remote: true %>
+              <%= link_to 'Accept', accept_offer_path(offer, authenticity_token: form_authenticity_token), class: 'btn btn-accept button-border-blue', method: :put, remote: true %>
               &nbsp;
               <%= link_to 'Deny', deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'deny', method: :put, remote: true %>
               <%= link_to 'Undo Deny', undo_deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'undo-deny hidden', method: :put, remote: true %>
@@ -39,7 +39,7 @@
       <% else %>
           <% if offer.accepted? %>
               <% unless offer.card_number? %>
-                  <%= link_to 'Engage', new_brand_payment_campaigns_path(offer.id), class: 'btn btn-accept', method: :post %>
+                  <%= link_to 'Engage', new_brand_payment_campaigns_path(offer.id), class: 'btn btn-accept button-border-blue', method: :post %>
               <% else %>
                   <span class="text-success">Running Campaign</span>
               <% end %>

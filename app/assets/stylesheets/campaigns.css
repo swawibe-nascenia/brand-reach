@@ -690,7 +690,7 @@ only screen and (max-width: 420px) {
     }
 }
 
-.btn-export:hover {
+.btn-export:hover, .btn-campaign-view {
     color: white;
     background-color: #f1b242;
 }

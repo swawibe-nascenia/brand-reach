@@ -154,7 +154,7 @@
     padding-left: 4px;
 }
 
-.btn-deactive{
+.btn-deactivate{
     width: 196px;
     height: 32px;
     background-color: #666666;
@@ -163,6 +163,11 @@
     font-weight: 500;
     font-size: 13px;
 
+}
+
+.btn-deactivate:hover {
+    color: white;
+    background-color: #494949;
 }
 
 .btn-save{

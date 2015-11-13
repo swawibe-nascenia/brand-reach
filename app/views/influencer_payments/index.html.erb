@@ -13,7 +13,7 @@
     <div class="amount-withdraw">
       <%= label_tag 'withdraw_amount', 'Amount to Withdraw' %>
       <%= number_field_tag 'withdraw_amount', '' %>
-      <%= button_tag 'WITHDRAW', :class => 'btn btn-withdraw', id: 'btn-amount-withdraw' %>
+      <%= button_tag 'WITHDRAW', :class => 'btn btn-withdraw button-border-yellow', id: 'btn-amount-withdraw' %>
     </div>
   </div>
 
@@ -57,7 +57,7 @@
     <div class="panel-payment">
       <div id="payment" class="tab-pane fade in active">
         <%= image_tag('Transactions.png', :class => 'transaction-table') %> &nbsp; Transactions
-        <%= link_to 'DOWNLOAD INVOICE', '#', :class => 'btn btn-influencer-download pull-right', id: 'export_payments' %>
+        <%= link_to 'DOWNLOAD INVOICE', '#', :class => 'btn btn-influencer-download pull-right button-border-yellow', id: 'export_payments' %>
 
         <table class="table table-striped table-bordered table-responsive payments_table">
           <thead>
