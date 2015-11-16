@@ -1,5 +1,9 @@
 <%= stylesheet_link_tag 'profile-image-upload', media: 'all' %>
-
+<style>
+  #profile-pic-preview{
+      width: 100%;
+  }
+</style>
 <div id="profile_image_upload_modal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content profile-image-modal-content">
@@ -26,6 +30,13 @@
               <%= f.file_field :image, required: true, pattern: '([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif))' %>
             </div>
 
+            <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
+                <%= text_field_tag attribute, :id => attribute %>
+            <% end %>
+
+            <div class="field">
+              <%= image_tag '', id: 'profile-pic-preview'%>
+            </div>
 
             <div class="modal-footer">
               <div class="actions">
@@ -38,4 +49,30 @@
   </div>
 </div>
 
+<script type="text/javascript">
+    $(function () {
+        $('#user_image').change(function () {
+            $('#profile-pic-preview').hide();
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#profile-pic-preview').show();
+                $('#profile-pic-preview').attr("src", e.target.result);
+                $('#profile-pic-preview').Jcrop({
+                    onChange: update_crop,
+                    onSelect: update_crop,
+                    aspectRatio: 1,
+                    setSelect:   [ 100, 100, 100, 100 ]
+                });
+            }
+            reader.readAsDataURL($(this)[0].files[0]);
+        });
+
+    });
+    function update_crop(coords) {
+        $('#crop_x').val(coords.x);
+        $('#crop_y').val(coords.y);
+        $('#crop_w').val(coords.w);
+        $('#crop_h').val(coords.h);
+    }
+</script>
 
