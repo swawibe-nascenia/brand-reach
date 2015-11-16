@@ -215,13 +215,11 @@
 
 
 <script type="text/javascript">
-
-    // global variable for pubnub
+// ========================== pubnub global variable =================================
     var PUBNUB_CLIENT = null;
     var current_user_id = <%= current_user.id %>;
 
     $(document).ready(function () {
-
         <% if Rails.env.beta? || Rails.env.production? %>
         PUBNUB_CLIENT = PUBNUB.init({
             subscribe_key: '<%= CONFIG[:pubnub_subscribe_key] %>',
@@ -235,6 +233,7 @@
         });
         <% end %>
 
+// ========================== subscribe to pubnub =================================
         PUBNUB_CLIENT.subscribe({
             channel: ['<%= current_user.channel_name %>'],
             message: function (m) {
@@ -243,20 +242,26 @@
             }
         });
 
+// ========================== bind for pubnub MESSAGE event =================================
         PUBNUB_CLIENT.events.bind("MESSAGE", function (message) {
             var messageTemplate = Handlebars.compile($('#message-template').html());
             var outputHtml = messageTemplate(message.attributes);
             $('.message-container-' + message.attributes.campaign_id).prepend(outputHtml);
+            var openOfferBoxs = $('.offer-box-' + message.attributes.campaign_id).children('.offer-body.in').length;
 
-            if( $('.offer-box-' + message.attributes.campaign_id).children('.offer-body.in').length ){
+            if(openOfferBoxs){
                 makeMessageRead(message.attributes.campaign_id);
             }else{
-                $('.read-status-' + message.attributes.campaign_id).removeClass('invisible');
-                updateUnreadMessage();
+                if(current_user_id == message.attributes.sender_id){
+
+                }else{
+                    $('.read-status-' + message.attributes.campaign_id).removeClass('invisible');
+                    updateUnreadMessage();
+                }
             }
         });
 
-//          new offer pubnub event
+// ========================== bind for pubnub NEW_OFFER event =================================
         PUBNUB_CLIENT.events.bind("NEW_OFFER", function (message) {
             console.log('===================== NEW_OFFER pubnub event fire successfully ===========');
             $.ajax({
