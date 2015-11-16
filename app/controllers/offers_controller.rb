@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy, :accept, :deny, :undo_deny,
-                                   :reply_message, :make_messages_read]
+                                   :reply_message, :make_messages_read, :load_offer]
 
   # GET /offers
   # GET /offers.json
@@ -77,6 +77,9 @@ class OffersController < ApplicationController
     offers = Campaign.where(id: @ids)
 
     offers.update_all(target_column => true)
+  end
+
+  def load_offer
   end
 
   private

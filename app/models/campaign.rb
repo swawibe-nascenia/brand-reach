@@ -46,6 +46,7 @@ class Campaign < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   before_save :date_validation
+  after_create :send_pubnub_notification
 
   # ----------------------------------------------------------------------
   # == Scopes and Other macros == #
@@ -116,5 +117,25 @@ class Campaign < ActiveRecord::Base
       <strong>Campaign Description:</strong> #{self.text}
     </p>
 MESSAGE
+  end
+
+  def send_pubnub_notification
+    subscriber_chanels = User.where(id: [ sender_id, receiver_id]).pluck(:channel_name)
+
+    Rails.logger.info 'Send pubnub notification for offer creation'
+
+    subscriber_chanels.each do |channel|
+      Rails.logger.info "Send pubnub notification for offer creation to channel #{channel}"
+
+      $pubnub_server_subscription.publish(
+          :channel => channel,
+          :message => {event: 'NEW_OFFER',
+                       attributes: {
+                           id: self.id,
+                       }
+          },
+          callback: lambda{ |info| Rails.logger.info "Send message to pubnub channel #{info}" }
+      )
+    end
   end
 end

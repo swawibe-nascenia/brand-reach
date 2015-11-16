@@ -12,64 +12,13 @@
   <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Hind' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tag %>
-
-  <script type="text/javascript">
-      // global variable for pubnub
-      var PUBNUB_CLIENT = null;
-      var current_user_id = <%= current_user.id %>;
-
-      $(document).ready(function () {
-
-          <% if Rails.env.beta? || Rails.env.production? %>
-          PUBNUB_CLIENT = PUBNUB.init({
-              subscribe_key: '<%= CONFIG[:pubnub_subscribe_key] %>',
-              uuid: current_user_id,
-              ssl: true
-          });
-          <% else %>
-          PUBNUB_CLIENT = PUBNUB.init({
-              subscribe_key: '<%= CONFIG[:pubnub_subscribe_key] %>',
-              uuid: current_user_id
-          });
-          <% end %>
-
-          PUBNUB_CLIENT.subscribe({
-              channel: ['<%= current_user.channel_name %>'],
-              message: function (m) {
-                  PUBNUB_CLIENT.events.fire(m.event, m);
-                  console.log('subscribe user to pubnub channel' + m);
-              }
-          });
-
-          PUBNUB_CLIENT.events.bind("MESSAGE", function (message) {
-              var messageTemplate = Handlebars.compile($('#message-template').html());
-              var outputHtml = messageTemplate(message.attributes);
-              $('.message-container-' + message.attributes.campaign_id).prepend(outputHtml);
-
-              if( $('.offer-box-' + message.attributes.campaign_id).children('.offer-body.in').length ){
-                  makeMessageRead(message.attributes.campaign_id);
-              }else{
-                  $('.read-status-' + message.attributes.campaign_id).removeClass('invisible');
-                  updateUnreadMessage();
-              }
-          });
-
-//          new offer pubnub event
-          PUBNUB_CLIENT.events.bind("NEW_OFFER", function (message) {
-              var messageTemplate = Handlebars.compile($('#message-template').html());
-              var outputHtml = messageTemplate(message.attributes);
-              $('.message-container-' + message.attributes.campaign_id).prepend(outputHtml);
-
-              if( $('.offer-box-' + message.attributes.campaign_id).children('.offer-body.in').length ){
-                  makeMessageRead(message.attributes.campaign_id);
-              }else{
-                  $('.read-status-' + message.attributes.campaign_id).removeClass('invisible');
-                  updateUnreadMessage();
-              }
-          });
-      });
+  <!--handlebars message template-->
+  <script id="message-template" type="text/x-handlebars-template">
+    <div class="message message-{{campaign_id}}">
+      <img src="{{sender_profile_picture_url}}" class='inbox-logo-responsive'>
+      <span class="title">{{body}}</span>
+    </div>
   </script>
-  <!-- end of pubnub setting -->
 
   <%= yield :head %>
 </head>
@@ -263,10 +212,62 @@
 </body>
 </html>
 
-<script id="offer-template" type="text/x-handlebars-template">
-  <div class="message message-{{campaign_id}}">
-    <img src="{{sender_profile_picture_url}}" class='inbox-logo-responsive'>
-    <span class="title">{{body}}</span>
-  </div>
-</script>
 
+
+<script type="text/javascript">
+
+    // global variable for pubnub
+    var PUBNUB_CLIENT = null;
+    var current_user_id = <%= current_user.id %>;
+
+    $(document).ready(function () {
+
+        <% if Rails.env.beta? || Rails.env.production? %>
+        PUBNUB_CLIENT = PUBNUB.init({
+            subscribe_key: '<%= CONFIG[:pubnub_subscribe_key] %>',
+            uuid: current_user_id,
+            ssl: true
+        });
+        <% else %>
+        PUBNUB_CLIENT = PUBNUB.init({
+            subscribe_key: '<%= CONFIG[:pubnub_subscribe_key] %>',
+            uuid: current_user_id
+        });
+        <% end %>
+
+        PUBNUB_CLIENT.subscribe({
+            channel: ['<%= current_user.channel_name %>'],
+            message: function (m) {
+                PUBNUB_CLIENT.events.fire(m.event, m);
+                console.log('subscribe user to pubnub channel' + m);
+            }
+        });
+
+        PUBNUB_CLIENT.events.bind("MESSAGE", function (message) {
+            var messageTemplate = Handlebars.compile($('#message-template').html());
+            var outputHtml = messageTemplate(message.attributes);
+            $('.message-container-' + message.attributes.campaign_id).prepend(outputHtml);
+
+            if( $('.offer-box-' + message.attributes.campaign_id).children('.offer-body.in').length ){
+                makeMessageRead(message.attributes.campaign_id);
+            }else{
+                $('.read-status-' + message.attributes.campaign_id).removeClass('invisible');
+                updateUnreadMessage();
+            }
+        });
+
+//          new offer pubnub event
+        PUBNUB_CLIENT.events.bind("NEW_OFFER", function (message) {
+            console.log('===================== NEW_OFFER pubnub event fire successfully ===========');
+            $.ajax({
+                type: 'get',
+                url: '/offers/' + message.attributes.id +'/load_offer',
+                dataType: 'script',
+                data: {'authenticity_token': $('meta[name="csrf-token"]').attr('content')},
+                success: function(data) {
+                    console.log('--------------load new offer successful----------------');
+                }
+            });
+        });
+    });
+</script>

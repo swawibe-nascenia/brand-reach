@@ -60,6 +60,7 @@ Rails.application.routes.draw do
       put :undo_deny
       post :reply_message
       post :make_messages_read
+      get :load_offer
     end
   end
 
