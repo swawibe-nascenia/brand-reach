@@ -9,7 +9,7 @@
 
     <div class="get-in-touch"> GET IN TOUCH </div>
 
-    <%= form_for @contact_us, url: contact_us_save_profile_index_path, method: :post, html: { class: '' } do |f| %>
+    <%= form_for @contact_us, url: contact_us_save_profile_index_path, method: :post, data: { parsley_validate: '' } do |f| %>
 
         <div class="get-in-touch-category">
           <%= f.label :category, 'Category', class: 'category-name display-inline' %>
@@ -18,7 +18,7 @@
 
         <div class="get-in-touch-message">
           <%= f.label :message, 'Message', class: 'message-name display-inline' %>
-          <%= f.text_area :message, rows: 6, class: 'get-in-touch-message-textarea display-inline' %>
+          <%= f.text_area :message, rows: 6, class: 'get-in-touch-message-textarea display-inline', 'data-parsley-required' => 'true'  %>
         </div>
 
         <div class="get-in-touch-submit">

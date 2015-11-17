@@ -92,6 +92,12 @@
 
 }
 
+.get-in-touch-message li {
+    color: red;
+    padding-left: 78px;
+    font-size: 100%;
+}
+
 @media (max-width: 480px){
     .get-in-touch-form {
         padding: 10px;
@@ -117,5 +123,9 @@
 
     .get-in-touch-message-textarea, .get-in-touch-form button {
         width: 100%;
+    }
+
+    .get-in-touch-message li {
+        padding-left: 0;
     }
 }
