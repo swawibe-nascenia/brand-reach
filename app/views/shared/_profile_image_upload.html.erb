@@ -1,8 +1,6 @@
 <%= stylesheet_link_tag 'profile-image-upload', media: 'all' %>
 <style>
-  #profile-pic-preview{
-      width: 100%;
-  }
+
 </style>
 <div id="profile_image_upload_modal" class="modal fade">
   <div class="modal-dialog">
@@ -31,7 +29,7 @@
             </div>
 
             <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
-                <%= text_field_tag attribute, :id => attribute %>
+                <%= hidden_field_tag attribute, :id => attribute %>
             <% end %>
 
             <div class="field">
@@ -61,7 +59,7 @@
                     onChange: update_crop,
                     onSelect: update_crop,
                     aspectRatio: 1,
-                    setSelect:   [ 100, 100, 100, 100 ]
+                    setSelect:   [ 10, 10, 400, 400 ]
                 });
             }
             reader.readAsDataURL($(this)[0].files[0]);

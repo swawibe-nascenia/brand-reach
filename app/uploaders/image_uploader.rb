@@ -33,14 +33,17 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
+    process :crop
     process :resize_to_fill => [160, 160]
   end
 
   version :medium do
-    process :resize_to_fit => [160, 160]
+    process :crop
+    process :resize_to_fit => [250, 250]
   end
 
   version :explore_image do
+    process :crop
     process :resize_to_fit => [nil, 120]
   end
 
@@ -60,4 +63,18 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  private
+
+  def crop
+      if(model.crop_x.present?)
+        # resize_to_limit(400, 400)
+        Rails.logger.info " Image ... crop with in image uploader x: #{model.crop_x} y: #{model.crop_y} w: #{model.crop_w} h: #{model.crop_h}"
+        #Commented out code for RMagick
+        manipulate! do |image|
+          # image.crop!(model.crop_x.to_i, model.crop_y.to_i, model.crop_w.to_i, model.crop_h.to_i)#RMagick
+          image.crop("#{model.crop_w.to_i}x#{model.crop_h.to_i}+#{model.crop_x.to_i}+#{model.crop_y.to_i}")#Minimagick
+          image
+        end
+      end
+  end
 end
