@@ -20,6 +20,7 @@
 //= require custom
 //= require jquery-ui
 //= require pubnub
+//= require jquery.Jcrop.min
 //= require handlebars
 //= require Chart
 //= require parsley

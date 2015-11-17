@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   # == Attributes == #
   # ----------------------------------------------------------------------
 
-  attr_accessor :current_password
+  attr_accessor :current_password,:crop_x, :crop_y, :crop_w, :crop_h
 
   # ----------------------------------------------------------------------
   # == File Uploader == #

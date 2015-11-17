@@ -45,7 +45,13 @@ class ProfileController < ApplicationController
   end
 
   def edit_profile_picture
+    current_user.crop_x = params[:crop_x]
+    current_user.crop_y = params[:crop_y]
+    current_user.crop_w = params[:crop_w]
+    current_user.crop_h = params[:crop_h]
+
     current_user.image = params[:user][:image]
+
     if current_user.save
       @success = true
     else
@@ -162,7 +168,7 @@ class ProfileController < ApplicationController
       :company_email, :image, :email_remainder_active, :sms_remainder_active,
       :industry, :phone, :street_address, :landmark, :city, :state, :is_available,
       :country, :zip_code, :short_bio, :password, :password_confirmation,
-      :current_password, :is_active,
+      :current_password, :is_active,:crop_x, :crop_y, :crop_w, :crop_h,
       facebook_accounts_attributes: [:id, :status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost]
     )
   end
