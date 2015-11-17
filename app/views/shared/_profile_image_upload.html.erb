@@ -4,6 +4,9 @@
       width: 60%;
       height: auto;
   }
+  #profile_image_upload_modal .modal-footer{
+      padding: 15px 0;
+  }
 </style>
 <div id="profile_image_upload_modal" class="modal fade">
   <div class="modal-dialog">
@@ -28,7 +31,7 @@
 
             <div class="field">
               <%= f.label 'Select profile Image' %><br>
-              <%= f.file_field :image, required: true, pattern: '([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif))' %>
+              <%= f.file_field :image, pattern: '([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif))' %>
             </div>
 
             <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
@@ -40,7 +43,9 @@
 
             <div class="modal-footer">
               <div class="actions">
-                <%= f.submit 'Update Profile Picture', class:'btn btn-success' %>
+                <button class="btn btn-info" type="submit">
+                  Update Profile Picture
+                </button>
               </div>
             </div>
         <% end %>
@@ -61,12 +66,6 @@
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#profile-pic-preview').show();
-                var w = $('#profile-pic-preview').width();
-                var h = $('#profile-pic-preview').height();
-                var x = w/2 - w/2;
-                var y = h/2 - h/2;
-                var x1 = x + w;
-                var y1 = y + h;
                 $('#profile-pic-preview').attr("src", e.target.result);
                 $('#profile-pic-preview').Jcrop({
                     onChange: update_crop,
@@ -75,7 +74,14 @@
                     boxHeight: 500,
                     aspectRatio: 1,
                     setSelect:   [ 10,10, 400, 400 ]
-                }, function () { jcrop_api = this; } );
+                }, function () {
+                    jcrop_api = this;
+                    var imageWidth = $('#profile-pic-preview').width();
+                    if(imageWidth > 500){
+                        imageWidth = 500;
+                    }
+                    $('#profile_image_upload_modal .modal-footer').width(imageWidth + '');
+                } );
             }
             reader.readAsDataURL($(this)[0].files[0]);
         });

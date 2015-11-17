@@ -205,6 +205,12 @@ $(function(){
 
     $('.profile-image').click(function(){
         $('#profile_image_edit_modal').modal('show');
+
+        var imageWidth = $('#profile-pic-edit').width();
+        console.log('================ selected picture width is : ' + imageWidth);
+
+        $('#profile_image_edit_modal .modal-footer').width(imageWidth + '');
+
     });
 
 /*    show spinner button on form submit. To enable sinner for form submit

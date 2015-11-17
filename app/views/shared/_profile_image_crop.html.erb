@@ -4,6 +4,12 @@
         width: 60%;
         height: auto;
     }
+        .image-field{
+            margin-top: 10px;
+        }
+    #profile_image_edit_modal .modal-footer{
+        padding: 15px 0;
+    }
 </style>
 <div id="profile_image_edit_modal" class="modal fade">
   <div class="modal-dialog">
@@ -36,7 +42,7 @@
 
             <div class="modal-footer">
               <div class="actions">
-                <%= f.submit 'Crop Profile Picture', class:'btn btn-success' %>
+                <%= f.submit 'Crop Profile Picture', class:'btn btn-info' %>
               </div>
             </div>
         <% end %>
@@ -61,7 +67,6 @@
         });
 
         function update_crop(coords) {
-            console.log('--------- update co-ordinate-----');
             $('#crop_x_crop').val(coords.x);
             $('#crop_y_crop').val(coords.y);
             $('#crop_w_crop').val(coords.w);
