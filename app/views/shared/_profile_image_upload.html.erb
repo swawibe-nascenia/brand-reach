@@ -1,7 +1,4 @@
 <%= stylesheet_link_tag 'profile-image-upload', media: 'all' %>
-<style>
-
-</style>
 <div id="profile_image_upload_modal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content profile-image-modal-content">
@@ -32,8 +29,7 @@
                 <%= hidden_field_tag attribute, :id => attribute %>
             <% end %>
 
-            <div class="field">
-              <%= image_tag '', id: 'profile-pic-preview'%>
+            <div class="field image-field">
             </div>
 
             <div class="modal-footer">
@@ -49,18 +45,29 @@
 
 <script type="text/javascript">
     $(function () {
+        var jscrop_api;
+
         $('#user_image').change(function () {
+
+            $('.image-field').html('');
+            $('.image-field').append('<img src="" id="profile-pic-preview" />');
             $('#profile-pic-preview').hide();
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#profile-pic-preview').show();
+                var w = $('#profile-pic-preview').width();
+                var h = $('#profile-pic-preview').height();
+                var x = w/2 - w/2;
+                var y = h/2 - h/2;
+                var x1 = x + w;
+                var y1 = y + h;
                 $('#profile-pic-preview').attr("src", e.target.result);
                 $('#profile-pic-preview').Jcrop({
                     onChange: update_crop,
                     onSelect: update_crop,
                     aspectRatio: 1,
-                    setSelect:   [ 10, 10, 400, 400 ]
-                });
+                    setSelect:   [ x, y, x1, y1 ]
+                }, function () { jcrop_api = this; } );
             }
             reader.readAsDataURL($(this)[0].files[0]);
         });

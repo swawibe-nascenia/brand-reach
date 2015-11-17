@@ -66,7 +66,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   private
 
   def crop
-      if(model.crop_x.present?)
+      if(model.crop_x.present? && model.crop_y.present? && model.crop_w.to_i > 10 && model.crop_h.to_i > 10)
         # resize_to_limit(400, 400)
         Rails.logger.info " Image ... crop with in image uploader x: #{model.crop_x} y: #{model.crop_y} w: #{model.crop_w} h: #{model.crop_h}"
         #Commented out code for RMagick
