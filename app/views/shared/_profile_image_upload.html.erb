@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag 'profile-image-upload', media: 'all' %>
 <style>
   #profile_image_upload_modal .modal-dialog{
-      width: 90%;
+      width: 60%;
       height: auto;
   }
 </style>
@@ -71,6 +71,8 @@
                 $('#profile-pic-preview').Jcrop({
                     onChange: update_crop,
                     onSelect: update_crop,
+                    boxWidth: 450,
+                    boxHeight: 400,
                     aspectRatio: 1,
                     setSelect:   [ x, y, x1, y1 ]
                 }, function () { jcrop_api = this; } );
