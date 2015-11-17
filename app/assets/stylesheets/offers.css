@@ -338,6 +338,18 @@
         margin-left: 0;
     }
 
+    .inbox-tab {
+        margin: 0 12px;
+    }
+
+    #starred_list .starred-tab {
+        margin: 0 7px;
+    }
+
+    .nav > li > a {
+        padding: 10px;
+    }
+
     /* todo If Sanmalireddy wants header name then add this line */
     /*.panel-offers #inbox .offer-header div:nth-of-type(3):before { content: "Campaign Name : "; font-weight: bold; }*/
 
