@@ -27,7 +27,7 @@
             <% end %>
 
             <div class="field">
-              <%= f.label :image %><br>
+              <%= f.label 'Select profile Image' %><br>
               <%= f.file_field :image, required: true, pattern: '([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif))' %>
             </div>
 
@@ -71,10 +71,10 @@
                 $('#profile-pic-preview').Jcrop({
                     onChange: update_crop,
                     onSelect: update_crop,
-                    boxWidth: 450,
-                    boxHeight: 400,
+                    boxWidth: 500,
+                    boxHeight: 500,
                     aspectRatio: 1,
-                    setSelect:   [ x, y, x1, y1 ]
+                    setSelect:   [ 10,10, 400, 400 ]
                 }, function () { jcrop_api = this; } );
             }
             reader.readAsDataURL($(this)[0].files[0]);

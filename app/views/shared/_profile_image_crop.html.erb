@@ -1,0 +1,72 @@
+<%= stylesheet_link_tag 'profile-image-upload', media: 'all' %>
+<style>
+    #profile_image_edit_modal .modal-dialog{
+        width: 60%;
+        height: auto;
+    }
+</style>
+<div id="profile_image_edit_modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content profile-image-modal-content">
+      <div class="modal-header profile-image-modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <%= csrf_meta_tag %>
+        <%= form_for(user, url: crop_profile_picture_profile_index_path,remote: true, multipart: true, method: :post) do |f| %>
+            <% if user.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(user.errors.count, "error") %> prohibited this upload from being saved:</h2>
+
+                  <ul>
+                    <% user.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
+
+            <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
+                <%= hidden_field_tag attribute, '', :id => "#{attribute}_crop" %>
+            <% end %>
+
+            <div class="field image-field">
+              <%=image_tag current_user.image.url, id: 'profile-pic-edit' %>
+            </div>
+
+            <div class="modal-footer">
+              <div class="actions">
+                <%= f.submit 'Crop Profile Picture', class:'btn btn-success' %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        var jscrop_api;
+
+        $('#profile-pic-edit').Jcrop({
+            onChange: update_crop,
+            onSelect: update_crop,
+            boxWidth: 500,
+            boxHeight: 500,
+            aspectRatio: 1,
+            setSelect: [10, 10, 400, 400]
+        }, function () {
+            jcrop_api = this;
+        });
+
+        function update_crop(coords) {
+            console.log('--------- update co-ordinate-----');
+            $('#crop_x_crop').val(coords.x);
+            $('#crop_y_crop').val(coords.y);
+            $('#crop_w_crop').val(coords.w);
+            $('#crop_h_crop').val(coords.h);
+        }
+    });
+</script>
+

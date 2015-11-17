@@ -59,6 +59,15 @@ class ProfileController < ApplicationController
     end
   end
 
+  def crop_profile_picture
+    current_user.crop_x = params[:crop_x]
+    current_user.crop_y = params[:crop_y]
+    current_user.crop_w = params[:crop_w]
+    current_user.crop_h = params[:crop_h]
+
+    current_user.image.recreate_versions!(:thumb, :medium, :explore_image)
+  end
+
   def update_accounts
     graph = InsightService.new(params[:access_token])
 
