@@ -474,11 +474,11 @@ only screen and (max-width: 460px) {
     font-size: 13px;
     color: #ff305a;
     font-weight: 600;
-    padding: 20px 0;
+    padding: 20px 15px;
 }
 
 .text-headline-form, .payment-form {
-    padding-left: 35px;
+    padding-left: 30px;
     padding-top: 10px;
 }
 
@@ -523,7 +523,7 @@ only screen and (max-width: 460px) {
     background-color: #e13f3c;
     color: white;
     margin-top: 5%;
-    margin-left: 10px;
+    margin-left: 15px;
     padding: 8px 28px;
     font-weight: 600;
 }
