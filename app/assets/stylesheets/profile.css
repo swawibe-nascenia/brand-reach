@@ -329,4 +329,9 @@
     .street-address-textarea {
         margin-bottom: 7px;
     }
+
+    .btn-update {
+        width: 95%;
+        margin: 10px
+    }
 }
