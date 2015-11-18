@@ -36,6 +36,7 @@ class PublicController < ApplicationController
   end
 
   def get_in_touch
+    CampaignMailer.get_in_touch_mail(params).deliver_now
     redirect_to influencer_home_public_index_path
   end
 
