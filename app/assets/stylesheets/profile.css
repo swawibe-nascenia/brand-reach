@@ -359,4 +359,8 @@
         width: 95%;
         margin: 10px
     }
+
+    .personal-info-form .form-group {
+        margin-right: 0;
+    }
 }
