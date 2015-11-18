@@ -5,31 +5,22 @@
 
 <div class="campaign-create-wrapper">
 
-  <div class="row">
-    <div class="col-lg-3 col-md-6 col-sm-8 col-xs-8">
-      <div class="row">
-
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-5">
-          <%= image_tag(@influencer.profile_picture, :class => 'campaign-influencer-picture', :alt => 'profile-picture') %>
-        </div>
-
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-7">
-          <h4><%= @influencer.full_name.present? ? @influencer.full_name : 'USER' %></h4>
-          <p class="influencer-title"> <%= @influencer.industry.present? ? @influencer.industry : 'Entrepreneur' %> </p>
-          <p class="influencer-address"> <%= @influencer.street_address.present? ? @influencer.street_address : 'User Address'  %> </p>
-        </div>
-
-      </div>
+  <div>
+    <%= image_tag(@influencer.profile_picture, :class => 'campaign-influencer-picture', :alt => 'profile-picture') %>
+    <div class="influencer-description">
+      <h4><%= @influencer.full_name.present? ? @influencer.full_name : 'USER' %></h4>
+      <p class="influencer-title"> <%= @influencer.industry.present? ? @influencer.industry : 'Entrepreneur' %> </p>
+      <p class="influencer-address"> <%= @influencer.street_address.present? ? @influencer.street_address : 'User Address'  %> </p>
     </div>
   </div>
 
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div>
     <p class="influencer-profile-info">
       <%= @influencer.short_bio %>
     </p>
   </div>
 
-  <%= form_for @campaign, url: campaigns_path, html: { class: 'form-horizontal'} do |f| %>
+  <%= form_for @campaign, url: campaigns_path, html: { class: 'form-horizontal'}, data: { parsley_validate: '' } do |f| %>
 
       <%= render 'shared/show_errors', :object => @campaign %>
 
@@ -98,7 +89,7 @@
               <div class="form-group">
                 <%= f.label :name, 'Enter Campaign Name', class: 'control-label col-md-4' %>
                 <div class="col-md-8">
-                  <%= f.text_field :name, required: true %>
+                  <%= f.text_field :name, 'data-parsley-required' => 'true' %>
                 </div>
               </div>
 
@@ -117,14 +108,14 @@
           <%= f.label :text, 'Text' %>
         </div>
         <div class="row">
-          <%= f.text_area :text, rows: 4, required: true %>
+          <%= f.text_area :text, rows: 4, 'data-parsley-required' => 'true' %>
         </div>
 
         <div class="row">
           <%= f.label :headline, 'Headline' %>
         </div>
         <div class="row">
-          <%= f.text_field :headline, required: true %>
+          <%= f.text_field :headline, 'data-parsley-required' => 'true' %>
         </div>
 
       </div>
