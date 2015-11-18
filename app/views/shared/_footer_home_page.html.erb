@@ -1,0 +1,69 @@
+<div class="contact-us" id="contact_us">
+  <div class="wrapper-content">
+
+    <div class="row contact-form">
+      <div class="col-md-7 col-sm-8 col-xs-12">
+        <div class="text-top helvetica-neue-light"> Get in touch!</div>
+
+        <%= form_tag get_in_touch_public_index_path, data: { parsley_validate: '' } do %>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="full_name" placeholder="Full Name" data-parsley-required="true"/>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-12 clear-padding-margin">
+                <div class="form-group">
+                  <input type="email" class="form-control" name="email" placeholder="Email" data-parsley-type="email" data-parsley-required="true"/>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-6 col-xs-12 clear-padding-margin only-right-padding">
+                <div class="form-group">
+                  <input type="text" data-parsley-pattern="(^[\+]?[0-9]+[-]?[0-9]+[-]?[0-9]+$)" data-parsley-required="true" class="form-control" name="phone_number" placeholder="Phone Number"/>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                  <textarea class="form-control" name="message" placeholder="Message" rows="6" data-parsley-required="true"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <%= submit_tag 'SUBMIT', class: 'btn btn-primary btn-submit raleway-semibold' %>
+              </div>
+            </div>
+        <% end %>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="footer row">
+    <div class="wrapper-content">
+      <div class="col-md-6 col-sm-6 col-xs-12 footer-info-padding">
+        All Rights Reserved <span class="rights-reserved">&reg;</span> Brand Reach | Copyright 2015
+      </div>
+      <div class="col-md-2 col-sm-2  col-xs-12 col-md-offset-4 col-sm-offset-4">
+        <div class="fb-twitter">
+          <a href="#">
+            <i class="fa fa-lg fa-facebook"></i>
+          </a>
+          <span class="space"></span>
+          <a href="#">
+            <i class="fa fa-lg fa-twitter"></i>
+          </a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
