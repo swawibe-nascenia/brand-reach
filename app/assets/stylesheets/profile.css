@@ -333,14 +333,7 @@
     }
 }
 
-@media (max-width: 992px) {
-    .personal-info-form .form-group {
-        margin-right: 20%;
-    }
-}
-
-
-@media (max-width: 768px) {
+@media (max-width: 994px) {
     .personal-info-without-fb label, .personal-info-without-fb input, .personal-info-without-fb select, .personal-info-without-fb .form-group textarea, .personal-info-without-fb .form-group textarea.short_bio {
         display: block;
         text-align: left;
