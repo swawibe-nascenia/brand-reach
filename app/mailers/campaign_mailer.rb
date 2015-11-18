@@ -61,4 +61,11 @@ class CampaignMailer < ApplicationMailer
     Rails.logger.info "========================== User: #{user.inspect} account has been successfully activated.================"
     mail(from: 'hasanuzzaman@nascenia.com', to: user.email, subject: 'Bandreach account activate')
   end
+
+  def get_in_touch_mail(user, password)
+    @user = user
+    @password = password
+    Rails.logger.info "========================== User: #{user.inspect} account has been successfully activated.================"
+    mail(from: 'hasanuzzaman@nascenia.com', to: user.email, subject: 'Bandreach account activate')
+  end
 end
