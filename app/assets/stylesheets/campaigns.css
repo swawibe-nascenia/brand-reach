@@ -467,7 +467,7 @@ only screen and (max-width: 460px) {
 }
 
 .social-account-tab-content label {
-    padding-right: 15px;
+    padding-right: 10px;
 }
 
 .social-account-tab-content input:not([type=radio]), .social-account-tab-content select {
@@ -484,12 +484,12 @@ only screen and (max-width: 460px) {
 }
 
 .text-headline-form, .payment-form {
-    padding-left: 30px;
+    padding-left: 15px;
     padding-top: 10px;
 }
 
 .text-headline-form input, .text-headline-form textarea {
-    width: 70%;
+    width: 66%;
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 5px;
@@ -563,10 +563,10 @@ only screen and (max-width: 460px) {
 }
 
 .campaign-date {
-    width: 280px;
+    width: 320px;
     background-color: #dbd9da;
     padding: 10px 20px;
-    margin: 20px 0 0 7px;
+    margin: 20px 0 0 5px;
 }
 
 .social-account-tab-content  input#campaign_cost{
@@ -718,6 +718,10 @@ only screen and (max-width: 768px) {
 
     .campaign-create-wrapper {
         padding: 15px 10px;
+    }
+
+    .campaign-create-wrapper .btn-book-now {
+        width: 95%;
     }
 }
 
