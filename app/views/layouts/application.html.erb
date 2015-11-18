@@ -37,7 +37,7 @@
       <div class="center-block profile-info">
         <a href="#profile_image_upload_modal" data-toggle="modal"><span class="fa fa-camera camera"></span></a>
 
-        <%= image_tag(current_user.profile_picture, :class => 'img-circle profile-image center-block', :alt => 'profile-picture') %>
+        <%= image_tag(current_user.profile_picture, :class => "img-circle profile-image center-block #{current_user.image.present? ? 'present' : ''}", :alt => 'profile-picture') %>
 
         <div class="info">
           <p class="name"><%= current_user.try(:full_name).present? ? current_user.full_name : 'USER' %></p>
@@ -156,9 +156,6 @@
         </li>
       </ul>
     </section>
-
-    <%= render partial: 'shared/profile_image_upload', locals: { user: current_user } %>
-    <%= render partial: 'shared/profile_image_crop', locals: { user: current_user }%>
   </aside>
 
   <div class="content-wrapper">
@@ -199,8 +196,8 @@
       <%= yield %>
 
     </div>
-
   </div>
+
 
 </div>
 <!-- /.content-wrapper -->
@@ -210,6 +207,8 @@
   </div>
 </footer>
 
+<%= render partial: 'shared/profile_image_upload', locals: { user: current_user } %>
+<%= render partial: 'shared/profile_image_crop', locals: { user: current_user }%>
 </body>
 </html>
 

@@ -203,11 +203,23 @@ $(function(){
         }
     });
 
-    $('.profile-image').click(function(){
+/* =============== profile picture crop modal show ================= */
+    $('.profile-image.present').click(function(){
         $('#profile_image_edit_modal').modal('show');
+        var windowWidth = $(window).width();
+
+        console.log('current window width is ' + windowWidth);
+
+        if(windowWidth > 500){
+            windowWidth = 500;
+        }else{
+            windowWidth = windowWidth - 100;
+        }
 
         var imageWidth = $('#profile-pic-edit').width();
-        console.log('================ selected picture width is : ' + imageWidth);
+        if(imageWidth > windowWidth){
+            imageWidth = windowWidth;
+        }
 
         $('#profile_image_edit_modal .modal-footer').width(imageWidth + '');
 
@@ -262,5 +274,17 @@ function updateUnreadMessage(){
         presentUnreadMessages += 1;
             $('span.unread-message-number').text(presentUnreadMessages);
     }
+}
+
+// custom window width with custom calculation
+function getWindoWidth(){
+    var windowWidth = $(window).width();
+    console.log('current window width is ' + windowWidth);
+    if(windowWidth > 500){
+        windowWidth = 500;
+    }else{
+        windowWidth = windowWidth - 100;
+    }
+    return windowWidth;
 }
 

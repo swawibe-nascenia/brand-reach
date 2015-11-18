@@ -4,8 +4,20 @@
       width: 60%;
       height: auto;
   }
+  @media (max-width: 767px) {
+      #profile_image_upload_modal .modal-dialog{
+          width: 95%;
+      }
+      #profile_image_upload_modal .modal-body{
+          padding-left: 5px;
+          padding-right: 5px;
+      }
+  }
   #profile_image_upload_modal .modal-footer{
       padding: 15px 0;
+  }
+  .image-field{
+      margin-top: 10px;
   }
 </style>
 <div id="profile_image_upload_modal" class="modal fade">
@@ -16,7 +28,7 @@
       </div>
       <div class="modal-body">
         <%= csrf_meta_tag %>
-        <%= form_for(user, url: edit_profile_picture_profile_index_path,remote: true, multipart: true, method: :post) do |f| %>
+        <%= form_for(user, url: edit_profile_picture_profile_index_path,remote: true, multipart: true, method: :post, data: {:'parsley-validate' => ' '}) do |f| %>
             <% if user.errors.any? %>
                 <div id="error_explanation">
                   <h2><%= pluralize(user.errors.count, "error") %> prohibited this upload from being saved:</h2>
@@ -31,7 +43,8 @@
 
             <div class="field">
               <%= f.label 'Select profile Image' %><br>
-              <%= f.file_field :image, pattern: '([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif))' %>
+              <%= f.file_field :image, pattern: '([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif))', data: {:'parsley-id' => '1', :'parsley-required' => 'true', :'parsley-trigger' => 'change'} %>
+              <ul id="parsley-id-1" class="parsley-errors-list"></ul>
             </div>
 
             <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
@@ -57,9 +70,7 @@
 <script type="text/javascript">
     $(function () {
         var jscrop_api;
-
         $('#user_image').change(function () {
-
             $('.image-field').html('');
             $('.image-field').append('<img src="" id="profile-pic-preview" />');
             $('#profile-pic-preview').hide();
@@ -70,15 +81,15 @@
                 $('#profile-pic-preview').Jcrop({
                     onChange: update_crop,
                     onSelect: update_crop,
-                    boxWidth: 500,
-                    boxHeight: 500,
+                    boxWidth: getWindoWidth(),
+                    boxHeight: getWindoWidth(),
                     aspectRatio: 1,
                     setSelect:   [ 10,10, 400, 400 ]
                 }, function () {
                     jcrop_api = this;
                     var imageWidth = $('#profile-pic-preview').width();
-                    if(imageWidth > 500){
-                        imageWidth = 500;
+                    if(imageWidth > getWindoWidth()){
+                        imageWidth = getWindoWidth();
                     }
                     $('#profile_image_upload_modal .modal-footer').width(imageWidth + '');
                 } );
