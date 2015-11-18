@@ -319,12 +319,6 @@
     background-color: #f1b242;
 }
 
-@media (max-width: 1170px) {
-    .personal-info-without-fb label, .personal-info-without-fb input, .personal-info-without-fb select, .personal-info-without-fb .form-group textarea, .personal-info-without-fb .form-group textarea.short_bio {
-        width: 49%;
-    }
-}
-
 @media (max-width: 768px) {
     .personal-info-without-fb label, .personal-info-without-fb input, .personal-info-without-fb select, .personal-info-without-fb .form-group textarea, .personal-info-without-fb .form-group textarea.short_bio {
         display: block;
