@@ -319,6 +319,21 @@
     background-color: #f1b242;
 }
 
+@media (max-width: 1170px) {
+    .personal-info-without-fb label, .personal-info-without-fb input, .personal-info-without-fb select, .personal-info-without-fb .form-group textarea {
+        width: 49%;
+    }
+
+    .personal-info-without-fb .form-group textarea.short_bio {
+        width: 76%;
+    }
+
+    .personal-info-form .form-group .textarea-label {
+        display: inline;
+    }
+}
+
+
 @media (max-width: 768px) {
     .personal-info-without-fb label, .personal-info-without-fb input, .personal-info-without-fb select, .personal-info-without-fb .form-group textarea, .personal-info-without-fb .form-group textarea.short_bio {
         display: block;
