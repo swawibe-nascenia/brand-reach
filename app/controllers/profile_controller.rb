@@ -157,7 +157,7 @@ class ProfileController < ApplicationController
       user.password = password
       user.password_confirmation = password
       user.verified = true
-      user.save
+      user.save(validate: false)
       CampaignMailer.account_activate_notification_to_user(user, password).deliver_now
       render :layout => false
     else
