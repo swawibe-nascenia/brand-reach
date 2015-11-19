@@ -293,7 +293,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfff4', endColorstr='#b3bead', GradientType=0);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .offer-header div {
         display: block;
     }

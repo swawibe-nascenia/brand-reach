@@ -703,7 +703,7 @@ only screen and (max-width: 420px) {
 @media
 only screen and (max-width: 768px) {
     .social-account-tab-content {
-        padding-right: 0;
+        padding: 15px 0 0 0;
     }
 
     .social-account-tab-content select, #post_cost, .campaign-date, #campaign_name, #campaign_text, #campaign_headline {
@@ -720,6 +720,22 @@ only screen and (max-width: 768px) {
         padding: 15px 10px;
     }
 
+    .campaign-create-wrapper .btn-book-now {
+        width: 98%;
+    }
+
+    .influencer-profile-info{
+        padding: 28px 15px 34px 15px;
+        width: 100%;
+    }
+
+    .text-headline-form, .new-campaign-button-set {
+        padding-right: 15px;
+    }
+}
+
+@media
+only screen and (max-width: 480px) {
     .campaign-create-wrapper .btn-book-now {
         width: 95%;
     }
