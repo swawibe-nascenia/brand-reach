@@ -225,6 +225,11 @@ $(function(){
 
     });
 
+/* ====================loading image show for insight page load ====================*/
+    $('.load-page').click(function(){
+        $('.loader').show();
+    });
+
 /*    show spinner button on form submit. To enable sinner for form submit
       add 'has-spinner' class to submit button and
       <span class="spinner"><i class="fa fa-spinner fa-spin"></i></span>

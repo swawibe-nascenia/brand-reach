@@ -124,7 +124,7 @@
               </a>
             </li>
 
-            <li class="<%= (params[:controller] == 'facebook' && params[:action] == 'insights') ? 'active' : '' %>">
+            <li class="<%= (params[:controller] == 'facebook' && params[:action] == 'insights') ? 'active' : '' %> load-page">
               <a href="<%= insights_facebook_index_path %>">
                 <i class="fa fa-facebook"></i><span class="space-sidebar">FACEBOOK</span>
               </a>
@@ -209,6 +209,7 @@
 
 <%= render partial: 'shared/profile_image_upload', locals: { user: current_user } %>
 <%= render partial: 'shared/profile_image_crop', locals: { user: current_user }%>
+<div class="loader"></div>
 </body>
 </html>
 
