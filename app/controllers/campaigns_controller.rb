@@ -29,6 +29,10 @@ class CampaignsController < ApplicationController
       @campaign.start_date = Time.now.strftime('%d/%m/%Y')
     end
 
+    if @campaign.daily?
+      @campaign.end_date = @campaign.start_date + 1.day
+    end
+
     if @campaign.save
       @campaign.create_first_message
       CampaignMailer.new_campaign_notification(@campaign).deliver_now if @campaign.receiver.email_remainder_active?

@@ -107,14 +107,14 @@ class Campaign < ActiveRecord::Base
     <p class='first-message'>
       You have sent the following campaign request. Waiting for the influencers response.
 
-      <strong>Campaign Name:</strong> #{self.name}
-      <strong>Type of Post:</strong> #{self.post_type.camelize}
-      <strong>Start Date:</strong> #{self.start_date}
-      <strong>End Date:</strong> #{self.end_date}
-      <strong>Payment:</strong> #{self.cost}$
+      <strong>Campaign Name :</strong> #{self.name}
+      <strong>Type of Post :</strong> #{self.post_type.humanize}
+      <strong>Start Date :</strong> #{self.start_date.strftime('%d-%m-%Y')}
+      <strong>End Date :</strong> #{self.end_date.strftime('%d-%m-%Y')}
+      <strong>Payment :</strong> #{self.cost} $
 
-      <strong>Campaign Heading:</strong> #{self.headline}
-      <strong>Campaign Description:</strong> #{self.text}
+      <strong>Campaign Heading :</strong> #{self.headline}
+      <strong>Campaign Description :</strong> #{self.text}
     </p>
 MESSAGE
   end
