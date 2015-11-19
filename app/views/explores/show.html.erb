@@ -17,12 +17,7 @@
 
             <div class="col-md-12">
               <label for="category"> Likes </label>
-
-              <div id="followers-range" class="noUi-target noUi-ltr noUi-horizontal noUi-background"></div>
-              <span id="followers-range-value-lower">50.00</span>
-              <span id="followers-range-value-upper">5000.00</span>
-              <%= hidden_field_tag 'followers-range-value-lower', '50', class: 'followers-range-value-lower' %>
-              <%= hidden_field_tag 'followers-range-value-upper', '500', class: 'followers-range-value-upper' %>
+              <%= select_tag 'followers', options_for_select(followers_drop_down) %>
             </div>
           </div>
         </div>
@@ -39,12 +34,7 @@
 
             <div class="col-md-12">
               <label for="influencer_price"> Price </label>
-
-              <div id="influencer-price" class="noUi-target noUi-ltr noUi-horizontal noUi-background"></div>
-              <span id="influencer-price-value-lower">50.00</span>
-              <span id="influencer-price-value-upper">5000.00</span>
-              <%= hidden_field_tag 'influencer-price-value-lower', '50', class: 'influencer-price-value-lower' %>
-              <%= hidden_field_tag 'influencer-price-value-upper', '500', class: 'influencer-price-value-upper' %>
+              <%= select_tag 'price', options_for_select(price_drop_down)  %>
             </div>
           </div>
         </div>
@@ -59,10 +49,6 @@
               <div>
                 <%# render partial: 'shared/sub_region_select', locals: {parent_region: f.object.country} %>
               </div>
-            </div>
-            <div class="col-md-12">
-              <%= button_tag 'Search Influencer', class: 'btn btn-success' %>
-              <%= hidden_field_tag 'advance_search', true %>
             </div>
           </div>
         </div>
