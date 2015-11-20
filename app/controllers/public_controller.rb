@@ -43,6 +43,9 @@ class PublicController < ApplicationController
   def faqs
   end
 
+  def terms
+  end
+
 protected
 	def set_service
 		# @service = InsightService.new current_user

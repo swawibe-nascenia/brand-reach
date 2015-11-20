@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       get :dashboard
       post :get_in_touch
       get :faqs
+      get :terms
     end
   end
 
