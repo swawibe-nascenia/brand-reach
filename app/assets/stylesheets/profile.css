@@ -357,3 +357,21 @@
         margin-right: 0;
     }
 }
+
+/* For Industry Auto complete*/
+
+div.awesomplete {
+    width: 100%;
+}
+
+div.awesomplete > input {
+    display: inline-block;
+}
+
+div.awesomplete > ul {
+    margin-left: 30%;
+}
+
+div.awesomplete > ul > li {
+    text-align: left;
+}

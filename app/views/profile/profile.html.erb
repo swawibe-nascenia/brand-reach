@@ -1,4 +1,6 @@
+<%= stylesheet_link_tag 'awesomplete', media: 'all' %>
 <%= stylesheet_link_tag 'profile.css', media: 'all' %>
+<%= javascript_include_tag 'awesomplete' %>
 
 <% title 'BrandReach Profile' %>
 
@@ -38,7 +40,8 @@
         <div class="form-group">
           <div class="col-md-6">
             <%= f.label :industry %>
-            <%= f.text_field :industry %>
+            <%= f.text_field :industry, id: 'industry_list' %>
+
           </div>
           <div class="col-md-6">
             <%= f.label :phone %>
@@ -127,7 +130,7 @@
           <%= render partial: 'shared/add_account_modal' %>
 
           <div class="social-account-tabs">
-              <%= render partial: 'social_account_tabs', locals: { f: f } %>
+            <%= render partial: 'social_account_tabs', locals: { f: f } %>
           </div>
       <% end %>
 
@@ -135,4 +138,13 @@
       </div>
       <%= f.button 'UPDATE', class: 'btn btn-update button-border-yellow' %>
   <% end %>
+
+  <script>
+      $(document).ready(function () {
+          var industry_list = document.getElementById("industry_list");
+          var awesomplete = new Awesomplete(industry_list);
+          awesomplete.list = ["Ada", "Java", "JavaScript", "Nascenia", "Oracle", "Google", "Ruby on Rails"];
+      });
+
+  </script>
 
