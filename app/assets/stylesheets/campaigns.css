@@ -243,12 +243,17 @@ input.cmn-toggle-round:checked + label:after {
     padding-left: 35px;
 }
 
-/*.performance_table > tbody > tr:nth-child(n+4):nth-child(-n+10) > td,*/
-/*.engagement_table > tbody > tr:nth-child(n+4):nth-child(-n+10) > td {*/
-    /*border-top: none;*/
-    /*border-bottom: none;*/
-    /*background: white;*/
-/*}*/
+.form-horizontal .control-label {
+    width: 30%;
+}
+
+.social-account-tab-content .date-range {
+    margin-left: calc(30% + 4px);
+}
+
+#post_cost {
+    width: 320px;
+}
 
 @media
 only screen and (max-width: 1130px) {
@@ -566,7 +571,8 @@ only screen and (max-width: 460px) {
     width: 320px;
     background-color: #dbd9da;
     padding: 10px 20px;
-    margin: 20px 0 0 5px;
+    margin-top: 20px;
+    margin-left: calc(30% + 9px)
 }
 
 .social-account-tab-content  input#campaign_cost{
@@ -701,15 +707,19 @@ only screen and (max-width: 420px) {
 }
 
 @media
-only screen and (max-width: 768px) {
+only screen and (max-width: 992px) {
     .social-account-tab-content {
-        padding: 15px 0 0 0;
+        padding: 15px;
     }
 
     .social-account-tab-content select, #post_cost, .campaign-date, #campaign_name, #campaign_text, #campaign_headline {
         width: 100%;
         margin: 5px 0;
         padding: 5px;
+    }
+
+    .campaign-date {
+        padding: 10px 20px;
     }
 
     #fb_bhanu {
@@ -731,6 +741,15 @@ only screen and (max-width: 768px) {
 
     .text-headline-form, .new-campaign-button-set {
         padding-right: 15px;
+    }
+
+    .form-horizontal .control-label {
+        width: 100%;
+        text-align: left;
+    }
+
+    .social-account-tab-content .date-range {
+        margin-left: 0;
     }
 }
 
