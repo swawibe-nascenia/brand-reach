@@ -230,6 +230,68 @@ $(function(){
         $('.loader').show();
     });
 
+/* ==================== advance search functionality ==============*/
+    $('#explore-category').change(function(){
+        makeAdvanceSearch();
+    });
+
+    $('#explore-social-media').change(function(){
+        makeAdvanceSearch();
+    });
+
+    $('.brands-explore-advance-search #country').change(function(){
+        var countryCode = $(this).val();
+        var url = "/subregion_options?parent_region=" + countryCode;
+        $('#explore-state').load(url, function(){
+            console.log('Load is perform ');
+            makeAdvanceSearch();
+        });
+
+    });
+
+    $(document).on('change', '#explore-state #user_state', function(){
+        makeAdvanceSearch();
+    });
+
+    $('#explore-price').change(function(){
+        makeAdvanceSearch();
+    });
+
+    $('#explore-followers').change(function(){
+        makeAdvanceSearch();
+    });
+
+   function makeAdvanceSearch(){
+       var searchKey = $('#search-keyword').val();
+       var category = $('#explore-category').val();
+       var socialMedia = $('#explore-social-media').val();
+       var country = $('#country').val();
+       var state = $('#user_state').val();
+       var price = $('#explore-price').val();
+       var followers = $('#explore-followers').val();
+
+       console.log('Current selected state code is ' + state);
+
+       $.ajax({
+           type: 'get',
+           url: '/explore',
+           dataType: "script",
+           data: {
+                search_key: searchKey,
+                category: category,
+                social_media: socialMedia,
+                country: country,
+                state: state,
+                price: price,
+                followers: followers,
+                'authenticity_token': $('meta[name="csrf-token"]').attr('content')
+           },
+           success: function(data) {
+               console.log(data)
+           }
+       });
+   }
+
 /*    show spinner button on form submit. To enable sinner for form submit
       add 'has-spinner' class to submit button and
       <span class="spinner"><i class="fa fa-spinner fa-spin"></i></span>

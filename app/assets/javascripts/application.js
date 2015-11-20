@@ -16,7 +16,6 @@
 //= require twitter/bootstrap
 //= require bootstrap
 //= require profiles
-//= require nouislider
 //= require custom
 //= require jquery-ui
 //= require pubnub

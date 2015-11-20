@@ -1,0 +1,27 @@
+<div class="search-result">
+  <% influencers.each_slice(4) do |influncer_group| %>
+      <div class="row padding-less-column-parent">
+        <% influncer_group.each do |influencer| %>
+            <div class="col-md-3 col-sm-6 col-sm-12">
+              <div class="search-result-item">
+                <div class="search-result-image">
+                  <%= image_tag(influencer.profile_picture, class: 'img-responsive explore-search-image') %>
+                </div>
+                <div class="influencer-data">
+                  <div class="influencer-name"> <%= influencer.full_name.present? ? influencer.full_name : 'User' %> </div>
+                  <p class="influencer-address"><%= influencer.location %></p>
+                  <p class="title"> <%= influencer.industry.present? ? influencer.industry : 'Entrepreneur' %></p>
+                  <p class="influencer-biography"><%= influencer.short_bio %> </p>
+                  <div>
+                    <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;<%= influencer.max_followers %>
+                  </div>
+                </div>
+                <%= link_to 'VIEW PROFILE', influencer_path(influencer), remote: true, :class => "btn btn-primary btn-view-profile" %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+  <% end %>
+</div>
+
+<%= paginate influencers %>
