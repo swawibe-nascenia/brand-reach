@@ -778,8 +778,8 @@ ul.menu-item li {
 .panel-body, .list-group{
   display: none;
 }
-html, body, .faq-container, .sign-in-form-container { height: 90%; }
-body > .faq-container, body > .sign-in-form-container{
+html, body, .non-home-wrapper{ height: 90%; }
+body > .non-home-wrapper{
   height: auto;
   min-height: 100%;
 }
@@ -797,7 +797,7 @@ body > .faq-container, body > .sign-in-form-container{
     margin-top: 0;
   }
 }
-.faq-container, .sign-in-form-container {
+.non-home-wrapper {
   padding-bottom: 3em;
 }
 
