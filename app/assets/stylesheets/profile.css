@@ -319,6 +319,25 @@
     background-color: #f1b242;
 }
 
+/* For Industry Auto complete*/
+
+div.awesomplete {
+    width: 70%;
+    display: inline;
+}
+
+div.awesomplete > input {
+    display: inline-block;
+}
+
+div.awesomplete > ul {
+    min-width: 100%;
+}
+
+div.awesomplete > ul > li {
+    text-align: left;
+}
+
 @media (max-width: 1170px) {
     .personal-info-without-fb label, .personal-info-without-fb input, .personal-info-without-fb select, .personal-info-without-fb .form-group textarea {
         width: 49%;
@@ -356,22 +375,9 @@
     .personal-info-form .form-group {
         margin-right: 0;
     }
-}
 
-/* For Industry Auto complete*/
-
-div.awesomplete {
-    width: 100%;
-}
-
-div.awesomplete > input {
-    display: inline-block;
-}
-
-div.awesomplete > ul {
-    margin-left: 30%;
-}
-
-div.awesomplete > ul > li {
-    text-align: left;
+    div.awesomplete > ul {
+        margin-left: 0;
+        min-width: 100%;
+    }
 }
