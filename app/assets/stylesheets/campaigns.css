@@ -247,7 +247,7 @@ input.cmn-toggle-round:checked + label:after {
     width: 30%;
 }
 
-.social-account-tab-content .date-range {
+.social-account-tab-content .date-range, .campaign-name-input li {
     margin-left: calc(30% + 4px);
 }
 
@@ -748,7 +748,7 @@ only screen and (max-width: 992px) {
         text-align: left;
     }
 
-    .social-account-tab-content .date-range {
+    .social-account-tab-content .date-range, .campaign-name-input li {
         margin-left: 0;
     }
 }
