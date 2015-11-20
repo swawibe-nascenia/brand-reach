@@ -132,7 +132,8 @@
 .logo {
   float: left;
   margin-top: -5px;
-  /*padding-left: 8%;*/
+  position: relative;
+  z-index: 1;
 }
 
 .links {
