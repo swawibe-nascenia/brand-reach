@@ -12,12 +12,12 @@
           <div class="row">
             <div class="col-md-12">
               <label for="category"> Category </label>
-              <%= select_tag :category, options_for_select(category_list, selected: params[:category].presence), prompt: "Select a Category" %>
+              <%= select_tag :category, options_for_select(category_list), {id: 'explore-category', prompt: 'Select a Category'} %>
             </div>
 
             <div class="col-md-12">
-              <label for="category"> Likes </label>
-              <%= select_tag 'followers', options_for_select(followers_drop_down) %>
+              <label for="Followers"> Likes </label>
+              <%= select_tag 'followers', options_for_select(followers_drop_down), {id: 'explore-followers', prompt: 'Choose a range'} %>
             </div>
           </div>
         </div>
@@ -26,7 +26,7 @@
           <div class="row">
             <div class="col-md-12">
               <label for="social-media-platform"> Social Media Platform </label>
-              <select name="social_media_platform" id="social-media-platform">
+              <select name="social_media_platform" id="explore-social-media">
                 <option value="">Select a Social Media Platform</option>
                 <option value="fb">Facebook</option>
               </select>
@@ -34,7 +34,7 @@
 
             <div class="col-md-12">
               <label for="influencer_price"> Price </label>
-              <%= select_tag 'price', options_for_select(price_drop_down)  %>
+              <%= select_tag 'price', options_for_select(price_drop_down),{id: 'explore-price', prompt: 'Choose a range'}  %>
             </div>
           </div>
         </div>
@@ -43,11 +43,13 @@
           <div class="row">
             <div class="col-md-12">
               <label for="influencer_country"> Location </label>
-              <%= country_select_tag :country, params[:country].present? ? [params[:country]] : ['IN'], {:class => 'profile-dropdown-color', prompt: 'Select a Country'} %>
+              <%= country_select_tag :country,'', {:id => 'explore-country', prompt: 'Select Country'} %>
               <br/>
 
-              <div>
-                <%# render partial: 'shared/sub_region_select', locals: {parent_region: f.object.country} %>
+              <div id="explore-state">
+                <select name="state">
+                  <option value="">Select State</option>
+                </select>
               </div>
             </div>
           </div>

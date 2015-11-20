@@ -230,6 +230,13 @@ $(function(){
         $('.loader').show();
     });
 
+/* ==================== advance search functionality ==============*/
+
+
+   function makeAdvanceSearch(){
+       var searchKey = $('#search-keyword').val();
+   }
+
 /*    show spinner button on form submit. To enable sinner for form submit
       add 'has-spinner' class to submit button and
       <span class="spinner"><i class="fa fa-spinner fa-spin"></i></span>
