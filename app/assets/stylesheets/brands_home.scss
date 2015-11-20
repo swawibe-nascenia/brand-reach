@@ -778,8 +778,8 @@ ul.menu-item li {
 .panel-body, .list-group{
   display: none;
 }
-html, body, .non-home-wrapper{ height: 90%; }
-body > .non-home-wrapper{
+html, body, .sticky-footer-wrapper{ height: 90%; }
+body > .sticky-footer-wrapper{
   height: auto;
   min-height: 100%;
 }
@@ -797,7 +797,7 @@ body > .non-home-wrapper{
     margin-top: 0;
   }
 }
-.non-home-wrapper {
+.sticky-footer-wrapper{
   padding-bottom: 3em;
 }
 
