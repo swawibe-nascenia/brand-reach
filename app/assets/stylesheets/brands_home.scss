@@ -761,12 +761,17 @@ ul.menu-item li {
 .last-nav-item{
   margin-right: -15px;
 }
-//faq page style
+
+//faq, sign_in page style
+.non-home-page-wrapper{
+  margin-top: 62px;
+  padding-top: 62px;
+}
+
 
 .faq-container{
   margin-bottom: 20px;
-  margin-top: 62px;
-  padding-top: 62px;
+
 }
 
 @media (max-width: 767px){
@@ -814,3 +819,4 @@ body > .sticky-footer-wrapper{
     padding-top: 10px;
   }
 }
+
