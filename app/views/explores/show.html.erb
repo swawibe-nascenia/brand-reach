@@ -34,7 +34,7 @@
 
             <div class="col-md-12">
               <label for="influencer_price"> Price </label>
-              <%= select_tag 'price', options_for_select(price_drop_down),{id: 'explore-price', prompt: 'Choose a range'}  %>
+              <%= select_tag 'price', options_for_select(price_drop_down), {id: 'explore-price', prompt: 'Choose a range'} %>
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@
           <div class="row">
             <div class="col-md-12">
               <label for="influencer_country"> Location </label>
-              <%= country_select_tag :country,'', {:id => 'explore-country', prompt: 'Select Country'} %>
+              <%= country_select_tag :country, '', {:id => 'explore-country', prompt: 'Select Country'} %>
               <br/>
 
               <div id="explore-state">
@@ -60,34 +60,9 @@
   <!-- end of advance search option -->
 
   <hr/>
-
-  <div class="search-result">
-    <% @influencers.each_slice(4) do |influncer_group| %>
-        <div class="row padding-less-column-parent">
-          <% influncer_group.each do |influencer| %>
-              <div class="col-md-3 col-sm-6 col-sm-12">
-                <div class="search-result-item">
-                  <div class="search-result-image">
-                    <%= image_tag(influencer.profile_picture, class: 'img-responsive explore-search-image') %>
-                  </div>
-                  <div class="influencer-data">
-                    <div class="influencer-name"> <%= influencer.full_name.present? ? influencer.full_name : 'User' %> </div>
-                    <p class="influencer-address"><%= influencer.location %></p>
-                    <p class="title"> <%= influencer.industry.present? ? influencer.industry : 'Entrepreneur' %></p>
-                    <p class="influencer-biography"><%= influencer.short_bio %> </p>
-                    <div>
-                      <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;<%= influencer.max_followers %>
-                    </div>
-                  </div>
-                  <%= link_to 'VIEW PROFILE', influencer_path(influencer), remote: true, :class => "btn btn-primary btn-view-profile" %>
-                </div>
-              </div>
-          <% end %>
-        </div>
-    <% end %>
+  <div id="search-result-container">
+    <%= render 'explores/explores', {influencers: @influencers} %>
   </div>
-
-  <%= paginate @influencers %>
 
   <div id="profile-modal"></div>
 </div>

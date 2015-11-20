@@ -10,6 +10,7 @@ class ExploresController < ApplicationController
       @influencers = @influencers.where('industry LIKE :search OR country_name LIKE :search OR state_name LIKE :search', search: wildcard_search)
     end
     @influencers = @influencers.where(industry: params[:category]) if params[:category].present?
+    # @influencers = @influencers.where(industry: params[:social_media]) if params[:social_media].present?
     @influencers = @influencers.where(country: params[:country]) if params[:country].present?
     if params[:price].present?
       price_range = Range.new(*params[:price].split('..').map(&:to_i))

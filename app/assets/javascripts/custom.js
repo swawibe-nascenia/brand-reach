@@ -231,10 +231,37 @@ $(function(){
     });
 
 /* ==================== advance search functionality ==============*/
-
+    $('#explore-category').change(function(){
+        makeAdvanceSearch();
+    });
 
    function makeAdvanceSearch(){
        var searchKey = $('#search-keyword').val();
+       var category = $('#explore-category').val();
+       var socialMedia = $('#explore-social-media').val();
+       var country = $('#country').val();
+       var state = $('#state').val();
+       var price = $('#explore-price').val();
+       var followers = $('#explore-followers').val();
+
+       $.ajax({
+           type: 'get',
+           url: '/explore',
+           dataType: "script",
+           data: {
+                search_key: searchKey,
+                category: category,
+                social_media: socialMedia,
+                country: country,
+                state: state,
+                price: price,
+                followers: followers,
+                'authenticity_token': $('meta[name="csrf-token"]').attr('content')
+           },
+           success: function(data) {
+               console.log(data)
+           }
+       });
    }
 
 /*    show spinner button on form submit. To enable sinner for form submit
