@@ -1,7 +1,7 @@
 /* all page content wrapper */
 .wrapper-content{
   max-width: 1010px;
-  margin: auto;
+  margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -760,4 +760,57 @@ ul.menu-item li {
 }
 .last-nav-item{
   margin-right: -15px;
+}
+//faq page style
+
+.faq-container{
+  margin-bottom: 20px;
+  margin-top: 62px;
+  padding-top: 62px;
+}
+
+@media (max-width: 767px){
+  .faq-container{
+    margin-top: 20px;
+    padding-top: 0;
+  }
+}
+.panel-body, .list-group{
+  display: none;
+}
+html, body, .faq-container, .sign-in-form-container { height: 90%; }
+body > .faq-container, body > .sign-in-form-container{
+  height: auto;
+  min-height: 100%;
+}
+
+.footer-non-home-page {
+  clear: both;
+  position: relative;
+  z-index: 10;
+  height: 3em;
+  margin-top: -3em;
+}
+@media (max-width: 767px)  {
+  .footer-non-home-page {
+    height: 70px;
+    margin-top: 0;
+  }
+}
+.faq-container, .sign-in-form-container {
+  padding-bottom: 3em;
+}
+
+// sign in page  style sheet
+
+.sign-in-form-container{
+  margin: 62px auto 20px;
+  padding-top: 53px;
+  width: 400px;
+}
+@media (max-width: 767px) {
+  .sign-in-form-container{
+    margin-top: 0;
+    padding-top: 10px;
+  }
 }

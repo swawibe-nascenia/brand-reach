@@ -1,46 +1,7 @@
-<style>
-    .faq-container{
-        margin-bottom: 20px;
-        margin-top: 62px;
-        padding-top: 62px;
-    }
-
-    @media (max-width: 767px){
-        .faq-container{
-            margin-top: 20px;
-            padding-top: 0;
-        }
-    }
-    .panel-body, .list-group{
-        display: none;
-    }
-    html, body, .faq-container { height: 90%; }
-    body > .faq-container{
-        height: auto;
-        min-height: 100%;
-    }
-
-    .footer-non-home-page {
-        clear: both;
-        position: relative;
-        z-index: 10;
-        height: 3em;
-        margin-top: -3em;
-    }
-@media (max-width: 767px)  {
-    .footer-non-home-page {
-        height: 70px;
-        margin-top: 0;
-    }
-}
-    .faq-container {
-        padding-bottom: 3em;
-    }
-</style>
 
 <% title 'faqs' %>
 
-<div class="wrapper-content faq-container">
+<div class="wrapper-content faq-wrapper faq-container">
   <div class="inner_bg" id="faq">
     <div class="mtop20">
       <div class="panel panel-warning">
