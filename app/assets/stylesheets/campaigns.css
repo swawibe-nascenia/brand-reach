@@ -269,6 +269,10 @@ only screen and (max-width: 1130px) {
     .btn-country {
         font-size: 18px;
     }
+
+    .campaign-view select {
+        width: 40%;
+    }
 }
 
 @media
@@ -614,6 +618,13 @@ only screen and (max-width: 460px) {
     padding: 5px;
     background-color: white;
     width: 60%;
+}
+
+@media
+only screen and (max-width: 1140px) {
+    .campaign-view select {
+        width: 45%;
+    }
 }
 
 .btn-campaign-view {
