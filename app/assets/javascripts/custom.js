@@ -235,14 +235,42 @@ $(function(){
         makeAdvanceSearch();
     });
 
+    $('#explore-social-media').change(function(){
+        makeAdvanceSearch();
+    });
+
+    $('.brands-explore-advance-search #country').change(function(){
+        var countryCode = $(this).val();
+        var url = "/subregion_options?parent_region=" + countryCode;
+        $('#explore-state').load(url, function(){
+            console.log('Load is perform ');
+            makeAdvanceSearch();
+        });
+
+    });
+
+    $(document).on('change', '#explore-state #user_state', function(){
+        makeAdvanceSearch();
+    });
+
+    $('#explore-price').change(function(){
+        makeAdvanceSearch();
+    });
+
+    $('#explore-followers').change(function(){
+        makeAdvanceSearch();
+    });
+
    function makeAdvanceSearch(){
        var searchKey = $('#search-keyword').val();
        var category = $('#explore-category').val();
        var socialMedia = $('#explore-social-media').val();
        var country = $('#country').val();
-       var state = $('#state').val();
+       var state = $('#user_state').val();
        var price = $('#explore-price').val();
        var followers = $('#explore-followers').val();
+
+       console.log('Current selected state code is ' + state);
 
        $.ajax({
            type: 'get',

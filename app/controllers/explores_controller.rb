@@ -1,7 +1,6 @@
 class ExploresController < ApplicationController
   before_filter :is_brand?, only: [:show]
 
-  #  Range.new(*'1..10'.split('..').map(&:to_i))
   def show
     @influencers = User.influencers.where(profile_complete: true)
 
@@ -11,6 +10,7 @@ class ExploresController < ApplicationController
     end
     @influencers = @influencers.where(industry: params[:category]) if params[:category].present?
     # @influencers = @influencers.where(industry: params[:social_media]) if params[:social_media].present?
+    @influencers = @influencers.where(state: params[:state]) if params[:state].present?
     @influencers = @influencers.where(country: params[:country]) if params[:country].present?
     if params[:price].present?
       price_range = Range.new(*params[:price].split('..').map(&:to_i))
