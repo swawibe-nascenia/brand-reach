@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
     facebook_accounts.where(is_active: true)
   end
 
-  def max_followers
+  def calculate_max_followers
     active_facebook_accounts.pluck(:number_of_followers).max
   end
 

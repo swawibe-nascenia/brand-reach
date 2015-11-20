@@ -17,8 +17,8 @@ class ExploresController < ApplicationController
       @influencers = @influencers.where(fb_average_cost: price_range)
     end
     if params[:followers].present?
-      price_range = Range.new(*params[:followers].split('..').map(&:to_i))
-      @influencers = @influencers.where(fb_average_cost: price_range)
+      followers = Range.new(*params[:followers].split('..').map(&:to_i))
+      @influencers = @influencers.where(max_followers: followers)
     end
 
     Rails.logger.info @influencers.inspect

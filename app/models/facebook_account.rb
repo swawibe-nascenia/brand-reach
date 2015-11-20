@@ -41,7 +41,7 @@ class FacebookAccount < ActiveRecord::Base
   # == Callbacks == #
   # ----------------------------------------------------------------------
 
-  after_save :update_influencer_fb_average_cost
+  after_save :update_influencer_fb_average_cost, :update_influencer_fb_max_followers
 
   # ----------------------------------------------------------------------
   # == Scopes and Other macros == #
@@ -137,6 +137,13 @@ class FacebookAccount < ActiveRecord::Base
     avg_cost = cost_array.inject(:+).inject(:+) / (cost_array.inject(:+).length)
     Rails.logger.info "total amoutn is #{cost_array.inject(:+).inject(:+)} and field #{cost_array.inject(:+).length}"
     influencer.update_column(:fb_average_cost, avg_cost)
+  rescue Exception
+    return
+  end
+
+  def update_influencer_fb_max_followers
+    max_followers_number = influencer.calculate_max_followers
+    influencer.update_column(:max_followers, max_followers_number)
   rescue Exception
     return
   end
