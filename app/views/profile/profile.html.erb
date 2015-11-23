@@ -144,6 +144,10 @@
           var industry_list = document.getElementById("industry_list");
           var Industries = new Awesomplete(industry_list, {minChars: 0, sort: true});
           Industries.list = ["Intel", "IBM", "LinkedIn", "Nascenia", "Oracle", "Google", "Yahoo"];
+
+          $('#industry_list').on('focus', function() {
+              Industries.evaluate();
+          });
       });
 
   </script>
