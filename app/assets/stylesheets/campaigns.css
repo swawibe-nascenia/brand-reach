@@ -776,3 +776,7 @@ only screen and (max-width: 480px) {
     background-color: #f1b242;
 }
 
+.payment-form .parsley-errors-list {
+    display: inline;
+}
+
