@@ -6,6 +6,7 @@ class ProfileController < ApplicationController
   respond_to :html, :js
 
   def profile
+    @industries = User::Industry
     respond_with(@user)
   end
 

@@ -16,11 +16,13 @@ class User < ActiveRecord::Base
 
   enum gender: [:male, :female, :other]
 
+  Industry = ['Google', 'Oracle', 'IBM', 'Facebook', 'Intel', 'Nascenia', 'Brand Reach']
+
   BRAND_PROFILE_COMPLETENESS = [:company_name, :company_email, :industry, :phone, :street_address,
-                          :city, :state, :country, :zip_code, :short_bio, :first_name, :last_name]
+                                :city, :state, :country, :zip_code, :short_bio, :first_name, :last_name]
 
   INFLUENCER_PROFILE_COMPLETENESS = [:industry, :phone, :street_address,
-                          :city, :state, :country, :zip_code, :short_bio, :first_name, :last_name]
+                                     :city, :state, :country, :zip_code, :short_bio, :first_name, :last_name]
 
   FACEBOOK_ACCOUNT_COMPLETENESS = [:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost]
 
@@ -91,7 +93,7 @@ class User < ActiveRecord::Base
   end
 
   def profile_picture(version = :thumb)
-      self.image.present? ? self.image.url(version).to_s : ActionController::Base.helpers.asset_path('default_profile_picture.png')
+    self.image.present? ? self.image.url(version).to_s : ActionController::Base.helpers.asset_path('default_profile_picture.png')
   end
 
   # ----------------------------------------------------------------------
