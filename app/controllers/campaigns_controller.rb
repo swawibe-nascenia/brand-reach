@@ -77,7 +77,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:campaign][:id])
     @campaign.card_expiration_month = campaign_params[:card_expiration_month].to_i
 
-    if @campaign.update(campaign_params.except(:card_expiration_month))
+    if @campaign.update(campaign_params.except(:card_expiration_month, :id))
       redirect_to campaigns_path
     else
       render action: 'new_brand_payment'
@@ -91,8 +91,8 @@ class CampaignsController < ApplicationController
       :social_account_page_name, :receiver_id, :sender_id, :end_date,
       :campaign_active, :cost, :facebook_account_id, :post_type,
       :number_of_likes, :number_of_post_reach, :number_of_comments,
-      :number_of_shares, :card_number,
-      :card_expiration_year, :card_holder_name, :schedule_type, :card_expiration_month => []
+      :number_of_shares, :card_number, :id,
+      :card_expiration_year, :card_holder_name, :schedule_type, :card_expiration_month
     )
   end
 
