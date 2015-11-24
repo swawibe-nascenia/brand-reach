@@ -39,10 +39,11 @@
 }
 
 .social-accounts-logo {
-  margin-top: 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
-.login-modal-body .social-accounts-logo a {
+.social-accounts-logo a {
   background-color: #e6e6e6;
   color: #3a3a3a;
   padding: 14px 25px;
@@ -50,7 +51,7 @@
   margin-right: 15px;
 }
 
-.login-modal-body .social-accounts-logo a:hover {
+.social-accounts-logo a:hover {
   color: #428bca;
 }
 

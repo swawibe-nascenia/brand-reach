@@ -72,8 +72,10 @@
         </div>
         <div class="row" id="influencer-signup">
           <div class="col-md-12">
-            <div class="col-md-12 no-left">
-              <a href="<%= user_omniauth_authorize_path('facebook') %>">Facebook &nbsp; &nbsp; <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
+            <div class="col-md-12">
+              <div class="social-accounts-logo">
+                <a href="<%= user_omniauth_authorize_path('facebook') %>">Facebook &nbsp; &nbsp; <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
+              </div>
             </div>
           </div>
         </div>

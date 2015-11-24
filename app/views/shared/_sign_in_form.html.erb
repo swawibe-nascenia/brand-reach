@@ -30,11 +30,11 @@
           <input data-parsley-id="6194" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[password]" id="user_password" type="password">
           <ul id="parsley-id-6194" class="parsley-errors-list"></ul>
         </div>
-         <div>
-           <input type="hidden" value="0" name="user[remember_me]">
-           <input id="user_remember_me" type="checkbox" name="user[remember_me]" value="1">
-           <label for="user_remember_me">Remember me</label>
-         </div>
+        <div>
+          <input type="hidden" value="0" name="user[remember_me]">
+          <input id="user_remember_me" type="checkbox" name="user[remember_me]" value="1">
+          <label for="user_remember_me">Remember me</label>
+        </div>
         <button class="btn btn-modal-submit has-spinner" type="submit">
           <span class="spinner"><i class="fa fa-spinner fa-spin"></i></span>
           SUBMIT
@@ -47,9 +47,9 @@
 
   <div class="row" id="influencer-signin">
     <div class="col-md-12">
-      <div class="col-md-12 no-left">
+      <div class="social-accounts-logo">
+        <a href="<%= user_omniauth_authorize_path('facebook') %>">Facebook &nbsp; &nbsp; <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
       </div>
-      <a href="<%= user_omniauth_authorize_path('facebook') %>">Facebook &nbsp; &nbsp; <%= image_tag('facebook-icon.png', :alt => "fb") %></a>
     </div>
   </div>
 </div>
