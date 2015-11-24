@@ -44,6 +44,7 @@ gem 'flag_icon_css_rails'
 gem 'chart-js-rails'
 gem 'validates_zipcode'
 gem 'parsley-rails'
+gem 'whenever', '0.9.4', :require => false
 
 # gem 'haml'
 # gem 'haml-rails'
