@@ -538,7 +538,6 @@ only screen and (max-width: 460px) {
     background-color: #e13f3c;
     color: white;
     margin-top: 5%;
-    margin-left: 15px;
     padding: 8px 28px;
     font-weight: 600;
 }
@@ -742,7 +741,7 @@ only screen and (max-width: 992px) {
     }
 
     .campaign-create-wrapper .btn-book-now {
-        width: 98%;
+        width: 100%;
     }
 
     .influencer-profile-info{
@@ -766,7 +765,7 @@ only screen and (max-width: 992px) {
 
 @media
 only screen and (max-width: 480px) {
-    .campaign-create-wrapper .btn-book-now {
+    .payment-form .card-holder-name {
         width: 95%;
     }
 }
@@ -780,3 +779,8 @@ only screen and (max-width: 480px) {
     display: inline;
 }
 
+.payment {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 20px 0;
+}
