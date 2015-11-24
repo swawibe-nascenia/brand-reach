@@ -213,7 +213,7 @@ class User < ActiveRecord::Base
   end
 
   def send_mail
-    CampaignMailer.sing_up_notification_to_admin(self).deliver_now
+    CampaignMailer.sing_up_notification_to_admin(self).deliver_now if brand?
   end
 
 end
