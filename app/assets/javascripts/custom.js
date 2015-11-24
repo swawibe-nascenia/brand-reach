@@ -245,6 +245,7 @@ $(function(){
 
 /* ==================== advance search functionality ==============*/
     $('#explore-category').change(function(){
+        console.log('filter influencer with their category....');
         makeAdvanceSearch();
     });
 
