@@ -9,40 +9,42 @@
   <% end %>
 </ul>
 
-<div class="tab-content social-account-tab-content">
-  <% @user.active_facebook_accounts.each_with_index do |account, index| %>
+<% if @user.active_facebook_accounts.present? %>
+    <div class="tab-content social-account-tab-content">
+      <% @user.active_facebook_accounts.each_with_index do |account, index| %>
 
-      <% prefix = "user[facebook_accounts_attributes][#{index}]" %>
-      <%= fields_for prefix, account do |g| %>
+          <% prefix = "user[facebook_accounts_attributes][#{index}]" %>
+          <%= fields_for prefix, account do |g| %>
 
-          <div id="fb_<%= g.object.account_id %>" class="tab-pane">
-            <%= hidden_field_tag "#{prefix}[id]", account.id %>
-            <div class="form-group">
-              <div class="col-md-4 col-sm-7 col-xs-10">
-                <%= g.label :status_update_cost, 'Status Update' %>
-                <%= g.number_field :status_update_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0 } %> INR
+              <div id="fb_<%= g.object.account_id %>" class="tab-pane">
+                <%= hidden_field_tag "#{prefix}[id]", account.id %>
+                <div class="form-group">
+                  <div class="col-md-4 col-sm-7 col-xs-10">
+                    <%= g.label :status_update_cost, 'Status Update' %>
+                    <%= g.number_field :status_update_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0 } %> INR
+                  </div>
+                  <div class="col-md-6 col-sm-7 col-xs-10">
+                    <%= g.label :cover_photo_cost, 'Cover Photo' %>
+                    <%= g.number_field :cover_photo_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0 } %> INR
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-4 col-sm-7 col-xs-10">
+                    <%= g.label :profile_photo_cost, 'Profile Photo' %>
+                    <%= g.number_field :profile_photo_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0 } %> INR
+                  </div>
+                  <div class="col-md-6 col-sm-7 col-xs-10">
+                    <%= g.label :video_post_cost, 'Video Post' %>
+                    <%= g.number_field :video_post_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0 } %> INR
+                  </div>
+                </div>
               </div>
-              <div class="col-md-6 col-sm-7 col-xs-10">
-                <%= g.label :cover_photo_cost, 'Cover Photo' %>
-                <%= g.number_field :cover_photo_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0 } %> INR
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-4 col-sm-7 col-xs-10">
-                <%= g.label :profile_photo_cost, 'Profile Photo' %>
-                <%= g.number_field :profile_photo_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0 } %> INR
-              </div>
-              <div class="col-md-6 col-sm-7 col-xs-10">
-                <%= g.label :video_post_cost, 'Video Post' %>
-                <%= g.number_field :video_post_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0 } %> INR
-              </div>
-            </div>
-          </div>
 
+          <% end %>
       <% end %>
-  <% end %>
-</div>
+    </div>
+<% end %>
 
 <script>
-  $('.social-account-nav-tabs a:first').tab('show');
+    $('.social-account-nav-tabs a:first').tab('show');
 </script>
