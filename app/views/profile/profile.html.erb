@@ -2,7 +2,11 @@
 <%= stylesheet_link_tag 'profile.css', media: 'all' %>
 <%= javascript_include_tag 'awesomplete' %>
 
-<% title 'BrandReach Profile' %>
+<% if @user.brand? %>
+    <% title 'Brand Profile' %>
+<% else %>
+    <% title 'Influencer Profile' %>
+<% end %>
 
 <div class="brands-profile-page-wrapper">
 
