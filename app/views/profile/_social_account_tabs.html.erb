@@ -1,15 +1,15 @@
-<ul class="nav nav-tabs social-account-nav-tabs">
-  <% @user.active_facebook_accounts.each do |account| %>
-      <li>
-        <a data-toggle="tab" href="#fb_<%= account.account_id %>">
-          <i class="social-account-fa-edit fa fa-facebook"></i>
-          <%= account.name %>
-        </a>
-      </li>
-  <% end %>
-</ul>
-
 <% if @user.active_facebook_accounts.present? %>
+    <ul class="nav nav-tabs social-account-nav-tabs">
+      <% @user.active_facebook_accounts.each do |account| %>
+          <li>
+            <a data-toggle="tab" href="#fb_<%= account.account_id %>">
+              <i class="social-account-fa-edit fa fa-facebook"></i>
+              <%= account.name %>
+            </a>
+          </li>
+      <% end %>
+    </ul>
+
     <div class="tab-content social-account-tab-content">
       <% @user.active_facebook_accounts.each_with_index do |account, index| %>
 
