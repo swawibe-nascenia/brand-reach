@@ -666,7 +666,7 @@ only screen and (max-width: 1140px) {
 }
 
 .fb-activity-row {
-    height: 45px;
+    height: auto;
     padding-top: 5px;
     padding-left: 10px;
 }
