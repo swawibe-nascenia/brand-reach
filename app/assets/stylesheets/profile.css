@@ -338,7 +338,7 @@ div.awesomplete > ul > li {
     text-align: left;
 }
 
-@media (max-width: 1170px) {
+@media (max-width: 1215px) {
     .personal-info-without-fb label, .personal-info-without-fb input, .personal-info-without-fb select, .personal-info-without-fb .form-group textarea {
         width: 49%;
     }
