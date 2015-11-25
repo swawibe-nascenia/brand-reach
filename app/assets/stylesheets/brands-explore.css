@@ -36,6 +36,7 @@
     font-size: 16px;
     font-weight: 600;
     overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
 
@@ -50,6 +51,7 @@
 .influencer-biography {
     font-size: 13px;
     overflow: hidden;
+    text-overflow: ellipsis;
     height: 72px;
 }
 

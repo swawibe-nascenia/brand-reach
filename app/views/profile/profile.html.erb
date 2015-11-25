@@ -121,7 +121,7 @@
         <div class="form-group short-bio-row">
           <div class="col-md-12">
             <%= f.label :short_bio, 'Short Bio', class: 'textarea-label' %>
-            <%= f.text_area :short_bio, rows: 8, class: 'short_bio' %>
+            <%= f.text_area :short_bio, rows: 8, class: 'short_bio', maxlength: '1000' %>
           </div>
         </div>
       </div>
