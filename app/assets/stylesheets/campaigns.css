@@ -255,6 +255,14 @@ input.cmn-toggle-round:checked + label:after {
     width: 320px;
 }
 
+.campaign-date label {
+    width: 30px;
+}
+
+.campaign-date input {
+    padding-left: 5px;
+}
+
 @media
 only screen and (max-width: 1130px) {
     .btn-export {
