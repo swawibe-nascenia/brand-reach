@@ -160,12 +160,20 @@
         });
 
         $('#export_campaigns').click(function() {
-            var campaign_ids = [];
-            $('.squaredFour input:checked').each(function() {
-                campaign_ids.push($(this).data('id'));
-            });
 
-            window.location.href = "<%= export_campaigns_path(format: :csv) %>?campaign_ids=" + campaign_ids;
+            if($('.squaredFour input:checked').length)
+            {
+                var campaign_ids = [];
+                $('.squaredFour input:checked').each(function() {
+                    campaign_ids.push($(this).data('id'));
+                });
+
+                window.location.href = "<%= export_campaigns_path(format: :csv) %>?campaign_ids=" + campaign_ids;
+            }
+            else
+            {
+                alert('Please Mark at least one Campaign');
+            }
 
         });
     });
