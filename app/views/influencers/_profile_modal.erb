@@ -15,10 +15,8 @@
               </div>
 
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-                <h4><%= influencer.full_name.present? ? influencer.full_name : 'USER' %></h4>
-
+                <h4><%= influencer.full_name %></h4>
                 <p class="title"> <%= influencer.industry %> </p>
-
                 <p class="influencer-address"> <%= influencer.location %></p>
               </div>
             </div>
@@ -30,8 +28,7 @@
             </div>
             <div class="follower-box pull-right">
               <span class="follower-number"><%= influencer.max_followers %></span>
-
-              <p> Likes</p>
+              <p> Followers</p>
             </div>
           </div>
         </div>
