@@ -19,7 +19,7 @@
                         <div class="js-clickable fb-activity-row">
 
                          <div class="media-left media-middle">
-                            <input type="radio" class="vertical-align-middle" name="activity_id" value="{{id}}">
+                            <input type="radio" class="vertical-align-middle" name="activity_id" value="{{id}}" {{#if active}}selected{{/if}}>
                           </div>
 
                           <div class="media-left media-middle fb-activity-post">
@@ -54,10 +54,13 @@
                 version: 'v2.4'
             });
 
-            var createForm = function(authResp, campaignId, pageId) {
+            var createForm = function(authResp, campaignId, pageId, activityId) {
                 FB.api('/'+ pageId +'/feed?fields=id,message,status_type,story,picture', function(resp) {
                     var html = template({
-                        accounts: resp.data
+                        accounts: resp.data.map(function(account) {
+                            account.active = account.id == activityId;
+                            return account;
+                        })
                     });
                     $('#SetFacebookActivity').remove();
                     $('body').append(html);
@@ -72,15 +75,16 @@
             $(document).on('click', '[data-target="SetFacebookActivity"]', function () {
                 var campaignId = $(this).data('campaign');
                 var pageId = $(this).data('page');
+                var activityId = $(this).data('activity');
 
                 FB.getLoginStatus(function(resp) {
                     if (resp.status === 'connected') {
-                        createForm(resp.authResponse, campaignId, pageId);
+                        createForm(resp.authResponse, campaignId, pageId, activityId);
                     }
                     else {
                         FB.login(function(resp) {
                             if (resp.authResponse) {
-                                createForm(resp.authResponse, campaignId, pageId);
+                                createForm(resp.authResponse, campaignId, pageId, activityId);
                             } else {
                                 // todo: alert?
                             }

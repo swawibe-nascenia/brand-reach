@@ -58,7 +58,7 @@
                   <td>
                     <%= image_tag(campaign.sender.profile_picture, :class => 'pepsi-img-responsive') %> &nbsp; <%= campaign.name %>
                     <br/>
-                    <%= link_to 'Set facebook activity', 'javascript:', :class => 'btn', data: { campaign: campaign.id, page: campaign.facebook_account.account_id, target: 'SetFacebookActivity' } %>
+                    <%= link_to 'Set facebook activity', 'javascript:', :class => 'btn', data: { campaign: campaign.id, page: campaign.facebook_account.account_id, activity: campaign.social_account_activity_id, target: 'SetFacebookActivity' } %>
                   </td>
                   <td><%= campaign.number_of_likes %></td>
                   <td><%= campaign.number_of_post_reach %></td>
