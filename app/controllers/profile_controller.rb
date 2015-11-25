@@ -95,7 +95,7 @@ class ProfileController < ApplicationController
                                 })
       account.save(validate: false)
     end
-    current_user.save
+    @user.save
   end
 
   def contact_us
