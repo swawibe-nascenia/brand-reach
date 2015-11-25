@@ -180,7 +180,11 @@ class User < ActiveRecord::Base
 
   def update_profile_completion_status
     if self.influencer?
-      return if active_facebook_accounts.blank?
+       if active_facebook_accounts.blank?
+         Rails.logger.info  "===================No Facebook Account is connected"
+         update_column(:profile_complete, false)
+         return
+       end
 
       active_facebook_accounts.each do |facebook_account|
         FACEBOOK_ACCOUNT_COMPLETENESS.each do |field|
