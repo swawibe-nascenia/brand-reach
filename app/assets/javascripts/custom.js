@@ -18,6 +18,11 @@ $(function(){
 
 //    toggle star of selected offers
     $('.make-all-stared').click(function(){
+        if($(this).hasClass('disable')){
+            // there is no offer now
+            return false;
+        }
+
         var selected_offer_ids = seleted_offer_ids();
         console.log('selected ids' + selected_offer_ids);
         if(selected_offer_ids.length > 0){
@@ -122,6 +127,11 @@ $(function(){
 
 //    delete selected offers
     $('.delete-selected-offer').click(function(){
+        if($(this).hasClass('disable')){
+            // there is no offer now
+            return false;
+        }
+
         var selected_offer_ids = seleted_offer_ids();
         console.log('selected ids' + selected_offer_ids);
         if(selected_offer_ids.length > 0){
@@ -367,5 +377,12 @@ function getWindoWidth(){
         windowWidth = windowWidth - 100;
     }
     return windowWidth;
+}
+
+/* =========================== function for disable offer delete and start icon =============== */
+function disableOfferDeleteStartIcon(){
+    console.log('disabling star and delete icon');
+    $('.delete-selected-offer').addClass('disable');
+    $('.make-all-stared').addClass('disable');
 }
 

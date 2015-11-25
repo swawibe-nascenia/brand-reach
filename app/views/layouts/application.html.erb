@@ -267,6 +267,10 @@
 
 // ========================== bind for pubnub NEW_OFFER event =================================
         PUBNUB_CLIENT.events.bind("NEW_OFFER", function (message) {
+//            enable offer star and delete button
+            $('.make-all-stared').removeClass('disable');
+            $('.delete-selected-offer').removeClass('disable');
+
             console.log('===================== NEW_OFFER pubnub event fire successfully ===========');
             $.ajax({
                 type: 'get',

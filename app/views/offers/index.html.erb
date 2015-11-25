@@ -14,8 +14,8 @@
   <ul class="nav nav-tabs" id="campaign-tabs">
     <li class="pull-right">
       <div class="star-del-ref-panel">
-        <%= image_tag asset_path('star-icon.png'), class: 'make-all-stared' %>
-        <%= image_tag asset_path('trash-icon.png'), class: 'delete-selected-offer' %>
+        <%= image_tag asset_path('star-icon.png'), class: "make-all-stared #{@offers.size > 0 ? '': 'disable'}" %>
+        <%= image_tag asset_path('trash-icon.png'), class: "delete-selected-offer #{@offers.size > 0 ? '': 'disable'}" %>
       </div>
     </li>
     <li class="active" id="inbox_list">

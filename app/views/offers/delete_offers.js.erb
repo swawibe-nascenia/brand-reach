@@ -11,4 +11,9 @@ $(function(){
         this.checked = false;
     });
 
+    if($('.offer-box:visible').length == 0){
+        console.log('now there is no offer remains');
+        disableOfferDeleteStartIcon();
+    }
+
 });
