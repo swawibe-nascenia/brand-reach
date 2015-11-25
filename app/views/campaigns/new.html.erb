@@ -51,9 +51,9 @@
               </div>
 
               <div class="form-group">
-                <%= f.label :cost, 'Cost', class: 'control-label' %>
+                <%= f.label :cost, 'Cost ( INR )', class: 'control-label' %>
                 <div class="display-inline">
-                  <%= f.text_field :cost, { class: 'form-control campaign-cost-input', value: @campaign.cost.present? ? @campaign.cost : @costs[0][0], readonly: true, id: 'post_cost' } %>
+                  <%= f.text_field :cost, { class: 'form-control campaign-cost-input', value: @campaign.cost.present? ? @campaign.cost : @costs[0][0], readonly: true, 'data-parsley-excluded' => 'input[type=text]', id: 'post_cost' } %>
                 </div>
               </div>
 
