@@ -97,8 +97,8 @@ class ProfileController < ApplicationController
         account.save(validate: false)
       end
     end
-    
-    @user.save
+    Rails.logger.info "User update manage account not need to udpate #{@user.save}"
+
   end
 
   def contact_us
