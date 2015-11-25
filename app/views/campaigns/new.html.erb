@@ -144,6 +144,15 @@
             }
         });
 
+        if($('.daily:checked').length)
+        {
+            $('#start_end').find('*').attr('disabled', true);
+        }
+        else
+        {
+            $('#start_end').find('*').attr('disabled', false);
+        }
+
         $('.daily').click(function() {
             $('#start_end').find('*').attr('disabled', true);
         });
