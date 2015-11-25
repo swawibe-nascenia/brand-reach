@@ -31,7 +31,7 @@ $(function(){
                 }
             });
         }else{
-            alert('At least one offer has to be selected');
+            swal('At least one offer has to be selected');
         }
 
         return false;
@@ -85,13 +85,13 @@ $(function(){
                         $('.offer-textarea-' + data.id).val('');
                         console.log($('.offer-textarea-' + data.id));
                     }else{
-                        alert('Some error have been  occur');
+                        swal('Some error have been  occur');
                     }
 
                 }
             });
         }else{
-            alert('Message body must be present ');
+            swal('Message body must be present ');
         }
 
     });
@@ -135,7 +135,7 @@ $(function(){
                 }
             });
         }else{
-            alert('At least one offer has to be selected');
+            swal('At least one offer has to be selected');
         }
 
         return false;
@@ -147,7 +147,7 @@ $(function(){
         var BankAccountId = $('input[name="bank_account"]:checked').val();
         var withdrawAmmount =  parseInt($('input#withdraw_amount').val());
         if(BankAccountId === undefined || BankAccountId === null || isNaN(withdrawAmmount)){
-            alert('Select Bank account or give withdraw amount first ');
+            swal('Select Bank account or give withdraw amount first ');
         }else{
             $.ajax({
                 type: 'post',
