@@ -11,11 +11,18 @@ class CampaignsController < ApplicationController
 
   def new
     @influencer = User.find(params[:receiver_id].to_i)
-    @costs = User.find(params[:receiver_id].to_i).active_facebook_accounts.pluck(
-      :status_update_cost, :profile_photo_cost, :cover_photo_cost,
-      :video_post_cost)
-    @campaign = Campaign.new(sender_id: current_user.id,
-      receiver_id: params[:receiver_id])
+
+    if @influencer.is_active?
+      @costs = User.find(params[:receiver_id].to_i).active_facebook_accounts.pluck(
+          :status_update_cost, :profile_photo_cost, :cover_photo_cost,
+          :video_post_cost)
+      @campaign = Campaign.new(sender_id: current_user.id,
+                               receiver_id: params[:receiver_id])
+    else
+      flash[:notice] = 'Your requested Influencer is not active now. Please chose others.'
+      redirect_to explore_path
+    end
+
   end
 
   def create
