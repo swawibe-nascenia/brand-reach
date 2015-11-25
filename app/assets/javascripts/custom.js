@@ -69,7 +69,7 @@ $(function(){
 
 //    reply message feature
     $(document).on('click', '.message-reply-button', function(e){
-        var body = $(this).prev('.message-body').val();
+        var body =  $.trim($(this).prev('.message-body').val());
         var offer_id = $(this).data('offer-id');
         var receiver_id = $(this).data('receiver-id');
 

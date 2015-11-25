@@ -48,8 +48,8 @@ class OffersController < ApplicationController
 
   def reply_message
       message = @offer.messages.new(sender_id: current_user.id, receiver_id: params[:receiver_id], body: params[:body])
-
-      if message.save
+      Rails.logger.info "Your message is #{message.body}"
+      if message.body.present? && message.save
         success = true
         id = @offer.id
       else
