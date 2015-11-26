@@ -29,6 +29,7 @@ class FacebookAccount < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   belongs_to :influencer, class_name: 'User'
+  has_many :campaigns
 
   # ----------------------------------------------------------------------
   # == Validations == #
