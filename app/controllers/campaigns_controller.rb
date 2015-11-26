@@ -17,7 +17,7 @@ class CampaignsController < ApplicationController
           :status_update_cost, :profile_photo_cost, :cover_photo_cost,
           :video_post_cost)
       @campaign = Campaign.new(sender_id: current_user.id,
-                               receiver_id: params[:receiver_id])
+                               receiver_id: params[:receiver_id], facebook_account_id: params[:social_account_id])
     else
       flash[:notice] = 'Your requested Influencer is not active now. Please chose others.'
       redirect_to explore_path
