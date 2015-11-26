@@ -316,16 +316,26 @@ $(function(){
        });
    }
 
-/*    show spinner button on form submit. To enable sinner for form submit
-      add 'has-spinner' class to submit button and
-      <span class="spinner"><i class="fa fa-spinner fa-spin"></i></span>
-      with in button tag.
+/* ============== send message on enter key press ============*/
+    $('.offer-textarea').keypress(function (e) {
+        var key = e.which;
+        if(key == 13)  // the enter key code
+        {
+            $(this).siblings('.message-reply-button').click();
+            return false;
+        }
+    });
 
-      Ex. <button class="btn btn-modal-submit has-spinner" type="submit">
-            <span class="spinner"><i class="fa fa-spinner fa-spin"></i></span>
-            SUBMIT
-           </button>
- */
+    /*    show spinner button on form submit. To enable sinner for form submit
+          add 'has-spinner' class to submit button and
+          <span class="spinner"><i class="fa fa-spinner fa-spin"></i></span>
+          with in button tag.
+
+          Ex. <button class="btn btn-modal-submit has-spinner" type="submit">
+                <span class="spinner"><i class="fa fa-spinner fa-spin"></i></span>
+                SUBMIT
+               </button>
+     */
     //$('.show-spinner-on-submit').submit(function() {
     //    console.log('Form with spinner functionality has been submitted');
     //    $(this).find('.has-spinner').addClass('active');
