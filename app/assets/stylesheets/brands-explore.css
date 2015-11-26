@@ -140,7 +140,7 @@
 }
 
 .modal-profile .modal-body .profile-info{
-    padding: 28px 138px 34px 0;
+    padding: 28px 138px 7px 0;
     width: 100%;
     text-align: justify;
 }
@@ -250,5 +250,5 @@
 }
 
 .pricing-section {
-    padding-top: 5px;
+    padding-top: 8px;
 }

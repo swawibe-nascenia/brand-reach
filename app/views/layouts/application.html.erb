@@ -167,7 +167,7 @@
         <div class="about-welcome">
           <%= link_to 'FAQs', faqs_public_index_path, class: 'about' %>
 
-          <p class=" welcome"> Welcome back, <%= current_user.try(:full_name).present? ? current_user.full_name : 'USER' %></p>
+          <p class=" welcome"> Welcome back, <%= current_user.try(:full_name).present? ? current_user.full_name : 'USER' %> !</p>
           <a href="<%= destroy_user_session_path %>" class="login-link">
             <p class="text-black text-center" title="Log Out" data-toggle="pop"><i class="fa fa-power-off"></i></p>
           </a>

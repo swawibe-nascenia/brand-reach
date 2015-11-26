@@ -130,20 +130,6 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        $('.start_date').datepicker({
-            dateFormat: "dd/mm/yy",
-            onSelect: function(dateText, inst) {
-                $(this).attr('value',dateText);
-            }
-        });
-
-        $('.end_date').datepicker({
-            dateFormat: "dd/mm/yy",
-            onSelect: function(dateText, inst) {
-                $(this).attr('value',dateText);
-            }
-        });
-
         if($('.daily:checked').length)
         {
             $('#start_end').find('*').attr('disabled', true);
@@ -159,6 +145,26 @@
 
         $('.date-range').click(function() {
             $('#start_end').find('*').attr('disabled', false);
+        });
+
+        $(".start_date").datepicker({
+            dateFormat: "dd/mm/yy",
+            minDate: 0,
+            maxDate:"+365D",
+            numberOfMonths: 1,
+            onSelect: function(selected) {
+                $(".end_date").datepicker("option","minDate", selected)
+            }
+        });
+
+        $(".end_date").datepicker({
+            dateFormat: "dd/mm/yy",
+            minDate: 0,
+            maxDate: "+365D",
+            numberOfMonths: 1,
+            onSelect: function(selected) {
+                $(".start_date").datepicker("option","maxDate", selected)
+            }
         });
 
         var social_account_index = $('#social_account').find('option:selected').index();
