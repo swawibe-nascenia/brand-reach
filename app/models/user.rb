@@ -153,7 +153,7 @@ class User < ActiveRecord::Base
   end
 
   def location
-    "#{city}, #{ISO3166::Country[country].name}"
+    "#{state_name}, #{country_name}"
   end
 
   def unread_messages
