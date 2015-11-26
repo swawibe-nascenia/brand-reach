@@ -20,7 +20,7 @@ class ProfileController < ApplicationController
           flash[:error] = 'Old Password was Not correct or Retype Password does Not match with New Password'
         end
       end
-      flash[:success] = 'User Information update success' if flash[:error].nil?
+      flash[:success] = 'User Information has been updated successfully' if flash[:error].nil?
       redirect_to profile_profile_index_path
     else
       render 'profile'
