@@ -765,6 +765,10 @@ only screen and (max-width: 992px) {
     .social-account-tab-content .date-range, .campaign-name-input li {
         margin-left: 0;
     }
+
+    .fb-activity-modal-dialog {
+        width: 100%;
+    }
 }
 
 @media
