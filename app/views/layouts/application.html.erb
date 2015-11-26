@@ -169,7 +169,7 @@
 
           <p class=" welcome"> Welcome back, <%= current_user.try(:full_name).present? ? current_user.full_name : 'USER' %></p>
           <a href="<%= destroy_user_session_path %>" class="login-link">
-            <p class="text-black text-center"><i class="fa fa-power-off"></i></p>
+            <p class="text-black text-center" title="Log Out" data-toggle="pop"><i class="fa fa-power-off"></i></p>
           </a>
         </div>
       </div>
@@ -219,7 +219,12 @@
 
 
 <script type="text/javascript">
-// ========================== pubnub global variable =================================
+
+    $(document).ready(function () {
+        $('[data-toggle="pop"]').popover({trigger: 'hover', placement: "bottom"});
+    });
+
+    // ========================== pubnub global variable =================================
     var PUBNUB_CLIENT = null;
     var current_user_id = <%= current_user.id %>;
 
