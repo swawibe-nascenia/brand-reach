@@ -24,7 +24,7 @@
 
           <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12">
             <div class="btn-box pull-right">
-              <%= link_to 'Send Request', new_campaign_path(receiver_id: influencer.id), class: 'btn btn-message button-border-yellow', data: {href: new_campaign_path(receiver_id: influencer.id)} %>
+              <%= link_to 'Send Request', new_campaign_path(receiver_id: influencer.id, social_account_id: influencer.active_facebook_accounts.first.id), class: 'btn btn-message button-border-yellow btn-send-offer-request', data: {href: new_campaign_path(receiver_id: influencer.id)} %>
             </div>
             <div class="follower-box pull-right">
               <span class="follower-number"><%= influencer.max_followers %></span>
@@ -116,4 +116,18 @@
 
 <script>
     $('.social-account-nav-tabs a:first').tab('show');
+
+     $(function(){
+         $('.influencer-social-account-tab').click(function(){
+             var offerSendBtn = $('a.btn-send-offer-request');
+             var baseOfferUrl = offerSendBtn.data('href');
+             console.log('current profile base url is ' + baseOfferUrl);
+
+             var socialAccountId = $(this).data('id');
+             var newUrl = baseOfferUrl + '&social_account_id=' + socialAccountId;
+             offerSendBtn.prop("href", newUrl);
+
+             console.log('Now new url is  ' + offerSendBtn.prop('href'));
+         });
+     });
 </script>
