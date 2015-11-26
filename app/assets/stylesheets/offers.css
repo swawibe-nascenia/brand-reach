@@ -227,8 +227,12 @@
 }
 
 .title {
-    margin: 5px 0 0 10px;
     display: inline-block;
+    margin: 5px 0 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 170px;
 }
 
 .offer-text {

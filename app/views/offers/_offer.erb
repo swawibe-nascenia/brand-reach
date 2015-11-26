@@ -17,7 +17,7 @@
 
     <div class="offer-message-sender">
       <%= image_tag (current_user.influencer? ? offer.sender : offer.receiver).profile_picture, class: 'inbox-logo-responsive' %>
-      <span class="title"><%= (current_user.influencer? ? offer.sender : offer.receiver).full_name %> </span>
+      <span class="title" title="<%= (current_user.influencer? ? offer.sender : offer.receiver).full_name %>"><%= (current_user.influencer? ? offer.sender : offer.receiver).full_name %> </span>
     </div>
 
     <div class="offer-text"><%= offer.name %></div>
