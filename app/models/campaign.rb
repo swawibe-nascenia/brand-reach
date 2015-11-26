@@ -112,7 +112,7 @@ class Campaign < ActiveRecord::Base
       <strong>Type of Post :</strong> #{self.post_type.humanize}
       <strong>Start Date :</strong> #{self.start_date.strftime('%d-%m-%Y')}
       <strong>End Date :</strong> #{self.end_date.strftime('%d-%m-%Y')}
-      <strong>Payment :</strong> #{self.cost} $
+      <strong>Payment :</strong> #{self.cost} INR
 
       <strong>Campaign Heading :</strong> #{self.headline}
       <strong>Campaign Description :</strong> #{self.text}
