@@ -5,7 +5,7 @@ class ExploresController < ApplicationController
     @influencers = User.influencers.where(profile_complete: true)
 
     if params[:search_key].present?
-      wildcard_search = "%#{params[:search_key]}%"
+      wildcard_search = "%#{params[:search_key].strip! || params[:search_key]}%"
       @influencers = @influencers.where('industry LIKE :search OR country_name LIKE :search OR state_name LIKE :search', search: wildcard_search)
     end
     @influencers = @influencers.where(industry: params[:category]) if params[:category].present?
