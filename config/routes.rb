@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   get 'helps/index'
 
-  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations', sessions: 'sessions' }
+  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations',
+                                       sessions: 'sessions', passwords: 'passwords' }
 
   resources :profile, path: '', only: [:update] do
     member do

@@ -78,12 +78,12 @@
           <li><%= link_to 'INFLUENCERS', influencer_home_public_index_path, class: current_path(influencer_home_public_index_path) %></li>
           <li><%= link_to 'BRANDS', brand_home_public_index_path, class: current_path(brand_home_public_index_path) %></li>
 
-          <% if params[:action] == 'faqs' || params[:controller] == 'sessions' %>
-              <li id="about"><a href="<%=influencer_home_public_index_path%>#about_us">ABOUT US</a></li>
-              <li id="nav-contact-us"><a href="<%=influencer_home_public_index_path%>#contact_us">CONTACT US</a></li>
-          <% else %>
+          <% if params[:action] == 'home' || params[:action] == 'brand_home' %>
               <li id="about"><a href="#about_us">ABOUT US</a></li>
               <li id="nav-contact-us"><a href="#contact_us">CONTACT US</a></li>
+          <% else %>
+              <li id="about"><a href="<%=influencer_home_public_index_path%>#about_us">ABOUT US</a></li>
+              <li id="nav-contact-us"><a href="<%=influencer_home_public_index_path%>#contact_us">CONTACT US</a></li>
           <% end %>
 
           <% if user_signed_in? %>
@@ -103,19 +103,17 @@
 
 <%= yield %>
 
-
 <!-- partial rendering section -->
-
-<% if params[:action] == 'faqs' || params[:controller] == 'sessions' %>
-      <%= render 'shared/footer_other_page' %>
-<% else %>
+<% if params[:action] == 'home' || params[:action] == 'brand_home' %>
     <%= render 'shared/footer_home_page' %>
+<% else %>
+    <%= render 'shared/footer_other_page' %>
 <% end %>
 
 <%= render partial: 'shared/sign_up_modal'%>
 <%= render partial: 'shared/sign_in_modal'%>
 <%= render partial: 'shared/sign_up_success_message'%>
-<%= render partial: 'shared/forgote_password'%>
+<%= render partial: 'shared/forgot_password'%>
 
 </body>
 </html>
