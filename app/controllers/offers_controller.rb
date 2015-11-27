@@ -79,6 +79,7 @@ class OffersController < ApplicationController
     offers.update_all(target_column => true)
 
     current_user.received_messages.where(campaign_id: @ids).update_all(read: true)
+    @unread_messages_count = current_user.received_messages.where(read: false).count
   end
 
   def load_offer
