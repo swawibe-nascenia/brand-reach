@@ -76,7 +76,6 @@ class ProfileController < ApplicationController
     active_account_ids = @user.campaigns_received.where(status: Campaign.statuses[:accepted]).pluck(:facebook_account_id)
 
     @user.active_facebook_accounts.where.not(id: active_account_ids).update_all(is_active: false)
-    params[:accounts] = params[:accounts] - active_account_ids if active_account_ids.present?  && params[:accounts].present?
 
     if params[:accounts].present?
       params[:accounts].each do |account_id|
