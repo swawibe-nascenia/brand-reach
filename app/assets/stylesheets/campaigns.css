@@ -555,6 +555,10 @@ only screen and (max-width: 460px) {
     font-weight: 600;
 }
 
+.campaign-create-wrapper .btn-book-now:focus {
+    outline: thick dotted;
+}
+
 .campaign-create-wrapper .grey-color {
     background-color: #999999;
 }
