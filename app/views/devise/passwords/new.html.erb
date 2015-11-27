@@ -1,16 +1,17 @@
 <div class="wrapper-content non-home-page-wrapper sticky-footer-wrapper">
   <h2>Forgot your password?</h2>
 
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), data: {:'parsley-validate' => ''}, html: { method: :post }) do |f| %>
       <%= devise_error_messages! %>
 
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true %>
+      <div class="input_container">
+        <div class="label_l">Email</div>
+        <input data-parsley-id="6021" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[email]" id="user_email" type="text">
+        <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
       </div>
 
       <div class="actions">
-        <%= f.submit "Send me reset password instructions" %>
+        <button class="btn btn-modal-submit" type="submit">SUBMIT</button>
       </div>
   <% end %>
 </div>
