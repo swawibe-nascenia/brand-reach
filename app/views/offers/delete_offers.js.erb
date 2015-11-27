@@ -16,5 +16,9 @@ $(function(){
         disableOfferDeleteStartIcon();
     }
 // update unread message count
-    $('span.unread-message').html("(<span class='unread-message-number'>" + <%= @unread_messages_count %> + "</span>)");
+    <% if @unread_messages_count > 0 %>
+        $('span.unread-message').html("(<span class='unread-message-number'>" + <%= @unread_messages_count %> + "</span>)");
+    <% else %>
+        $('span.unread-message').html("");
+    <% end %>
 });
