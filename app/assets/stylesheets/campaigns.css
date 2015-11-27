@@ -527,13 +527,13 @@ only screen and (max-width: 460px) {
 
 .payment-form select {
     background-color: #ffffff;
-    padding: 3px;
-    margin: 10px 0;
+    padding: 5px;
+    margin: 2px 0 22px 0;
     width: 108px;
 }
 
 .payment-form input {
-    margin: 10px 0;
+    margin: 2px 0 22px 0;
     padding: 5px;
 
 }
