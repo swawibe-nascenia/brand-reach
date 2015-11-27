@@ -135,21 +135,27 @@ $(function(){
             return false;
         }
 
-        var selected_offer_ids = seleted_offer_ids();
-        console.log('selected ids' + selected_offer_ids);
-        if(selected_offer_ids.length > 0){
-            $.ajax({
-                type: 'put',
-                url: '/offers/delete_offers',
-                dataType: "script",
-                data: {ids: selected_offer_ids, 'authenticity_token': $('meta[name="csrf-token"]').attr('content')},
-                success: function(data) {
-                    console.log(data)
+            var selected_offer_ids = seleted_offer_ids();
+            console.log('selected ids' + selected_offer_ids);
+            if(selected_offer_ids.length > 0){
+                var confirmData =  confirm("Are you sure you want to delete the Campaign?");
+                console.log('confirm data is ' + confirmData);
+                if(confirmData){
+                    $.ajax({
+                        type: 'put',
+                        url: '/offers/delete_offers',
+                        dataType: "script",
+                        data: {ids: selected_offer_ids, 'authenticity_token': $('meta[name="csrf-token"]').attr('content')},
+                        success: function(data) {
+                            console.log(data)
+                        }
+                    });
                 }
-            });
-        }else{
-            swal('At least one offer has to be selected');
-        }
+
+            }else{
+                swal('At least one offer has to be selected');
+            }
+
 
         return false;
     });
