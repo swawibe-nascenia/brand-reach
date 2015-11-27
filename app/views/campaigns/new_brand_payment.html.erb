@@ -4,41 +4,48 @@
 
 <div class="campaign-create-wrapper">
 
-  <%= form_for @campaign, url: create_brand_payment_campaigns_path, method: :patch, html: { class: 'form-horizontal'}, data: { parsley_validate: '' } do |f| %>
+  <%
+     working_key = CONFIG[:ccavenue_working_key]
+     access_code = CONFIG[:ccavenue_access_code]
 
-      <%= render 'shared/show_errors', :object => @campaign%>
+     payment_params = {
+         merchant_id: CONFIG[:ccavenue_merchant_id],
+         order_id: @campaign.id,
+         amount: @campaign.cost,
+         currency: 'INR',
+         redirect_url: confirm_brand_payment_campaigns_url,
+         billing_name: current_user.full_name,
+         billing_address: current_user.street_address,
+         billing_zip: current_user.zip_code,
+         billing_city: current_user.city,
+         billing_state: current_user.state,
+         billing_country: ISO3166::Country[current_user.country].name,
+         billing_tel: current_user.phone,
+         billing_email: current_user.email,
+     }
+     merchant_data = payment_params.to_query
 
-      <div class="payment font-color-pink">PAYMENT</div>
+     crypto = CryptoService.new
+     encrypted_data = crypto.encrypt(merchant_data, working_key)
+  %>
 
-      <div class="payment-form">
+  <div class="payment font-color-pink">PAYMENT</div>
 
-        <div class="row">
-          <%= f.label :card_number, 'Card number' %>
-        </div>
-        <div class="row">
-          <%= f.text_field :card_number, class: 'card-number', 'data-parsley-required' => 'true' %>
-        </div>
+  <p>
+    <strong>Campaign Name :</strong> <%= @campaign.name %><br/>
+    <strong>Type of Post :</strong> <%= @campaign.post_type.humanize %><br/>
+    <strong>Start Date :</strong> <%= @campaign.start_date.strftime('%d-%m-%Y') %><br/>
+    <strong>End Date :</strong> <%= @campaign.end_date.strftime('%d-%m-%Y') %><br/>
+    <strong>Payment :</strong> <%= @campaign.cost %> INR<br/>
+    <br/>
+    <strong>Campaign Heading :</strong> <%= @campaign.headline %><br/>
+    <strong>Campaign Description :</strong> <%= @campaign.text %>
+  </p>
 
-        <div class="row">
-          <%= f.label '', 'Expiration date' %>
-        </div>
-        <div class="row">
-          <%= f.select :card_expiration_month, options_for_select(Campaign.card_expiration_months.map{ |type, value| [type.titleize, value] }, Campaign.card_expiration_months[@campaign.card_expiration_month] ), { :include_blank => true }, {} %>
-          <%= f.select :card_expiration_year, options_for_select((Time.now.year)..(Time.now.year+10), @campaign.card_expiration_year), { :include_blank => true } %>
-        </div>
-
-        <div class="row">
-          <%= f.label :card_holder_name, 'Cardholder name' %>
-        </div>
-        <div class="row">
-          <%= f.text_field :card_holder_name, class: 'card-holder-name', 'data-parsley-required' => 'true' %>
-        </div>
-
-        <%= f.hidden_field :id %>
-
-      </div>
-
-      <%= f.button 'BOOK NOW', class: 'btn btn-book-now' %>
-  <% end %>
+  <form method="post" action="https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction">
+    <input type="hidden" name="encRequest" value="<%= encrypted_data %>" />
+    <input type="hidden" name="access_code" value="<%= access_code %>" />
+    <input class="btn btn-book-now" type="submit" name="submit" value="BOOK NOW" />
+  </form>
 
 </div>

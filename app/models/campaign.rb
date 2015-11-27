@@ -13,7 +13,7 @@ class Campaign < ActiveRecord::Base
   enum post_type: [:status_update, :profile_photo, :cover_photo, :video_post]
   enum schedule_type: [:daily, :date_range]
   enum card_expiration_month: [:january, :february, :march, :april, :may, :june, :july, :august, :september, :october, :november, :december]
-  enum status: [:waiting, :accepted, :denied]
+  enum status: [:waiting, :accepted, :denied, :engaged]
 
   # ----------------------------------------------------------------------
   # == Attributes == #
@@ -54,8 +54,8 @@ class Campaign < ActiveRecord::Base
   # == Scopes and Other macros == #
   # ----------------------------------------------------------------------
 
-  scope :active_campaigns_for,  ->(user) { where(status: self.statuses[:accepted], receiver: user) }
-  scope :active_campaigns_from,  ->(user) { where(status: self.statuses[:accepted], sender: user) }
+  scope :engaged_campaigns_for, ->(user) { where(status: self.statuses[:engaged], receiver: user) }
+  scope :engaged_campaigns_from, ->(user) { where(status: self.statuses[:engaged], sender: user) }
 
   # ----------------------------------------------------------------------
   # == Instance methods == #

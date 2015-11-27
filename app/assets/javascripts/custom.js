@@ -53,6 +53,9 @@ $(function(){
 //    ======================= Offer controller javascript
 //    control collapsing offer in offer index page
     $(document).on('click', '.offer-header', function(e) {
+        if (e.toElement && e.toElement.classList.contains('btn')) {
+            return true;
+        }
 
         e.preventDefault();
         var $offerBOx = $(this).parent();

@@ -1,6 +1,8 @@
 class CampaignsController < ApplicationController
   respond_to :html, :js, :csv
 
+  protect_from_forgery :except => [:confirm_brand_payment]
+
   def index
     if current_user.brand?
       brand_campaign
@@ -91,6 +93,43 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def confirm_brand_payment
+    crypto = CryptoService.new
+    data_string = crypto.decrypt(params[:encResp], CONFIG[:ccavenue_working_key])
+    data = Rack::Utils.parse_nested_query(data_string)
+
+    @campaign = Campaign.find(data['order_id'])
+
+    if @campaign.blank?
+      flash[:error] = 'Invalid campaign ID'
+      return redirect_to offers_path
+    end
+
+    if data['order_status'] == 'Success'
+      if data['amount'].to_i == @campaign.cost
+        payment = BrandPayment.new
+        payment.campaign = @campaign
+        payment.billed_date = Date.today
+        payment.amount_billed = @campaign.cost
+        payment.status = BrandPayment.statuses[:paid]
+        payment.save
+
+        @campaign.update_attributes({ status: Campaign.statuses[:engaged] })
+
+        @campaign.receiver.update_column(:balance, @campaign.receiver.balance + @campaign.cost)
+
+        flash[:success] = 'Payment completed successfully'
+        redirect_to payments_path
+      else
+        flash[:error] = 'Amount received from payment service does not match actual cost'
+        redirect_to new_brand_payment_campaigns_path(@campaign.id)
+      end
+    else
+      flash[:error] = "Payment system error: #{data['failure_message']}"
+      redirect_to new_brand_payment_campaigns_path(@campaign.id)
+    end
+  end
+
   private
 
   def campaign_params
@@ -104,12 +143,12 @@ class CampaignsController < ApplicationController
   end
 
   def influencer_campaign
-    @campaigns = Campaign.active_campaigns_for(current_user)
+    @campaigns = Campaign.engaged_campaigns_for(current_user)
     render 'campaigns/influencer_campaign'
   end
 
   def brand_campaign
-    @campaigns = Campaign.active_campaigns_from(current_user)
+    @campaigns = Campaign.engaged_campaigns_from(current_user)
 
     if @campaigns.blank?
       flash[:error] = 'You have no campaign'
