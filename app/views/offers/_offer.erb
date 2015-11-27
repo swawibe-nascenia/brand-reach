@@ -34,6 +34,15 @@
               <%= link_to 'Deny', deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'deny hidden', method: :put, remote: true %>
               <%= link_to 'Undo Deny', undo_deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'undo-deny', method: :put, remote: true %>
           <% elsif offer.accepted? %>
+          <% elsif offer.denied? %>
+              <% if offer.deny_undo_able? %>
+                  <%= link_to 'Accept', accept_offer_path(offer, authenticity_token: form_authenticity_token), class: 'btn btn-accept hidden', method: :put, remote: true %>
+                  <%= link_to 'Deny', deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'deny hidden', method: :put, remote: true %>
+                  <%= link_to 'Undo Deny', undo_deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'undo-deny', method: :put, remote: true %>
+              <% else %>
+                  <span class="text-success">Accepted Campaign</span>
+              <% end %>
+          <% else %>
               <span class="text-success">Accepted Campaign</span>
           <% elsif offer.engaged? %>
               <span class="text-success">Running Campaign</span>
