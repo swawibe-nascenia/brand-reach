@@ -160,6 +160,11 @@ class User < ActiveRecord::Base
     self.received_messages.where(read: 0).count
   end
 
+  # update user account completion according to passing boolean status
+  def update_profile_complete(status)
+    update_column(:profile_complete, status)
+  end
+
   # ----------------------------------------------------------------------
   # == Private == #
   # ----------------------------------------------------------------------

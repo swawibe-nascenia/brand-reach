@@ -73,7 +73,7 @@ class ProfileController < ApplicationController
     graph = InsightService.new(params[:access_token])
 
     # TODO need to change accept to active
-    active_account_ids = @user.campaigns_received.where(status: Campaign.statuses[:accepted]).pluck(:account_id)
+    active_account_ids = @user.campaigns_received.where(status: Campaign.statuses[:accepted]).pluck(:facebook_account_id)
 
     @user.active_facebook_accounts.where.not(id: active_account_ids).update_all(is_active: false)
     params[:accounts] = params[:accounts] - active_account_ids if active_account_ids.present?
@@ -101,8 +101,8 @@ class ProfileController < ApplicationController
         account.save(validate: false)
       end
     end
-    Rails.logger.info "User update manage account not need to udpate #{@user.save}"
 
+    udpate_user_profile(@user)
   end
 
   def contact_us
@@ -193,5 +193,13 @@ class ProfileController < ApplicationController
 
   def contact_us_params
     params.require(:contact_us).permit(:category, :message)
+  end
+
+  def udpate_user_profile(user)
+    if user.profile_complete? && user.active_facebook_accounts.count > 0
+      user.update_profile_complete(true)
+    else
+      user.update_profile_complete(false)
+    end
   end
 end
