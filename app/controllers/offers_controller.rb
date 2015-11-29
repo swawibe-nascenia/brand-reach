@@ -88,12 +88,14 @@ class OffersController < ApplicationController
   end
 
   def make_messages_read
+    if @offer
       @offer.messages.where(receiver_id: current_user.id, read: false).update_all(:read => true)
       unreadMessages = current_user.unread_messages
 
       respond_to do |format|
         format.json { render :json => { id: @offer.id, unreadMessages: unreadMessages }}
       end
+    end
   end
 
   def delete_offers

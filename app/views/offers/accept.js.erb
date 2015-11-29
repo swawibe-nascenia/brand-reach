@@ -1,5 +1,6 @@
 <% if @success %>
     $('.offer-box-<%= @offer.id %>').find('div.action').html('<span class="text-success">Accepted Campaign</span>');
 <% else %>
-    unsuccessfulOfferOperationNotice(<%= @offer_id %>, <%= @message %>);
+console.log('calling unsuccessfulOfferOperationNotice');
+    unsuccessfulOfferOperationNotice('<%= @offer_id %>', '<%= @message %>');
 <% end %>
