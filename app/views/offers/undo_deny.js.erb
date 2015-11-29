@@ -3,5 +3,5 @@
     $('.offer-box-<%= @offer.id  %>').find('.deny').removeClass('hidden');
     $('.offer-box-<%= @offer.id  %>').find('.btn-accept').removeClass('hidden');
 <% else %>
-    deletedOfferNotice();
+    deletedOfferNotice(<%= @offer_id %>);
 <% end %>

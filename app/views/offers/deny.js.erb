@@ -6,5 +6,5 @@
 
     setTimeout(function() { $('.offer-box-<%= @offer.id %>').find('.undo-deny').addClass('hidden'); }, 10000);
 <% else %>
-    deletedOfferNotice();
+    deletedOfferNotice(<%= @offer_id %>);
 <% end %>

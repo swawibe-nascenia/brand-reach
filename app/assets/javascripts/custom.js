@@ -405,3 +405,8 @@ function disableOfferDeleteStartIcon(){
     $('.make-all-stared').addClass('disable');
 }
 
+/*  ========== message for operation on already deleted offer ================*/
+function deletedOfferNotice(offer_id){
+    console.log('Your operation is not completed because offer is already deleted by sender.');
+    $('.offer-box-' + offer_id).remove();
+}

@@ -124,6 +124,7 @@ class OffersController < ApplicationController
       true
     else
       @success = false
+      @offer_id = offer_id
       false
     end
   end
