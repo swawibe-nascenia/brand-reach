@@ -45,14 +45,15 @@ body {
 }
 
 .btn-circle {
-  color: white;
-  width: 35px;
-  height: 35px;
-  /*line-height: 40px;*/
   background-color: #00AEEF;
-  padding: 0;
   border-radius: 50%;
   border: none;
+  color: white;
+  height: 35px;
+  margin-right: 6px;
+  padding: 0;
+  width: 35px;
+  /*line-height: 40px;*/
   /*margin: 0 3px;*/
 }
 
@@ -75,7 +76,7 @@ body {
   border-radius: 20px !important;
   height: 36px;
   padding-left: 30px;
-  width: calc(100% - 45px);
+  width: calc(100% - 51px);
 }
 
 .info-box-container {
