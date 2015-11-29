@@ -114,7 +114,7 @@ class OffersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_offer
-    @offer = Campaign.where(id: params[:id])
+    @offer = Campaign.where(id: params[:id]).first
   end
 
   def offer_params
