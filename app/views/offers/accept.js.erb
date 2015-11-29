@@ -1,1 +1,5 @@
-window.location.reload();
+<% if @success %>
+    $('.offer-box-<%= @offer.id %>').find('div.action').html('<span class="text-success">Accepted Campaign</span>');
+<% else %>
+    deletedOfferNotice();
+<% end %>

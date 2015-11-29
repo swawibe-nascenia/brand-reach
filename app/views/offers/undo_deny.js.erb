@@ -1,3 +1,7 @@
-$('.offer-box-<%= @offer.id %>').find('.undo-deny').addClass('hidden');
-$('.offer-box-<%= @offer.id  %>').find('.deny').removeClass('hidden');
-$('.offer-box-<%= @offer.id  %>').find('.btn-accept').removeClass('hidden');
+<% if @success %>
+    $('.offer-box-<%= @offer.id %>').find('.undo-deny').addClass('hidden');
+    $('.offer-box-<%= @offer.id  %>').find('.deny').removeClass('hidden');
+    $('.offer-box-<%= @offer.id  %>').find('.btn-accept').removeClass('hidden');
+<% else %>
+    deletedOfferNotice();
+<% end %>

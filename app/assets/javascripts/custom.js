@@ -405,12 +405,3 @@ function disableOfferDeleteStartIcon(){
     $('.make-all-stared').addClass('disable');
 }
 
-// Disable all anchor tag after clicking for preventing second time click
-//
-//$("a").click(function (){
-//    if( $(this).data("clicked") ){
-//        return false;
-//    }
-//    $(this).data("clicked", true);
-//    return true;
-//});

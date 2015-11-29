@@ -50,6 +50,8 @@
               <span class="text-success">Running Campaign</span>
           <% elsif offer.denied? %>
               <span class="text-danger">Offer denied</span>
+          <% elsif offer.deleted_by_influencer? %>
+              <span class="text-danger">Offer deleted</span>
           <% else  %>
               Pending request
           <% end %>

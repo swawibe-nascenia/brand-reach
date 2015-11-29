@@ -102,6 +102,30 @@ class Campaign < ActiveRecord::Base
         messages.create(sender_id: self.sender_id, receiver_id: self.receiver_id, body: first_message_body);
   end
 
+  def deletable?
+    waiting? || denied?
+  end
+
+  # ----------------------------------------------------------------------
+  # == Class methods == #
+  # ----------------------------------------------------------------------
+
+  def self.get_active_offer(user)
+    if user.brand?
+      user.campaigns_sent.where(deleted_by_brand: false)
+    else
+      user.campaigns_received.where(deleted_by_influencer: false, deleted_by_brand: true)
+    end
+  end
+
+  def self.get_stared_offer(user)
+    if user.brand?
+      get_active_offer(user).where(starred_by_brand: true)
+    else
+      get_active_offer(user).where(starred_by_influencer: true)
+    end
+  end
+
   private
 
   def first_message_body
