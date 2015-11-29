@@ -75,6 +75,11 @@ $(function(){
         e.stopPropagation();
     });
 
+    //prevent checkbox from event propagation for tab pan collapse
+    $(document).on('click', '.select-offer', function(e){
+        e.stopPropagation();
+    });
+
 //    reply message feature
     $(document).on('click', '.message-reply-button', function(e){
         var body =  $.trim($(this).prev('.message-body').val());

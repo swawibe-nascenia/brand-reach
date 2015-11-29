@@ -34,7 +34,7 @@ class OffersController < ApplicationController
   end
 
   def accept
-    if offer_remains?
+    if offer_remains?(params[:id])
       if @offer.waiting?
         @offer.update_attribute(:status, Campaign.statuses[:accepted])
         CampaignMailer.campaign_accept_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
@@ -46,7 +46,7 @@ class OffersController < ApplicationController
   end
 
   def deny
-    if offer_remains?
+    if offer_remains?(params[:id])
       if @offer.waiting?
         @offer.update_attributes({status: Campaign.statuses[:denied], denied_at: Time.now })
         CampaignMailer.campaign_deny_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
@@ -58,7 +58,7 @@ class OffersController < ApplicationController
   end
 
   def undo_deny
-    if offer_remains?
+    if offer_remains?(params[:id])
       if @offer.denied? && @offer.deny_undo_able?
         @offer.update_attribute(:status, Campaign.statuses[:waiting])
         CampaignMailer.campaign_deny_undo_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
