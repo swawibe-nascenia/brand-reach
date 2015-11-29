@@ -70,7 +70,7 @@ class OffersController < ApplicationController
   end
 
   def reply_message
-    if @offer
+    if @offer && can_send_message?
       message = @offer.messages.new(sender_id: current_user.id, receiver_id: params[:receiver_id], body: params[:body])
       Rails.logger.info "Your message is #{message.body}"
       if message.body.present? && message.save
@@ -150,6 +150,10 @@ class OffersController < ApplicationController
       @message = 'Your selected offer was deleted by sender/yourself.'
       false
     end
+  end
+
+  def can_send_message?
+    !(@offer.deleted_by_influencer? || @offer.deleted_by_brand? || @offer.waiting? || @offer.denied?)
   end
 
 end
