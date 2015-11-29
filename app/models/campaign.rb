@@ -114,7 +114,7 @@ class Campaign < ActiveRecord::Base
     if user.brand?
       user.campaigns_sent.where(deleted_by_brand: false)
     else
-      user.campaigns_received.where(deleted_by_influencer: false, deleted_by_brand: true)
+      user.campaigns_received.where(deleted_by_influencer: false, deleted_by_brand: false)
     end
   end
 
