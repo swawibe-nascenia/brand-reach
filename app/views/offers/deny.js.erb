@@ -1,4 +1,3 @@
-
 <% if @success %>
     $('.offer-box-<%= @offer.id %>').find('.undo-deny').removeClass('hidden');
     $('.offer-box-<%= @offer.id  %>').find('.deny').addClass('hidden');
@@ -6,5 +5,5 @@
 
     setTimeout(function() { $('.offer-box-<%= @offer.id %>').find('.undo-deny').addClass('hidden'); }, 10000);
 <% else %>
-    deletedOfferNotice(<%= @offer_id %>);
+    unsuccessfulOfferOperationNotice(<%= @offer_id %>, <%= @message %>);
 <% end %>

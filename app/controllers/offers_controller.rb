@@ -35,22 +35,37 @@ class OffersController < ApplicationController
 
   def accept
     if offer_remains?
-      @offer.update_attribute(:status, Campaign.statuses[:accepted])
-      CampaignMailer.campaign_accept_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
+      if @offer.waiting?
+        @offer.update_attribute(:status, Campaign.statuses[:accepted])
+        CampaignMailer.campaign_accept_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
+      else
+        @success = false
+        @message = 'You can not perform accept operation to your selected offer'
+      end
     end
   end
 
   def deny
     if offer_remains?
-      @offer.update_attributes({status: Campaign.statuses[:denied], denied_at: Time.now })
-      CampaignMailer.campaign_deny_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
+      if @offer.waiting?
+        @offer.update_attributes({status: Campaign.statuses[:denied], denied_at: Time.now })
+        CampaignMailer.campaign_deny_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
+      else
+        @success = false
+        @message = 'You can not perform deny operation to your selected offer'
+      end
     end
   end
 
   def undo_deny
     if offer_remains?
-      @offer.update_attribute(:status, Campaign.statuses[:waiting])
-      CampaignMailer.campaign_deny_undo_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
+      if @offer.denied? && @offer.deny_undo_able?
+        @offer.update_attribute(:status, Campaign.statuses[:waiting])
+        CampaignMailer.campaign_deny_undo_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
+      else
+        @success = false
+        @message = 'You can not perform deny_undo operation to your selected offer'
+      end
     end
   end
 
@@ -125,6 +140,7 @@ class OffersController < ApplicationController
     else
       @success = false
       @offer_id = offer_id
+      @message = 'Your selected offer was deleted by sender.'
       false
     end
   end

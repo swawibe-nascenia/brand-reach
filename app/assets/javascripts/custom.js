@@ -406,7 +406,7 @@ function disableOfferDeleteStartIcon(){
 }
 
 /*  ========== message for operation on already deleted offer ================*/
-function deletedOfferNotice(offer_id){
-    console.log('Your operation is not completed because offer is already deleted by sender.');
+function unsuccessfulOfferOperationNotice(offer_id, message){
+    console.log(message);
     $('.offer-box-' + offer_id).remove();
 }
