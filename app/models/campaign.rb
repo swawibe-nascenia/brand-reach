@@ -110,7 +110,7 @@ class Campaign < ActiveRecord::Base
   # == Class methods == #
   # ----------------------------------------------------------------------
 
-  def self.get_active_offer(user)
+  def self.active_offers(user)
     if user.brand?
       user.campaigns_sent.where(deleted_by_brand: false)
     else
@@ -118,11 +118,11 @@ class Campaign < ActiveRecord::Base
     end
   end
 
-  def self.get_stared_offer(user)
+  def self.stared_offers(user)
     if user.brand?
-      get_active_offer(user).where(starred_by_brand: true)
+      active_offers(user).where(starred_by_brand: true)
     else
-      get_active_offer(user).where(starred_by_influencer: true)
+      active_offers(user).where(starred_by_influencer: true)
     end
   end
 

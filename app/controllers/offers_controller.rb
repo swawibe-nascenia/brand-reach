@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [:show, :edit, :update, :destroy, :accept, :deny, :undo_deny,
+  before_action :set_offer, only: [:accept, :deny, :undo_deny,
                                    :reply_message, :make_messages_read, :load_offer]
 
   # =====================================
@@ -7,8 +7,8 @@ class OffersController < ApplicationController
   # =====================================
 
   def index
-      @offers = Campaign.get_active_offer(current_user).includes(:messages).order('messages.created_at desc')
-      @stared_offers =  Campaign.get_stared_offer(current_user).includes(:messages).order('messages.created_at desc')
+      @offers = Campaign.active_offers(current_user).includes(:messages).order('messages.created_at desc')
+      @stared_offers =  Campaign.stared_offers(current_user).includes(:messages).order('messages.created_at desc')
   end
 
   # take array of offer ids and make those stared
@@ -34,7 +34,7 @@ class OffersController < ApplicationController
   end
 
   def accept
-    if offer_remains?(params[:id])
+    if offer_active?(params[:id])
       if @offer.waiting?
         @offer.update_attribute(:status, Campaign.statuses[:accepted])
         CampaignMailer.campaign_accept_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
@@ -46,7 +46,7 @@ class OffersController < ApplicationController
   end
 
   def deny
-    if offer_remains?(params[:id])
+    if offer_active?(params[:id])
       if @offer.waiting?
         @offer.update_attributes({status: Campaign.statuses[:denied], denied_at: Time.now })
         CampaignMailer.campaign_deny_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
@@ -58,7 +58,7 @@ class OffersController < ApplicationController
   end
 
   def undo_deny
-    if offer_remains?(params[:id])
+    if offer_active?(params[:id])
       if @offer.denied? && @offer.deny_undo_able?
         @offer.update_attribute(:status, Campaign.statuses[:waiting])
         CampaignMailer.campaign_deny_undo_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
@@ -70,6 +70,7 @@ class OffersController < ApplicationController
   end
 
   def reply_message
+    if @offer
       message = @offer.messages.new(sender_id: current_user.id, receiver_id: params[:receiver_id], body: params[:body])
       Rails.logger.info "Your message is #{message.body}"
       if message.body.present? && message.save
@@ -83,6 +84,7 @@ class OffersController < ApplicationController
       respond_to do |format|
         format.json { render :json => {success: success, id: id }}
       end
+    end
   end
 
   def make_messages_read
@@ -97,7 +99,7 @@ class OffersController < ApplicationController
   def delete_offers
     target_column = current_user.brand? ? :deleted_by_brand : :deleted_by_influencer
     @ids = params[:ids].map(&:to_i)
-    offers = Campaign.where(id: @ids).where.not(status: [Campaign.statuses[:accepted], Campaign.statuses[:engaged]])
+    offers = Campaign.active_offers(current_user).where(id: @ids).where.not(status: [Campaign.statuses[:accepted], Campaign.statuses[:engaged]])
 
     offers.update_all(target_column => true)
 
@@ -114,7 +116,7 @@ class OffersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_offer
-    @offer = Campaign.where(id: params[:id]).first
+    @offer = Campaign.active_offers(current_user).where(id: params[:id]).first
   end
 
   def offer_params
@@ -133,8 +135,8 @@ class OffersController < ApplicationController
     offers.update_all(target_column => false)
   end
 
-  def offer_remains?(offer_id)
-    offer = Campaign.where(id: offer_id, deleted_by_brand: false, deleted_by_influencer: false)
+  def offer_active?(offer_id)
+    offer = Campaign.active_offers(current_user).where(id: offer_id).first
     if offer.present?
       @success = true
       true
