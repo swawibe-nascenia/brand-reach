@@ -134,13 +134,14 @@ class OffersController < ApplicationController
   end
 
   def offer_remains?(offer_id)
-    if Campaign.where(id: offer_id).first.present?
+    offer = Campaign.where(id: offer_id, deleted_by_brand: false, deleted_by_influencer: false)
+    if offer.present?
       @success = true
       true
     else
       @success = false
       @offer_id = offer_id
-      @message = 'Your selected offer was deleted by sender.'
+      @message = 'Your selected offer was deleted by sender/yourself.'
       false
     end
   end
