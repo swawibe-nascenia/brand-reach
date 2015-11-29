@@ -35,7 +35,7 @@
     <strong>Campaign Name :</strong> <%= @campaign.name %><br/>
     <strong>Type of Post :</strong> <%= @campaign.post_type.humanize %><br/>
     <strong>Start Date :</strong> <%= @campaign.start_date.strftime('%d-%m-%Y') %><br/>
-    <strong>End Date :</strong> <%= @campaign.end_date.strftime('%d-%m-%Y') %><br/>
+    <strong>End Date :</strong> <%= @campaign.end_date && @campaign.end_date.strftime('%d-%m-%Y') %><br/>
     <strong>Payment :</strong> <%= @campaign.cost %> INR<br/>
     <br/>
     <strong>Campaign Heading :</strong> <%= @campaign.headline %><br/>

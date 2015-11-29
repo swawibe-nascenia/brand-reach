@@ -99,11 +99,13 @@ class OffersController < ApplicationController
   def delete_offers
     target_column = current_user.brand? ? :deleted_by_brand : :deleted_by_influencer
     @ids = params[:ids].map(&:to_i)
+    Rails.logger.info "Delet offer with ids #{@ids.inspect}"
     offers = Campaign.active_offers(current_user).where(id: @ids).where.not(status: [Campaign.statuses[:accepted], Campaign.statuses[:engaged]])
+    @ids = offers.pluck(:id)
 
     offers.update_all(target_column => true)
 
-    @ids = offers.pluck(:id)
+    Rails.logger.info "Delet offer with ids #{@ids.inspect}"
     current_user.received_messages.where(campaign_id: @ids).update_all(read: true)
     @unread_messages_count = current_user.received_messages.where(read: false).count
   end

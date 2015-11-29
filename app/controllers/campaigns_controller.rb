@@ -79,7 +79,7 @@ class CampaignsController < ApplicationController
   end
 
   def new_brand_payment
-    @campaign = Campaign.find(params[:format])
+    @campaign = Campaign.find(params[:id].to_i)
   end
 
   def create_brand_payment
