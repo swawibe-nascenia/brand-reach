@@ -1,12 +1,6 @@
+<% title 'sign in' %>
 
-<style>
-    .sign-in-form-container{
-        margin: 62px auto 20px;
-        padding-top: 53px;
-        width: 360px;
-    }
-</style>
-<div class="sign-in-form-container">
+<div class="wrapper-content non-home-page-wrapper sticky-footer-wrapper sign-in-form-container">
   <%= render partial: 'shared/flash_messages', flash: flash %>
   <%= render 'shared/sign_in_form' %>
 </div>

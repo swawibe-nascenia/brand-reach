@@ -340,6 +340,22 @@ $(function(){
         }
     });
 
+/* ========== reset advance search search item ================*/
+    $('a.btn-reset').click(function(){
+        resetAdvanceSearchInput();
+        makeAdvanceSearch();
+    });
+
+    function resetAdvanceSearchInput(){
+        $('#search-keyword').val('');
+        $('#explore-category').val('');
+        $('#explore-social-media').val('');
+        $('#country').val('');
+        $('#user_state').val('<input id="state" type="text" disabled="disabled" value="Select Country" name="state">');
+        $('#explore-price').val('');
+        $('#explore-followers').val('');
+    }
+
     /*    show spinner button on form submit. To enable sinner for form submit
           add 'has-spinner' class to submit button and
           <span class="spinner"><i class="fa fa-spinner fa-spin"></i></span>
