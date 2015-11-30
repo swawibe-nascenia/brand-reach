@@ -367,12 +367,14 @@ only screen and (max-width: 460px) {
     .btn-export {
         font-size: 10px;
         color: white;
+        width: 100%;
         margin: 15px 3px 3px 5px;
         padding: 5px 12px 5px 12px;
     }
 
     .btn-age {
         font-size: 10px;
+        width: 100%;
         margin: 10px 3px 3px 5px;
         padding: 5px 22px 5px 9px;
     }
