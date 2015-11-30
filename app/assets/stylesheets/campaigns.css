@@ -685,6 +685,7 @@ only screen and (max-width: 1140px) {
 .fb-activity-row-head {
     background-color: #eaeaea;
     color: #666666;
+    padding-left: 13px;
 }
 
 .fb-activity-row:nth-child(odd) {
@@ -705,6 +706,7 @@ only screen and (max-width: 1140px) {
 
 .fb-activity-image {
     width: 14%;
+    padding-right: 10px
 }
 
 @media
