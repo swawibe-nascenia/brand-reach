@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if current_user.influencer?
+    if current_user.influencer? && current_user.profile_complete?
       insights_facebook_index_path
     else
       profile_profile_index_path
