@@ -356,6 +356,24 @@ $(function(){
         $('#explore-followers').val('');
     }
 
+    // fixed navigation
+
+    setTopNav();
+    $(document).scroll(function() {
+        setTopNav();
+    });
+
+    function setTopNav(){
+        var scrollTop = $(document).scrollTop();
+        var sPixel = 60;
+        var windowWidth = $( window ).width();
+        scrollTop = scrollTop > 55 ? 54 : scrollTop;
+        if(scrollTop < 55 && windowWidth > 767){
+            var setValue = sPixel - scrollTop;
+            $('.logo-container').css('padding-top', setValue);
+        }
+    }
+
     /*    show spinner button on form submit. To enable sinner for form submit
           add 'has-spinner' class to submit button and
           <span class="spinner"><i class="fa fa-spinner fa-spin"></i></span>

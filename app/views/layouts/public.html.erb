@@ -119,23 +119,6 @@
 </html>
 <script>
     $(function () {
-
-        setTopNav();
-        $(document).scroll(function() {
-            setTopNav();
-        });
-
-        function setTopNav(){
-            var scrollTop = $(document).scrollTop();
-            var sPixel = 60;
-            var windowWidth = $( window ).width();
-            scrollTop = scrollTop > 55 ? 54 : scrollTop;
-            if(scrollTop < 55 && windowWidth > 767){
-                var setValue = sPixel - scrollTop;
-                $('.logo-container').css('padding-top', setValue);
-            }
-        }
-
         $('#nav-contact-us a').click(function(){
             $('html, body').animate({
                 scrollTop: $( $.attr(this, 'href') ).offset().top
