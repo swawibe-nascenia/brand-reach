@@ -16,7 +16,7 @@
                     <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;<%= influencer.max_followers %>
                   </div>
                 </div>
-                <%= link_to 'VIEW PROFILE', influencer_path(influencer), remote: true, :class => 'btn btn-primary btn-view-profile', :onclick => "this.disabled='disabled'" %>
+                <%= link_to 'VIEW PROFILE', influencer_path(influencer), remote: true, :class => 'btn btn-primary btn-view-profile' %>
               </div>
             </div>
         <% end %>
@@ -25,3 +25,19 @@
 </div>
 
 <%= paginate influencers %>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        var view_profile;
+        $('.btn-view-profile').click(function() {
+            view_profile = $(this);
+            $(this).attr('disabled', 'disabled');
+        });
+
+        $('#profile-modal').on('hidden.bs.modal', function () {
+            view_profile.attr('disabled', false);
+        });
+
+    })
+</script>
