@@ -11,7 +11,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if @user.save(validate: false)
         sign_in @user
         set_flash_message(:notice, :success, :kind => 'Facebook') if is_navigational_format?
-        redirect_to profile_profile_index_path
+        if current_user.influencer? && current_user.profile_complete?
+          insights_facebook_index_path
+        else
+          redirect_to profile_profile_index_path
+        end
       else
         Rails.logger.info(@user.errors.inspect)
         puts @user.errors.full_messages
