@@ -682,12 +682,17 @@ only screen and (max-width: 1140px) {
     margin-bottom: 15px;
 }
 
+.fb-activity-row-head {
+    background-color: #eaeaea;
+    color: #666666;
+}
+
 .fb-activity-row:nth-child(odd) {
-    background-color: #ffffff;
+    background-color: #f6f6f6;
 }
 
 .fb-activity-row:nth-child(even) {
-    background-color: #f6f6f6;
+    background-color: #ffffff;
 }
 
 .fb-activity-post {
@@ -770,7 +775,7 @@ only screen and (max-width: 992px) {
         margin-left: 0;
     }
 
-    .fb-activity-modal-dialog {
+    #SetFacebookActivity .fb-activity-modal-dialog {
         width: 100%;
     }
 }
