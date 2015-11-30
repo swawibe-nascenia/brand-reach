@@ -138,6 +138,7 @@ class Campaign < ActiveRecord::Base
       Start Date : #{self.start_date.strftime('%d-%m-%Y')}
       End Date : #{self.end_date.strftime('%d-%m-%Y')}
       Payment : #{self.cost} INR
+      Facebook Account: #{self.facebook_account.name}
 
       Campaign Heading : #{self.headline}
       Campaign Description : #{self.text}
