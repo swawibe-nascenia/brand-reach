@@ -13,12 +13,14 @@
 
         <div class="get-in-touch-category">
           <%= f.label :category, 'Category', class: 'category-name display-inline' %>
-          <%= f.select :category, options_for_select(ContactUs.categories.map{ |type, value| [type.titleize, value]} ), {}, { :class => 'category-list display-inline' } %>
+          <%= f.select :category, options_for_select(ContactUs.categories.map{ |type, value| [type.titleize, value]} ),
+                       {}, { :class => 'category-list display-inline' } %>
         </div>
 
         <div class="get-in-touch-message">
           <%= f.label :message, 'Message', class: 'message-name display-inline' %>
-          <%= f.text_area :message, rows: 6, class: 'get-in-touch-message-textarea display-inline', 'data-parsley-required' => 'true'  %>
+          <%= f.text_area :message, rows: 6, class: 'get-in-touch-message-textarea display-inline',
+                          'data-parsley-required' => 'true', maxlength: '500'  %>
         </div>
 
         <div class="get-in-touch-submit">

@@ -182,7 +182,8 @@
           <!-- search form -->
           <form action="<%= current_user.brand? ? explores_path : search_influencers_path %>" method="get" class="form-group">
             <button type="submit" class="btn-circle center-block pull-right">GO</button>
-            <input value="<%= params[:search_key].presence %>" name="search_key" class="form-control rounded-input-box" type="search" placeholder="Enter Keywords..." id="search-keyword"/>
+            <input value="<%= params[:search_key].presence %>" name="search_key" class="form-control rounded-input-box"
+                   type="search" placeholder="Enter Keywords..." id="search-keyword" maxlength="100"/>
             <span class="glyphicon glyphicon-search"></span>
           </form>
         </div>

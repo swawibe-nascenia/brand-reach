@@ -22,21 +22,21 @@
               <%= f.label :bank_name, 'Bank Name' %>
             </div>
             <div class="col-md-8">
-              <%= f.text_field :bank_name %>
+              <%= f.text_field :bank_name, maxlength: '150'  %>
             </div>
 
             <div class="col-md-4">
               <%= f.label :address, 'Address' %>
             </div>
             <div class="col-md-8">
-              <%= f.text_field :address %>
+              <%= f.text_field :address, maxlength: '350'  %>
             </div>
 
             <div class="col-md-4">
-              <%= f.label :city, 'City' %>
+              <%= f.label :city, 'City', maxlength: '50'  %>
             </div>
             <div class="col-md-8">
-              <%= f.text_field :city %>
+              <%= f.text_field :city, maxlength: '150'  %>
             </div>
 
             <div class="col-md-4">
@@ -47,7 +47,7 @@
             </div>
 
             <div class="col-md-4">
-              <%= f.label :zip, 'ZIP/Postal Code' %>
+              <%= f.label :zip, 'ZIP/Postal Code', maxlength: '150'  %>
             </div>
             <div class="col-md-8">
               <%= f.text_field :zip %>
@@ -75,35 +75,35 @@
               <%= f.label :account_number, 'Account Number' %>
             </div>
             <div class="col-md-8">
-              <%= f.text_field :account_number %>
+              <%= f.text_field :account_number, maxlength: '150'  %>
             </div>
 
             <div class="col-md-4">
               <%= f.label :currency, 'Currency' %>
             </div>
             <div class="col-md-8">
-              <%= f.text_field :currency %>
+              <%= f.text_field :currency, maxlength: '20'  %>
             </div>
 
             <div class="col-md-4">
               <%= f.label :routing_number, 'Routing Number' %>
             </div>
             <div class="col-md-8">
-              <%= f.text_field :routing_number %>
+              <%= f.text_field :routing_number, maxlength: '150'  %>
             </div>
 
             <div class="col-md-4">
               <%= f.label :bic, 'BIC (Swift Code)' %>
             </div>
             <div class="col-md-8">
-              <%= f.text_field :bic %>
+              <%= f.text_field :bic, maxlength: '150'  %>
             </div>
 
             <div class="col-md-4">
               <%= f.label :iban, 'IBAN' %>
             </div>
             <div class="col-md-8">
-              <%= f.text_field :iban %>
+              <%= f.text_field :iban, maxlength: '150'  %>
             </div>
 
             <div class="row remove-both-margin">

@@ -22,34 +22,34 @@
         <div class="form-group">
           <div class="col-md-6">
             <%= f.label :first_name, 'First Name' %>
-            <%= f.text_field :first_name %>
+            <%= f.text_field :first_name, maxlength: 20 %>
           </div>
           <div class="col-md-6">
             <%= f.label :last_name, 'Last Name' %>
-            <%= f.text_field :last_name %>
+            <%= f.text_field :last_name, maxlength: 20 %>
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-md-6">
             <%= f.label :company_name, 'Company Name' %>
-            <%= f.text_field :company_name %>
+            <%= f.text_field :company_name, maxlength: 50 %>
           </div>
           <div class="col-md-6">
             <%= f.label :company_email, current_user.brand? ? 'Company Email' : 'Email' %>
-            <%= f.email_field :company_email %>
+            <%= f.email_field :company_email, maxlength: 50 %>
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-md-6">
             <%= f.label :industry %>
-            <%= f.text_field :industry, id: 'industry_list' %>
+            <%= f.text_field :industry, id: 'industry_list', maxlength: 100 %>
 
           </div>
           <div class="col-md-6">
             <%= f.label :phone %>
-            <%= f.text_field :phone %>
+            <%= f.text_field :phone, maxlength: 20 %>
           </div>
         </div>
 
@@ -57,11 +57,12 @@
           <div class="col-md-6">
             <div>
               <%= f.label :street_address, class: 'textarea-label' %>
-              <%= f.text_area :street_address, rows: 4, class: 'street-address-textarea', placeholder: 'Enter your address here' %>
+              <%= f.text_area :street_address, rows: 4, class: 'street-address-textarea',
+                              placeholder: 'Enter your address here', maxlength: 200 %>
             </div>
             <div>
               <%= f.label :zip_code %>
-              <%= f.text_field :zip_code %>
+              <%= f.text_field :zip_code, maxlength: 20 %>
             </div>
           </div>
 
@@ -69,11 +70,11 @@
             <div class="row">
               <div class="col-md-12">
                 <%= f.label :landmark %>
-                <%= f.text_field :landmark %>
+                <%= f.text_field :landmark, maxlength: 100 %>
               </div>
               <div class="col-md-12">
                 <%= f.label :city %>
-                <%= f.text_field :city %>
+                <%= f.text_field :city, maxlength: 50 %>
               </div>
               <div class="col-md-12">
                 <%= f.label :country %>
