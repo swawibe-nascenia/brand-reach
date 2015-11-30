@@ -700,6 +700,21 @@ only screen and (max-width: 1140px) {
     padding-left: 10px;
 }
 
+.facebook-feed-content .media-middle {
+    padding-right: 15px;
+}
+
+.fb-activity-row-head .head-radio-button {
+    width:36px;
+}
+
+@media
+only screen and (max-width: 590px) {
+    .fb-activity-row-head .head-radio-button {
+        width: 18%;
+    }
+}
+
 @media
 only screen and (max-width: 420px) {
     .brand-campaign-content {
