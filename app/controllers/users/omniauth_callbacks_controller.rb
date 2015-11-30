@@ -12,7 +12,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         sign_in @user
         set_flash_message(:notice, :success, :kind => 'Facebook') if is_navigational_format?
         if current_user.influencer? && current_user.profile_complete?
-          insights_facebook_index_path
+          redirect_to insights_facebook_index_path
         else
           redirect_to profile_profile_index_path
         end
