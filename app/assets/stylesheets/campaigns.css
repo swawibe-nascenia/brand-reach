@@ -711,7 +711,11 @@ only screen and (max-width: 1140px) {
 
 @media
 only screen and (max-width: 590px) {
-
+    .fb-activity-row-head {
+        background-color: #eaeaea;
+        color: #666666;
+        padding-left: 22px;
+    }
 }
 
 @media
