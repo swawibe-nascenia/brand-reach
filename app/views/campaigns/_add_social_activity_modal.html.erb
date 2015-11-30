@@ -17,11 +17,11 @@
 
                     <div class="js-clickable fb-activity-row-head">
 
-                         <div class="media-left media-middle head-radio-button"> &nbsp; </div>
+                         <div class="media-left media-middle fb-activity-radio"> &nbsp; </div>
                           <div class="media-left media-middle fb-activity-post">
                             <h4> Activity Name </h4>
                           </div>
-                          <div class="media-right media-middle">
+                          <div class="media-right media-middle fb-activity-image">
                             <h4> Picture </h4>
                           </div>
 
@@ -30,7 +30,7 @@
                     {{#each accounts}}
                         <div class="js-clickable fb-activity-row">
 
-                         <div class="media-left media-middle">
+                         <div class="media-left media-middle fb-activity-radio">
                             <input type="radio" class="vertical-align-middle" name="activity_id" value="{{id}}" {{#if active}}selected{{/if}}>
                           </div>
 
@@ -38,11 +38,11 @@
                             <h4 class="media-heading vertical-align-middle">{{story}}{{message}}</h4>
                           </div>
 
-                          {{#if picture}}
-                          <div class="media-right media-middle">
-                            <img class="media-object fb-activity-img vertical-align-middle" src="{{picture}}">
-                          </div>
-                          {{/if}}
+                         <div class="media-right media-middle fb-activity-image">
+                            {{#if picture}}
+                              <img class="media-object fb-activity-img vertical-align-middle" src="{{picture}}">
+                            {{/if}}
+                         </div>
                         </div>
                     {{/each}}
 
