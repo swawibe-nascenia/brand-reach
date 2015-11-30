@@ -16,7 +16,9 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    Rails.logger.info "Current user is #{current_user.user_type} and profile compete status is #{current_user.profile_complete?}"
     if current_user.influencer? && current_user.profile_complete?
+      Rails.logger.info "---- sing in redirec to facebook insight"
       insights_facebook_index_path
     else
       profile_profile_index_path
