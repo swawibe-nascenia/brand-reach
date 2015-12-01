@@ -64,20 +64,20 @@
                     onChange: update_crop,
                     onSelect: update_crop,
                     boxWidth: getWindoWidth(),
-                    boxHeight: getWindoWidth(),
                     aspectRatio: 1,
-                    setSelect:   [ 10,10, 400, 400 ]
+                    setSelect:   [ 10,10, 100, 100 ]
                 }, function () {
                     jcrop_api = this;
                     var imageWidth = $('#profile-pic-preview').width();
+                    console.log('image height is ' + $('#profile-pic-preview').height());
                     var leftPadding = 0;
                     if(imageWidth > getWindoWidth()){
                         imageWidth = getWindoWidth();
                     }
 
                     console.log('selected inage width is ' + imageWidth);
-                    if(imageWidth > 165){
-                        leftPadding = imageWidth - 168;
+                    if(imageWidth > 171){
+                        leftPadding = imageWidth - 171;
                     }
 
                     $('.image-upload-btn-container').css('padding-left', leftPadding);
