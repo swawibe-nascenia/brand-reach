@@ -1,4 +1,5 @@
 class CampaignsController < ApplicationController
+  before_action :current_user_campaign?, only: [:new_brand_payment]
   respond_to :html, :js, :csv
 
   protect_from_forgery :except => [:confirm_brand_payment]
@@ -197,5 +198,9 @@ class CampaignsController < ApplicationController
         render 'campaigns/export_brand_campaigns'
       end
     end
+  end
+
+  def current_user_campaign?
+    current_user.campaigns_sent.where(id: params[:id]).present?
   end
 end
