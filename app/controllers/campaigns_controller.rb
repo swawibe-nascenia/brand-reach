@@ -30,10 +30,12 @@ class CampaignsController < ApplicationController
 
   def create
     @campaign = Campaign.new(campaign_params.except(:post_type,
-                                                    :card_expiration_month, :card_expiration_year))
+                                                    :card_expiration_month, :card_expiration_year, :name))
     @campaign.post_type = campaign_params[:post_type].to_i
     @campaign.card_expiration_month = campaign_params[:card_expiration_month].to_i
     @campaign.card_expiration_year = campaign_params[:card_expiration_year].to_i
+    @campaign.name = campaign_params[:name].strip if  campaign_params[:name].present?
+    # @campaign.name = @campaign.name.downcase if  campaign_params[:name].present?
 
     unless @campaign.date_range?
       @campaign.start_date = Time.now.strftime('%d/%m/%Y')
