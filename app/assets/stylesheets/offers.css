@@ -249,6 +249,10 @@
     color: #666666;
 }
 
+.offer-header .offer-time {
+    padding-top: 16px;
+}
+
 .offer-body {
     padding-left: 158px;
     margin-top: 20px;

@@ -201,10 +201,6 @@ class CampaignsController < ApplicationController
   end
 
   def current_user_campaign?
-    if current_user.campaigns_sent.pluck(:id).include?(params[:id].to_i)
-      true
-    else
-      raise ActiveRecord::RecordNotFound
-    end
+    raise ActiveRecord::RecordNotFound unless current_user.campaigns_sent.pluck(:id).include?(params[:id].to_i)
   end
 end
