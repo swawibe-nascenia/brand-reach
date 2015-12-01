@@ -8,7 +8,7 @@
       </div>
       <div class="modal-body">
         <%= csrf_meta_tag %>
-        <%= form_for(user, url: edit_profile_picture_profile_index_path,remote: true, multipart: true, method: :post, data: {:'parsley-validate' => ' '}) do |f| %>
+        <%= form_for(user, url: edit_profile_picture_profile_index_path, remote: true, multipart: true, method: :post, data: { parsley_validate: '' }) do |f| %>
             <% if user.errors.any? %>
                 <div id="error_explanation">
                   <h2><%= pluralize(user.errors.count, "error") %> prohibited this upload from being saved:</h2>
@@ -23,8 +23,7 @@
 
             <div class="field">
               <%= f.label 'Select profile Image' %><br>
-              <%= f.file_field :image, pattern: '([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif))', data: {:'parsley-id' => '1', :'parsley-required' => 'true', :'parsley-trigger' => 'change'} %>
-              <ul id="parsley-id-1" class="parsley-errors-list"></ul>
+              <%= f.file_field :image, pattern: '([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif))', class: 'display-inline-block', data: { :'parsley-required' => 'true'} %>
             </div>
 
             <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
