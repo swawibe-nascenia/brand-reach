@@ -54,8 +54,8 @@ class Campaign < ActiveRecord::Base
   # == Scopes and Other macros == #
   # ----------------------------------------------------------------------
 
-  scope :engaged_campaigns_for, ->(user) { where(status: self.statuses[:engaged], receiver: user) }
-  scope :engaged_campaigns_from, ->(user) { where(status: self.statuses[:engaged], sender: user) }
+  scope :engaged_campaigns_for, ->(user) { where(status: self.statuses[:engaged], receiver: user).order('id DESC') }
+  scope :engaged_campaigns_from, ->(user) { where(status: self.statuses[:engaged], sender: user).order('id DESC') }
 
   # ----------------------------------------------------------------------
   # == Instance methods == #
