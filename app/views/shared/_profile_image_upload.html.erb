@@ -21,25 +21,27 @@
                 </div>
             <% end %>
 
-            <div class="field">
-              <%= f.label 'Select profile Image' %><br>
-              <%= f.file_field :image, pattern: '([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif))', class: 'display-inline-block', data: { :'parsley-required' => 'true'} %>
+            <div>
+              <div class="field image-input-container">
+                <%= f.label 'Select profile Image' %><br>
+                <%= f.file_field :image, pattern: '([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif))', class: 'display-inline-block', data: { :'parsley-required' => 'true'} %>
+              </div>
+              <div class="field image-field">
+              </div>
+              <div class="image-upload-btn-container">
+                <div class="actions">
+                  <button class="btn btn-info" type="submit">
+                    Update Profile Picture
+                  </button>
+                </div>
+              </div>
             </div>
 
             <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
                 <%= hidden_field_tag attribute, :id => attribute %>
             <% end %>
 
-            <div class="field image-field">
-            </div>
 
-            <div class="modal-footer">
-              <div class="actions">
-                <button class="btn btn-info" type="submit">
-                  Update Profile Picture
-                </button>
-              </div>
-            </div>
         <% end %>
       </div>
     </div>
@@ -51,6 +53,7 @@
         var jscrop_api;
         $('#user_image').change(function () {
             $('.image-field').html('');
+            $('.image-field').show();
             $('.image-field').append('<img src="" id="profile-pic-preview" />');
             $('#profile-pic-preview').hide();
             var reader = new FileReader();
@@ -67,10 +70,17 @@
                 }, function () {
                     jcrop_api = this;
                     var imageWidth = $('#profile-pic-preview').width();
+                    var leftPadding = 0;
                     if(imageWidth > getWindoWidth()){
                         imageWidth = getWindoWidth();
                     }
-                    $('#profile_image_upload_modal .modal-footer').width(imageWidth + '');
+
+                    console.log('selected inage width is ' + imageWidth);
+                    if(imageWidth > 165){
+                        leftPadding = imageWidth - 168;
+                    }
+
+                    $('.image-upload-btn-container').css('padding-left', leftPadding);
                 } );
             }
             reader.readAsDataURL($(this)[0].files[0]);

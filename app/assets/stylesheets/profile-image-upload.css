@@ -3,7 +3,7 @@
 }
 
 .profile-image-modal-content {
-    min-height: 200px;
+    min-height: 170px;
     padding-bottom: 40px;
 }
 
@@ -44,4 +44,5 @@
 
 .image-field{
     margin-top: 10px;
+    display: none;
 }

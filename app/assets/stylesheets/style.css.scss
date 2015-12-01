@@ -1207,3 +1207,24 @@ h5, .h5 {
 .group-1,.group-2{
   display: block;
 }
+
+// parsely error below input field
+
+.image-input-container{
+  max-width: 255px;
+  padding-right: 5px;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.image-upload-btn-container{
+  display: inline-block;
+  padding-top: 20px;
+  text-align: right;
+  vertical-align: top;
+}
+
+#profile_image_upload_modal .modal-body{
+  padding-top: 0;
+  padding-bottom: 0;
+}
