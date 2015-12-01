@@ -1211,10 +1211,10 @@ h5, .h5 {
 // parsely error below input field
 
 .image-input-container{
-  max-width: 255px;
-  padding-right: 5px;
-  overflow: hidden;
   display: inline-block;
+}
+.image-input-container, #user_image{
+  width: 250px;
 }
 
 .image-upload-btn-container{
