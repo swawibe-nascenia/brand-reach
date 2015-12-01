@@ -201,6 +201,6 @@ class CampaignsController < ApplicationController
   end
 
   def current_user_campaign?
-    current_user.campaigns_sent.where(id: params[:id]).present?
+    current_user.campaigns_sent.pluck(:id).include?(params[:id].to_i)
   end
 end
