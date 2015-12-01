@@ -30,7 +30,7 @@ class CampaignsController < ApplicationController
 
   def create
     @campaign = Campaign.new(campaign_params.except(:post_type,
-      :card_expiration_month, :card_expiration_year))
+                                                    :card_expiration_month, :card_expiration_year))
     @campaign.post_type = campaign_params[:post_type].to_i
     @campaign.card_expiration_month = campaign_params[:card_expiration_month].to_i
     @campaign.card_expiration_year = campaign_params[:card_expiration_year].to_i
@@ -50,8 +50,8 @@ class CampaignsController < ApplicationController
     else
       @influencer = User.find(params[:campaign][:receiver_id])
       @costs = User.find(params[:campaign][:receiver_id]).active_facebook_accounts.pluck(
-        :status_update_cost, :profile_photo_cost, :cover_photo_cost,
-        :video_post_cost)
+          :status_update_cost, :profile_photo_cost, :cover_photo_cost,
+          :video_post_cost)
       render action: 'new'
     end
   end
@@ -135,11 +135,11 @@ class CampaignsController < ApplicationController
 
   def campaign_params
     params.require(:campaign).permit(:name, :text, :headline, :start_date,
-      :social_account_page_name, :receiver_id, :sender_id, :end_date,
-      :campaign_active, :cost, :facebook_account_id, :post_type,
-      :number_of_likes, :number_of_post_reach, :number_of_comments,
-      :number_of_shares, :card_number, :id,
-      :card_expiration_year, :card_holder_name, :schedule_type, :card_expiration_month
+                                     :social_account_page_name, :receiver_id, :sender_id, :end_date,
+                                     :campaign_active, :cost, :facebook_account_id, :post_type,
+                                     :number_of_likes, :number_of_post_reach, :number_of_comments,
+                                     :number_of_shares, :card_number, :id,
+                                     :card_expiration_year, :card_holder_name, :schedule_type, :card_expiration_month
     )
   end
 
@@ -201,6 +201,10 @@ class CampaignsController < ApplicationController
   end
 
   def current_user_campaign?
-    current_user.campaigns_sent.pluck(:id).include?(params[:id].to_i)
+    if current_user.campaigns_sent.pluck(:id).include?(params[:id].to_i)
+      true
+    else
+      raise ActiveRecord::RecordNotFound
+    end
   end
 end
