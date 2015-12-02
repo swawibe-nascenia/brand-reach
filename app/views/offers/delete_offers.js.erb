@@ -4,6 +4,8 @@ $(function(){
 //    show engage offer can't be deleted message
     <% if @engage_offer_select %>
         $('.engage-campaign-delete-info').text('You can not delete already Engaged Campaign.');
+    <% else %>
+        $('.engage-campaign-delete-info').text('');
     <% end %>
 
 //    remove deleted offers
