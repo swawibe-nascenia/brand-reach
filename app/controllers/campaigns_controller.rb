@@ -203,6 +203,6 @@ class CampaignsController < ApplicationController
   end
 
   def current_user_campaign?
-    raise ActiveRecord::RecordNotFound unless current_user.campaigns_sent.pluck(:id).include?(params[:id].to_i)
+    raise ActiveRecord::RecordNotFound unless current_user.campaigns_sent.where(status: 1, deleted_by_influencer: false, deleted_by_brand: false).pluck(:id).include?(params[:id].to_i)
   end
 end
