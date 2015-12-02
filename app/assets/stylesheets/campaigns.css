@@ -822,3 +822,7 @@ only screen and (max-width: 480px) {
     font-weight: 600;
     padding: 20px 0;
 }
+
+.facebook-feed-content .media-heading {
+    word-break: break-all;
+}
