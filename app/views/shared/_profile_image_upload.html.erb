@@ -52,38 +52,45 @@
     $(function () {
         var jscrop_api;
         $('#user_image').change(function () {
-            $('.image-field').html('');
-            $('.image-field').show();
-            $('.image-field').append('<img src="" id="profile-pic-preview" />');
-            $('#profile-pic-preview').hide();
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#profile-pic-preview').show();
-                $('#profile-pic-preview').attr("src", e.target.result);
-                $('#profile-pic-preview').Jcrop({
-                    onChange: update_crop,
-                    onSelect: update_crop,
-                    boxWidth: getWindoWidth(),
-                    aspectRatio: 1,
-                    setSelect:   [ 10,10, 100, 100 ]
-                }, function () {
-                    jcrop_api = this;
-                    var imageWidth = $('#profile-pic-preview').width();
-                    console.log('image height is ' + $('#profile-pic-preview').height());
-                    var leftPadding = 0;
-                    if(imageWidth > getWindoWidth()){
-                        imageWidth = getWindoWidth();
-                    }
+            if($(this).val()){
+                console.log('selected image url is ' + $(this).val());
+                $('.image-field').html('');
+                $('.image-field').show();
+                $('.image-field').append('<img src="" id="profile-pic-preview" />');
+                $('#profile-pic-preview').hide();
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#profile-pic-preview').show();
+                    $('#profile-pic-preview').attr("src", e.target.result);
+                    $('#profile-pic-preview').Jcrop({
+                        onChange: update_crop,
+                        onSelect: update_crop,
+                        boxWidth: getWindoWidth(),
+                        aspectRatio: 1,
+                        setSelect:   [ 10,10, 100, 100 ]
+                    }, function () {
+                        jcrop_api = this;
+                        var imageWidth = $('#profile-pic-preview').width();
+                        console.log('image height is ' + $('#profile-pic-preview').height());
+                        var leftPadding = 0;
+                        if(imageWidth > getWindoWidth()){
+                            imageWidth = getWindoWidth();
+                        }
 
-                    console.log('selected inage width is ' + imageWidth);
-                    if(imageWidth > 171){
-                        leftPadding = imageWidth - 171;
-                    }
+                        console.log('selected inage width is ' + imageWidth);
+                        if(imageWidth > 166){
+                            leftPadding = imageWidth - 166;
+                        }
 
-                    $('.image-upload-btn-container').css('padding-left', leftPadding);
-                } );
+                        $('.image-upload-btn-container').css('padding-left', leftPadding);
+                    } );
+                };
+                reader.readAsDataURL($(this)[0].files[0]);
+            }else{
+                $('.image-field').hide();
+                $('.image-upload-btn-container').css('padding-left', 10);
             }
-            reader.readAsDataURL($(this)[0].files[0]);
+
         });
 
     });
