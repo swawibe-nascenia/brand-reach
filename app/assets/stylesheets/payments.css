@@ -75,7 +75,7 @@
 }
 
 @media
-only screen and (max-width: 480px) {
+only screen and (max-width: 768px) {
     .amount-withdraw label, .amount-withdraw input {
         display: block;
     }
@@ -298,7 +298,7 @@ only screen and (max-width: 415px) {
 }
 
 @media
-only screen and (max-width: 480px) {
+only screen and (max-width: 768px) {
     .withdraw-modal-dialog {
         width: 95%;
     }
@@ -389,7 +389,7 @@ only screen and (max-width: 768px) {
 }
 
 @media
-only screen and (max-width: 480px) {
+only screen and (max-width: 768px) {
     .from-balance, .withdraw-modal-amount, .withdraw-modal-bank, .add-account {
        font-size: 12px;
     }
@@ -451,7 +451,7 @@ only screen and (max-width: 340px) {
 }
 
 @media
-only screen and (max-width: 480px) {
+only screen and (max-width: 768px) {
 
     .bank-account-modal label, .bank-account-modal input, .bank-account-modal select {
         display: block;
@@ -514,7 +514,7 @@ only screen and (max-width: 480px) {
 }
 
 @media
-only screen and (max-width: 480px) {
+only screen and (max-width: 768px) {
 
     .btn-influencer-download {
         font-size: 13px;
@@ -567,7 +567,7 @@ only screen and (max-width: 480px) {
 }
 
 @media
-only screen and (max-width: 480px) {
+only screen and (max-width: 768px) {
     .bank_location {
         text-align: center;
     }
