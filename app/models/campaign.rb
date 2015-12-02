@@ -99,7 +99,7 @@ class Campaign < ActiveRecord::Base
   end
 
   def create_first_message
-        messages.create(sender_id: self.sender_id, receiver_id: self.receiver_id, body: first_message_body);
+    messages.create(sender_id: self.sender_id, receiver_id: self.receiver_id, body: first_message_body);
   end
 
   def deletable?

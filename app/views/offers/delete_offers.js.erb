@@ -1,6 +1,11 @@
 console.log('Selected offers has been selected successfully');
 
 $(function(){
+//    show engage offer can't be deleted message
+    <% if @engage_offer_select %>
+        $('.engage-campaign-delete-info').text('You can not delete already Engaged Campaign.');
+    <% end %>
+
 //    remove deleted offers
     <% @ids.each do |id|%>
     $('.offer-box-<%= id %>').hide();
