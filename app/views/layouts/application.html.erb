@@ -74,7 +74,7 @@
       <ul class="sidebar-menu">
         <li class="<%= ((params[:controller] == 'profile' && params[:action] == 'update') || (params[:controller] == 'profile' && params[:action] == 'profile') || (params[:controller] == 'profile' && params[:action] == 'faqs')) ? 'active' : '' %>">
           <a href="<%= profile_profile_index_path %>">
-            <i class="fa fa-user"></i> <span class="space-sidebar">PROFILE</span>
+            <i class="fa fa-user"></i><span class="space-sidebar">PROFILE</span>
           </a>
         </li>
 
@@ -82,9 +82,8 @@
 
             <li class="<%= (params[:controller] == 'offers') ? 'active' : '' %>">
               <a href="<%= offers_path %>">
-                <span class="glyphicon glyphicon-envelope"> </span>
-                <span class="space-sidebar">MESSAGES
-                  <span class="unread-message">
+                <span class="glyphicon glyphicon-envelope"></span><span class="space-sidebar">MESSAGES
+                <span class="unread-message">
                     <% if current_user.unread_messages > 0 %>
                        (<span class="unread-message-number"><%= current_user.unread_messages %></span>)
                     <% end %>
@@ -115,9 +114,8 @@
 
             <li class="<%= (params[:controller] == 'offers') ? 'active' : '' %>">
               <a href="<%= offers_path %>">
-                <span class="glyphicon glyphicon-envelope"> </span>
-                <span class="space-sidebar">
-                  OFFERS
+                <span class="glyphicon glyphicon-envelope"></span>
+                <span class="space-sidebar">OFFERS
                 <span class="unread-message">
                     <% if current_user.unread_messages > 0 %>
                        (<span class="unread-message-number"><%= current_user.unread_messages %></span>)
