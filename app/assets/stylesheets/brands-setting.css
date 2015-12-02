@@ -113,7 +113,7 @@
 }
 
 .privacy-setting .setting-content {
-    padding-left: 67px;
+    padding-left: 57px;
 }
 
 @media  (max-width: 767px){
@@ -190,3 +190,14 @@
         margin-left: 0;
     }
 }
+
+@media (max-width: 768px){
+    .other-setting .section2 {
+        padding-left: 0;
+    }
+
+    .other-setting .section2 label {
+        margin-right: 14px;
+    }
+}
+
