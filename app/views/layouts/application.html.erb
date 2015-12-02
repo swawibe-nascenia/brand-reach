@@ -114,8 +114,7 @@
 
             <li class="<%= (params[:controller] == 'offers') ? 'active' : '' %>">
               <a href="<%= offers_path %>">
-                <span class="glyphicon glyphicon-envelope"></span>
-                <span class="space-sidebar">OFFERS
+                <span class="glyphicon glyphicon-envelope"></span><span class="space-sidebar">OFFERS
                 <span class="unread-message">
                     <% if current_user.unread_messages > 0 %>
                        (<span class="unread-message-number"><%= current_user.unread_messages %></span>)
