@@ -673,6 +673,7 @@ only screen and (max-width: 1140px) {
 
 .fb-activity-img {
     height: 35px;
+    width: 60px;
 }
 
 .fb-activity-row {
