@@ -235,7 +235,7 @@ only screen and (max-width: 800px) {
 }
 
 @media
-only screen and (max-width: 415px) {
+only screen and (max-width: 768px) {
     td, tr {
         display: block;
         border: 1px solid #dddddd;
@@ -265,7 +265,7 @@ only screen and (max-width: 415px) {
     }
 
     .payments_table > tbody > tr > td:nth-of-type(2):before { content: "Date Billed : "; font-weight: bold; }
-    .payments_table > tbody > tr > td:nth-of-type(3):before { content: "Date Billed : "; font-weight: bold; }
+    .payments_table > tbody > tr > td:nth-of-type(3):before { content: "Campaign Name : "; font-weight: bold; }
     .payments_table > tbody > tr > td:nth-of-type(4):before { content: "Transaction ID : ";  font-weight: bold; }
     .payments_table > tbody > tr > td:nth-of-type(5):before { content: "Amount Billed (INR) : ";  font-weight: bold; }
     .payments_table > tbody > tr > td:nth-of-type(6):before { content: "Payment Status : ";  font-weight: bold; }
