@@ -5,29 +5,29 @@ module ApplicationHelper
 
   def bootstrap_class_for flash_type
     case flash_type
-      when "success"
-        "alert-success"
-      when "error"
-        "alert-error"
-      when "alert"
-        "alert-block"
-      when "notice"
-        "alert-info"
+      when 'success'
+        'alert-success'
+      when 'error'
+        'alert-error'
+      when 'alert'
+        'alert-block'
+      when 'notice'
+        'alert-info'
       else
         flash_type.to_s
     end
   end
 
   def current_path(path)
-    "current" if current_page?(path)
+    'current' if current_page?(path)
   end
 
   def price_drop_down
     [
-      ['5000 to 10000', '5000..10000'],
-      ['10,000 to 50,000', '10000..50000'],
-      ['50,000 to 1,00,000', '50000..100000'],
-      ['1,00,000+', '1000000..461168601']
+        ['5000 to 10000', '5000..10000'],
+        ['10,000 to 50,000', '10000..50000'],
+        ['50,000 to 1,00,000', '50000..100000'],
+        ['1,00,000+', '1000000..461168601']
     ]
   end
 

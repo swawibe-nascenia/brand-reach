@@ -203,6 +203,11 @@ class CampaignsController < ApplicationController
   end
 
   def current_user_campaign?
-    raise ActiveRecord::RecordNotFound unless current_user.campaigns_sent.where(status: Campaign.statuses[:accepted], deleted_by_influencer: false, deleted_by_brand: false).pluck(:id).include?(params[:id].to_i)
+     if current_user.campaigns_sent.where(status: Campaign.statuses[:accepted], deleted_by_influencer: false, deleted_by_brand: false).pluck(:id).include?(params[:id].to_i)
+       true
+     else
+       flash[:alert] = 'This Campaign is not Accessible'
+       redirect_to offers_path
+     end
   end
 end
