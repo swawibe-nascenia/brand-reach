@@ -374,6 +374,10 @@ $(function(){
         }
     }
 
+    /* new add for modal my pc only */
+    $('#signup').on('show.bs.modal', function (e) {
+        $('body').addClass('test');
+    });
     /*    show spinner button on form submit. To enable sinner for form submit
           add 'has-spinner' class to submit button and
           <span class="spinner"><i class="fa fa-spinner fa-spin"></i></span>
