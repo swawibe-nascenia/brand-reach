@@ -671,6 +671,11 @@ only screen and (max-width: 1140px) {
     vertical-align: middle;
 }
 
+.fb-activity-modal-content {
+    min-height: 170px;
+    padding-bottom: 40px;
+}
+
 .fb-activity-img {
     height: 35px;
     width: 60px;
@@ -698,20 +703,6 @@ only screen and (max-width: 1140px) {
 
 .fb-activity-row:nth-child(even) {
     background-color: #ffffff;
-}
-
-.fb-activity-radio {
-    width: 5%;
-    padding-bottom: 2%;
-}
-
-.fb-activity-post {
-    width: 80%;
-}
-
-.fb-activity-image {
-    width: 14%;
-    padding-right: 10px
 }
 
 @media
@@ -798,9 +789,6 @@ only screen and (max-width: 680px) {
         margin-left: 0;
     }
 
-    #SetFacebookActivity .fb-activity-modal-dialog {
-        width: 100%;
-    }
 }
 
 @media
@@ -825,6 +813,27 @@ only screen and (max-width: 480px) {
     padding: 20px 0;
 }
 
+.fb-activity-radio {
+    width: 5%;
+    padding-bottom: 2%;
+}
+
+.fb-activity-post {
+    width: 80%;
+}
+
+.fb-activity-image {
+    width: 14%;
+    padding-right: 10px
+}
+
 .facebook-feed-content .media-heading {
     word-break: break-all;
+}
+
+@media
+only screen and (max-width: 768px) {
+    #SetFacebookActivity .fb-activity-modal-dialog {
+        width: 100%;
+    }
 }
