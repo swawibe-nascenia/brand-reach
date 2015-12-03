@@ -1,3 +1,5 @@
-<% @messages.each do |message|%>
-    <p><%= link_to message.body.truncate_words(6), "#{offers_path(offer_id: message.campaign_id, search_key: params[:search_key])}#offer-#{message.campaign_id}" %></p>
-<% end %>
+<div class="influencer-search-result-box">
+  <% @messages.each do |message|%>
+      <p><%= link_to message.body.truncate_words(6), "#{offers_path(offer_id: message.campaign_id, search_key: params[:search_key])}#offer-#{message.campaign_id}" %></p>
+  <% end %>
+</div>

@@ -115,7 +115,10 @@ class User < ActiveRecord::Base
                           uid: auth.uid,
                           email: auth.info.email,
                           company_email: auth.info.email,
-                          password: Devise.friendly_token[0,20]
+                          password: Devise.friendly_token[0,20],
+                          is_active: true,
+                          user_type: User.user_types[:influencer]
+
                       })
 
       user.name = auth.info.name
@@ -131,20 +134,9 @@ class User < ActiveRecord::Base
 
       graph = InsightService.new(auth.credentials.token)
       user.remote_image_url = graph.get_profile_picture
-
-      # user.country = auth.info.location
-
-      if params[:brand]
-        user.user_type= User.user_types[:brand]
-      else
-        user.user_type = User.user_types[:influencer]
-        user.company_email = auth.info.email
-      end
     end
 
     user.access_token = auth.credentials.token
-    user.is_active = true
-
     user
   end
 
