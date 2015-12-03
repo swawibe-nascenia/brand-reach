@@ -40,7 +40,7 @@ class PaymentsController < ApplicationController
       format.html{ render 'payments/export_brand_payments' }
       format.csv do
         #  Don't Try to Put Headers into single line, it wont work
-        headers['Content-Disposition'] = "attachment; filename=\"payments_list_brand.csv\""
+        headers['Content-Disposition'] = "attachment; filename=\"payments_list_brand_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.csv\""
         headers['Content-Type'] ||= 'text/csv'
         render 'payments/export_brand_payments'
       end
@@ -86,7 +86,7 @@ class PaymentsController < ApplicationController
       format.html{ render 'payments/export_influencer_payments' }
       format.csv do
         #  Don't Try to Put Headers into single line, it wont work
-        headers['Content-Disposition'] = "attachment; filename=\"payments_list_influencer.csv\""
+        headers['Content-Disposition'] = "attachment; filename=\"payments_list_influencer_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.csv\""
         headers['Content-Type'] ||= 'text/csv'
         render 'payments/export_influencer_payments'
       end

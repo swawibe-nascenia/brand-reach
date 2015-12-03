@@ -177,7 +177,7 @@ class CampaignsController < ApplicationController
       format.html{ render 'campaigns/export_influencer_campaigns'}
       format.csv do
         #  Don't Try to Put Headers into single line, it wont work
-        headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_influencer.csv\""
+        headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_influencer_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.csv\""
         headers['Content-Type'] ||= 'text/csv'
         render 'campaigns/export_influencer_campaigns'
       end
@@ -195,7 +195,7 @@ class CampaignsController < ApplicationController
       format.html{ render 'campaigns/export_brand_campaigns'}
       format.csv do
         #  Don't Try to Put Headers into single line, it wont work
-        headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_brand.csv\""
+        headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_brand_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.csv\""
         headers['Content-Type'] ||= 'text/csv'
         render 'campaigns/export_brand_campaigns'
       end
