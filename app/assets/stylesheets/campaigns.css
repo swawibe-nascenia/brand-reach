@@ -842,7 +842,7 @@ only screen and (max-width: 768px) {
         width: 100%;
         display: block;
         padding: 5px;
-        text-align: center;
+        /*text-align: center;*/
     }
 
     .facebook-content {
@@ -854,4 +854,14 @@ only screen and (max-width: 768px) {
         margin: 0;
         font-size: 15px;
     }
+
+    .facebook-content .fb-activity-row-head {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .fb-activity-row .fb-activity-radio:before { content: "Choose : "; font-weight: bold; }
+    .fb-activity-row .fb-activity-post:before { content: "Activity Name : "; font-weight: bold; }
+    .fb-activity-row .fb-activity-image:before { content: "Picture : "; font-weight: bold; }
 }
