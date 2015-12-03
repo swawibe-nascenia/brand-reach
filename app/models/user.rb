@@ -157,6 +157,15 @@ class User < ActiveRecord::Base
     update_column(:profile_complete, status)
   end
 
+  # campaign
+  def campaign_receivable?()
+    if brand?
+
+    else
+      false
+    end
+  end
+
   # ----------------------------------------------------------------------
   # == Private == #
   # ----------------------------------------------------------------------

@@ -23,11 +23,6 @@
     margin-top: -45px;
 }
 
-#profile_image_upload_modal .modal-dialog{
-    max-width: 610px;
-    height: auto;
-}
-
 @media (max-width: 767px) {
     #profile_image_upload_modal .modal-dialog{
         width: 95%;

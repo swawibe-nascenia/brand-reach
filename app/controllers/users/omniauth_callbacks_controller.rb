@@ -7,6 +7,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.authenticate_user_by_facebook(authentication_info, authentication_params)
 
     if @user.influencer?
+      @user.is_active = true
       if @user.save(validate: false)
         sign_in @user
         set_flash_message(:notice, :success, :kind => 'Facebook') if is_navigational_format?
