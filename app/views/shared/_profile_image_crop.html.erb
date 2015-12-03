@@ -50,9 +50,10 @@
             setSelect: [10, 10, 400, 400]
         }, function () {
             var imageWidth = $('#profile-pic-edit').width();
+            console.log('image edit modal image width ' + imageWidth);
             var modalDialogMaxWidth = 0;
-            if(imageWidth > 260){
-                modalDialogMaxWidth = imageWidth + 100;
+            if((imageWidth + 108) > 260){
+                modalDialogMaxWidth = imageWidth + 108;
             }else{
                 modalDialogMaxWidth = 260;
             }
