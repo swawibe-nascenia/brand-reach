@@ -115,7 +115,7 @@ class ProfileController < ApplicationController
 
     if @contact_us.save
       CampaignMailer.contact_us_mail(@contact_us).deliver_now
-      flash[:success] = 'Message Sent Successfully'
+      flash[:success] = 'Message sent successfully'
       redirect_to contact_us_profile_index_path
     else
       render 'contact_us'
