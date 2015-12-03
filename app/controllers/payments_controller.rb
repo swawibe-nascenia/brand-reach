@@ -24,7 +24,7 @@ class PaymentsController < ApplicationController
   private
 
   def brand_index
-    @transactions = BrandPayment.where(campaign_id: current_user.campaigns_sent.pluck(:id))
+    @transactions = BrandPayment.where(campaign_id: current_user.campaigns_sent.pluck(:id)).order('id DESC')
     render 'payments/brand_index'
   end
 
@@ -48,7 +48,7 @@ class PaymentsController < ApplicationController
   end
 
   def influencer_index
-    @transactions = current_user.influencer_payments
+    @transactions = current_user.influencer_payments.order('id DESC')
     @bank_accounts = current_user.bank_accounts
     render 'payments/influencer_index'
   end
