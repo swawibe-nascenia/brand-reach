@@ -42,7 +42,6 @@
 
 <script type="text/javascript">
     $(function () {
-        var jscrop_api;
         $('#profile-pic-edit').Jcrop({
             onChange: update_crop,
             onSelect: update_crop,
@@ -50,7 +49,15 @@
             aspectRatio: 1,
             setSelect: [10, 10, 400, 400]
         }, function () {
-            jcrop_api = this;
+            var imageWidth = $('#profile-pic-edit').width();
+            var modalDialogMaxWidth = 0;
+            if(imageWidth > 260){
+                modalDialogMaxWidth = imageWidth + 100;
+            }else{
+                modalDialogMaxWidth = 260;
+            }
+            $('#profile_image_edit_modal .modal-dialog').css('max-width',  modalDialogMaxWidth);
+
         });
 
         function update_crop(coords) {
