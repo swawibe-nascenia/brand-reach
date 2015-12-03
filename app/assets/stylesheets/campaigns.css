@@ -864,6 +864,7 @@ only screen and (max-width: 768px) {
         font-size: 15px;
     }
 
-    .fb-activity-row-head .fb-activity-radio:before { content: "Choose"; text-align: center; display: block; width: 100% }
-
+    .fb-activity-row-head .fb-activity-radio, .fb-activity-row-head .fb-activity-post, .fb-activity-row-head .fb-activity-image {
+        min-height: 20px;
+    }
 }
