@@ -124,7 +124,7 @@ class ProfileController < ApplicationController
 
   def update_profile_settings
     if @user.update(user_params)
-      flash[:success] = 'User information update success'
+      flash[:success] = 'User information has been updated Successfully'
     else
       flash[:error] = 'User information update fail'
     end
