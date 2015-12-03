@@ -10,7 +10,7 @@ class PasswordsController < Devise::PasswordsController
    @password_reset_send_success = false
    @messages = []
 
-   if temp_user
+   if temp_user && temp_user.brand?
      if successfully_sent?(User.send_reset_password_instructions(resource_params))
        @password_reset_send_success = true
        @messages << 'Password reset info sent to your email. Please check your mail.'
