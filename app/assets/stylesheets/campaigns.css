@@ -702,6 +702,7 @@ only screen and (max-width: 1140px) {
 
 .fb-activity-radio {
     width: 5%;
+    padding-bottom: 2%;
 }
 
 .fb-activity-post {

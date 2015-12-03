@@ -19,10 +19,10 @@
     border-radius: 50px;
     width: 66px;
     margin-bottom: 0;
-    box-shadow: 0 -1px 1px #000;
-    -webkit-box-shadow: 0 -1px 1px #000;
-    -moz-box-shadow: 0 -1px 1px #000;
-    -o-box-shadow: 0 -1px 1px #000;
+    box-shadow: 0 0 2px 3px #cecece;
+    -webkit-box-shadow: 0 0 2px 3px #cecece;
+    -moz-box-shadow: 0 0 2px 3px #cecece;
+    -o-box-shadow: 0 0 2px 3px #cecece;
 
 }
 
