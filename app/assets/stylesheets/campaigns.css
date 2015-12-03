@@ -832,6 +832,11 @@ only screen and (max-width: 480px) {
     word-break: break-all;
 }
 
+.set-facebook-activity {
+    padding: 18px 45px;
+    margin: 0;
+}
+
 @media
 only screen and (max-width: 768px) {
     #SetFacebookActivity .fb-activity-modal-dialog {
@@ -841,8 +846,12 @@ only screen and (max-width: 768px) {
     .fb-activity-radio, .fb-activity-post, .fb-activity-image {
         width: 100%;
         display: block;
-        padding: 5px;
+        padding: 2px;
         text-align: center;
+    }
+
+    .fb-activity-row {
+        padding: 5px;
     }
 
     .facebook-content {
@@ -855,8 +864,6 @@ only screen and (max-width: 768px) {
         font-size: 15px;
     }
 
-    .set-facebook-activity {
-        padding: 18px 45px;
-        margin: 0;
-    }
+    .fb-activity-row-head .fb-activity-radio:before { content: "Choose"; text-align: center; display: block; width: 100% }
+
 }
