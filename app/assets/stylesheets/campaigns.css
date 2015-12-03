@@ -814,17 +814,18 @@ only screen and (max-width: 480px) {
 }
 
 .fb-activity-radio {
-    width: 5%;
-    padding-bottom: 2%;
+    width: 3%;
+    display: inline-block;
 }
 
 .fb-activity-post {
-    width: 80%;
+    width: 82%;
+    display: inline-block;
 }
 
 .fb-activity-image {
-    width: 14%;
-    padding-right: 10px
+    width: 12%;
+    display: inline-block;
 }
 
 .facebook-feed-content .media-heading {
