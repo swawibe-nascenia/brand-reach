@@ -816,6 +816,7 @@ only screen and (max-width: 480px) {
 .fb-activity-radio {
     width: 3%;
     display: inline-block;
+    vertical-align: top;
 }
 
 .fb-activity-post {
