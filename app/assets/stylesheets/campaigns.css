@@ -839,6 +839,7 @@ only screen and (max-width: 768px) {
     }
 
     .fb-activity-radio, .fb-activity-post, .fb-activity-image {
+        width: 100%;
         display: block;
         padding: 5px;
         text-align: center;
@@ -849,7 +850,8 @@ only screen and (max-width: 768px) {
     }
 
     .btn-connect {
-        padding: 0;
+        padding: 7px;
         margin: 0;
+        font-size: 15px;
     }
 }
