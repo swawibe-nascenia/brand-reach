@@ -837,4 +837,19 @@ only screen and (max-width: 768px) {
     #SetFacebookActivity .fb-activity-modal-dialog {
         width: 100%;
     }
+
+    .fb-activity-radio, .fb-activity-post, .fb-activity-image {
+        display: block;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .facebook-content {
+        border: 1px solid #dddddd;
+    }
+
+    .btn-connect {
+        padding: 0;
+        margin: 0;
+    }
 }

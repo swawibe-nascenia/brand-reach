@@ -15,41 +15,42 @@
                     <input type="hidden" name="access_token"/>
                     <input type="hidden" name="id"/>
 
-                    <div class="js-clickable fb-activity-row-head">
+                     <div class="facebook-content">
 
-                         <div class="fb-activity-radio">
-                         </div>
-                         <div class="fb-activity-post">
-                            <h4> Activity Name </h4>
-                         </div>
-                         <div class="fb-activity-image">
-                            <h4> Picture </h4>
-                         </div>
+                        <div class="js-clickable fb-activity-row-head">
 
-                    </div>
+                             <div class="fb-activity-radio">
+                             </div>
+                             <div class="fb-activity-post">
+                                <h4> Activity Name </h4>
+                             </div>
+                             <div class="fb-activity-image">
+                                <h4> Picture </h4>
+                             </div>
 
-                    {{#each accounts}}
-                        <div class="js-clickable fb-activity-row">
-
-                         <div class="fb-activity-radio">
-                            <input type="radio" class="vertical-align-middle" name="activity_id" value="{{id}}" {{#if active}}checked{{/if}}>
-                         </div>
-
-                         <div class="fb-activity-post">
-                            <h4 class="media-heading vertical-align-middle">{{story}}{{message}}</h4>
-                         </div>
-
-                         <div class="fb-activity-image">
-                            {{#if picture}}
-                              <img class="media-object fb-activity-img vertical-align-middle" src="{{picture}}">
-                            {{/if}}
-                         </div>
                         </div>
-                    {{/each}}
+                        {{#each accounts}}
+                            <div class="js-clickable fb-activity-row">
 
+                             <div class="fb-activity-radio">
+                                <input type="radio" class="vertical-align-middle" name="activity_id" value="{{id}}" {{#if active}}checked{{/if}}>
+                             </div>
+
+                             <div class="fb-activity-post">
+                                <h4 class="media-heading vertical-align-middle">{{story}}{{message}}</h4>
+                             </div>
+
+                             <div class="fb-activity-image">
+                                {{#if picture}}
+                                  <img class="media-object fb-activity-img vertical-align-middle" src="{{picture}}">
+                                {{/if}}
+                             </div>
+                            </div>
+                        {{/each}}
+                     </div>
                     <br/>
 
-                    <input class="btn btn-export" type="submit" value="CONNECT"/>
+                    <input class="btn btn-export btn-connect" type="submit" value="CONNECT"/>
                 </form>
             </div>
 
