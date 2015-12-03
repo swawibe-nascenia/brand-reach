@@ -837,8 +837,6 @@ only screen and (max-width: 480px) {
     margin: 0;
 }
 
-.opacity-z
-
 @media
 only screen and (max-width: 768px) {
     #SetFacebookActivity .fb-activity-modal-dialog {
