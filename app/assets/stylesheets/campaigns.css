@@ -855,5 +855,8 @@ only screen and (max-width: 768px) {
         font-size: 15px;
     }
 
-    .facebook-content .fb-activity-row-head:before { content: "Choose "; font-weight: bold; text-align: center; }
+    .set-facebook-activity {
+        padding: 18px 45px;
+        margin: 0;
+    }
 }
