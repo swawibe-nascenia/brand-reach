@@ -92,7 +92,7 @@
     margin: 25px 22px;
     background-color: #FFFFFF;
     box-shadow: 1px 1px 3px 2px #ebebeb;
-    padding: 40px 0 69px 36px;
+    padding: 40px 0 40px 36px;
     font-family: 'Hind Regular', sans-serif;
     border-radius: 4px;
 }
@@ -100,12 +100,12 @@
 @media (max-width: 767px) {
     .brands-setting-content-wrapper{
         margin: 20px;
-        padding: 48px 0 69px 36px;
+        padding: 48px 0 30px 36px;
     }
 }
 
 .brands-setting{
-    margin-bottom: 46px;
+    margin-bottom: 30px;
 }
 
 .deactive-brand-setting{
@@ -145,7 +145,7 @@
 .brands-setting header{
     font-size: 15px;
     color: #ff3059;
-    margin-bottom: 34px;
+    margin-bottom: 25px;
     font-weight: 600;
 }
 
@@ -176,7 +176,7 @@
     height: 32px;
     color: #FFFFFF;
     margin-bottom: 69px;
-    margin-top: 27px;
+    margin-top: 15px;
     margin-left: 20px;
 }
 
