@@ -43,10 +43,9 @@ class CampaignMailer < ApplicationMailer
     mail(to: @receiver.email, subject: 'New message to campaign')
   end
 
-  def contact_us_mail(contact_us)
-    @message = contact_us.message
-    Rails.logger.info "========================== Contact us mail send to .............================"
-    mail(to: 'swawibe@bdipo.com', subject: contact_us.category)
+  def contact_us_mail(contact_us_params)
+    @message = contact_us_params[:message]
+    mail(to: 'swawibe@bdipo.com', subject: contact_us_params[:category])
   end
 
   def sing_up_notification_to_admin(user)

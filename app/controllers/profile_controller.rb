@@ -109,12 +109,11 @@ class ProfileController < ApplicationController
   end
 
   def contact_us_save
-    @contact_us = ContactUs.new(contact_us_params.except(:category))
-    @contact_us.category = params[:contact_us][:category].to_i
+    @contact_us = ContactUs.new(contact_us_params)
     @contact_us.user_id = current_user.id
 
     if @contact_us.save
-      CampaignMailer.contact_us_mail(@contact_us).deliver_now
+      CampaignMailer.contact_us_mail(contact_us_params).deliver_now
       flash[:success] = 'Message sent successfully'
       redirect_to contact_us_profile_index_path
     else
