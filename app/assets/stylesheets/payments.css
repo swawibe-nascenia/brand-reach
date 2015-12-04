@@ -330,7 +330,7 @@ only screen and (max-width: 768px) {
     font-weight: 100;
 }
 
-.withdraw-modal-body {
+.withdraw-modal-dialog .withdraw-modal-body {
     padding: 25px 20px;
 }
 
