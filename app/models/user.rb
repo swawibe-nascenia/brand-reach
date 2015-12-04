@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   enum gender: [:male, :female, :other]
 
-  Industry = ['Google', 'Oracle', 'IBM', 'Facebook', 'Intel', 'Nascenia', 'Brand Reach']
+  Industry = ['Health and Beauty', 'Technology', 'Startups', 'Internet', 'Food', 'Restaurants', 'Automobile']
 
   BRAND_PROFILE_COMPLETENESS = [:company_name, :company_email, :industry, :phone, :street_address,
                                 :city, :state, :country, :zip_code, :short_bio, :first_name, :last_name]
