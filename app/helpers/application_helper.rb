@@ -40,4 +40,16 @@ module ApplicationHelper
     ]
   end
 
+  def categories_list
+    [
+        ['Health and Beauty'],
+        ['Technology'],
+        ['Startups'],
+        ['Internet'],
+        ['Food'],
+        ['Restaurants'],
+        ['Automobile']
+    ]
+  end
+
 end
