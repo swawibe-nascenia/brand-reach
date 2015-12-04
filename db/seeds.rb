@@ -17,6 +17,8 @@ industry_list =   [
     'Automobile'
 ]
 
+Category.destroy_all
+
 industry_list.each do |name|
   Category.create( name: name )
 end
