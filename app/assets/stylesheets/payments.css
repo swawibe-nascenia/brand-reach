@@ -297,7 +297,7 @@ only screen and (max-width: 768px) {
 }
 
 .withdraw-modal-dialog {
-    padding: 100px 0;
+    padding: 0;
     width: 40%;
 }
 
