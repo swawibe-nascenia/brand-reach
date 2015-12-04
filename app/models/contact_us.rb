@@ -7,7 +7,7 @@ class ContactUs < ActiveRecord::Base
   # == Constants == #
   # ----------------------------------------------------------------------
 
-  enum category: [:feedback, :complaint]
+  enum category: [:Health_and_beauty, :Technology, :Startups, :Internet, :Food, :Restaurants, :Automobile]
 
   # ----------------------------------------------------------------------
   # == Attributes == #
