@@ -111,7 +111,8 @@
                 <%= f.button  'SAVE', class: 'btn btn-withdraw btn-save-account' %>
               </div>
               <div class="col-md-8">
-                <%= link_to 'CANCEL', '', class: 'btn btn-close' %>
+                <!--<%= link_to 'CANCEL', '', class: 'btn btn-close' %>-->
+                <%= submit_tag 'CANCEL', :type => :reset, :class => "btn btn-close", "data-dismiss" => "modal", "aria-hidden" => "true" %>
               </div>
             </div>
 
