@@ -6,8 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
-#  use this for creating pubnub channel name for existing user
-User.all.each {|u| p u.send(:generate_channel_name)  }
 
 industry_list =   [
     'Health and Beauty',
