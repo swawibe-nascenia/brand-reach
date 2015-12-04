@@ -313,11 +313,18 @@ only screen and (max-width: 1140px) {
 @media
 only screen and (max-width: 1000px) {
     .withdraw-modal-dialog {
-        width: 50%;
+        width: 100%;
     }
 
     .brand-payment-content {
         padding: 35px 20px;
+    }
+}
+
+@media
+only screen and (min-width:769px) and (max-width: 990px) {
+    .withdraw-modal-dialog {
+        width: 50%;
     }
 }
 
