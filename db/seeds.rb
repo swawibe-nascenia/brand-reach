@@ -8,3 +8,17 @@
 #
 #  use this for creating pubnub channel name for existing user
 User.all.each {|u| p u.send(:generate_channel_name)  }
+
+industry_list =   [
+    'Health and Beauty',
+    'Technology',
+    'Startups',
+    'Internet',
+    'Food',
+    'Restaurants',
+    'Automobile'
+]
+
+industry_list.each do |name|
+  Category.create( name: name )
+end

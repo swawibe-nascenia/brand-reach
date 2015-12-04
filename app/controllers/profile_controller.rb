@@ -6,7 +6,7 @@ class ProfileController < ApplicationController
   respond_to :html, :js
 
   def profile
-    @industries = User::Industry
+    @industries = Category.all.order(:name).pluck(:name)
     respond_with(@user)
   end
 
