@@ -71,7 +71,7 @@
                     }, function () {
                         jcrop_api = this;
                         var imageWidth = $('#profile-pic-preview').width();
-                        console.log('image height is ' + $('#profile-pic-preview').height());
+                        setModalMaxWidthImageCrop($('#profile_image_upload_modal .modal-dialog'), imageWidth, 360 );
                         var leftPadding = 0;
                         if(imageWidth > getWindoWidth()){
                             imageWidth = getWindoWidth();

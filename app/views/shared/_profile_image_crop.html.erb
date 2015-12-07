@@ -51,14 +51,7 @@
         }, function () {
             var imageWidth = $('#profile-pic-edit').width();
             console.log('image edit modal image width ' + imageWidth);
-            var modalDialogMaxWidth = 0;
-            if((imageWidth + 108) > 260){
-                modalDialogMaxWidth = imageWidth + 108;
-            }else{
-                modalDialogMaxWidth = 260;
-            }
-            $('#profile_image_edit_modal .modal-dialog').css('max-width',  modalDialogMaxWidth);
-
+            setModalMaxWidthImageCrop($('#profile_image_edit_modal .modal-dialog'), imageWidth, 260 );
         });
 
         function update_crop(coords) {

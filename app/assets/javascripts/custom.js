@@ -441,6 +441,22 @@ function getWindoWidth(){
     return windowWidth;
 }
 
+/*====  set modal dialog max width ============*/
+function setModalMaxWidthImageCrop($obj, imageWidth, minWidth){
+    var modalDialogMaxWidth = 0;
+    if((imageWidth + 108) > minWidth){
+        modalDialogMaxWidth = imageWidth + 108;
+        if(modalDialogMaxWidth > 608){
+            modalDialogMaxWidth = 608;
+        }
+    }else{
+        modalDialogMaxWidth = minWidth;
+    }
+    console.log('Set modal dialog max width to ' + modalDialogMaxWidth);
+    $obj.css('max-width',  modalDialogMaxWidth);
+}
+
+
 /* =========================== function for disable offer delete and start icon =============== */
 function disableOfferDeleteStartIcon(){
     console.log('disabling star and delete icon');

@@ -1297,6 +1297,7 @@ h5, .h5 {
   padding: 15px 0;
 }
 
-#profile_image_edit_modal .jcrop-holder{
-  margin: auto;
+#profile_image_upload_modal .modal-dialog, #profile_image_edit_modal .modal-dialog{
+  max-width: 608px;
 }
+
