@@ -117,8 +117,8 @@ class User < ActiveRecord::Base
                           company_email: auth.info.email,
                           password: Devise.friendly_token[0,20],
                           is_active: true,
-                          user_type: User.user_types[:influencer]
-
+                          user_type: User.user_types[:influencer],
+                          verified: true
                       })
 
       user.name = auth.info.name
