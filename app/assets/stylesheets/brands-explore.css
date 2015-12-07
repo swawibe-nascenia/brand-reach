@@ -271,7 +271,7 @@ only screen and (max-width: 900px) {
     }
 
     .modal-profile .modal-body .profile-info {
-        padding: 28px 0 7px 0;
+        padding: 10px 0;
     }
 
     .view-profile-modal {
@@ -280,6 +280,25 @@ only screen and (max-width: 900px) {
 
     .btn-send-request {
         margin-top: 15px;
-        margin-left: 0;
+    }
+
+    .influencer-profile-modal label {
+        padding: 5px;
     }
 }
+
+@media
+only screen and (max-width: 420px){
+    .modal-profile .modal-body {
+        padding: 0 25px;
+    }
+
+    .btn-send-request {
+        margin-left: 0;
+    }
+
+    .social-account-tab-content {
+        padding-right: 0;
+    }
+}
+
