@@ -86,11 +86,49 @@ class Admin::AdminsController < ApplicationController
   end
 
   def influencer_list
+    authorize :admin, :manage_brandreach?
     @influencers = User.influencers
   end
 
   def brand_list
+    authorize :admin, :manage_brandreach?
     @brands = User.brands
+  end
+
+  def deactivate_user
+    authorize :admin, :manage_brandreach?
+
+    @user = User.where(id: params[:id], verified: true,
+                       user_type: [User.user_types[:influencer],
+                       User.user_types[:brand]
+                       ]).first
+
+    @success = false
+    @message = 'User deactivate request fail'
+
+    if @user
+      @user.update_column(:verified, false)
+      @success = true
+      @message = 'Successfully deactivate user.'
+    end
+  end
+
+  def activate_user
+    authorize :admin, :manage_brandreach?
+
+    @user = User.where(id: params[:id], verified: false,
+                       user_type: [User.user_types[:influencer],
+                                   User.user_types[:brand]
+                       ]).first
+
+    @success = false
+    @message = 'User deactivate request fail'
+
+    if @user
+      @user.update_column(:verified, false)
+      @success = true
+      @message = 'Successfully deactivate user.'
+    end
   end
   private
 

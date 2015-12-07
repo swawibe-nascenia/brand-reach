@@ -107,6 +107,11 @@ Rails.application.routes.draw do
         get :influencer_list
         get :brand_list
       end
+
+      member do
+        put :activate_user
+        put :deactivate_user
+      end
     end
   end
 

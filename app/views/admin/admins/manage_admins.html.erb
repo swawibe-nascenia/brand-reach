@@ -1,7 +1,7 @@
 <% title 'Manage admins' %>
 
 <div class="admin-page-wrapper">
-  <h1 class="text-center">Manage admins</h1>
+  <h1 class="">Manage admins</h1>
   <br/>
   <div class="alert-danger"></div>
   <br/>
@@ -11,7 +11,7 @@
   <br/>
   <br/>
 
-  <table class="table table-responsive admin-table">
+  <table class="table table-responsive admin-table table-admin">
     <tbody>
     <tr>
       <th>Firstname</th>
@@ -27,3 +27,24 @@
 </div>
 
 <%= render 'add_admin_modal' %>
+
+<script>
+  $(function(){
+    $('.remove-admin').click(function(){
+        if(confirm('Do you really want to delete')){
+            var adminId = $(this).data('id');
+            $.ajax({
+                type: 'delete',
+                url: '/admins/' + adminId,
+                dataType: "script",
+                data: {
+                    'authenticity_token': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(data) {
+                    console.log(data)
+                }
+            });
+        }
+    });
+  });
+</script>
