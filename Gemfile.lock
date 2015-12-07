@@ -185,6 +185,8 @@ GEM
       eventmachine (~> 1.0)
       json (~> 1.8)
       net-http-persistent (~> 2.9)
+    pundit (1.0.1)
+      activesupport (>= 3.0.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -314,6 +316,7 @@ DEPENDENCIES
   orm_adapter
   parsley-rails
   pubnub (~> 3.7.9)
+  pundit (= 1.0.1)
   rails (= 4.2.2)
   rails_12factor
   remotipart (~> 1.2)

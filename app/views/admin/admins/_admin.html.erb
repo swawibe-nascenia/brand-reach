@@ -1,0 +1,8 @@
+<tr id="admin-<%= admin.id %>">
+  <td><%= admin.first_name %></td>
+  <td><%= admin.last_name %></td>
+  <td><%= admin.email %></td>
+  <td>
+    <a href="<%= admin_admin_path(admin) %>" data-remote="true" class="text-red  text-danger"><h5>Remove</h5></a>
+  </td>
+</tr>

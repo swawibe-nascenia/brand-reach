@@ -1,0 +1,17 @@
+<% title 'Pending Brands' %>
+
+<div class="admin-page-wrapper">
+  <h1 class="text-center">Pending Brand requests list</h1>
+
+  <table class="table table-responsive admin-table">
+    <tbody>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+    <%= render partial: 'user', collection: @brands %>
+    </tbody>
+  </table>
+</div>

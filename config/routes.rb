@@ -95,6 +95,21 @@ Rails.application.routes.draw do
   end
 
   get '/explore', to: 'explores#show', as: 'explores'
+
+  get '/admin', to: 'admin/admins#log_in'
+
+  namespace 'admin', path:'' do
+    resources :admins, only: [:new, :update, :create, :destroy] do
+      collection do
+        get 'brands-request', to: 'admins#brands_request'
+        get :profile
+        get '/manage-admins', to: 'admins#manage_admins'
+        get :influencer_list
+        get :brand_list
+      end
+    end
+  end
+
   # root to: 'public#home', as: :root
   authenticated :user do
     root to: 'profile#profile', as: :authenticated_root

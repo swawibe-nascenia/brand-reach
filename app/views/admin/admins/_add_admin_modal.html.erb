@@ -1,0 +1,53 @@
+<div aria-hidden="false" class="modal fade in" id="add-admin-modal">
+  <div class="modal-backdrop fade in"></div>
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header close-image">
+        <button area-label="Close" class="close first_close" data-dismiss="modal" tyle="button"></button>
+        <h3 class="modal-title">Add new Admin</h3>
+      </div>
+      <div class="modal-body model-iner">
+        <div id="validation-error"></div>
+        <form method="post" accept-charset="UTF-8" action="<%= admin_admins_path %>"
+              data-remote="true" data-parsley-validate="">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <div class="input_container">
+            <div class="label_l">First Name</div>
+            <input data-parsley-id="6021" class="login_input" data-parsley-required="true"
+                   data-parsley-trigger="change" name="user[first_name]" id="user_email" type="text">
+            <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
+          </div>
+
+          <div class="input_container">
+            <div class="label_l">Last Name</div>
+            <input data-parsley-id="6021" class="login_input" data-parsley-required="true"
+                   data-parsley-trigger="change" name="user[last_name]" id="user_email" type="text">
+            <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
+          </div>
+
+          <div class="input_container">
+            <div class="label_l">Email</div>
+            <input data-parsley-id="6021" class="login_input" data-parsley-required="true"
+                   data-parsley-trigger="change" name="user[email]" id="user_email" type="text">
+            <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
+          </div>
+          <div class="input_container">
+            <div class="label_l">Password</div>
+            <input data-parsley-id="6194" class="login_input" data-parsley-required="true"
+                   data-parsley-trigger="change" name="user[password]" id="user_password" type="password">
+            <ul id="parsley-id-6194" class="parsley-errors-list"></ul>
+          </div>
+          <div class="input_container">
+            <div class="label_l">Confirm password</div>
+            <input class="login_input" id="user_password_confirmation" type="password"
+                   name="user[password_confirmation]" autocomplete="off" data-parsley-required="true"
+                   data-parsley-trigger="change">
+          </div>
+          <button class="btn btn-modal-submit" type="submit">
+            SUBMIT
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

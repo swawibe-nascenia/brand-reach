@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= yield(:title) %></title>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
+  <%= stylesheet_link_tag 'application.css', media: 'all' %>
+  <%= stylesheet_link_tag 'sweetalert', media: 'all' %>
+  <%= stylesheet_link_tag 'admin', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'sweetalert.min' %>
+  <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Hind' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tag %>
+  <!--handlebars message template-->
+
+  <%= yield :head %>
+</head>
+<body class="skin-blue sidebar-mini">
+<div class="wrapper">
+  <header class="main-header visible-xs">
+    <nav class="navbar navbar-static-top" role="navigation">
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <section class="sidebar">
+      <div class="admin-sidebar-top-space"></div>
+      <ul class="sidebar-menu">
+        <% if policy(:admin).manage_brandreach? %>
+            <li class="<%= current_path profile_admin_admins_path %>">
+              <a href="<%= profile_admin_admins_path %>">
+                <i class="fa fa-user"></i><span class="space-sidebar">Profile</span>
+              </a>
+            </li>
+            <li class="<%= current_path brands_request_admin_admins_path %>">
+              <a href="<%= brands_request_admin_admins_path %>">
+                <i class="fa fa-user"></i><span class="space-sidebar">Brands Request</span>
+              </a>
+            </li>
+            <li class="<%= current_path influencer_list_admin_admins_path  %>">
+              <a href="<%= influencer_list_admin_admins_path %>">
+                <i class="fa fa-user"></i><span class="space-sidebar">Active Influencers</span>
+              </a>
+            </li>
+            <li class="<%= current_path brand_list_admin_admins_path %>">
+              <a href="<%= brand_list_admin_admins_path %>">
+                <i class="fa fa-user"></i><span class="space-sidebar">Active brands</span>
+              </a>
+            </li>
+        <% end %>
+
+        <% if policy(:admin).manage_admins? %>
+            <li class="<%= current_path manage_admins_admin_admins_path %>">
+              <a href="<%= manage_admins_admin_admins_path %>">
+                <span class="glyphicon glyphicon-envelope"></span><span class="space-sidebar">Admins</span>
+              </a>
+            </li>
+        <% end %>
+      </ul>
+    </section>
+  </aside>
+
+  <div class="content-wrapper">
+    <section class="header-content">
+      <div class="row">
+        <div class="about-welcome">
+          <%= link_to 'FAQs', faqs_public_index_path, class: 'about' %>
+          <p class=" welcome"> Welcome
+            back, <%= current_user.try(:full_name).present? ? current_user.full_name : 'USER' %>!</p>
+          <a href="<%= destroy_user_session_path %>" class="login-link">
+            <p class="text-black text-center" title="Log Out" data-toggle="pop"><i class="fa fa-power-off"></i></p>
+          </a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+          <a href="<%= current_user.brand? ? brand_home_public_index_path : root_url %>"><%= image_tag('Logo.png', :class => 'image img-responsive header-logo', :alt => 'Logo') %></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="header-bottom-margin"></div>
+
+    <!-- main content -->
+    <div class="main-content">
+      <%= render partial: 'shared/flash_messages', flash: flash %>
+
+      <%= yield %>
+
+    </div>
+  </div>
+</div>
+<!-- /.content-wrapper -->
+<footer class="main-footer">
+  <div class="text-center footer-content">
+    All Rights Reserved <span class="rights-reserved">&reg;</span> Brand Reach | Copyright 2015
+  </div>
+</footer>
+
+</body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[data-toggle="pop"]').popover({trigger: 'hover', placement: "bottom"});
+    });
+</script>

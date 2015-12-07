@@ -1,0 +1,29 @@
+<% title 'Manage admins' %>
+
+<div class="admin-page-wrapper">
+  <h1 class="text-center">Manage admins</h1>
+  <br/>
+  <div class="alert-danger"></div>
+  <br/>
+  <div class="">
+    <a href="#add-admin-modal" data-toggle='modal' class="btn btn-primary raleway-semibold">+ Add new admin</a>
+  </div>
+  <br/>
+  <br/>
+
+  <table class="table table-responsive admin-table">
+    <tbody>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+    <% @admins.each do |admin| %>
+        <%= render partial: 'admin', object: admin %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= render 'add_admin_modal' %>

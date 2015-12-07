@@ -1,0 +1,17 @@
+<% title 'Active Influencer' %>
+
+<div class="admin-page-wrapper">
+  <h1 class="text-center">Active Influencer</h1>
+
+  <table class="table table-responsive admin-table">
+    <tbody>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+    <%= render partial: 'user', collection: @influencers %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,19 @@
+<% title 'Active Brands' %>
+
+<div class="admin-page-wrapper">
+  <h1 class="">Active Brands</h1>
+    <br/>
+    <br/>
+  <table class="table table-responsive admin-table">
+    <tbody>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+
+    <%= render partial: 'user', collection: @brands %>
+    </tbody>
+  </table>
+</div>

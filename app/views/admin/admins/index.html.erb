@@ -1,0 +1,30 @@
+<% title 'admin' %>
+
+<div class="admin-page-wrapper">
+  <h1 class="text-center">Admin page </h1>
+
+  <table class="table table-responsive admin-table">
+    <tbody>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+    <% @admins.each do |admin| %>
+        <tr>
+          <td><%= admin.first_name %></td>
+          <td><%= admin.last_name %></td>
+          <td><%= admin.email %></td>
+          <td>
+            <a href="<%= admin %>" class="btn btn-xs btn-danger">REMOVE</a>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <div class="">
+    <a href="javascript:;" class="btn btn-sm btn-success">Add new admin</a>
+  </div>
+</div>

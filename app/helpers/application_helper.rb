@@ -19,7 +19,7 @@ module ApplicationHelper
   end
 
   def current_path(path)
-    'current' if current_page?(path)
+    'active' if current_page?(path)
   end
 
   def price_drop_down
