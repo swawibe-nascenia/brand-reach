@@ -7,38 +7,30 @@
         <h4 class="modal-title" id="myModalLabel"></h4>
       </div>
       <div class="modal-body">
-        <div class="row ">
-          <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3 right-zero-padding">
-                <%= image_tag(influencer.profile_picture, :class => 'explore-influencer-picture', :alt => 'profile-picture') %>
-              </div>
-
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-                <h4><%= influencer.full_name %></h4>
-                <p class="title"> <%= influencer.industry %> </p>
-                <p class="influencer-address"> <%= influencer.location %></p>
-              </div>
-            </div>
+          <div class="display-inline-block influencer-modal-image">
+            <%= image_tag(influencer.profile_picture, :class => 'explore-influencer-picture', :alt => 'profile-picture') %>
           </div>
 
-          <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12">
-            <div class="btn-box pull-right">
-              <%= link_to 'Send Request', new_campaign_path(receiver_id: influencer.id, social_account_id: influencer.active_facebook_accounts.first.id), class: 'btn btn-message button-border-yellow btn-send-offer-request', data: {href: new_campaign_path(receiver_id: influencer.id)} %>
-            </div>
-            <div class="follower-box pull-right">
+          <div class="display-inline-block">
+            <h4><%= influencer.full_name %></h4>
+            <p class="title"> <%= influencer.industry %> </p>
+            <p class="influencer-address"> <%= influencer.location %></p>
+          </div>
+
+          <div class="display-inline-block pull-right like-send-request">
+            <div class="follower-box">
               <span class="follower-number"><%= influencer.max_followers %></span>
               <p> Likes</p>
             </div>
+            <div class="btn-box btn-send-request">
+              <%= link_to 'Send Request', new_campaign_path(receiver_id: influencer.id, social_account_id: influencer.active_facebook_accounts.first.id), class: 'btn btn-message button-border-yellow btn-send-offer-request', data: {href: new_campaign_path(receiver_id: influencer.id)} %>
+            </div>
           </div>
-        </div>
 
-        <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <p class="profile-info">
-              <%= influencer.short_bio %>
-            </p>
-          </div>
+        <div class="">
+          <p class="profile-info">
+            <%= influencer.short_bio %>
+          </p>
         </div>
         <!-- start of pricing section -->
 
@@ -116,17 +108,17 @@
 <script>
     $('.social-account-nav-tabs a:first').tab('show');
 
-     $(function(){
-         $('.influencer-social-account-tab').click(function(){
-             var offerSendBtn = $('a.btn-send-offer-request');
-             var baseOfferUrl = offerSendBtn.data('href');
-             console.log('current profile base url is ' + baseOfferUrl);
+    $(function(){
+        $('.influencer-social-account-tab').click(function(){
+            var offerSendBtn = $('a.btn-send-offer-request');
+            var baseOfferUrl = offerSendBtn.data('href');
+            console.log('current profile base url is ' + baseOfferUrl);
 
-             var socialAccountId = $(this).data('id');
-             var newUrl = baseOfferUrl + '&social_account_id=' + socialAccountId;
-             offerSendBtn.prop("href", newUrl);
+            var socialAccountId = $(this).data('id');
+            var newUrl = baseOfferUrl + '&social_account_id=' + socialAccountId;
+            offerSendBtn.prop("href", newUrl);
 
-             console.log('Now new url is  ' + offerSendBtn.prop('href'));
-         });
-     });
+            console.log('Now new url is  ' + offerSendBtn.prop('href'));
+        });
+    });
 </script>

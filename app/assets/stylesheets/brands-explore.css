@@ -252,3 +252,34 @@
 .pricing-section {
     padding-top: 8px;
 }
+
+.influencer-modal-image {
+    vertical-align: top;
+    padding-right: 20px;
+}
+
+.view-profile-modal a {
+    word-break: break-all;
+}
+
+@media
+only screen and (max-width: 900px) {
+    .like-send-request {
+        margin-top: 20px;
+        display: block !important;
+        float: none !important;
+    }
+
+    .modal-profile .modal-body .profile-info {
+        padding: 28px 0 7px 0;
+    }
+
+    .view-profile-modal {
+        width: 100%;
+    }
+
+    .btn-send-request {
+        margin-top: 15px;
+        margin-left: 0;
+    }
+}
