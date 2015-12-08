@@ -1302,11 +1302,21 @@ h5, .h5 {
 }
 
 .admin-sign-in-container{
-  max-width: 500px;
-  margin: 20% auto 0;
+  background-color: #cccccc;
+  height: 100%;
 }
 
 .font-raleway {
   font-family: 'Raleway', sans-serif;
   color: #333333;
+}
+.admin-sign-in-form{
+  border: 2px solid #999999;
+  margin: 9% 32%;
+  padding: 44px;
+  background-color: #f5fafa;
+  font-size: 13px;
+}
+.admin-sign-in-form a{
+  font-size: 12px;
 }
