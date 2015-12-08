@@ -1,5 +1,5 @@
 class Admin::AdminsController < ApplicationController
-  skip_before_action :check_profile_completion
+  skip_before_action :check_profile_completion, :block_admin_user
   skip_before_action :authenticate_user!, only: [:log_in]
   before_filter :log_in_user?, only: [:log_in]
   # before_filter :admin?

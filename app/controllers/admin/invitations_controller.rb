@@ -1,5 +1,5 @@
 class Admin::InvitationsController < ApplicationController
-  skip_before_action :check_profile_completion
+  skip_before_action :check_profile_completion, :block_admin_user
   layout 'admin'
 
   def index

@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_filter :authenticate_user!, :initialize_server_subscription, :check_profile_completion,
+  before_filter :authenticate_user!, :block_admin_user, :initialize_server_subscription, :check_profile_completion,
                 :set_cache_buster
   before_action :configure_permitted_parameters, if: :devise_controller?
-  skip_before_action :check_profile_completion, if: :devise_controller?
+  skip_before_action :check_profile_completion, :block_admin_user, if: :devise_controller?
 
   layout :layout_by_resource
 
@@ -90,5 +90,11 @@ class ApplicationController < ActionController::Base
       flash[:error] = error_messages
       redirect_to profile_profile_index_path
      end
+  end
+
+  def block_admin_user
+    if user_signed_in? && (current_user.admin? || current_user.super_admin?)
+      redirect_to after_sign_in_path_for(current_user)
+    end
   end
 end
