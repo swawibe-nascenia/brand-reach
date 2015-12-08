@@ -2,10 +2,10 @@
     <div class="alert fade in">
       <% if message.kind_of?(Array)%>
             <% message.each do |message_text| %>
-              <P class="<%= bootstrap_class_for(type) %>"><%= message_text %></P>
+              <P class="error-text"><%= message_text %></P>
             <% end %>
       <% else %>
-          <%= message %>
+          <P class="error-text"><%= message %></P>
        <% end %>
     </div>
 <% end %>
