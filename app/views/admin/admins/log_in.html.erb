@@ -22,10 +22,11 @@
 </style>
 <div class="admin-sign-in-container">
   <div class="panel panel-primary">
-    <%= render partial: 'shared/flash_messages', flash: flash unless flash[:notice].eql?('Signed out successfully.') %>
     <br/>
     <br/>
     <form class="admin-sign-in-form" method="post" accept-charset="UTF-8" action="/users/sign_in" data-remote="<%= params[:controller] == 'public' %>" data-parsley-validate="">
+      <%= render partial: 'shared/flash_messages', flash: flash unless flash[:notice].eql?('Signed out successfully.') %>
+<br/>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <div class="input_container">
         <div class="label_l">Email</div>

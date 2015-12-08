@@ -10,7 +10,7 @@ class SessionsController < Devise::SessionsController
     Rails.logger.info "------------------- temporary user by email #{ temp_user.inspect }"
 
     if temp_user
-      if !(params[:admin].present? && (temp_user.admin? || temp_user.super_admin?))
+      if (params[:admin].present? && (temp_user.brand? || temp_user.influencer?))
         Rails.logger.info "No authority "
         flash[:error] = 'You are unauthorized to access the page.'
         redirect_to admin_path
