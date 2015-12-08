@@ -1,0 +1,36 @@
+<html>
+<head>
+  <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+<body>
+<div class="admin-sign-in-container">
+  <%= render partial: 'shared/flash_messages', flash: flash %>
+  <br/>
+  <br/>
+  <form class="show-spinner-on-submit" method="post" accept-charset="UTF-8" action="/users/sign_in" data-remote="<%= params[:controller] == 'public' %>" data-parsley-validate="">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class="input_container">
+      <div class="label_l">Email</div>
+      <input data-parsley-id="6021" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[email]" id="user_email" type="text">
+      <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
+    </div>
+    <div class="input_container">
+      <div class="label_l">Password</div>
+      <input data-parsley-id="6194" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[password]" id="user_password" type="password">
+      <ul id="parsley-id-6194" class="parsley-errors-list"></ul>
+    </div>
+    <%= hidden_field_tag 'admin', true %>
+    <button class="btn btn-modal-submit has-spinner" type="submit">
+      <span class="spinner"><i class="fa fa-spinner fa-spin"></i></span>
+      SUBMIT
+    </button>
+
+    <%= link_to 'Forgot your password', new_user_password_path, data: {toggle: 'modal', dismiss: 'modal'} %><br/>
+  </form>
+</div>
+</body>
+
+</html>
+
+

@@ -1,0 +1,56 @@
+<%= stylesheet_link_tag 'awesomplete', media: 'all' %>
+<%= stylesheet_link_tag 'profile.css', media: 'all' %>
+<%= javascript_include_tag 'awesomplete' %>
+
+<% title 'Profile' %>
+
+<div class="admin-page-wrapper brands-profile-page-wrapper">
+
+  <%= render 'shared/show_errors', :object => @admin %>
+
+  <%= form_for @admin, url: admin_admin_path(@admin), html: {class: 'form-horizontal personal-info-form'} do |f| %>
+
+      <div class="personal-info-without-fb">
+
+        <h4 class="personal-info">PERSONAL INFORMATION</h4>
+
+        <div class="form-group">
+          <div class="col-md-6">
+            <%= f.label :first_name, 'First Name' %>
+            <%= f.text_field :first_name, maxlength: 20 %>
+          </div>
+          <div class="col-md-6">
+            <%= f.label :last_name, 'Last Name' %>
+            <%= f.text_field :last_name, maxlength: 20 %>
+          </div>
+        </div>
+
+        <div class="divider-personal-info-password"></div>
+
+        <h4 class="account-setup">ACCOUNT SETUP</h4>
+
+        <div class="form-group">
+          <div class="col-md-6">
+            <%= f.label :current_password, 'Old Password' %>
+            <%= f.password_field :current_password %>
+          </div>
+          <div class="col-md-6">
+            <label>&nbsp;</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-6">
+            <%= f.label :password, 'New Password' %>
+            <%= f.password_field :password %>
+          </div>
+          <div class="col-md-6">
+            <%= f.label :password_confirmation, 'Retype Password' %>
+            <%= f.password_field :password_confirmation %>
+          </div>
+        </div>
+      </div>
+      </div>
+      <%= f.button 'UPDATE', class: 'btn btn-update button-border-yellow' %>
+  <% end %>
+

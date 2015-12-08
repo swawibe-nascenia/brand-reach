@@ -1,0 +1,16 @@
+<tr>
+  <td><%= user.first_name %></td>
+  <td><%= user.last_name %></td>
+  <td><%= user.email %></td>
+  <td>
+    <% if user.verified? %>
+        <a href="javascript:;" class="text-red  text-danger deactivate-user">
+          <h5>DEACTIVATE</h5>
+        </a>
+    <% else %>
+        <a href="javascript:;" class="text-red  text-danger activate-user">
+          <h5>DEACTIVATE</h5>
+        </a>
+    <% end %>
+  </td>
+</tr>

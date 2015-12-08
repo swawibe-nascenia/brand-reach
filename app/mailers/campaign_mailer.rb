@@ -68,4 +68,15 @@ class CampaignMailer < ApplicationMailer
     @message = params[:message]
     mail(from: 'hasanuzzaman@nascenia.com', to: 'swawibe@bdipo.com', subject: 'Get In Touch Message')
   end
+
+  def invitation (params)
+    @name = params['name']
+    @mail = params['email']
+    Rails.logger.info "=============== Send invitaions to request name #{@name} email#{@mail}=====#{params.inspect}==========="
+
+    @brandReach = root_url
+    subject = "We'd like to have you on Brandreach.
+               Be a brand/influencer on one of the most amazing knowledge sharing platforms."
+    mail(from: 'hasanuzzaman@nascenia.com', to: @mail, subject: subject)
+  end
 end

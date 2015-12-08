@@ -31,10 +31,14 @@ class SessionsController < Devise::SessionsController
         else
           #   authentication fail
           Rails.logger.info "------------------- current sign in authentication fail for #{ user.inspect }"
-
-          respond_to do |format|
-            format.js { @messages << 'Email, password not matching' }
-            format.html { flash.now[:error] = 'Email, password not matching' }
+          if params[:admin].present?
+            flash[:error] = 'Email, password not matching'
+             redirect_to admin_path
+          else
+            respond_to do |format|
+              format.js { @messages << 'Email, password not matching' }
+              format.html { flash.now[:error] = 'Email, password not matching' }
+            end
           end
         end
       else
@@ -46,10 +50,16 @@ class SessionsController < Devise::SessionsController
       end
     else
       #   user not found by email
-      respond_to do |format|
-        format.js { @messages << 'This e-mail ID was not found.' }
-        format.html { flash.now[:error] = 'This e-mail ID was not found.' }
+      if params[:admin].present?
+        flash[:error] = 'This e-mail ID was not found.'
+        redirect_to admin_path
+      else
+        respond_to do |format|
+          format.js { @messages << 'This e-mail ID was not found.' }
+          format.html { flash.now[:error] = 'This e-mail ID was not found.' }
+        end
       end
+
     end
   end
 end

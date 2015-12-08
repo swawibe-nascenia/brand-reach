@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   # == Constants == #
   # ----------------------------------------------------------------------
 
-  enum user_type: [:brand, :influencer]
+  enum user_type: [:brand, :influencer, :admin, :super_admin]
 
   enum gender: [:male, :female, :other]
 
@@ -61,7 +61,8 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   validates :zip_code, zipcode: { country_code_attribute: :country }, if: 'zip_code.present?'
   validates :short_bio, length: { maximum: 1000 }
-  validates :first_name, :last_name, :company_name, :industry, :phone, :street_address, :city, :zip_code, :country, :company_email, :short_bio, presence: true, on: :update
+  validates :first_name, :last_name, :company_name, :industry, :phone, :street_address, :city, :zip_code, :country,
+            :company_email, :short_bio, presence: true, on: :update, if: Proc.new{|u| u.brand? || u.influencer?}
 
 
   # ----------------------------------------------------------------------
@@ -76,7 +77,7 @@ class User < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   scope :influencers, ->{ where( user_type: user_types[:influencer], is_active: true)}
-  scope :brands, ->{ where( user_type: user_types[:brand], is_active: true)}
+  scope :brands, ->{ where( user_type: user_types[:brand], is_active: true, verified: true)}
 
   # ----------------------------------------------------------------------
   # == Instance methods == #

@@ -1,0 +1,31 @@
+
+<div aria-hidden="false" class="modal fade in" id="invitation-modal">
+  <div class="modal-backdrop fade in"></div>
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header close-image">
+        <button area-label="Close" class="close first_close" data-dismiss="modal" tyle="button"></button>
+        <h3 class="modal-title">Sent Invitation</h3>
+      </div>
+      <div class="modal-body model-iner">
+        <div id="validation-error"></div>
+          <%= form_for :invitation, remote: true, data:{:'parsley-validate' => true} do |f| %>
+          <div class="input_container">
+            <div class="label_l">Name</div>
+            <%= f.text_field :name, class: 'login_input', data: {:'parsley-trigger' => 'change',
+                                                                 :'parsley-required' => 'true'} %>
+          </div>
+
+          <div class="input_container">
+            <div class="label_l">Email</div>
+            <%= f.text_field :email, class: 'login_input', data: {:'parsley-trigger' => 'change',
+                                                                 :'parsley-required' => 'true'} %>
+          </div>
+          <button class="btn btn-modal-submit" type="submit">
+            SUBMIT
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

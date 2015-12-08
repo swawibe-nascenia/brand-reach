@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
   require 'csv'
+  include Pundit
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_filter :authenticate_user!, :initialize_server_subscription, :check_profile_completion, :set_cache_buster
+  before_filter :authenticate_user!, :initialize_server_subscription, :check_profile_completion,
+                :set_cache_buster
   before_action :configure_permitted_parameters, if: :devise_controller?
   skip_before_action :check_profile_completion, if: :devise_controller?
 
@@ -15,13 +17,30 @@ class ApplicationController < ActionController::Base
     response.headers['Expires'] = 'Fri, 01 Jan 1990 00:00:00 GMT'
   end
 
+  # override of device method that contain redirect logic after sing in
   def after_sign_in_path_for(resource)
     Rails.logger.info "Current user is #{current_user.user_type} and profile compete status is #{current_user.profile_complete?}"
-    if current_user.influencer? && current_user.profile_complete?
-      Rails.logger.info "---- sing in redirec to facebook insight"
+    if current_user.super_admin?
+      manage_admins_admin_admins_path
+    elsif current_user.admin?
+      profile_admin_admins_path
+    elsif current_user.influencer? && current_user.profile_complete?
       insights_facebook_index_path
     else
       profile_profile_index_path
+    end
+  end
+
+  # pundit authorization error handling
+  rescue_from Pundit::NotAuthorizedError do
+    flash[:error] = 'You have no authorization for last request'
+
+    if current_user.super_admin?
+      redirect_to manage_admins_admin_admins_path
+    elsif current_user.admin?
+      redirect_to profile_admin_admins_path
+    else
+      redirect_to root_path
     end
   end
 

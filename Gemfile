@@ -46,7 +46,7 @@ gem 'chart-js-rails'
 gem 'validates_zipcode'
 gem 'parsley-rails'
 gem 'whenever', '0.9.4', :require => false
-
+gem 'pundit', '1.0.1'
 # gem 'haml'
 # gem 'haml-rails'
 # Use Unicorn as the app server
