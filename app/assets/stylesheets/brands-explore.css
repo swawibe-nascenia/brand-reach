@@ -306,7 +306,7 @@ only screen and (max-width: 767px) {
 }
 
 @media
-only screen and (max-width: 480px){
+only screen and (max-width: 460px){
     .like-send-request {
         float: none !important;
     }
@@ -319,10 +319,6 @@ only screen and (max-width: 480px){
         padding-right: 0;
     }
 
-}
-
-@media
-only screen and (max-width: 420px){
     .modal-profile .modal-body {
         padding: 0 25px;
     }
@@ -330,5 +326,11 @@ only screen and (max-width: 420px){
     .btn-send-request {
         margin-left: 0;
     }
+
+    .btn-message {
+        width: auto;
+    }
+
 }
+
 
