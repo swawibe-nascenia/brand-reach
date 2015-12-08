@@ -42,12 +42,12 @@
             </li>
             <li class="<%= current_path brands_request_admin_admins_path %>">
               <a href="<%= brands_request_admin_admins_path %>">
-                <span class="space-sidebar">Pending Brands Request</span>
+                <span class="space-sidebar">Brands Request</span>
               </a>
             </li>
             <li class="<%= current_path influencer_list_admin_admins_path  %>">
               <a href="<%= influencer_list_admin_admins_path %>">
-                <span class="space-sidebar">Active Influencers</span>
+                <span class="space-sidebar">Influencers</span>
               </a>
             </li>
             <li class="<%= current_path brand_list_admin_admins_path %>">
@@ -76,6 +76,9 @@
   <div class="content-wrapper">
     <section class="header-content">
       <div class="row">
+        <a href="<%= current_user.brand? ? brand_home_public_index_path : root_url %>" class="display-inline-block">
+          <%= image_tag('Logo.png', :class => 'image img-responsive header-logo', :alt => 'Logo') %>
+        </a>
         <div class="about-welcome">
           <%= link_to 'FAQs', faqs_public_index_path, class: 'about' %>
           <p class=" welcome"> Welcome
@@ -86,11 +89,6 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-3 col-sm-3 col-xs-12">
-          <a href="<%= current_user.brand? ? brand_home_public_index_path : root_url %>"><%= image_tag('Logo.png', :class => 'image img-responsive header-logo', :alt => 'Logo') %></a>
-        </div>
-      </div>
     </section>
 
     <div class="header-bottom-margin"></div>
