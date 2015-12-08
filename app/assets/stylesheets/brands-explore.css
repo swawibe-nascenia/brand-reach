@@ -263,15 +263,20 @@
 }
 
 @media
+only screen and (max-width: 1050px) {
+    .social-account-tab-content {
+        padding-right: 0;
+    }
+}
+
+@media
 only screen and (max-width: 900px) {
     .like-send-request {
-        margin-top: 20px;
-        display: block !important;
-        float: none !important;
+        margin-left: 20px;
     }
 
     .modal-profile .modal-body .profile-info {
-        padding: 10px 0;
+        padding: 20px 0;
     }
 
     .view-profile-modal {
@@ -300,10 +305,6 @@ only screen and (max-width: 420px){
 
     .btn-send-request {
         margin-left: 0;
-    }
-
-    .social-account-tab-content {
-        padding-right: 0;
     }
 }
 
