@@ -12,23 +12,23 @@
           </div>
 
           <div class="display-inline-block">
-            <h4><%= influencer.full_name %></h4>
-            <p class="title"> <%= influencer.industry %> </p>
-            <p class="influencer-address"> <%= influencer.location %></p>
+            <h4 class="font-raleway"><%= influencer.full_name %></h4>
+            <p class="title font-raleway"> <%= influencer.industry %> </p>
+            <p class="influencer-address font-raleway"> <%= influencer.location %></p>
           </div>
 
           <div class="display-inline-block pull-right like-send-request">
-            <div class="follower-box">
-              <span class="follower-number"><%= influencer.max_followers %></span>
+            <div class="follower-box font-raleway">
+              <div class="follower-number"><%= influencer.max_followers %></div>
               <p> Likes</p>
             </div>
             <div class="btn-box btn-send-request">
-              <%= link_to 'Send Request', new_campaign_path(receiver_id: influencer.id, social_account_id: influencer.active_facebook_accounts.first.id), class: 'btn btn-message button-border-yellow btn-send-offer-request', data: {href: new_campaign_path(receiver_id: influencer.id)} %>
+              <%= link_to 'Send Request', new_campaign_path(receiver_id: influencer.id, social_account_id: influencer.active_facebook_accounts.first.id), class: 'btn btn-message button-border-yellow btn-send-offer-request font-raleway', data: {href: new_campaign_path(receiver_id: influencer.id)} %>
             </div>
           </div>
 
         <div class="">
-          <p class="profile-info">
+          <p class="profile-info font-raleway">
             <%= influencer.short_bio %>
           </p>
         </div>
@@ -36,7 +36,7 @@
 
         <% if influencer.active_facebook_accounts.present? %>
 
-            <h4> Pricing</h4>
+            <h4 class="font-raleway"> Pricing</h4>
 
             <div class="row pricing-section">
               <div class="col-md-12">
@@ -49,7 +49,7 @@
                     <% end %>
                   </ul>
 
-                  <div class="tab-content social-account-tab-content">
+                  <div class="tab-content social-account-tab-content font-raleway">
                     <% influencer.active_facebook_accounts.each do |account| %>
                         <div id="fb_<%= account.id %>" class="tab-pane">
                           <div class="form-group">
@@ -80,7 +80,7 @@
             </div>
         <% end %>
 
-        <div class="social-media-info"> Social Media Information</div>
+        <div class="social-media-info font-raleway"> Social Media Information</div>
         <p>
           <span class="view-profile-fb-twitter-color">Facebook:</span>
           <a href="<%= "https://www.facebook.com/app_scoped_user_id/#{influencer.uid}/" %>">
@@ -88,16 +88,16 @@
           </a>
         </p>
 
-        <p><span class="view-profile-fb-twitter-color"> &nbsp;  &nbsp; Twitter:</span> N/A</p>
+        <p class="font-raleway"><span class="view-profile-fb-twitter-color"> &nbsp;  &nbsp; Twitter:</span> N/A</p>
 
         <div class="row">
           <div class="col-md-6">
-            <div class="view-profile-industry"> Industry</div>
-            <p><%= influencer.industry %></p>
+            <div class="view-profile-industry font-raleway"> Industry</div>
+            <p class="font-raleway"><%= influencer.industry %></p>
           </div>
           <div class="col-md-6">
-            <div class="view-profile-industry"> Location</div>
-            <p><%= influencer.location %></p>
+            <div class="view-profile-industry font-raleway"> Location</div>
+            <p class="font-raleway"><%= influencer.location %></p>
           </div>
         </div>
       </div>
