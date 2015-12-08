@@ -746,8 +746,20 @@ only screen and (max-width: 420px) {
     }
 }
 
+
 @media
-only screen and (max-width: 680px) {
+only screen and (max-width: 1200px) {
+    .social-account-tab-content {
+        padding: 15px;
+    }
+
+    #post_cost, .campaign-date {
+        width: 52%;
+    }
+}
+
+@media
+only screen and (max-width: 768px) {
     .social-account-tab-content {
         padding: 15px;
     }
