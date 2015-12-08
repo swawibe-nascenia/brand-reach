@@ -102,12 +102,12 @@
     height: 80px;
     border-radius: 2px;
     font-size: 15px;
-    display: inline-block;
+    float: left;
 }
 
 .btn-box{
-    margin-left: 8px;
-    display: inline-block;
+    margin-top: 12px;
+    float: left;
 }
 
 .follower-box{
@@ -116,6 +116,7 @@
     min-width: 100px;
     text-align: center;
     margin-top: 12px;
+    margin-right: 10px;
 }
 
 .follower-box .follower-number{
@@ -287,10 +288,6 @@ only screen and (max-width: 950px) {
         width: 100%;
     }
 
-    .btn-send-request {
-        margin-top: 15px;
-    }
-
     .influencer-profile-modal label {
         padding: 5px;
     }
@@ -304,11 +301,10 @@ only screen and (max-width: 950px) {
 @media
 only screen and (max-width: 480px){
     .like-send-request {
-        display: block !important;
         float: none !important;
     }
 
-    .like-send-request {
+    .like-send-request, .btn-box {
         margin-left: 0;
     }
 
