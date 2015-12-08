@@ -76,11 +76,8 @@
   <div class="content-wrapper">
     <section class="header-content">
       <div class="row">
-        <a href="<%= current_user.brand? ? brand_home_public_index_path : root_url %>" class="display-inline-block">
-          <%= image_tag('Logo.png', :class => 'image img-responsive header-logo', :alt => 'Logo') %>
-        </a>
+          <%= image_tag('Logo.png', :class => 'image img-responsive header-logo display-inline-block', :alt => 'Logo') %>
         <div class="about-welcome">
-          <%= link_to 'FAQs', faqs_public_index_path, class: 'about' %>
           <p class=" welcome"> Welcome
             back, <%= current_user.try(:full_name).present? ? current_user.full_name : 'USER' %>!</p>
           <a href="<%= destroy_user_session_path %>" class="login-link">
