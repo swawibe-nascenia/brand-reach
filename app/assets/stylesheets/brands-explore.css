@@ -268,7 +268,7 @@
 }
 
 @media
-only screen and (max-width: 1050px) {
+only screen and (max-width: 1060px) {
     .social-account-tab-content {
         padding-right: 0;
     }
@@ -299,6 +299,13 @@ only screen and (max-width: 950px) {
 }
 
 @media
+only screen and (max-width: 767px) {
+    .social-account-tab-content {
+        padding-right: 10%;
+    }
+}
+
+@media
 only screen and (max-width: 480px){
     .like-send-request {
         float: none !important;
@@ -306,6 +313,10 @@ only screen and (max-width: 480px){
 
     .like-send-request, .btn-box {
         margin-left: 0;
+    }
+
+    .social-account-tab-content {
+        padding-right: 0;
     }
 
 }

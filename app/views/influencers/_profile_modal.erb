@@ -53,21 +53,21 @@
                     <% influencer.active_facebook_accounts.each do |account| %>
                         <div id="fb_<%= account.id %>" class="tab-pane">
                           <div class="form-group">
-                            <div class="col-md-6 col-sm-9 col-xs-11">
+                            <div class="col-md-6 col-sm-9 col-xs-12">
                               <%= label_tag :status_update_cost, 'Status Update' %>
                               <%= text_field_tag '', account.status_update_cost, :disabled => true %> INR
                             </div>
-                            <div class="col-md-6 col-sm-9 col-xs-11">
+                            <div class="col-md-6 col-sm-9 col-xs-12">
                               <%= label_tag :cover_photo_cost, 'Cover Photo' %>
                               <%= text_field_tag '', account.cover_photo_cost, :disabled => true %> INR
                             </div>
                           </div>
                           <div class="form-group">
-                            <div class="col-md-6 col-sm-9 col-xs-11">
+                            <div class="col-md-6 col-sm-9 col-xs-12">
                               <%= label_tag :profile_photo_cost, 'Profile Photo' %>
                               <%= text_field_tag '', account.profile_photo_cost, :disabled => true %> INR
                             </div>
-                            <div class="col-md-6 col-sm-9 col-xs-11">
+                            <div class="col-md-6 col-sm-9 col-xs-12">
                               <%= label_tag :video_post_cost, 'Video Post' %>
                               <%= text_field_tag '', account.video_post_cost, :disabled => true %> INR
                             </div>
