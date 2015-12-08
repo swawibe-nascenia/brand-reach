@@ -1,6 +1,7 @@
 class Admin::AdminsController < ApplicationController
   skip_before_action :check_profile_completion
   skip_before_action :authenticate_user!, only: [:log_in]
+  before_filter :log_in_user?, only: [:log_in]
   # before_filter :admin?
   respond_to :html, :js, :json
 
@@ -135,5 +136,11 @@ class Admin::AdminsController < ApplicationController
   def admin_params
     params.require(:user).permit(:current_password, :first_name, :last_name, :email, :password, :password_confirmation,
                     :is_active, :verified, :user_type)
+  end
+
+  def log_in_user?
+    if user_signed_in?
+      redirect_to after_sign_in_path_for(current_user)
+    end
   end
 end
