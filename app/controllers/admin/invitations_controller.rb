@@ -3,10 +3,12 @@ class Admin::InvitationsController < ApplicationController
   layout 'admin'
 
   def index
+    authorize :admin, :manage_brandreach?
     @invitations = Admin::Invitation.all
   end
 
   def create
+    authorize :admin, :manage_brandreach?
     @invitation = Admin::Invitation.create(invitation_params)
   end
 
