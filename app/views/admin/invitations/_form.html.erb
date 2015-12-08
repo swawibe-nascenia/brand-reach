@@ -11,10 +11,16 @@
         <div id="validation-error"></div>
           <%= form_for :invitation, remote: true, data:{:'parsley-validate' => true} do |f| %>
           <div class="input_container">
-            <div class="label_l">Name</div>
-            <%= f.text_field :name, class: 'login_input', data: {:'parsley-trigger' => 'change',
+            <div class="label_l">First Name</div>
+            <%= f.text_field :first_name, class: 'login_input', data: {:'parsley-trigger' => 'change',
                                                                  :'parsley-required' => 'true'} %>
           </div>
+
+            <div class="input_container">
+              <div class="label_l">Last Name</div>
+              <%= f.text_field :last_name, class: 'login_input', data: {:'parsley-trigger' => 'change',
+                                                                   :'parsley-required' => 'true'} %>
+            </div>
 
           <div class="input_container">
             <div class="label_l">Email</div>

@@ -70,7 +70,7 @@ class CampaignMailer < ApplicationMailer
   end
 
   def invitation (params)
-    @name = params['name']
+    @name = "#{params['first_name']} #{params[:last_name]}"
     @mail = params['email']
     Rails.logger.info "=============== Send invitaions to request name #{@name} email#{@mail}=====#{params.inspect}==========="
 
