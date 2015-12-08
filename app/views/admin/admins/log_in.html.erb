@@ -5,7 +5,7 @@
 </head>
 <body>
 <div class="admin-sign-in-container">
-  <%= render partial: 'shared/flash_messages', flash: flash %>
+  <%= render partial: 'shared/flash_messages', flash: flash unless flash[:notice].eql?('Signed out successfully.') %>
   <br/>
   <br/>
   <form class="show-spinner-on-submit" method="post" accept-charset="UTF-8" action="/users/sign_in" data-remote="<%= params[:controller] == 'public' %>" data-parsley-validate="">
