@@ -11,7 +11,7 @@
 }
 
 .admin-table thead th{
-  font-weight: bold;
+  font-size: 16px;
 }
 
 .admin-table tbody tr:nth-of-type(odd){
@@ -31,4 +31,8 @@ table {
 #add-admin-modal .label_l{
   background: #367FA9 none repeat scroll 0 0;
   min-width: 135px;
+}
+
+.plus-sign{
+  font-size: 12px;
 }
