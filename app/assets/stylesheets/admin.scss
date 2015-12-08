@@ -7,17 +7,23 @@
   padding: 20px;
 }
 
-.admin-table tr:nth-of-type(odd){
+.admin-table thead th{
+  font-weight: bold;
+}
+
+.admin-table tbody tr:nth-of-type(odd){
   background-color: #F9F9F9;
 }
 
-.admin-table tr{
-  border: 2px solid #DCDCDC;
+table {
+  border: 1px solid #DCDCDC;
 }
 
-.admin-table td{
-  border: 2px solid #DCDCDC;
-}
+.admin-table thead > tr > th { border-bottom: none; }
+
+.admin-table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th,
+.table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td
+{ border: 1px solid #DCDCDC; }
 
 #add-admin-modal .label_l{
   background: #367FA9 none repeat scroll 0 0;

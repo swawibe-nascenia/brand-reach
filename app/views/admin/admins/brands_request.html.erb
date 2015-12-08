@@ -4,13 +4,15 @@
   <h1 class="text-center">Pending Brand requests list</h1>
 
   <table class="table table-responsive admin-table">
-    <tbody>
+    <thead>
     <tr>
       <th>Firstname</th>
       <th>Lastname</th>
       <th>Email</th>
       <th>Action</th>
     </tr>
+    </thead>
+    <tbody>
     <%= render partial: 'user', collection: @brands %>
     </tbody>
   </table>

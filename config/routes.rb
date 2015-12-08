@@ -113,6 +113,8 @@ Rails.application.routes.draw do
         put :deactivate_user
       end
     end
+
+    resources :invitations
   end
 
   # root to: 'public#home', as: :root

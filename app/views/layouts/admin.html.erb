@@ -55,6 +55,11 @@
                 <i class="fa fa-user"></i><span class="space-sidebar">Active brands</span>
               </a>
             </li>
+            <li class="<%= current_path admin_invitations_path %>">
+              <a href="<%= admin_invitations_path %>">
+                <i class="fa fa-user"></i><span class="space-sidebar">Invitations</span>
+              </a>
+            </li>
         <% end %>
 
         <% if policy(:admin).manage_admins? %>

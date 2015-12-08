@@ -12,13 +12,15 @@
   <br/>
 
   <table class="table table-responsive admin-table table-admin">
-    <tbody>
+    <thead>
     <tr>
       <th>Firstname</th>
       <th>Lastname</th>
       <th>Email</th>
       <th>Action</th>
     </tr>
+    </thead>
+    <tbody>
     <% @admins.each do |admin| %>
         <%= render partial: 'admin', object: admin %>
     <% end %>

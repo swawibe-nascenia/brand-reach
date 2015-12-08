@@ -1,0 +1,30 @@
+<% title 'Sent Invitation list' %>
+<style>
+    thead>tr{
+        background: none;
+    }
+</style>
+<div class="admin-page-wrapper">
+  <h1 class="">Sent Invitation list</h1>
+  <br/>
+  <br/>
+  <div class="">
+    <a href="#invitation-modal" data-toggle='modal' class="btn btn-primary raleway-semibold">+ Send new Invitation</a>
+  </div>
+  <br/>
+  <br/>
+  <table class="table table-responsive admin-table invitation-table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%= render partial: 'invitation', collection: @invitations %>
+    </tbody>
+  </table>
+</div>
+
+<%= render 'form' %>
+
