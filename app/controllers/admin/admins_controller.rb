@@ -126,7 +126,7 @@ class Admin::AdminsController < ApplicationController
     @message = 'User deactivate request fail'
 
     if @user
-      @user.update_column(:verified, false)
+      @user.update_column(:verified, true)
       @success = true
       @message = 'Successfully deactivate user.'
     end

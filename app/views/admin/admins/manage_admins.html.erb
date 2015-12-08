@@ -33,7 +33,7 @@
 <script>
   $(function(){
     $('.remove-admin').click(function(){
-        if(confirm('Do you really want to delete')){
+        if(confirm('Do you really want to delete?')){
             var adminId = $(this).data('id');
             $.ajax({
                 type: 'delete',

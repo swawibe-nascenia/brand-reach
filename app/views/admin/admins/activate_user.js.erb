@@ -1,0 +1,5 @@
+<% if @success %>
+$('tr#user-<%= @user.id %>').remove();
+<% else %>
+alert("<%= @message %>");
+<% end %>

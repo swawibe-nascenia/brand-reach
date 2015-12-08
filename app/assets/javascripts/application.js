@@ -23,6 +23,7 @@
 //= require handlebars
 //= require Chart
 //= require parsley
+//= require admin
 // require turbolinks
 // require_tree .
 
