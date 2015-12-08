@@ -285,6 +285,11 @@ only screen and (max-width: 900px) {
     .influencer-profile-modal label {
         padding: 5px;
     }
+
+    .brands-explore-content-wrapper{
+        margin: 30px 30px;
+    }
+
 }
 
 @media

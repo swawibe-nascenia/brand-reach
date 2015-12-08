@@ -236,8 +236,8 @@
 }
 
 .offer-text {
-    margin-left: 30px;
-    width: 40%;
+    margin-left: 15px;
+    width: calc(100% - 550px);
 }
 
 .offer-time {
@@ -301,7 +301,13 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfff4', endColorstr='#b3bead', GradientType=0);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
+    .title {
+        width: 150px;
+    }
+}
+
+@media (max-width: 990px) {
     .offer-header div {
         display: block;
     }
@@ -316,11 +322,10 @@
     }
 
     .panel-offers #inbox .offer-header div, .panel-offers #stared_inbox .offer-header div {
-
         border-top: 1px solid #ddd;
         width: 100%;
-        padding-left: 5px;
-        text-align: center;
+        padding-left: 10px;
+        text-align: left;
     }
 
     .offer-text {
