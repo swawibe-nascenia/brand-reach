@@ -58,7 +58,9 @@
 .btn-view-profile {
     width: 100%;
     border-radius: 0;
+    font-weight: 600;
 }
+
 .search-result .row{
     margin-right: -2px;
     margin-left: 0;
