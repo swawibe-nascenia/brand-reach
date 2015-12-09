@@ -219,10 +219,14 @@
     padding: 4px;
 }
 
-.social-account-tab-content .form-group {
+.social-account-tabs .form-group {
     text-align: right;
     margin-bottom: 0;
     line-height: 1;
+}
+
+.social-account-tabs .panel-body {
+    padding: 15px 0;
 }
 
 .modal-header .view-profile-modal-close {
@@ -302,6 +306,10 @@ only screen and (max-width: 950px) {
 only screen and (max-width: 767px) {
     .social-account-tab-content {
         padding-right: 10%;
+    }
+
+    .influencer-profile-modal input {
+        width: 34%;
     }
 }
 
