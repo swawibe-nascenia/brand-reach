@@ -2,6 +2,10 @@ class SessionsController < Devise::SessionsController
   respond_to :html, :json, :js
   layout 'public'
 
+  def new
+    redirect_to root_path(sign_in_modal: true)
+  end
+
   def create
     temp_user = User.find_by_email(params[:user]['email'])
 

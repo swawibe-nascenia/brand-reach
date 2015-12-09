@@ -119,6 +119,11 @@
 </html>
 <script>
     $(function () {
+//        show sing in modal 
+        <% if params[:sign_in_modal]%>
+        $('#signin').modal('show');
+        <% end %>
+
         $('#nav-contact-us a').click(function(){
             $('html, body').animate({
                 scrollTop: $( $.attr(this, 'href') ).offset().top
