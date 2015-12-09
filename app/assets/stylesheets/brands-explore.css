@@ -38,6 +38,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin-bottom: 2px;
 }
 
 .brands-explore-content-wrapper .influencer-address {
