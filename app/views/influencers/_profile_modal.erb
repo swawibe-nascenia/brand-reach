@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'responsive-tabs' %>
+
 <div class="modal fade modal-profile" id="show-brands-profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog influencer-profile-modal" role="document">
     <div class="modal-content view-profile-modal">
@@ -41,7 +43,7 @@
             <div class="row pricing-section">
               <div class="col-md-12">
                 <div class="social-account-tabs">
-                  <ul class="nav nav-tabs social-account-nav-tabs influencer-social-account-nav-tabs">
+                  <ul class="nav nav-tabs social-account-nav-tabs responsive influencer-social-account-nav-tabs">
                     <% influencer.active_facebook_accounts.each do |account| %>
                         <li class="influencer-social-account-tab" data-id="<%= account.id %>">
                           <a data-toggle="tab" href="#fb_<%= account.id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %>
@@ -49,7 +51,7 @@
                     <% end %>
                   </ul>
 
-                  <div class="tab-content social-account-tab-content font-raleway">
+                  <div class="tab-content responsive social-account-tab-content font-raleway">
                     <% influencer.active_facebook_accounts.each do |account| %>
                         <div id="fb_<%= account.id %>" class="tab-pane">
                           <div class="form-group">
@@ -120,5 +122,7 @@
 
             console.log('Now new url is  ' + offerSendBtn.prop('href'));
         });
+
+        fakewaffle.responsiveTabs(['xs', 'sm']);
     });
 </script>
