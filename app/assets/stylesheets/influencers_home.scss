@@ -48,13 +48,62 @@
 }
 
 .modal-dialog-sign-in {
+  color: #666;
   padding-top: 8%;
+
+  .modal-body{
+    padding: 30px;
+  }
+
+  p{
+    margin-bottom: 15px;
+  }
+
+  .separator-line{
+    border-top: 1px solid #ccc;
+    margin-bottom: 5px;
+    margin-top: 30px;
+    text-align: center;
+
+    span{
+      background-color: #fff;
+      padding: 6px;
+      position: relative;
+      top: -10px;
+    }
+  }
+
+  .input_container{
+    float: none;
+    overflow: hidden;
+  }
+
+  .remember-me-input{
+    margin: 15px 0;
+
+    input{
+      margin: 0;
+      vertical-align: middle;
+    }
+
+    label{
+      font-weight: normal;
+      margin: 0;
+      vertical-align: middle;
+    }
+  }
+
+  .forgot-password-link{
+    margin-left: 15px;
+    vertical-align: middle;
+  }
 }
 
 .social-accounts-logo a {
   background-color: #e6e6e6;
   color: #3a3a3a;
-  padding: 14px 25px;
+  display: inline-block;
+  padding: 10px 20px;
   text-decoration: none;
   margin-right: 15px;
 }
