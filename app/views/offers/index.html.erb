@@ -1,8 +1,7 @@
 <%= stylesheet_link_tag 'offers.css', media: 'all' %>
 
 <% if current_user.brand? %>
-    <% title 'Messages' %>
-<% else %>
+    <% title 'Messages' %> <% else %>
     <% title 'Offers' %>
 <% end %>
 
@@ -25,7 +24,7 @@
       <% end %>
     </li>
     <li class="" id="starred_list">
-      <%= link_to offers_path(starred: true), remote: true, data: {target: ''} do %>
+      <%= link_to offers_path(starred: 1), remote: true, data: {target: ''} do %>
           <span id="star-black"><img src="<%= asset_path('Starred.png') %>"></span>
           <span id="star-blue"><img src="<%= asset_path('Starred-blue.png') %>"></span>
           <span class="starred-tab">Starred</span>
@@ -44,10 +43,6 @@
     </div>
   </div>
 
-</div>
-
-<div class="pagination-center-align">
-  <%= paginate @offers %>
 </div>
 
 <script>

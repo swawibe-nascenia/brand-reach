@@ -8,9 +8,7 @@ class OffersController < ApplicationController
 
   def index
       @offers = Campaign.active_offers(current_user).includes(:messages).order('messages.created_at desc')
-      @offers = @offers.page(params[:page])
       @stared_offers =  Campaign.stared_offers(current_user).includes(:messages).order('messages.created_at desc')
-      @stared_offers = @stared_offers.page(params[:page])
   end
 
   # take array of offer ids and make those stared
