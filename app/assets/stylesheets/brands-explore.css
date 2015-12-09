@@ -41,11 +41,11 @@
 }
 
 .brands-explore-content-wrapper .influencer-address {
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .influencer-data {
-    margin: 10px;
+    margin: 10px 10px 17px;
 }
 
 .influencer-biography {
@@ -57,6 +57,7 @@
 
 .btn-view-profile {
     width: 100%;
+    border-radius: 0;
 }
 .search-result .row{
     margin-right: -2px;
@@ -71,7 +72,7 @@
 .search-result-item{
     box-shadow: 0 0 1px #d9d9d9;
     background-color: #FFFFFF;
-    padding: 5px;
+    padding: 6px;
     margin: 3px;
     box-shadow: 0px 3px 5px rgba(184,184,184,0.85)
 }
@@ -168,6 +169,11 @@
 .advanced-search {
     font-weight: 300;
     font-size: 16px;
+}
+
+.explore-adv-search {
+    margin-right: 40px;
+    margin-left: 15px;
 }
 
 .view-profile-modal {
