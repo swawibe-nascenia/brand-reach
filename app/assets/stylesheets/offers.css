@@ -304,7 +304,7 @@
 
 @media (max-width: 1200px) {
     .title {
-        width: 150px;
+       width: calc(100% - 40px);
     }
 }
 
