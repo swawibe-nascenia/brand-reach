@@ -68,7 +68,7 @@ class CampaignsController < ApplicationController
   def update_activity
     campaign = Campaign.find(params[:id])
     campaign.social_account_activity_id = params[:activity_id]
-    campaign.save
+    campaign.fetch_insights
 
     redirect_to campaigns_path
   end
