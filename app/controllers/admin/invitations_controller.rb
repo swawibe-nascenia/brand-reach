@@ -4,7 +4,7 @@ class Admin::InvitationsController < ApplicationController
 
   def index
     authorize :admin, :manage_brandreach?
-    @invitations = Admin::Invitation.all
+    @invitations = Admin::Invitation.all.page params[:page]
   end
 
   def create

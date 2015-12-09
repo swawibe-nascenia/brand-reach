@@ -9,7 +9,7 @@ class Admin::AdminsController < ApplicationController
 
   def manage_admins
     authorize :admin, :manage_admins?
-    @admins = User.where(user_type: User.user_types[:admin])
+    @admins = User.where(user_type: User.user_types[:admin]).page params[:page]
   end
 
   def create
@@ -74,7 +74,7 @@ class Admin::AdminsController < ApplicationController
 
   def brands_request
     authorize :admin, :manage_brandreach?
-    @brands = User.where(user_type: User.user_types[:brand], verified: false)
+    @brands = User.where(user_type: User.user_types[:brand], verified: false).page params[:page]
   end
 
   def profile
@@ -88,12 +88,12 @@ class Admin::AdminsController < ApplicationController
 
   def influencer_list
     authorize :admin, :manage_brandreach?
-    @influencers = User.influencers
+    @influencers = User.influencers.page params[:page]
   end
 
   def brand_list
     authorize :admin, :manage_brandreach?
-    @brands = User.brands
+    @brands = User.brands.page params[:page]
   end
 
   def deactivate_user
