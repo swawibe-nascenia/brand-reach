@@ -11,8 +11,6 @@ class FacebookAccount < ActiveRecord::Base
   # == Attributes == #
   # ----------------------------------------------------------------------
 
-  attr_accessor :country_data, :city_data, :country_map_data, :gender_line_chart_data
-
   serialize :likes_by_country
   serialize :reach_by_country
   serialize :likes_by_city
@@ -67,13 +65,17 @@ class FacebookAccount < ActiveRecord::Base
     self.likes_by_gender_age_month = graph.get_likes_by_gender(self.account_id, 12.month.ago)
     self.likes_by_gender_age_week = graph.get_likes_by_gender(self.account_id, 1.week.ago)
 
-    self.save
+    self.insights_updated_at = DateTime.now
 
-    self.country_data = {}
+    self.save
+  end
+
+  def country_data
+    data = {}
     self.likes_by_country.each do |country_code, likes|
       country_name = ISO3166::Country[country_code].name
-      if self.country_data[country_name].blank?
-        self.country_data[country_name] = {
+      if data[country_name].blank?
+        data[country_name] = {
             country_code: country_code,
             country_lat: ISO3166::Country[country_code].latitude_dec,
             country_lon: ISO3166::Country[country_code].longitude_dec,
@@ -81,14 +83,18 @@ class FacebookAccount < ActiveRecord::Base
             reach: 0
         }
       end
-      self.country_data[country_name][:likes] += likes
+      data[country_name][:likes] += likes
     end
     self.reach_by_country.each do |country_code, reach|
       country_name = ISO3166::Country[country_code].name
-      self.country_data[country_name] = { country_code: country_code, likes: 0, reach: 0 } if self.country_data[country_name].blank?
-      self.country_data[country_name][:reach] += reach
+      data[country_name] = { country_code: country_code, likes: 0, reach: 0 } if data[country_name].blank?
+      data[country_name][:reach] += reach
     end
-    self.country_map_data = self.country_data.map do |country_name, data|
+    data
+  end
+
+  def country_map_data
+    country_data.map do |country_name, data|
       {
           title: country_name,
           latitude: data[:country_lat],
@@ -97,20 +103,25 @@ class FacebookAccount < ActiveRecord::Base
           width: 20,
       }
     end
+  end
 
-    self.city_data = {}
+  def city_data
+    data = {}
     self.likes_by_city.each do |city_name, likes|
-      self.city_data[city_name] = { likes: 0, reach: 0 } if self.city_data[city_name].blank?
-      self.city_data[city_name][:likes] += likes
+      data[city_name] = { likes: 0, reach: 0 } if data[city_name].blank?
+      data[city_name][:likes] += likes
     end
     self.reach_by_city.each do |city_name, reach|
-      self.city_data[city_name] = { likes: 0, reach: 0 } if self.city_data[city_name].blank?
-      self.city_data[city_name][:reach] += reach
+      data[city_name] = { likes: 0, reach: 0 } if data[city_name].blank?
+      data[city_name][:reach] += reach
     end
+    data
+  end
 
+  def gender_line_chart_data
     colors = ['#9BE6F1', '#EA358C', '#ff4400']
     color_index = 0
-    self.gender_line_chart_data = {
+    {
         labels: self.likes_by_gender_age_month[:labels],
         datasets: self.likes_by_gender_age_month[:datasets].map do |gender, data|
           color = colors[color_index]
@@ -152,4 +163,10 @@ class FacebookAccount < ActiveRecord::Base
   # ----------------------------------------------------------------------
   # == Class methods == #
   # ----------------------------------------------------------------------
+
+  def self.fetch_all_insights
+    FacebookAccount.where(is_active: true).each do |account|
+      account.fetch_insights
+    end
+  end
 end

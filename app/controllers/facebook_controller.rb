@@ -12,6 +12,9 @@ class FacebookController < ApplicationController
     end
 
     @account = params[:id].present? ? @accounts.find(params[:id]) : @accounts.first
-    @account.fetch_insights
+
+    if params[:refresh].present?
+      @account.fetch_insights
+    end
   end
 end

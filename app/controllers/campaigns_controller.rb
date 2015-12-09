@@ -160,7 +160,6 @@ class CampaignsController < ApplicationController
 
     @campaign = @campaigns.find_by_id(params[:id]) if params[:id].present?
     @campaign = @campaigns.last if @campaign.nil?
-    @campaign.fetch_insights
 
     render 'campaigns/brand_campaign'
   end

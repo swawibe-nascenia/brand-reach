@@ -132,6 +132,12 @@ class Campaign < ActiveRecord::Base
     end
   end
 
+  def self.fetch_all_insights
+    Campaign.where('status = ? AND social_account_activity_id IS NOT NULL', self.statuses[:engaged]).each do |campaign|
+      campaign.fetch_insights
+    end
+  end
+
   private
 
   def first_message_body

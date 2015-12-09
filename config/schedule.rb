@@ -20,4 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 
 every :day, :at => '12:00 am' do
+   runner "Campaign.fetch_all_insights"
+   runner "FacebookAccount.fetch_all_insights"
 end
