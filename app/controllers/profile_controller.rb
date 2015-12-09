@@ -5,6 +5,10 @@ class ProfileController < ApplicationController
 
   respond_to :html, :js
 
+  def show_user
+    @user = User.find params[:id]
+  end
+
   def profile
     @industries = Category.all.order(:name).pluck(:name)
     respond_with(@user)

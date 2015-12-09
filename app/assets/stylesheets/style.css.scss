@@ -1320,3 +1320,25 @@ h5, .h5 {
 .admin-sign-in-form a{
   font-size: 12px;
 }
+
+// profile show page desing
+
+#show-readonly-user-profile h4,
+#show-readonly-user-profile .modal-body{
+  font-family: "Raleway", sans-serif;
+}
+
+
+.profile-item{
+  font-weight: bold;
+  display: inline-block;
+  width: 145px;
+  vertical-align: top;
+}
+.profile-value{
+  display: inline-block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  width: 180px;
+}
+

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :profile, path: '', only: [:update] do
     member do
+      get :show_user
     end
 
     collection do

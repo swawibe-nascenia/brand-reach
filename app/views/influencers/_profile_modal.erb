@@ -14,7 +14,7 @@
           </div>
 
           <div class="display-inline-block">
-            <h4 class="font-raleway"><%= influencer.full_name %></h4>
+            <h4 class="font-raleway"><a href="<%= show_user_profile_path(influencer.id) %>" data-remote="true" ><%= influencer.full_name %></a></h4>
             <p class="title font-raleway"> <%= influencer.industry %> </p>
             <p class="influencer-address font-raleway"> <%= influencer.location %></p>
           </div>
