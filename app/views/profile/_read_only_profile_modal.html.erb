@@ -1,5 +1,4 @@
-<%= stylesheet_link_tag 'bootstrap-responsive-tabs', media: 'all' %>
-<%= javascript_include_tag 'jquery.bootstrap-responsive-tabs.min' %>
+<%= javascript_include_tag 'responsive-tabs' %>
 
 <div class="modal fade modal-profile" id="show-readonly-user-profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog influencer-profile-modal" role="document">
@@ -108,16 +107,16 @@
             <div class="row pricing-section">
               <div class="col-md-12">
                 <div class="social-account-tabs">
-                  <ul class="nav nav-tabs responsive-tabs social-account-nav-tabs influencer-social-account-nav-tabs">
-                    <% user.active_facebook_accounts.each do |account| %>
+                  <ul class="nav nav-tabs social-account-nav-tabs responsive influencer-social-account-nav-tabs">
+                  <% user.active_facebook_accounts.each do |account| %>
                         <li class="influencer-social-account-tab" data-id="<%= account.id %>">
                           <a data-toggle="tab" href="#fb_<%= account.id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %>
                           </a></li>
                     <% end %>
                   </ul>
 
-                  <div class="tab-content social-account-tab-content font-raleway">
-                    <% user.active_facebook_accounts.each do |account| %>
+                  <div class="tab-content responsive social-account-tab-content font-raleway">
+                  <% user.active_facebook_accounts.each do |account| %>
                         <div id="fb_<%= account.id %>" class="tab-pane">
                           <div class="form-group">
                             <div class="col-md-6 col-sm-9 col-xs-12">
@@ -187,9 +186,8 @@
 
             console.log('Now new url is  ' + offerSendBtn.prop('href'));
         });
+        $('#show-readonly-user-profile').modal('show');
     });
 
-    $('.responsive-tabs').responsiveTabs({
-        accordionOn: ['xs', 'sm']
-    });
+    fakewaffle.responsiveTabs(['xs', 'sm']);
 </script>

@@ -1,2 +1,1 @@
-$('#profile-modal').html("<%= j render(:partial => 'profile/read_only_profile_modal', :locals => { user: @user}) %>");
-$('#show-readonly-user-profile').modal('show');
+$('.global-profile-container').html("<%= j render(:partial => 'profile/read_only_profile_modal', :locals => { user: @user}) %>");
