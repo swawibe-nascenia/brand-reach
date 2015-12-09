@@ -72,7 +72,7 @@ class OffersController < ApplicationController
   end
 
   def reply_message
-    if @offer && can_send_message?
+    if @offer && @offer.messageable?
       message = @offer.messages.new(sender_id: current_user.id, receiver_id: params[:receiver_id], body: params[:body])
       Rails.logger.info "Your message is #{message.body}"
       if message.body.present? && message.save

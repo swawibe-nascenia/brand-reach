@@ -106,6 +106,12 @@ class Campaign < ActiveRecord::Base
     waiting? || denied?
   end
 
+  def messageable?
+    accepted_offer = (accepted? || engaged?)
+    active_offer = !deleted_by_influencer? &&  !deleted_by_brand?
+
+    accepted_offer && active_offer && sender.active? && receiver.active?
+  end
   # ----------------------------------------------------------------------
   # == Class methods == #
   # ----------------------------------------------------------------------

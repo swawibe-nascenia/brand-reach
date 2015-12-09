@@ -2,7 +2,7 @@
   <div class="comment-box comment-box-<%= offer.id %>">
     <textarea name="message-body" class="offer-textarea message-body offer-textarea-<%= offer.id %> " rows="3"
               placeholder="Start typing your message here" maxlength="150"></textarea>
-    <% if (offer.accepted? || offer.engaged?) && !offer.deleted_by_influencer? && !offer.deleted_by_brand? %>
+    <% if offer.messageable? %>
         <button data-offer-id='<%= offer.id %>' data-receiver-id='<%= current_user.id == offer.sender_id ? offer.receiver_id : offer.sender_id %>' class="message-reply-button btn btn-accept" type="button" >Reply</button>
     <% else %>
         <button data-offer-id='<%= offer.id %>' data-receiver-id='<%= current_user.id == offer.sender_id ? offer.receiver_id : offer.sender_id %>' class="message-reply-button btn btn-accept" type="button" disabled>Reply</button>
