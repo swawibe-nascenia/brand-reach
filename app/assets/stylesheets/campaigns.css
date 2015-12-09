@@ -281,10 +281,6 @@ only screen and (max-width: 1130px) {
     .btn-country {
         font-size: 18px;
     }
-
-    .campaign-view select {
-        width: 40%;
-    }
 }
 
 @media
@@ -623,30 +619,26 @@ only screen and (max-width: 460px) {
 }
 
 .campaign-view label {
-    padding-left: 50px;
-    padding-right: 20px;
+    width: 24%;
+    text-align: right;
+    padding-left: 15px;
+    padding-right: 15px;;
 }
 
 .campaign-view select {
     padding: 5px;
     background-color: white;
-    width: 60%;
-}
-
-@media
-only screen and (max-width: 1140px) {
-    .campaign-view select {
-        width: 45%;
-    }
+    width: 55%;
 }
 
 .btn-campaign-view {
     color: white;
-    padding: 5px 40px;
+    padding: 5px 10px;
     margin-left: 15px;
     background-color: #f8c102;
     font-weight: 600;
     font-size: 13px;
+    width: 13%;
 }
 
 .squaredFour input {
