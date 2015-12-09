@@ -340,7 +340,7 @@ only screen and (max-width: 800px) {
 }
 
 @media
-only screen and (max-width: 460px) {
+only screen and (max-width: 560px) {
 
     .payment-div {
         margin: 0px 20px 20px 20px;
