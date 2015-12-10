@@ -13,7 +13,7 @@
 
         <div class="get-in-touch-category">
           <%= f.label :category, 'Category', class: 'category-name display-inline' %>
-          <%= f.select :category, options_for_select(Category.all.order(:name).pluck(:name)),
+          <%= f.select :category, options_for_select(ContactUsCategory.all.order(:name).pluck(:name)),
                        {}, { :class => 'category-list display-inline' } %>
         </div>
 

@@ -23,6 +23,20 @@ industry_list.each do |name|
   Category.create( name: name )
 end
 
+
+contact_us_list =   [
+    'Payment',
+    'General Support',
+    'Feedback',
+    'Complaint'
+]
+
+ContactUsCategory.destroy_all
+
+contact_us_list.each do |name|
+  ContactUsCategory.create( name: name )
+end
+
 super_admin = User.where(email: 'superadmin@brandreach.com')
 
 unless super_admin
