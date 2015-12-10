@@ -147,7 +147,10 @@
   <script>
       $(document).ready(function () {
           var industry_list = document.getElementById("industry_list");
-          var Industries = new Awesomplete(industry_list, {minChars: 0, sort: true});
+          var Industries = new Awesomplete(industry_list, {minChars: 0, sort: true, filter: function (text, input) {
+              return text.indexOf(input) === 0;
+             }
+          });
           Industries.list = <%= raw(@industries) %>;
 
           $('#industry_list').on('focus', function() {
