@@ -2,6 +2,7 @@ class ExploresController < ApplicationController
   before_filter :is_brand?, only: [:show]
 
   def show
+    authorize :brand, :brand?
     @influencers = User.influencers.where(profile_complete: true)
 
     if params[:search_key].present?
@@ -22,7 +23,7 @@ class ExploresController < ApplicationController
     end
 
     Rails.logger.info @influencers.inspect
-    @influencers = @influencers.order(:name).page params[:page]
+    @influencers = @influencers.order(:name)
     @influencers
   end
 
