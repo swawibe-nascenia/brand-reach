@@ -400,4 +400,8 @@ div.awesomplete > ul > li {
     .social-account-tabs input {
         width: 34%;
     }
+
+    .social-account-tabs .form-group {
+        margin-right: 10%;
+    }
 }
