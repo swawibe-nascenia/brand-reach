@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
 
   # pundit authorization error handling
   rescue_from Pundit::NotAuthorizedError do
-    flash[:error] = 'You have no authorization for last request'
+    flash[:error] = 'Unauthorized access.'
 
     if current_user.super_admin?
       redirect_to manage_admins_admin_admins_path

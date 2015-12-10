@@ -1,4 +1,4 @@
-class AdminPolicy < Struct.new(:user, :brand)
+class BrandPolicy < Struct.new(:user, :brand)
 
 #====== for authorizing brand only tasks ===========
   def brand?

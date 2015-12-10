@@ -23,7 +23,7 @@ class ExploresController < ApplicationController
     end
 
     Rails.logger.info @influencers.inspect
-    @influencers = @influencers.order(:name)
+    @influencers = @influencers.order(:name).page(params[:page]).per(8)
     @influencers
   end
 
