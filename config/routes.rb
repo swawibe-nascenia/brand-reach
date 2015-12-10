@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       post :get_in_touch
       get :faqs
       get :terms
+      get 'sign-up-requirements', to:  'public#sign_up_requirements'
     end
   end
 
