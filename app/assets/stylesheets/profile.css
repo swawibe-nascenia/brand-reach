@@ -390,6 +390,12 @@ div.awesomplete > ul > li {
     }
 }
 
+@media (max-width: 900px) {
+    .social-account-tabs input {
+        width: 60%;
+    }
+}
+
 @media (max-width: 768px) {
     .social-account-tabs input {
         width: 34%;
