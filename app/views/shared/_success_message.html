@@ -1,0 +1,26 @@
+<div class="global-modal modal fade" id="success-message-alert">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header close-image">
+                <button area-label="Close" class="close first_close" data-dismiss="modal" tyle="button"></button>
+                <h3 class="modal-title"><%= message[:head] %></h3>
+            </div>
+            <div class="modal-body model-iner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="info_p"><%= message[:title] %></div>
+                        <div class="success_icon">
+                            <%= message[:message] %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+       $('#success-message-alert').modal('show');
+    });
+</script>

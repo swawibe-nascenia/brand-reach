@@ -1,0 +1,7 @@
+<% if @success %>
+    $('#brand-invitation-modal').modal('hide');
+    $('.modal-container').html("<%= j render(:partial => 'shared/success_message', :locals => { message: brand_invitation_success_message }) %>");
+    $('.brand-invitation-table tbody').append("<%= j render partial: 'brand_invitation', locals: {brand_invitation: @brand_invitation}  %>");
+<% else %>
+    $('#validation-error').html("<%= j render(:partial => 'shared/errors', :locals => { messages: @messages }) %>" );
+<% end %>

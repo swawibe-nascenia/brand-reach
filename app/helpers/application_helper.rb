@@ -40,4 +40,14 @@ module ApplicationHelper
     ]
   end
 
+  def brand_invitation_success_message
+    { head: 'Brand Invitation Successful', title: 'Brand Invitation Successful',
+               message: 'Your Invitation successfully sent to Brand.'}
+  end
+
+  def influencer_invitation_success_message
+    { head: 'Influencer Invitation Successful', title: 'Influencer Invitation Successful',
+     message: 'Your Invitation successfully sent to Influencer.' }
+  end
+
 end

@@ -1,0 +1,27 @@
+<% title 'Brand Invitations' %>
+
+<div class="admin-page-wrapper">
+  <div class="">
+    <a href="#brand-invitation-modal" data-toggle='modal' class="btn btn-primary raleway-semibold">
+      <span class="plus-sign"><i class="fa fa-plus"></i></span>
+      New Invitation</a>
+  </div>
+  <br/>
+  <h1 class="admin-header">Invitations</h1>
+  <table class="table table-responsive admin-table brand-invitation-table">
+    <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%= render partial: 'brand_invitation', collection: @invitations %>
+    </tbody>
+  </table>
+  <%= paginate @invitations %>
+</div>
+
+<%= render 'brand_invitation_form' %>
+

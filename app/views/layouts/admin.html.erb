@@ -57,14 +57,19 @@
             </li>
             <li class="<%= current_path admin_invitations_path %>">
               <a href="<%= admin_invitations_path %>">
-                <span class="space-sidebar">Invitations</span>
+                <span class="space-sidebar">Influencer Invitations</span>
+              </a>
+            </li>
+            <li class="<%= current_path brand_invitation_admin_invitations_path %>">
+              <a href="<%= brand_invitation_admin_invitations_path %>">
+                <span class="space-sidebar">Brand Invitations</span>
               </a>
             </li>
         <% end %>
 
         <% if policy(:admin).manage_admins? %>
-            <li class="<%= current_path manage_admins_admin_admins_path %>">
-              <a href="<%= manage_admins_admin_admins_path %>">
+            <li class="<%= current_path create_brand_invitation_admin_invitations_path %>">
+              <a href="<%= create_brand_invitation_admin_invitations_path %>">
                 <span class="space-sidebar">Admins</span>
               </a>
             </li>
@@ -106,6 +111,8 @@
   </div>
 </footer>
 
+<!--following div for containing success message on different page-->
+<div class="modal-container"></div>
 </body>
 </html>
 
