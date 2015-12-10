@@ -191,6 +191,10 @@
     .personal-info-form .form-group textarea.short_bio{
         width: 80%;
     }
+
+    .social-account-tabs input {
+        width: 34%;
+    }
 }
 
 /* style for making compatible with 992 to 1200 px devices */
@@ -379,5 +383,15 @@ div.awesomplete > ul > li {
     div.awesomplete > ul {
         margin-left: 0;
         min-width: 100%;
+    }
+
+    .social-account-tabs {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .social-account-tabs input {
+        width: 34%;
     }
 }
