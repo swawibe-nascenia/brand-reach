@@ -414,3 +414,18 @@ div.awesomplete > ul > li {
         line-height: 1.5;
     }
 }
+
+div.awesomplete > ul > li {
+    text-align: left;
+    background-color: #e9e9e9;
+    margin-bottom: 1px;
+    padding-top: 5px;
+    padding-bottom: 5px
+}
+
+div.awesomplete > ul > li[aria-selected="true"] {
+    background: #e9e9e9;
+    color: #333;
+    border: 1px solid #ababab;
+    border-bottom: none;
+}
