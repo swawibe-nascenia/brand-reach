@@ -12,9 +12,10 @@
                   <p class="influencer-address"><%= influencer.location %></p>
                   <p class="title"> <%= influencer.industry.present? ? influencer.industry : 'Entrepreneur' %></p>
                   <p class="influencer-biography"><%= truncate(influencer.short_bio, length: 100) %> </p>
-                  <div>
+                  <p>
                     <%= image_tag('explore-followers.png', :alt => "number-of-follower") %> &nbsp;<%= influencer.max_followers %>
-                  </div>
+                  </p>
+                  <p>Pages: <%= influencer.facebook_accounts.count %></p>
                 </div>
                 <%= link_to 'VIEW PROFILE', influencer_path(influencer), remote: true, :class => 'btn btn-primary btn-view-profile' %>
               </div>
