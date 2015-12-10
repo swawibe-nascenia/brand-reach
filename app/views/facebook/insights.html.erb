@@ -19,7 +19,7 @@
 
   <p class="text-right">
     Last updated: <%= @account.insights_updated_at.strftime('%B %d, %Y %l:%M %P') %>
-    <a href="javascript:" onclick="window.location='?id=<%= @account.id %>&refresh=1'">
+    <a class="load-page" href="javascript:" onclick="window.location='?id=<%= @account.id %>&refresh=1'">
       <%= image_tag asset_path('Refresh_icon.png') %>
     </a>
   </p>
