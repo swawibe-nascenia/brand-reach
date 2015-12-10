@@ -1,4 +1,7 @@
-<ul class="nav nav-tabs social-account-nav-tabs">
+<%= javascript_include_tag 'responsive-tabs' %>
+<%= stylesheet_link_tag 'brands-explore' %>
+
+<ul class="nav nav-tabs responsive social-account-nav-tabs">
   <% @user.active_facebook_accounts.each do |account| %>
       <li>
         <a data-toggle="tab" href="#fb_<%= account.account_id %>">
@@ -9,7 +12,7 @@
   <% end %>
 </ul>
 
-<div class="tab-content social-account-tab-content">
+<div class="tab-content responsive social-account-tab-content">
   <% @user.active_facebook_accounts.each_with_index do |account, index| %>
 
       <% prefix = "user[facebook_accounts_attributes][#{index}]" %>
@@ -18,21 +21,21 @@
           <div id="fb_<%= g.object.account_id %>" class="tab-pane">
             <%= hidden_field_tag "#{prefix}[id]", account.id %>
             <div class="form-group">
-              <div class="col-md-4 col-sm-7 col-xs-10">
+              <div class="col-md-6 col-sm-9 col-xs-12">
                 <%= g.label :status_update_cost, 'Status Update' %>
                 <%= g.number_field :status_update_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0, maxlength: '12' } %> INR
               </div>
-              <div class="col-md-6 col-sm-7 col-xs-10">
+              <div class="col-md-6 col-sm-9 col-xs-12">
                 <%= g.label :cover_photo_cost, 'Cover Photo' %>
                 <%= g.number_field :cover_photo_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0, maxlength: '12' } %> INR
               </div>
             </div>
             <div class="form-group">
-              <div class="col-md-4 col-sm-7 col-xs-10">
+              <div class="col-md-6 col-sm-9 col-xs-12">
                 <%= g.label :profile_photo_cost, 'Profile Photo' %>
                 <%= g.number_field :profile_photo_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0, maxlength: '12' } %> INR
               </div>
-              <div class="col-md-6 col-sm-7 col-xs-10">
+              <div class="col-md-6 col-sm-9 col-xs-12">
                 <%= g.label :video_post_cost, 'Video Post' %>
                 <%= g.number_field :video_post_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0, maxlength: '12' } %> INR
               </div>
@@ -45,4 +48,7 @@
 
 <script>
     $('.social-account-nav-tabs a:first').tab('show');
+    $(function(){
+        fakewaffle.responsiveTabs(['xs', 'sm']);
+    });
 </script>
