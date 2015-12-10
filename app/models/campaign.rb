@@ -144,7 +144,7 @@ class Campaign < ActiveRecord::Base
     <<MESSAGE
       You have sent the following campaign request. Waiting for the influencers response.
 
-      Brand Name: #{self.sender.full_name}
+      Brand Name: <a href='/#{self.sender.id}/show_user' data-remote='true'>#{self.sender.full_name}</a>
       Campaign Name:  #{self.name}
       Type of Post : #{self.post_type.humanize}
       Start Date : #{self.start_date.strftime('%d-%m-%Y')}
