@@ -404,4 +404,13 @@ div.awesomplete > ul > li {
     .social-account-tabs .form-group {
         margin-right: 10%;
     }
+
+    .add-fb-modal-dialog {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .help-note p {
+        line-height: 1.6;
+    }
 }
