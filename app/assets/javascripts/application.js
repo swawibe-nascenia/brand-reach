@@ -24,6 +24,7 @@
 //= require Chart
 //= require parsley
 //= require admin
+//= require bootbox.min
 // require turbolinks
 // require_tree .
 
