@@ -25,8 +25,8 @@ class Admin::InvitationsController < ApplicationController
     password = Devise.friendly_token.first(8)
     @user.password = password
     @user.password_confirmation = password
-    @user.user_type = 0
-    @user.verified = true
+    @user.user_type = User.user_types[:brand]
+    @user.status = User.statuses[:invited]
 
     @success = true
     @messages = []
