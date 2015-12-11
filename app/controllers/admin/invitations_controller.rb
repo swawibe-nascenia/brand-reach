@@ -2,9 +2,17 @@ class Admin::InvitationsController < ApplicationController
   skip_before_action :check_profile_completion, :block_admin_user
   layout 'admin'
 
+  # show influencer invitation list
   def index
     authorize :admin, :manage_brandreach?
-    @invitations = Admin::Invitation.all.page params[:page]
+    @invitations = Admin::Invitation.all
+
+    if params[:email].present?
+      wildcard_search = "%#{params[:email].strip! || params[:email]}%"
+      @invitations = @invitations.where('email LIKE :search' , search: wildcard_search)
+    end
+
+    @invitations = @invitations.page params[:page]
   end
 
   def create
@@ -14,8 +22,14 @@ class Admin::InvitationsController < ApplicationController
 
   def brand_invitation
     authorize :admin, :manage_brandreach?
-    @invited_brands= User.where(status: User.statuses[:invited], user_type: User.user_types[:brand]).page params[:page]
-    Rails.logger.info "Loaded brand initation #{@invited_brands.inspect}"
+    @invited_brands= User.where(status: User.statuses[:invited], user_type: User.user_types[:brand])
+
+    if params[:email].present?
+      wildcard_search = "%#{params[:email].strip! || params[:email]}%"
+      @invited_brands = @invited_brands.where('email LIKE :search' , search: wildcard_search)
+    end
+
+    @invited_brands = @invited_brands.page params[:page]
   end
 
   def create_brand_invitation

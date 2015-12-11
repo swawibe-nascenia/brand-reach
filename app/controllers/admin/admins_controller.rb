@@ -9,7 +9,14 @@ class Admin::AdminsController < ApplicationController
 
   def manage_admins
     authorize :admin, :manage_admins?
-    @admins = User.where(user_type: User.user_types[:admin]).page params[:page]
+    @admins = User.where(user_type: User.user_types[:admin])
+
+    if params[:email].present?
+      wildcard_search = "%#{params[:email].strip! || params[:email]}%"
+      @admins = @admins.where('email LIKE :search' , search: wildcard_search)
+    end
+
+    @admins = @admins.page params[:page]
   end
 
   def create
@@ -73,7 +80,14 @@ class Admin::AdminsController < ApplicationController
 
   def brands_request
     authorize :admin, :manage_brandreach?
-    @brands = User.where(user_type: User.user_types[:brand], status: User.statuses[:waiting]).page params[:page]
+    @brands = User.where(user_type: User.user_types[:brand], status: User.statuses[:waiting])
+
+    if params[:email].present?
+      wildcard_search = "%#{params[:email].strip! || params[:email]}%"
+      @brands = @brands.where('email LIKE :search' , search: wildcard_search)
+    end
+
+    @brands = @brands.page params[:page]
   end
 
   def profile
@@ -88,11 +102,25 @@ class Admin::AdminsController < ApplicationController
   def influencer_list
     authorize :admin, :manage_brandreach?
     @influencers = User.active_influencers.page params[:page]
+
+    if params[:email].present?
+      wildcard_search = "%#{params[:email].strip! || params[:email]}%"
+      @influencers = @influencers.where('email LIKE :search' , search: wildcard_search)
+    end
+
+    @influencers = @influencers.page params[:page]
   end
 
   def brand_list
     authorize :admin, :manage_brandreach?
-    @brands = User.active_brands.page params[:page]
+    @brands = User.active_brands
+
+    if params[:email].present?
+      wildcard_search = "%#{params[:email].strip! || params[:email]}%"
+      @brands = @brands.where('email LIKE :search' , search: wildcard_search)
+    end
+
+    @brands = @brands.page params[:page]
   end
 
   def deactivate_user

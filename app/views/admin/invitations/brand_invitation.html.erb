@@ -7,7 +7,13 @@
       New Invitation</a>
   </div>
   <br/>
-  <h1 class="admin-header">Invitations</h1>
+  <h1 class="admin-header display-inline-block">Invitations</h1>
+  <%= form_tag brand_invitation_admin_invitations_path, :method => 'get', class: 'display-inline-block' do %>
+      <p>
+        <%= text_field_tag :email, params[:email], placeholder: 'Filter by email' %>
+        <%= submit_tag 'Search', :name => nil %>
+      </p>
+  <% end %>
   <table class="table table-responsive admin-table brand-invitation-table">
     <thead>
     <tr>
