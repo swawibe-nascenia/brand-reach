@@ -81,6 +81,7 @@ class CampaignMailer < ApplicationMailer
   end
 
   def brand_invitation (brand)
+    @user = brand
     @name = brand.full_name
     @mail = brand.email
     Rails.logger.info "=============== Send brand invitaions to request name #{@name} email#{@mail}=====#{brand.inspect}==========="

@@ -167,14 +167,14 @@ class ProfileController < ApplicationController
       password = Devise.friendly_token.first(8)
       user.password = password
       user.password_confirmation = password
-      user.verified = true
+      user.status = User.statuses[:active]
       user.save(validate: false)
       CampaignMailer.account_activate_notification_to_user(user, password).deliver_now
-      render :layout => false
     else
       @success = false
-      render :layout => false
     end
+
+    redirect_to root_path
   end
 
   private

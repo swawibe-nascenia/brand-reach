@@ -48,6 +48,6 @@ class Admin::BrandInvitation < ActiveRecord::Base
   private
 
   def send_mail
-    CampaignMailer.sing_up_notification_to_admin(brand).deliver_now
+    CampaignMailer.brand_invitation(brand).deliver_now
   end
 end
