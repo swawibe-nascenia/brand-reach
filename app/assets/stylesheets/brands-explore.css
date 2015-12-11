@@ -218,9 +218,10 @@
 
 .influencer-profile-modal label {
     padding-right: 15px;
-    padding-left: 10%;
     padding-bottom: 10px;
     font-weight: 300;
+    text-align: right;
+    width: 110px;
 }
 
 .influencer-profile-modal input {
@@ -229,7 +230,7 @@
 }
 
 .social-account-tabs .form-group {
-    text-align: right;
+    text-align: center;
     margin-bottom: 0;
     line-height: 1;
 }
@@ -348,6 +349,13 @@ only screen and (max-width: 460px){
         width: auto;
     }
 
+    .modal-profile .modal-dialog {
+        width: 100%;
+    }
+
+    .influencer-profile-modal label {
+        width: 100px;
+    }
 }
 
 

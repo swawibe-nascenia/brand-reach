@@ -31,10 +31,19 @@
     font-weight: 400;
 }
 
+.social-account-tabs label {
+    text-align: right;
+    width: 100px;
+}
+
 .personal-info-form .form-group {
     text-align: right;
     margin-bottom: 0;
     line-height: 1;
+}
+
+.social-account-tabs .form-group {
+    text-align: center;
 }
 
 .brands-profile-page-wrapper input, .brands-profile-page-wrapper select {
@@ -399,10 +408,6 @@ div.awesomplete > ul > li {
 @media (max-width: 768px) {
     .social-account-tabs input {
         width: 34%;
-    }
-
-    .social-account-tabs .form-group {
-        margin-right: 10%;
     }
 
     .add-fb-modal-dialog {
