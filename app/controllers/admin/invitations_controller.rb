@@ -42,14 +42,14 @@ class Admin::InvitationsController < ApplicationController
   end
 
   def resend
-    user = User.where(id: params[:id], status: User.statuses[:invited])
+    user = User.where(id: params[:id], status: User.statuses[:invited]).first
     @success = false
 
     if user
-      user.send(:send_mail)
-      @success = false
+      CampaignMailer.brand_invitation(user).deliver_now
+      @success = true
     else
-
+      @messages = 'Something was wrong.'
     end
   end
 

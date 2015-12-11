@@ -15,15 +15,15 @@ class Admin::AdminsController < ApplicationController
   def create
     authorize :admin, :manage_admins?
 
-    @admin = User.new(admin_params) do |user|
-      user.status = User.statuses[:active],
-      user.user_type = User.user_types[:admin]
-    end
+    @admin = User.new(admin_params)
 
     @success = true
     @messages = ''
 
     if @admin.save
+      @admin.update_column(:status, User.statuses[:active])
+      @admin.update_column(:user_type, User.user_types[:admin])
+      @admin.save
       @messages << 'New admin added successfully.'
     else
       @messages = @admin.errors.full_messages
@@ -139,7 +139,7 @@ class Admin::AdminsController < ApplicationController
 
   def admin_params
     params.require(:user).permit(:current_password, :first_name, :last_name, :email, :password, :password_confirmation,
-                    :status, :user_type)
+                     :user_type)
   end
 
   def log_in_user?

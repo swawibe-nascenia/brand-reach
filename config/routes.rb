@@ -121,6 +121,10 @@ Rails.application.routes.draw do
         get :brand_invitation
         post :create_brand_invitation
       end
+
+      member do
+        get :resend
+      end
     end
   end
 
