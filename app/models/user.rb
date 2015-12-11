@@ -242,8 +242,7 @@ class User < ActiveRecord::Base
   end
 
   def send_mail
-    # now no need
-    # CampaignMailer.sing_up_notification_to_admin(self).deliver_now if brand? & !verified?
+    CampaignMailer.brand_invitation(self).deliver_now if brand? && invited?
   end
 
 end

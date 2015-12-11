@@ -14,8 +14,8 @@ class Admin::InvitationsController < ApplicationController
 
   def brand_invitation
     authorize :admin, :manage_brandreach?
-    @invitations = Admin::BrandInvitation.all.page params[:page]
-    Rails.logger.info "Loaded brand initation #{@invitations.inspect}"
+    @invited_brands= User.where(status: User.statuses[:invited], user_type: User.user_types[:brand]).page params[:page]
+    Rails.logger.info "Loaded brand initation #{@invited_brands.inspect}"
   end
 
   def create_brand_invitation
@@ -31,15 +31,25 @@ class Admin::InvitationsController < ApplicationController
     @success = true
     @messages = []
 
-    if @user.save
-      @brand_invitation = Admin::BrandInvitation.create(brand_id: @user.id, created_at: Time.now)
-    else
+    unless @user.save
       @messages = @user.errors.full_messages
       @success = false
     end
 
     respond_to do |format|
       format.js{ }
+    end
+  end
+
+  def resend
+    user = User.where(id: params[:id], status: User.statuses[:invited])
+    @success = false
+
+    if user
+      user.send(:send_mail)
+      @success = false
+    else
+
     end
   end
 

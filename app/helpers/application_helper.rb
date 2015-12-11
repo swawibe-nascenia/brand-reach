@@ -50,4 +50,14 @@ module ApplicationHelper
      message: 'Your Invitation successfully sent to Influencer.' }
   end
 
+  def brand_active_success_message
+    { head: 'Activate Brand Successful', title: 'Activate Brand Successful',
+      message: 'Brand successfully activated.' }
+  end
+
+  def brand_suspend_success_message
+    { head: 'Suspend Brand Successful', title: 'Suspend Brand Successful',
+      message: 'Brand successfully suspended.' }
+  end
+
 end

@@ -21,7 +21,7 @@ class PasswordsController < Devise::PasswordsController
      end
    else
      @messages << 'This e-mail ID was not found.'
-     flash[:success] = 'This e-mail ID was not found.'
+     flash.now[:success] = 'This e-mail ID was not found.'
    end
  end
 

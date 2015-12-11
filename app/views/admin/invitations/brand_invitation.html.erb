@@ -17,10 +17,10 @@
     </tr>
     </thead>
     <tbody>
-    <%= render partial: 'brand_invitation', collection: @invitations %>
+    <%= render partial: 'invited_brand', collection: @invited_brands, as: :brand %>
     </tbody>
   </table>
-  <%= paginate @invitations %>
+  <%= paginate @invited_brands %>
 </div>
 
 <%= render 'brand_invitation_form' %>

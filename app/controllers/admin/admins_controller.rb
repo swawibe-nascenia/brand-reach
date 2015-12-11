@@ -107,7 +107,7 @@ class Admin::AdminsController < ApplicationController
     @message = 'User suspend request fail'
 
     if @user
-      @user.update_column(status, User.statuses[:suspended])
+      @user.update_column(:status, User.statuses[:suspended])
       @success = true
       @message = 'Successfully suspend user account.'
     end
@@ -116,7 +116,7 @@ class Admin::AdminsController < ApplicationController
   def activate_user
     authorize :admin, :manage_brandreach?
 
-    @user = User.where(id: params[:id], status: User.statuses[:suspended],
+    @user = User.where(id: params[:id], status: [User.statuses[:suspended],User.statuses[:waiting]],
                        user_type: [User.user_types[:influencer],
                                    User.user_types[:brand]
                        ]).first
@@ -125,7 +125,12 @@ class Admin::AdminsController < ApplicationController
     @message = 'User deactivate request fail'
 
     if @user
-      @user.update_column(status, User.statuses[:active])
+      password = Devise.friendly_token.first(8)
+      @user.password = password
+      @user.password_confirmation = password
+      @user.status = User.statuses[:active]
+      @user.save(validate: false)
+      CampaignMailer.account_activate_notification_to_user(@user, password).deliver_now
       @success = true
       @message = 'Successfully deactivate user.'
     end
