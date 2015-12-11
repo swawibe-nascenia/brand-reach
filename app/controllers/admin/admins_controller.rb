@@ -16,8 +16,7 @@ class Admin::AdminsController < ApplicationController
     authorize :admin, :manage_admins?
 
     @admin = User.new(admin_params) do |user|
-      user.is_active = true,
-      user.verified = true,
+      user.status = User.statuses[:active],
       user.user_type = User.user_types[:admin]
     end
 
@@ -99,25 +98,25 @@ class Admin::AdminsController < ApplicationController
   def deactivate_user
     authorize :admin, :manage_brandreach?
 
-    @user = User.where(id: params[:id], verified: true,
+    @user = User.where(id: params[:id], status: User.statuses[:active],
                        user_type: [User.user_types[:influencer],
                        User.user_types[:brand]
                        ]).first
 
     @success = false
-    @message = 'User deactivate request fail'
+    @message = 'User suspend request fail'
 
     if @user
-      @user.update_column(:verified, false)
+      @user.update_column(status, User.statuses[:suspended])
       @success = true
-      @message = 'Successfully deactivate user.'
+      @message = 'Successfully suspend user account.'
     end
   end
 
   def activate_user
     authorize :admin, :manage_brandreach?
 
-    @user = User.where(id: params[:id], verified: false,
+    @user = User.where(id: params[:id], status: User.statuses[:suspended],
                        user_type: [User.user_types[:influencer],
                                    User.user_types[:brand]
                        ]).first
@@ -126,7 +125,7 @@ class Admin::AdminsController < ApplicationController
     @message = 'User deactivate request fail'
 
     if @user
-      @user.update_column(:verified, true)
+      @user.update_column(status, User.statuses[:active])
       @success = true
       @message = 'Successfully deactivate user.'
     end
@@ -135,7 +134,7 @@ class Admin::AdminsController < ApplicationController
 
   def admin_params
     params.require(:user).permit(:current_password, :first_name, :last_name, :email, :password, :password_confirmation,
-                    :is_active, :verified, :user_type)
+                    :status, :user_type)
   end
 
   def log_in_user?

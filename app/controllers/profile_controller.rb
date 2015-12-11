@@ -144,7 +144,7 @@ class ProfileController < ApplicationController
   end
 
   def deactivate_account
-    @user.is_active = false
+    @user.status = User.statuses[:active]
 
     if @user.save(validate: false)
       flash[:success] = 'Account Deactivated successfully'
@@ -188,7 +188,7 @@ class ProfileController < ApplicationController
       :company_email, :image, :email_remainder_active, :sms_remainder_active,
       :industry, :phone, :street_address, :landmark, :city, :state, :is_available,
       :country, :zip_code, :short_bio, :password, :password_confirmation,
-      :current_password, :is_active,:crop_x, :crop_y, :crop_w, :crop_h,
+      :current_password, :status,:crop_x, :crop_y, :crop_w, :crop_h,
       facebook_accounts_attributes: [:id, :status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost]
     )
   end

@@ -15,7 +15,7 @@ class CampaignsController < ApplicationController
   def new
     @influencer = User.find(params[:receiver_id].to_i)
 
-    if @influencer.is_active?
+    if @influencer.active?
       @costs = User.find(params[:receiver_id].to_i).active_facebook_accounts.pluck(
           :status_update_cost, :profile_photo_cost, :cover_photo_cost,
           :video_post_cost)
