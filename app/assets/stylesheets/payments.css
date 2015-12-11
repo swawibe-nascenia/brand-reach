@@ -74,18 +74,6 @@
 
 }
 
-@media
-only screen and (max-width: 1000px) {
-    .amount-withdraw label, .amount-withdraw input {
-        display: block;
-    }
-
-    .amount-withdraw input {
-        width: 100%;
-    }
-
-}
-
 .influencer-payment-div .btn-withdraw{
     float: right;
     margin-top: 0;
@@ -99,6 +87,22 @@ only screen and (max-width: 1000px) {
     font-family: 'Raleway', sans-serif;
     font-size: 11pt;
     text-align: right;
+}
+
+@media
+only screen and (max-width: 1000px) {
+    .amount-withdraw label, .amount-withdraw input {
+        display: block;
+    }
+
+    .amount-withdraw input {
+        width: 100%;
+    }
+
+    .influencer-payment-div .btn-withdraw {
+        margin-top: 7px;
+    }
+
 }
 
 @media only screen and (max-width: 480px) {
@@ -204,12 +208,6 @@ only screen and (max-width: 800px) {
     .btn-download {
         font-size: 13px;
         margin: 15px 2px 3px 5px;
-        padding: 3px 10px;
-    }
-
-    .btn-withdraw {
-        font-size: 13px;
-        margin: 15px 3px 3px 2px;
         padding: 3px 10px;
     }
 
