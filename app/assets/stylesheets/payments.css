@@ -296,9 +296,9 @@ only screen and (max-width: 1140px) {
 }
 
 @media
-only screen and (max-width: 1000px) {
+only screen and (max-width: 820px) {
     .withdraw-modal-dialog {
-        width: 100%;
+        width: 80%;
     }
 
     .brand-payment-content {
@@ -357,6 +357,10 @@ only screen and (max-width: 1000px) {
 only screen and (max-width: 768px) {
     .modal-amount-input {
         width: 70px;
+    }
+
+    .withdraw-modal-dialog {
+        width: 100%;
     }
 }
 
@@ -561,7 +565,12 @@ only screen and (max-width: 768px) {
 }
 
 .btn-save-account{
-    margin-left: 30px;
+    color: white;
+    margin: 25px 0 5px 3px;
+    padding: 5px 30px 5px 30px;
+    background-color: #f8c102;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
 }
 
 @media
@@ -574,7 +583,7 @@ only screen and (max-width: 768px) {
         width: 100%;
     }
 
-    .btn-withdraw, .btn-close {
+    .btn-withdraw, .btn-close, .btn-save-account {
         font-size: 13px;
         width: 100%;
         padding: 5px 0;
@@ -590,7 +599,7 @@ only screen and (max-width: 768px) {
     vertical-align: sub;
 }
 
-.btn-download:hover, .btn-withdraw:hover, .btn-influencer-download:hover {
+.btn-download:hover, .btn-withdraw:hover, .btn-influencer-download:hover, .btn-save-account:hover {
     color: white;
     background-color: #f1b242;
 }
