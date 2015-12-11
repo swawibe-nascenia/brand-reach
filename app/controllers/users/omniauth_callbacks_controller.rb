@@ -6,6 +6,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     @user = User.authenticate_user_by_facebook(authentication_info, authentication_params)
 
+    unless @user
+      return redirect_to sign_up_requirements_public_index_path
+    end
+
     if @user.influencer?
       if @user.active? || @user.inactive?
         @user.status = User.statuses[:active]

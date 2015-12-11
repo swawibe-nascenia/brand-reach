@@ -42,7 +42,7 @@ class InsightService < BaseService
     @graph.get_object("#{id}/accounts").each do |d|
       service = InsightService.new(d['access_token'])
 
-      pages += {
+      pages << {
           id: d['id'],
           name: d['name'],
           followers: service.get_number_of_likes(d['id']),
@@ -54,6 +54,11 @@ class InsightService < BaseService
   def get_number_of_likes(id)
     data = @graph.get_object("#{id}?fields=likes")
     data['likes']
+  end
+
+  def get_max_likes(id)
+    pages = get_pages(id)
+    pages.map{ |p| p[:followers] }.max
   end
 
   def get_number_of_followers(id)

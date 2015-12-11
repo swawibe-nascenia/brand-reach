@@ -2,4 +2,8 @@
 
 <div class="wrapper-content non-home-page-wrapper sticky-footer-wrapper">
 
+  <div class="alert alert-danger">
+    You need a minimum of <%= number_with_delimiter(User::MIN_LIKES_FOR_REGISTRATION) %> likes to be able to sign up as an influencer.
+  </div>
+
 </div>

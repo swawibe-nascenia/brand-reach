@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
 
   FACEBOOK_ACCOUNT_COMPLETENESS = [:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost]
 
+  MIN_LIKES_FOR_REGISTRATION = 100000
+
   # ----------------------------------------------------------------------
   # == Attributes == #
   # ----------------------------------------------------------------------
@@ -126,6 +128,12 @@ class User < ActiveRecord::Base
 
     # create new user if user not found_by email
     unless user
+      graph = InsightService.new(auth.credentials.token)
+
+      if graph.get_max_likes(auth.uid) < User::MIN_LIKES_FOR_REGISTRATION
+        return false
+      end
+
       Rails.logger.info '------------------------ user registration process initialize-------------'
       Rails.logger.info auth.info
       user = User.new({
@@ -149,7 +157,6 @@ class User < ActiveRecord::Base
                       else  User.genders[:other]
                     end
 
-      graph = InsightService.new(auth.credentials.token)
       user.remote_image_url = graph.get_profile_picture
     end
 
