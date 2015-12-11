@@ -203,21 +203,6 @@ only screen and (max-width: 980px) {
 }
 
 @media
-only screen and (max-width: 800px) {
-
-    .btn-download {
-        font-size: 13px;
-        margin: 15px 2px 3px 5px;
-        padding: 3px 10px;
-    }
-
-    .payment-div > .payment-balance {
-        font-size: 12px;
-        padding: 5px 5px 0 0;
-    }
-}
-
-@media
 only screen and (max-width: 768px) {
     td, tr {
         display: block;
@@ -231,10 +216,8 @@ only screen and (max-width: 768px) {
     }
 
     .btn-download {
-        font-size: 11px;
-        color: white;
-        margin: 15px 3px 3px 5px;
-        padding: 8px 10px;
+        margin: 15px 0;
+        width: 100%;
     }
 
     .transaction-table {
