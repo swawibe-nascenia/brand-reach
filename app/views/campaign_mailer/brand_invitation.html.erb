@@ -1,0 +1,21 @@
+<h2>Dear <%= @name %>,</h2>
+
+<p>
+  We are inviting you to be a brand/influencer on BrandReach,
+  an online advertising platform connecting Brands and Influencers.
+  Our Influencers can get listed and advocate the brands they love/Our
+  brands can enlist the top creators and influencers to leverage their brand.
+</p>
+<p>
+  We initiate branding campaigns and advocate high quality brand engagement.
+</p>
+<p>
+  We believe BrandReach is the platform for brands to find the top influencers to leverage
+  the brand and influencers to get listed and advocate the brands they love!
+</p>
+
+<p><a href="<%= verify_brand_profile_profile_index_url(id: @user.id, token: @user.channel_name ) %>">Please click here to activate your account</a> </p>
+
+<p>Warm Regards,
+<h3>The BrandReach Team</h3>
+</p>

@@ -31,6 +31,8 @@ class Admin::BrandInvitation < ActiveRecord::Base
   # == Callbacks == #
   # ----------------------------------------------------------------------
 
+  after_create :send_mail
+
   # ----------------------------------------------------------------------
   # == Scopes and Other macros == #
   # ----------------------------------------------------------------------
@@ -44,4 +46,8 @@ class Admin::BrandInvitation < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   private
+
+  def send_mail
+    CampaignMailer.sing_up_notification_to_admin(brand).deliver_now
+  end
 end
