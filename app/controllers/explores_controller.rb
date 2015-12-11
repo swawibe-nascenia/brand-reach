@@ -3,7 +3,7 @@ class ExploresController < ApplicationController
 
   def show
     authorize :brand, :brand?
-    @influencers = User.influencers.where(profile_complete: true)
+    @influencers = User.active_influencers.where(profile_complete: true)
 
     if params[:search_key].present?
       wildcard_search = "%#{params[:search_key].strip! || params[:search_key]}%"
