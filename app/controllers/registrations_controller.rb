@@ -14,6 +14,7 @@ class RegistrationsController < Devise::RegistrationsController
     @user.password = password
     @user.password_confirmation = password
     @user.user_type = 0
+    @user.status = User.statuses[:waiting]
 
     @success = true
     @messages = []
