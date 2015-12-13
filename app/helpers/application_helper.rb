@@ -5,16 +5,16 @@ module ApplicationHelper
 
   def bootstrap_class_for flash_type
     case flash_type
-      when 'success'
-        'alert-success'
-      when 'error'
-        'alert-error'
-      when 'alert'
-        'alert-block'
-      when 'notice'
-        'alert-info'
-      else
-        flash_type.to_s
+    when 'success'
+      'alert-success'
+    when 'error'
+      'alert-error'
+    when 'alert'
+      'alert-block'
+    when 'notice'
+      'alert-info'
+    else
+      flash_type.to_s
     end
   end
 
@@ -41,28 +41,51 @@ module ApplicationHelper
   end
 
   def brand_invitation_success_message
-    { head: 'Brand Invitation Successful', title: 'Brand Invitation Successful',
-               message: 'Your Invitation successfully sent to Brand.'}
+    {
+        head: 'Brand Invitation successful',
+        title: 'Brand Invitation successful',
+        message: 'Your Invitation successfully sent to Brand.'
+    }
   end
 
   def brand_re_invitation_success_message
-    { head: 'Brand re-invitation successful', title: 'Brand re-invitation successful',
-      message: 'Re-invitation successfully sent to Brand.'}
+    {
+        head: 'Brand re-invitation successful',
+        title: 'Brand re-invitation successful',
+        message: 'Re-invitation successfully sent to Brand.'
+    }
   end
 
   def influencer_invitation_success_message
-    { head: 'Influencer Invitation Successful', title: 'Influencer Invitation Successful',
-     message: 'Your Invitation successfully sent to Influencer.' }
+    {
+        head: 'Influencer Invitation successful',
+        title: 'Influencer Invitation successful',
+        message: 'Your Invitation successfully sent to Influencer.'
+    }
   end
 
   def brand_active_success_message
-    { head: 'Activate Brand Successful', title: 'Activate Brand Successful',
-      message: 'Brand successfully activated.' }
+    {
+        head: 'Activate Brand successful',
+        title: 'Activate Brand successful',
+        message: 'Brand successfully activated.'
+    }
   end
 
   def brand_suspend_success_message
-    { head: 'Suspend Brand Successful', title: 'Suspend Brand Successful',
-      message: 'Brand successfully suspended.' }
+    {
+        head: 'Suspend Brand successful',
+        title: 'Suspend Brand successful',
+        message: 'Brand successfully suspended.'
+    }
+  end
+
+  def admin_add_success_message
+    {
+        head: 'New admin add successful',
+        title: 'New admin add successful',
+        message: 'New admin successfully added.'
+    }
   end
 
 end

@@ -1,5 +1,7 @@
 <% if @success %>
 $('#add-admin-modal').modal('hide');
+$('.modal-container').html("<%= j render(:partial => 'shared/success_message',
+           :locals => { message: admin_add_success_message }) %>");
 $('.table-admin tbody').append("<%= j render partial: 'admin', object: @admin %>");
 <% else %>
 console.log('---------------- render sign up errors-----------------------');

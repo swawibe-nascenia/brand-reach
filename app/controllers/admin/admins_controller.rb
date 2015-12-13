@@ -22,15 +22,18 @@ class Admin::AdminsController < ApplicationController
   def create
     authorize :admin, :manage_admins?
 
-    @admin = User.new(admin_params)
+    @admin = User.new(admin_params) do |admin|
+      admin.status = User.statuses[:active]
+      admin.user_type = User.user_types[:admin]
+    end
 
     @success = true
     @messages = ''
 
     if @admin.save
-      @admin.update_column(:status, User.statuses[:active])
-      @admin.update_column(:user_type, User.user_types[:admin])
-      @admin.save
+      # @admin.update_column(:status, User.statuses[:active])
+      # @admin.update_column(:user_type, User.user_types[:admin])
+      # @admin.save
       @messages << 'New admin added successfully.'
     else
       @messages = @admin.errors.full_messages
