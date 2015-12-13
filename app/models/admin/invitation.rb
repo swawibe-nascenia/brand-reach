@@ -38,6 +38,16 @@ class Admin::Invitation < ActiveRecord::Base
   # == Instance methods == #
   # ----------------------------------------------------------------------
 
+  # user object creation user friendly time
+  def time
+    if created_at.try(:to_date) == Date.today
+      created_at.strftime('%H:%M%P')
+    else
+      created_at.try(:strftime, '%d-%m-%Y')
+
+    end
+  end
+
   # ----------------------------------------------------------------------
   # == Class methods == #
   # ----------------------------------------------------------------------
