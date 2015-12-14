@@ -324,7 +324,7 @@ only screen and (max-width: 767px) {
 }
 
 @media
-only screen and (max-width: 460px){
+only screen and (max-width: 580px){
     .like-send-request {
         float: none !important;
     }
@@ -355,6 +355,19 @@ only screen and (max-width: 460px){
 
     .influencer-profile-modal label {
         width: 100px;
+    }
+
+    .influencer-modal-image, .influencer-modal-details, .like-send-request {
+        display: block !important;
+    }
+
+    .influencer-modal-details {
+        text-align: center;
+    }
+
+    .follower-box, .btn-box {
+        float: none;
+        margin-right: 0;
     }
 }
 
