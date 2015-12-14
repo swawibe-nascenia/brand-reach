@@ -227,6 +227,7 @@ class InsightService < BaseService
           resp[k] = 0 if resp[k].blank?
           resp[k] += v
         end
+        break
       end
     end
 
