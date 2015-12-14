@@ -1,6 +1,7 @@
 <% if @success %>
-//$('tr#user-<%= @user.id %>').remove();
-window.location.reload();
+    $('tr#user-<%= @user.id %>').remove();
+    $('.modal-container').html("<%= j render(:partial => 'shared/success_message',
+           :locals => { message: brand_active_success_message }) %>");
 <% else %>
-alert("<%= @message %>");
+    alert("<%= @message %>");
 <% end %>

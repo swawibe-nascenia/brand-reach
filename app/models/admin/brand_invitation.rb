@@ -1,5 +1,4 @@
-class Admin::Invitation < ActiveRecord::Base
-  paginates_per 5
+class Admin::BrandInvitation < ActiveRecord::Base
   # ----------------------------------------------------------------------
   # == Include Modules == #
   # ----------------------------------------------------------------------
@@ -7,6 +6,8 @@ class Admin::Invitation < ActiveRecord::Base
   # ----------------------------------------------------------------------
   # == Constants == #
   # ----------------------------------------------------------------------
+
+  enum status: [:waiting, :accepted]
 
   # ----------------------------------------------------------------------
   # == Attributes == #
@@ -20,6 +21,8 @@ class Admin::Invitation < ActiveRecord::Base
   # == Associations and Nested Attributes == #
   # ----------------------------------------------------------------------
 
+  belongs_to :brand, class_name: 'User'
+
   # ----------------------------------------------------------------------
   # == Validations == #
   # ----------------------------------------------------------------------
@@ -28,7 +31,7 @@ class Admin::Invitation < ActiveRecord::Base
   # == Callbacks == #
   # ----------------------------------------------------------------------
 
-  after_create :send_invitation
+  after_create :send_mail
 
   # ----------------------------------------------------------------------
   # == Scopes and Other macros == #
@@ -38,24 +41,13 @@ class Admin::Invitation < ActiveRecord::Base
   # == Instance methods == #
   # ----------------------------------------------------------------------
 
-  # user object creation user friendly time
-  def time
-    if created_at.try(:to_date) == Date.today
-      created_at.strftime('%H:%M%P')
-    else
-      created_at.try(:strftime, '%d-%m-%Y')
-
-    end
-  end
-
   # ----------------------------------------------------------------------
   # == Class methods == #
   # ----------------------------------------------------------------------
 
   private
 
-  def send_invitation
-    Rails.logger.info "=============== Send invitaions to callback ================"
-    CampaignMailer.invitation(attributes).deliver_now
+  def send_mail
+    CampaignMailer.brand_invitation(brand).deliver_now
   end
 end

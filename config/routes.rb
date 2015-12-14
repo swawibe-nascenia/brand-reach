@@ -116,7 +116,16 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :invitations
+    resources :invitations do
+      collection do
+        get :brand_invitation
+        post :create_brand_invitation
+      end
+
+      member do
+        get :resend
+      end
+    end
   end
 
   # root to: 'public#home', as: :root

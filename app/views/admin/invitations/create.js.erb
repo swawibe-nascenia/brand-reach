@@ -1,2 +1,5 @@
 $('#invitation-modal').modal('hide');
+$('.modal-container').html("<%= j render(:partial => 'shared/success_message',
+           :locals => { message: influencer_invitation_success_message }) %>");
+
 $('.invitation-table tbody').append("<%= j render @invitation  %>");

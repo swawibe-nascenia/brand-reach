@@ -14,7 +14,12 @@ class User < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   enum user_type: [:brand, :influencer, :admin, :super_admin]
-
+  # user status, active -> Currently active user (showed on explore page, can communicate),
+  #              waiting -> Brand submit info to site need verified by brandreach to activate account
+  #              invited -> Invited by admin (only showed on admin brand invitation page)
+  #              suspended -> Suspended by admin, shows no where
+  #              inactive -> Deactivated by user, shows no where
+  enum status: [:active, :invited, :waiting, :inactive, :suspended]
   enum gender: [:male, :female, :other]
 
   Industry = ['Health and Beauty', 'Technology', 'Startups', 'Internet', 'Food', 'Restaurants', 'Automobile']
@@ -77,8 +82,19 @@ class User < ActiveRecord::Base
   # == Scopes and Other macros == #
   # ----------------------------------------------------------------------
 
-  scope :influencers, ->{ where( user_type: user_types[:influencer], is_active: true)}
-  scope :brands, ->{ where( user_type: user_types[:brand], is_active: true, verified: true)}
+  scope :active_influencers, ->{ where( user_type: user_types[:influencer], status: User.statuses[:active])}
+  scope :inactive_influencers, ->{ where( user_type: user_types[:influencer], status: User.statuses[:inactive])}
+  scope :suspended_influencers, ->{ where( user_type: user_types[:influencer], status: User.statuses[:suspended])}
+
+  scope :active_brands, ->{ where( user_type: user_types[:brand], status: User.statuses[:active])}
+  scope :inactive_brand, ->{ where( user_type: user_types[:brand],  status: User.statuses[:inactive])}
+  scope :invited_brand, ->{ where( user_type: user_types[:brand],  status: User.statuses[:invited])}
+  scope :waiting_brand, ->{ where( user_type: user_types[:brand],  status: User.statuses[:waiting])}
+  scope :suspended_brand, ->{ where( user_type: user_types[:brand],  status: User.statuses[:suspended])}
+
+  singleton_class.send(:alias_method, :influencers, :active_influencers)
+  singleton_class.send(:alias_method, :brands, :active_brands)
+
 
   # ----------------------------------------------------------------------
   # == Instance methods == #
@@ -118,9 +134,8 @@ class User < ActiveRecord::Base
                           email: auth.info.email,
                           company_email: auth.info.email,
                           password: Devise.friendly_token[0,20],
-                          is_active: true,
+                          status: User.statuses[:active],
                           user_type: User.user_types[:influencer],
-                          verified: true
                       })
 
       user.name = auth.info.name
@@ -168,8 +183,13 @@ class User < ActiveRecord::Base
     end
   end
 
-  def active?
-    is_active? && verified?
+  # user object creation user friendly time
+  def time
+    if created_at.to_date == Date.today
+      created_at.strftime('%H:%M%P')
+    else
+      created_at.strftime('%d-%m-%Y')
+    end
   end
 
   # ----------------------------------------------------------------------
@@ -231,7 +251,7 @@ class User < ActiveRecord::Base
   end
 
   def send_mail
-    CampaignMailer.sing_up_notification_to_admin(self).deliver_now if brand?
+    CampaignMailer.brand_invitation(self).deliver_now if brand? && invited?
   end
 
 end

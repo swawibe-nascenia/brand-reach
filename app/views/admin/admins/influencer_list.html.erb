@@ -1,8 +1,13 @@
 <% title 'Active Influencer' %>
 
 <div class="admin-page-wrapper">
-  <h1 class="">Active Influencers</h1>
-
+  <h1 class="admin-header display-inline-block">Active Influencers</h1>
+  <%= form_tag influencer_list_admin_admins_path	, :method => 'get', class: 'display-inline-block' do %>
+      <p>
+        <%= text_field_tag :email, params[:email], placeholder: 'Filter by email' %>
+        <%= submit_tag 'Search', :name => nil %>
+      </p>
+  <% end %>
   <table class="table table-responsive admin-table active-influencer-table">
     <thead>
     <tr>

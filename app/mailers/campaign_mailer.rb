@@ -79,4 +79,16 @@ class CampaignMailer < ApplicationMailer
                Be a brand/influencer on one of the most amazing knowledge sharing platforms."
     mail(from: 'hasanuzzaman@nascenia.com', to: @mail, subject: subject)
   end
+
+  def brand_invitation (brand)
+    @user = brand
+    @name = brand.full_name
+    @mail = brand.email
+    Rails.logger.info "=============== Send brand invitaions to request name #{@name} email#{@mail}=====#{brand.inspect}==========="
+
+    # @brandReach = root_url
+    subject = "We'd like to have you on Brandreach.
+               Be a brand/influencer on one of the most amazing knowledge sharing platforms."
+    mail(from: 'hasanuzzaman@nascenia.com', to: @mail, subject: subject)
+  end
 end

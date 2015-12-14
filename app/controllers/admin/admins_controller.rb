@@ -9,22 +9,31 @@ class Admin::AdminsController < ApplicationController
 
   def manage_admins
     authorize :admin, :manage_admins?
-    @admins = User.where(user_type: User.user_types[:admin]).page params[:page]
+    @admins = User.where(user_type: User.user_types[:admin])
+
+    if params[:email].present?
+      wildcard_search = "%#{params[:email].strip! || params[:email]}%"
+      @admins = @admins.where('email LIKE :search' , search: wildcard_search)
+    end
+
+    @admins = @admins.page params[:page]
   end
 
   def create
     authorize :admin, :manage_admins?
 
-    @admin = User.new(admin_params) do |user|
-      user.is_active = true,
-      user.verified = true,
-      user.user_type = User.user_types[:admin]
+    @admin = User.new(admin_params) do |admin|
+      admin.status = User.statuses[:active]
+      admin.user_type = User.user_types[:admin]
     end
 
     @success = true
     @messages = ''
 
     if @admin.save
+      # @admin.update_column(:status, User.statuses[:active])
+      # @admin.update_column(:user_type, User.user_types[:admin])
+      # @admin.save
       @messages << 'New admin added successfully.'
     else
       @messages = @admin.errors.full_messages
@@ -74,7 +83,14 @@ class Admin::AdminsController < ApplicationController
 
   def brands_request
     authorize :admin, :manage_brandreach?
-    @brands = User.where(user_type: User.user_types[:brand], verified: false).page params[:page]
+    @brands = User.where(user_type: User.user_types[:brand], status: User.statuses[:waiting])
+
+    if params[:email].present?
+      wildcard_search = "%#{params[:email].strip! || params[:email]}%"
+      @brands = @brands.where('email LIKE :search' , search: wildcard_search)
+    end
+
+    @brands = @brands.page params[:page]
   end
 
   def profile
@@ -88,36 +104,50 @@ class Admin::AdminsController < ApplicationController
 
   def influencer_list
     authorize :admin, :manage_brandreach?
-    @influencers = User.influencers.page params[:page]
+    @influencers = User.active_influencers.page params[:page]
+
+    if params[:email].present?
+      wildcard_search = "%#{params[:email].strip! || params[:email]}%"
+      @influencers = @influencers.where('email LIKE :search' , search: wildcard_search)
+    end
+
+    @influencers = @influencers.page params[:page]
   end
 
   def brand_list
     authorize :admin, :manage_brandreach?
-    @brands = User.brands.page params[:page]
+    @brands = User.active_brands
+
+    if params[:email].present?
+      wildcard_search = "%#{params[:email].strip! || params[:email]}%"
+      @brands = @brands.where('email LIKE :search' , search: wildcard_search)
+    end
+
+    @brands = @brands.page params[:page]
   end
 
   def deactivate_user
     authorize :admin, :manage_brandreach?
 
-    @user = User.where(id: params[:id], verified: true,
+    @user = User.where(id: params[:id], status: User.statuses[:active],
                        user_type: [User.user_types[:influencer],
                        User.user_types[:brand]
                        ]).first
 
     @success = false
-    @message = 'User deactivate request fail'
+    @message = 'User suspend request fail'
 
     if @user
-      @user.update_column(:verified, false)
+      @user.update_column(:status, User.statuses[:suspended])
       @success = true
-      @message = 'Successfully deactivate user.'
+      @message = 'Successfully suspend user account.'
     end
   end
 
   def activate_user
     authorize :admin, :manage_brandreach?
 
-    @user = User.where(id: params[:id], verified: false,
+    @user = User.where(id: params[:id], status: [User.statuses[:suspended],User.statuses[:waiting]],
                        user_type: [User.user_types[:influencer],
                                    User.user_types[:brand]
                        ]).first
@@ -126,7 +156,12 @@ class Admin::AdminsController < ApplicationController
     @message = 'User deactivate request fail'
 
     if @user
-      @user.update_column(:verified, true)
+      password = Devise.friendly_token.first(8)
+      @user.password = password
+      @user.password_confirmation = password
+      @user.status = User.statuses[:active]
+      @user.save(validate: false)
+      CampaignMailer.account_activate_notification_to_user(@user, password).deliver_now
       @success = true
       @message = 'Successfully deactivate user.'
     end
@@ -135,7 +170,7 @@ class Admin::AdminsController < ApplicationController
 
   def admin_params
     params.require(:user).permit(:current_password, :first_name, :last_name, :email, :password, :password_confirmation,
-                    :is_active, :verified, :user_type)
+                     :user_type)
   end
 
   def log_in_user?

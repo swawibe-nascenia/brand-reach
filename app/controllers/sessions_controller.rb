@@ -19,7 +19,7 @@ class SessionsController < Devise::SessionsController
         flash[:error] = 'You are unauthorized to access the page.'
         redirect_to admin_path
       else
-        if temp_user.verified?
+        if temp_user.active? || temp_user.inactive?
           #   verified user by brandreach
           user = warden.authenticate(auth_options)
 
@@ -29,8 +29,9 @@ class SessionsController < Devise::SessionsController
             @login_success = true
             sign_in(resource_name, user)
 
-            unless user.is_active?
-              user.update_attribute(:is_active, true)
+            # make active to in-active user
+            unless user.active?
+              user.update_attribute(:status, User.statuses[:active])
             end
 
             respond_to do |format|

@@ -1,34 +1,35 @@
-<% title 'Invitations' %>
+<% title 'Brand Invitations' %>
 
 <div class="admin-page-wrapper">
   <div class="">
-    <a href="#invitation-modal" data-toggle='modal' class="btn btn-primary raleway-semibold">
+    <a href="#brand-invitation-modal" data-toggle='modal' class="btn btn-primary raleway-semibold">
       <span class="plus-sign"><i class="fa fa-plus"></i></span>
       New Invitation</a>
   </div>
   <br/>
   <h1 class="admin-header display-inline-block">Invitations</h1>
-  <%= form_tag admin_invitations_path, :method => 'get', class: 'display-inline-block' do %>
+  <%= form_tag brand_invitation_admin_invitations_path, :method => 'get', class: 'display-inline-block' do %>
       <p>
         <%= text_field_tag :email, params[:email], placeholder: 'Filter by email' %>
         <%= submit_tag 'Search', :name => nil %>
       </p>
   <% end %>
-  <table class="table table-responsive admin-table invitation-table">
+  <table class="table table-responsive admin-table brand-invitation-table">
     <thead>
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
-      <th>Date</th>
       <th>Email</th>
+      <th>Date</th>
+      <th>Action</th>
     </tr>
     </thead>
     <tbody>
-    <%= render partial: 'invitation', collection: @invitations %>
+    <%= render partial: 'invited_brand', collection: @invited_brands, as: :brand %>
     </tbody>
   </table>
-  <%= paginate @invitations %>
+  <%= paginate @invited_brands %>
 </div>
 
-<%= render 'form' %>
+<%= render 'brand_invitation_form' %>
 

@@ -6,7 +6,7 @@ class PasswordsController < Devise::PasswordsController
                           user_type: [User.user_types[:brand],
                                       User.user_types[:admin],
                                       User.user_types[:super_admin]
-                                      ], verified: true, is_active: true).first
+                                      ], status: User.statuses[:active]).first
    @password_reset_send_success = false
    @messages = []
 
@@ -21,7 +21,7 @@ class PasswordsController < Devise::PasswordsController
      end
    else
      @messages << 'This e-mail ID was not found.'
-     flash[:success] = 'This e-mail ID was not found.'
+     flash.now[:success] = 'This e-mail ID was not found.'
    end
  end
 
