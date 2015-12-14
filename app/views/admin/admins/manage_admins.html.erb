@@ -35,21 +35,6 @@
 
 <script>
   $(function(){
-    $('.remove-admin').click(function(){
-        if(confirm('Do you really want to delete?')){
-            var adminId = $(this).data('id');
-            $.ajax({
-                type: 'delete',
-                url: '/admins/' + adminId,
-                dataType: "script",
-                data: {
-                    'authenticity_token': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(data) {
-                    console.log(data)
-                }
-            });
-        }
-    });
+
   });
 </script>

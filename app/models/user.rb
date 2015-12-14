@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 
   FACEBOOK_ACCOUNT_COMPLETENESS = [:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost]
 
-  MIN_LIKES_FOR_REGISTRATION = 100000
+  MIN_LIKES_FOR_REGISTRATION = 1
 
   # ----------------------------------------------------------------------
   # == Attributes == #
