@@ -15,7 +15,7 @@
                   <p>
                     <%= image_tag('explore-followers.png', :alt => 'number-of-follower') %> &nbsp;<%= influencer.max_followers %>
                   </p>
-                  <p> <%= image_tag('explore_page.png', :alt => 'number-of-pages') %> &nbsp;<%= influencer.facebook_accounts.count %></p>
+                  <p> <%= image_tag('explore_page.png', :alt => 'number-of-pages') %> &nbsp;<%= influencer.active_facebook_accounts.count %></p>
                 </div>
                 <%= link_to 'VIEW PROFILE', influencer_path(influencer), remote: true, :class => 'btn btn-primary btn-view-profile' %>
               </div>
