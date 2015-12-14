@@ -2,7 +2,12 @@
   <td><%= user.first_name %></td>
   <td><%= user.last_name %></td>
   <td><%= user.email %></td>
-  <td><%= user.time %></td>
+  <td><%= user.time %></td>user-password-change-modal
+  <td>
+    <a href="javascript:;" class="text-success user-password-change" data-id="<%= user.id %>">
+    <h5>Change Password</h5>
+    </a>
+  </td>
   <td>
     <% if user.active? %>
         <a href="javascript:;" class="text-red  text-danger deactivate-user" data-id="<%= user.id %>">
@@ -15,3 +20,7 @@
     <% end %>
   </td>
 </tr>
+
+<script>
+  $('.user-password-change')
+</script>

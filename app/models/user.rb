@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  paginates_per 5
 
   # ----------------------------------------------------------------------
   # == Include Modules == #
@@ -87,12 +86,23 @@ class User < ActiveRecord::Base
   scope :active_influencers, ->{ where( user_type: user_types[:influencer], status: User.statuses[:active])}
   scope :inactive_influencers, ->{ where( user_type: user_types[:influencer], status: User.statuses[:inactive])}
   scope :suspended_influencers, ->{ where( user_type: user_types[:influencer], status: User.statuses[:suspended])}
+  scope :active_suspended_influencers, ->{ where( user_type: user_types[:influencer],
+                                                    status: [
+                                                        User.statuses[:active],
+                                                        User.statuses[:suspended]
+                                                    ]
+                                                  )}
 
   scope :active_brands, ->{ where( user_type: user_types[:brand], status: User.statuses[:active])}
-  scope :inactive_brand, ->{ where( user_type: user_types[:brand],  status: User.statuses[:inactive])}
-  scope :invited_brand, ->{ where( user_type: user_types[:brand],  status: User.statuses[:invited])}
-  scope :waiting_brand, ->{ where( user_type: user_types[:brand],  status: User.statuses[:waiting])}
-  scope :suspended_brand, ->{ where( user_type: user_types[:brand],  status: User.statuses[:suspended])}
+  scope :inactive_brands, ->{ where( user_type: user_types[:brand],  status: User.statuses[:inactive])}
+  scope :invited_brands, ->{ where( user_type: user_types[:brand],  status: User.statuses[:invited])}
+  scope :waiting_brands, ->{ where( user_type: user_types[:brand],  status: User.statuses[:waiting])}
+  scope :suspended_brands, ->{ where( user_type: user_types[:brand],  status: User.statuses[:suspended])}
+  scope :active_suspended_brands, ->{ where( user_type: user_types[:brand],
+                                            status: [
+                                                User.statuses[:active],
+                                                User.statuses[:suspended]
+                                            ])}
 
   singleton_class.send(:alias_method, :influencers, :active_influencers)
   singleton_class.send(:alias_method, :brands, :active_brands)

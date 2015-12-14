@@ -113,6 +113,7 @@ Rails.application.routes.draw do
       member do
         put :activate_user
         put :deactivate_user
+        put :change_user_password
       end
     end
 

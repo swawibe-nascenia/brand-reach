@@ -104,7 +104,7 @@ class Admin::AdminsController < ApplicationController
 
   def influencer_list
     authorize :admin, :manage_brandreach?
-    @influencers = User.active_influencers.page params[:page]
+    @influencers = User.active_suspended_influencers
 
     if params[:email].present?
       wildcard_search = "%#{params[:email].strip! || params[:email]}%"
@@ -116,7 +116,7 @@ class Admin::AdminsController < ApplicationController
 
   def brand_list
     authorize :admin, :manage_brandreach?
-    @brands = User.active_brands
+    @brands = User.active_suspended_brands
 
     if params[:email].present?
       wildcard_search = "%#{params[:email].strip! || params[:email]}%"
@@ -164,6 +164,19 @@ class Admin::AdminsController < ApplicationController
       CampaignMailer.account_activate_notification_to_user(@user, password).deliver_now
       @success = true
       @message = 'Successfully deactivate user.'
+    end
+  end
+
+  def change_user_password
+    @user = User.where(user_type: [User.user_types[:brand], User.user_types[:influencer]], id: params[:id]).first
+    @success = true
+
+    if @user
+      password = Devise.friendly_token.first(8)
+      @user.password = password
+      @user.password_confirmation = password
+    else
+      @success = false
     end
   end
   private
