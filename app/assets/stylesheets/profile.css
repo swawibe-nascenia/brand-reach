@@ -345,6 +345,7 @@ div.awesomplete > input {
 
 div.awesomplete > ul {
     min-width: 100%;
+    margin-top: -9px;
 }
 
 div.awesomplete > ul > li {
