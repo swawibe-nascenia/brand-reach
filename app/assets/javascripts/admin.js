@@ -8,7 +8,7 @@ $(function () {
         var userId = $(this).data('id');
 
         bootbox.confirm({
-            message: 'Do you really want to active this user?',
+            message: 'Do you really want to activate this user?',
             closeButton: false,
             callback: function (result) {
                 if (result) {
@@ -33,7 +33,7 @@ $(function () {
         var userId = $(this).data('id');
 
         bootbox.confirm({
-            message: "Do you really want to remove this user?",
+            message: "Do you really want to deactivate this user?",
             closeButton: false,
             callback: function (result) {
                 if (result) {
@@ -58,7 +58,7 @@ $(function () {
         var adminId = $(this).data('id');
 
         bootbox.confirm({
-            message: 'Do you really want to delete?',
+            message: 'Do you really want to remove this admin?',
             closeButton: false,
             callback: function (result) {
                 if (result) {

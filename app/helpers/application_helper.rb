@@ -42,56 +42,49 @@ module ApplicationHelper
 
   def brand_invitation_success_message
     {
-        head: 'Brand Invitation successful',
-        title: 'Brand Invitation successful',
-        message: 'Your Invitation successfully sent to Brand.'
+        head: 'Brand invitation message status:',
+        message: 'Brand invitation has been sent successfully.'
     }
   end
 
   def brand_re_invitation_success_message
     {
-        head: 'Brand re-invitation successful',
-        title: 'Brand re-invitation successful',
-        message: 'Re-invitation successfully sent to Brand.'
+        head: 'Brand re-invitation message status:',
+        message: 'Brand re-invitation has been sent successfully.'
     }
   end
 
   def influencer_invitation_success_message
     {
-        head: 'Influencer Invitation successful',
-        title: 'Influencer Invitation successful',
-        message: 'Your Invitation successfully sent to Influencer.'
+        head: 'Influencer invitation message status:',
+        message: 'Influencer invitation has been sent successfully.'
     }
   end
 
   def influencer_re_invitation_success_message
     {
-        head: 'Influencer re-invitation successful',
-        title: 'Influencer re-invitation successful',
-        message: 'Re-invitation successfully sent to Influencer.'
+        head: 'Influencer re-invitation message status:',
+        message: 'Influencer re-invitation has been sent successfully.'
     }
   end
 
   def brand_active_success_message
     {
-        head: 'Activate Brand successful',
-        title: 'Activate Brand successful',
-        message: 'Brand successfully activated.'
+        head: 'Activate Brand message status:',
+        message: 'Brand has been activated successfully.'
     }
   end
 
   def brand_suspend_success_message
     {
-        head: 'Suspend Brand successful',
-        title: 'Suspend Brand successful',
-        message: 'Brand successfully suspended.'
+        head: 'Suspend Brand message status:',
+        message: 'Brand has been suspended successfully.'
     }
   end
 
   def admin_add_success_message
     {
         head: 'New admin add successful',
-        title: 'New admin add successful',
         message: 'New admin successfully added.'
     }
   end
