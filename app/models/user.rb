@@ -13,12 +13,14 @@ class User < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   enum user_type: [:brand, :influencer, :admin, :super_admin]
-  # user status, active -> Currently active user (showed on explore page, can communicate),
+  # user status
+  #              signup -> user has just signed up and needs to add at least one page before they become active
+  #              active -> Currently active user (showed on explore page, can communicate),
   #              waiting -> Brand submit info to site need verified by brandreach to activate account
   #              invited -> Invited by admin (only showed on admin brand invitation page)
   #              suspended -> Suspended by admin, shows no where
   #              inactive -> Deactivated by user, shows no where
-  enum status: [:active, :invited, :waiting, :inactive, :suspended]
+  enum status: [:in_limbo, :active, :invited, :waiting, :inactive, :suspended]
   enum gender: [:male, :female, :other]
 
   Industry = ['Health and Beauty', 'Technology', 'Startups', 'Internet', 'Food', 'Restaurants', 'Automobile']
@@ -154,7 +156,7 @@ class User < ActiveRecord::Base
                           email: auth.info.email,
                           company_email: auth.info.email,
                           password: Devise.friendly_token[0,20],
-                          status: User.statuses[:active],
+                          status: User.statuses[:in_limbo],
                           user_type: User.user_types[:influencer],
                       })
 

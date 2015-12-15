@@ -1,0 +1,23 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'profile.css', media: 'all' %>
+<% end %>
+
+<% title 'Select Social Media Accounts' %>
+
+<div class="brands-profile-page-wrapper">
+
+  <p class="alert alert-danger">
+    Please select at least once social account before continuing to use the site
+  </p>
+
+  <button type="button" class="btn btn-account button-border-yellow js-add-account" href="javascript:">MANAGE ACCOUNT</button>
+
+  <%= render 'shared/add_account_modal', remote: false %>
+
+  <script>
+    $(window).load(function() {
+      $('.js-add-account').click();
+    });
+  </script>
+
+</div>

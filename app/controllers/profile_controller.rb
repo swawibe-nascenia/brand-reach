@@ -1,5 +1,6 @@
 class ProfileController < ApplicationController
   skip_before_action :check_profile_completion
+  skip_before_action :check_profile_social_accounts, only: [:select_accounts, :update_accounts]
   skip_before_filter :authenticate_user!, only: [:verify_brand_profile]
   before_action :set_user, only: [:profile, :update, :update_accounts, :update_password, :toggle_available, :deactivate_account, :show_settings, :update_profile_settings, :contact_us_save]
 
@@ -73,6 +74,9 @@ class ProfileController < ApplicationController
     current_user.image.recreate_versions!(:thumb, :medium, :explore_image)
   end
 
+  def select_accounts
+  end
+
   def update_accounts
     graph = InsightService.new(params[:access_token])
 
@@ -84,6 +88,7 @@ class ProfileController < ApplicationController
     if params[:accounts].present?
       params[:accounts].each do |account_id|
         page_info = graph.get_page_info(account_id)
+
         account = @user.facebook_accounts.where(account_id: account_id).first
         if account.blank?
           account = @user.facebook_accounts.build
@@ -106,6 +111,15 @@ class ProfileController < ApplicationController
     end
 
     udpate_user_profile(@user)
+
+    if @user.in_limbo?
+      if @user.active_facebook_accounts.count > 0
+        @user.update_column(:status, User.statuses[:active])
+        redirect_to profile_profile_index_path
+      else
+        # show form with error
+      end
+    end
   end
 
   def contact_us

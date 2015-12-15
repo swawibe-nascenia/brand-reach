@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_filter :authenticate_user!, :block_admin_user, :initialize_server_subscription, :check_profile_completion,
-                :set_cache_buster
+                :set_cache_buster, :check_profile_social_accounts
   before_action :configure_permitted_parameters, if: :devise_controller?
-  skip_before_action :check_profile_completion, :block_admin_user, if: :devise_controller?
+  skip_before_action :check_profile_completion, :check_profile_social_accounts, :block_admin_user, if: :devise_controller?
 
   layout :layout_by_resource
 
@@ -90,6 +90,12 @@ class ApplicationController < ActionController::Base
       flash[:error] = error_messages
       redirect_to profile_profile_index_path
      end
+  end
+
+  def check_profile_social_accounts
+    if current_user.try(:in_limbo?)
+      redirect_to select_accounts_profile_index_path
+    end
   end
 
   def block_admin_user

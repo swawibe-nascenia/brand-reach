@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get :subregion_options
       post :edit_profile_picture
       post :crop_profile_picture
+      get :select_accounts
       post :update_accounts
       get '/contact-us', to: 'profile#contact_us'
       get '/settings', to: 'profile#show_settings'

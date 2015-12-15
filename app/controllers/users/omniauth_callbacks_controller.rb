@@ -11,9 +11,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
 
     if @user.influencer?
-      if @user.active? || @user.inactive?
-        @user.status = User.statuses[:active]
-        if @user.save(validate: false)
+      is_allowed = @user.in_limbo? || @user.active? || @user.inactive?
+      if is_allowed
+        if @user.save!(validate: false)
           sign_in @user
           set_flash_message(:notice, :success, :kind => 'Facebook') if is_navigational_format?
           if current_user.influencer? && current_user.profile_complete?

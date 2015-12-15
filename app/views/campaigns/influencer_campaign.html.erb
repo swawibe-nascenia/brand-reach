@@ -5,28 +5,14 @@
 <div class="payment-div ">
   <div class="payment-button-set pull-right">
     <%= link_to 'EXPORT', '#', :class => 'btn btn-export button-border-yellow', id: 'export_campaigns' %>
-
-    <div class="dropdown" id="age_button">
-      <button class="btn btn-age dropdown-toggle" type="button" data-toggle="dropdown">Age
-        <i class="fa fa-angle-down angle-down-age "></i>
-      </button>
-      <ul class="dropdown-menu dropdown-color">
-        <li><a href="#">18-24</a></li>
-        <li><a href="#">25-34</a></li>
-        <li><a href="#">35-44</a></li>
-      </ul>
-    </div>
-    <div class="dropdown display-none" id="country_button">
-      <button class="btn btn-country dropdown-toggle" type="button" data-toggle="dropdown">Country
-        <i class="fa fa-angle-down angle-down-country "></i>
-      </button>
-      <ul class="dropdown-menu dropdown-color">
-        <li><a href="#">India</a></li>
-        <li><a href="#">HongKong</a></li>
-        <li><a href="#">United Kingdom</a></li>
-      </ul>
-    </div>
   </div>
+
+  <p class="text-right" style="clear:right">
+    Last updated: <%= current_user.insights_updated_at.try(:strftime,'%B %d, %Y %l:%M %P') %>
+    <a class="load-page" href="javascript:" onclick="window.location='?refresh=1'">
+      <%= image_tag asset_path('Refresh_icon.png') %>
+    </a>
+  </p>
 </div>
 
 <div class="campaign-content">
