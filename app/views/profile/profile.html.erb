@@ -13,7 +13,7 @@
   <%= render 'shared/show_errors', :object => @user%>
   <%= image_tag(@user.profile_picture(:thumb), :class => 'profile-picture center-block img-circle', :alt => 'profile-picture') %>
 
-  <%= form_for @user, url: profile_path(@user), html: {class: 'form-horizontal personal-info-form'} do |f| %>
+  <%= form_for @user, url: profile_path(@user), data: { parsley_validate: '' } , html: {class: 'form-horizontal personal-info-form'} do |f| %>
 
       <div class="personal-info-without-fb">
 
@@ -22,34 +22,34 @@
         <div class="form-group">
           <div class="col-md-6">
             <%= f.label :first_name, 'First Name' %>
-            <%= f.text_field :first_name, maxlength: 20, required: true %>
+            <%= f.text_field :first_name, maxlength: 20, 'data-parsley-required' => 'true' %>
           </div>
           <div class="col-md-6">
             <%= f.label :last_name, 'Last Name' %>
-            <%= f.text_field :last_name, maxlength: 20 %>
+            <%= f.text_field :last_name, maxlength: 20, 'data-parsley-required' => 'true' %>
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-md-6">
             <%= f.label :company_name, 'Company Name' %>
-            <%= f.text_field :company_name, maxlength: 50 %>
+            <%= f.text_field :company_name, maxlength: 50, 'data-parsley-required' => 'true' %>
           </div>
           <div class="col-md-6">
             <%= f.label :company_email, current_user.brand? ? 'Company Email' : 'Email' %>
-            <%= f.email_field :company_email, maxlength: 50 %>
+            <%= f.email_field :company_email, maxlength: 50, 'data-parsley-required' => 'true', 'data-parsley-type' => 'email' %>
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-md-6">
             <%= f.label :industry %>
-            <%= f.text_field :industry, id: 'industry_list', maxlength: 100 %>
+            <%= f.text_field :industry, id: 'industry_list', maxlength: 100, 'data-parsley-required' => 'true' %>
 
           </div>
           <div class="col-md-6">
             <%= f.label :phone %>
-            <%= f.text_field :phone, maxlength: 20 %>
+            <%= f.text_field :phone, maxlength: 20, 'data-parsley-pattern' => '(^[\+]?[0-9]+[-]?[0-9]+[-]?[0-9]+$)', 'data-parsley-required' => 'true' %>
           </div>
         </div>
 
@@ -58,11 +58,11 @@
             <div>
               <%= f.label :street_address, class: 'textarea-label' %>
               <%= f.text_area :street_address, rows: 4, class: 'street-address-textarea',
-                              placeholder: 'Enter your address here', maxlength: 200 %>
+                              placeholder: 'Enter your address here', maxlength: 200, 'data-parsley-required' => 'true' %>
             </div>
             <div>
               <%= f.label :zip_code %>
-              <%= f.text_field :zip_code, maxlength: 20 %>
+              <%= f.text_field :zip_code, maxlength: 20, 'data-parsley-required' => 'true' %>
             </div>
           </div>
 
@@ -74,7 +74,7 @@
               </div>
               <div class="col-md-12">
                 <%= f.label :city %>
-                <%= f.text_field :city, maxlength: 50 %>
+                <%= f.text_field :city, maxlength: 50, 'data-parsley-required' => 'true' %>
               </div>
               <div class="col-md-12">
                 <%= f.label :country %>
@@ -122,7 +122,7 @@
         <div class="form-group short-bio-row">
           <div class="col-md-12">
             <%= f.label :short_bio, 'Short Bio', class: 'textarea-label' %>
-            <%= f.text_area :short_bio, rows: 8, class: 'short_bio', maxlength: '1000' %>
+            <%= f.text_area :short_bio, rows: 8, class: 'short_bio', maxlength: '1000', 'data-parsley-required' => 'true' %>
           </div>
         </div>
       </div>
