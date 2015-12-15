@@ -622,7 +622,8 @@ only screen and (max-width: 560px) {
     width: 24%;
     text-align: right;
     padding-left: 15px;
-    padding-right: 15px;;
+    padding-right: 15px;
+    font-weight: 500;
 }
 
 .campaign-view select {
@@ -805,9 +806,14 @@ only screen and (max-width: 480px) {
     }
 }
 
-.btn-export:hover, .btn-campaign-view {
+.btn-export:hover, .btn-campaign-view:hover {
     color: white;
     background-color: #f1b242;
+}
+
+.btn-download-campaign:hover {
+    color: white;
+    background-color: #eb2e55;
 }
 
 .payment-form .parsley-errors-list {
