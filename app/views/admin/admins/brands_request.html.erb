@@ -2,12 +2,12 @@
 
 <div class="admin-page-wrapper">
   <h1 class="admin-header display-inline-block">Brand Requests</h1>
-  <%= form_tag brands_request_admin_admins_path, :method => 'get', class: 'display-inline-block' do %>
-      <p>
+
+  <%= form_tag brands_request_admin_admins_path, :method => 'get', class: 'admin-search-form display-inline-block' do %>
         <%= text_field_tag :email, params[:email], placeholder: 'Filter by email' %>
         <%= submit_tag 'Search', :name => nil %>
-      </p>
   <% end %>
+
   <table class="table table-responsive admin-table">
     <thead>
     <tr>

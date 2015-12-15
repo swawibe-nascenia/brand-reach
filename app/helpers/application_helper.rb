@@ -88,4 +88,13 @@ module ApplicationHelper
     }
   end
 
+  def home_path
+    if current_user && current_user.brand?
+      brand_home_public_index_path
+    elsif current_user && current_user.influencer?
+      influencer_home_public_index_path
+    else
+      root_path
+    end
+  end
 end
