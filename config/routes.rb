@@ -124,7 +124,8 @@ Rails.application.routes.draw do
       end
 
       member do
-        get :resend
+        get :brand_resend
+        get :influencer_resend
       end
     end
   end

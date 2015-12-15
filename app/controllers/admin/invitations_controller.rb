@@ -55,12 +55,24 @@ class Admin::InvitationsController < ApplicationController
     end
   end
 
-  def resend
+  def brand_resend
     user = User.where(id: params[:id], status: User.statuses[:invited]).first
     @success = false
 
     if user
       CampaignMailer.brand_invitation(user).deliver_now
+      @success = true
+    else
+      @messages = 'Something was wrong.'
+    end
+  end
+
+  def influencer_resend
+    influencer_invitation = Admin::Invitation.find params[:id]
+    @success = false
+
+    if influencer_invitation
+      CampaignMailer.influencer_invitation(influencer_invitation).deliver_now
       @success = true
     else
       @messages = 'Something was wrong.'

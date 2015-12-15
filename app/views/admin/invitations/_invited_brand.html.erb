@@ -3,5 +3,5 @@
   <td><%= brand.last_name %></td>
   <td><%= brand.email %></td>
   <td><%= brand.time %></td>
-  <td><%= link_to 'Re-invited', resend_admin_invitation_path(brand), remote: true %></td>
+  <td><%= link_to 'Re-invited', brand_resend_admin_invitation_path(brand), remote: true %></td>
 </tr>

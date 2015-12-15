@@ -1,0 +1,6 @@
+<% if @success %>
+$('.modal-container').html("<%= j render(:partial => 'shared/success_message',
+           :locals => { message: influencer_re_invitation_success_message }) %>");
+<% else %>
+bootbox.alert({message: "<%= @messages %>", closeButton: false});
+<% end %>

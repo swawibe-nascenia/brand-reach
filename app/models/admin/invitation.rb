@@ -1,5 +1,4 @@
 class Admin::Invitation < ActiveRecord::Base
-  paginates_per 5
   # ----------------------------------------------------------------------
   # == Include Modules == #
   # ----------------------------------------------------------------------
@@ -38,6 +37,10 @@ class Admin::Invitation < ActiveRecord::Base
   # == Instance methods == #
   # ----------------------------------------------------------------------
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   # user object creation user friendly time
   def time
     if created_at.try(:to_date) == Date.today
@@ -56,6 +59,6 @@ class Admin::Invitation < ActiveRecord::Base
 
   def send_invitation
     Rails.logger.info "=============== Send invitaions to callback ================"
-    CampaignMailer.invitation(attributes).deliver_now
+    CampaignMailer.influencer_invitation(self).deliver_now
   end
 end

@@ -6,13 +6,16 @@
   </div>
   <div class="alert-danger"></div>
   <br/>
-  <h1 class="admin-header display-inline-block">Manage admins</h1>
-  <%= form_tag manage_admins_admin_admins_path, :method => 'get', class: 'admin-search-form display-inline-block' do %>
-      <p>
-        <%= text_field_tag :email, params[:email], placeholder: 'Filter by email' %>
-        <%= submit_tag 'Search', :name => nil %>
-      </p>
-  <% end %>
+  <div>
+    <h1 class="admin-header display-inline-block">Manage admins</h1>
+    <%= form_tag manage_admins_admin_admins_path, :method => 'get', class: 'admin-search-form display-inline-block' do %>
+        <p>
+          <%= text_field_tag :email, params[:email], placeholder: 'Filter by email' %>
+          <%= submit_tag 'Search', :name => nil %>
+        </p>
+    <% end %>
+  </div>
+
   <table class="table table-responsive admin-table table-admin">
     <thead>
     <tr>

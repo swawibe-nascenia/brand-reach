@@ -1,6 +1,7 @@
 <tr>
   <td><%= invitation.first_name %></td>
   <td><%= invitation.last_name %></td>
-  <td><%= invitation.time %></td>
   <td><%= invitation.email %></td>
+  <td><%= invitation.time %></td>
+  <td><%= link_to 'Re-invited', influencer_resend_admin_invitation_path(invitation), remote: true %></td>
 </tr>
