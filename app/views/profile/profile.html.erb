@@ -13,7 +13,7 @@
   <%= render 'shared/show_errors', :object => @user%>
   <%= image_tag(@user.profile_picture(:thumb), :class => 'profile-picture center-block img-circle', :alt => 'profile-picture') %>
 
-  <%= form_for @user, url: profile_path(@user), data: { parsley_validate: '' } , html: {class: 'form-horizontal personal-info-form'} do |f| %>
+  <%= form_for @user, url: profile_path(@user), data: { parsley_validate: '', parsley_excluded: 'input[type=number]' } , html: {class: 'form-horizontal personal-info-form'} do |f| %>
 
       <div class="personal-info-without-fb">
 
