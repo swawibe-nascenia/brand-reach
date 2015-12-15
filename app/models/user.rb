@@ -56,6 +56,7 @@ class User < ActiveRecord::Base
   has_many :influencer_payments
   has_many :contact_uses
   has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id'
+  has_and_belongs_to_many :categories
 
   accepts_nested_attributes_for :facebook_accounts
 

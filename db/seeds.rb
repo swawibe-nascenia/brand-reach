@@ -37,7 +37,7 @@ contact_us_list.each do |name|
   ContactUsCategory.create( name: name )
 end
 
-super_admin = User.where(email: 'superadmin@brandreach.com')
+super_admin = User.where(email: 'superadmin@brandreach.com').first
 
 unless super_admin
   User.create(email: 'superadmin@brandreach.com', password: 'admin', password_confirmation: 'admin',
