@@ -3,11 +3,13 @@
   <td><%= user.last_name %></td>
   <td><%= user.email %></td>
   <td><%= user.time %></td>
+  <% if user.brand? %>
   <td>
-    <a href="javascript:;" class="text-success user-password-change" data-id="<%= user.email %>">
-    <h5>Change Password</h5>
+    <a href="<%= reset_user_password_admin_admin_path(user) %>" data-remote="true" class="text-success user-password-change" data-id="<%= user.email %>">
+    <h5>Reset Password</h5>
     </a>
   </td>
+  <% end %>
   <td>
     <% if user.active? %>
         <a href="javascript:;" class="text-red  text-danger deactivate-user" data-id="<%= user.id %>">

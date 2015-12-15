@@ -163,7 +163,7 @@ class ProfileController < ApplicationController
     user = User.find(params[:id])
     @success = true
 
-    if user && user.channel_name == token
+    if user && user.channel_name == token && user.invited?
       password = Devise.friendly_token.first(8)
       user.password = password
       user.password_confirmation = password

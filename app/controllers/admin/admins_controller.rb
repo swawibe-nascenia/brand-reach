@@ -167,16 +167,19 @@ class Admin::AdminsController < ApplicationController
     end
   end
 
-  def change_user_password
-    @user = User.where(user_type: [User.user_types[:brand], User.user_types[:influencer]], id: params[:id]).first
+  def reset_user_password
+    authorize :admin, :manage_brandreach?
+
+    @user = User.where(user_type: User.user_types[:brand], id: params[:id]).first
     @success = true
+    @messages = []
 
     if @user
-      password = Devise.friendly_token.first(8)
-      @user.password = password
-      @user.password_confirmation = password
+        temp = @user.send_reset_password_instructions
+        Rails.logger.info "#{temp.inspect}"
     else
       @success = false
+      @messages << 'User not found.'
     end
   end
   private
