@@ -1,6 +1,6 @@
-<%= stylesheet_link_tag 'awesomplete', media: 'all' %>
+<%= stylesheet_link_tag 'chosen', media: 'all' %>
 <%= stylesheet_link_tag 'profile.css', media: 'all' %>
-<%= javascript_include_tag 'awesomplete' %>
+<%= javascript_include_tag 'chosen.jquery' %>
 
 <% if @user.brand? %>
     <% title 'Brand Profile' %>
@@ -44,7 +44,7 @@
         <div class="form-group">
           <div class="col-md-6">
             <%= f.label :industry %>
-            <%= f.text_field :industry, id: 'industry_list', maxlength: 100, 'data-parsley-required' => 'true' %>
+            <%= f.select :industry, options_for_select(@industries), {}, { class: 'chosen', multiple: true }  %>
 
           </div>
           <div class="col-md-6">
@@ -146,12 +146,8 @@
 
   <script>
       $(document).ready(function () {
-          var industry_list = document.getElementById("industry_list");
-          var Industries = new Awesomplete(industry_list, {minChars: 0, sort: String.localeCompare, filter: Awesomplete.FILTER_STARTSWITH});
-          Industries.list = <%= raw(@industries) %>;
-
-          $('#industry_list').on('focus', function() {
-              Industries.evaluate();
+          $(".chosen").chosen({
+              placeholder_text_multiple: 'Select Industry'
           });
       });
 

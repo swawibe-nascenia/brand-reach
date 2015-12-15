@@ -435,3 +435,7 @@ div.awesomplete > ul > li[aria-selected="true"] {
     border: 1px solid #ababab;
     border-bottom: none;
 }
+
+.chosen-container-multi .chosen-results {
+    text-align: left;
+}
