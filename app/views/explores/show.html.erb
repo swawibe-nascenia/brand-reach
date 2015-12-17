@@ -1,6 +1,4 @@
-<%= stylesheet_link_tag 'bootstrap-chosen', media: 'all' %>
 <%= stylesheet_link_tag 'brands-explore.css', media: 'all' %>
-<%= javascript_include_tag 'chosen.jquery' %>
 
 <% title 'Brand Explore' %>
 
@@ -21,7 +19,7 @@
           <div class="row">
             <div class="col-md-12">
               <label for="category"> Category </label>
-              <%= select_tag :category, options_for_select(Category.all.order(:name).pluck(:name)), {id: 'explore-category', prompt: 'Select a Category', class: 'chosen', multiple: true } %>
+              <%= select_tag :category, options_for_select(Category.all.order(:name).pluck(:name)), {id: 'explore-category', prompt: 'Select a Category'} %>
             </div>
 
             <div class="col-md-12">
@@ -73,12 +71,4 @@
 
   <div id="profile-modal"></div>
 </div>
-<script>
-    $(document).ready(function () {
-        $(".chosen").chosen({
-            placeholder_text_multiple: 'Select Industry'
-        });
-    });
-
-</script>
 
