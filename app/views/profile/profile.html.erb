@@ -44,12 +44,12 @@
         <div class="form-group">
           <div class="col-md-6">
             <%= f.label :industry %>
-            <%= f.select :industry, options_for_select(@industries), {}, { class: 'chosen', multiple: true }  %>
-
+            <%= f.collection_select :industry, @all_industries, :id, :name, { selected: @selected_industries.map(&:id) }, { class: 'chosen', multiple: true, 'data-parsley-required' => 'true', 'data-parsley-errors-container' => '#industry_field_error' }  %>
+            <div id="industry_field_error"></div>
           </div>
           <div class="col-md-6">
             <%= f.label :phone %>
-            <%= f.text_field :phone, maxlength: 20, 'data-parsley-pattern' => '(^[\+]?[0-9]+[-]?[0-9]+[-]?[0-9]+$)', 'data-parsley-required' => 'true' %>
+            <%= f.text_field :phone, maxlength: 20, 'data-parsley-pattern' => '(^[\+]?[0-9]+[-]?[0-9]+[-]?[0-9]+$)', 'data-parsley-required' => 'true', 'data-parsley-length' => '[10, 14]' %>
           </div>
         </div>
 

@@ -11,7 +11,9 @@ class ProfileController < ApplicationController
   end
 
   def profile
-    @industries = Category.all.order(:name).pluck(:name)
+    @all_industries = Category.all.order(:name)
+    industry_ids = eval(@user.industry)
+    @selected_industries = Category.where(id: industry_ids)
     respond_with(@user)
   end
 
@@ -25,6 +27,10 @@ class ProfileController < ApplicationController
         else
           flash[:error] = 'Old Password was Not correct or Retype Password does Not match with New Password'
         end
+      end
+      if user_params[:industry].present?
+        @user.industry = user_params[:industry].reject { |c| c.empty? }
+        @user.save
       end
       flash[:success] = 'User Information has been updated successfully' if flash[:error].nil?
       redirect_to profile_profile_index_path
