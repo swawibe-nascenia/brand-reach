@@ -10,8 +10,8 @@ class ExploresController < ApplicationController
       @influencers = @influencers.where('industry LIKE :search OR country_name LIKE :search OR state_name LIKE :search', search: wildcard_search)
     end
 
-    if params[:category].present?
-      category = Category.find params[:category]
+    if params[:category].size > 1
+      category = Category.find params[:category][-1]
       influencer_ids = category.users.pluck(:id)
       @influencers = @influencers.where(id: influencer_ids)
     end
