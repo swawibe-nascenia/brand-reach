@@ -12,14 +12,13 @@ class ProfileController < ApplicationController
 
   def profile
     @all_industries = Category.all.order(:name)
-    industry_ids = eval(@user.industry)
-    @selected_industries = Category.where(id: industry_ids)
+    @selected_industries = @user.categories
     respond_with(@user)
   end
 
   def update
     @industries = Category.all.order(:name).pluck(:name)
-    if @user.update(user_params.except(:current_password, :password, :password_confirmation))
+    if @user.update(user_params.except(:current_password, :password, :password_confirmation, :industry))
       if user_params[:current_password].present? && user_params[:password].present?
         if @user.update_with_password(user_params.except(:facebook))
           sign_in @user, :bypass => true
@@ -29,7 +28,8 @@ class ProfileController < ApplicationController
         end
       end
       if user_params[:industry].present?
-        @user.industry = user_params[:industry].reject { |c| c.empty? }
+        ids = user_params[:industry][1..-1]
+        @user.category_ids = ids
         @user.save
       end
       flash[:success] = 'User Information has been updated successfully' if flash[:error].nil?
