@@ -115,6 +115,10 @@ class ProfileController < ApplicationController
 
     if @user.in_limbo?
       if @user.active_facebook_accounts.count > 0
+        @user.active_facebook_accounts.each do |account|
+          account.fetch_insights
+        end
+
         @user.update_column(:status, User.statuses[:active])
         redirect_to profile_profile_index_path
       else
