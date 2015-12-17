@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   #              invited -> Invited by admin (only showed on admin brand invitation page)
   #              suspended -> Suspended by admin, shows no where
   #              inactive -> Deactivated by user, shows no where
-  enum status: [:in_limbo, :active, :invited, :waiting, :inactive, :suspended]
+  enum status: [:active, :invited, :waiting, :inactive, :suspended, :in_limbo]
   enum gender: [:male, :female, :other]
 
   Industry = ['Health and Beauty', 'Technology', 'Startups', 'Internet', 'Food', 'Restaurants', 'Automobile']
