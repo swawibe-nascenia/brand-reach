@@ -90,27 +90,11 @@
     $(document).ready(function () {
         $('[data-toggle="popover"]').popover({trigger: 'hover', placement: "bottom"});
 
-        $('#about a').click(function(){
-            $('html, body').animate({
-                scrollTop: $( $.attr(this, 'href') ).offset().top
-            }, 1000);
-            return false;
-        });
-
-        // for counting number from 0 to upto some value
-
-        $('.count').counterUp({
-            delay: 10,
-            time: 3000
-        });
-
         // for nav bar show and hide
-
         $('.navbar-header button').click(function() {
             if ($("#myNavbar.in").length)
             {
                 $("#myNavbar").collapse('hide');
-
             }
             else
             {

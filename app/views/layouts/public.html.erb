@@ -132,9 +132,25 @@
         $('#nav-contact-us a').click(function(){
             $('html, body').animate({
                 scrollTop: $( $.attr(this, 'href') ).offset().top
+            }, 1200);
+            return false;
+        });
+
+        $('#about a').click(function(){
+            $('html, body').animate({
+                scrollTop: $( $.attr(this, 'href') ).offset().top
             }, 1000);
             return false;
         });
+
+
+        // for counting number from 0 to upto some value
+
+        $('.count').counterUp({
+            delay: 10,
+            time: 3000
+        });
+
 
     });
 </script>

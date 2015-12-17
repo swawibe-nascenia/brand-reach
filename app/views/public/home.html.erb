@@ -90,23 +90,6 @@
     $(document).ready(function () {
         $('[data-toggle="popover"]').popover({trigger: 'hover', placement: "bottom"});
 
-        $('#about a').click(function(){
-            $('html, body').animate({
-                scrollTop: $( $.attr(this, 'href') ).offset().top
-            }, 1000);
-            return false;
-        });
-
-        // for counting number from 0 to upto some value
-
-        $('.count').counterUp({
-            delay: 10,
-            time: 3000
-        });
-
-        // for nav bar show and hide
-
-
         var path = '//easy.myfonts.net/v2/js?sid=10257(font-family=Helvetica+Neue+35+Thin)&sid=10261(font-family=Helvetica+Neue+75+Bold)&sid=10263(font-family=Helvetica+Neue+45+Light)&sid=10265(font-family=Helvetica+Neue+65+Medium)&key=uhXXeSVbUB',
                 protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
                 trial = document.createElement('script');
