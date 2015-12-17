@@ -89,6 +89,13 @@ module ApplicationHelper
     }
   end
 
+  def password_reset_success_message
+    {
+        head: 'Password reset message status:',
+        message: 'Password reset info successfully sent.'
+    }
+  end
+
   def home_path
     if current_user && current_user.brand?
       brand_home_public_index_path
