@@ -2,6 +2,8 @@
 <P>Your Brandreach account has been successfully activated</P>
 <p>Use following information for use your account</p>
 <p><strong>Email: <%= @user.email %></strong></p>
-<p><strong>Password: <%= @password %></strong></p>
 
+<% if @user.brand? %>
+    <p><strong>Password: <%= @password %></strong></p>
+<% end %>
 

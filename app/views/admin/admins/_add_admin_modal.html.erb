@@ -33,13 +33,12 @@
           </div>
           <div class="input_container">
             <div class="label_l">Password</div>
-            <input data-parsley-id="6194" class="login_input" data-parsley-required="true"
+            <input data-parsley-id="6194" class="login_input" data-parsley-minlength="[6]" data-parsley-required="true"
                    data-parsley-trigger="change" name="user[password]" id="user_password" type="password">
-            <ul id="parsley-id-6194" class="parsley-errors-list"></ul>
           </div>
           <div class="input_container">
             <div class="label_l">Confirm password</div>
-            <input class="login_input" id="user_password_confirmation" type="password"
+            <input class="login_input" data-parsley-minlength="[6]" id="user_password_confirmation" type="password"
                    name="user[password_confirmation]" autocomplete="off" data-parsley-required="true"
                    data-parsley-trigger="change">
           </div>

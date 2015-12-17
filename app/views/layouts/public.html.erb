@@ -124,6 +124,11 @@
         $('#signin').modal('show');
         <% end %>
 
+//        show sing up modal
+        <% if params[:sign_up_modal]%>
+        $('#signup').modal('show');
+        <% end %>
+
         $('#nav-contact-us a').click(function(){
             $('html, body').animate({
                 scrollTop: $( $.attr(this, 'href') ).offset().top
