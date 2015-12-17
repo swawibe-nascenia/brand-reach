@@ -58,7 +58,7 @@
                 var source = $("#add-facebook-account-template").html();
                 template = Handlebars.compile(source);
             });
-            $(document).on('click', '[data-target="AddFacebookAccount"]', function () {
+            $(document).on('click', '.js-add-account', function () {
                 FB.getLoginStatus(function(resp) {
                     if (resp.status === 'connected') {
                         createForm(resp.authResponse);
