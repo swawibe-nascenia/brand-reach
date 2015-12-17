@@ -36,7 +36,7 @@
           </div>
           <!-- start of pricing section -->
 
-          <% if user.active_facebook_accounts.present? %>
+          <% if user.active_facebook_accounts.present? && user.influencer? %>
 
               <h4 class="font-raleway"> Pricing</h4>
 

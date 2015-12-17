@@ -15,7 +15,7 @@ class ExploresController < ApplicationController
       influencer_ids = category.users.pluck(:id)
       @influencers = @influencers.where(id: influencer_ids)
     end
-    
+
     # @influencers = @influencers.where(industry: params[:social_media]) if params[:social_media].present?
     @influencers = @influencers.where(state: params[:state]) if params[:state].present?
     @influencers = @influencers.where(country: params[:country]) if params[:country].present?
