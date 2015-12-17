@@ -58,7 +58,7 @@ class InsightService < BaseService
 
   def get_max_likes(id)
     pages = get_pages(id)
-    pages.map{ |p| p[:followers] }.max
+    pages.map{ |p| p[:followers] }.max || 0
   end
 
   def get_number_of_followers(id)
