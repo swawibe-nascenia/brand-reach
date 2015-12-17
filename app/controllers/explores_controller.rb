@@ -9,7 +9,13 @@ class ExploresController < ApplicationController
       wildcard_search = "%#{params[:search_key].strip! || params[:search_key]}%"
       @influencers = @influencers.where('industry LIKE :search OR country_name LIKE :search OR state_name LIKE :search', search: wildcard_search)
     end
-    @influencers = @influencers.where(industry: params[:category]) if params[:category].present?
+
+    if params[:category].present?
+      category = Category.find params[:category]
+      influencer_ids = category.users.pluck(:id)
+      @influencers = @influencers.where(id: influencer_ids)
+    end
+    
     # @influencers = @influencers.where(industry: params[:social_media]) if params[:social_media].present?
     @influencers = @influencers.where(state: params[:state]) if params[:state].present?
     @influencers = @influencers.where(country: params[:country]) if params[:country].present?
