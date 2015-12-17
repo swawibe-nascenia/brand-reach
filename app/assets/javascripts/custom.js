@@ -98,13 +98,16 @@ $(function(){
                         $('.offer-textarea-' + data.id).val('');
                         console.log($('.offer-textarea-' + data.id));
                     }else{
-                        swal('Some error have been  occur');
+                        bootbox.alert({message: 'Some error have been  occur.',
+                            closeButton: false});
+
                     }
 
                 }
             });
         }else{
-            swal('Message body must be present ');
+            bootbox.alert({message: 'Message body must be present.',
+                closeButton: false});
         }
 
     });
@@ -176,7 +179,8 @@ $(function(){
         var BankAccountId = $('input[name="bank_account"]:checked').val();
         var withdrawAmmount =  parseInt($('input#withdraw_amount').val());
         if(BankAccountId === undefined || BankAccountId === null || isNaN(withdrawAmmount)){
-            swal('Select Bank account or give withdraw amount first ');
+            bootbox.alert({message: 'Select Bank account or give withdraw amount first ',
+                closeButton: false});
         }else{
             $.ajax({
                 type: 'post',
