@@ -439,3 +439,7 @@ div.awesomplete > ul > li[aria-selected="true"] {
 .chosen-container-multi .chosen-results {
     text-align: left;
 }
+
+.parsley-errors-list {
+    margin: -8px 0 10px;
+}
