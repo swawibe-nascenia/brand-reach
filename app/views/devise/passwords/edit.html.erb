@@ -1,6 +1,5 @@
 <% title 'Password Reset' %>
-
-<div class="wrapper-content non-home-page-wrapper sticky-footer-wrapper">
+<div class="wrapper-content non-home-page-wrapper sticky-footer-wrapper password-reset-container">
   <h2>Change your password</h2>
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), data: {:'parsley-validate' => ''},html: {method: :put}) do |f| %>
       <%= devise_error_messages! %>

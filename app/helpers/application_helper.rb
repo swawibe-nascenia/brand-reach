@@ -50,7 +50,7 @@ module ApplicationHelper
   def brand_re_invitation_success_message
     {
         head: 'Brand re-invitation message status:',
-        message: 'Brand re-invitation has been sent successfully.'
+        message: 'Brand has been re-invited successfully.'
     }
   end
 
@@ -64,7 +64,7 @@ module ApplicationHelper
   def influencer_re_invitation_success_message
     {
         head: 'Influencer re-invitation message status:',
-        message: 'Influencer re-invitation has been sent successfully.'
+        message: 'Influencer has been re-invited successfully.'
     }
   end
 
