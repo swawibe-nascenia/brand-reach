@@ -12,9 +12,8 @@ class ProfileController < ApplicationController
 
   def profile
     @all_industries = Category.all.order(:name)
-    @selected_industries = Category.all.order(:name)
-    # industry_ids = eval(@user.industry)
-    # @selected_industries = Category.where(id: industry_ids)
+    industry_ids = eval(@user.industry)
+    @selected_industries = Category.where(id: industry_ids)
     respond_with(@user)
   end
 
