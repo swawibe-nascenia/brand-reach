@@ -6,13 +6,6 @@
   <div class="payment-button-set pull-right">
     <%= link_to 'EXPORT', '#', :class => 'btn btn-export button-border-yellow', id: 'export_campaigns' %>
   </div>
-
-  <p class="text-right" style="clear:right">
-    Last updated: <%= current_user.insights_updated_at.try(:strftime,'%B %d, %Y %l:%M %P') %>
-    <a class="load-page" href="javascript:" onclick="window.location='?refresh=1'">
-      <%= image_tag asset_path('Refresh_icon.png') %>
-    </a>
-  </p>
 </div>
 
 <div class="campaign-content">
