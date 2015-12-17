@@ -594,3 +594,9 @@ only screen and (max-width: 768px) {
     margin-left: 65px;
 }
 
+/*for removing overlapping with payment-content*/
+#export_payments{
+    position: relative;
+    z-index: 101;
+}
+
