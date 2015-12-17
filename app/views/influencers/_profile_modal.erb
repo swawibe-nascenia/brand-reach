@@ -15,7 +15,7 @@
 
           <div class="display-inline-block influencer-modal-details">
             <h4 class="font-raleway"><%= influencer.full_name %></h4>
-            <p class="title font-raleway"> <%= influencer.categories.pluck(:name).join(', ') if user.categories.present? %> </p>
+            <p class="title font-raleway"> <%= influencer.categories.pluck(:name).join(', ') if influencer.categories.present? %> </p>
             <p class="influencer-address font-raleway"> <%= influencer.location %></p>
           </div>
 
