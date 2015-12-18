@@ -64,6 +64,11 @@
     width: 70%;
     display: inline;
 }
+
+#user_industry_chosen {
+    width: 70% !important;
+}
+
 .personal-info-form .form-group textarea.short_bio{
     width: 70%;
 }
@@ -195,6 +200,10 @@
 @media (max-width: 768px) {
     .brands-profile-page-wrapper input, .brands-profile-page-wrapper select, .personal-info-form .form-group textarea {
         width: 65%;
+    }
+
+    #user_industry_chosen {
+        width: 65% !important;
     }
 
     .personal-info-form .form-group textarea.short_bio{
@@ -357,6 +366,10 @@ div.awesomplete > ul > li {
         width: 49%;
     }
 
+    #user_industry_chosen {
+        width: 49% !important;
+    }
+
     .personal-info-without-fb .form-group textarea.short_bio {
         width: 76%;
     }
@@ -371,6 +384,10 @@ div.awesomplete > ul > li {
         display: block;
         text-align: left;
         width: 100%;
+    }
+
+    #user_industry_chosen {
+        width: 100% !important;
     }
 
     .personal-info-form .form-group .textarea-label {
