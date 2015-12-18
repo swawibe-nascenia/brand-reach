@@ -142,7 +142,9 @@ class Campaign < ActiveRecord::Base
 
   def first_message_body
     <<MESSAGE
-      You have sent the following campaign request. Waiting for the influencers response.
+      Hi #{self.receiver.first_name},
+
+      I'd like to make you an offer. Here are the campaign details:
 
       Brand Name: <a href='/#{self.sender.id}/show_user' data-remote='true'>#{self.sender.full_name}</a>
       Campaign Name:  #{self.name}
