@@ -479,3 +479,8 @@ div.awesomplete > ul > li[aria-selected="true"] {
 .chosen-container .chosen-drop {
     margin-top: -10px;
 }
+
+.industry-label {
+    vertical-align: top;
+    padding-top: 10px;
+}

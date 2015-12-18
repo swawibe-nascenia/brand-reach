@@ -43,7 +43,7 @@
 
         <div class="form-group">
           <div class="col-md-6">
-            <%= f.label :industry %>
+            <%= f.label :industry, class: 'industry-label'%>
             <%= f.collection_select :industry, @all_industries, :id, :name, { selected: @selected_industries.map(&:id) }, { class: 'chosen', multiple: true, 'data-parsley-required' => 'true', 'data-parsley-errors-container' => '#industry_field_error' }  %>
             <div id="industry_field_error"></div>
           </div>
