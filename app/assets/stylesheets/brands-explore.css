@@ -195,8 +195,8 @@
 .social-account-tab-content {
     border: 1px solid #ddd ;
     border-top: none;
-    padding-top: 35px;
-    padding-right: 30px;
+    padding-top: 15px;
+    padding-right: 0;
     padding-bottom: 80px;
     margin-bottom: 20px;
     overflow: hidden;
