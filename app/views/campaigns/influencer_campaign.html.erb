@@ -35,7 +35,10 @@
                 <tr>
                   <td class="squaredFour"><input type="checkbox" class="PerformanceCheckBox" data-id="<%= campaign.id %>" value="1"/></td>
                   <td>
-                    <%= image_tag(campaign.sender.profile_picture, :class => 'pepsi-img-responsive') %> &nbsp; <%= campaign.name %>
+                    <a href="<%= show_user_profile_path(campaign.sender.id) %>" data-remote="true" >
+                      <%= image_tag(campaign.sender.profile_picture, :class => 'pepsi-img-responsive') %>
+                    </a>
+                    &nbsp; <%= campaign.name %>
                     <br/>
                     <%= link_to 'Set facebook activity', 'javascript:', :class => 'btn', data: { campaign: campaign.id, page: campaign.facebook_account.account_id, activity: campaign.social_account_activity_id, target: 'SetFacebookActivity' } %>
                   </td>
