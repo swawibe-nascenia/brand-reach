@@ -363,6 +363,14 @@
         padding: 10px;
     }
 
+    .offer-header .invisible {
+        display: none;
+    }
+
+    .offer-header .squaredFour {
+        padding-left: 14px;
+    }
+
     /* todo If Sanmalireddy wants header name then add this line */
     /*.panel-offers #inbox .offer-header div:nth-of-type(3):before { content: "Campaign Name : "; font-weight: bold; }*/
 
