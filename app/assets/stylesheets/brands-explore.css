@@ -41,6 +41,13 @@
     margin-bottom: 2px;
 }
 
+.brands-explore-content-wrapper .influencer-industry {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 20px;
+}
+
 .brands-explore-content-wrapper .influencer-address {
     font-size: 13px;
 }

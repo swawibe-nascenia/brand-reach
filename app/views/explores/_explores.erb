@@ -10,7 +10,7 @@
                 <div class="influencer-data">
                   <div class="influencer-name" title="<%= influencer.full_name %>"> <%= influencer.full_name %> </div>
                   <p class="influencer-address"><%= influencer.location %></p>
-                  <p class="title"> <%= influencer.categories.pluck(:name).join(', ') if influencer.categories.present? %></p>
+                  <p class="influencer-industry"> <%= influencer.categories.pluck(:name).join(', ') if influencer.categories.present? %></p>
                   <p class="influencer-biography"><%= truncate(influencer.short_bio, length: 100) %> </p>
                   <p>
                     <%= image_tag('explore-followers.png', :alt => 'number-of-follower') %> &nbsp;<%= influencer.max_followers %>
