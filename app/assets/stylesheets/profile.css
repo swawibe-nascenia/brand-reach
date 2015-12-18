@@ -82,6 +82,11 @@
     padding: 5px 0 0 5px;
 }
 
+.industry-label {
+    vertical-align: top;
+    padding-top: 10px;
+}
+
 .account-setup, .company-info, .personal-info  {
     margin-bottom: 45px;
     margin-top: 45px;
@@ -424,6 +429,11 @@ div.awesomplete > ul > li {
     .personal-info-form .form-group .textarea-label {
          padding-top: 0;
     }
+
+    .industry-label {
+        padding-top: 0;
+    }
+
 }
 
 @media (max-width: 900px) {
@@ -478,9 +488,4 @@ div.awesomplete > ul > li[aria-selected="true"] {
 
 .chosen-container .chosen-drop {
     margin-top: -10px;
-}
-
-.industry-label {
-    vertical-align: top;
-    padding-top: 10px;
 }
