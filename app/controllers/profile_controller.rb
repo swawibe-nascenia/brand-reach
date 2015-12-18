@@ -18,6 +18,8 @@ class ProfileController < ApplicationController
 
   def update
     @industries = Category.all.order(:name).pluck(:name)
+    @all_industries = Category.all.order(:name)
+    @selected_industries = @user.categories
     if @user.update(user_params.except(:current_password, :password, :password_confirmation, :industry))
       if user_params[:current_password].present? && user_params[:password].present?
         if @user.update_with_password(user_params.except(:facebook))
