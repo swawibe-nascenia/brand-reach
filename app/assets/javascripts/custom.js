@@ -403,6 +403,10 @@ $(function(){
     //    $(this).find('.has-spinner').addClass('active');
     //});
 
+    // remove '#_=_' from URL after being redirected from Facebook authentication
+    if (window.location.hash == '#_=_') {
+        history.replaceState({}, '', window.location.href.slice(0, -4));
+    }
 
 });
 // end of document.ready() method
