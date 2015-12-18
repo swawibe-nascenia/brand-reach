@@ -374,12 +374,13 @@ $(function(){
 
     function setTopNav(){
         var scrollTop = $(document).scrollTop();
-        var sPixel = 60;
+        var offsetTop = $('.welcome_bar').outerHeight();
+
         var windowWidth = $( window ).width();
-        scrollTop = scrollTop > 55 ? 54 : scrollTop;
-        if(scrollTop < 55 && windowWidth > 767){
-            var setValue = sPixel - scrollTop;
-            $('.logo-container').css('padding-top', setValue);
+        if (scrollTop > offsetTop && windowWidth > 767) {
+            $('.header').css('top', 0);
+        } else {
+            $('.header').css('top', offsetTop - scrollTop);
         }
     }
 
