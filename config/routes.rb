@@ -131,7 +131,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :images, only: [:show, :create, :destroy]
+  # resources :images, only: [:show, :create, :destroy]
 
   # root to: 'public#home', as: :root
   authenticated :user do
