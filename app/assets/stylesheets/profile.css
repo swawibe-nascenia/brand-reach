@@ -71,11 +71,12 @@
 
 .personal-info-form .form-group textarea.short_bio{
     width: 70%;
+    padding-top: 6px;
 }
 
 .personal-info-form .form-group .textarea-label {
     vertical-align: top;
-    padding-top: 10px;
+    padding-top: 6px;
 }
 
 .street-address-textarea {
@@ -84,7 +85,7 @@
 
 .industry-label {
     vertical-align: top;
-    padding-top: 10px;
+    padding-top: 7px;
 }
 
 .account-setup, .company-info, .personal-info  {
