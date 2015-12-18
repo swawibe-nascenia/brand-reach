@@ -72,7 +72,12 @@
             <% @campaigns.each do |campaign| %>
                 <tr>
                   <td class="squaredFour"><input type="checkbox" class="EngagementCheckBox" data-id="<%= campaign.id %>" value="1"/></td>
-                  <td><%= image_tag(campaign.sender.profile_picture, :class => 'pepsi-img-responsive') %> &nbsp; <%= campaign.name %></td>
+                  <td>
+                    <a href="<%= show_user_profile_path(campaign.sender.id) %>" data-remote="true" >
+                      <%= image_tag(campaign.sender.profile_picture, :class => 'pepsi-img-responsive') %>
+                    </a>
+                    &nbsp; <%= campaign.name %>
+                  </td>
                   <td><%= campaign.number_of_likes %></td>
                   <td><%= campaign.number_of_comments %></td>
                   <td><%= campaign.number_of_shares %></td>
