@@ -379,7 +379,7 @@ div.awesomplete > ul > li {
     }
 }
 
-@media (max-width: 994px) {
+@media (max-width: 991px) {
     .personal-info-without-fb label, .personal-info-without-fb input, .personal-info-without-fb select, .personal-info-without-fb .form-group textarea, .personal-info-without-fb .form-group textarea.short_bio {
         display: block;
         text-align: left;
@@ -414,6 +414,15 @@ div.awesomplete > ul > li {
 
     .social-account-tabs {
         margin-top: 50px;
+    }
+}
+
+@media (max-width: 992px) {
+    .personal-info-without-fb input, .personal-info-without-fb select, .personal-info-without-fb .form-group textarea {
+        margin-bottom: 20px;
+    }
+    .personal-info-form .form-group .textarea-label {
+         padding-top: 0;
     }
 }
 

@@ -17,7 +17,7 @@ class ProfileController < ApplicationController
   end
 
   def update
-    @industries = Category.all.order(:name).pluck(:name)
+    # @industries = Category.all.order(:name).pluck(:name)
     @all_industries = Category.all.order(:name)
     @selected_industries = @user.categories
     if @user.update(user_params.except(:current_password, :password, :password_confirmation, :industry))
