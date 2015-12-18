@@ -323,7 +323,6 @@
     }
 
     .panel-offers #inbox .offer-header div:nth-child(n+4), .panel-offers #stared_inbox .offer-header div:nth-child(n+4) {
-        border-top: 1px solid #ddd;
         width: 100%;
         padding-left: 10px;
         text-align: left;
