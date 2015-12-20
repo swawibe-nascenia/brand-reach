@@ -241,6 +241,10 @@
     width: calc(100% - 550px);
 }
 
+.offer-text:hover{
+    text-decoration: underline;
+}
+
 .offer-time {
     float: right;
     margin-right: 20px;
