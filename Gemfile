@@ -47,6 +47,7 @@ gem 'validates_zipcode'
 gem 'parsley-rails'
 gem 'whenever', '0.9.4', :require => false
 gem 'pundit', '1.0.1'
+gem 'local_time'
 # gem 'haml'
 # gem 'haml-rails'
 # Use Unicorn as the app server

@@ -62,7 +62,11 @@
     </div>
 
     <div class="offer-time">
-      <%= offer.time %>
+      <% if offer.today_post? %>
+         <%= local_time(offer.time, '%I:%M%P') %>
+      <% else %>
+        <%= local_time(offer.time, '%d-%m-%Y') %>
+      <% end %>
     </div>
   </div>
 

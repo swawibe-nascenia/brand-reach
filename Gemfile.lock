@@ -145,6 +145,8 @@ GEM
       sprockets (> 2, < 4)
       tilt
     libv8 (3.16.14.11)
+    local_time (1.0.3)
+      coffee-rails
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -309,6 +311,7 @@ DEPENDENCIES
   kaminari-bootstrap (~> 3.0.1)
   koala (~> 2.2)
   less-rails
+  local_time
   mini_magick
   mysql2 (~> 0.3.18)
   omniauth

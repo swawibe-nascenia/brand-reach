@@ -25,6 +25,7 @@
 //= require parsley
 //= require admin
 //= require bootbox.min
+//= require local_time
 // require turbolinks
 // require_tree .
 

@@ -79,10 +79,14 @@ class Campaign < ActiveRecord::Base
 
   def time
     if created_at.to_date == Date.today
-      created_at.strftime('%I:%M%P %Z')
+      created_at.strftime('%I:%M%P')
     else
       created_at.strftime('%d-%m-%Y')
     end
+  end
+
+  def today_post?
+    created_at.to_date == Date.today
   end
 
   def deny_undo_able?
