@@ -213,6 +213,18 @@ class User < ActiveRecord::Base
     end
   end
 
+  # devise method override for skip validation during reset password
+  def reset_password(new_password, new_password_confirmation)
+    self.password = new_password
+    self.password_confirmation = new_password_confirmation
+
+    if respond_to?(:after_password_reset) && valid?
+      ActiveSupport::Deprecation.warn "after_password_reset is deprecated"
+      after_password_reset
+    end
+
+    save(validate: false)
+  end
   # ----------------------------------------------------------------------
   # == Private == #
   # ----------------------------------------------------------------------
