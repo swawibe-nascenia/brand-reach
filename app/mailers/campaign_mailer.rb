@@ -75,7 +75,7 @@ class CampaignMailer < ApplicationMailer
 
     @brandReach = root_url(sign_up_modal: true)
     subject = "We'd like to have you on Brandreach.
-               Be a brand/influencer on one of the most amazing knowledge sharing platforms."
+               Be a influencer on one of the most amazing knowledge sharing platforms."
     mail(from: 'hasanuzzaman@nascenia.com', to: @mail, subject: subject)
   end
 
@@ -87,7 +87,7 @@ class CampaignMailer < ApplicationMailer
 
     # @brandReach = root_url
     subject = "We'd like to have you on Brandreach.
-               Be a brand/influencer on one of the most amazing knowledge sharing platforms."
+               Be a brand on one of the most amazing knowledge sharing platforms."
     mail(from: 'hasanuzzaman@nascenia.com', to: @mail, subject: subject)
   end
 end
