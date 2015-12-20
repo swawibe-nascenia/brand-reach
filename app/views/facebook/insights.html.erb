@@ -72,14 +72,14 @@
                                     id: continent,
                                     mouseEnabled: false,
                                     pattern: {
-                                        url: '<%= image_url('map-pattern.png') %>',
+                                        url: '<%= url_to_image('map-pattern.png') %>',
                                         width: 5,
                                         height: 5
                                     }
                                 };
                             }),
 
-                            images: <%= @account.country_map_data.map{ |data| data[:imageURL] = image_path('map-marker.svg'); data }.to_json.html_safe %>
+                            images: <%= @account.country_map_data.map{ |data| data[:imageURL] = path_to_image('map-marker.svg'); data }.to_json.html_safe %>
                         },
                         zoomControl: {
                             panControlEnabled: false,
