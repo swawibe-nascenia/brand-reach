@@ -37,6 +37,10 @@ class OffersController < ApplicationController
     if offer_active?(params[:id])
       if @offer.waiting?
         @offer.update_attribute(:status, Campaign.statuses[:accepted])
+        band_name = "<a href='/#{@offer.sender.id}/show_user' data-remote='true'>#{@offer.sender.full_name}</a>"
+        message = "Hi #{band_name}, I accept your offer, Please go ahead and engage me for the campaign"
+        @offer.messages.create({sender_id: current_user.id, receiver_id: @offer.sender.id,
+                                body: message})
         CampaignMailer.campaign_accept_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
       else
         @success = false
