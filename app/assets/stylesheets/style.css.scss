@@ -45,7 +45,7 @@ body {
 }
 
 .btn-circle {
-  background-color: #00AEEF;
+  background-color: #00c9f3;
   border-radius: 50%;
   border: none;
   color: white;
@@ -61,6 +61,9 @@ body {
   color: #000000;
 }
 
+.btn-circle:hover{
+  background-color: #00b6e2;
+}
 .btn-modal-submit {
   background-color: #e23f3a;
   color: #fff;
