@@ -67,7 +67,7 @@ class FacebookAccount < ActiveRecord::Base
 
     self.insights_updated_at = DateTime.now
 
-    self.save
+    self.save(validate: false)
   end
 
   def country_data
