@@ -7,7 +7,8 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
-            <div class="add-another-account">Add another account</div>
+            <div class="add-another-account">Manage Account</div>
+            <p class='text-danger text-small'>N.B: Engaged Account can not be removed.</p>
 
             <div class="account-content">
                 <form method="POST" action="<%= update_accounts_profile_index_path %>" <%= 'data-remote="true"' if remote %>>
@@ -22,7 +23,7 @@
                             <h4 class="media-heading">{{name}}</h4>
                           </div>
                           <div class="media-right media-middle squaredFour">
-                            <input type="checkbox" name="accounts[]" value="{{id}}" {{#if selected}}checked{{/if}}>
+                            <input type="checkbox" name="accounts[]" value="{{id}}" {{#if selected}}checked{{/if}} {{#if engaged}}disabled{{/if}} >
                           </div>
                         </div>
                     {{/each}}

@@ -36,10 +36,20 @@
                       return $(this).attr('id');
                     }).toArray();
 
+                    var engaged = $('.social-account-tabs .tab-pane').filter(function() {
+                            return $(this).data('engaged') > 0;
+//                        }
+                    }).map(function() {
+                        return $(this).attr('id');
+                    }).toArray();
+
+                    console.log('engaged facebook account are ' + engaged );
+
                     var data = resp.data.filter(function(page) {
                         return page.likes >= <%= CONFIG[:min_fb_likes_for_registration] %>;
                     }).map(function(page) {
                         page.selected = $.inArray('fb_' + page.id, selected) > -1;
+                        page.engaged = $.inArray('fb_' + page.id, engaged) > -1;
                         return page;
                     });
 

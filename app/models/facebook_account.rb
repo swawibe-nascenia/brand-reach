@@ -141,6 +141,10 @@ class FacebookAccount < ActiveRecord::Base
     }
   end
 
+  def has_engaged_capmaign?
+    campaigns.where(status: Campaign.statuses[:engaged]).count
+  end
+
   private
 
   def update_influencer_fb_average_cost
