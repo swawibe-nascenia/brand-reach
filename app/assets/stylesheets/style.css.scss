@@ -1385,3 +1385,9 @@ a .offer-box:last-child{
 .password-reset-container .label_l{
   min-width: 130px;
 }
+
+@media (max-width: 374px) {
+  .country-responsive-font {
+    font-size: 11px;
+  }
+}

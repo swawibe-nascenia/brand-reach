@@ -5,7 +5,7 @@
   <% if country.nil? %>
       <%= text_field_tag :state, 'Select Country', disabled: true %>
   <% elsif country.subregions? %>
-      <%= subregion_select(:user, :state, parent_region, {}, { :class => 'profile-dropdown-color', prompt: 'Select state' }) %>
+      <%= subregion_select(:user, :state, parent_region, {}, { :class => 'profile-dropdown-color country-responsive-font', prompt: 'Select state' }) %>
   <% else %>
       <%= text_field(:user, :state) %>
   <% end %>

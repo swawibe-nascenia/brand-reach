@@ -378,4 +378,10 @@ only screen and (max-width: 580px){
     }
 }
 
+@media (max-width: 374px) {
+    .brands-explore-advance-search .country-responsive-font, .brands-explore-advance-search #country {
+        font-size: 11px;
+    }
+}
+
 
