@@ -733,7 +733,6 @@ ul.menu-item li {
 }
 .welcome_bar .left {
   float: left;
-  padding-bottom: 5px;
 }
 .welcome_bar .right {
   float: right;
@@ -822,6 +821,18 @@ body > .sticky-footer-wrapper{
   .sign-in-form-container{
     margin-top: 0;
     padding-top: 10px;
+  }
+
+  .welcome_bar .left {
+    padding-top: 5px;
+  }
+
+  .logo {
+    margin-top: 2px;
+  }
+
+  .logo-container .navbar-toggle {
+    margin-top: 4px;
   }
 }
 
