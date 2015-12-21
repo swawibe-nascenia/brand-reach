@@ -37,10 +37,14 @@ class OffersController < ApplicationController
     if offer_active?(params[:id])
       if @offer.waiting?
         @offer.update_attribute(:status, Campaign.statuses[:accepted])
+
+        # populated offer accept message
         band_name = "<a href='/#{@offer.sender.id}/show_user' data-remote='true'>#{@offer.sender.full_name}</a>"
         message = "Hi #{band_name}, I accept your offer, Please go ahead and engage me for the campaign"
         @offer.messages.create({sender_id: current_user.id, receiver_id: @offer.sender.id,
                                 body: message})
+
+        # send email accept message
         CampaignMailer.campaign_accept_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
       else
         @success = false
@@ -53,6 +57,14 @@ class OffersController < ApplicationController
     if offer_active?(params[:id])
       if @offer.waiting?
         @offer.update_attributes({status: Campaign.statuses[:denied], denied_at: Time.now })
+
+        # populated offer deny message
+        band_name = "<a href='/#{@offer.sender.id}/show_user' data-remote='true'>#{@offer.sender.full_name}</a>"
+        message = "Hi #{band_name}, I am so sorry I can't accept your offer. Thank for your offer."
+        @offer.messages.create({sender_id: current_user.id, receiver_id: @offer.sender.id,
+                                body: message})
+
+        # send email deny message
         CampaignMailer.campaign_deny_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
       else
         @success = false
@@ -65,6 +77,14 @@ class OffersController < ApplicationController
     if offer_active?(params[:id])
       if @offer.denied? && @offer.deny_undo_able?
         @offer.update_attribute(:status, Campaign.statuses[:waiting])
+
+        # populated offer undo_deny message
+        band_name = "<a href='/#{@offer.sender.id}/show_user' data-remote='true'>#{@offer.sender.full_name}</a>"
+        message = "Hi #{band_name}, I changed my mind. I undo deny offer."
+        @offer.messages.create({sender_id: current_user.id, receiver_id: @offer.sender.id,
+                                body: message})
+
+        # send email undo_deny message
         CampaignMailer.campaign_deny_undo_notification(@offer).deliver_now if @offer.sender.email_remainder_active?
       else
         @success = false
@@ -115,9 +135,19 @@ class OffersController < ApplicationController
     end
 
     offers = Campaign.active_offers(current_user).where(id: @ids).where.not(status: Campaign.statuses[:engaged])
+    logger.info "Deleted offers are #{offers.count}"
+
+    temp_offers = offers
+
     @ids = offers.pluck(:id)
+    logger.info "Offer count after pluck #{offers.count}"
 
     offers.update_all(target_column => true)
+    logger.info "Offer count after update_all #{offers.count}"
+
+    @ids.each do |id|
+      Campaign.find(id).save
+    end
 
     Rails.logger.info "Delet offer with ids #{@ids.inspect}"
     current_user.received_messages.where(campaign_id: @ids).update_all(read: true)
@@ -134,7 +164,7 @@ class OffersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_offer
-    @offer = Campaign.active_offers(current_user).where(id: params[:id]).first
+    @offer = Campaign.active_offers(current_user).includes(:messages).order('messages.created_at desc').where(id: params[:id]).first
   end
 
   def offer_params

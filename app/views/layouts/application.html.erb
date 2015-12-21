@@ -288,5 +288,27 @@
                 }
             });
         });
+
+// ====================== bind for pubnub OFFER_UPDATE event =================================
+        PUBNUB_CLIENT.events.bind("OFFER_UPDATE", function (message) {
+            console.log('===================== OFFER_UPDATE pubnub event fire successfully ===========');
+            $.ajax({
+                type: 'get',
+                url: '/offers/' + message.attributes.id +'/load_offer',
+                dataType: 'script',
+                data: {'authenticity_token': $('meta[name="csrf-token"]').attr('content')},
+                success: function(data) {
+                    console.log('--------------load new offer successful----------------');
+                }
+            });
+        });
+
+// ====================== bind for pubnub OFFER_UPDATE event =================================
+        PUBNUB_CLIENT.events.bind("OFFER_DELETE", function (message) {
+            console.log('===================== OFFER_DELETE pubnub event fire successfully ===========');
+            message.attributes.ids.forEach(function(id) {
+                $('#offer-' + id).remove();
+            });
+        });
     });
 </script>

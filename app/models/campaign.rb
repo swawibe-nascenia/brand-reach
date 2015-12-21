@@ -48,6 +48,7 @@ class Campaign < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   before_save :date_validation
+  after_update :send_offer_update_pubnub_notification
   after_create :send_pubnub_notification
 
   # ----------------------------------------------------------------------
@@ -174,6 +175,26 @@ MESSAGE
       $pubnub_server_subscription.publish(
           :channel => channel,
           :message => {event: 'NEW_OFFER',
+                       attributes: {
+                           id: self.id,
+                       }
+          },
+          callback: lambda{ |info| Rails.logger.info "Send message to pubnub channel #{info}" }
+      )
+    end
+  end
+
+  def send_offer_update_pubnub_notification
+    subscriber_chanels = User.where(id: [ sender_id, receiver_id]).pluck(:channel_name)
+
+    Rails.logger.info 'Send pubnub notification for offer update'
+
+    subscriber_chanels.each do |channel|
+      Rails.logger.info "Send pubnub notification for offer creation to channel #{channel}"
+
+      $pubnub_server_subscription.publish(
+          :channel => channel,
+          :message => {event: 'OFFER_UPDATE',
                        attributes: {
                            id: self.id,
                        }

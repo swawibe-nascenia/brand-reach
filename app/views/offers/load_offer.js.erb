@@ -1,1 +1,4 @@
+$('#offer-' + '<%= params[:id] %>').remove();
+<% if @offer %>
 $('#inbox').prepend("<%= j (render partial: 'offer',locals: { offer: @offer, star_page: true } ) %>");
+<% end %>
