@@ -1,0 +1,10 @@
+<div  class="offer-box  offer-box-<%= offer.id %> " data-id="<%= offer.id %>">
+  <div class="offer-header-search">
+    <div class="offer-message-sender">
+      <%= image_tag (current_user.influencer? ? offer.sender : offer.receiver).profile_picture, class: 'inbox-logo-responsive' %>
+      <% local_user = current_user.influencer? ? offer.sender : offer.receiver %>
+        <span class="title" title="<%= local_user.full_name %>"><%= local_user.full_name %> </span>
+    </div>
+    <div class="offer-text"><%= offer.name %> </div>
+  </div>
+</div>

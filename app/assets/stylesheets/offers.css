@@ -244,6 +244,7 @@
 .offer-text {
     margin-left: 15px;
     width: calc(100% - 550px);
+    color: #333;
 }
 
 .offer-text:hover{

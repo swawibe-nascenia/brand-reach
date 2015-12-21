@@ -1271,9 +1271,24 @@ h5, .h5 {
   padding: 20px;
 }
 
-.influencer-search-result-box p{
-  font-weight: 700;
-  font-size: 16px;
+.offer-header-search div{
+  display: inline-block;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  vertical-align: middle;
+}
+
+.offer-header-search .offer-text{
+  color: #3c8dbc;
+}
+
+.influencer-search-result-box{
+  font-size: 14px;
+  background-color: #fff;
+}
+
+a .offer-box:last-child{
+  margin-bottom: 5px;
 }
 
 
