@@ -52,7 +52,6 @@
                 (function() {
                     var map = AmCharts.makeChart( "world-map-markers", {
                         type: "map",
-                        dragMap: false,
 
                         areasSettings: {
                             autoZoom: false,
@@ -82,8 +81,6 @@
                             images: <%= @account.country_map_data.map{ |data| data[:imageURL] = path_to_image('map-marker.svg'); data }.to_json.html_safe %>
                         },
                         zoomControl: {
-                            panControlEnabled: false,
-                            zoomControlEnabled: false,
                             homeButtonEnabled: false
                         }
                     });
