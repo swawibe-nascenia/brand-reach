@@ -485,8 +485,7 @@ a.center-block.text-center.user-status.small {
 
 .about-welcome {
   margin-right: 16px;
-  //    max-width: 350px;
-  float: right;
+  text-align: right;
   margin-bottom: -2px;
   font-weight: 500;
 }
@@ -534,17 +533,10 @@ a.center-block.text-center.user-status.small {
 }
 
 @media (min-width: 768px) {
-  /*.about-welcome{*/
-  /*margin-right: 30px;*/
-  /*}*/
   .header-logo {
     margin-top: 10px;
     margin-left: 5px;
 
-  }
-  .about {
-    /*margin-right: 27px;*/
-    /*margin-left: 10px;*/
   }
 }
 
@@ -634,6 +626,13 @@ a.center-block.text-center.user-status.small {
     margin-left: 20px;
   }
 
+}
+
+@media (max-width: 767px) {
+  .about {
+    float: left;
+    padding-left: 15px;
+  }
 }
 
 .box {

@@ -711,7 +711,7 @@ only screen and (max-width: 590px) {
 }
 
 @media
-only screen and (max-width: 420px) {
+only screen and (max-width: 768px) {
     .brand-campaign-content {
         padding: 10px 0px;
     }
