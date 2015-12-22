@@ -895,9 +895,29 @@ only screen and (max-width: 768px) {
         border: 1px solid #dddddd;
     }
 
-    .btn-connect {
-        padding: 7px;
-        margin: 0;
-        font-size: 15px;
+}
+
+@media
+only screen and (max-width: 560px) {
+    .fb-activity-modal-content .modal-body {
+        padding: 30px 35px 30px 30px;
+    }
+
+    .set-fb-activity-table > tbody > tr > td {
+        vertical-align: top;
+    }
+
+    .set-fb-activity-table tr {
+        display: table-row;
+    }
+
+    .set-fb-activity-table td {
+        display: table-cell;
+    }
+
+    .set-fb-activity-table thead tr {
+        position: inherit;
+        top: 0;
+        left: 0;
     }
 }

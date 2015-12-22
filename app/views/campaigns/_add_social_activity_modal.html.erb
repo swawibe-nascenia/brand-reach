@@ -15,42 +15,31 @@
                     <input type="hidden" name="access_token"/>
                     <input type="hidden" name="id"/>
 
-                     <div class="facebook-content">
+                    <table class="table table-striped table-bordered table-responsive set-fb-activity-table">
+                      <thead>
+                          <tr class="payment-header">
+                            <th class="squaredFour"></th>
+                            <th>Campaign Name</th>
+                            <th>Date Billed</th>
+                          </tr>
+                      </thead>
 
-                        <div class="js-clickable fb-activity-row-head">
+                      <tbody>
+                      {{#each accounts}}
+                          <tr class="js-clickable">
+                            <td><input type="radio" class="vertical-align-middle" name="activity_id" value="{{id}}" {{#if active}}checked{{/if}}></td>
+                            <td><h4 class="media-heading vertical-align-middle">{{story}}{{message}}</h4></td>
+                            <td>
 
-                             <div class="fb-activity-radio">
-                                <input type="radio" class="invisible" disabled>
-                             </div>
-                             <div class="fb-activity-post">
-                                <h4> Activity Name </h4>
-                             </div>
-                             <div class="fb-activity-image">
-                                <h4> Picture </h4>
-                             </div>
+                            {{#if picture}}
+                                <img class="media-object fb-activity-img vertical-align-middle" src="{{picture}}">
+                            {{/if}}
 
-                        </div>
-                        {{#each accounts}}
-                            <div class="js-clickable fb-activity-row">
-
-                             <div class="fb-activity-radio">
-                                <input type="radio" class="vertical-align-middle" name="activity_id" value="{{id}}" {{#if active}}checked{{/if}}>
-                             </div>
-
-                             <div class="fb-activity-post">
-                                <h4 class="media-heading vertical-align-middle">{{story}}{{message}}</h4>
-                             </div>
-
-                             <div class="fb-activity-image">
-                                {{#if picture}}
-                                  <img class="media-object fb-activity-img vertical-align-middle" src="{{picture}}">
-                                {{/if}}
-                             </div>
-                            </div>
-                        {{/each}}
-                     </div>
-                    <br/>
-
+                            </td>
+                          </tr>
+                      {{/each}}
+                      </tbody>
+                    </table>
                     <input class="btn btn-export btn-connect" type="submit" value="CONNECT"/>
                 </form>
             </div>
