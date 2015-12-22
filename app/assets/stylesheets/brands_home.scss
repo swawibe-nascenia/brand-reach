@@ -287,12 +287,6 @@ ul.menu-item li {
     padding-bottom: 20px;
   }
 }
-@media screen and (max-width: 500px) {
-  .statistics .stats-block {
-    width: 100%;
-    text-align: center
-  }
-}
 
 .stats-block span {
   display: block;
@@ -367,9 +361,9 @@ ul.menu-item li {
   text-align: center;
 }
 
-@media screen and (max-width: 900px) {
-  .about-us {
-    //padding-right: 20px;
+@media screen and (max-width: 953px) {
+  .about-us-block{
+    margin-right: 16px;
   }
 }
 
@@ -559,10 +553,6 @@ ul.menu-item li {
   }
 }
 
-@media screen and (max-width: 800px){
-
-}
-
 .space {
   padding-right: 22px;
 }
@@ -613,6 +603,13 @@ ul.menu-item li {
   .statistics .posts-padding {
     clear: right;
     width: 49%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .statistics .stats-block {
+    width: 100%;
+    text-align: center
   }
 }
 
