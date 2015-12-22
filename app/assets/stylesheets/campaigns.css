@@ -920,4 +920,8 @@ only screen and (max-width: 560px) {
         top: 0;
         left: 0;
     }
+
+    .btn-connect {
+        font-size: 13px;
+    }
 }
