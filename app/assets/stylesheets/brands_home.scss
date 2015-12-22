@@ -427,6 +427,7 @@ ul.menu-item li {
 @media screen and (max-width: 768px){
   .brands-block {
     display: inline-block;
+    width: 100%;
   }
 
   .brands-block span {
@@ -435,24 +436,6 @@ ul.menu-item li {
     margin-bottom: 30px;
   }
 }
-
-//@media screen and (max-width: 750px) {
-//  .brands-block span {
-//    width: 30%;
-//  }
-//  .brands-block {
-//    text-align: center;
-//  }
-//}
-//
-//@media screen and (max-width: 500px){
-//
-//  .brands-block span img {
-//    width: 75px;
-//  }
-//}
-
-
 
 .contact-us {
   background-image: image-url("Pic3.png");
@@ -517,10 +500,6 @@ ul.menu-item li {
   }
 }
 
-@media screen and (max-width: 580px){
-
-}
-
 /* text style */
 #myNavbar .text-white{
   color: #ffffff;
@@ -571,7 +550,6 @@ ul.menu-item li {
     font-size: 1.2em;
   }
 }
-
 
 @media screen and (min-width: 768px){
   .fb-twitter {
@@ -651,7 +629,12 @@ ul.menu-item li {
   display: none;
 }
 
-@media only screen and (max-width: 767px) {
+
+.influencer-text {
+  width: 460px;
+}
+
+@media only screen and (max-width: 768px) {
 
   .my-nav-bar{
     float: none;
@@ -699,16 +682,16 @@ ul.menu-item li {
     padding-bottom: 50px;
   }
 
+  .influencer-text {
+    width: 100%;
+  }
+
 }
 
 @media screen and (max-width: 500px) {
   .statistics .posts-padding {
     width: 100%;
   }
-}
-
-.influencer-text {
-  width: 460px;
 }
 
 @media screen and (max-width: 500px) {
