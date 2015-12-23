@@ -82,20 +82,25 @@ $(function(){
 
 //    reply message feature
     $(document).on('click', '.message-reply-button', function(e){
-        var body =  $.trim($(this).prev('.message-body').val());
         var offer_id = $(this).data('offer-id');
+        console.log('current offer id is ' + offer_id);
+        var body =  $.trim($('#offer-textarea-' + offer_id ).val());
         var receiver_id = $(this).data('receiver-id');
+        var attach_iamge_ids = $('#attach_image_ids-' + offer_id).val();
 
         if(body.length > 0){
             $.ajax({
                 type: 'post',
                 url: '/offers/' + offer_id +'/reply_message',
                 dataType: 'json',
-                data: {'authenticity_token': $('meta[name="csrf-token"]').attr('content'), id: offer_id, receiver_id: receiver_id, body: body },
+                data: {'authenticity_token': $('meta[name="csrf-token"]').attr('content'),
+                        id: offer_id, receiver_id: receiver_id, body: body,
+                        attach_iamge_ids: attach_iamge_ids },
                 success: function(data) {
                     if(data.success){
                         console.log(data);
-                        $('.offer-textarea-' + data.id).val('');
+                        $('#offer-textarea-' + data.id).val('');
+                        $('#image-proview-container-' + data.id).html(' ');
                         console.log($('.offer-textarea-' + data.id));
                     }else{
                         bootbox.alert({message: 'Some error have been  occur.',

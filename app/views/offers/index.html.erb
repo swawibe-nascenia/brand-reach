@@ -63,4 +63,49 @@
         $('#star-blue').hide();
         $('#inbox-black').hide();
     });
+
+//        image attachment
+    $('.addImage').click(function(){
+        console.log('add image button click' + $(this).data('id'));
+        $('#upload-message-image-' + $(this).data('id')).click();
+//        $(this).closest('.upload-message-image').click();
+    });
+
+    $('.add_image').fileupload({
+        dataType: "script",
+        add: function (e, data) {
+            var vals = Object.keys(data).map(function(key){
+                return data[key];
+            });
+
+
+            console.log('Image uploader data is ' + vals);
+
+            var file, types;
+            types = /(\.|\/)(gif|jpe?g|png)$/i;
+            file = data.files[0];
+            if (types.test(file.type) || types.test(file.name)) {
+                $('#new_message_images').append(data.context);
+                $('#loading-indicator').show();
+                return data.submit();
+            } else {
+                return alert("" + file.name + " is not a valid format!");
+            }
+        },
+        progress: function (e, data) {
+            var progress;
+            if (data.context) {
+                progress = parseInt(data.loaded / data.total * 100, 10);
+                return data.context.find('.bar').css('width', progress + '%');
+            }
+        },
+        stop: function (e, data) {
+            $('.upload').hide();
+            $('#loading-indicator').hide();
+        }
+    });
 </script>
+
+<!--image attachment -->
+
+

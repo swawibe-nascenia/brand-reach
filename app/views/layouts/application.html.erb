@@ -19,13 +19,25 @@
   <script id="message-template" type="text/x-handlebars-template">
     <div class="message message-{{campaign_id}}">
       <img src="{{sender_profile_picture_url}}" class='inbox-logo-responsive'>
-      <span class="message-body">{{{body}}}</span>
+      <div class="message-body">{{{body}}}</div>
+      {{#each image_urls}}
+      <div class="image-body">
+        <a href="{{this}}" target="_blank">
+        <img src="{{this}}" class="message-image"/>
+        </a>
+      </div>
+      {{/each}}
     </div>
   </script>
 
   <%= yield :head %>
 </head>
 <body class="skin-blue sidebar-mini">
+<div class="navbar navbar-fixed-top flash-less-width" style="z-index: 2001;">
+  <div id="loading-indicator">
+    <span id="loader_img"><i class="fa fa-spinner"></i></span> Image loading. Please wait....
+  </div>
+</div>
 <div class="wrapper">
   <header class="main-header visible-xs">
     <nav class="navbar navbar-static-top" role="navigation">
@@ -256,7 +268,7 @@
         PUBNUB_CLIENT.events.bind("MESSAGE", function (message) {
             var messageTemplate = Handlebars.compile($('#message-template').html());
             var outputHtml = messageTemplate(message.attributes);
-            $('.message-container-' + message.attributes.campaign_id).prepend(outputHtml);
+            $('.message-container-' + message.attributes.campaign_id + ' #image-proview-container-' + message.attributes.campaign_id).after(outputHtml);
             var openOfferBoxs = $('.offer-box-' + message.attributes.campaign_id).children('.offer-body.in').length;
 
             if(openOfferBoxs){

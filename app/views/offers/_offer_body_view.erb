@@ -1,19 +1,41 @@
 <div class="offer-body offer-body-<%= offer.id %> collapse">
   <div class="comment-box comment-box-<%= offer.id %>">
-    <textarea name="message-body" class="offer-textarea message-body offer-textarea-<%= offer.id %> " rows="3"
+    <%= form_for Image.new, html: {class: 'image-upload-form add_image', id: ''} do |f| %>
+    <textarea name="message-body" class="offer-textarea message-body " id="offer-textarea-<%= offer.id %>" rows="3"
               placeholder="Start typing your message here" maxlength="150"></textarea>
-    <% if offer.messageable? %>
-        <button data-offer-id='<%= offer.id %>' data-receiver-id='<%= current_user.id == offer.sender_id ? offer.receiver_id : offer.sender_id %>' class="message-reply-button btn btn-accept" type="button" >Reply</button>
+    <%= hidden_field_tag :attach_image_ids, '', id: "attach_image_ids-#{offer.id}" %>
+        <span class="glyphicon glyphicon-camera btn-image-add addImage" title="Add Image" data-id="<%= offer.id %>"></span>
+
+        <% if offer.messageable? %>
+        <button data-offer-id='<%= offer.id %>' data-receiver-id='<%= offer_receiver_id(offer) %>' class="message-reply-button btn btn-accept" type="button" >Reply</button>
     <% else %>
-        <button data-offer-id='<%= offer.id %>' data-receiver-id='<%= current_user.id == offer.sender_id ? offer.receiver_id : offer.sender_id %>' class="message-reply-button btn btn-accept" type="button" disabled>Reply</button>
+        <button data-offer-id='<%= offer.id %>' data-receiver-id='<%= offer_receiver_id(offer) %>' class="message-reply-button btn btn-accept" type="button" disabled>Reply</button>
   <% end %>
+
+          <!-- this is your file input tag, so i hide it!-->
+          <div style='height: 0px;width: 0px; overflow:hidden;'>
+            <%= f.file_field :image_path, multiple: true, name: 'image[image_path]', id: "upload-message-image-#{offer.id}"%>
+          </div>
+        <%= hidden_field_tag :offer_id, offer.id %>
+        <%= hidden_field_tag :receiver_id, offer_receiver_id(offer) %>
+    <% end %>
   </div>
 
   <div class="message-container-<%= offer.id %>">
+    <div id="image-proview-container-<%= offer.id %>">
+    </div>
     <% offer.messages.each do |message| %>
         <div id="message-<%= message.id %>" class="message message-<%= message.id %>">
           <%= image_tag message.sender.profile_picture, class: 'inbox-logo-responsive' %>
           <div class="message-body"><%= simple_format(message.body) %> </div>
+
+          <div class="image-body">
+          <% message.images.each do |image| %>
+                <a target="_blank" href="<%= image.image_path.url %>">
+                <%= image_tag image.image_path.url, class: 'message-image' %>
+                </a>
+          <% end %>
+          </div>
         </div>
     <% end %>
   </div>

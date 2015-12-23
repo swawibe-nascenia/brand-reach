@@ -17,6 +17,17 @@
     padding: 3px 7px;
 }
 
+.btn-image-add{
+    background-color: #00c9f3;
+    color: white;
+    display: inline-block;
+    font-size: 13px;
+    margin: -72px 0 0 5px;
+    padding: 3px 7px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
 .btn-accept:hover{
     color: white;
     background-color: #00b6e2;
@@ -281,6 +292,12 @@
 
 .comment-box .offer-textarea {
     width: 70%;
+}
+
+@media (max-width: 440px) {
+    .comment-box .offer-textarea {
+        width: 50%;
+    }
 }
 
 .comment-box .btn-accept {

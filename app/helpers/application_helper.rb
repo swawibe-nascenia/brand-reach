@@ -105,4 +105,8 @@ module ApplicationHelper
       root_path
     end
   end
+
+  def offer_receiver_id(offer)
+    current_user.id == offer.sender_id ? offer.receiver_id : offer.sender_id
+  end
 end

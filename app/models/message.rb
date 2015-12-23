@@ -22,6 +22,7 @@ class Message < ActiveRecord::Base
   belongs_to :sender, class_name: 'User', foreign_key: :sender_id
   belongs_to :receiver, class_name: 'User', foreign_key: :receiver_id
   belongs_to :campaign
+  has_many :images
 
   # ----------------------------------------------------------------------
   # == Validations == #
@@ -51,6 +52,8 @@ class Message < ActiveRecord::Base
     Rails.logger.info 'Send pubnub notification for message creation'
     Rails.logger.info subscriber_chanels
 
+    attach_image_urls = images.map{|image| image.image_path.url }
+
     subscriber_chanels.each do |channel|
       Rails.logger.info channel
       $pubnub_server_subscription.publish(
@@ -62,7 +65,8 @@ class Message < ActiveRecord::Base
                            sender_id: self.sender_id,
                            receiver_id: self.receiver_id,
                            campaign_id: self.campaign_id,
-                           sender_profile_picture_url: sender_profile_picture_url
+                           sender_profile_picture_url: sender_profile_picture_url,
+                           image_urls: attach_image_urls
                        }
           },
           callback: lambda{ |info| Rails.logger.info 'Send message to pubnub channel' + info }

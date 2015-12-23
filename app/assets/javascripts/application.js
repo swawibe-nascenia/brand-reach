@@ -26,6 +26,7 @@
 //= require admin
 //= require bootbox.min
 //= require local_time
+//=require jquery-fileupload/basic
 // require turbolinks
 // require_tree .
 
