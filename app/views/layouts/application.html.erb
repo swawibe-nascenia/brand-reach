@@ -17,7 +17,7 @@
   <%= csrf_meta_tag %>
   <!--handlebars message template-->
   <script id="message-template" type="text/x-handlebars-template">
-    <div class="message message-{{campaign_id}}">
+    <div class="message message-{{id}}" id="message-{{id}}">
       <img src="{{sender_profile_picture_url}}" class='inbox-logo-responsive'>
       <div class="message-body">{{{body}}}</div>
       {{#each image_urls}}
@@ -268,9 +268,13 @@
         PUBNUB_CLIENT.events.bind("MESSAGE", function (message) {
             var messageTemplate = Handlebars.compile($('#message-template').html());
             var outputHtml = messageTemplate(message.attributes);
-            $('.message-container-' + message.attributes.campaign_id + ' #image-proview-container-' + message.attributes.campaign_id).after(outputHtml);
-            var openOfferBoxs = $('.offer-box-' + message.attributes.campaign_id).children('.offer-body.in').length;
+//            ensure only one message remains with this message id
+            if($('.message-' + message.attributes.id).length == 0){
+                console.log('with in message add container');
+                $('.message-container-' + message.attributes.campaign_id + ' #image-proview-container-' + message.attributes.campaign_id).after(outputHtml);
+            }
 
+            var openOfferBoxs = $('.offer-box-' + message.attributes.campaign_id).children('.offer-body.in').length;
             if(openOfferBoxs){
                 makeMessageRead(message.attributes.campaign_id);
             }else{
