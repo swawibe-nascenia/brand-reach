@@ -17,7 +17,7 @@ class Image < ActiveRecord::Base
   # == File Uploader == #
   # ----------------------------------------------------------------------
 
-  mount_uploader :image, ImageUploader
+  mount_uploader :image_path, ImageUploader
 
   # ----------------------------------------------------------------------
   # == Associations and Nested Attributes == #
@@ -29,7 +29,7 @@ class Image < ActiveRecord::Base
   # == Validations == #
   # ----------------------------------------------------------------------
 
-  validates :image, presence: true
+  validates :image_path, presence: true
 
   # ----------------------------------------------------------------------
   # == Callbacks == #

@@ -97,6 +97,8 @@ class OffersController < ApplicationController
     if @offer && @offer.messageable?
       message = @offer.messages.new(sender_id: current_user.id, receiver_id: params[:receiver_id], body: params[:body])
       Rails.logger.info "Your message is #{message.body}"
+      message.image_ids = params[:attach_iamge_ids].split(',').select(&:present?).map(&:to_i)
+
       if message.body.present? && message.save
         success = true
         id = @offer.id
@@ -137,8 +139,6 @@ class OffersController < ApplicationController
     offers = Campaign.active_offers(current_user).where(id: @ids).where.not(status: Campaign.statuses[:engaged])
     logger.info "Deleted offers are #{offers.count}"
 
-    temp_offers = offers
-
     @ids = offers.pluck(:id)
     logger.info "Offer count after pluck #{offers.count}"
 
@@ -152,8 +152,6 @@ class OffersController < ApplicationController
     Rails.logger.info "Delet offer with ids #{@ids.inspect}"
     current_user.received_messages.where(campaign_id: @ids).update_all(read: true)
     @unread_messages_count = current_user.received_messages.where(read: false).count
-
-
   end
 
   # load new incoming offer to offer page

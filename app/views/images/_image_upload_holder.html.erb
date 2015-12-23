@@ -1,0 +1,52 @@
+<div id="message-upload-images" style="float: left">
+  <div id="add-message-image-holder" style="float: left">
+
+    <%= form_for Image.new, html: {class: 'image-upload-form add_image', id: ''} do |f| %>
+        <div id="image-upload-div" class="image_upload-holder">
+          <div id="addImage" class="btn btn-success">Add Image</div>
+          <!-- this is your file input tag, so i hide it!-->
+          <div style='height: 0px;width: 0px; overflow:hidden;'>
+          <%= f.file_field :image_path, multiple: true, name: 'image[image_path]', id: 'upload-post-image'%>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+<div id="new_message_images"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#addImage').click(function(){
+            $('#upload-post-image').click();
+        });
+
+        $('.add_image').fileupload({
+            dataType: "script",
+            add: function (e, data) {
+                var file, types;
+                types = /(\.|\/)(gif|jpe?g|png)$/i;
+                file = data.files[0];
+                if (types.test(file.type) || types.test(file.name)) {
+                    $('#new_message_images').append(data.context);
+                    console.log('Upload progress start now' + Date());
+                    return data.submit();
+                } else {
+                    return alert("" + file.name + " is not a valid format!");
+                }
+            },
+            progress: function (e, data) {
+                var progress;
+                if (data.context) {
+                    progress = parseInt(data.loaded / data.total * 100, 10);
+                    return data.context.find('.bar').css('width', progress + '%');
+                }
+            },
+            stop: function (e, data) {
+                $('.upload').hide();
+                console.log('Upload progress end  ' + Date());
+            }
+        });
+    });
+
+</script>
