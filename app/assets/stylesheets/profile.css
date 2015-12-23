@@ -490,3 +490,18 @@ div.awesomplete > ul > li[aria-selected="true"] {
 .chosen-container .chosen-drop {
     margin-top: -10px;
 }
+
+.bootbox .modal-dialog {
+    padding: 0;
+    width: 600px;
+}
+
+.bootbox .modal-content {
+    min-height: 0;
+}
+
+@media (max-width: 768px) {
+    .bootbox .modal-dialog {
+        width: auto;
+    }
+}
