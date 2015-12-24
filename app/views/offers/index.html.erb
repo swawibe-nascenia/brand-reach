@@ -86,6 +86,7 @@
             file = data.files[0];
             if (types.test(file.type) || types.test(file.name)) {
                 $('#new_message_images').append(data.context);
+                $('#image-loading-message').show();
                 $('#loading-indicator').show();
                 return data.submit();
             } else {
@@ -102,6 +103,8 @@
         stop: function (e, data) {
             $('.upload').hide();
             $('#loading-indicator').hide();
+            $('#image-loading-message').hide();
+
         }
     });
 </script>

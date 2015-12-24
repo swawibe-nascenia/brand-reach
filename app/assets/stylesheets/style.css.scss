@@ -1404,6 +1404,11 @@ a .offer-box:last-child{
   }
 }
 
+#image-loading-message{
+  z-index: 2001;
+  display: none;
+}
+
 .navbar-fixed-top, .navbar-fixed-bottom {
   position: fixed;
 }
