@@ -489,3 +489,46 @@ function unsuccessfulOfferOperationNotice(offer_id, message){
     console.log(message);
     $('.offer-box-' + offer_id).remove();
 }
+
+/*========= message and campaign image upload event bind =====*/
+function bindFileUpload(){
+    $('.addImage').click(function(){
+        console.log('add image button click' + $(this).data('id'));
+        $('#upload-message-image-' + $(this).data('id')).click();
+//        $(this).closest('.upload-message-image').click();
+    });
+
+    $('.add_image').fileupload({
+        dataType: "script",
+        add: function (e, data) {
+            var vals = Object.keys(data).map(function(key){
+                return data[key];
+            });
+
+            var file, types;
+            types = /(\.|\/)(gif|jpe?g|png)$/i;
+            file = data.files[0];
+            if (types.test(file.type) || types.test(file.name)) {
+                $('#new_message_images').append(data.context);
+                $('#image-loading-message').show();
+                $('#loading-indicator').show();
+                return data.submit();
+            } else {
+                return alert("" + file.name + " is not a valid format!");
+            }
+        },
+        progress: function (e, data) {
+            var progress;
+            if (data.context) {
+                progress = parseInt(data.loaded / data.total * 100, 10);
+                return data.context.find('.bar').css('width', progress + '%');
+            }
+        },
+        stop: function (e, data) {
+            $('.upload').hide();
+            $('#loading-indicator').hide();
+            $('#image-loading-message').hide();
+
+        }
+    });
+}
