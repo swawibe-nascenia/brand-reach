@@ -188,6 +188,11 @@ class CampaignsController < ApplicationController
         headers['Content-Type'] ||= 'text/csv'
         render 'campaigns/export_influencer_campaigns'
       end
+
+      format.xls do
+        headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_influencer_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.xls\""
+        render 'campaigns/export_influencer_campaigns'
+      end
     end
   end
 

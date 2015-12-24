@@ -4,7 +4,15 @@
 
 <div class="payment-div ">
   <div class="payment-button-set pull-right">
-    <%= link_to 'EXPORT', '#', :class => 'btn btn-export button-border-yellow', id: 'export_campaigns' %>
+    <%#= link_to 'EXPORT', '#', :class => 'btn btn-export button-border-yellow', id: 'export_campaigns' %>
+    <li class="dropdown btn btn-export button-border-yellow">
+      <a href="#" class="dropdown-toggle text-white" data-toggle="dropdown">EXPORT <b class="caret"></b></a>
+      <ul class="dropdown-menu" id="export_campaigns">
+        <li value="pdf"><a href="#">to PDF</a></li>
+        <li value="xls"><a href="#">to Excel</a></li>
+        <li value="csv"><a href="#">to CSV</a></li>
+      </ul>
+    </li>
   </div>
 </div>
 
@@ -153,7 +161,7 @@
                     campaign_ids.push($(this).data('id'));
                 });
 
-                window.location.href = "<%= export_campaigns_path(format: :csv) %>?campaign_ids=" + campaign_ids;
+                window.location.href = "<%= export_campaigns_path(format: :xls) %>?campaign_ids=" + campaign_ids;
             }
             else
             {
