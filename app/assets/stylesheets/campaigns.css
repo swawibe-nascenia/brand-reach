@@ -874,6 +874,10 @@ only screen and (max-width: 480px) {
     margin: 0;
 }
 
+.social-account-tab-content input.input-with-img{
+    width: calc(52% - 17px);
+}
+
 @media
 only screen and (max-width: 768px) {
     #SetFacebookActivity .fb-activity-modal-dialog {

@@ -1,4 +1,5 @@
 <%= stylesheet_link_tag  'campaigns', media: 'all' %>
+
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
 <% title 'Brand Campaign' %>
@@ -59,23 +60,21 @@
 
               <!--profile photo filed-->
               <div class="form-group" id="post-type-1">
-                <div>
                   <%= f.label :campaign_content, 'Choose a photo', class: 'control-label' %>
-                  <span class="glyphicon glyphicon-camera" title="Add Image"></span>
-                </div>
 
                 <div class="display-inline">
-                  <%= f.text_field :campaign_content, class: 'form-control', name: 'profile_photo_url' %>
+                  <span class="glyphicon glyphicon-camera" title="Add Image"></span>
+                  <%= f.text_field :campaign_content, class: 'form-control input-with-img' , name: 'profile_photo_url' %>
                 </div>
               </div>
 
               <!--cover photo filed-->
               <div class="form-group" id="post-type-2">
                 <%= f.label :campaign_content, 'Choose a photo', class: 'control-label' %>
-                <span class="glyphicon glyphicon-camera" title="Add Image"></span>
 
                 <div class="display-inline">
-                  <%= f.text_field :campaign_content, class: 'form-control', name: 'cover_photo_url' %>
+                  <span class="glyphicon glyphicon-camera" title="Add Image"></span>
+                  <%= f.text_field :campaign_content, class: 'form-control input-with-img', name: 'cover_photo_url' %>
                 </div>
               </div>
 
