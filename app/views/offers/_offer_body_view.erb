@@ -3,19 +3,19 @@
     <%= form_for Image.new, html: {class: 'image-upload-form add_image', id: ''} do |f| %>
     <textarea name="message-body" class="offer-textarea message-body " id="offer-textarea-<%= offer.id %>" rows="3"
               placeholder="Start typing your message here" maxlength="150"></textarea>
-    <%= hidden_field_tag :attach_image_ids, '', id: "attach_image_ids-#{offer.id}" %>
-        <span class="glyphicon glyphicon-camera btn-image-add addImage" title="Add Image" data-id="<%= offer.id %>"></span>
+        <%= hidden_field_tag :attach_image_ids, '', id: "attach_image_ids-#{offer.id}" %>
 
         <% if offer.messageable? %>
-        <button data-offer-id='<%= offer.id %>' data-receiver-id='<%= offer_receiver_id(offer) %>' class="message-reply-button btn btn-accept" type="button" >Reply</button>
-    <% else %>
-        <button data-offer-id='<%= offer.id %>' data-receiver-id='<%= offer_receiver_id(offer) %>' class="message-reply-button btn btn-accept" type="button" disabled>Reply</button>
-  <% end %>
+            <span class="glyphicon glyphicon-camera btn-image-add addImage" title="Add Image" data-id="<%= offer.id %>"></span>
+            <button data-offer-id='<%= offer.id %>' data-receiver-id='<%= offer_receiver_id(offer) %>' class="message-reply-button btn btn-accept" type="button">Reply</button>
+        <% else %>
+            <button data-offer-id='<%= offer.id %>' data-receiver-id='<%= offer_receiver_id(offer) %>' class="message-reply-button btn btn-accept" type="button" disabled>Reply</button>
+        <% end %>
 
-          <!-- this is your file input tag, so i hide it!-->
-          <div style='height: 0px;width: 0px; overflow:hidden;'>
-            <%= f.file_field :image_path, multiple: true, name: 'image[image_path]', id: "upload-message-image-#{offer.id}"%>
-          </div>
+        <!-- this is your file input tag, so i hide it!-->
+        <div style='height: 0px;width: 0px; overflow:hidden;'>
+          <%= f.file_field :image_path, multiple: true, name: 'image[image_path]', id: "upload-message-image-#{offer.id}" %>
+        </div>
         <%= hidden_field_tag :offer_id, offer.id %>
         <%= hidden_field_tag :receiver_id, offer_receiver_id(offer) %>
     <% end %>
@@ -30,14 +30,58 @@
           <div class="message-body"><%= simple_format(message.body) %> </div>
 
           <div class="image-body">
-          <% message.images.each do |image| %>
+            <% message.images.each do |image| %>
                 <a target="_blank" href="<%= image.image_path.url %>">
-                <%= image_tag image.image_path.url, class: 'message-image' %>
+                  <%= image_tag image.image_path.url, class: 'message-image' %>
                 </a>
-          <% end %>
+            <% end %>
           </div>
         </div>
     <% end %>
   </div>
 
 </div>
+<script>
+    $('.addImage').click(function(){
+        console.log('add image button click' + $(this).data('id'));
+        $('#upload-message-image-' + $(this).data('id')).click();
+//        $(this).closest('.upload-message-image').click();
+    });
+
+    $('.add_image').fileupload({
+        dataType: "script",
+        add: function (e, data) {
+            var vals = Object.keys(data).map(function(key){
+                return data[key];
+            });
+
+
+            console.log('Image uploader data is ' + vals);
+
+            var file, types;
+            types = /(\.|\/)(gif|jpe?g|png)$/i;
+            file = data.files[0];
+            if (types.test(file.type) || types.test(file.name)) {
+                $('#new_message_images').append(data.context);
+                $('#image-loading-message').show();
+                $('#loading-indicator').show();
+                return data.submit();
+            } else {
+                return alert("" + file.name + " is not a valid format!");
+            }
+        },
+        progress: function (e, data) {
+            var progress;
+            if (data.context) {
+                progress = parseInt(data.loaded / data.total * 100, 10);
+                return data.context.find('.bar').css('width', progress + '%');
+            }
+        },
+        stop: function (e, data) {
+            $('.upload').hide();
+            $('#loading-indicator').hide();
+            $('#image-loading-message').hide();
+
+        }
+    });
+</script>
