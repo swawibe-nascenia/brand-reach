@@ -63,7 +63,7 @@
                   <%= f.label :campaign_content, 'Choose a photo', class: 'control-label' %>
 
                 <div class="display-inline">
-                  <span class="glyphicon glyphicon-camera" title="Add Image"></span>
+                  <span class="glyphicon glyphicon-camera" title="Add Image" id="upload-profile-photo"></span>
                   <%= f.text_field :campaign_content, class: 'form-control input-with-img' , name: 'profile_photo_url' %>
                 </div>
               </div>
@@ -73,7 +73,7 @@
                 <%= f.label :campaign_content, 'Choose a photo', class: 'control-label' %>
 
                 <div class="display-inline">
-                  <span class="glyphicon glyphicon-camera" title="Add Image"></span>
+                  <span class="glyphicon glyphicon-camera" title="Add Image" id="upload-cover-photo"></span>
                   <%= f.text_field :campaign_content, class: 'form-control input-with-img', name: 'cover_photo_url' %>
                 </div>
               </div>
@@ -159,6 +159,27 @@
         <%= link_to 'CANCEL', explores_path, class: 'btn btn-book-now grey-color' %>
       </div>
   <% end %>
+
+  <!-- campaign image upload form for cover photo -->
+  <%= form_for Image.new, html: {class: 'image-upload-form add_image', id: ''} do |f| %>
+      <!-- this is your file input tag, so i hide it!-->
+      <div style='height: 0px;width: 0px; overflow:hidden;'>
+        <%= f.file_field :image_path, name: 'image[image_path]', id: 'campaign-cover-photo' %>
+      </div>
+      <%= hidden_field_tag :campaign_image, 1 %>
+      <%= hidden_field_tag 'type', 'cover' %>
+  <% end %>
+
+  <!-- campaign image upload form for cover photo -->
+  <%= form_for Image.new, html: {class: 'image-upload-form add_image', id: ''} do |f| %>
+      <!-- this is your file input tag, so i hide it!-->
+      <div style='height: 0px;width: 0px; overflow:hidden;'>
+        <%= f.file_field :image_path, name: 'image[image_path]', id: 'campaign-profile-photo' %>
+      </div>
+      <%= hidden_field_tag :campaign_image, 1 %>
+      <%= hidden_field_tag 'type', 'profile' %>
+  <% end %>
+
 </div>
 
 </div>
@@ -259,5 +280,14 @@
 
             $(base_id_text + show_item).show();
         }
+
+   /*============ new campaign image upload form trigger ====*/
+        $('#upload-profile-photo').click(function(){
+            $('#campaign-profile-photo').click();
+        });
+// cover photo
+        $('#upload-cover-photo').click(function(){
+            $('#campaign-cover-photo').click();
+        });
     })
 </script>

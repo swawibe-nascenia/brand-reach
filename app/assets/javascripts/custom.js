@@ -393,6 +393,38 @@ $(function(){
     $('#signup').on('show.bs.modal', function (e) {
         $('body').addClass('test');
     });
+
+    /*======== jquery image upload ================*/
+    $('.add_image').fileupload({
+        dataType: "script",
+        add: function (e, data) {
+            var vals = Object.keys(data).map(function(key){
+                return data[key];
+            });
+
+            var file, types;
+            types = /(\.|\/)(gif|jpe?g|png)$/i;
+            file = data.files[0];
+            if (types.test(file.type) || types.test(file.name)) {
+                $('#loading-indicator').show();
+                return data.submit();
+            } else {
+                return alert("" + file.name + " is not a valid format!");
+            }
+        },
+        progress: function (e, data) {
+            var progress;
+            if (data.context) {
+                progress = parseInt(data.loaded / data.total * 100, 10);
+                return data.context.find('.bar').css('width', progress + '%');
+            }
+        },
+        stop: function (e, data) {
+            $('.upload').hide();
+            $('#loading-indicator').hide();
+        }
+    });
+
     /*    show spinner button on form submit. To enable sinner for form submit
           add 'has-spinner' class to submit button and
           <span class="spinner"><i class="fa fa-spinner fa-spin"></i></span>

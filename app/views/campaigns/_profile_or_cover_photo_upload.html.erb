@@ -1,0 +1,8 @@
+<%= form_for Image.new, html: {class: 'image-upload-form add_image', id: ''} do |f| %>
+    <span class="glyphicon glyphicon-camera" title="Add Image"></span>
+    <!-- this is your file input tag, so i hide it!-->
+    <div style='height: 0px;width: 0px; overflow:hidden;'>
+      <%= f.file_field :image_path, multiple: true, name: 'image[image_path]', id: "upload-message-image-#{offer.id}"%>
+    </div>
+    <%= hidden_field_tag :offer_id, offer.id %>
+<% end %>

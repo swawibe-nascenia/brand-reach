@@ -1,11 +1,23 @@
 <% if @success %>
 //    alert('imag upload successfull');
-console.log(" offer id is " + '<%= params[:offer_id] %>');
-previous_ids = $('#attach_image_ids-' + '<%= params[:offer_id] %>').val();
-new_ids = previous_ids + ',' + '<%= @image.id %>';
-$('#attach_image_ids-' + '<%= params[:offer_id] %>').val(new_ids);
-$('#image-proview-container-' + '<%= params[:offer_id] %>')
-        .append("<%= j render partial: 'single_file_uploaded', locals: {image: @image } %>");
-<% else %>
+    <% if params[:campaign_image].present? %>
+        <!--image upload for new campaign profile/cover photo-->
+        console.log(" campaign photo upload complete " + '<%= params[:type] %>');
+        <% if params[:type] == 'profile' %>
+            $("input[name='profile_photo_url']").val('<%= @image.image_path.url %>');
+        <% else %>
+            $("input[name='cover_photo_url']").val('<%= @image.image_path.url %>');
+        <% end %>
+    <% else %>
+        <!--image upload for offer message attachment-->
+        console.log(" offer id is " + '<%= params[:offer_id] %>');
+        previous_ids = $('#attach_image_ids-' + '<%= params[:offer_id] %>').val();
+        new_ids = previous_ids + ',' + '<%= @image.id %>';
+        $('#attach_image_ids-' + '<%= params[:offer_id] %>').val(new_ids);
+        $('#image-proview-container-' + '<%= params[:offer_id] %>')
+                .append("<%= j render partial: 'single_file_uploaded', locals: {image: @image } %>");
+    <% end %>
 
+<% else %>
+    bootbox.alert({message: 'Image upload fail. Please Try again.', closeButton: false});
 <% end %>
