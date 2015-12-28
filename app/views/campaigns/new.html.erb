@@ -1,4 +1,5 @@
 <%= stylesheet_link_tag  'campaigns', media: 'all' %>
+
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
 <% title 'Brand Campaign' %>
@@ -46,6 +47,52 @@
                 <%= f.label :post_type, 'Choose the type of post', class: 'control-label' %>
                 <div class="display-inline">
                   <%= f.select :post_type, options_for_select(Campaign.post_types.map{ |type, value| [type.titleize, value] }, Campaign.post_types[@campaign.post_type]), {}, { :class => 'form-control type-of-post', :id => 'post_type' } %>
+                </div>
+              </div>
+
+              <!--status update filed-->
+              <div class="form-group" id="post-type-0">
+                <%= f.label :campaign_content, 'Status Message', class: 'control-label' %>
+                <div class="display-inline">
+                  <%= f.text_field :campaign_content, class: 'form-control', name: 'status_message' %>
+                </div>
+              </div>
+
+              <!--profile photo filed-->
+              <div class="form-group" id="post-type-1">
+                  <%= f.label :campaign_content, 'Choose a photo', class: 'control-label' %>
+
+                <div class="display-inline">
+                  <span class="glyphicon glyphicon-camera" title="Add Image" id="upload-profile-photo"></span>
+                  <%= f.text_field :campaign_content, class: 'form-control input-with-img' , name: 'profile_photo_url' %>
+                </div>
+              </div>
+
+              <!--cover photo filed-->
+              <div class="form-group" id="post-type-2">
+                <%= f.label :campaign_content, 'Choose a photo', class: 'control-label' %>
+
+                <div class="display-inline">
+                  <span class="glyphicon glyphicon-camera" title="Add Image" id="upload-cover-photo"></span>
+                  <%= f.text_field :campaign_content, class: 'form-control input-with-img', name: 'cover_photo_url' %>
+                </div>
+              </div>
+
+              <!--video post filed-->
+              <div class="form-group" id="post-type-3">
+                <%= f.label :campaign_content, 'Video URL', class: 'control-label' %>
+                <div class="display-inline">
+                  <%= f.text_field :campaign_content, class: 'form-control', name: 'video_url' %>
+                </div>
+              </div>
+
+              <!--photo post field-->
+              <div class="form-group" id="post-type-4">
+                <%= f.label :campaign_content, 'Choose a photo', class: 'control-label' %>
+
+                <div class="display-inline">
+                  <span class="glyphicon glyphicon-camera" title="Add Image" id="upload-cover-photo"></span>
+                  <%= f.text_field :campaign_content, class: 'form-control input-with-img', name: 'photo_url' %>
                 </div>
               </div>
 
@@ -122,6 +169,27 @@
         <%= link_to 'CANCEL', explores_path, class: 'btn btn-book-now grey-color' %>
       </div>
   <% end %>
+
+  <!-- campaign image upload form for cover photo -->
+  <%= form_for Image.new, html: {class: 'image-upload-form add_image', id: ''} do |f| %>
+      <!-- this is your file input tag, so i hide it!-->
+      <div style='height: 0px;width: 0px; overflow:hidden;'>
+        <%= f.file_field :image_path, name: 'image[image_path]', id: 'campaign-cover-photo' %>
+      </div>
+      <%= hidden_field_tag :campaign_image, 1 %>
+      <%= hidden_field_tag 'type', 'cover' %>
+  <% end %>
+
+  <!-- campaign image upload form for cover photo -->
+  <%= form_for Image.new, html: {class: 'image-upload-form add_image', id: ''} do |f| %>
+      <!-- this is your file input tag, so i hide it!-->
+      <div style='height: 0px;width: 0px; overflow:hidden;'>
+        <%= f.file_field :image_path, name: 'image[image_path]', id: 'campaign-profile-photo' %>
+      </div>
+      <%= hidden_field_tag :campaign_image, 1 %>
+      <%= hidden_field_tag 'type', 'profile' %>
+  <% end %>
+
 </div>
 
 </div>
@@ -184,18 +252,56 @@
                 // Dont change value 0..3 here, they are post types of campaign. if need any change then synchronize with enum in Campaign model
                 if (this.value == 0) {
                     $('#post_cost').val(costs[social_account_index][0]);
+                    showHide(this.value);
                 }
                 else if (this.value == 1) {
                     $('#post_cost').val( costs[social_account_index][1] );
+                    showHide(this.value);
                 }
                 else if (this.value == 2) {
                     $('#post_cost').val(costs[social_account_index][2]);
+                    showHide(this.value);
                 }
                 else if (this.value == 3) {
                     $('#post_cost').val(costs[social_account_index][3]);
+                    showHide(this.value);
+                }
+                else if (this.value == 4) {
+                    $('#post_cost').val(costs[social_account_index][4]);
+                    showHide(this.value);
                 }
             }
 
+        });
+
+        showHide(0);
+
+/*===== display other field depending on post type value ====*/
+/* ===== show_item either 0,1,2,3 that will show and other will hide =*/
+        function showHide(show_item){
+            console.log('Show hide method called with ' + show_item);
+            var item_ids_to_hide = [0,1,2,3,4];
+            item_ids_to_hide = item_ids_to_hide.filter(function(id){
+                return id !=show_item;
+            });
+
+            var base_id_text = '#post-type-';
+
+            item_ids_to_hide.forEach(function(id){
+                console.log('Show hide element called with ' + id);
+                $(base_id_text + id).hide();
+            });
+
+            $(base_id_text + show_item).show();
+        }
+
+   /*============ new campaign image upload form trigger ====*/
+        $('#upload-profile-photo').click(function(){
+            $('#campaign-profile-photo').click();
+        });
+// cover photo
+        $('#upload-cover-photo').click(function(){
+            $('#campaign-cover-photo').click();
         });
     })
 </script>

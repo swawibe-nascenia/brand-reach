@@ -18,7 +18,7 @@ class CampaignsController < ApplicationController
     if @influencer.active?
       @costs = User.find(params[:receiver_id].to_i).active_facebook_accounts.pluck(
           :status_update_cost, :profile_photo_cost, :cover_photo_cost,
-          :video_post_cost)
+          :video_post_cost, :photo_post_cost)
       @campaign = Campaign.new(sender_id: current_user.id,
                                receiver_id: params[:receiver_id], facebook_account_id: params[:social_account_id])
     else
@@ -35,6 +35,12 @@ class CampaignsController < ApplicationController
     @campaign.card_expiration_month = campaign_params[:card_expiration_month].to_i
     @campaign.card_expiration_year = campaign_params[:card_expiration_year].to_i
     @campaign.name = campaign_params[:name].strip if  campaign_params[:name].present?
+    @campaign.campaign_content = case campaign_params[:post_type].to_i
+                                   when 0 then params[:status_message]
+                                   when 1 then params[:profile_photo_url]
+                                   when 2 then params[:cover_photo_url]
+                                   when 3 then params[:video_url]
+                                 end
     # @campaign.name = @campaign.name.downcase if  campaign_params[:name].present?
 
     unless @campaign.date_range?
@@ -131,6 +137,10 @@ class CampaignsController < ApplicationController
       flash[:error] = "Payment system error: #{data['failure_message']}"
       redirect_to new_brand_payment_campaigns_path(@campaign.id)
     end
+  end
+
+  def campaign_image
+
   end
 
   private

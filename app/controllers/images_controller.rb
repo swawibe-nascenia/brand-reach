@@ -3,11 +3,7 @@ class ImagesController < ApplicationController
   respond_to :js, :html
 
   def create
-    offer = Campaign.find params[:offer_id]
-    # message = offer.messages.new(sender_id: current_user.id, receiver_id: params[:receiver_id],
-    #                               body: params['message-body'])
     @image = Image.new(image_params)
-
     @success = false
 
     if @image.save
