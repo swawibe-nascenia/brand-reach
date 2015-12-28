@@ -34,7 +34,9 @@ class FacebookAccount < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   validates :access_token, presence: true
-  validates :status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost, :numericality => {:greater_than_or_equal_to => 0}, presence: true
+  validates :status_update_cost, :profile_photo_cost, :cover_photo_cost,
+            :video_post_cost, :photo_post_cost,
+            :numericality => {:greater_than_or_equal_to => 0}, presence: true
 
   # ----------------------------------------------------------------------
   # == Callbacks == #

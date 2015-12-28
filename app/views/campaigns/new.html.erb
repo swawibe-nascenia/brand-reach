@@ -266,7 +266,7 @@
                     $('#post_cost').val(costs[social_account_index][3]);
                     showHide(this.value);
                 }
-                else if (this.value == 3) {
+                else if (this.value == 4) {
                     $('#post_cost').val(costs[social_account_index][4]);
                     showHide(this.value);
                 }
@@ -280,7 +280,7 @@
 /* ===== show_item either 0,1,2,3 that will show and other will hide =*/
         function showHide(show_item){
             console.log('Show hide method called with ' + show_item);
-            var item_ids_to_hide = [0,1,2,3];
+            var item_ids_to_hide = [0,1,2,3,4];
             item_ids_to_hide = item_ids_to_hide.filter(function(id){
                 return id !=show_item;
             });
