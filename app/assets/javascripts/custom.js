@@ -344,16 +344,6 @@ $(function(){
        });
    }
 
-/* ============== send message on enter key press ============*/
-    $('.offer-textarea').keypress(function (e) {
-        var key = e.which;
-        if(key == 13)  // the enter key code
-        {
-            $(this).siblings('.message-reply-button').click();
-            return false;
-        }
-    });
-
 /* ========== reset advance search search item ================*/
     $('a.btn-reset').click(function(){
         resetAdvanceSearchInput();
@@ -491,14 +481,15 @@ function unsuccessfulOfferOperationNotice(offer_id, message){
 }
 
 /*========= message and campaign image upload event bind =====*/
-function bindFileUpload(){
-    $('.addImage').click(function(){
+function bindFileUpload(offer){
+console.log('bind fileupload event for ' + offer );
+    offer.find('.addImage').click(function(){
         console.log('add image button click' + $(this).data('id'));
         $('#upload-message-image-' + $(this).data('id')).click();
 //        $(this).closest('.upload-message-image').click();
     });
 
-    $('.add_image').fileupload({
+    offer.find('.add_image').fileupload({
         dataType: "script",
         add: function (e, data) {
             var vals = Object.keys(data).map(function(key){
@@ -529,6 +520,21 @@ function bindFileUpload(){
             $('#loading-indicator').hide();
             $('#image-loading-message').hide();
 
+        }
+    });
+
+    addEnterKeyEvent(offer.find('.offer-textarea'));
+
+}
+
+/* ============== send message on enter key press ============*/
+function addEnterKeyEvent($element){
+    $element.keypress(function (e) {
+        var key = e.which;
+        if(key == 13)  // the enter key code
+        {
+            $(this).siblings('.message-reply-button').click();
+            return false;
         }
     });
 }

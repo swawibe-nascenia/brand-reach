@@ -64,7 +64,9 @@
         $('#inbox-black').hide();
     });
 
-    bindFileUpload();
+    $('.offer-box').each(function(){
+        bindFileUpload($(this));
+    });
 
 </script>
 

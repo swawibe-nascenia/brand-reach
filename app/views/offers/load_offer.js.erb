@@ -1,4 +1,6 @@
 $('#offer-' + '<%= params[:id] %>').remove();
+
 <% if @offer %>
-$('#inbox').prepend("<%= j (render partial: 'offer',locals: { offer: @offer, star_page: true } ) %>");
+    var new_offer = $("<%= j (render partial: 'offer',locals: { offer: @offer, star_page: true } ) %>");
+    console.log('new offer load object ' + bindFileUpload(new_offer.prependTo($('#inbox'))));
 <% end %>
