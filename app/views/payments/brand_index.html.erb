@@ -75,15 +75,14 @@
         });
 
         $('#export_payments').click(function() {
-
             if($('.squaredFour input:checked').length)
             {
                 var payment_ids = [];
                 $('.squaredFour input:checked').each(function() {
                     payment_ids.push($(this).data('id'));
                 });
-
-                window.location.href  = "<%= export_payments_path(format: :csv) %>?payment_ids=" + payment_ids;
+                console.log('called pdf generator ');
+                window.location.open("<%= export_payments_path(format: :pdf) %>?payment_ids=" + payment_ids, '_blank');
             }
             else
             {

@@ -38,6 +38,10 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       format.html{ render 'payments/export_brand_payments' }
+      format.pdf do
+        @filename = 'campaigns.pdf'
+        render 'payments/export_brand_payments'
+      end
       format.csv do
         #  Don't Try to Put Headers into single line, it wont work
         headers['Content-Disposition'] = "attachment; filename=\"payments_list_brand_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.csv\""
@@ -84,6 +88,10 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       format.html{ render 'payments/export_influencer_payments' }
+      format.pdf do
+        @filename = 'campaigns.pdf'
+        render 'payments/export_influencer_payments'
+      end
       format.pdf{ }
       format.csv do
         #  Don't Try to Put Headers into single line, it wont work

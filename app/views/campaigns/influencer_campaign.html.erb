@@ -3,10 +3,10 @@
 <% title 'Influencer Campaign' %>
 
 <div class="payment-div ">
-  <div class="payment-button-set pull-right">
+  <div class="payment-button-set pull-right dropdown">
     <%#= link_to 'EXPORT', '#', :class => 'btn btn-export button-border-yellow', id: 'export_campaigns' %>
-    <li class="dropdown btn btn-export button-border-yellow">
-      <a href="#" class="dropdown-toggle text-white" data-toggle="dropdown">EXPORT <b class="caret"></b></a>
+    <button class="dropdown-toggle btn btn-export button-border-yellow" data-toggle="dropdown">
+      EXPORT <span class="caret"></span></button>
       <ul class="dropdown-menu" id="export_campaigns">
         <li data-format="pdf" class="report-generate"><a href="#">to PDF</a></li>
         <li data-format="xls" class="report-generate"><a href="#">to Excel</a></li>
@@ -155,7 +155,7 @@
         $(".report-generate").click(function() {
             var format =  $(this).data('format');
 //            
-            if($('.squaredFour input:checked').length > 0)
+            if(true)
             {
                 var campaign_ids = [];
                 $('.squaredFour input:checked').each(function() {

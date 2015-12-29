@@ -7,21 +7,31 @@
   <div class="campaign-view">
     <%= form_tag(nil, method: 'get') do %>
         <%= label_tag :name, 'Choose a Campaign' %>
-        <%= select_tag 'id', options_from_collection_for_select(@campaigns, 'id', 'name', @campaign.id), prompt: 'Choose a campaign to view the statistics', id: 'campaign_id'%>
+        <%= select_tag 'id', options_from_collection_for_select(@campaigns, 'id', 'name', @campaign.id), prompt: 'Choose a campaign to view the statistics', id: 'campaign_id' %>
         <%= button_tag 'VIEW', class: 'btn btn-campaign-view button-border-yellow' %>
     <% end %>
   </div>
   <div class="br-container">
     <!-- Info boxes -->
 
-    <div class="row download-campaign">
-      <%= link_to "DOWNLOAD THIS CAMPAIGN'S REPORT", '#', :class => 'btn btn-download-campaign', id: 'download_campaigns' %>
+    <div class="row download-campaign dropdown">
+      <%#= link_to 'EXPORT', '#', :class => 'btn btn-export button-border-yellow', id: 'export_campaigns' %>
+      <button class="dropdown-toggle btn btn-download-campaign" data-toggle="dropdown">
+        DOWNLOAD THIS CAMPAIGN'S REPORT
+      </button>
+      <ul class="dropdown-menu pull-right" id="export_campaigns">
+        <li data-format="pdf" class="report-generate"><a href="#">to PDF</a></li>
+        <li data-format="xls" class="report-generate"><a href="#">to Excel</a></li>
+        <li data-format="csv" class="report-generate"><a href="#">to CSV</a></li>
+      </ul>
+      </li>
     </div>
 
     <div class="row info-box-container">
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
           <p class="info-box-data total-follower-data-color"><%= number_with_delimiter(@campaign.number_of_likes) %></p>
+
           <p class="info-box-text ">LIKES</p>
         </div>
       </div>
@@ -29,6 +39,7 @@
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
           <p class="info-box-data page-view-data-color"><%= number_with_delimiter(@campaign.number_of_post_reach) %></p>
+
           <p class="info-box-text">POST REACH</p>
         </div>
       </div>
@@ -40,6 +51,7 @@
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
           <p class="info-box-data total-post-data-color"><%= number_with_delimiter(@campaign.number_of_comments) %></p>
+
           <p class="info-box-text">COMMENTS</p>
         </div>
       </div>
@@ -47,6 +59,7 @@
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
           <p class="info-box-data post-reach-data-color"><%= number_with_delimiter(@campaign.number_of_shares) %></p>
+
           <p class="info-box-text">SHARES</p>
         </div>
       </div>
@@ -55,8 +68,12 @@
     <div class="campaign-content brand-campaign-content">
 
       <ul class="nav nav-tabs campaign-nav-tabs" id="campaign-tabs">
-        <li class= "active" id="performance_list"><a href="#performance"><span id="performance-blue"><%= image_tag('Performance_blue.png') %></span><span id="performance-black" class="display-none"><%= image_tag('Performance.png') %></span> <span class="performance-tab"></span> Performance </a></li>
-        <li class= "" id="engagement_list"><a href="#engagement"><span id="engagement-black"><%= image_tag('Engagement_black.png') %></span><span id="engagement-blue" class="display-none"><%= image_tag('Engagement.png') %></span><span class="engagement-tab"></span> Engagement </a></li>
+        <li class="active" id="performance_list">
+          <a href="#performance"><span id="performance-blue"><%= image_tag('Performance_blue.png') %></span><span id="performance-black" class="display-none"><%= image_tag('Performance.png') %></span>
+            <span class="performance-tab"></span> Performance </a></li>
+        <li class="" id="engagement_list">
+          <a href="#engagement"><span id="engagement-black"><%= image_tag('Engagement_black.png') %></span><span id="engagement-blue" class="display-none"><%= image_tag('Engagement.png') %></span><span class="engagement-tab"></span>
+            Engagement </a></li>
       </ul>
 
       <div class="tab-content panel panel-campaigns">
@@ -74,7 +91,7 @@
             <tbody>
             <tr>
               <td>
-                <a href="<%= show_user_profile_path(@campaign.receiver.id) %>" data-remote="true" >
+                <a href="<%= show_user_profile_path(@campaign.receiver.id) %>" data-remote="true">
                   <%= image_tag(@campaign.receiver.profile_picture, :class => 'pepsi-img-responsive') %>
                 </a>
                 &nbsp; <%= @campaign.name %>
@@ -102,7 +119,7 @@
             <tbody>
             <tr>
               <td>
-                <a href="<%= show_user_profile_path(@campaign.receiver.id) %>" data-remote="true" >
+                <a href="<%= show_user_profile_path(@campaign.receiver.id) %>" data-remote="true">
                   <%= image_tag(@campaign.receiver.profile_picture, :class => 'pepsi-img-responsive') %>
                 </a>
                 &nbsp; <%= @campaign.name %>
@@ -121,31 +138,45 @@
 </section>
 
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function () {
 
-        $("#campaign-tabs a").click(function(e){
+        $("#campaign-tabs a").click(function (e) {
             e.preventDefault();
             $(this).tab('show');
         });
 
-        $(document).on('click','#engagement_list',function(){
+        $(document).on('click', '#engagement_list', function () {
             document.getElementById("performance-blue").style.display = 'none';
             document.getElementById("performance-black").style.display = 'inline';
             document.getElementById("engagement-black").style.display = 'none';
             document.getElementById("engagement-blue").style.display = 'inline';
         });
 
-        $(document).on('click','#performance_list',function(){
+        $(document).on('click', '#performance_list', function () {
             document.getElementById("performance-black").style.display = 'none';
             document.getElementById("performance-blue").style.display = 'inline';
             document.getElementById("engagement-blue").style.display = 'none';
             document.getElementById("engagement-black").style.display = 'inline';
         });
 
-        $('#download_campaigns').click(function() {
+        $(".report-generate").click(function () {
+            var format = $(this).data('format');
+//
             var campaign_id = $('#campaign_id option:selected').val();
 
-            window.location.href = "<%= export_campaigns_path(format: :csv) %>?campaign_id=" + campaign_id;
+            switch (format) {
+                case 'pdf':
+                    window.open("<%= export_campaigns_path(format: :pdf) %>?campaign_id=" + campaign_id, '_blank')
+                    break;
+                case 'xls':
+                    window.location.href = "<%= export_campaigns_path(format: :xls) %>?campaign_id=" + campaign_id;
+                    break;
+                case 'csv':
+                    window.location.href = "<%= export_campaigns_path(format: :csv) %>?campaign_id=" + campaign_id;
+                    break;
+            }
+
+
         });
 
     });
