@@ -192,6 +192,10 @@ class CampaignsController < ApplicationController
 
     respond_to do |format|
       format.html{ render 'campaigns/export_influencer_campaigns'}
+      format.pdf do
+        @filename = 'campaigns.pdf'
+        render 'campaigns/export_influencer_campaigns'
+      end
       format.csv do
         #  Don't Try to Put Headers into single line, it wont work
         headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_influencer_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.csv\""
