@@ -57,7 +57,16 @@
       <div class="panel-payment">
         <div id="payment" class="tab-pane fade in active">
           <%= image_tag('Transactions.png', :class => 'transaction-table') %> &nbsp; Transactions
-          <%= link_to 'DOWNLOAD INVOICE', '#', :class => 'btn btn-influencer-download pull-right', id: 'export_payments' %>
+
+          <div class="dropdown pull-right">
+            <button class="dropdown-toggle btn btn-influencer-download pull-right" data-toggle="dropdown">
+              DOWNLOAD INVOICE</button>
+            <ul class="dropdown-menu " id="export_campaigns">
+              <li data-format="pdf" class="report-generate"><a href="#">to PDF</a></li>
+              <li data-format="xls" class="report-generate"><a href="#">to Excel</a></li>
+              <li data-format="csv" class="report-generate"><a href="#">to CSV</a></li>
+            </ul>
+          </div>
 
           <table class="table table-striped table-bordered table-responsive payments_table">
             <thead>
@@ -115,15 +124,26 @@
             $(".InfluencerPaymentCheckBox").prop('checked', $("#select_all_influencer_payment input:checked").length);
         });
 
-        $('#export_payments').click(function () {
-            if($('.squaredFour input:checked').length)
+        $('.report-generate').click(function () {
+            if(true)
             {
                 var payment_ids = [];
                 $('.squaredFour input:checked').each(function () {
                     payment_ids.push($(this).data('id'));
                 });
-                console.log('called pdf generator ');
-                window.open("<%= export_payments_path(format: :pdf) %>?payment_ids=" + payment_ids, '_blank');
+                var format = $(this).data('format');
+
+                switch (format){
+                    case 'pdf':
+                        window.open("<%= export_payments_path(format: :pdf) %>?payment_ids=" + payment_ids, '_blank')
+                        break;
+                    case 'xls':
+                        window.location.href = "<%= export_payments_path(format: :xls) %>?payment_ids=" + payment_ids;
+                        break;
+                    case 'csv':
+                        window.location.href = "<%= export_payments_path(format: :csv) %>?payment_ids=" + payment_ids;
+                        break;
+                }
             }
             else
             {

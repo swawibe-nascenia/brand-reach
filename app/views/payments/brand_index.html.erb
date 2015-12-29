@@ -3,8 +3,14 @@
 <% title 'Brand Payment' %>
 
 <div class="payment-div ">
-  <div class="payment-button-set">
-    <%= link_to 'DOWNLOAD INVOICE', '#', :class => 'btn btn-download', id: 'export_payments' %>
+  <div class="payment-button-set dropdown">
+    <button class="dropdown-toggle btn btn-download" data-toggle="dropdown">
+      DOWNLOAD INVOICE</button>
+    <ul class="dropdown-menu pull-right" id="export_campaigns">
+      <li data-format="pdf" class="report-generate"><a href="#">to PDF</a></li>
+      <li data-format="xls" class="report-generate"><a href="#">to Excel</a></li>
+      <li data-format="csv" class="report-generate"><a href="#">to CSV</a></li>
+    </ul>
   </div>
 </div>
 
@@ -74,15 +80,26 @@
             $(".BrandPaymentCheckBox").prop('checked', $("#select_all_brand_payment input:checked").length);
         });
 
-        $('#export_payments').click(function() {
-            if($('.squaredFour input:checked').length)
+        $('.report-generate').click(function() {
+            if(true)
             {
                 var payment_ids = [];
                 $('.squaredFour input:checked').each(function() {
                     payment_ids.push($(this).data('id'));
                 });
-                console.log('called pdf generator ');
-                window.location.open("<%= export_payments_path(format: :pdf) %>?payment_ids=" + payment_ids, '_blank');
+                var format = $(this).data('format');
+
+                switch (format){
+                    case 'pdf':
+                        window.open("<%= export_payments_path(format: :pdf) %>?payment_ids=" + payment_ids, '_blank')
+                        break;
+                    case 'xls':
+                        window.location.href = "<%= export_payments_path(format: :xls) %>?payment_ids=" + payment_ids;
+                        break;
+                    case 'csv':
+                        window.location.href = "<%= export_payments_path(format: :csv) %>?payment_ids=" + payment_ids;
+                        break;
+                }
             }
             else
             {
