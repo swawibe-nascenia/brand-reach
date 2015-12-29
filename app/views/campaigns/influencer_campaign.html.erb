@@ -8,7 +8,7 @@
     <li class="dropdown btn btn-export button-border-yellow">
       <a href="#" class="dropdown-toggle text-white" data-toggle="dropdown">EXPORT <b class="caret"></b></a>
       <ul class="dropdown-menu" id="export_campaigns">
-        <li data-format="pdf" class="report-generate"><a href="#" target="_blank">to PDF</a></li>
+        <li data-format="pdf" class="report-generate"><a href="#">to PDF</a></li>
         <li data-format="xls" class="report-generate"><a href="#">to Excel</a></li>
         <li data-format="csv" class="report-generate"><a href="#">to CSV</a></li>
       </ul>
@@ -154,8 +154,8 @@
 
         $(".report-generate").click(function() {
             var format =  $(this).data('format');
-            
-            if($('.squaredFour input:checked').length)
+//            
+            if($('.squaredFour input:checked').length > 0)
             {
                 var campaign_ids = [];
                 $('.squaredFour input:checked').each(function() {

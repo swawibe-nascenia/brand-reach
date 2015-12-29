@@ -158,26 +158,26 @@ class CampaignsController < ApplicationController
   def influencer_campaign
     @campaigns = Campaign.engaged_campaigns_for(current_user)
 
-    if @campaigns.blank?
-      flash[:error] = 'You have no campaign'
-      return redirect_to insights_facebook_index_path
-    end
+    # if @campaigns.blank?
+    #   flash[:error] = 'You have no campaign'
+    #   return redirect_to insights_facebook_index_path
+    # end
 
     render 'campaigns/influencer_campaign'
   end
 
   def brand_campaign
-    @campaigns = Campaign.engaged_campaigns_from(current_user)
+    @campaigns = Campaign.limit(2) #Campaign.engaged_campaigns_from(current_user) || Campaign.limit(2)
 
-    if @campaigns.blank?
-      flash[:error] = 'You have no campaign'
-      return redirect_to explores_path
-    end
+    # if @campaigns.blank?
+    #   flash[:error] = 'You have no campaign'
+    #   return redirect_to explores_path
+    # end
 
     @campaign = @campaigns.find_by_id(params[:id]) if params[:id].present?
     @campaign = @campaigns.last if @campaign.nil?
 
-    @campaign.fetch_insights
+    @campaign.try(:fetch_insights)
 
     render 'campaigns/brand_campaign'
   end
@@ -219,6 +219,10 @@ class CampaignsController < ApplicationController
 
     respond_to do |format|
       format.html{ render 'campaigns/export_brand_campaigns'}
+      format.pdf do
+        @filename = 'campaigns.pdf'
+        render 'campaigns/export_influencer_campaigns'
+      end
       format.csv do
         #  Don't Try to Put Headers into single line, it wont work
         headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_brand_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.csv\""
