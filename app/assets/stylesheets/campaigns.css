@@ -903,6 +903,16 @@ only screen and (max-width: 768px) {
         border: 1px solid #dddddd;
     }
 
+    .social-account-tab-content label.label-with-img{
+        width: calc(90% - 28px);
+    }
+
+    .social-account-tab-content input.input-with-img{
+        width: 100%;
+        padding: 5px 0;
+        margin: 5px 0;
+    }
+
 }
 
 @media
