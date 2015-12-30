@@ -1214,8 +1214,8 @@ h5, .h5 {
 }
 
 .message-image{
-  height: 50px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
 }
 
 
@@ -1404,7 +1404,7 @@ a .offer-box:last-child{
   }
 }
 
-#image-loading-message{
+.image-loading-message{
   z-index: 2001;
   display: none;
 }
@@ -1417,7 +1417,7 @@ a .offer-box:last-child{
   top: 0;
 }
 
-#loading-indicator {
+.loading-indicator {
   background-color: #25AAE1;
   color: #ffffff;
   display: none;

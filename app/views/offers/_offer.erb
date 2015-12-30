@@ -17,10 +17,10 @@
     </div>
 
     <div class="offer-message-sender">
-      <%= image_tag (current_user.influencer? ? offer.sender : offer.receiver).profile_picture, class: 'inbox-logo-responsive' %>
       <% local_user = current_user.influencer? ? offer.sender : offer.receiver %>
       <a href="<%= show_user_profile_path(local_user.id) %>" data-remote="true" >
-      <span class="title" title="<%= local_user.full_name %>"><%= local_user.full_name %> </span>
+        <%= image_tag local_user.profile_picture, class: 'inbox-logo-responsive' %>
+        <span class="title" title="<%= local_user.full_name %>"><%= local_user.full_name %> </span>
       </a>
     </div>
 

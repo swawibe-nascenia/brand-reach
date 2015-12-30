@@ -26,13 +26,15 @@
     </div>
     <% offer.messages.each do |message| %>
         <div id="message-<%= message.id %>" class="message message-<%= message.id %>">
-          <%= image_tag message.sender.profile_picture, class: 'inbox-logo-responsive' %>
+          <a href="<%= show_user_profile_path(message.sender.id) %>" data-remote="true" >
+          <%= image_tag message.sender.profile_picture, class: 'inbox-logo-responsive'%>
+            </a>
           <div class="message-body"><%= simple_format(message.body) %> </div>
 
           <div class="image-body">
             <% message.images.each do |image| %>
                 <a target="_blank" href="<%= image.image_path.url %>">
-                  <%= image_tag image.image_path.url, class: 'message-image' %>
+                  <%= image_tag image.image_path.url, class: 'message-image',  title: 'Click here to view actual image' %>
                 </a>
             <% end %>
           </div>
