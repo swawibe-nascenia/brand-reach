@@ -60,21 +60,21 @@
 
               <!--profile photo filed-->
               <div class="form-group" id="post-type-1">
-                  <%= f.label :campaign_content, 'Choose a photo', class: 'control-label' %>
+                  <%= f.label :campaign_content, 'Choose a photo', class: 'control-label label-with-img' %>
+                  <span class="glyphicon glyphicon-camera image-icon" title="Add Image" id="upload-profile-photo"></span>
 
                 <div class="display-inline">
-                  <span class="glyphicon glyphicon-camera" title="Add Image" id="upload-profile-photo"></span>
-                  <%= f.text_field :campaign_content, class: 'form-control input-with-img' , name: 'profile_photo_url' %>
+                  <%= f.text_field :campaign_content, class: 'form-control ' , name: 'profile_photo_url' %>
                 </div>
               </div>
 
               <!--cover photo filed-->
               <div class="form-group" id="post-type-2">
-                <%= f.label :campaign_content, 'Choose a photo', class: 'control-label' %>
+                <%= f.label :campaign_content, 'Choose a photo', class: 'control-label label-with-img' %>
+                <span class="glyphicon glyphicon-camera image-icon" title="Add Image" id="upload-cover-photo"></span>
 
                 <div class="display-inline">
-                  <span class="glyphicon glyphicon-camera" title="Add Image" id="upload-cover-photo"></span>
-                  <%= f.text_field :campaign_content, class: 'form-control input-with-img', name: 'cover_photo_url' %>
+                  <%= f.text_field :campaign_content, class: 'form-control', name: 'cover_photo_url' %>
                 </div>
               </div>
 
@@ -88,11 +88,11 @@
 
               <!--photo post field-->
               <div class="form-group" id="post-type-4">
-                <%= f.label :campaign_content, 'Choose a photo', class: 'control-label' %>
+                <%= f.label :campaign_content, 'Choose a photo', class: 'control-label label-with-img' %>
+                <span class="glyphicon glyphicon-camera image-icon" title="Add Image" id="upload-cover-photo"></span>
 
                 <div class="display-inline">
-                  <span class="glyphicon glyphicon-camera" title="Add Image" id="upload-cover-photo"></span>
-                  <%= f.text_field :campaign_content, class: 'form-control input-with-img', name: 'photo_url' %>
+                  <%= f.text_field :campaign_content, class: 'form-control', name: 'photo_url' %>
                 </div>
               </div>
 

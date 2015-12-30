@@ -874,8 +874,12 @@ only screen and (max-width: 480px) {
     margin: 0;
 }
 
-.social-account-tab-content input.input-with-img{
-    width: calc(52% - 17px);
+.social-account-tab-content label.label-with-img{
+    width: calc(30% - 28px);
+}
+
+.social-account-tab-content .image-icon{
+    padding-right: 10px;
 }
 
 @media
