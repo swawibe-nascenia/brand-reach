@@ -48,6 +48,10 @@ class PaymentsController < ApplicationController
         headers['Content-Type'] ||= 'text/csv'
         render 'payments/export_brand_payments'
       end
+      format.xls do
+        headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_influencer_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.xls\""
+        render 'payments/export_brand_payments'
+      end
     end
   end
 
@@ -92,11 +96,14 @@ class PaymentsController < ApplicationController
         @filename = 'campaigns.pdf'
         render 'payments/export_influencer_payments'
       end
-      format.pdf{ }
       format.csv do
         #  Don't Try to Put Headers into single line, it wont work
         headers['Content-Disposition'] = "attachment; filename=\"payments_list_influencer_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.csv\""
         headers['Content-Type'] ||= 'text/csv'
+        render 'payments/export_influencer_payments'
+      end
+      format.xls do
+        headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_influencer_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.xls\""
         render 'payments/export_influencer_payments'
       end
     end
