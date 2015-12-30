@@ -151,9 +151,7 @@
               placeholder_text_multiple: 'Select Industry'
           });
 
-          $('button').click(function(e){
-              e.preventDefault();
-
+          $('.personal-info-form').submit(function(e){
               var country_code = $('#user_country').find('option:selected').val();
               var phone_number =  $('#user_phone').val();
 
@@ -161,11 +159,11 @@
 //                  console.log(phone_number + '   ' +country_code);
 //                  console.log(PhoneFormat.isValidNumber(phone_number, country_code));
                   bootbox.alert({message: 'Invalid phone number', closeButton: false});
+                  return false;
               }
               else
               {
-                  $('.personal-info-form').submit();
-
+                  return true;
               }
           });
 
