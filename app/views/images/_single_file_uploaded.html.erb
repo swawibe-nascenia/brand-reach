@@ -1,4 +1,7 @@
 <div id="image-preview-<%= image.id %>" class="single-image-wrap">
     <%= image_tag image.image_path.url(:thumb), class: 'preview-img' %>
-    <%= link_to 'x', image, :rel => 'tooltip', :title => 'remove', class: 'image-rem', remote: true,  method: :delete %>
+    <%= link_to image, :rel => 'tooltip', :title => 'remove', class: 'image-rem', remote: true,  method: :delete do  %>
+      <%= image_tag('close_btn.png', :alt => 'close') %>
+<% end %>
+
 </div>

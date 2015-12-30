@@ -101,6 +101,7 @@ $(function(){
                         console.log(data);
                         $('#offer-textarea-' + data.id).val('');
                         $('#image-proview-container-' + data.id).html(' ');
+                        $('#attach_image_ids-' + data.id).val(' ');
                         console.log($('.offer-textarea-' + data.id));
                     }else{
                         bootbox.alert({message: 'Some error have been  occur.',

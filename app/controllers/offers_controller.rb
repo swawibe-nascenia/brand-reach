@@ -108,7 +108,7 @@ class OffersController < ApplicationController
       end
 
       respond_to do |format|
-        format.json { render :json => {success: success, id: id }}
+        format.json { render :json => {success: success, id: id, offer_id: @offer.id }}
       end
     end
   end
