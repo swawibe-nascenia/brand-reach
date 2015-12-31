@@ -185,9 +185,9 @@ class CampaignsController < ApplicationController
   def export_influencer_campaigns
     if params[:campaign_ids].present?
       campaign_ids = params[:campaign_ids].split(',').uniq
-      @campaigns = Campaign.where(id: campaign_ids)
+      @campaigns = Campaign.engaged_campaigns_for(current_user).where(id: campaign_ids)
     else
-      @campaigns = current_user.campaigns_received
+      @campaigns = Campaign.engaged_campaigns_for(current_user)
     end
 
     respond_to do |format|
@@ -212,9 +212,9 @@ class CampaignsController < ApplicationController
 
   def export_brand_campaigns
     if params[:campaign_id].present?
-      @campaigns = Campaign.where(id: params[:campaign_id])
+      @campaigns = Campaign.engaged_campaigns_from(current_user).where(id: params[:campaign_id])
     else
-      @campaigns = current_user.campaigns_sent
+      @campaigns = Campaign.engaged_campaigns_from(current_user)
     end
 
     respond_to do |format|
