@@ -1,1 +1,12 @@
+// remove image from preview
 $('#image-preview-' + '<%= @image.id %>').remove();
+
+// remaining previewed image ids
+var ids = '';
+$('#image-proview-container-' + <%= params[:offer_id]%>).find('.single-image-wrap').map(function(){
+    ids += $(this).data('id') + ',';
+});
+
+// update message attachment image ids
+$('#attach_image_ids-' + <%= params[:offer_id] %>).val(ids);
+

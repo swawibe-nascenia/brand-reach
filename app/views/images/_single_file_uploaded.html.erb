@@ -1,6 +1,6 @@
-<div id="image-preview-<%= image.id %>" class="single-image-wrap">
+<div id="image-preview-<%= image.id %>" class="single-image-wrap" data-id="<%= image.id %>" data-offer-id="<%= offer_id %>">
     <%= image_tag image.image_path.url(:thumb), class: 'preview-img' %>
-    <%= link_to image, :rel => 'tooltip', :title => 'remove', class: 'image-rem', remote: true,  method: :delete do  %>
+    <%= link_to image_path(id: image.id, offer_id: offer_id), :rel => 'tooltip', :title => 'remove', class: 'image-rem', remote: true,  method: :delete do  %>
       <%= image_tag('close_btn.png', :alt => 'close') %>
 <% end %>
 

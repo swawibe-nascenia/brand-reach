@@ -15,7 +15,7 @@
         new_ids = previous_ids + ',' + '<%= @image.id %>';
         $('#attach_image_ids-' + '<%= params[:offer_id] %>').val(new_ids);
         $('#image-proview-container-' + '<%= params[:offer_id] %>')
-                .append("<%= j render partial: 'single_file_uploaded', locals: {image: @image } %>");
+                .append("<%= j render partial: 'single_file_uploaded', locals: {image: @image, offer_id: params[:offer_id] } %>");
     <% end %>
 
 <% else %>
