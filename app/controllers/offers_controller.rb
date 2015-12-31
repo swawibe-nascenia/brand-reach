@@ -99,7 +99,7 @@ class OffersController < ApplicationController
       Rails.logger.info "Your message is #{message.body}"
       message.image_ids = params[:attach_iamge_ids].split(',').select(&:present?).map(&:to_i)
 
-      if message.body.present? && message.save
+      if message.save
         success = true
         id = @offer.id
       else

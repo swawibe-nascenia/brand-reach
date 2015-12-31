@@ -88,7 +88,7 @@ $(function(){
         var receiver_id = $(this).data('receiver-id');
         var attach_iamge_ids = $('#attach_image_ids-' + offer_id).val();
 
-        if(body.length > 0){
+        if(body.length > 0 || attach_iamge_ids.length > 2){
             $.ajax({
                 type: 'post',
                 url: '/offers/' + offer_id +'/reply_message',
@@ -112,7 +112,7 @@ $(function(){
                 }
             });
         }else{
-            bootbox.alert({message: 'Message body must be present.',
+            bootbox.alert({message: 'Message body/attached image must be present.',
                 closeButton: false});
         }
 
