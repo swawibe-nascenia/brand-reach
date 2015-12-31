@@ -356,7 +356,8 @@ $(function(){
         $('#explore-category').val('');
         $('#explore-social-media').val('');
         $('#country').val('');
-        $('#user_state').val('<input id="state" type="text" disabled="disabled" value="Select Country" name="state">');
+        var state_select = '<select class="country-responsive-font" name="state"><option value="">Select State</option></select>';
+        $('#user_state_code_wrapper').html(state_select);
         $('#explore-price').val('');
         $('#explore-followers').val('');
     }
