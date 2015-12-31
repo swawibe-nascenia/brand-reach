@@ -6,10 +6,11 @@ prawn_document(:page_layout => :landscape) do |pdf|
 
  pdf.move_down(10)
 
- table_data= [['Date Billed', 'Transaction ID', 'Amount Received(INR)', 'Payment Status']]
+ table_data= [['Campaign Name', 'Date Billed', 'Transaction ID', 'Amount Received(INR)', 'Payment Status']]
 
  @brand_payments.each do |payment|
     table_data << [
+                    payment.campaign.name,
                     payment.billed_date.present? ? payment.billed_date.strftime('%B %d, %Y') : 'NA',
                     sprintf('BP%05d', payment.id),
                     payment.amount_billed,
@@ -17,7 +18,7 @@ prawn_document(:page_layout => :landscape) do |pdf|
                   ]
  end
 
-  pdf.table(table_data, :column_widths => [100, 150, 150, 150, 150], :cell_style => { inline_format: true, border_color: 'FFFFFF', padding: 3 }) do
+  pdf.table(table_data, :column_widths => [100, 100, 150, 150, 100, 100], :cell_style => { inline_format: true, border_color: 'FFFFFF', padding: 3 }) do
           self.row_colors = %w(FFFFFF DDDDDD)
           row(0).background_color = 'D9D9D9'
           row(0).font_style = :bold
