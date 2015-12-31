@@ -86,7 +86,7 @@ class PaymentsController < ApplicationController
   def export_influencer_payments
     if params[:payment_ids].present?
       payment_ids = params[:payment_ids].split(',').uniq
-      @influencer_payments = InfluencerPayment.where(id: payment_ids)
+      @influencer_payments = current_user.influencer_payments.where(id: payment_ids)
     else
       @influencer_payments = current_user.influencer_payments
     end
