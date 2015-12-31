@@ -505,14 +505,25 @@ console.log('bind fileupload event for ' + offer );
             var file, types;
             types = /(\.|\/)(gif|jpe?g|png)$/i;
             file = data.files[0];
+
             if (types.test(file.type) || types.test(file.name)) {
+                // file size in MB
+                var file_size = file.size / 1048576 ;
+                // set max image size to 3 mb
+                console.log('Upload image size is ' + file_size + 'MB');
+                if( file_size > 3){
+                    return bootbox.alert({ message: 'Image size is too long. Max size is 3 MB.',
+                        closeButton: false});
+                }
+
                 $('#new_message_images').append(data.context);
                 console.log('image loading messsage show.......');
                 $('.image-loading-message').show();
                 $('.loading-indicator').show();
                 return data.submit();
             } else {
-                return alert("" + file.name + " is not a valid format!!!");
+                bootbox.alert({message: "" + file.name + " is not a valid format!!!"
+                               , closeButton: false});
             }
         },
         progress: function (e, data) {
