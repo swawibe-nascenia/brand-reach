@@ -409,6 +409,18 @@ $(function(){
         history.replaceState({}, '', window.location.href.slice(0, -4));
     }
 
+//    custom checkbox browser independent css design
+    if ($.browser.msie && parseInt($.browser.version) < 9) {
+        var inputs = $('.custom-checkbox input');
+        inputs.live('change', function(){
+            var ref = $(this),
+                wrapper = ref.parent();
+            if(ref.is(':checked')) wrapper.addClass('checked');
+            else wrapper.removeClass('checked');
+        });
+        inputs.trigger('change');
+    }
+
 });
 // end of document.ready() method
 
