@@ -21,9 +21,12 @@ class ProfileController < ApplicationController
     @all_industries = Category.all.order(:name)
     @selected_industries = @user.categories
     if @user.update(user_params.except(:current_password, :password, :password_confirmation, :industry))
-      if user_params[:current_password].present? && user_params[:password].present?
-        if @user.update_with_password(user_params.except(:facebook))
-          sign_in @user, :bypass => true
+      if user_params[:current_password].present? && user_params[:password].present? && user_params[:password_confirmation].present?
+        logger.info "User password need to changed #{user_params.except(:facebook).inspect }"
+        match_confirm = user_params[:password] ==  user_params[:password_confirmation]
+        if @user.valid_password?(user_params[:current_password]) && match_confirm
+          @user.password = user_params[:password]
+          sign_in @user, bypass: true
           flash[:success] = 'User Password update success'
         else
           flash[:error] = 'Old Password was Not correct or Retype Password does Not match with New Password'
