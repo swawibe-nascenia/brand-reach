@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
   # validates_length_of :password, :minimum => 6, :allow_blank => true
   validates :zip_code, zipcode: { country_code_attribute: :country }, if: 'zip_code.present?'
   validates :short_bio, length: { maximum: 1000 }
-  validates :first_name, :last_name, :company_name, :phone, :street_address, :city, :zip_code, :country,
+  validates :first_name, :last_name, :company_name, :phone, :street_address, :city, :zip_code, :country, :state,
             :company_email, :short_bio, presence: true, on: :update, if: Proc.new{|u| u.brand? || u.influencer?}
 
 
