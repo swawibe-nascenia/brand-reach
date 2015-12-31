@@ -1,11 +1,16 @@
 console.log('Selected offers has been selected successfully');
 
-$(function(){
+$(function () {
 //    show engage offer can't be deleted message
-    <% if @engage_offer_select %>
+    <% if @engage_offer_select && @ids.present? %>
+        $('.engage-campaign-delete-info').addClass('text-danger');
         $('.engage-campaign-delete-info').text('You can not delete already Engaged Campaign.');
-    <% else %>
-        $('.engage-campaign-delete-info').text('');
+    <% elsif @engage_offer_select %>
+        $('.engage-campaign-delete-info').addClass('text-danger');
+        $('.engage-campaign-delete-info').text('You can not delete already Engaged Campaign.');
+    <% else @ids.present? %>
+        $('.engage-campaign-delete-info').addClass('text-success');
+        $('.engage-campaign-delete-info').text('Selected campaigns has been deleted successfully.');
     <% end %>
 
 //    remove deleted offers
@@ -14,18 +19,18 @@ $(function(){
     <% end %>
 
 //    uncheck all select checkbox
-    $('.select-offer:checkbox:checked').each(function(){
+    $('.select-offer:checkbox:checked').each(function () {
         this.checked = false;
     });
 
-    if($('.offer-box:visible').length == 0){
+    if ($('.offer-box:visible').length == 0) {
         console.log('now there is no offer remains');
         disableOfferDeleteStartIcon();
     }
 // update unread message count
     <% if @unread_messages_count > 0 %>
-        $('span.unread-message').html("(<span class='unread-message-number'>" + <%= @unread_messages_count %> + "</span>)");
+    $('span.unread-message').html("(<span class='unread-message-number'>" + <%= @unread_messages_count %> +"</span>)");
     <% else %>
-        $('span.unread-message').html("");
+    $('span.unread-message').html("");
     <% end %>
 });
