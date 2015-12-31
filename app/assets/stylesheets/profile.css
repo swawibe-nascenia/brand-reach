@@ -477,7 +477,7 @@ div.awesomplete > ul > li[aria-selected="true"] {
     text-align: left;
 }
 
-.parsley-errors-list {
+.personal-info-form .parsley-errors-list {
     margin: -8px 0 10px;
 }
 
