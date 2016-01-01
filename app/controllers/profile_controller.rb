@@ -26,14 +26,15 @@ class ProfileController < ApplicationController
       #   user want to change password
       if password_change_info_correct?
         save_industries
-        if @user.update(user_params.except(:industry))
+        if @user.update(user_params.except(:industry, :current_password, :password_confirmation))
           flash[:success] = 'User Information has been updated successfully.' if flash[:error].nil?
+          sign_in @user, bypass: true
           redirect_to profile_profile_index_path
         else
           render 'profile'
         end
       else
-        flash[:error] = 'Old Password was Not correct.'
+        flash[:error] = 'Current Password was not correct.'
         redirect_to profile_profile_index_path
       end
     else

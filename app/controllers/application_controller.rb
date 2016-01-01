@@ -26,6 +26,8 @@ class ApplicationController < ActionController::Base
       profile_admin_admins_path
     elsif current_user.influencer? && current_user.profile_complete?
       insights_facebook_index_path
+    elsif current_user.brand? && current_user.profile_complete?
+      explores_path
     else
       profile_profile_index_path
     end
