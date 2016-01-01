@@ -1,13 +1,15 @@
 <div id="offer-<%= offer.id %>" class="offer-box  offer-box-<%= offer.id %> collapse-group" data-id="<%= offer.id %>">
   <div class="offer-header">
-    <div class="read-status read-status-<%= offer.id %> <%= offer.messages.where(receiver_id: current_user.id, read: false).count > 0 ? '': 'invisible'%>">
+    <div class="read-status read-status-<%= offer.id %> <%= offer.messages.where(receiver_id: current_user.id, read: false).count > 0 ? '' : 'invisible' %>">
       <span class="status-inbox"></span>
     </div>
 
-    <div class="select-offer squaredFour">
-      <input type="checkbox"  value="1" class="select-offer <%= offer.engaged? ? 'engage-offer' : '' %>"
-             data-id="<%=offer.id %>"/>
-      <label></label>
+    <div class="select-offer">
+      <span class="custom-checkbox">
+        <input type="checkbox" value="1" class="select-offer <%= offer.engaged? ? 'engage-offer' : '' %>"
+               data-id="<%= offer.id %>"/>
+        <span class="box"><span class="tick"></span></span>
+      </span>
     </div>
 
     <div class="make-star">
@@ -18,7 +20,7 @@
 
     <div class="offer-message-sender">
       <% local_user = current_user.influencer? ? offer.sender : offer.receiver %>
-      <a href="<%= show_user_profile_path(local_user.id) %>" data-remote="true" >
+      <a href="<%= show_user_profile_path(local_user.id) %>" data-remote="true">
         <%= image_tag local_user.profile_picture, class: 'inbox-logo-responsive' %>
         <span class="title" title="<%= local_user.full_name %>"><%= local_user.full_name %> </span>
       </a>
@@ -55,7 +57,7 @@
               <%= link_to 'Engage', new_brand_payment_campaigns_path(id: offer.id), class: 'btn btn-accept button-border-blue engage' %>
           <% elsif offer.denied? %>
               <span class="text-danger">Offer denied</span>
-          <% else  %>
+          <% else %>
               Pending request
           <% end %>
       <% end %>
@@ -63,12 +65,12 @@
 
     <div class="offer-time">
       <% if offer.today_post? %>
-         <%= local_time(offer.time, '%I:%M%P') %>
+          <%= local_time(offer.time, '%I:%M%P') %>
       <% else %>
-        <%= local_time(offer.time, '%d-%m-%Y') %>
+          <%= local_time(offer.time, '%d-%m-%Y') %>
       <% end %>
     </div>
   </div>
 
-  <%= render partial: 'offers/offer_body_view', locals: { offer: offer} %>
+  <%= render partial: 'offers/offer_body_view', locals: {offer: offer} %>
 </div>
