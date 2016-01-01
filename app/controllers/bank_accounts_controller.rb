@@ -17,7 +17,7 @@ class BankAccountsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        redirect_to influencer_payments_path,
+        redirect_to payments_path,
                     notice: 'Bank Account was successfully destroyed.'
       }
     end
