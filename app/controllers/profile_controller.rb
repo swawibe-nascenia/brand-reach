@@ -40,7 +40,7 @@ class ProfileController < ApplicationController
     else
       save_industries
       if @user.update(user_params.except(:current_password, :password, :password_confirmation, :industry))
-        flash[:success] = 'User Information has been updated successfully'. if flash[:error].nil?
+        flash[:success] = 'User Information has been updated successfully.' if flash[:error].nil?
         redirect_to profile_profile_index_path
       else
         render 'profile'
