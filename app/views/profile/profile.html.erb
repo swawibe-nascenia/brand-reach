@@ -107,11 +107,13 @@
             <div class="form-group">
               <div class="col-md-6">
                 <%= f.label :password, 'New Password' %>
-                <%= f.password_field :password, 'data-parsley-minlength'=> '6' %>
+                <%= f.password_field :password, 'data-parsley-minlength'=> '6',  id: 'password_confirm' %>
               </div>
               <div class="col-md-6">
                 <%= f.label :password_confirmation, 'Retype Password' %>
-                <%= f.password_field :password_confirmation, 'data-parsley-minlength'=> '6' %>
+                <%= f.password_field :password_confirmation, 'data-parsley-minlength'=> '6',
+                                     'data-parsley-equalto'=> '#password_confirm',
+                                     'data-parsley-equalto-message' => 'Do not match with password field.' %>
               </div>
             </div>
         <% end %>
