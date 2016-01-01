@@ -19,5 +19,5 @@
     <% end %>
 
 <% else %>
-    bootbox.alert({message: 'Image upload fail. Please Try again.', closeButton: false});
+    bootbox.alert({message: '<%= @image.errors[:big_image][0] %>', closeButton: false});
 <% end %>

@@ -6,6 +6,8 @@ class Image < ActiveRecord::Base
   # ----------------------------------------------------------------------
   # == Constants == #
   # ----------------------------------------------------------------------
+  # max image size in MB
+    MAX_IMAGE_SIZE = 3
 
   # ----------------------------------------------------------------------
   # == Attributes == #
@@ -30,6 +32,7 @@ class Image < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   validates :image_path, presence: true
+  validate :file_size
 
   # ----------------------------------------------------------------------
   # == Callbacks == #
@@ -46,4 +49,12 @@ class Image < ActiveRecord::Base
   # ----------------------------------------------------------------------
   # == Class methods == #
   # ----------------------------------------------------------------------
+
+  private
+
+  def file_size
+    if image_path.file.size.to_f/(1000*1000) > MAX_IMAGE_SIZE.to_f
+      errors.add(:big_image, "You cannot upload a Image greater than #{MAX_IMAGE_SIZE.to_f}MB.")
+    end
+  end
 end
