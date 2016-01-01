@@ -132,7 +132,6 @@
         // This will get the first returned node in the jQuery collection.
         var salesChart = new Chart(salesChartCanvas);
 
-        console.log('Chart data ' + <%= @account.gender_line_chart_data[:datasets].size %> );
         var salesChartData = {
             labels: <%= @account.gender_line_chart_data[:labels].to_json.html_safe %>,
             datasets: <%= @account.gender_line_chart_data[:datasets].to_json.html_safe %>
@@ -177,6 +176,12 @@
 
         //Create the line chart
         salesChart.Line(salesChartData, salesChartOptions);
+
+        // hive map if there is no data
+        <% has_data = @account.gender_line_chart_data[:datasets][1][:data].size > 0 || @account.gender_line_chart_data[:datasets][1][:data].size > 0 %>
+      <% unless has_data %>
+            $('#salesChart').hide();
+      <% end %>
     </script>
 
     <!-- TABLE: LATEST ORDERS -->
