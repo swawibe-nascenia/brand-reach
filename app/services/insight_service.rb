@@ -141,7 +141,7 @@ class InsightService < BaseService
 
           datasets[g] = {} if datasets[g].blank?
           datasets[g][t] = 0 if datasets[g][t].blank?
-          datasets[g][t] += v
+          datasets[g][t] = [v, datasets[g][t]].max
         end
       end
     end
