@@ -14,7 +14,7 @@
   <%= render 'shared/show_errors', :object => @user%>
   <%= image_tag(@user.profile_picture(:thumb), :class => 'profile-picture center-block img-circle', :alt => 'profile-picture') %>
 
-  <%= form_for @user, url: profile_path(@user), data: { parsley_validate: '', parsley_excluded: 'input[type=number]' } , html: {class: 'form-horizontal personal-info-form'} do |f| %>
+  <%= form_for @user, url: profile_path(@user), data: { parsley_validate: '', parsley_excluded: 'input[type=number]' } , html: {class: 'form-horizontal personal-info-form', id: 'edit_user'} do |f| %>
 
       <div class="personal-info-without-fb">
 
@@ -166,6 +166,25 @@
               {
                   return true;
               }
+          });
+
+//          password filed validation
+          $("#user_current_password, #password_confirm, #user_password_confirmation").on('change', function() {
+              if ($("#user_current_password").val().length > 0 ||
+                      $("#password_confirm").val().length > 0 ||
+                      $("#user_password_confirmation").val().length > 0)
+              {
+                  // If any field is filled, set attr required
+                  $("#user_current_password, #password_confirm, #user_password_confirmation").attr("required", "required");
+              } else {
+                  // if all fields are empty, remove required attr
+                  $("#user_current_password, #password_confirm, #user_password_confirmation").removeAttr("required");
+              }
+              // destroy ParsleyForm instance
+              $('#edit_user').parsley().destroy();
+
+              // bind parsley
+              $('#edit_user').parsley();
           });
 
       });
