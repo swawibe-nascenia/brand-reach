@@ -123,6 +123,11 @@ class ProfileController < ApplicationController
                                       number_of_posts: page_info[:number_of_posts],
                                       post_reach: page_info[:post_reach],
                                   })
+
+        if account.id.blank?
+          account.fetch_insights
+        end
+
         account.save(validate: false)
       end
     end
