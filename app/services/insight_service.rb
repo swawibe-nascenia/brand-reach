@@ -226,11 +226,12 @@ class InsightService < BaseService
 
     resp = {}
 
-    @graph.get_object("#{id}/insights/#{metric_name}").each do |data|
-      d = data['values'].last
-      d['value'].each do |k, v|
-        resp[k] = 0 if resp[k].blank?
-        resp[k] += v
+    @graph.get_object("#{id}/insights/#{metric_name}", { since: 1.month.ago.to_i }).each do |data|
+      data['values'].each do |d|
+        d['value'].each do |k, v|
+          resp[k] = 0 if resp[k].blank?
+          resp[k] = [v, resp[k]].max
+        end
       end
     end
 
