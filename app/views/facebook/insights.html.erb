@@ -174,14 +174,13 @@
             responsive: true
         };
 
-        //Create the line chart
-        salesChart.Line(salesChartData, salesChartOptions);
-
-        // hive map if there is no data
-      <% unless  @account.gender_line_chart_data[:datasets].present? %>
+        <% if @account.gender_line_chart_data[:datasets].present? %>
+            //Create the line chart
+            salesChart.Line(salesChartData, salesChartOptions);
+        <% else %>
             $('.chart-info').hide();
             $('.chart').hide();
-      <% end %>
+        <% end %>
     </script>
 
     <!-- TABLE: LATEST ORDERS -->
