@@ -136,6 +136,11 @@ class InsightService < BaseService
         t = d['end_time'].to_date.strftime('%m.%y')
         labels[t] = true
 
+        ['M', 'F'].each do |g|
+          datasets[g] = {} if datasets[g].blank?
+          datasets[g][t] = 0 if datasets[g][t].blank?
+        end
+
         d['value'].each do |k, v|
           g, a = k.split('.')
 
