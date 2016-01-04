@@ -32,9 +32,9 @@ class PaymentsController < ApplicationController
     if params[:payment_ids].present?
       payment_ids = params[:payment_ids].split(',').uniq
       # TODO need to change before deploy to staging
-      @brand_payments = BrandPayment.where(id: payment_ids)
-      # campaign_ids = Campaign.engaged_campaigns_from(current_user).pluck(:id)
-      # @brand_payments = BrandPayment.where(campaign_id: campaign_ids, id: payment_ids)
+      # @brand_payments = BrandPayment.where(id: payment_ids)
+      campaign_ids = Campaign.engaged_campaigns_from(current_user).pluck(:id)
+      @brand_payments = BrandPayment.where(campaign_id: campaign_ids, id: payment_ids)
     else
       @brand_payments = BrandPayment.where(campaign_id: campaign_ids)
     end

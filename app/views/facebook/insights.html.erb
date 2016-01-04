@@ -178,8 +178,7 @@
         salesChart.Line(salesChartData, salesChartOptions);
 
         // hive map if there is no data
-        <% has_data = @account.gender_line_chart_data[:datasets][1][:data].size > 0 || @account.gender_line_chart_data[:datasets][1][:data].size > 0 %>
-      <% unless has_data %>
+      <% unless  @account.gender_line_chart_data[:datasets].present? %>
             $('#salesChart').hide();
       <% end %>
     </script>
