@@ -27,7 +27,7 @@
                       <tbody>
                       {{#each accounts}}
                           <tr class="js-clickable">
-                            <td><input type="radio" class="vertical-align-middle" name="activity_id" value="{{id}}" checked="{{#if active}}checked{{/if}}"></td>
+                            <td><input type="radio" class="vertical-align-middle" name="activity_id" value="{{id}}" {{#if active}}checked="checked"{{/if}}></td>
                             <td><div class="media-heading vertical-align-middle">{{story}}{{message}}</div></td>
                             <td>
 
