@@ -89,7 +89,15 @@ class FacebookAccount < ActiveRecord::Base
     end
     self.reach_by_country.each do |country_code, reach|
       country_name = ISO3166::Country[country_code].name
-      data[country_name] = { country_code: country_code, likes: 0, reach: 0 } if data[country_name].blank?
+      if data[country_name].blank?
+        data[country_name] = {
+            country_code: country_code,
+            country_lat: ISO3166::Country[country_code].latitude_dec,
+            country_lon: ISO3166::Country[country_code].longitude_dec,
+            likes: 0,
+            reach: 0
+        }
+      end
       data[country_name][:reach] += reach
     end
     data
