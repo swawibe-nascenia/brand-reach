@@ -31,8 +31,10 @@ class PaymentsController < ApplicationController
   def export_brand_payments
     if params[:payment_ids].present?
       payment_ids = params[:payment_ids].split(',').uniq
-      campaign_ids = Campaign.engaged_campaigns_from(current_user).pluck(:id)
-      @brand_payments = BrandPayment.where(campaign_id: campaign_ids, id: payment_ids)
+      # TODO need to change before deploy to staging
+      @brand_payments = BrandPayment.where(id: payment_ids)
+      # campaign_ids = Campaign.engaged_campaigns_from(current_user).pluck(:id)
+      # @brand_payments = BrandPayment.where(campaign_id: campaign_ids, id: payment_ids)
     else
       @brand_payments = BrandPayment.where(campaign_id: campaign_ids)
     end

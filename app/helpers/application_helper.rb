@@ -109,4 +109,9 @@ module ApplicationHelper
   def offer_receiver_id(offer)
     current_user.id == offer.sender_id ? offer.receiver_id : offer.sender_id
   end
+
+  # get local time return from local gem
+  def extract_time(date_string)
+    date_string.split('>').pop.split('</')[0] rescue ''
+  end
 end

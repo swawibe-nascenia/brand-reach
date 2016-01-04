@@ -1,4 +1,4 @@
-prawn_document(:page_layout => :landscape) do |pdf|
+prawn_document(:page_layout => :landscape, :margin => [10,10,10,10]) do |pdf|
 
  pdf.image "#{Rails.root}/app/assets/images/Logo.png", :fit => [99, 78]
 
@@ -23,5 +23,7 @@ prawn_document(:page_layout => :landscape) do |pdf|
           row(0).background_color = 'D9D9D9'
           row(0).font_style = :bold
           self.header = true
-        end
+  end
+
+  # pdf.fill_rectangle [0, 0], 2000, 50
 end
