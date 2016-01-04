@@ -1464,28 +1464,27 @@ a .offer-box:last-child{
 .custom-checkbox > .box {
   position: relative;
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 14px;
+  height: 14px;
   border: 1px solid #ccc;
   background-color: #eee;
   border-radius: 4px;
 }
 
 .custom-checkbox > .box > .tick {
-  position: absolute;
-  left: 2px;
-  top: 2px;
-  width: 14px;
-  height: 8px;
-//  border-bottom: 4px solid #333;
-//  border-left: 4px solid #333;
-//  -webkit-transform: rotate(-45deg);
-//  -moz-transform: rotate(-45deg);
-//  -o-transform: rotate(-45deg);
-//  -ms-transform: rotate(-45deg);
-//  transform: rotate(-45deg);
-  background: image-url("tick_10.png") no-repeat;
+  border-bottom: 2px solid #333;
+  border-left: 2px solid #333;
   display: none;
+  height: 7px;
+  left: 1px;
+  position: absolute;
+  top: 0;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  width: 12px;
 }
 
 .custom-checkbox > input:checked + .box > .tick {
@@ -1498,8 +1497,8 @@ a .offer-box:last-child{
   left: 0;
   top: 0;
   padding: 0;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border: none;
   margin: 0;
   opacity: 0;
