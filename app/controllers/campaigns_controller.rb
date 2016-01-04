@@ -107,6 +107,7 @@ class CampaignsController < ApplicationController
     data_string = crypto.decrypt(params[:encResp], CONFIG[:ccavenue_working_key])
     data = Rack::Utils.parse_nested_query(data_string)
 
+    Rails.logger.debug(data)
     @campaign = Campaign.find(data['order_id'])
 
     if @campaign.blank?
