@@ -41,5 +41,5 @@ super_admin = User.where(email: 'superadmin@brandreach.com').first
 
 unless super_admin
   User.create(email: 'superadmin@brandreach.com', password: 'admin', password_confirmation: 'admin',
-              user_type: User.user_types[:super_admin], is_active: true, verified: true)
+              user_type: User.user_types[:super_admin], status: User.statuses[:active], verified: true)
 end
