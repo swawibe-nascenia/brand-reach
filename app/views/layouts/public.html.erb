@@ -25,7 +25,7 @@
 <%#= render partial: 'shared/flash_messages', flash: flash %>
 <div class="welcome_bar">
   <div class="wrapper-content">
-    <div class="left">Good <%= extract_time(local_time(Time.now, '%P')) == 'am' ? 'morning' : 'afternoon'%>, <%= user_signed_in? ? current_user.full_name : 'Guest' %>!</div>
+    <div class="left">Good <span class="greeting"><%= local_time(Time.now, '%P') %></span>, <%= user_signed_in? ? current_user.full_name : 'Guest' %>!</div>
     <div class="right top_links">
       <p>
         <% if user_signed_in? %>
@@ -152,6 +152,12 @@
             time: 3000
         });
 
+//        change greeting for local time
+        var dateString = $('span.greeting').html();
+        $('span.greeting').html(greetingText(dateString));
 
+        function greetingText(date_string){
+             return date_string.split('>')[1].split('</')[0] == 'am' ? 'morning' : 'afternoon'
+        }
     });
 </script>
