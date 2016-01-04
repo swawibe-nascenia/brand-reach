@@ -107,6 +107,8 @@ class FacebookAccount < ActiveRecord::Base
     country_data.map do |country_name, data|
       {
           title: country_name,
+          description: "Likes: #{data[:likes]}<br/>Post reach: #{data[:reach]}",
+          balloonText: '[[title]]<br/>[[description]]',
           latitude: data[:country_lat],
           longitude: data[:country_lon],
           height: 20,
