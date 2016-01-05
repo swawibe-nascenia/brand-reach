@@ -14,15 +14,14 @@ industry_list =   [
     'Internet',
     'Food',
     'Restaurants',
-    'Automobile'
+    'Automobile',
+    'Entertainment',
+    'Finance'
 ]
 
-Category.destroy_all
-
 industry_list.each do |name|
-  Category.create( name: name )
+  Category.find_or_create_by( name: name )
 end
-
 
 contact_us_list =   [
     'Payment',
@@ -31,10 +30,8 @@ contact_us_list =   [
     'Complaint'
 ]
 
-ContactUsCategory.destroy_all
-
 contact_us_list.each do |name|
-  ContactUsCategory.create( name: name )
+  ContactUsCategory.find_or_create_by( name: name )
 end
 
 super_admin = User.where(email: 'superadmin@brandreach.com').first
