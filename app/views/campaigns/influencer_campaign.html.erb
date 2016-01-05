@@ -71,7 +71,12 @@
       <table class="table table-striped table-bordered table-responsive engagement_table">
         <thead>
         <tr class="payment-header">
-          <th class="squaredFour" id="select_all_engagement"><input type="checkbox" class="payment-header" value="all"/></th>
+          <th class="squaredFour" id="select_all_engagement">
+            <span class="custom-checkbox">
+              <input type="checkbox" class="payment-header" value="all"/>
+              <span class="box"><span class="tick"></span></span>
+             </span>
+          </th>
           <th>Campaign Name</th>
           <th>Likes</th>
           <th>Comments</th>
@@ -83,7 +88,12 @@
             <tbody>
             <% @campaigns.each do |campaign| %>
                 <tr>
-                  <td class="squaredFour"><input type="checkbox" class="EngagementCheckBox" data-id="<%= campaign.id %>" value="1"/></td>
+                  <td>
+                    <span class="custom-checkbox">
+                        <input type="checkbox" class="EngagementCheckBox" data-id="<%= campaign.id %>" value="1"/>
+                        <span class="box"><span class="tick"></span></span>
+                    </span>
+                  </td>
                   <td>
                     <a href="<%= show_user_profile_path(campaign.sender.id) %>" data-remote="true" >
                       <%= image_tag(campaign.sender.profile_picture, :class => 'pepsi-img-responsive') %>
