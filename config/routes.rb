@@ -133,12 +133,15 @@ Rails.application.routes.draw do
 
   resources :images, only: [:show, :create, :destroy]
 
-  # root to: 'public#home', as: :root
-  authenticated :user do
-    root to: 'profile#profile', as: :authenticated_root
-  end
-
   unauthenticated do
     root to: 'public#home'
   end
+  # root to: 'public#home', as: :root
+  authenticated :user do
+    root to: 'explores#show', as: 'brand_root', :constraints => lambda { |request| request.env['warden'].user.brand? }
+    root to: 'facebook#insights', as: 'influencer_root', :constraints => lambda { |request| request.env['warden'].user.influencer? }
+    root to: 'admins#profile', as: 'admin_root'
+  end
+
+
 end
