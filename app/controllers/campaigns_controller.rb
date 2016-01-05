@@ -221,7 +221,7 @@ class CampaignsController < ApplicationController
     respond_to do |format|
       format.html{ render 'campaigns/export_brand_campaigns'}
       format.pdf do
-        @filename = 'campaigns.pdf'
+        @filename = "campaigns_list_brand_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.pdf"
         render 'campaigns/export_influencer_campaigns'
       end
       format.csv do
