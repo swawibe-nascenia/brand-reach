@@ -2,12 +2,14 @@ prawn_document(:page_layout => :landscape) do |pdf|
 
  pdf.image "#{Rails.root}/app/assets/images/Logo.png", :fit => [99, 78]
 
- pdf.text_box 'Campaign Report', :at => [585, 510], :size => 18
+  pdf.bounding_box [pdf.bounds.left, pdf.bounds.top - 10], :width  => pdf.bounds.width - 45 do
+           pdf.text "Campaign Report", :size => 18, align: :right, color: '5D5D5D'
+  end
 
  pdf.stroke do
    pdf.stroke_color 'C0C0C0'
    pdf.move_down 30
-   pdf.horizontal_rule
+   pdf.horizontal_line 0, 725, :at => pdf.bounds.top - 50
  end
 
  pdf.move_down(20)
