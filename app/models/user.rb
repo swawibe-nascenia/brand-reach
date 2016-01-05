@@ -224,6 +224,7 @@ class User < ActiveRecord::Base
 
     if errors.empty?
       clear_reset_password_token
+      self.status = User.statuses[:active]
       save(validate: false)
     end
   end
