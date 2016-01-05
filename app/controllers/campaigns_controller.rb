@@ -222,7 +222,7 @@ class CampaignsController < ApplicationController
       format.html{ render 'campaigns/export_brand_campaigns'}
       format.pdf do
         @filename = "campaigns_list_brand_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.pdf"
-        render 'campaigns/export_influencer_campaigns'
+        render 'campaigns/export_brand_campaigns'
       end
       format.csv do
         #  Don't Try to Put Headers into single line, it wont work
@@ -233,7 +233,7 @@ class CampaignsController < ApplicationController
 
       format.xls do
         headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_influencer_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.xls\""
-        render 'campaigns/export_influencer_campaigns'
+        render 'campaigns/export_brand_campaigns'
       end
     end
   end
