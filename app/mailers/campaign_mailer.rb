@@ -79,7 +79,8 @@ class CampaignMailer < ApplicationMailer
     mail(from: 'hasanuzzaman@nascenia.com', to: @mail, subject: subject)
   end
 
-  def brand_invitation (brand)
+  def brand_invitation (brand, row_token)
+    @row_token = row_token
     @user = brand
     @name = brand.full_name
     @mail = brand.email

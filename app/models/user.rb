@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
   # ----------------------------------------------------------------------
   # == Callbacks == #
   # ----------------------------------------------------------------------
-  after_create :generate_channel_name, :send_mail
+  after_create :generate_channel_name
   after_save :save_actual_country_state
   after_update :update_profile_completion_status
 
@@ -227,6 +227,17 @@ class User < ActiveRecord::Base
       save(validate: false)
     end
   end
+
+  # =============== reset password token generate and save to user
+  def generate_reset_password_token
+    raw, enc = Devise.token_generator.generate(self.class, :reset_password_token)
+
+    self.reset_password_token   = enc
+    self.reset_password_sent_at = Time.now.utc
+    self.save(validate: false)
+    raw
+  end
+
   # ----------------------------------------------------------------------
   # == Private == #
   # ----------------------------------------------------------------------

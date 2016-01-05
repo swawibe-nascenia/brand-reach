@@ -1,7 +1,7 @@
 <h2>Dear <%= @name %>,</h2>
 
 <p>
-  We are inviting you to be a brand/influencer on BrandReach,
+  We are inviting you to be a brand on BrandReach,
   an online advertising platform connecting Brands and Influencers.
   Our Influencers can get listed and advocate the brands they love/Our
   brands can enlist the top creators and influencers to leverage their brand.
@@ -14,7 +14,7 @@
   the brand and influencers to get listed and advocate the brands they love!
 </p>
 
-<p><a href="<%= verify_brand_profile_profile_index_url(id: @user.id, token: @user.channel_name ) %>">Please click here to activate your account</a> </p>
+<p><a href="<%= edit_user_password_url(reset_password_token: @row_token, invitation: true)  %>">Please click here to activate your account</a> </p>
 
 <p>Warm Regards,
 <h3>The BrandReach Team</h3>

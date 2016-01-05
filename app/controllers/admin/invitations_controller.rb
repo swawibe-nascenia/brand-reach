@@ -45,7 +45,10 @@ class Admin::InvitationsController < ApplicationController
     @success = true
     @messages = []
 
-    unless @user.save
+    if @user.save
+      raw_token = @user.generate_reset_password_token
+      CampaignMailer.brand_invitation(@user, raw_token).deliver_now
+    else
       @messages = @user.errors.full_messages
       @success = false
     end
@@ -60,7 +63,8 @@ class Admin::InvitationsController < ApplicationController
     @success = false
 
     if user
-      CampaignMailer.brand_invitation(user).deliver_now
+      raw_token = user.generate_reset_password_token
+      CampaignMailer.brand_invitation(user, raw_token).deliver_now
       @success = true
     else
       @messages = 'Something was wrong.'
