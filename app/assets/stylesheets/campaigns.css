@@ -953,5 +953,11 @@ only screen and (max-width: 560px) {
 only screen and (max-width: 560px) {
     #export_campaigns {
         width: 100%;
+        margin-left: 0;
     }
+}
+
+.influencer-campaign-dropdown {
+    min-width: 98%;
+    margin-top: -3px;
 }

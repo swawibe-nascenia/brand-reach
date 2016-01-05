@@ -605,3 +605,26 @@ only screen and (max-width: 768px) {
 #error_explanation {
     width: 95%;
 }
+
+.influencer-payment-dropdown {
+    min-width: 98%;
+    margin-top: -8px;
+}
+
+.brand-payment-dropdown {
+    width: 196px;
+    margin-top: -3px;
+}
+
+@media only screen and (max-width: 980px) {
+    .brand-payment-dropdown {
+        width: 178px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .brand-payment-dropdown {
+        width: 100%;
+        margin-top: -13px;
+    }
+}
