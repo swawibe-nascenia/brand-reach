@@ -135,10 +135,10 @@
         });
 
         $('.report-generate').click(function () {
-            if($('.squaredFour input:checked').length)
+            if($('.custom-checkbox input:checked').length)
             {
                 var payment_ids = [];
-                $('.squaredFour input:checked').each(function () {
+                $('.custom-checkbox input:checked').each(function () {
                     payment_ids.push($(this).data('id'));
                 });
                 var format = $(this).data('format');

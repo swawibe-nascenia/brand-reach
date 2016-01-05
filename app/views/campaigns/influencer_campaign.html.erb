@@ -159,10 +159,10 @@
         $(".report-generate").click(function() {
             var format =  $(this).data('format');
 //            
-            if($('.squaredFour input:checked').length)
+            if($('.custom-checkbox input:checked').length)
             {
                 var campaign_ids = [];
-                $('.squaredFour input:checked').each(function() {
+                $('.custom-checkbox input:checked').each(function() {
                     campaign_ids.push($(this).data('id'));
                 });
 
