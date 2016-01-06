@@ -23,7 +23,7 @@
                             <h4 class="media-heading">{{name}}</h4>
                           </div>
                           <div class="media-right media-middle squaredFour">
-                            <input type="checkbox" name="accounts[]" value="{{id}}" {{#if selected}}checked="checked"{{/if}} {{#if engaged}}disabled="disabled"{{/if}}>
+                            <input type="checkbox" name="accounts[]" value="{{id}}" {{#if selected}}checked="checked"{{/if}} {{#if engaged}}readonly="readonly"{{/if}}>
                           </div>
                         </div>
                     {{/each}}

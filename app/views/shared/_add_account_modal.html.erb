@@ -87,7 +87,7 @@
 
             $(document).on('click', '.js-clickable', function(event) {
                 var ip = $(this).find('input[type="checkbox"]');
-                if (ip.get(0) != event.target && !ip.is(':disabled')) {
+                if (ip.get(0) != event.target && !ip.is('[readonly]')) {
                     ip.prop('checked', !ip.prop('checked'));
                     return false;
                 }
