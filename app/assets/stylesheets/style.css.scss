@@ -1392,7 +1392,7 @@ a .offer-box:last-child{
 
 #password-reset-container{
   max-width: 900px;
-
+  text-align: center;
   h2{
     font-size: 25px;
   }
@@ -1400,6 +1400,7 @@ a .offer-box:last-child{
   .label_l{
     min-width: 128px;
   }
+
   @media (max-width: 767px){
     max-width: 95%;
     padding-top: 0;
@@ -1410,6 +1411,10 @@ a .offer-box:last-child{
     p{
       font-size: 14px;
     }
+  }
+
+  .password-reset-content{
+    text-align: left;
   }
 
 }
