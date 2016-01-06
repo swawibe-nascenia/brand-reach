@@ -582,12 +582,12 @@ only screen and (max-width: 768px) {
     vertical-align: sub;
 }
 
-.btn-download:hover, .btn-withdraw:hover, .btn-influencer-download:hover, .btn-save-account:hover {
+.btn-download:hover, .btn-withdraw:hover, .btn-influencer-download:hover, .btn-save-account:hover, .btn-download:focus, .btn-withdraw:focus, .btn-influencer-download:focus, .btn-save-account:focus {
     color: white;
     background-color: #f1b242;
 }
 
-.btn-close:hover {
+.btn-close:hover, .btn-close:focus {
     color: white;
     background-color: #737373;
 }
