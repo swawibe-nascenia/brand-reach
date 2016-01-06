@@ -13,8 +13,8 @@
   We believe BrandReach is the platform for brands to find the top influencers to leverage
   the brand and influencers to get listed and advocate the brands they love!
 </p>
-
-<p><a href="<%= edit_user_password_url(reset_password_token: @row_token, invitation: true)  %>">Please click here to activate your account</a> </p>
+<% path = edit_user_password_url(reset_password_token: @row_token, invitation: true, user_name: @name) %>
+<p><a href="<%= path  %>">Please click here to activate your account</a> </p>
 
 <p>Warm Regards,
 <h3>The BrandReach Team</h3>

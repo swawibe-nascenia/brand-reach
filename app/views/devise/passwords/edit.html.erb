@@ -1,11 +1,14 @@
 <% title 'Password Reset' %>
-<div class="wrapper-content non-home-page-wrapper sticky-footer-wrapper password-reset-container">
+<div class="wrapper-content non-home-page-wrapper sticky-footer-wrapper" id="password-reset-container">
   <% if params[:invitation] %>
-      <h2>Thanks for being value able user for brand reach. </h2>
-      <h4>Please set your password</h4>
-<% else %>
-      <h2>Change your password</h2>
-<% end %>
+      <h2><span class="welcome-user">Hi Mr. <%= params[:user_name].titleize || 'User'  %></span>, Welcome to Brand Reach!!</h2>
+      <p>Your sing up process is almost complete. Just set your password and start to use it.</p>
+      <br/>
+      <br/>
+      <p>Please set your password.</p>
+  <% else %>
+      <h2>Change your password.</h2>
+  <% end %>
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), data: {:'parsley-validate' => ''}, html: {method: :put}) do |f| %>
       <%= devise_error_messages! %>
       <%= f.hidden_field :reset_password_token %>

@@ -1390,12 +1390,28 @@ a .offer-box:last-child{
   text-align: right;
 }
 
-.password-reset-container{
-  width: 800px;
-}
+#password-reset-container{
+  max-width: 900px;
 
-.password-reset-container .label_l{
-  min-width: 160px;
+  h2{
+    font-size: 25px;
+  }
+
+  .label_l{
+    min-width: 128px;
+  }
+  @media (max-width: 767px){
+    max-width: 95%;
+    padding-top: 0;
+    margin-top: 30px;
+    h2{
+      font-size: 16px;
+    }
+    p{
+      font-size: 14px;
+    }
+  }
+
 }
 
 @media (max-width: 374px) {
@@ -1531,4 +1547,9 @@ a .offer-box:last-child{
   left: 1px;
   top: -5px;
   zoom: 1;
+}
+
+.welcome-user{
+  font-weight: 600;
+  color: #0089db;
 }
