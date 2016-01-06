@@ -87,8 +87,13 @@
 
             $(document).on('click', '.js-clickable', function(event) {
                 var ip = $(this).find('input[type="checkbox"]');
-                if (ip.get(0) != event.target && !ip.is('[readonly]')) {
+                var targetIsIp = ip.get(0) == event.target;
+                var ipIsReadonly = ip.is('[readonly]');
+
+                if (!ipIsReadonly && !targetIsIp) {
                     ip.prop('checked', !ip.prop('checked'));
+                    return false;
+                } else if (ipIsReadonly && targetIsIp) {
                     return false;
                 }
             });
