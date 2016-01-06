@@ -166,10 +166,17 @@
 //        });
 
         $(document).ready(function() {
+
+            $('.numeric').each(function(){
+                var value = $(this).data("value");
+                $(this).text(value);
+            });
+
             $('.count').counterUp({
                 delay: 20,
                 time: 3000
             });
+
         });
 
 //        change greeting for local time
