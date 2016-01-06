@@ -32,11 +32,11 @@
 
             var createForm = function(authResp) {
                 FB.api('/me/accounts?fields=id,name,likes,picture', function(resp) {
-                    var selected = $('.social-account-tabs .tab-pane').map(function() {
+                    var selected = $('.social-account-tabs .js-social-account-tab').map(function() {
                       return $(this).attr('id');
                     }).toArray();
 
-                    var engaged = $('.social-account-tabs .tab-pane').filter(function() {
+                    var engaged = $('.social-account-tabs .js-social-account-tab').filter(function() {
                             return $(this).data('engaged') > 0;
 //                        }
                     }).map(function() {

@@ -17,7 +17,7 @@
       <% prefix = "user[facebook_accounts_attributes][#{index}]" %>
       <%= fields_for prefix, account do |g| %>
 
-          <div id="fb_<%= g.object.account_id %>" class="tab-pane" data-engaged="<%= g.object.has_engaged_capmaign? %>">
+          <div id="fb_<%= g.object.account_id %>" class="js-social-account-tab tab-pane" data-engaged="<%= g.object.has_engaged_capmaign? %>">
             <%= hidden_field_tag "#{prefix}[id]", account.id %>
             <div class="form-group">
               <div class="col-md-6 col-sm-12 col-xs-12">
