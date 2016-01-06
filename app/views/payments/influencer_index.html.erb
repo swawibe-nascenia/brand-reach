@@ -12,7 +12,10 @@
 
       <div class="amount-withdraw">
         <%= label_tag 'withdraw_amount', 'Amount to Withdraw' %>
-        <%= number_field_tag 'withdraw_amount', '' %>
+        <%= number_field_tag 'withdraw_amount', '',
+                             data: { 'parsley-min' => '1', 'parsley-errors-container' => '#p-error-container-inf-payment' }
+        %>
+        <div id="p-error-container-inf-payment"></div>
         <%= button_tag 'WITHDRAW', :class => 'btn btn-withdraw', id: 'btn-amount-withdraw' %>
       </div>
     </div>
@@ -167,6 +170,10 @@
             $(this).find('td input:radio').prop('checked', true);
         });
 
+        $('input[name="withdraw_amount"]').parsley();
+        $('input[name="withdraw_amount"]').change(function(){
+            $('input[name="withdraw_amount"]').parsley().validate();
+        });
 
     });
 </script>

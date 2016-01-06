@@ -184,8 +184,20 @@ $(function(){
     $('#btn-amount-withdraw').click(function(){
         var BankAccountId = $('input[name="bank_account"]:checked').val();
         var withdrawAmmount =  parseInt($('input#withdraw_amount').val());
-        if(BankAccountId === undefined || BankAccountId === null || isNaN(withdrawAmmount)){
-            bootbox.alert({message: 'Select Bank account or give withdraw amount first ',
+
+        if(isNaN(withdrawAmmount)){
+            bootbox.alert({message: 'Please enter an amount to withdraw.',
+                closeButton: false});
+            return false;
+        }
+        else if(withdrawAmmount <= 0 ){
+            bootbox.alert({message: 'Withdraw amount must be greater then 0.',
+                closeButton: false});
+            return false;
+        }
+
+        if(BankAccountId === undefined || BankAccountId === null){
+            bootbox.alert({message: 'Please add a bank account to proceed.',
                 closeButton: false});
         }else{
             $.ajax({
