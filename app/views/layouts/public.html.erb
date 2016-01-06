@@ -147,9 +147,27 @@
 
         // for counting number from 0 to upto some value
 
-        $('.count').counterUp({
-            delay: 10,
-            time: 3000
+//        $(document).scroll(function() {
+//            var $window = $(window);
+//            var docViewTop = $window.scrollTop();
+//            var $elem = $('.statistics');
+//            var elemTop = $elem.offset().top;
+//            console.log(elemTop+ '' + docViewTop);
+//
+//            if(elemTop < docViewTop)
+//            {
+//                $('.count').counterUp({
+//                    delay: 100,
+//                    time: 4000
+//                });
+//            }
+//        });
+
+        $(document).ready(function() {
+            $('.count').counterUp({
+                delay: 10,
+                time: 4000
+            });
         });
 
 //        change greeting for local time
