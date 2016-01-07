@@ -565,6 +565,12 @@ only screen and (max-width: 560px) {
 }
 
 .campaign-create-wrapper .btn-book-now-cancel{
+    border: medium none;
+    border-radius: 0;
+    color: #ffffff;
+    height: 36px;
+    min-width: 107px;
+    padding: 9px 10px;
     margin-top: -3px;
     margin-left: 10px;
 }

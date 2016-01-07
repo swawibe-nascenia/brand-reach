@@ -1593,16 +1593,6 @@ a .offer-box:last-child{
   }
 }
 
-// over-ride bootstrap .btn class
-.btn{
-  border: medium none;
-  border-radius: 0;
-  color: #ffffff;
-  height: 36px;
-  min-width: 107px;
-  padding: 9px 10px;
-}
-
 .btn:hover{
   color: #ffffff;
 }
