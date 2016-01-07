@@ -25,11 +25,28 @@ class User < ActiveRecord::Base
 
   Industry = ['Health and Beauty', 'Technology', 'Startups', 'Internet', 'Food', 'Restaurants', 'Automobile']
 
-  BRAND_PROFILE_COMPLETENESS = [:company_name, :company_email, :phone, :street_address,
-                                :city, :state, :country, :zip_code, :short_bio, :first_name, :last_name]
+  BRAND_PROFILE_COMPLETENESS = [
+                                :company_name,
+                                :company_email,
+                                :phone, :city,
+                                :state,
+                                :country,
+                                :zip_code,
+                                :short_bio,
+                                :first_name,
+                                :last_name
+                                ]
 
-  INFLUENCER_PROFILE_COMPLETENESS = [:phone, :street_address,
-                                     :city, :state, :country, :zip_code, :short_bio, :first_name, :last_name]
+  INFLUENCER_PROFILE_COMPLETENESS = [
+                                     :phone,
+                                     :city,
+                                     :state,
+                                     :country,
+                                     :zip_code,
+                                     :short_bio,
+                                     :first_name,
+                                     :last_name
+                                    ]
 
   FACEBOOK_ACCOUNT_COMPLETENESS = [:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost]
 
@@ -72,7 +89,7 @@ class User < ActiveRecord::Base
   # validates_length_of :password, :minimum => 6, :allow_blank => true
   validates :zip_code, zipcode: { country_code_attribute: :country }, if: 'zip_code.present?'
   validates :short_bio, length: { maximum: 1000 }
-  validates :first_name, :last_name, :company_name, :phone, :street_address, :city, :zip_code, :country, :state,
+  validates :first_name, :last_name, :company_name, :phone, :city, :zip_code, :country, :state,
             :company_email, :short_bio, presence: true, on: :update, if: Proc.new{|u| u.brand? || u.influencer?}
 
 
