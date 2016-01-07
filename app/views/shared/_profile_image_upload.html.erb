@@ -52,6 +52,9 @@
     $(function () {
         var jscrop_api;
         $('#user_image').change(function () {
+//            parsely validation
+            $(this).parsley().validate();
+
             if($(this).val()){
                 console.log('selected image url is ' + $(this).val());
                 $('.image-field').html('');
