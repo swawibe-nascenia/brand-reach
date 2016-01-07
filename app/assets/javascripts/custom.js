@@ -393,11 +393,13 @@ $(function(){
     });
 
     function setTopNav(){
+        // how much scrollbar below from top
         var scrollTop = $(document).scrollTop();
+        // welcome bar height
         var offsetTop = $('.welcome_bar').outerHeight();
-
+        console.log('scrollTop is ' + scrollTop + ' and offsetTop is ' + offsetTop);
         var windowWidth = $( window ).width();
-        if (scrollTop > offsetTop && windowWidth > 767) {
+        if (scrollTop > offsetTop ) {
             $('.header').css('top', 0);
         } else {
             $('.header').css('top', offsetTop - scrollTop);

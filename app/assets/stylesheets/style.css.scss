@@ -1404,7 +1404,8 @@ a .offer-box:last-child{
   @media (max-width: 767px){
     max-width: 95%;
     padding-top: 0;
-    margin-top: 30px;
+//    comment for making fixed navbar for all device
+//    margin-top: 30px;
     h2{
       font-size: 16px;
     }

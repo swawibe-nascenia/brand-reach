@@ -34,23 +34,31 @@
   color: black;
   font-weight: lighter;
   border-bottom: 1px solid #00c9f3;
+//  now both small and medium device fixed navigation bar
+  position: fixed;
+  //top: 50px;
+  right: 0;
+  left: 0;
+  z-index: 99;
+  background-color: white;
+
 //  padding-top: 16px;
 }
 
-@media screen and (min-width: 768px) {
-  .header {
-    position: fixed;
-    //top: 50px;
-    right: 0;
-    left: 0;
-    z-index: 99;
-    background-color: white;
-  }
-  .welcome_bar{
-    z-index: 100;
-  }
-
-}
+//@media screen and (min-width: 768px) {
+//  .header {
+//    position: fixed;
+//    //top: 50px;
+//    right: 0;
+//    left: 0;
+//    z-index: 99;
+//    background-color: white;
+//  }
+//  .welcome_bar{
+//    z-index: 100;
+//  }
+//
+//}
 @media (min-width: 1072px) {
 
 }
@@ -710,6 +718,7 @@ ul.menu-item li {
   padding: 14px 0;
   position: relative;
   width: 100%;
+  z-index: 100;
 }
 .welcome_bar .left {
   float: left;
@@ -757,13 +766,13 @@ ul.menu-item li {
   margin-bottom: 20px;
 
 }
-
-@media (max-width: 767px){
-  .faq-container{
-    margin-top: 20px;
-    padding-top: 0;
-  }
-}
+/*====  comment for making fixed navigation bar for all device ===== */
+//@media (max-width: 767px){
+//  .faq-container{
+//    margin-top: 20px;
+//    padding-top: 0;
+//  }
+//}
 .panel-body, .list-group{
   display: none;
 }
