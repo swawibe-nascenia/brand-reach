@@ -138,7 +138,7 @@ class User < ActiveRecord::Base
   end
 
   def calculate_max_followers
-    active_facebook_accounts.pluck(:number_of_followers).max
+    active_facebook_accounts.pluck(:number_of_followers).sum
   end
 
   def is_facebook_authenticate?
