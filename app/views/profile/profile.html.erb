@@ -79,11 +79,11 @@
               </div>
               <div class="col-md-12">
                 <%= f.label :country %>
-                <%= f.country_select :country, {priority: %w(US CA IN)}, {:class => 'profile-dropdown-color country-responsive-font'}, {} %>
+                <%= f.country_select :country, {priority: %w(IN)}, {:class => 'profile-dropdown-color country-responsive-font'}, {} %>
               </div>
               <div class="col-md-12">
                 <%= f.label :state %>
-                <%= render partial: 'shared/sub_region_select', locals: { parent_region: f.object.country } %>
+                <%= render partial: 'shared/sub_region_select', locals: { parent_region: f.object.country || 'IN' } %>
               </div>
             </div>
           </div>
