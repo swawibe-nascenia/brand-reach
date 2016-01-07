@@ -958,3 +958,9 @@ only screen and (max-width: 560px) {
     min-width: 98%;
     margin-top: -3px;
 }
+
+.payment-influencer-image {
+    width: 100px;
+    border-radius: 50%;
+    margin-top: 15px;
+}
