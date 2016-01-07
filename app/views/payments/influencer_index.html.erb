@@ -19,7 +19,11 @@
                                 }
         %>
         <div id="p-error-container-inf-payment"></div>
-        <%= button_tag 'WITHDRAW', :class => 'btn btn-withdraw', id: 'btn-amount-withdraw' %>
+        <%= button_tag 'WITHDRAW',
+                       :class => 'btn btn-withdraw',
+                       id: 'js-influencer-amount-withdraw',
+                       data:{ balance: current_user.balance}
+        %>
       </div>
     </div>
 

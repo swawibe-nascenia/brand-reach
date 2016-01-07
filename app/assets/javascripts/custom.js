@@ -30,7 +30,8 @@ $(function(){
                 type: 'put',
                 url: '/offers/toggle_star',
                 dataType: "script",
-                data: {ids: selected_offer_ids, 'authenticity_token': $('meta[name="csrf-token"]').attr('content')},
+                data: { ids: selected_offer_ids,
+                        'authenticity_token': $('meta[name="csrf-token"]').attr('content') },
                 success: function(data) {
                     console.log(data)
                 }
@@ -161,7 +162,8 @@ $(function(){
                                 type: 'put',
                                 url: '/offers/delete_offers',
                                 dataType: "script",
-                                data: {ids: selected_offer_ids, 'authenticity_token': $('meta[name="csrf-token"]').attr('content')},
+                                data: { ids: selected_offer_ids,
+                                        'authenticity_token': $('meta[name="csrf-token"]').attr('content') },
                                 success: function(data) {
                                     console.log(data)
                                 }
@@ -181,30 +183,39 @@ $(function(){
 
 //    withdraw request send  by influencer
 
-    $('#btn-amount-withdraw').click(function(){
+    $('#js-influencer-amount-withdraw').click(function(){
+        var currentBalance = $(this).data('balance');
         var BankAccountId = $('input[name="bank_account"]:checked').val();
-        var withdrawAmmount =  parseInt($('input#withdraw_amount').val());
+        var withdrawAmount =  parseInt($('input#withdraw_amount').val());
+        var errorMessage = '';
 
-        if(isNaN(withdrawAmmount)){
-            bootbox.alert({message: 'Please enter an amount to withdraw.',
+        switch(true) {
+            case isNaN(withdrawAmount):
+                errorMessage = 'Please enter an amount to withdraw.';
+                break;
+            case withdrawAmount <= 0:
+                errorMessage = 'Please enter an amount greater than zero.';
+                break;
+            case withdrawAmount > currentBalance:
+                errorMessage = 'Please enter an amount not greater than current balance.';
+                break;
+            case (BankAccountId === undefined || BankAccountId === null):
+                errorMessage = 'Please add a bank account to proceed.';
+                break;
+        }
+
+        if(errorMessage.length > 0){
+            bootbox.alert({message: errorMessage,
                 closeButton: false});
             return false;
-        }
-        else if(withdrawAmmount <= 0 ){
-            bootbox.alert({message: 'Withdraw amount must be greater then 0.',
-                closeButton: false});
-            return false;
-        }
-
-        if(BankAccountId === undefined || BankAccountId === null){
-            bootbox.alert({message: 'Please add a bank account to proceed.',
-                closeButton: false});
         }else{
             $.ajax({
                 type: 'post',
                 url: '/payments/withdraw',
                 dataType: "script",
-                data: {amount: withdrawAmmount, bank_account_id: BankAccountId, 'authenticity_token': $('meta[name="csrf-token"]').attr('content')},
+                data: { amount: withdrawAmount,
+                        bank_account_id: BankAccountId,
+                        'authenticity_token': $('meta[name="csrf-token"]').attr('content') },
                 success: function(data) {
                     console.log(data)
                 }
