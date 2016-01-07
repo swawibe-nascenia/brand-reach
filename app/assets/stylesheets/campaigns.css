@@ -564,19 +564,14 @@ only screen and (max-width: 560px) {
     width: 270px;
 }
 
-.campaign-create-wrapper .btn-book-now {
-    background-color: #e13f3c;
-    color: white;
-    margin-top: 5%;
-    margin-right: 20px;
-    padding: 8px 28px;
-    font-weight: 600;
+.campaign-create-wrapper .btn-book-now-cancel{
+    margin-top: -3px;
+    margin-left: 10px;
 }
 
-.campaign-create-wrapper .btn-book-now:focus {
-    outline: thick dotted;
+.campaign-create-wrapper .btn-book-now-cancel:hover{
+    background-color: #888888;
 }
-
 .campaign-create-wrapper .grey-color {
     background-color: #999999;
 }
@@ -791,8 +786,14 @@ only screen and (max-width: 768px) {
         padding: 15px 10px;
     }
 
-    .campaign-create-wrapper .btn-book-now {
+    .campaign-create-wrapper .btn-book-now{
         width: 100%;
+    }
+
+    .campaign-create-wrapper .btn-book-now-cancel{
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 0;
     }
 
     .influencer-profile-info{
