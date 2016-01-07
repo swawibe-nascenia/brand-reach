@@ -110,7 +110,6 @@
 }
 
 .follower-box{
-    height: 80px;
     border-radius: 2px;
     font-size: 15px;
     float: left;
@@ -123,7 +122,7 @@
 
 .follower-box{
     box-shadow: 0 0 2px #d9d9d9;
-    padding: 6px;
+    padding: 4px;
     min-width: 100px;
     text-align: center;
     margin-top: 12px;
@@ -134,7 +133,11 @@
     color: green;
     font-size: 22px;
     font-weight: 400;
-    padding-bottom: 11px;
+}
+
+.follower-box .view-profile-likes{
+    color: #333333;
+    font-size: 14px;
 }
 
 .follower-box p{
@@ -375,6 +378,10 @@ only screen and (max-width: 580px){
     .follower-box, .btn-box {
         float: none;
         margin-right: 0;
+    }
+
+    .follower-box .follower-number {
+        display: block !important;
     }
 }
 

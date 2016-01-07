@@ -21,8 +21,8 @@
 
           <div class="display-inline-block pull-right like-send-request">
             <div class="follower-box font-raleway">
-              <div class="follower-number"><%= influencer.max_followers %></div>
-              <p> Likes</p>
+              <div class="follower-number display-inline-block"><%= influencer.max_followers %></div>
+              <div class="view-profile-likes display-inline-block">&nbsp;Likes</div>
             </div>
             <div class="btn-box btn-send-request">
               <%= link_to 'Send Request', new_campaign_path(receiver_id: influencer.id, social_account_id: influencer.active_facebook_accounts.first.id), class: 'btn btn-message button-border-yellow btn-send-offer-request font-raleway', data: {href: new_campaign_path(receiver_id: influencer.id)} %>
