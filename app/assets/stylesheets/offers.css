@@ -405,8 +405,9 @@
 
 .offer-message-down-arrow {
     padding-right: 15px;
-    padding-top: 3px;
-    color: #00c9f3;
+    margin-top: -1px;
+    color: #333;
+    font-size: 20px;
 }
 
 
