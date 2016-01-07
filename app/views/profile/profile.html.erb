@@ -133,7 +133,13 @@
       <% if @user.influencer? %>
           <h4 class="social-account">SOCIAL ACCOUNTS AND PRICING</h4>
 
-          <button type="button" class="btn btn-account button-border-yellow js-add-account" data-trigger="modal" data-target="AddFacebookAccount" href="javascript:" data-dismiss="modal">MANAGE ACCOUNT</button>
+          <button type="button"
+                  class="btn btn-account button-border-yellow js-add-account"
+                  data-trigger="modal" data-target="AddFacebookAccount"
+                  href="javascript:"
+                  data-dismiss="modal">
+            ADD ACCOUNT
+          </button>
 
           <%= render 'shared/add_account_modal', remote: true %>
 
