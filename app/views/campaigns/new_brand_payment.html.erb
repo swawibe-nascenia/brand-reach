@@ -37,6 +37,11 @@
     <strong>Start Date :</strong> <%= @campaign.start_date.strftime('%d-%m-%Y') %><br/>
     <strong>End Date :</strong> <%= @campaign.end_date && @campaign.end_date.strftime('%d-%m-%Y') %><br/>
     <strong>Payment :</strong> <%= @campaign.cost %> INR<br/>
+
+    <%= image_tag(@campaign.receiver.profile_picture, :class => 'profile-image', :alt => 'Influencer Picture') %>
+    <strong>Influencer Name :</strong> <%=@campaign.receiver.full_name %><br/>
+    <strong>Influencer Industry :</strong> <%= @campaign.receiver.industry %><br/>
+    <strong>Influencer Location :</strong> <%= @campaign.receiver.location %><br/>
     <br/>
     <strong>Campaign Heading :</strong> <%= @campaign.headline %><br/>
     <strong>Campaign Description :</strong> <%= @campaign.text %>
@@ -45,7 +50,7 @@
   <form method="post" action="https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction">
     <input type="hidden" name="encRequest" value="<%= encrypted_data %>" />
     <input type="hidden" name="access_code" value="<%= access_code %>" />
-    <input class="btn btn-book-now" type="submit" name="submit" value="BOOK NOW" />
+    <input class="btn btn-book-now" type="submit" name="submit" value="ENGAGE NOW" />
   </form>
 
 </div>
