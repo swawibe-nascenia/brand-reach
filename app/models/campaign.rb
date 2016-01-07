@@ -147,6 +147,14 @@ class Campaign < ActiveRecord::Base
   private
 
   def first_message_body
+    post_type_content = case post_type
+             when 'status_update' then "Status Message: #{campaign_content}"
+             when 'profile_photo' then "Profile Photo link: <a href=#{campaign_content} target='_blank'> Image </a>"
+             when 'cover_photo' then "Cover Photo link: <a href=#{campaign_content} target='_blank'> Image </a>"
+             when 'video_post' then  "Video link: <a href=#{campaign_content} target='_blank'> Video </a>"
+             when 'photo_post' then "Photo link: <a href=#{campaign_content} target='_blank'> Image </a>"
+            end
+
     <<MESSAGE
       Hi #{self.receiver.first_name},
 
@@ -155,6 +163,7 @@ class Campaign < ActiveRecord::Base
       Brand Name: <a href='/#{self.sender.id}/show_user' data-remote='true'>#{self.sender.full_name}</a>
       Campaign Name:  #{self.name}
       Type of Post : #{self.post_type.humanize}
+      #{post_type_content}
       Start Date : #{self.start_date.strftime('%d-%m-%Y')}
       End Date : #{self.end_date.strftime('%d-%m-%Y')}
       Payment : #{self.cost} INR
