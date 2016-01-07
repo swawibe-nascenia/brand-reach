@@ -377,15 +377,8 @@ only screen and (max-width: 560px) {
     }
 
     .performance_table th:nth-child(1), .performance_table td:nth-child(1), .engagement_table th:nth-child(1), .engagement_table td:nth-child(1) {
-        text-align: center ;
+        text-align: left ;
         width: auto;
-    }
-
-    .btn-export {
-        font-size: 10px;
-        color: white;
-        margin: 15px 3px 3px 5px;
-        padding: 5px 12px 5px 12px;
     }
 
     .btn-age {
@@ -740,7 +733,7 @@ only screen and (max-width: 768px) {
     }
 
     .campaign-nav-tabs {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .btn-download-campaign {
@@ -911,6 +904,10 @@ only screen and (max-width: 768px) {
         width: 100%;
         padding: 5px 0;
         margin: 5px 0;
+    }
+
+    .payment-button-set {
+        width: 100%;
     }
 
 }
