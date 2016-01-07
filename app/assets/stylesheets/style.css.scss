@@ -1585,3 +1585,9 @@ a .offer-box:last-child{
 #guideline-modal{
   z-index: 1041;
 }
+
+@media (max-width: 767px){
+  body {
+    background-color: #2b2f3e;
+  }
+}
