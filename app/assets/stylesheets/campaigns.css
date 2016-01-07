@@ -963,4 +963,5 @@ only screen and (max-width: 560px) {
     width: 100px;
     border-radius: 50%;
     margin-top: 15px;
+    margin-bottom: 15px;
 }

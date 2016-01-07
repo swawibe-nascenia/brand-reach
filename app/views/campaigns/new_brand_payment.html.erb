@@ -32,16 +32,16 @@
   <div class="payment font-color-pink">PAYMENT</div>
 
   <p>
+    <%= image_tag(@campaign.receiver.profile_picture, :class => 'payment-influencer-image', :alt => 'Influencer Picture') %><br/>
+    <strong>Influencer Name :</strong> <%=@campaign.receiver.full_name %><br/>
+    <strong>Influencer Industry :</strong> <%= @campaign.receiver.categories.pluck(:name).join(', ') if @campaign.receiver.categories.present? %><br/>
+    <strong>Influencer Location :</strong> <%= @campaign.receiver.location %><br/>
+    <br/>
     <strong>Campaign Name :</strong> <%= @campaign.name %><br/>
     <strong>Type of Post :</strong> <%= @campaign.post_type.humanize %><br/>
     <strong>Start Date :</strong> <%= @campaign.start_date.strftime('%d-%m-%Y') %><br/>
     <strong>End Date :</strong> <%= @campaign.end_date && @campaign.end_date.strftime('%d-%m-%Y') %><br/>
     <strong>Payment :</strong> <%= @campaign.cost %> INR<br/>
-
-    <%= image_tag(@campaign.receiver.profile_picture, :class => 'payment-influencer-image', :alt => 'Influencer Picture') %><br/>
-    <strong>Influencer Name :</strong> <%=@campaign.receiver.full_name %><br/>
-    <strong>Influencer Industry :</strong> <%= @campaign.receiver.categories.pluck(:name).join(', ') if @campaign.receiver.categories.present? %><br/>
-    <strong>Influencer Location :</strong> <%= @campaign.receiver.location %><br/>
     <br/>
     <strong>Campaign Heading :</strong> <%= @campaign.headline %><br/>
     <strong>Campaign Description :</strong> <%= @campaign.text %>
