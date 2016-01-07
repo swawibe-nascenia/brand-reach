@@ -1596,3 +1596,24 @@ a .offer-box:last-child{
 .btn:hover{
   color: #ffffff;
 }
+
+.new-campaign-content{
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #ddd;
+  border-image: none;
+  border-style: none solid solid;
+  border-width: medium 1px 1px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  padding-bottom: 20px;
+  padding-right: 30px;
+  padding-top: 35px;
+
+}
+
+.new-campaign-content .form-group input.btn-radio{
+  width: 14px;
+}

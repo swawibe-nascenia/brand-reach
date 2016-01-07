@@ -972,3 +972,9 @@ only screen and (max-width: 560px) {
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
+.campaign-create-wrapper .new-campaign-content input:not([type="radio"]), .social-account-tab-content select {
+    display: inline;
+    margin: 5px;
+    width: 52%;
+}

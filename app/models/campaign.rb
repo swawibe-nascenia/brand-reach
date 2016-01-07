@@ -41,7 +41,9 @@ class Campaign < ActiveRecord::Base
   validates :card_number, credit_card_number: true, allow_blank: true
   validates :sender_id, :receiver_id, :name, :text, :headline, presence: true
   validates :card_expiration_month, :card_expiration_year, presence: true, on: :update
-  validates :name, uniqueness: { message: 'of the Campaign is already exist. Please try another Campaign Name.', case_sensitive: false }
+  validates :name,
+            uniqueness: { message: 'of the Campaign is already exist. Please try another Campaign Name.',
+                          case_sensitive: false }
 
   # ----------------------------------------------------------------------
   # == Callbacks == #

@@ -9,7 +9,9 @@
   <div>
     <%= image_tag(@influencer.profile_picture, :class => 'campaign-influencer-picture', :alt => 'profile-picture') %>
     <div class="influencer-description">
-      <h4><%= @influencer.full_name.present? ? @influencer.full_name : 'USER' %></h4>
+      <a href="<%= show_user_profile_path(@influencer.id) %>" data-remote="true">
+        <h4><%= @influencer.full_name || 'USER' %></h4>
+      </a>
       <p class="influencer-title"><%= @influencer.categories.pluck(:name).join(', ') if @influencer.categories.present? %> </p>
       <p class="influencer-address"> <%= @influencer.street_address.present? ? @influencer.street_address : 'User Address'  %> </p>
     </div>
@@ -28,10 +30,10 @@
       <%= csrf_meta_tag %>
 
       <div class="col-md-12 campaign-form-input">
-        <div class="social-account-tabs">
+        <div class="">
           <ul class="nav nav-tabs social-account-nav-tabs"></ul>
 
-          <div class="tab-content social-account-tab-content">
+          <div class="tab-content social-account-tab-content new-campaign-content">
             <div id="fb_bhanu" class="tab-pane fade in active">
 
               <div id="costs" data-costs="<%= @costs %>"></div>
@@ -107,12 +109,12 @@
                 <%= f.label '', 'Schedule Post', class: 'control-label' %>
                 <div class="display-inline">
                   <div class="display-inline">
-                    <%= f.radio_button :schedule_type, 'daily', { :checked => true, class: 'daily' } %>
+                    <%= f.radio_button :schedule_type, 'daily', { :checked => true, class: 'daily btn-radio' } %>
                     <span>Run my ad set continuously starting today</span>
                   </div>
 
                   <div class="display-inline">
-                    <%= f.radio_button :schedule_type, 'date_range', class: 'date-range' %>
+                    <%= f.radio_button :schedule_type, 'date_range', class: 'date-range btn-radio' %>
                     <span>Set a start and end date</span>
                   </div>
 
