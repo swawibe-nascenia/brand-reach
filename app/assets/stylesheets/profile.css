@@ -17,6 +17,7 @@
 @media (min-width: 768px) {
     .brands-profile-page-wrapper {
         padding-right: 5%;
+        padding-left: 5%;
         margin: 25px 20px;
     }
 }
