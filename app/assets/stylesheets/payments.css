@@ -488,16 +488,6 @@ only screen and (max-width: 768px) {
     margin-top : 25px;
 }
 
-.btn-influencer-download {
-    color: white;
-    margin: -5px 3px 15px 5px;
-    padding: 5px 20px 5px 20px;
-    background-color: #f8c102;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
-    font-size: 11pt;
-}
-
 @media
 only screen and (max-width: 768px) {
 

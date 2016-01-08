@@ -169,11 +169,11 @@ class CampaignsController < ApplicationController
 
   def brand_campaign
     @campaigns = Campaign.engaged_campaigns_from(current_user)
-
-    if @campaigns.blank?
-      flash[:error] = 'You have no campaign'
-      return redirect_to explores_path
-    end
+    #
+    # if @campaigns.blank?
+    #   flash[:error] = 'You have no campaign'
+    #   return redirect_to explores_path
+    # end
 
     @campaign = @campaigns.find_by_id(params[:id]) if params[:id].present?
     @campaign = @campaigns.last if @campaign.nil?

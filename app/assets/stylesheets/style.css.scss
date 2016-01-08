@@ -1615,6 +1615,7 @@ a .offer-box:last-child{
   font-family: "Raleway Light","Raleway",sans-serif;
   &:hover {
     background-color: #00b6e2;
+    color: #ffffff;
   }
 }
 
@@ -1676,3 +1677,38 @@ a .offer-box:last-child{
   padding: 5px 36px;
 }
 
+.btn-inf-payment-download {
+  @extend  .br-btn-primary;
+  margin: -5px 3px 15px 5px;
+  padding: 5px 20px 5px 20px;
+}
+
+.btn-inf-payment-withdraw{
+  @extend  .br-btn-primary;
+  float: right;
+  margin: 0 5px 5px 3px;
+  padding: 5px 30px 5px 30px;
+}
+
+.btn-bank-account-save{
+  @extend .br-btn-primary;
+  margin: 25px 0 5px 3px;
+  padding: 5px 30px 5px 30px;
+  @media (max-width: 767px) {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.btn-brand-payment-down-invoice{
+  @extend  .br-btn-primary;
+  margin: 25px 3px 5px 5px;
+  padding: 5px 20px;
+}
+
+.btn-brand-send-campaign-request{
+  @extend .br-btn-primary;
+  display: block;
+  height: 38px;
+  width: 138px;
+}
