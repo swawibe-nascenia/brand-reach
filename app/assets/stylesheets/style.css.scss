@@ -1755,3 +1755,10 @@ a .offer-box:last-child{
     float: none;
   }
 }
+
+.btn-inf-fb-connect{
+  @extend  .br-btn-primary;
+  height: 32px;
+  min-width: 112px;
+  padding: 7px 10px;
+}
