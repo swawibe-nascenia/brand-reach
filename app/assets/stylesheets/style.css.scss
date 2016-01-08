@@ -1709,6 +1709,10 @@ a .offer-box:last-child{
 .btn-brand-send-campaign-request{
   @extend .br-btn-primary;
   display: block;
+  text-align: center;
   height: 38px;
   width: 138px;
+  @media (max-width: 580px) {
+    width: 100%;
+  }
 }
