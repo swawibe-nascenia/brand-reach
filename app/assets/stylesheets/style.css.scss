@@ -1717,6 +1717,16 @@ a .offer-box:last-child{
   }
 }
 
+.btn-brand-campaign-view{
+  @extend .br-btn-primary;
+  padding: 5px 10px;
+  margin-left: 15px;
+  width: 13%;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+
 .btn-admin-profile-update{
   @extend .br-btn-primary;
 
