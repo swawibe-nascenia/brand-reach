@@ -1716,3 +1716,8 @@ a .offer-box:last-child{
     width: 100%;
   }
 }
+
+.btn-admin-profile-update{
+  @extend .br-btn-primary;
+
+}
