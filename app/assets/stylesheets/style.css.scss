@@ -1717,6 +1717,10 @@ a .offer-box:last-child{
   @extend  .br-btn-primary;
   margin: 25px 3px 5px 5px;
   padding: 5px 20px;
+  @media (max-width: 767px) {
+    width: 100%;
+    margin: 19px 0 0;;
+  }
 }
 
 .btn-brand-send-campaign-request{
