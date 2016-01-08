@@ -1681,13 +1681,26 @@ a .offer-box:last-child{
   @extend  .br-btn-primary;
   margin: -5px 3px 15px 5px;
   padding: 5px 20px 5px 20px;
+  @media (max-width: 767px) {
+    width: 100%;
+    margin: 10px 0;
+    float: none;
+  }
 }
 
 .btn-inf-payment-withdraw{
   @extend  .br-btn-primary;
   float: right;
-  margin: 0 5px 5px 3px;
+  margin-bottom: 10px;
   padding: 5px 30px 5px 30px;
+  @media (max-width: 1000px){
+    margin: 10px 0;
+  }
+  @media (max-width: 767px){
+    margin: 15px 0;
+    padding: 4px 0;
+    width: 100%;
+  }
 }
 
 .btn-bank-account-save{
@@ -1730,4 +1743,11 @@ a .offer-box:last-child{
 .btn-admin-profile-update{
   @extend .br-btn-primary;
 
+}
+
+.influencer-withdraw-container{
+  float: right;
+  @media (max-width: 767px) {
+    float: none;
+  }
 }
