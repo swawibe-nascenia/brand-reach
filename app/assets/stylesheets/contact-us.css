@@ -48,23 +48,8 @@
 }
 
 .get-in-touch-submit {
-    padding-left: 75px;
+    padding-left: 79px;
     margin-bottom: 150px;
-}
-
-.get-in-touch-submit-button {
-    color: white;
-    margin: 10px 5px 5px 5px;
-    padding: 5px 36px;
-    background-color: #f8c102;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-}
-
-.get-in-touch-submit-button:hover {
-    color: white;
-    background-color: #f1b242 ;
 }
 
 .display-inline {
