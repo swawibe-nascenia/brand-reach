@@ -1560,21 +1560,6 @@ a .offer-box:last-child{
   color: #0089db;
 }
 
-.br-btn-submit {
-  background-color: #00c9f3;
-  border: medium none;
-  border-radius: 0;
-  color: #ffffff;
-  height: 36px;
-  min-width: 107px;
-  padding: 9px 10px;
-  margin-top: 14px;
-  &:hover {
-    background-color: #00b6e2;
-  }
-
-}
-
 .contact-form .btn-submit:hover, .contact-form .btn-submit:focus {
   background-color: #00b6e2;
 }
@@ -1617,3 +1602,36 @@ a .offer-box:last-child{
 .new-campaign-content .form-group input.btn-radio{
   width: 14px;
 }
+
+// brand reach button design
+/*==== this is basic button design that will inherit all other button */
+.br-btn-primary{
+  background-color: #00c9f3;
+  border: medium none;
+  border-radius: 0;
+  color: #ffffff;
+  font-weight: 300;
+  padding: 9px 10px;
+  font-family: "Raleway",sans-serif;
+  &:hover {
+    background-color: #00b6e2;
+  }
+}
+
+.br-btn-submit {
+  @extend .br-btn-primary;
+  height: 36px;
+  min-width: 111px;
+  margin-top: 14px;
+}
+
+// user setting page save button specific style
+.br-btn-setting{
+  height: 32px;
+  margin-bottom: 69px;
+  margin-left: 20px;
+  margin-top: 15px;
+  width: 130px;
+  padding: 6px 12px;
+}
+
