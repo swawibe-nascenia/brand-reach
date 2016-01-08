@@ -13,7 +13,7 @@
     <%= form_tag(nil, method: 'get') do %>
         <%= label_tag :name, 'Choose an account' %>
         <%= select_tag 'id', options_from_collection_for_select(@accounts, 'id', 'name', @account.id), prompt: 'Choose an account to view the statistics' %>
-        <%= button_tag 'VIEW', class: 'btn btn-campaign-view button-border-yellow' %>
+        <%= button_tag 'VIEW', class: 'btn-fb-insight-camp-show' %>
     <% end %>
   </div>
 

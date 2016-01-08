@@ -1663,3 +1663,16 @@ a .offer-box:last-child{
 
 }
 
+.btn-fb-insight-camp-show{
+  @extend  .br-btn-primary;
+  padding: 5px 10px;
+  margin-left: 15px;
+  width: 13%;
+}
+
+.btn-inf-camp-pdf-down{
+  @extend  .br-btn-primary;
+  margin: 25px 5px 5px 5px;
+  padding: 5px 36px;
+}
+
