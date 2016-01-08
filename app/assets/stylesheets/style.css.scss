@@ -1612,7 +1612,7 @@ a .offer-box:last-child{
   color: #ffffff;
   font-weight: 300;
   padding: 9px 10px;
-  font-family: "Raleway",sans-serif;
+  font-family: "Raleway Light",sans-serif;
   &:hover {
     background-color: #00b6e2;
   }
@@ -1633,5 +1633,33 @@ a .offer-box:last-child{
   margin-top: 15px;
   width: 130px;
   padding: 6px 12px;
+}
+
+.btn-profile-page-update{
+  @extend  .br-btn-primary;
+  height: 32px;
+  margin: 10px 20px 40px;
+  padding: 5px 30px;
+
+  @media (max-width: 991px) {
+    width: 95%;
+  }
+
+  @media (max-width: 768px) {
+    margin: 20px;
+    width: 93%;
+  }
+
+  @media (max-width: 767px) {
+    margin: 10px;
+
+  }
+}
+
+.btn-profile-page-add-fb{
+  @extend  .br-btn-primary;
+  float: right;
+  padding: 5px 15px;
+
 }
 
