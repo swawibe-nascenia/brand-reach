@@ -42,11 +42,27 @@
 }
 
 .brands-explore-content-wrapper .influencer-industry {
+    cursor: help;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     height: 20px;
     text-decoration: underline;
+    position: relative;
+}
+
+.industry-container{
+    position: relative;
+}
+
+.title-tooltip{
+    background: #2B2F3E none repeat scroll 0 0;
+    color: #ffffff;
+    display: none;
+    position: absolute;
+    text-align: center;
+    top: 25px;
+    white-space: normal;
 }
 
 .brands-explore-content-wrapper .influencer-address {

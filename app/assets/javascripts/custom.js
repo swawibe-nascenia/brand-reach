@@ -447,6 +447,11 @@ $(function(){
         inputs.trigger('change');
     }
 
+//    show all industries on click
+    $('.influencer-industry').click(function(){
+        $(this).next().toggle();
+    });
+
 });
 // end of document.ready() method
 
