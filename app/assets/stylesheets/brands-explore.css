@@ -109,24 +109,21 @@
     margin: 40px auto;
 }
 
-.follower-box{
-    border-radius: 2px;
-    font-size: 15px;
-    float: left;
-}
-
 .btn-box{
     margin-top: 12px;
     float: left;
 }
 
 .follower-box{
+    border-radius: 2px;
     box-shadow: 0 0 2px #d9d9d9;
-    padding: 4px;
-    min-width: 100px;
-    text-align: center;
-    margin-top: 12px;
+    float: left;
+    font-size: 15px;
     margin-right: 10px;
+    margin-top: 12px;
+    min-width: 100px;
+    padding: 4px 15px;
+    text-align: center;
 }
 
 .follower-box .follower-number{
