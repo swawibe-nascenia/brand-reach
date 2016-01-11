@@ -12,9 +12,9 @@
     </a>
   </td>
   <% end %>
-  <td>
+  <td class="text-center">
     <% if user.active? %>
-        <a href="javascript:;" class="text-red  text-danger deactivate-user" data-id="<%= user.id %>">
+        <a href="javascript:;" class="text-danger deactivate-user" data-id="<%= user.id %>">
           <h5>DEACTIVATE</h5>
         </a>
     <% else %>
@@ -22,9 +22,8 @@
           <h5>ACTIVATE</h5>
         </a>
     <% end %>
-  </td>
-  <td>
-    <%= link_to 'javascript:;', class: 'js-remove-user', data: { id: user.id } do %>
+
+    <%= link_to 'javascript:;', class: 'js-remove-user text-red', data: { id: user.id } do %>
         <h5>DELETE</h5>
     <% end %>
   </td>
