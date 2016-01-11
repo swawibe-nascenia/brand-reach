@@ -71,9 +71,9 @@ class User < ActiveRecord::Base
   has_many :facebook_accounts, foreign_key: 'influencer_id', dependent: :destroy
   has_many :campaigns_sent, class_name: 'Campaign', foreign_key: 'sender_id', dependent: :destroy
   has_many :campaigns_received, class_name: 'Campaign', foreign_key: 'receiver_id', dependent: :destroy
-  has_many :bank_accounts
-  has_many :influencer_payments
-  has_many :contact_uses
+  has_many :bank_accounts, dependent: :destroy
+  has_many :influencer_payments, dependent: :destroy
+  # has_many :contact_uses, class_name: 'Campaign', dependent: :destroy
   has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id'
   has_and_belongs_to_many :categories
 
@@ -256,6 +256,14 @@ class User < ActiveRecord::Base
     raw
   end
 
+  # return engage campaign
+  def engaged_campaigns
+    if brand?
+      Campaign.engaged_campaigns_from(self)
+    else
+      Campaign.engaged_campaigns_for(self)
+    end
+  end
   # ----------------------------------------------------------------------
   # == Private == #
   # ----------------------------------------------------------------------

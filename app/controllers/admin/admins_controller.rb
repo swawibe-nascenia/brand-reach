@@ -185,6 +185,24 @@ class Admin::AdminsController < ApplicationController
       @messages << 'User not found.'
     end
   end
+
+  def delete_user
+    @user = User.where(id: params[:id]).first
+    @success = false
+    @message = ''
+
+    if @user
+      if @user.engaged_campaigns.present?
+        @message = 'Cannot be deleted at this point. The selected user has active campaigns running.'
+      else
+        @user.destroy
+        @success = true
+      end
+    else
+      @message = 'User is not found.'
+    end
+  end
+
   private
 
   def admin_params

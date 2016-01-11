@@ -23,6 +23,9 @@
         </a>
     <% end %>
   </td>
+  <td>
+    <%= link_to 'DELETE', delete_user_admin_admin_path(id: user.id), method: :delete, remote: true %>
+  </td>
 </tr>
 
 <script>

@@ -115,6 +115,7 @@ Rails.application.routes.draw do
         put :activate_user
         put :deactivate_user
         get :reset_user_password
+        delete :delete_user
       end
     end
 

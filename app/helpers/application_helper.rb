@@ -96,6 +96,13 @@ module ApplicationHelper
     }
   end
 
+  def user_delete_success_message
+    {
+        head: 'User delete status:',
+        message: 'User delete is successful.'
+    }
+  end
+
   def home_path
     if current_user && current_user.brand?
       brand_home_public_index_path

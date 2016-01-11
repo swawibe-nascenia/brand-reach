@@ -42,7 +42,7 @@
 }
 
 .brands-explore-content-wrapper .influencer-industry {
-    cursor: help;
+    cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -56,13 +56,17 @@
 }
 
 .title-tooltip{
-    background: #2B2F3E none repeat scroll 0 0;
-    color: #ffffff;
     display: none;
     position: absolute;
     text-align: center;
     top: 25px;
     white-space: normal;
+    font-size: 13px;
+    border: 1px solid #B3ABAB;
+    color: #333;
+    padding: 5px;
+    font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color: #e6e6e6;
 }
 
 .brands-explore-content-wrapper .influencer-address {
