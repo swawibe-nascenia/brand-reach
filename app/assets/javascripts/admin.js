@@ -77,4 +77,30 @@ $(function () {
             }
         });
     });
+
+/*=== delete user =========*/
+    $('.js-remove-user').click(function () {
+        var userId = $(this).data('id');
+
+        bootbox.confirm({
+            message: 'Do you really want to delete this user?',
+            closeButton: false,
+            callback: function (result) {
+                if (result) {
+                    $.ajax({
+                        type: 'delete',
+                        url: '/admins/' + userId + '/delete_user',
+                        dataType: "script",
+                        data: {
+                            'authenticity_token': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function (data) {
+                            console.log(data)
+                        }
+                    });
+                }
+            }
+        });
+    });
+
 });
