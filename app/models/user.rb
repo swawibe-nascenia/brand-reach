@@ -264,6 +264,15 @@ class User < ActiveRecord::Base
       Campaign.engaged_campaigns_for(self)
     end
   end
+
+  def full_address
+    address = ''
+    address = address + street_address + ', ' if street_address
+    address = address + city + ', ' if city
+    address = address + state_name + ', ' if state_name
+    address = address + country_name + ', ' if country_name
+    address
+  end
   # ----------------------------------------------------------------------
   # == Private == #
   # ----------------------------------------------------------------------

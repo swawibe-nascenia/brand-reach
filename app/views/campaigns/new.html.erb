@@ -13,7 +13,7 @@
         <h4><%= @influencer.full_name || 'USER' %></h4>
       </a>
       <p class="influencer-title"><%= @influencer.categories.pluck(:name).join(', ') if @influencer.categories.present? %> </p>
-      <p class="influencer-address"> <%= @influencer.street_address.present? ? @influencer.street_address : 'User Address'  %> </p>
+      <p class="influencer-address"> <%= @influencer.full_address  %> </p>
     </div>
   </div>
 
@@ -54,9 +54,9 @@
 
               <!--status update filed-->
               <div class="form-group" id="post-type-0">
-                <%= f.label :campaign_content, 'Status Message', class: 'control-label' %>
+                <%= f.label :campaign_content, 'Status Message', class: 'control-label description-label' %>
                 <div class="display-inline">
-                  <%= f.text_field :campaign_content, class: 'form-control input-with-img', name: 'status_message' %>
+                  <%= f.text_area :campaign_content, rows: 4, class: 'form-control input-with-img campaign-description', name: 'status_message' %>
                 </div>
               </div>
 
@@ -140,6 +140,20 @@
                 </div>
               </div>
 
+              <div class="form-group">
+                <%= f.label :name, 'Description', class: 'control-label description-label' %>
+                <div class="display-inline campaign-name-input">
+                  <%= f.text_area :text, rows: 4, class: 'campaign-description' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :name, 'Headline', class: 'control-label' %>
+                <div class="display-inline campaign-name-input">
+                  <%= f.text_field :headline, class: 'form-control' %>
+                </div>
+              </div>
+
               <%= f.hidden_field :sender_id %>
               <%= f.hidden_field :receiver_id %>
             </div>
@@ -147,25 +161,6 @@
         </div>
       </div>
 
-      <div class="text-pink">WHAT TEXT AND LINKS DO YOU WANT TO USE?</div>
-
-      <div class="text-headline-form">
-
-        <div class="">
-          <%= f.label :text, 'Description' %>
-        </div>
-        <div class="">
-          <%= f.text_area :text, rows: 4 %>
-        </div>
-
-        <div class="">
-          <%= f.label :headline, 'Headline' %>
-        </div>
-        <div class="">
-          <%= f.text_field :headline  %>
-        </div>
-
-      </div>
       <div class="new-campaign-button-set">
         <%= f.button 'SEND REQUEST', class: 'br-btn-submit btn-book-now' %>
         <%= link_to 'CANCEL', explores_path, class: 'btn btn-book-now-cancel grey-color' %>

@@ -973,8 +973,15 @@ only screen and (max-width: 560px) {
     margin-bottom: 15px;
 }
 
-.campaign-create-wrapper .new-campaign-content input:not([type="radio"]), .social-account-tab-content select {
+.campaign-create-wrapper .new-campaign-content input:not([type="radio"]), .social-account-tab-content select, .campaign-description {
     display: inline;
     margin: 5px;
     width: 52%;
+}
+
+
+
+.description-label{
+    margin-top: 30px;
+    vertical-align: top;
 }
