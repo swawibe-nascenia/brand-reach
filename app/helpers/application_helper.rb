@@ -113,7 +113,7 @@ module ApplicationHelper
   def payment_paid_success
     {
         head: 'Influencer payment paid status:',
-        message: 'Payment paid success.'
+        message: 'Payment has been paid successfully.'
     }
   end
 
