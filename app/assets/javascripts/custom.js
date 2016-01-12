@@ -448,7 +448,7 @@ $(function(){
     }
 
 //    show all industries on click
-    $('.influencer-industry').click(function(){
+    $('.influencer-industry.click-able').hover(function(){
         $(this).next().toggle();
     });
 
