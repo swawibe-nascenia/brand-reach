@@ -21,7 +21,6 @@ class Admin::AdminsController < ApplicationController
 
   def create
     authorize :admin, :manage_admins?
-
     @admin = User.new(admin_params) do |admin|
       admin.status = User.statuses[:active]
       admin.user_type = User.user_types[:admin]
@@ -49,6 +48,7 @@ class Admin::AdminsController < ApplicationController
   def update
     authorize :admin, :manage_brandreach?
     @admin = current_user
+
     if @admin.update(admin_params.except(:current_password, :password, :password_confirmation))
       if admin_params[:current_password].present? && admin_params[:password].present?
         if @admin.update_with_password(admin_params)
@@ -67,7 +67,6 @@ class Admin::AdminsController < ApplicationController
 
   def destroy
     authorize :admin, :manage_admins?
-
     @admin = User.where(id: params[:id], user_type: User.user_types[:admin]).first
     @error_message = ''
     @success = false
@@ -128,7 +127,6 @@ class Admin::AdminsController < ApplicationController
 
   def deactivate_user
     authorize :admin, :manage_brandreach?
-
     @user = User.where(id: params[:id], status: User.statuses[:active],
                        user_type: [User.user_types[:influencer],
                        User.user_types[:brand]
@@ -137,6 +135,7 @@ class Admin::AdminsController < ApplicationController
     @success = false
     @message = 'User suspend request fail'
     logger.info "-----------Rails session now #{session.inspect}"
+
     if @user
       @user.update_column(:status, User.statuses[:suspended])
       session.delete(user_id: @user.id)
@@ -172,7 +171,6 @@ class Admin::AdminsController < ApplicationController
 
   def reset_user_password
     authorize :admin, :manage_brandreach?
-
     @user = User.where(user_type: User.user_types[:brand], id: params[:id]).first
     @success = true
     @messages = []
@@ -187,6 +185,7 @@ class Admin::AdminsController < ApplicationController
   end
 
   def delete_user
+    authorize :admin, :manage_brandreach?
     @user = User.where(id: params[:id]).first
     @success = false
     @message = ''
@@ -200,6 +199,26 @@ class Admin::AdminsController < ApplicationController
       end
     else
       @message = 'User is not found.'
+    end
+  end
+
+  # influencer payment requests
+  def payment_request
+    authorize :admin, :manage_brandreach?
+    @payment_requests = InfluencerPayment.includes(:user)
+
+    @payment_requests = @payment_requests.page params[:page]
+  end
+
+  def make_payment_paid
+    authorize :admin, :manage_brandreach?
+    @payment_request = InfluencerPayment.where(id: params[:payment_id]).first
+    @success = false
+
+    if @payment_request && @payment_request.update(status: InfluencerPayment.statuses[:paid])
+      @success = true
+    else
+      @message = 'Requested payment is not found.'
     end
   end
 

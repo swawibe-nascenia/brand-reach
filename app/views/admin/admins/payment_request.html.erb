@@ -1,0 +1,19 @@
+<% title 'Payments Request' %>
+
+<div class="admin-page-wrapper">
+  <h1 class="admin-header display-inline-block">Influencer Payment Request</h1>
+
+  <table class="table table-responsive admin-table">
+    <thead>
+    <tr>
+      <th>Influencer Name</th>
+      <th>Withdrawal Amount</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%= render partial: 'payment', collection: @payment_requests, :as => :payment %>
+    </tbody>
+  </table>
+  <%= paginate @payment_requests %>
+</div>

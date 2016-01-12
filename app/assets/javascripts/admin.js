@@ -103,4 +103,30 @@ $(function () {
         });
     });
 
+/*========== make influencer payment request paid =====*/
+    $('.js-make-payment-paid').click(function(){
+        var paymentId = $(this).data('id');
+
+        bootbox.confirm({
+            message: 'Do you really want to make paid this payment?',
+            closeButton: false,
+            callback: function (result) {
+                if (result) {
+                    $.ajax({
+                        type: 'put',
+                        url: '/admins/make_payment_paid' ,
+                        dataType: "script",
+                        data: {
+                            'authenticity_token': $('meta[name="csrf-token"]').attr('content'),
+                            'payment_id': paymentId
+                        },
+                        success: function (data) {
+                            console.log(data)
+                        }
+                    });
+                }
+            }
+        });
+    });
+
 });

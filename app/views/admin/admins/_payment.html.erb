@@ -1,0 +1,19 @@
+
+<tr id="payment-<%= payment.id %>">
+  <td><%= payment.user.first_name %></td>
+  <td><%= payment.amount_billed %></td>
+  <td>
+      <% if payment.pending? %>
+
+            <%= link_to 'Payment Complete', 'javascript:;',
+                        data: {id: payment.id},
+                        class: 'js-make-payment-paid' %>
+
+
+      <% elsif payment.paid? %>
+            <p class="text-success">Paid payment</p>
+      <% else %>
+          <p class="text-danger">Fail paid payment</p>
+      <% end %>
+  </td>
+</tr>

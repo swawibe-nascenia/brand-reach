@@ -1,0 +1,10 @@
+<% if @success %>
+var $successText = $('<p class="text-success">Paid payment</p>');
+$('#payment-' + <%= @payment_request.id %> + ' .js-make-payment-paid').replaceWith($successText);
+$('.modal-container').html("<%= j render(:partial => 'shared/success_message',
+                                :locals => { message: payment_paid_success }) %>");
+<% else %>
+bootbox.alert({message: '<%= @message %>',
+    closeButton: false});
+window.location.reload();
+<% end %>

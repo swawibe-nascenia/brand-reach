@@ -109,6 +109,8 @@ Rails.application.routes.draw do
         get '/manage-admins', to: 'admins#manage_admins'
         get :influencer_list
         get :brand_list
+        get 'payment-request', to: 'admins#payment_request'
+        put :make_payment_paid
       end
 
       member do

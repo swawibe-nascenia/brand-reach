@@ -110,6 +110,13 @@ module ApplicationHelper
     }
   end
 
+  def payment_paid_success
+    {
+        head: 'Influencer payment paid status:',
+        message: 'Payment paid success.'
+    }
+  end
+
   def home_path
     if current_user && current_user.brand?
       brand_home_public_index_path
