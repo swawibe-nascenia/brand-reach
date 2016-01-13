@@ -31,11 +31,18 @@
 
   <div class="payment font-color-pink">PAYMENT</div>
 
+  <div>
+    <%= image_tag(@campaign.receiver.profile_picture, :class => 'campaign-influencer-picture', :alt => 'profile-picture') %>
+    <div class="influencer-description">
+      <a href="<%= show_user_profile_path(@campaign.receiver.id) %>" data-remote="true">
+        <h4><%= @campaign.receiver.full_name || 'USER' %></h4>
+      </a>
+      <p class="influencer-title"><%= @campaign.receiver.categories.pluck(:name).join(', ') if @campaign.receiver.categories.present? %> </p>
+      <p class="influencer-address"> <%= @campaign.receiver.full_address  %> </p>
+    </div>
+  </div>
+
   <p>
-    <%= image_tag(@campaign.receiver.profile_picture, :class => 'payment-influencer-image', :alt => 'Influencer Picture') %><br/>
-    <strong>Influencer Name :</strong> <%=@campaign.receiver.full_name %><br/>
-    <strong>Influencer Industry :</strong> <%= @campaign.receiver.categories.pluck(:name).join(', ') if @campaign.receiver.categories.present? %><br/>
-    <strong>Influencer Location :</strong> <%= @campaign.receiver.location %><br/>
     <br/>
     <strong>Campaign Name :</strong> <%= @campaign.name %><br/>
     <strong>Type of Post :</strong> <%= @campaign.post_type.humanize %><br/>
