@@ -483,6 +483,10 @@ only screen and (max-width: 560px) {
     width: 100%;
 }
 
+.payment-profile-info {
+    padding-left: 0;
+}
+
 .social-account-tab-content {
     border: 1px solid #ddd ;
     border-top: none;
