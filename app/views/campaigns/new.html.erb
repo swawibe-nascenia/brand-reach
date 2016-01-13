@@ -122,10 +122,12 @@
                     <div>
                       <%= f.label :start_date, 'Start' %>
                       <%= f.text_field :start_date, { value: Time.now.strftime('%d/%m/%Y'), class: 'start_date', disabled: 'disabled' } %>
+                      <%= f.text_field :start_date, { value: Time.now.strftime('%d/%m/%Y'), class: 'start_date', disabled: 'disabled' } %>
                     </div>
 
                     <div>
                       <%= f.label :end_date, 'End' %>
+                      <%= f.text_field :end_date, { value: (Time.now + 1.month).strftime('%d/%m/%Y'), class: 'end_date', disabled: 'disabled'} %>
                       <%= f.text_field :end_date, { value: (Time.now + 1.month).strftime('%d/%m/%Y'), class: 'end_date', disabled: 'disabled'} %>
                     </div>
                   </div>
@@ -340,5 +342,8 @@
                 $('.image-loading-message').hide();
             }
         });
+
+/*=====  validating dynamic fields for this page ========*/
+
     })
 </script>
