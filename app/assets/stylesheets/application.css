@@ -15,5 +15,6 @@
  *= require flag_icon_css
  *= require parsley
  *= require jquery.Jcrop.min
+ *= require jquery-ui-timepicker-addon
  *= require_self
  */
