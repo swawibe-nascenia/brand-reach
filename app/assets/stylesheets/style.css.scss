@@ -1616,7 +1616,7 @@ a .offer-box:last-child{
   color: #ffffff;
   font-weight: 300;
   padding: 9px 10px;
-  font-family: "Raleway Light","Raleway",sans-serif;
+  font-family: 'Raleway Light', 'Raleway', sans-serif;
   &:hover {
     background-color: #00b6e2;
     color: #ffffff;
@@ -1766,4 +1766,6 @@ a .offer-box:last-child{
   line-height: 1;
   min-width: 112px;
   padding: 9px 10px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
 }
