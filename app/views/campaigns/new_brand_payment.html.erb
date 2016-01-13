@@ -32,7 +32,7 @@
   <div class="payment font-color-pink">PAYMENT</div>
 
   <div>
-    <%= image_tag(@campaign.receiver.profile_picture, :class => 'campaign-influencer-picture', :alt => 'profile-picture') %>
+    <%= image_tag(@campaign.receiver.profile_picture, :class => 'campaign-influencer-picture payment-influencer-picture', :alt => 'profile-picture') %>
     <div class="influencer-description">
       <a href="<%= show_user_profile_path(@campaign.receiver.id) %>" data-remote="true">
         <h4><%= @campaign.receiver.full_name || 'USER' %></h4>
@@ -40,6 +40,12 @@
       <p class="influencer-title"><%= @campaign.receiver.categories.pluck(:name).join(', ') if @campaign.receiver.categories.present? %> </p>
       <p class="influencer-address"> <%= @campaign.receiver.full_address  %> </p>
     </div>
+  </div>
+
+  <div>
+    <p class="influencer-profile-info">
+      <%= @campaign.receiver.short_bio %>
+    </p>
   </div>
 
   <p>

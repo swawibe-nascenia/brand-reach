@@ -451,6 +451,10 @@ only screen and (max-width: 560px) {
     height: 100px;
 }
 
+.payment-influencer-picture {
+    margin-left: 0;
+}
+
 .influencer-description {
     display: inline-block;
     padding-left: 20px;
