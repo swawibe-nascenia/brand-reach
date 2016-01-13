@@ -487,6 +487,11 @@ only screen and (max-width: 560px) {
     padding-left: 0;
 }
 
+.payment-information {
+    border: 1px solid #ddd;
+    padding: 10px 20px 30px;
+}
+
 .social-account-tab-content {
     border: 1px solid #ddd ;
     border-top: none;
@@ -852,9 +857,9 @@ only screen and (max-width: 480px) {
 }
 
 .payment {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
-    padding: 20px 0;
+    padding: 0 0 20px;
 }
 
 .fb-activity-radio {
