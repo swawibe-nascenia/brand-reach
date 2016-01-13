@@ -20,16 +20,12 @@
     color: #666666;
 }
 
-.performance_table thead tr th:nth-child(2), .engagement_table thead tr th:nth-child(2) {
-    /*width: 85px;*/
-}
-
 .brand_campaign_engagement_table thead tr th:nth-child(2), .brand_campaign_performance_table thead tr th:nth-child(2) {
     width: auto;
 }
 
 .brand_campaign_engagement_table tr td:nth-child(1), .brand_campaign_performance_table tr td:nth-child(1), .brand_campaign_engagement_table tr th:nth-child(1),  .brand_campaign_performance_table tr th:nth-child(1) {
-    text-align: left;
+    text-align: center;
 }
 
 .payment-div {
@@ -376,7 +372,7 @@ only screen and (max-width: 560px) {
         padding-left: 10px;
     }
 
-    .performance_table th:nth-child(1), .performance_table td:nth-child(1), .engagement_table th:nth-child(1), .engagement_table td:nth-child(1) {
+    .performance_table th:nth-child(1), .performance_table td:nth-child(1), .engagement_table th:nth-child(1), .engagement_table td:nth-child(1), .brand_campaign_performance_table tr td:nth-child(1) {
         text-align: left ;
         width: auto;
     }
@@ -413,14 +409,16 @@ only screen and (max-width: 560px) {
     .engagement_table > tbody > tr > td:nth-of-type(4):before { content: "Comments : ";  font-weight: bold; }
     .engagement_table > tbody > tr > td:nth-of-type(5):before { content: "Shares: ";  font-weight: bold; }
 
-    .brand_campaign_performance_table > tbody > tr > td:nth-of-type(1):before { content: "Campaign Name : "; font-weight: bold; }
-    .brand_campaign_performance_table > tbody > tr > td:nth-of-type(2):before { content: "Post Likes : ";  font-weight: bold; }
-    .brand_campaign_performance_table > tbody > tr > td:nth-of-type(3):before { content: "Reach : ";  font-weight: bold; }
+    .brand_campaign_performance_table > tbody > tr > td:nth-of-type(2):before { content: "Campaign Name : "; font-weight: bold; }
+    .brand_campaign_performance_table > tbody > tr > td:nth-of-type(3):before { content: "Post Likes : ";  font-weight: bold; }
+    .brand_campaign_performance_table > tbody > tr > td:nth-of-type(4):before { content: "Reach : ";  font-weight: bold; }
+    .brand_campaign_performance_table > tbody > tr > td:nth-of-type(5):before { content: "Comments : ";  font-weight: bold; }
+    .brand_campaign_performance_table > tbody > tr > td:nth-of-type(6):before { content: "Shares: ";  font-weight: bold; }
 
-    .brand_campaign_engagement_table > tbody > tr > td:nth-of-type(1):before { content: "Campaign Name : "; font-weight: bold; }
-    .brand_campaign_engagement_table > tbody > tr > td:nth-of-type(2):before { content: "Likes : ";  font-weight: bold; }
-    .brand_campaign_engagement_table > tbody > tr > td:nth-of-type(3):before { content: "Comments : ";  font-weight: bold; }
-    .brand_campaign_engagement_table > tbody > tr > td:nth-of-type(4):before { content: "Shares: ";  font-weight: bold; }
+    /*.brand_campaign_engagement_table > tbody > tr > td:nth-of-type(1):before { content: "Campaign Name : "; font-weight: bold; }*/
+    /*.brand_campaign_engagement_table > tbody > tr > td:nth-of-type(2):before { content: "Likes : ";  font-weight: bold; }*/
+    /*.brand_campaign_engagement_table > tbody > tr > td:nth-of-type(3):before { content: "Comments : ";  font-weight: bold; }*/
+    /*.brand_campaign_engagement_table > tbody > tr > td:nth-of-type(4):before { content: "Shares: ";  font-weight: bold; }*/
 
     .statistic-table > tbody > tr > td:nth-of-type(1):before { content: "Country/City : "; font-weight: bold; }
     .statistic-table > tbody > tr > td:nth-of-type(2):before { content: "Likes : ";  font-weight: bold; }

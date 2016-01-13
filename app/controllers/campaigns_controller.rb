@@ -212,8 +212,10 @@ class CampaignsController < ApplicationController
   end
 
   def export_brand_campaigns
-    if params[:campaign_id].present?
-      @campaigns = Campaign.engaged_campaigns_from(current_user).where(id: params[:campaign_id])
+
+    if params[:campaign_ids].present?
+      campaign_ids = params[:campaign_ids].split(',').uniq
+      @campaigns = Campaign.engaged_campaigns_from(current_user).where(id: campaign_ids)
     else
       @campaigns = Campaign.engaged_campaigns_from(current_user)
     end
