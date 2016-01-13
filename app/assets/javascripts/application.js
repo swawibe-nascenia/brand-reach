@@ -27,6 +27,7 @@
 //= require bootbox.min
 //= require local_time
 //=require jquery-fileupload/basic
+//=require jquery-ui-timepicker-addon
 // require turbolinks
 // require_tree .
 

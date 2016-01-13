@@ -995,3 +995,36 @@ only screen and (max-width: 560px) {
     margin-top: 30px;
     vertical-align: top;
 }
+
+/*============== time picker formatting stylesheet =========*/
+
+.ui_tpicker_millisec_label,
+.ui_tpicker_second_label,
+.ui_tpicker_second,
+.ui_tpicker_millisec,
+.ui_tpicker_microsec,
+.ui_tpicker_microsec_label,
+.ui_tpicker_timezone_label,
+.ui_tpicker_timezone{
+    display: none;
+}
+
+.start_time, .end_time, .start_date, .end_date{
+    max-width: 110px;
+}
+
+#start_time, #end_time{
+    display: none;
+}
+
+@media (max-width: 440px) {
+    .campaign-create-wrapper .new-campaign-content input.start_time, .campaign-create-wrapper .new-campaign-content input.end_time{
+        margin-left: 39px;
+    }
+}
+
+@media (max-width:981px) and (min-width:768px) {
+    .campaign-create-wrapper .new-campaign-content input.start_time, .campaign-create-wrapper .new-campaign-content input.end_time{
+        margin-left: 39px;
+    }
+}​

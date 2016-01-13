@@ -122,13 +122,14 @@
                     <div>
                       <%= f.label :start_date, 'Start' %>
                       <%= f.text_field :start_date, { value: Time.now.strftime('%d/%m/%Y'), class: 'start_date', disabled: 'disabled' } %>
-                      <%= f.text_field :start_date, { value: Time.now.strftime('%d/%m/%Y'), class: 'start_date', disabled: 'disabled' } %>
+                      <%= text_field_tag 'start_time',  Time.now.strftime('%I:%M %P'), class: 'start_time' %>
+
                     </div>
 
                     <div>
                       <%= f.label :end_date, 'End' %>
                       <%= f.text_field :end_date, { value: (Time.now + 1.month).strftime('%d/%m/%Y'), class: 'end_date', disabled: 'disabled'} %>
-                      <%= f.text_field :end_date, { value: (Time.now + 1.month).strftime('%d/%m/%Y'), class: 'end_date', disabled: 'disabled'} %>
+                      <%= text_field_tag 'end_time',  Time.now.strftime('%I:%M %P'), class: 'end_time' %>
                     </div>
                   </div>
 
@@ -190,11 +191,14 @@
   <% end %>
 
 </div>
-
 </div>
 
 <script type="text/javascript">
     $(document).ready(function() {
+
+//        hive parsely error ul list for start and end date
+        $('#parsley-id-' + $('.start_date').data('parsley-id')).remove();
+        $('#parsley-id-' + $('.end_date').data('parsley-id')).remove();
 
         if($('.daily:checked').length)
         {
@@ -233,6 +237,19 @@
             }
         });
 
+//        time picker
+        $('.start_time').timepicker({
+            timeFormat: "hh:mm tt",
+            showTimezone: 'UTC'
+        });
+
+//
+        $('.end_time').timepicker({
+            timeFormat: "hh:mm tt",
+            showTimezone: 'UTC'
+        });
+//        $('.end_time').datetimepicker();
+
         var social_account_index = $('#social_account').find('option:selected').index();
         var costs = <%= @costs %>;
 
@@ -248,26 +265,33 @@
 
         $('#post_type').change(function() {
             if (costs.length) {
-                // Dont change value 0..3 here, they are post types of campaign. if need any change then synchronize with enum in Campaign model
+                // Dont change value 0..3 here, they are post types of campaign.
+                // if need any change then synchronize with enum in Campaign model
+                // 0 = status update, 1 = profile photo, 2 = cover photo, 3 = video post, 4 = photo post
                 if (this.value == 0) {
                     $('#post_cost').val(costs[social_account_index][0]);
                     showHide(this.value);
+                    hideStartEndTime();
                 }
                 else if (this.value == 1) {
                     $('#post_cost').val( costs[social_account_index][1] );
                     showHide(this.value);
+                    showStartEndTime();
                 }
                 else if (this.value == 2) {
                     $('#post_cost').val(costs[social_account_index][2]);
                     showHide(this.value);
+                    showStartEndTime();
                 }
                 else if (this.value == 3) {
                     $('#post_cost').val(costs[social_account_index][3]);
                     showHide(this.value);
+                    hideStartEndTime();
                 }
                 else if (this.value == 4) {
                     $('#post_cost').val(costs[social_account_index][4]);
                     showHide(this.value);
+                    hideStartEndTime();
                 }
             }
 
@@ -292,6 +316,20 @@
             });
 
             $(base_id_text + show_item).show();
+        }
+
+//       show start and end time
+        function showStartEndTime(){
+            $('.start_time').show();
+            $('.end_time').show();
+
+        }
+
+//       hide start and end time
+        function hideStartEndTime(){
+            $('.start_time').hide();
+            $('.end_time').hide();
+
         }
 
    /*============ new campaign image upload form trigger ====*/

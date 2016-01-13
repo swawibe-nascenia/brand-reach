@@ -397,7 +397,6 @@ $(function(){
         var scrollTop = $(document).scrollTop();
         // welcome bar height
         var offsetTop = $('.welcome_bar').outerHeight();
-        console.log('scrollTop is ' + scrollTop + ' and offsetTop is ' + offsetTop);
         var windowWidth = $( window ).width();
         if (scrollTop > offsetTop ) {
             $('.header').css('top', 0);
