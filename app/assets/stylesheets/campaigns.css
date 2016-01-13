@@ -625,8 +625,8 @@ only screen and (max-width: 560px) {
 }
 
 .download-campaign {
-    text-align: center;
-    margin: 20px 0;
+    text-align: right;
+    margin-bottom: 20px;
     padding-top: 20px;
 }
 
@@ -635,9 +635,9 @@ only screen and (max-width: 560px) {
 }
 
 .btn-download-campaign {
-    background-color:  #ff305a;
+    background-color: #00c9f3;
     color: white;
-    width: 90%;
+    width: 215px;
     font-size: 13px;
     font-weight: 600;
 }
@@ -649,8 +649,7 @@ only screen and (max-width: 560px) {
 .campaign-view label {
     width: 24%;
     text-align: right;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-right: 1%;
     font-weight: 500;
 }
 
@@ -749,7 +748,7 @@ only screen and (max-width: 768px) {
     }
 
     .btn-download-campaign {
-        width: 96%;
+        width: 100%;
     }
 
     .campaign-view label, .campaign-view select, .campaign-view button {
@@ -847,7 +846,7 @@ only screen and (max-width: 480px) {
 
 .btn-download-campaign:hover, .btn-download-campaign:focus {
     color: white;
-    background-color: #eb2e55;
+    background-color: #00b6e2;
 }
 
 .payment-form .parsley-errors-list {
@@ -960,7 +959,7 @@ only screen and (max-width: 560px) {
 }
 
 #export_campaigns {
-    width: 90%;
+    width: 215px;
     margin-left: 5%;
 }
 

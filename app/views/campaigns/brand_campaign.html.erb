@@ -10,25 +10,26 @@
         <% if params[:id].present? %>
         <%= select_tag 'id', options_from_collection_for_select(@all_campaigns, 'id', 'name', @campaigns.first.id), prompt: 'Select all campaign', id: 'campaign_id' %>
         <% else %>
-            <%= select_tag 'id', options_from_collection_for_select(@all_campaigns, 'id', 'name'), prompt: 'Select all campaign', id: 'campaign_id' %>
+            <%= select_tag 'id', options_from_collection_for_select(@all_campaigns, 'id', 'name'), prompt: 'All campaigns', id: 'campaign_id' %>
         <% end %>
         <%= button_tag 'VIEW', class: 'btn-brand-campaign-view' %>
     <% end %>
   </div>
+
+  <div class="download-campaign dropdown">
+    <%#= link_to 'EXPORT', '#', :class => 'btn btn-export button-border-yellow', id: 'export_campaigns' %>
+    <button class="dropdown-toggle btn btn-download-campaign" data-toggle="dropdown">
+      DOWNLOAD REPORT &nbsp;<span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" id="export_campaigns">
+      <li data-format="pdf" class="report-generate"><a href="#">to PDF</a></li>
+      <li data-format="xls" class="report-generate"><a href="#">to Excel</a></li>
+      <li data-format="csv" class="report-generate"><a href="#">to CSV</a></li>
+    </ul>
+  </div>
+
   <div class="br-container">
     <!-- Info boxes -->
-
-    <div class="row download-campaign dropdown">
-      <%#= link_to 'EXPORT', '#', :class => 'btn btn-export button-border-yellow', id: 'export_campaigns' %>
-      <button class="dropdown-toggle btn btn-download-campaign" data-toggle="dropdown">
-        DOWNLOAD THIS CAMPAIGN'S REPORT
-      </button>
-      <ul class="dropdown-menu" id="export_campaigns">
-        <li data-format="pdf" class="report-generate"><a href="#">to PDF</a></li>
-        <li data-format="xls" class="report-generate"><a href="#">to Excel</a></li>
-        <li data-format="csv" class="report-generate"><a href="#">to CSV</a></li>
-      </ul>
-    </div>
 
     <div class="row info-box-container">
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
@@ -176,7 +177,7 @@
             }
             else
             {
-                bootbox.alert({message: 'Please select at least one Campaign.',
+                bootbox.alert({message: 'Please select at least one campaign in order to download the report.',
                     closeButton: false});
             }
 
