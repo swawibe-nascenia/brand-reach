@@ -1,1 +1,5 @@
-$('.modal-container').html("<%= j render(:partial => 'profile/read_only_profile_modal', :locals => { user: @user}) %>");
+<% if params[:search_key] %>
+    $('.modal-container').html("<%= j render(:partial => 'profile/read_only_profile_modal', :locals => { user: @user, search_key: params[:search_key]}) %>");
+<% else %>
+    $('.modal-container').html("<%= j render(:partial => 'profile/read_only_profile_modal', :locals => { user: @user, search_key: ''}) %>");
+<% end %>

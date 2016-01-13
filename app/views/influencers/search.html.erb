@@ -1,9 +1,23 @@
 <%= stylesheet_link_tag 'offers.css', media: 'all' %>
 
 <div class="influencer-search-result-box">
-  <% @messages.each do |message|%>
-      <%= link_to "#{offers_path(offer_id: message.campaign_id, search_key: params[:search_key])}#offer-#{message.campaign_id}", class: 'display-block' do %>
-      <%= render partial: 'search_item', locals: {offer: message.campaign, message: message} %>
+  <% @campaigns.each do |campaign| %>
+      <%= link_to "#{offers_path(offer_id: campaign.id, search_key: params[:search_key])}#offer-#{campaign.id}", class: 'display-block' do %>
+          <%= render partial: 'search_item', locals: {offer: campaign} %>
       <% end %>
   <% end %>
+
+  <% if @influencers.first.present? %>
+      <%= link_to show_user_profile_path(@influencers.first.id, search_key: params[:search_key]), class: 'display-block', remote: true do %>
+          <div  class="offer-box">
+            <div class="offer-header-search">
+              <div class="offer-message-sender">
+                <%= image_tag @influencers.first.profile_picture, class: 'inbox-logo-responsive' %>
+                <span class="title" title="<%= @influencers.first.full_name %>"><%= @influencers.first.full_name %> </span>
+              </div>
+            </div>
+          </div>
+      <% end %>
+  <% end %>
+
 </div>

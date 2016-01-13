@@ -2,136 +2,149 @@
 <%= stylesheet_link_tag 'brands-explore' %>
 
 <div class="modal fade modal-profile" id="show-readonly-user-profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog influencer-profile-modal" role="document">
-      <div class="modal-content view-profile-modal">
-        <div class="modal-header">
-          <button type="button" class="close view-profile-modal-close" data-dismiss="modal" aria-label="Close"><span
-          aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel"></h4>
+  <div class="modal-dialog influencer-profile-modal" role="document">
+    <div class="modal-content view-profile-modal">
+      <div class="modal-header">
+        <button type="button" class="close view-profile-modal-close" data-dismiss="modal" aria-label="Close"><span
+        aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+        <div class="display-inline-block influencer-modal-image">
+          <%= image_tag(user.profile_picture, :class => 'explore-influencer-picture', :alt => 'profile-picture') %>
         </div>
-        <div class="modal-body">
-          <div class="display-inline-block influencer-modal-image">
-            <%= image_tag(user.profile_picture, :class => 'explore-influencer-picture', :alt => 'profile-picture') %>
-          </div>
 
-          <div class="display-inline-block influencer-modal-details">
-            <h4 class="font-raleway"><%= user.full_name %></h4>
-            <p class="title font-raleway"></p>
-            <p class="influencer-address font-raleway"> <%= user.location %></p>
-          </div>
+        <div class="display-inline-block influencer-modal-details">
+          <h4 class="font-raleway"><%= user.full_name %></h4>
 
-          <div class="display-inline-block pull-right like-send-request">
-            <% if  user.influencer? %>
-            <div class="follower-box font-raleway">
-              <div class="follower-number display-inline-block"><%= user.max_followers %></div>
-              <div class="view-profile-likes display-inline-block">&nbsp;Likes</div>
-            </div>
-           <% end %>
-          </div>
+          <p class="title font-raleway"></p>
 
-          <div class="">
-            <p class="profile-info font-raleway">
-              <%= user.short_bio %>
-            </p>
-          </div>
-          <!-- start of pricing section -->
+          <p class="influencer-address font-raleway"> <%= user.location %></p>
+        </div>
 
-          <% if user.active_facebook_accounts.present? && user.influencer? %>
+        <div class="display-inline-block pull-right like-send-request">
+          <% if user.influencer? %>
+              <div class="follower-box font-raleway">
+                <div class="follower-number display-inline-block"><%= user.max_followers %></div>
+                <div class="view-profile-likes display-inline-block">&nbsp;Likes</div>
+              </div>
+          <% end %>
+        </div>
 
-              <h4 class="font-raleway"> Pricing</h4>
+        <div class="">
+          <p class="profile-info font-raleway">
+            <%= user.short_bio %>
+          </p>
+        </div>
+        <!-- start of pricing section -->
 
-              <div class="row pricing-section">
-                <div class="col-md-12">
-                  <div class="social-account-tabs">
-                    <ul class="nav nav-tabs social-account-nav-tabs responsive influencer-social-account-nav-tabs">
-                      <% user.active_facebook_accounts.each do |account| %>
-                          <li class="influencer-social-account-tab" data-id="<%= account.id %>">
-                            <a data-toggle="tab" href="#fb_<%= account.id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %>
-                            </a></li>
-                      <% end %>
-                    </ul>
+        <% if user.active_facebook_accounts.present? && user.influencer? %>
 
-                    <div class="tab-content responsive social-account-tab-content font-raleway">
-                      <% user.active_facebook_accounts.each do |account| %>
-                          <div id="fb_<%= account.id %>" class="tab-pane">
+            <h4 class="font-raleway"> Pricing</h4>
 
-                            <%= render 'facebook/page_insights', account: account %>
-                            <br/>
+            <div class="row pricing-section">
+              <div class="col-md-12">
+                <div class="social-account-tabs">
+                  <ul class="nav nav-tabs social-account-nav-tabs responsive influencer-social-account-nav-tabs">
+                    <% user.active_facebook_accounts.each do |account| %>
+                        <li class="influencer-social-account-tab" data-id="<%= account.id %>">
+                          <a data-toggle="tab" href="#fb_<%= account.id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %>
+                          </a></li>
+                    <% end %>
+                  </ul>
 
-                            <div class="form-group">
-                              <div class="col-md-6 col-sm-12 col-xs-12">
-                                <%= label_tag :status_update_cost, 'Status Update' %>
-                                <%= text_field_tag '', account.status_update_cost, :disabled => true %> INR
-                              </div>
-                              <div class="col-md-6 col-sm-12 col-xs-12">
-                                <%= label_tag :cover_photo_cost, 'Cover Photo' %>
-                                <%= text_field_tag '', account.cover_photo_cost, :disabled => true %> INR
-                              </div>
+                  <div class="tab-content responsive social-account-tab-content font-raleway">
+                    <% user.active_facebook_accounts.each do |account| %>
+                        <div id="fb_<%= account.id %>" class="tab-pane">
+
+                          <%= render 'facebook/page_insights', account: account %>
+                          <br/>
+
+                          <div class="form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                              <%= label_tag :status_update_cost, 'Status Update' %>
+                              <%= text_field_tag '', account.status_update_cost, :disabled => true %> INR
                             </div>
-                            <div class="form-group">
-                              <div class="col-md-6 col-sm-12 col-xs-12">
-                                <%= label_tag :profile_photo_cost, 'Profile Photo' %>
-                                <%= text_field_tag '', account.profile_photo_cost, :disabled => true %> INR
-                              </div>
-                              <div class="col-md-6 col-sm-12 col-xs-12">
-                                <%= label_tag :video_post_cost, 'Video Post' %>
-                                <%= text_field_tag '', account.video_post_cost, :disabled => true %> INR
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <div class="col-md-6 col-sm-12 col-xs-12">
-                                <%= label_tag :photo_post_cost, 'Photo Post'  %>
-                                <%= text_field_tag '', account.photo_post_cost, :disabled => true %> INR
-                              </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                              <%= label_tag :cover_photo_cost, 'Cover Photo' %>
+                              <%= text_field_tag '', account.cover_photo_cost, :disabled => true %> INR
                             </div>
                           </div>
-                      <% end %>
-                    </div>
+                          <div class="form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                              <%= label_tag :profile_photo_cost, 'Profile Photo' %>
+                              <%= text_field_tag '', account.profile_photo_cost, :disabled => true %> INR
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                              <%= label_tag :video_post_cost, 'Video Post' %>
+                              <%= text_field_tag '', account.video_post_cost, :disabled => true %> INR
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                              <%= label_tag :photo_post_cost, 'Photo Post' %>
+                              <%= text_field_tag '', account.photo_post_cost, :disabled => true %> INR
+                            </div>
+                          </div>
+                        </div>
+                    <% end %>
                   </div>
                 </div>
               </div>
-          <% end %>
-
-          <div class="social-media-info font-raleway"> Social Media Information</div>
-          <p>
-            <span class="view-profile-fb-twitter-color">Facebook:</span>
-            <a href="<%= "https://www.facebook.com/app_scoped_user_id/#{user.uid}/" %>">
-              <%= "https://www.facebook.com/app_scoped_user_id/#{user.uid}/" %>
-            </a>
-          </p>
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="view-profile-industry font-raleway"> Industry</div>
-              <p class="font-raleway"><%= user.categories.pluck(:name).join(', ') if user.categories.present? %></p>
             </div>
-            <div class="col-md-6">
-              <div class="view-profile-industry font-raleway"> Location</div>
-              <p class="font-raleway"><%= user.location %></p>
-            </div>
+        <% end %>
+
+        <div class="social-media-info font-raleway"> Social Media Information</div>
+        <p>
+          <span class="view-profile-fb-twitter-color">Facebook:</span>
+          <a href="<%= "https://www.facebook.com/app_scoped_user_id/#{user.uid}/" %>">
+            <%= "https://www.facebook.com/app_scoped_user_id/#{user.uid}/" %>
+          </a>
+        </p>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="view-profile-industry font-raleway"> Industry</div>
+            <p class="font-raleway"><%= user.categories.pluck(:name).join(', ') if user.categories.present? %></p>
+          </div>
+          <div class="col-md-6">
+            <div class="view-profile-industry font-raleway"> Location</div>
+            <p class="font-raleway"><%= user.location %></p>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <script>
-      $('.social-account-nav-tabs a:first').tab('show');
+<script>
+    $('.social-account-nav-tabs a:first').tab('show');
 
-      $(function(){
-          $('.influencer-social-account-tab').click(function(){
-              var offerSendBtn = $('a.btn-send-offer-request');
-              var baseOfferUrl = offerSendBtn.data('href');
-              console.log('current profile base url is ' + baseOfferUrl);
+    $(function () {
+        $('.influencer-social-account-tab').click(function () {
+            var offerSendBtn = $('a.btn-send-offer-request');
+            var baseOfferUrl = offerSendBtn.data('href');
+            console.log('current profile base url is ' + baseOfferUrl);
 
-              var socialAccountId = $(this).data('id');
-              var newUrl = baseOfferUrl + '&social_account_id=' + socialAccountId;
-              offerSendBtn.prop("href", newUrl);
+            var socialAccountId = $(this).data('id');
+            var newUrl = baseOfferUrl + '&social_account_id=' + socialAccountId;
+            offerSendBtn.prop("href", newUrl);
 
-              console.log('Now new url is  ' + offerSendBtn.prop('href'));
-          });
+            console.log('Now new url is  ' + offerSendBtn.prop('href'));
+        });
 
-          fakewaffle.responsiveTabs(['xs', 'sm']);
-          $('#show-readonly-user-profile').modal('show');
-      });
-  </script>
+        fakewaffle.responsiveTabs(['xs', 'sm']);
+        $('#show-readonly-user-profile').modal('show');
+
+//          search result marking
+        <% if search_key.present? %>
+            var searchKey = '<%= params[:search_key] %>';
+            var replaceWord = '<span class=text-danger>' + searchKey + '</span>';
+            var regex = new RegExp(searchKey, 'gi');
+
+            $('#show-readonly-user-profile').find('*').each(function () {
+                $(this).html($(this).html().replace(regex, replaceWord));
+            });
+        <% end %>
+    });
+</script>
