@@ -7,7 +7,11 @@
   <div class="campaign-view">
     <%= form_tag(nil, method: 'get') do %>
         <%= label_tag :name, 'Choose a Campaign' %>
-        <%= select_tag 'id', options_from_collection_for_select(@campaigns, 'id', 'name', @campaign.id), prompt: 'Select all campaign', id: 'campaign_id' %>
+        <% if params[:id].present? %>
+        <%= select_tag 'id', options_from_collection_for_select(@all_campaigns, 'id', 'name', @campaigns.first.id), prompt: 'Select all campaign', id: 'campaign_id' %>
+        <% else %>
+            <%= select_tag 'id', options_from_collection_for_select(@all_campaigns, 'id', 'name'), prompt: 'Select all campaign', id: 'campaign_id' %>
+        <% end %>
         <%= button_tag 'VIEW', class: 'btn-brand-campaign-view' %>
     <% end %>
   </div>
@@ -29,7 +33,7 @@
     <div class="row info-box-container">
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
-          <p class="info-box-data total-follower-data-color"><%= number_with_delimiter(@campaign.number_of_likes) %></p>
+          <p class="info-box-data total-follower-data-color"><%= number_with_delimiter(@campaigns.pluck(:number_of_likes).sum) %></p>
 
           <p class="info-box-text ">LIKES</p>
         </div>
@@ -37,7 +41,7 @@
 
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
-          <p class="info-box-data page-view-data-color"><%= number_with_delimiter(@campaign.number_of_post_reach) %></p>
+          <p class="info-box-data page-view-data-color"><%= number_with_delimiter(@campaigns.pluck(:number_of_post_reach).sum) %></p>
 
           <p class="info-box-text">POST REACH</p>
         </div>
@@ -49,7 +53,7 @@
 
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
-          <p class="info-box-data total-post-data-color"><%= number_with_delimiter(@campaign.number_of_comments) %></p>
+          <p class="info-box-data total-post-data-color"><%= number_with_delimiter(@campaigns.pluck(:number_of_comments).sum) %></p>
 
           <p class="info-box-text">COMMENTS</p>
         </div>
@@ -57,7 +61,7 @@
 
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
-          <p class="info-box-data post-reach-data-color"><%= number_with_delimiter(@campaign.number_of_shares) %></p>
+          <p class="info-box-data post-reach-data-color"><%= number_with_delimiter(@campaigns.pluck(:number_of_shares).sum) %></p>
 
           <p class="info-box-text">SHARES</p>
         </div>
@@ -93,26 +97,27 @@
             </thead>
 
             <tbody>
+            <% @campaigns.each do |campaign| %>
             <tr>
               <td>
                   <span class="custom-checkbox">
-                   <input type="checkbox" class="PerformanceCheckBox" data-id="<%= @campaign.id %>" value="1"/>
+                   <input type="checkbox" class="PerformanceCheckBox" data-id="<%= campaign.id %>" value="1"/>
                   <span class="box"><span class="tick"></span></span>
                   </span>
               </td>
               <td>
-                <a href="<%= show_user_profile_path(@campaign.receiver.id) %>" data-remote="true">
-                  <%= image_tag(@campaign.receiver.profile_picture, :class => 'pepsi-img-responsive') %>
+                <a href="<%= show_user_profile_path(campaign.receiver.id) %>" data-remote="true">
+                  <%= image_tag(campaign.receiver.profile_picture, :class => 'pepsi-img-responsive') %>
                 </a>
-                &nbsp; <%= @campaign.name %>
+                &nbsp; <%= campaign.name %>
               </td>
-              <td><%= @campaign.number_of_likes %></td>
-              <td><%= @campaign.number_of_post_reach %></td>
-              <td><%= @campaign.number_of_comments %></td>
-              <td><%= @campaign.number_of_shares %></td>
+              <td><%= campaign.number_of_likes %></td>
+              <td><%= campaign.number_of_post_reach %></td>
+              <td><%= campaign.number_of_comments %></td>
+              <td><%= campaign.number_of_shares %></td>
             </tr>
+            <% end %>
             </tbody>
-
           </table>
         </div>
 
