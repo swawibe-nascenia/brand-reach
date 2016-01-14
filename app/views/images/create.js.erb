@@ -5,8 +5,10 @@
         console.log(" campaign photo upload complete " + '<%= params[:type] %>');
         <% if params[:type] == 'profile' %>
             $("input[name='profile_photo_url']").val('<%= @image.image_path.url %>');
+            $("input[name='profile_photo_url']").parsley().validate();
         <% else %>
             $("input[name='cover_photo_url']").val('<%= @image.image_path.url %>');
+            $("input[name='cover_photo_url']").parsley().validate();
         <% end %>
     <% else %>
         <!--image upload for offer message attachment-->
