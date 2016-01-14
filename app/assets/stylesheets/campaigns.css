@@ -639,9 +639,10 @@ only screen and (max-width: 560px) {
     color: white;
     width: 215px;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 300;
     margin-right: 4px;
     border-radius: 0;
+    font-family: 'Raleway', sans-serif;
 }
 
 .campaign-view {
@@ -1035,4 +1036,8 @@ only screen and (max-width: 768px) {
     .campaign-create-wrapper .new-campaign-content input.start_time, .campaign-create-wrapper .new-campaign-content input.end_time{
         margin-left: 39px;
     }
+}
+
+.performance_table .btn:hover {
+    color: #00b6e2;
 }
