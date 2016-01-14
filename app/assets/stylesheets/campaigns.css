@@ -640,6 +640,8 @@ only screen and (max-width: 560px) {
     width: 215px;
     font-size: 13px;
     font-weight: 600;
+    margin-right: 4px;
+    border-radius: 0;
 }
 
 .campaign-view {
@@ -749,6 +751,7 @@ only screen and (max-width: 768px) {
 
     .btn-download-campaign {
         width: 100%;
+        margin-right: 0;
     }
 
     .campaign-view label, .campaign-view select, .campaign-view button {
