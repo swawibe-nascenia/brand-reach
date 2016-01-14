@@ -1685,7 +1685,7 @@ a .offer-box:last-child{
   @extend  .br-btn-primary;
   margin: -5px 3px 15px 5px;
   padding: 5px 20px 5px 20px;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     width: 100%;
     margin: 10px 0;
     float: none;
@@ -1700,7 +1700,7 @@ a .offer-box:last-child{
   @media (max-width: 1000px){
     margin: 10px 0;
   }
-  @media (max-width: 767px){
+  @media (max-width: 768px){
     margin: 15px 0;
     padding: 4px 0;
     width: 100%;
@@ -1711,7 +1711,7 @@ a .offer-box:last-child{
   @extend .br-btn-primary;
   margin: 25px 0 5px 3px;
   padding: 5px 30px 5px 30px;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     width: 100%;
     margin-left: 0;
   }
@@ -1721,7 +1721,7 @@ a .offer-box:last-child{
   @extend  .br-btn-primary;
   margin: 25px 3px 5px 5px;
   padding: 5px 20px;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     width: 100%;
     margin: 19px 0 0;;
   }
@@ -1741,9 +1741,9 @@ a .offer-box:last-child{
 .btn-brand-campaign-view{
   @extend .br-btn-primary;
   padding: 5px 10px;
-  margin-left: 15px;
-  width: 13%;
-  @media (max-width: 767px) {
+  margin-left: calc(2% - 3px);
+  width: 18%;
+  @media (max-width: 768px) {
     width: 100%;
   }
 }
@@ -1755,7 +1755,7 @@ a .offer-box:last-child{
 
 .influencer-withdraw-container{
   float: right;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     float: none;
   }
 }
