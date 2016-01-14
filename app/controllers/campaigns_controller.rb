@@ -190,6 +190,8 @@ class CampaignsController < ApplicationController
       @campaigns = Campaign.engaged_campaigns_for(current_user)
     end
 
+    @footer_text = "All Rights Reserved \u00AE Brand Reach | Copyright #{Time.now.year}"
+
     respond_to do |format|
       format.html{ render 'campaigns/export_influencer_campaigns'}
       format.pdf do
@@ -218,6 +220,8 @@ class CampaignsController < ApplicationController
     else
       @campaigns = Campaign.engaged_campaigns_from(current_user)
     end
+
+    @footer_text = "All Rights Reserved \u00AE Brand Reach | Copyright #{Time.now.year}"
 
     respond_to do |format|
       format.html{ render 'campaigns/export_brand_campaigns'}

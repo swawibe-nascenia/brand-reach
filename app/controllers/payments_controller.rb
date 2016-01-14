@@ -39,6 +39,8 @@ class PaymentsController < ApplicationController
       @brand_payments = BrandPayment.where(campaign_id: campaign_ids)
     end
 
+    @footer_text = "All Rights Reserved \u00AE Brand Reach | Copyright #{Time.now.year}"
+
     respond_to do |format|
       format.html{ render 'payments/export_brand_payments' }
       format.pdf do
@@ -92,6 +94,8 @@ class PaymentsController < ApplicationController
     else
       @influencer_payments = current_user.influencer_payments
     end
+
+    @footer_text = "All Rights Reserved \u00AE Brand Reach | Copyright #{Time.now.year}"
 
     respond_to do |format|
       format.html{ render 'payments/export_influencer_payments' }
