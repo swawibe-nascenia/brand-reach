@@ -65,7 +65,7 @@
                   <%= f.label :campaign_content, 'Choose a photo', class: 'control-label label-with-img' %>
                   <span class="glyphicon glyphicon-camera image-icon" title="Add Image" id="upload-profile-photo"></span>
 
-                <div class="display-inline">
+                <div class="display-inline campaign-name-input">
                   <%= f.text_field :campaign_content, class: 'form-control input-with-img' , name: 'profile_photo_url' %>
                 </div>
               </div>
@@ -75,7 +75,7 @@
                 <%= f.label :campaign_content, 'Choose a photo', class: 'control-label label-with-img' %>
                 <span class="glyphicon glyphicon-camera image-icon" title="Add Image" id="upload-cover-photo"></span>
 
-                <div class="display-inline">
+                <div class="display-inline campaign-name-input">
                   <%= f.text_field :campaign_content, class: 'form-control input-with-img', name: 'cover_photo_url' %>
                 </div>
               </div>
@@ -196,7 +196,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-//        hive parsely error ul list for start and end date
+//        hide parsely error ul list for start and end date
         $('#parsley-id-' + $('.start_date').data('parsley-id')).remove();
         $('#parsley-id-' + $('.end_date').data('parsley-id')).remove();
 
@@ -261,6 +261,7 @@
             social_account_index = $('#social_account').find('option:selected').index();
             $('#post_type option:first').prop('selected', 'selected');
             $('#post_cost').val(costs[social_account_index][0]);
+            showHide(0);
         });
 
         $('#post_type').change(function() {
@@ -316,6 +317,7 @@
             });
 
             $(base_id_text + show_item).show();
+            makeRequired(show_item);
         }
 
 //       show start and end time
@@ -383,5 +385,27 @@
 
 /*=====  validating dynamic fields for this page ========*/
 
+        function makeRequired(element){
+            makeOptional$element();
+
+            if(element == 1){
+                $("input[name=profile_photo_url]").attr("required", "required");
+                $("input[name=profile_photo_url]").parsley().destroy();
+                $("input[name=profile_photo_url]").parsley();
+            }else if( element == 2){
+                $("input[name=cover_photo_url]").attr("required", "required");
+                $("input[name=cover_photo_url]").parsley().destroy();
+                $("input[name=cover_photo_url]").parsley();
+
+            }
+        }
+
+        function makeOptional$element(){
+            $("input[name=cover_photo_url]").removeAttr("required");
+            $("input[name=profile_photo_url]").removeAttr("required");
+
+            $("input[name=cover_photo_url]").parsley().destroy();
+            $("input[name=profile_photo_url]").parsley().destroy();
+        }
     })
 </script>
