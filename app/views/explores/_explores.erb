@@ -11,7 +11,7 @@
                   <div class="influencer-name" title="<%= influencer.full_name %>"> <%= influencer.full_name %> </div>
                   <p class="influencer-address"><%= influencer.location %></p>
                   <% categories = (influencer.categories.pluck(:name).join(', ') if influencer.categories.present?) || '' %>
-                  <% need_help = categories.size > 30  %>
+                  <% need_help = categories.size > 27  %>
                   <!-- show all industries on click -->
                   <div class="industry-container">
                     <p class="influencer-industry <%= need_help ? 'click-able' : '' %>">
