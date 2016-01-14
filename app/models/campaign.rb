@@ -39,7 +39,7 @@ class Campaign < ActiveRecord::Base
 
   validates :cost, :numericality => { :greater_than_or_equal_to => 0 }, allow_blank: true
   validates :card_number, credit_card_number: true, allow_blank: true
-  validates :sender_id, :receiver_id, :name, :text, :headline, presence: true
+  validates :sender_id, :receiver_id, :name, presence: true
   validates :card_expiration_month, :card_expiration_year, presence: true, on: :update
   validates :name,
             uniqueness: { message: 'of the Campaign is already exist. Please try another Campaign Name.',
