@@ -638,11 +638,11 @@ only screen and (max-width: 560px) {
     background-color: #00c9f3;
     color: white;
     width: 215px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 300;
     margin-right: 4px;
     border-radius: 0;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway Light', 'Raleway', sans-serif;
 }
 
 .campaign-view {
