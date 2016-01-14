@@ -267,10 +267,10 @@ class User < ActiveRecord::Base
 
   def full_address
     address = ''
-    address = address + street_address + ', ' if street_address
+    address = address + street_address + ', ' if street_address.present?
     address = address + city + ', ' if city
     address = address + state_name + ', ' if state_name
-    address = address + country_name + ', ' if country_name
+    address = address + country_name if country_name
     address
   end
   # ----------------------------------------------------------------------
