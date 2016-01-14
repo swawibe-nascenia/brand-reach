@@ -37,7 +37,7 @@
     color: white;
     margin: 25px 5px 5px 5px;
     padding: 5px 36px;
-    background-color: #f8c102;
+    background-color: #00c9f3;
     font-family: 'Raleway', sans-serif;
     font-weight: 600;
     font-size: 11pt;
@@ -464,7 +464,7 @@ only screen and (max-width: 560px) {
 }
 
 .btn-message{
-    background-color: #f8c102;
+    background-color: #00c9f3;
     margin-top: 17%;
     width: 138px;
     height: 38px;
@@ -666,7 +666,7 @@ only screen and (max-width: 560px) {
     color: white;
     padding: 5px 10px;
     margin-left: 15px;
-    background-color: #f8c102;
+    background-color: #00c9f3;
     font-weight: 600;
     font-size: 13px;
     width: 13%;
@@ -845,7 +845,7 @@ only screen and (max-width: 480px) {
 
 .btn-export:hover, .btn-campaign-view:hover, .btn-export:focus, .btn-campaign-view:focus {
     color: white;
-    background-color: #f1b242;
+    background-color: #00b6e2;
 }
 
 .btn-download-campaign:hover, .btn-download-campaign:focus {
@@ -1038,6 +1038,6 @@ only screen and (max-width: 768px) {
     }
 }
 
-.performance_table .btn:hover {
+.performance_table .btn:hover, .performance_table .btn:focus {
     color: #00b6e2;
 }
