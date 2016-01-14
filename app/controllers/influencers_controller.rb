@@ -10,9 +10,33 @@ class InfluencersController < ApplicationController
 
   def search
     wildcard_search = "%#{params[:search_key].strip! || params[:search_key]}%"
-    all_offers_key = current_user.campaigns_received.where.not(deleted_by_influencer: true).pluck(:id)
-    @messages = Message.where(campaign_id: all_offers_key).where('body LIKE :search', search: wildcard_search).includes(:campaign)
-    #TODO @influencers = @influencers.where('industry LIKE :search OR country_name LIKE :search OR state_name LIKE :search', search: wildcard_search)
+    all_offers_key = current_user.campaigns_received
+                         .where.not(deleted_by_influencer: true, deleted_by_brand: true)
+                         .pluck(:id)
+
+    @campaigns = Campaign.where(id: all_offers_key)
+                         .includes(:messages)
+                         .where('messages.body LIKE :search OR
+                                 campaigns.name LIKE :search OR
+                                 campaigns.text LIKE :search OR
+                                 campaigns.headline LIKE :search',
+                                search: wildcard_search).references(:messages)
+
+    @influencers = User.active_influencers.includes(:categories).where('categories.name LIKE :search OR
+                                                  first_name LIKE :search OR
+                                                  last_name LIKE :search OR
+                                                  company_name LIKE :search OR
+                                                  company_email LIKE :search OR
+                                                  landmark LIKE :search OR
+                                                  city LIKE :search OR
+                                                  short_bio LIKE :search OR
+                                                  balance LIKE :search OR
+                                                  email LIKE :search OR
+                                                  street_address LIKE :search OR
+                                                  country_name LIKE :search OR
+                                                  state_name LIKE :search',
+                                                  search: wildcard_search).references(:categories)
+                                             .where(id: current_user.id)
   end
 
   private
