@@ -1063,18 +1063,6 @@ only screen and (max-width: 768px) {
     color: #00b6e2;
 }
 
-.payment-label {
-    font-weight: 600;
-    width: 160px;
-    text-align: right;
-    display: inline-block;
+.payment-information dt, .payment-information dd {
     line-height: 1.8;
-    padding-right: 10px;
-}
-
-@media (max-width: 768px) {
-    .payment-label {
-        text-align: left;
-        display: block;
-    }
 }
