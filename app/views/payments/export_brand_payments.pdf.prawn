@@ -33,12 +33,12 @@ prawn_document(:page_layout => :landscape) do |pdf|
          self.header = true
   end
 
-  pdf.repeat :all do
+  # pdf.repeat :all do
        pdf.bounding_box [pdf.bounds.left, pdf.bounds.bottom + 15], :width  => pdf.bounds.width - 20 do
         pdf.stroke_horizontal_rule
         pdf.move_down(6)
         pdf.text @footer_text, :size => 9, align: :center, color: '5D5D5D'
-      end
+      # end
   end
 
 end
