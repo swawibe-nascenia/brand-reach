@@ -137,3 +137,22 @@
 .identity .text-lower {
   letter-spacing: -0.6px;
 }
+
+.custom-close {
+  color: #d9d9d9;
+  font-size: 2.6em;
+  opacity: 1.5;
+  font-weight: 100;
+}
+
+.modal-dialog-sign-in .sign-in-close {
+  @extend .custom-close;
+  margin-top: -10px;
+  margin-right: -14px;
+}
+
+.modal-dialog-sign-up .sign-up-close {
+  @extend .custom-close;
+  margin-top: -18px;
+  margin-right: -14px;
+}
