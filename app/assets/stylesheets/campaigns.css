@@ -1064,7 +1064,10 @@ only screen and (max-width: 768px) {
 }
 
 .payment-label {
-    font-weight: 500;
-    width: 200px;
+    font-weight: 600;
+    width: 160px;
     text-align: right;
+    display: inline-block;
+    line-height: 1.8;
+    padding-right: 10px;
 }
