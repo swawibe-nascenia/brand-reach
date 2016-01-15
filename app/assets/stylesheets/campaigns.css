@@ -558,6 +558,7 @@ only screen and (max-width: 560px) {
 
 .text-headline-form textarea, .campaign-description {
     resize: none;
+    padding: 5px;
 }
 
 .type-of-post {
