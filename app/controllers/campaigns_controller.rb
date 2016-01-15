@@ -185,9 +185,9 @@ class CampaignsController < ApplicationController
   def export_influencer_campaigns
     if params[:campaign_ids].present?
       campaign_ids = params[:campaign_ids].split(',').uniq
-      @campaigns = Campaign.engaged_campaigns_for(current_user).where(id: campaign_ids)
+      @campaigns = Campaign.engaged_campaigns_for(current_user).where(id: campaign_ids).order('id DESC')
     else
-      @campaigns = Campaign.engaged_campaigns_for(current_user)
+      @campaigns = Campaign.engaged_campaigns_for(current_user).order('id DESC')
     end
 
     @footer_text = "All Rights Reserved \u00AE Brand Reach | Copyright #{Time.now.year}"
@@ -216,9 +216,9 @@ class CampaignsController < ApplicationController
 
     if params[:campaign_ids].present?
       campaign_ids = params[:campaign_ids].split(',').uniq
-      @campaigns = Campaign.engaged_campaigns_from(current_user).where(id: campaign_ids)
+      @campaigns = Campaign.engaged_campaigns_from(current_user).where(id: campaign_ids).order('id DESC')
     else
-      @campaigns = Campaign.engaged_campaigns_from(current_user)
+      @campaigns = Campaign.engaged_campaigns_from(current_user).order('id DESC')
     end
 
     @footer_text = "All Rights Reserved \u00AE Brand Reach | Copyright #{Time.now.year}"

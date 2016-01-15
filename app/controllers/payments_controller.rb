@@ -34,9 +34,9 @@ class PaymentsController < ApplicationController
       # TODO need to change before deploy to staging
       # @brand_payments = BrandPayment.where(id: payment_ids)
       campaign_ids = Campaign.engaged_campaigns_from(current_user).pluck(:id)
-      @brand_payments = BrandPayment.where(campaign_id: campaign_ids, id: payment_ids)
+      @brand_payments = BrandPayment.where(campaign_id: campaign_ids, id: payment_ids).order('id DESC')
     else
-      @brand_payments = BrandPayment.where(campaign_id: campaign_ids)
+      @brand_payments = BrandPayment.where(campaign_id: campaign_ids).order('id DESC')
     end
 
     @footer_text = "All Rights Reserved \u00AE Brand Reach | Copyright #{Time.now.year}"
@@ -90,9 +90,9 @@ class PaymentsController < ApplicationController
   def export_influencer_payments
     if params[:payment_ids].present?
       payment_ids = params[:payment_ids].split(',').uniq
-      @influencer_payments = current_user.influencer_payments.where(id: payment_ids)
+      @influencer_payments = current_user.influencer_payments.where(id: payment_ids).order('id DESC')
     else
-      @influencer_payments = current_user.influencer_payments
+      @influencer_payments = current_user.influencer_payments.order('id DESC')
     end
 
     @footer_text = "All Rights Reserved \u00AE Brand Reach | Copyright #{Time.now.year}"
