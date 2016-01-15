@@ -49,15 +49,14 @@
   </div>
 
   <p class="payment-information">
+    <span class="payment-label">Campaign Name :</span> <%= @campaign.name %><br/>
+    <span class="payment-label">Type of Post :</span> <%= @campaign.post_type.humanize %><br/>
+    <span class="payment-label">Start Date :</span> <%= @campaign.start_date.strftime('%d-%m-%Y') %><br/>
+    <span class="payment-label">End Date :</span> <%= @campaign.end_date && @campaign.end_date.strftime('%d-%m-%Y') %><br/>
+    <span class="payment-label">Payment :</span> <%= @campaign.cost %> INR<br/>
     <br/>
-    <strong>Campaign Name :</strong> <%= @campaign.name %><br/>
-    <strong>Type of Post :</strong> <%= @campaign.post_type.humanize %><br/>
-    <strong>Start Date :</strong> <%= @campaign.start_date.strftime('%d-%m-%Y') %><br/>
-    <strong>End Date :</strong> <%= @campaign.end_date && @campaign.end_date.strftime('%d-%m-%Y') %><br/>
-    <strong>Payment :</strong> <%= @campaign.cost %> INR<br/>
-    <br/>
-    <strong>Campaign Heading :</strong> <%= @campaign.headline %><br/>
-    <strong>Campaign Description :</strong> <%= @campaign.text %>
+    <span class="payment-label">Campaign Heading :</span> <%= @campaign.headline %><br/>
+    <span class="payment-label">Campaign Description :</span> <%= @campaign.text %>
   </p>
 
   <form method="post" action="https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction">
