@@ -50,7 +50,9 @@
                 <td><%= bank_account.bank_name %></td>
                 <td><%= Carmen::Country.coded(bank_account.country) %></td>
                 <td><%= bank_account.currency %></td>
-                <td><%= link_to image_tag('trash-icon.png'), bank_account_path(bank_account.id), method: :delete, data: {confirm: 'Are you sure to delete Bank Account ?'} %></td>
+                <td class="click-able js-delete-bank-account" data-id="<%= bank_account.id %>">
+                  <%= image_tag('trash-icon.png') %>
+                </td>
               </tr>
           <% end %>
           </tbody>

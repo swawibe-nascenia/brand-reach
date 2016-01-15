@@ -1789,3 +1789,12 @@ a .offer-box:last-child{
   width: 70%;
   margin-left: 59px
 }
+
+.click-able{
+  cursor: pointer;
+}
+
+// success message alert style
+#success-message-alert .modal-body{
+  padding: 15px;
+}

@@ -451,6 +451,31 @@ $(function(){
         $(this).next().toggle();
     });
 
+//    delete influencer bank account
+    $('.js-delete-bank-account').click(function(){
+        var bankId = $(this).data('id');
+        var requestPath = '/bank-accounts/' + bankId;
+
+        bootbox.confirm({
+            message: "Are you sure to delete Bank Account ?",
+            closeButton: false,
+            callback: function(result) {
+                if(result){
+                    $.ajax({
+                        type: 'delete',
+                        url: requestPath,
+                        dataType: "script",
+                        data: {
+                            'authenticity_token': $('meta[name="csrf-token"]').attr('content') },
+                        success: function(data) {
+                            console.log(data)
+                        }
+                    });
+                }
+            }
+        });
+    });
+
 });
 // end of document.ready() method
 

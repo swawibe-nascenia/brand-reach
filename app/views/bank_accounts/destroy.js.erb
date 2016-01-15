@@ -1,0 +1,3 @@
+$('#' + <%= @bank_account.id %>).remove();
+$('.modal-container').html("<%= j render(:partial => 'shared/success_message',
+           :locals => { message: admin_add_success_message }) %>");

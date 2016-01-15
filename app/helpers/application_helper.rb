@@ -117,6 +117,13 @@ module ApplicationHelper
     }
   end
 
+  def influencer_bank_account_delete_success
+    {
+        head: 'Bank account delete status:',
+        message: 'Bank Account successfully deleted.'
+    }
+  end
+
   def home_path
     if current_user && current_user.brand?
       brand_home_public_index_path

@@ -20,6 +20,7 @@ class BankAccountsController < ApplicationController
         redirect_to payments_path,
                     notice: 'Bank Account was successfully destroyed.'
       }
+      format.js{ }
     end
   end
 
