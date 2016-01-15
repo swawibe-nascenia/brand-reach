@@ -48,16 +48,16 @@
     </p>
   </div>
 
-  <p class="payment-information">
+  <div class="payment-information">
     <div class="payment-label">Campaign Name </div> <%= @campaign.name %><br/>
     <div class="payment-label">Type of Post </div> <%= @campaign.post_type.humanize %><br/>
     <div class="payment-label">Start Date </div> <%= @campaign.start_date.strftime('%d-%m-%Y') %><br/>
     <div class="payment-label">End Date </div> <%= @campaign.end_date && @campaign.end_date.strftime('%d-%m-%Y') %><br/>
     <div class="payment-label">Payment </div> <%= @campaign.cost %> INR<br/>
     <br/>
-    <div class="payment-label">Campaign Heading :</div> <%= @campaign.headline %><br/>
-    <div class="payment-label">Campaign Description :</div> <%= @campaign.text %>
-  </p>
+    <div class="payment-label">Campaign Heading </div> <%= @campaign.headline %><br/>
+    <div class="payment-label">Campaign Description </div> <%= @campaign.text %>
+  </div>
 
   <form method="post" action="https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction">
     <input type="hidden" name="encRequest" value="<%= encrypted_data %>" />
