@@ -120,7 +120,7 @@ module ApplicationHelper
   def influencer_bank_account_delete_success
     {
         head: 'Bank account delete status:',
-        message: 'Bank Account successfully deleted.'
+        message: 'Bank Account has been successfully deleted.'
     }
   end
 
