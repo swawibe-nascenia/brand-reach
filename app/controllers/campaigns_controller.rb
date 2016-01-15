@@ -202,7 +202,7 @@ class CampaignsController < ApplicationController
     respond_to do |format|
       format.html{ render 'campaigns/export_influencer_campaigns'}
       format.pdf do
-        @filename = 'campaigns.pdf'
+        headers['Content-Disposition'] = "filename=\"campaigns_list_influencer_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.pdf\""
         render 'campaigns/export_influencer_campaigns'
       end
       format.csv do
@@ -233,7 +233,7 @@ class CampaignsController < ApplicationController
     respond_to do |format|
       format.html{ render 'campaigns/export_brand_campaigns'}
       format.pdf do
-        @filename = "campaigns_list_brand_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.pdf"
+        headers['Content-Disposition'] = "filename=\"campaigns_list_brand_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.pdf\""
         render 'campaigns/export_brand_campaigns'
       end
       format.csv do

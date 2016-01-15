@@ -26,9 +26,10 @@ prawn_document(:page_layout => :landscape) do |pdf|
                   ]
  end
 
-  pdf.table(table_data, :column_widths => [250, 125, 100, 150, 100], :cell_style => { inline_format: true,border_color: 'C0C0C0', padding: 3, align: :center, text_color: '5D5D5D' }) do
+  pdf.table(table_data, :column_widths => [250, 125, 100, 150, 100], :cell_style => { inline_format: true,border_color: 'C0C0C0', padding: 4, align: :center, text_color: '5D5D5D', size: 11 }) do
          self.row_colors = %w(FFFFFF f6f6f6)
          row(0).background_color = 'D9D9D9'
+         row(0).size = 13
          self.header = true
   end
 
