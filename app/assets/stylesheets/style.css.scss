@@ -1838,3 +1838,9 @@ a .offer-box:last-child{
 div.modal-content{
   border-radius: 0;
 }
+@media (max-width: 572px) {
+  #signup .sign-up-close {
+    margin-right: 0;
+    margin-top: -10px;
+  }
+}
