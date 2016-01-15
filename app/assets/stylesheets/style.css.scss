@@ -644,7 +644,7 @@ a.center-block.text-center.user-status.small {
   padding: 0;
 }
 
-.view-country {
+button.view-country {
   border: none;
   font-family: 'Raleway', sans-serif;
   font-size: 12px;
@@ -653,6 +653,9 @@ a.center-block.text-center.user-status.small {
   background-color: white;
   width: 70%;
   text-align: left;
+  &:hover{
+    color: #333;
+  }
 }
 
 .angle-down-cities {
@@ -1780,4 +1783,9 @@ a .offer-box:last-child{
 
 .btn-info{
   border-radius: 0;
+}
+
+.custom-dropdown-menu{
+  width: 70%;
+  margin-left: 59px
 }
