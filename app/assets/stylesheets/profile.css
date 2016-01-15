@@ -285,6 +285,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-weight: 100;
 }
 
+.add-fb-modal-header .add-fb-account-close {
+    margin-top: -65px;
+    margin-right: -38px;
+}
+
 .modal-body {
     padding: 40px 54px 0;
 }

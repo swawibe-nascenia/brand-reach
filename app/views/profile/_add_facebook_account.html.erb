@@ -2,9 +2,9 @@
     <div class="modal fade" id="AddFacebookAccount" role="dialog">
       <div class="modal-dialog add-fb-modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header add-fb-modal-header">
             <a href="#"><%= image_tag('logo_white.png', :class => 'img-responsive login-modal-logo', :alt => 'logo') %></a>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close add-fb-account-close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
             <div class="add-another-account">Manage Account</div>
@@ -22,8 +22,15 @@
                           <div class="media-body media-middle">
                             <h4 class="media-heading">{{name}}</h4>
                           </div>
-                          <div class="media-right media-middle squaredFour">
-                            <input type="checkbox" name="accounts[]" value="{{id}}" {{#if selected}}checked="checked"{{/if}} {{#if engaged}}readonly="readonly"{{/if}}>
+                          <div class="media-right media-middle">
+
+                            <span class="custom-checkbox">
+                                 <input type="checkbox" name="accounts[]" value="{{id}}" {{#if selected}}checked="checked"{{/if}} {{#if engaged}}readonly="readonly"{{/if}}>
+                                 <span class="box">
+                                 <span class="tick">
+                                 </span>
+                                 </span>
+                            </span>
                           </div>
                         </div>
                     {{/each}}
