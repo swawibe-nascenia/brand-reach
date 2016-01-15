@@ -1790,6 +1790,18 @@ a .offer-box:last-child{
   margin-left: 59px
 }
 
+@media (max-width: 767px) {
+  .main-header {
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .content-wrapper {
+    padding-top: 50px;
+  }
+}
 .click-able{
   cursor: pointer;
 }
