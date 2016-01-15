@@ -50,7 +50,7 @@
   <aside class="main-sidebar">
     <section class="sidebar">
       <div class="center-block profile-info">
-        <a href="#profile_image_upload_modal" data-toggle="modal"><span class="fa fa-camera camera"></span></a>
+        <a href="<%= change_profile_image_profile_index_path %>" data-remote="true"><span class="fa fa-camera camera"></span></a>
 
         <%= image_tag(current_user.profile_picture, :class => "img-circle profile-image center-block #{current_user.image.present? ? 'present' : ''}", :alt => 'profile-picture') %>
 
@@ -220,7 +220,6 @@
   </div>
 </footer>
 
-<%= render partial: 'shared/profile_image_upload', locals: { user: current_user } %>
 <%= render partial: 'shared/profile_image_crop', locals: { user: current_user }%>
 <div class="loader"></div>
 

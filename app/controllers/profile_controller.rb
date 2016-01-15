@@ -217,6 +217,8 @@ class ProfileController < ApplicationController
     redirect_to root_path
   end
 
+  def change_profile_image
+  end
   private
 
   def set_user
