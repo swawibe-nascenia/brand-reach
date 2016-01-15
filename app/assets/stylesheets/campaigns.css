@@ -244,7 +244,7 @@ input.cmn-toggle-round:checked + label:after {
     width: 30%;
 }
 
-.social-account-tab-content .date-range, .campaign-name-input li {
+.new-campaign-tab-content .date-range, .campaign-name-input li {
     margin-left: calc(30% + 4px);
 }
 
@@ -501,6 +501,16 @@ only screen and (max-width: 560px) {
     overflow: hidden;
 }
 
+.new-campaign-tab-content {
+    border: 1px solid #ddd ;
+    border-top: none;
+    padding-top: 35px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
 .social-account-tabs .social-account-nav-tabs a {
     color: #696969;
 }
@@ -514,11 +524,11 @@ only screen and (max-width: 560px) {
     padding-right: 5px;
 }
 
-.social-account-tab-content label {
+.social-account-tab-content label, .new-campaign-tab-content label {
     padding-right: 10px;
 }
 
-.social-account-tab-content input:not([type=radio]), .social-account-tab-content select {
+.social-account-tab-content input:not([type=radio]), .social-account-tab-content select, .new-campaign-tab-content input:not([type=radio]), .new-campaign-tab-content select {
     width: 52%;
     display: inline;
     margin: 5px;
@@ -546,7 +556,7 @@ only screen and (max-width: 560px) {
     margin-bottom: 15px;
 }
 
-.text-headline-form textarea {
+.text-headline-form textarea, .campaign-description {
     resize: none;
 }
 
@@ -617,7 +627,7 @@ only screen and (max-width: 560px) {
     margin-left: calc(30% + 9px)
 }
 
-.social-account-tab-content  input#campaign_cost{
+.new-campaign-tab-content input#campaign_cost{
     width: 150px;
 }
 
@@ -732,6 +742,17 @@ only screen and (max-width: 560px) {
     background-color: #ffffff;
 }
 
+.campaign-create-wrapper .new-campaign-content input:not([type="radio"]), .new-campaign-tab-content select, .campaign-description {
+    display: inline;
+    margin: 5px;
+    width: 52%;
+}
+
+.description-label{
+    margin-top: 30px;
+    vertical-align: top;
+}
+
 @media
 only screen and (max-width: 590px) {
     .fb-activity-row-head {
@@ -774,7 +795,7 @@ only screen and (max-width: 768px) {
 
 @media
 only screen and (max-width: 1200px) {
-    .social-account-tab-content {
+    .social-account-tab-content, .new-campaign-tab-content {
         padding: 15px;
     }
 
@@ -785,14 +806,24 @@ only screen and (max-width: 1200px) {
 
 @media
 only screen and (max-width: 768px) {
-    .social-account-tab-content {
+    .social-account-tab-content, .new-campaign-tab-content {
         padding: 15px;
     }
 
-    .social-account-tab-content select, #post_cost, .campaign-date, #campaign_name, #campaign_text, #campaign_headline {
+    .social-account-tab-content select, .new-campaign-tab-content select {
         width: 100%;
         margin: 5px 0;
         padding: 5px;
+    }
+
+    #post_cost, .campaign-date, #campaign_name, #campaign_text, #campaign_headline, .campaign-description {
+        width: 100%;
+        margin: 5px 0;
+        padding: 5px;
+    }
+
+    .description-label {
+        margin-top: 0;
     }
 
     .campaign-date {
@@ -831,7 +862,7 @@ only screen and (max-width: 768px) {
         text-align: left;
     }
 
-    .social-account-tab-content .date-range, .campaign-name-input li {
+    .new-campaign-tab-content .date-range, .campaign-name-input li {
         margin-left: 0;
     }
 
@@ -889,11 +920,11 @@ only screen and (max-width: 480px) {
     margin: 0;
 }
 
-.social-account-tab-content label.label-with-img{
+.new-campaign-tab-content label.label-with-img{
     width: calc(30% - 28px);
 }
 
-.social-account-tab-content .image-icon{
+.new-campaign-tab-content .image-icon{
     padding-right: 10px;
 }
 
@@ -918,11 +949,11 @@ only screen and (max-width: 768px) {
         border: 1px solid #dddddd;
     }
 
-    .social-account-tab-content label.label-with-img{
+    .new-campaign-tab-content label.label-with-img{
         width: calc(90% - 28px);
     }
 
-    .social-account-tab-content input.input-with-img{
+    .new-campaign-tab-content input.input-with-img{
         width: 100%;
         padding: 5px 0;
         margin: 5px 0;
@@ -999,18 +1030,6 @@ only screen and (max-width: 768px) {
     margin-bottom: 15px;
 }
 
-.campaign-create-wrapper .new-campaign-content input:not([type="radio"]), .social-account-tab-content select, .campaign-description {
-    display: inline;
-    margin: 5px;
-    width: 52%;
-}
-
-
-
-.description-label{
-    margin-top: 30px;
-    vertical-align: top;
-}
 
 /*============== time picker formatting stylesheet =========*/
 
