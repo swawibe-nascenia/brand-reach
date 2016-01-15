@@ -10,6 +10,7 @@ class ExploresController < ApplicationController
       @influencers = @influencers.includes(:categories).where('categories.name LIKE :search OR
                                                   first_name LIKE :search OR
                                                   last_name LIKE :search OR
+                                                  users.name LIKE :search OR
                                                   email LIKE :search OR
                                                   phone LIKE :search OR
                                                   company_name LIKE :search OR

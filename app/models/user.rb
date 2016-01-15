@@ -289,6 +289,7 @@ class User < ActiveRecord::Base
   def save_actual_country_state
     self.update_column(:country_name, Carmen::Country.coded(self.country).name) if self.country.present?
     self.update_column(:state_name, Carmen::Country.coded(self.country).subregions.coded(self.state).name ) if self.country.present? && self.state.present?
+    self.update_column(:name,  "#{first_name} #{last_name}")
   end
 
   def update_profile_completion_status
