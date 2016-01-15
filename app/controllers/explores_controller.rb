@@ -7,7 +7,21 @@ class ExploresController < ApplicationController
 
     if params[:search_key].present?
       wildcard_search = "%#{params[:search_key].strip! || params[:search_key]}%"
-      @influencers = @influencers.where('industry LIKE :search OR country_name LIKE :search OR state_name LIKE :search', search: wildcard_search)
+      @influencers = @influencers.includes(:categories).where('categories.name LIKE :search OR
+                                                  first_name LIKE :search OR
+                                                  last_name LIKE :search OR
+                                                  email LIKE :search OR
+                                                  phone LIKE :search OR
+                                                  company_name LIKE :search OR
+                                                  company_email LIKE :search OR
+                                                  short_bio LIKE :search OR
+                                                  landmark LIKE :search OR
+                                                  street_address LIKE :search OR
+                                                  city LIKE :search OR
+                                                  state_name LIKE :search OR
+                                                  country_name LIKE :search OR
+                                                  balance LIKE :search ',
+                                                  search: wildcard_search).references(:categories)
     end
 
     if params[:category].present?
@@ -19,10 +33,12 @@ class ExploresController < ApplicationController
     # @influencers = @influencers.where(industry: params[:social_media]) if params[:social_media].present?
     @influencers = @influencers.where(state: params[:state]) if params[:state].present?
     @influencers = @influencers.where(country: params[:country]) if params[:country].present?
+
     if params[:price].present?
       price_range = Range.new(*params[:price].split('..').map(&:to_i))
       @influencers = @influencers.where(fb_average_cost: price_range)
     end
+
     if params[:followers].present?
       followers = Range.new(*params[:followers].split('..').map(&:to_i))
       @influencers = @influencers.where(max_followers: followers)
