@@ -1071,3 +1071,10 @@ only screen and (max-width: 768px) {
     line-height: 1.8;
     padding-right: 10px;
 }
+
+@media (max-width: 768px) {
+    .payment-label {
+        text-align: left;
+        display: block;
+    }
+}
