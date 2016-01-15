@@ -177,7 +177,14 @@ class CampaignsController < ApplicationController
     end
 
     @campaigns = @campaigns.where(id: params[:id]) if params[:id].present?
-    @campaigns.each{ |campaign| campaign.try(:fetch_insights) }
+    @campaigns.each do |campaign|
+      begin
+        campaign.try(:fetch_insights)
+      rescue Koala::Facebook::ClientError => ex
+        campaign.facebook_error = true
+        @campaign_error = true
+      end
+    end
 
     render 'campaigns/brand_campaign'
   end

@@ -16,6 +16,12 @@
     <% end %>
   </div>
 
+  <% if @campaign_error %>
+      <div class="alert alert-error">
+        Facebook information associated with one or more campaigns has been deleted!
+      </div>
+  <% end %>
+
   <div class="download-campaign dropdown">
     <%#= link_to 'EXPORT', '#', :class => 'btn btn-export button-border-yellow', id: 'export_campaigns' %>
     <button class="dropdown-toggle btn btn-download-campaign" data-toggle="dropdown">
@@ -111,6 +117,10 @@
                   <%= image_tag(campaign.receiver.profile_picture, :class => 'pepsi-img-responsive') %>
                 </a>
                 &nbsp; <%= campaign.name %>
+                <% if campaign.facebook_error %>
+                    <i class="fa fa-exclamation-triangle text-danger"
+                       title="Facebook post has been deleted" style="vertical-align: middle"></i>
+                <% end %>
               </td>
               <td><%= campaign.number_of_likes %></td>
               <td><%= campaign.number_of_post_reach %></td>
