@@ -1810,3 +1810,27 @@ a .offer-box:last-child{
 #success-message-alert .modal-body{
   padding: 15px;
 }
+
+.bootbox .btn-primary{
+  background-color: #00c9f3;
+  border: medium none;
+  border-radius: 0;
+  color: #ffffff;
+  font-weight: 300;
+  font-family: 'Raleway Light', 'Raleway', sans-serif;
+  &:hover {
+    background-color: #00b6e2;
+    color: #ffffff;
+  }
+}
+
+.bootbox .btn-default{
+  border: medium none;
+  border-radius: 0;
+  font-weight: 300;
+  font-family: 'Raleway Light', 'Raleway', sans-serif;
+  &:hover {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+}

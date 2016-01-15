@@ -644,4 +644,8 @@ function getInternetExplorerVersion()
     return rv;
 }
 
+function changeBootBoxConfirm(){
+    
+}
+
 
