@@ -95,6 +95,13 @@ class CampaignMailer < ApplicationMailer
   def notify_campaign_pause(campaign)
     @campaign = campaign
     @receiver = @campaign.receiver
+    @message = case @campaign.post_type
+                 when 'status_update' then 'You can now remove your status message.'
+                 when 'profile_photo' then 'You can now remove your profile photo.'
+                 when 'cover_photo' then 'You can now remove your cover photo.'
+                 when 'video_post' then 'You can now remove your video post.'
+                 when 'photo_post' then 'You can now remove your photo post.'
+               end
     Rails.logger.info "==========================Campaign pause send to #{@receiver.full_name}================"
     mail(to: @receiver.email, subject: 'Campaign pause notification')
   end
@@ -102,6 +109,13 @@ class CampaignMailer < ApplicationMailer
   def notify_campaign_restart(campaign)
     @campaign = campaign
     @receiver = @campaign.receiver
+    @message = case @campaign.post_type
+               when 'status_update' then 'You can now use campaign status message.'
+               when 'profile_photo' then 'You can now use campaign profile photo.'
+               when 'cover_photo' then 'You can now use campaign cover photo.'
+               when 'video_post' then 'You can now use campaign video post.'
+               when 'photo_post' then 'You can now use campaign photo post.'
+               end
     Rails.logger.info "==========================Campaign restart send to #{@receiver.full_name}================"
     mail(to: @receiver.email, subject: 'Campaign pause notification')
   end
@@ -109,6 +123,13 @@ class CampaignMailer < ApplicationMailer
   def notify_campaign_stop(campaign)
     @campaign = campaign
     @receiver = @campaign.receiver
+    @message = case @campaign.post_type
+               when 'status_update' then 'You can now remove your status message.'
+               when 'profile_photo' then 'You can now remove your profile photo.'
+               when 'cover_photo' then 'You can now remove your cover photo.'
+               when 'video_post' then 'You can now remove your video post.'
+               when 'photo_post' then 'You can now remove your photo post.'
+               end
     Rails.logger.info "==========================Campaign stop send to #{@receiver.full_name}================"
     mail(to: @receiver.email, subject: 'Campaign pause notification')
   end

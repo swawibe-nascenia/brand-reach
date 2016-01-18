@@ -1124,10 +1124,12 @@ only screen and (max-width: 768px) {
 }
 
 .onoffswitch-inner:after {
-    content: "x";
-    padding-right: 10px;
     background-color: #dedede;
     color: #b9b9b9;
+    content: "x";
+    font-size: 12px;
+    font-weight: bolder;
+    padding-right: 10px;
     text-align: right;
 }
 
