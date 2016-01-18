@@ -497,6 +497,13 @@ $(function(){
         });
     });
 
+//    campaign toggle button confirmation
+    $(document).on('click', '.onoffswitch-label', function (event) {
+        if (!confirm("Are you sure?")) {
+            return false;
+        }
+    });
+
 });
 // end of document.ready() method
 
