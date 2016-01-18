@@ -2,9 +2,5 @@
   <td><%= admin.first_name %></td>
   <td><%= admin.last_name %></td>
   <td><%= admin.email %></td>
-  <td>
-    <a href="javascript:;" class="text-red  text-danger remove-admin" data-id="<%= admin.id %>">
-      <h5>Remove</h5>
-    </a>
-  </td>
+  <td><%= link_to image_tag('trash-icon.png'), 'javascript:;', class: 'remove-admin', data: {id: admin.id } %></td>
 </tr>
