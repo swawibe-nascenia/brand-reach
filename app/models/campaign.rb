@@ -150,8 +150,9 @@ class Campaign < ActiveRecord::Base
   end
 
   def self.stop_expire_campaigns
-    logger.info 'Update campaign status running'
-    Campaign.where('schedule_type = ? AND end_date < ?', Campaign.schedule_types[:date_range], DateTime.now).update_all(status => Campaign[:stopped])
+    Campaign.where('schedule_type = ? AND end_date < ?', Campaign.schedule_types[:date_range], DateTime.now).each do |campaign|
+      campaign.update_column(:status, Campaign.statuses[:stopped])
+    end
   end
 
   private
