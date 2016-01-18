@@ -1070,7 +1070,7 @@ only screen and (max-width: 768px) {
 /* on-off switching button style sheet */
 .onoffswitch {
     position: relative;
-    width: 66px;
+    width: 50px;
     display: inline-block;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -1086,7 +1086,7 @@ only screen and (max-width: 768px) {
     overflow: hidden;
     cursor: pointer;
     border-radius: 50px;
-    width: 66px;
+    width: 50px;
     margin-bottom: 0;
     box-shadow: 0 0 2px 3px #cecece;
     -webkit-box-shadow: 0 0 2px 3px #cecece;
@@ -1106,9 +1106,9 @@ only screen and (max-width: 768px) {
     display: block;
     float: left;
     width: 50%;
-    height: 25px;
+    height: 20px;
     padding: 0;
-    line-height: 25px;
+    line-height: 22px;
     font-size: 10px;
     color: white;
     font-family: Trebuchet, Arial, sans-serif;
@@ -1133,14 +1133,14 @@ only screen and (max-width: 768px) {
 
 .onoffswitch-switch {
     display: block;
-    height: 20px;
-    width: 20px;
+    height: 14px;
+    width: 14px;
     margin: 2.5px;
     background: #F2F6F7;
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 37px;
+    right: 32px;
     /*border: 2px solid #F5F0F0;*/
     border-radius: 50px;
     transition: all 0.3s ease-in 0s;
