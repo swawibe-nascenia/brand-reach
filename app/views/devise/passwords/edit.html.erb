@@ -1,32 +1,37 @@
 <% title 'Password Reset' %>
 <div class="wrapper-content non-home-page-wrapper sticky-footer-wrapper identity" id="password-reset-container">
-  <div class="display-inline-block password-reset-content">
-    <% if params[:invitation] %>
-        <h2><span class="welcome-user">Hi Mr. <%= params[:user_name].titleize || 'User'  %></span>, Welcome to Brand Reach!!</h2>
-        <p>Your sign up process is almost complete. Just set your password and start to use it.</p>
-        <br/>
-        <br/>
-        <p>Please set your password.</p>
-    <% else %>
-        <h2>Change your password.</h2>
-    <% end %>
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), data: {:'parsley-validate' => ''}, html: {method: :put}) do |f| %>
-        <%= devise_error_messages! %>
-        <%= f.hidden_field :reset_password_token %>
+  <div class="password-reset-content">
+    <div class="display-inline-block password-reset-details">
 
-        <div class="input_container">
-          <div class="label_l">New password</div>
-          <input class="login_input" id="user_password" type="password" name="user[password]" autocomplete="off" autofocus="autofocus" data-parsley-required="true" data-parsley-trigger="change">
-        </div>
-        <div class="input_container">
-          <div class="label_l">Confirm password</div>
-          <input class="login_input" id="user_password_confirmation" type="password" name="user[password_confirmation]" autocomplete="off" data-parsley-required="true" data-parsley-trigger="change">
-        </div>
+      <% if params[:invitation] %>
+          <h2><span class="welcome-user">Hi Mr. <%= params[:user_name].titleize || 'User'  %></span>, Welcome to Brand Reach!!</h2>
+          <p>Your sign up process is almost complete. Just set your password and start to use it.</p>
+          <br/>
+          <br/>
+          <p>Please set your password.</p>
+      <% else %>
+          <h2>Change your password.</h2>
+      <% end %>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), data: {:'parsley-validate' => ''}, html: {method: :put}) do |f| %>
+          <%= devise_error_messages! %>
+          <%= f.hidden_field :reset_password_token %>
 
-        <div class="actions">
-          <button class="br-btn-submit" type="submit">SUBMIT</button>
-        </div>
-    <% end %>
+          <div class="input_container">
+            <div class="label_l">New password</div>
+            <input class="login_input" id="user_password" type="password" name="user[password]" autocomplete="off" autofocus="autofocus" data-parsley-required="true" data-parsley-trigger="change">
+          </div>
+          <div class="input_container">
+            <div class="label_l">Confirm password</div>
+            <input class="login_input" id="user_password_confirmation" type="password" name="user[password_confirmation]" autocomplete="off" data-parsley-required="true" data-parsley-trigger="change">
+          </div>
+
+          <div class="actions">
+            <button class="br-btn-submit" type="submit">SUBMIT</button>
+          </div>
+      <% end %>
+
+    </div>
+
   </div>
 </div>
 

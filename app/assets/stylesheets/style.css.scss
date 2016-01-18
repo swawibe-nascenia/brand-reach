@@ -1421,9 +1421,17 @@ a .offer-box:last-child{
   }
 
   .password-reset-content{
+    text-align: center;
+  }
+
+  .password-reset-details {
     text-align: left;
     padding: 35px;
     background-color: rgba(248, 248, 248, 0.64);
+
+    h2 {
+      margin-top: 0;
+    }
   }
 
 }
