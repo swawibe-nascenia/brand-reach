@@ -884,7 +884,7 @@ th {
 }
 
 .login_input {
-  background: #eeeeed none repeat scroll 0 0;
+  background: #fffff0 none repeat scroll 0 0;
   border: medium none;
   color: #666;
   float: left;
@@ -892,6 +892,10 @@ th {
   outline: medium none;
   padding: 6px 8px;
   width: 228px;
+}
+
+.password-reset-content .login_input {
+  background-color: rgba(194, 194, 194, 0.53);
 }
 
 #brand-signup {
@@ -1418,6 +1422,8 @@ a .offer-box:last-child{
 
   .password-reset-content{
     text-align: left;
+    padding: 35px;
+    background-color: rgba(248, 248, 248, 0.64);
   }
 
 }
