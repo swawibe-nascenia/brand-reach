@@ -78,8 +78,10 @@ class CampaignsController < ApplicationController
 
     if params[:status] == 'true'
       campaign.status = Campaign.statuses[:engaged]
+      CampaignMailer.notify_campaign_restart(campaign).deliver_now
     else
       campaign.status = Campaign.statuses[:paused]
+      CampaignMailer.notify_campaign_pause(campaign).deliver_now
     end
     campaign.save
 

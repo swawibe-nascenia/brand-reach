@@ -91,4 +91,25 @@ class CampaignMailer < ApplicationMailer
                Be a brand on one of the most amazing knowledge sharing platforms."
     mail(from: 'hasanuzzaman@nascenia.com', to: @mail, subject: subject)
   end
+
+  def notify_campaign_pause(campaign)
+    @campaign = campaign
+    @receiver = @campaign.receiver
+    Rails.logger.info "==========================Campaign pause send to #{@receiver.full_name}================"
+    mail(to: @receiver.email, subject: 'Campaign pause notification')
+  end
+
+  def notify_campaign_restart(campaign)
+    @campaign = campaign
+    @receiver = @campaign.receiver
+    Rails.logger.info "==========================Campaign restart send to #{@receiver.full_name}================"
+    mail(to: @receiver.email, subject: 'Campaign pause notification')
+  end
+
+  def notify_campaign_stop(campaign)
+    @campaign = campaign
+    @receiver = @campaign.receiver
+    Rails.logger.info "==========================Campaign stop send to #{@receiver.full_name}================"
+    mail(to: @receiver.email, subject: 'Campaign pause notification')
+  end
 end
