@@ -2,5 +2,11 @@
   <td><%= admin.first_name %></td>
   <td><%= admin.last_name %></td>
   <td><%= admin.email %></td>
-  <td><%= link_to image_tag('trash-icon.png'), 'javascript:;', class: 'remove-admin', data: {id: admin.id } %></td>
+  <td><%= link_to image_tag('trash-icon.png'), 'javascript:;', class: 'remove-admin', title: 'delete', data: {id: admin.id, toggle: 'pop' } %></td>
 </tr>
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="pop"]').popover({trigger: 'hover', placement: "bottom"});
+    });
+</script>
