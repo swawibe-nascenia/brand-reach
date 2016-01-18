@@ -1,10 +1,9 @@
 
 <tr id="payment-<%= payment.id %>">
-  <% bank_account = BankAccount.find(payment.bank_account_id) %>
   <td><%= payment.user.full_name %></td>
-  <td><%= bank_account.bank_name %></td>
-  <td><%= bank_account.account_name %></td>
-  <td><%= bank_account.account_number %></td>
+  <td><%= payment.bank_account.present? ? payment.bank_account.bank_name : 'NA' %></td>
+  <td><%= payment.bank_account.present? ? payment.bank_account.account_name : 'NA' %></td>
+  <td><%= payment.bank_account.present? ? payment.bank_account.account_number : 'NA' %></td>
   <td><%= payment.user.balance %></td>
   <td><%= payment.amount_billed %></td>
   <td>

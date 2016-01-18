@@ -20,6 +20,8 @@ class BankAccount < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   belongs_to :user
+  has_one :influencer_payment
+
 
   # ----------------------------------------------------------------------
   # == Validations == #
