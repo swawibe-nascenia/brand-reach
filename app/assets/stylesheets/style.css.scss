@@ -870,9 +870,9 @@ th {
 }
 
 .input_container {
-  float: left;
   margin: 0 0 10px;
   width: 100%;
+  overflow: hidden;
 }
 
 .label_l {
