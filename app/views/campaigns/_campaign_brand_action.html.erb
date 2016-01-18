@@ -3,9 +3,7 @@
 <% else %>
     <div class="onoffswitch js-campaign-on-of-switch" data-id="<%= campaign.id %>">
       <input type="hidden" value="0" name="user[is_available]">
-      <% if campaign.stopped? %>
-          <input id="setting-on-off-switch-<%= campaign.id %>" class="onoffswitch-checkbox" type="checkbox">
-      <% elsif campaign.paused? %>
+      <% if campaign.paused? %>
           <input id="setting-on-off-switch-<%= campaign.id %>" class="onoffswitch-checkbox" type="checkbox">
       <% else %>
           <input id="setting-on-off-switch-<%= campaign.id %>" class="onoffswitch-checkbox" type="checkbox" checked="checked">
