@@ -12,11 +12,11 @@
         <span class="text-danger">Denied Campaign</span>
     <% end %>
 <% elsif offer.engaged? %>
-    <span class="text-success">Running Campaign</span>
+    <span class="text-color-engage">Running Campaign</span>
 <% elsif offer.paused? %>
-    <span class="text-success">Paused Campaign</span>
-<% elsif offer.engaged? %>
+    <span class="text-color-pause">Paused Campaign</span>
+<% elsif offer.stopped? %>
     <span class="text-red">Stopped Campaign</span>
 <% else %>
-    <span class="text-success">Accepted Campaign</span>
+    <span class="text-color-accept">Accepted Campaign</span>
 <% end %>
