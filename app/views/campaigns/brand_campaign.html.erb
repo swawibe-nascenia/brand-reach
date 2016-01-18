@@ -95,6 +95,7 @@
                      <span class="box"><span class="tick"></span></span>
                 </span>
               </th>
+              <th></th>
               <th>Campaign Name</th>
               <th>Post Likes</th>
               <th>Reach</th>
@@ -111,6 +112,9 @@
                    <input type="checkbox" class="PerformanceCheckBox" data-id="<%= campaign.id %>" value="1"/>
                   <span class="box"><span class="tick"></span></span>
                   </span>
+              </td>
+              <td>
+                <%= render partial: 'campaign_brand_action', locals: {campaign: campaign} %>
               </td>
               <td>
                 <a href="<%= show_user_profile_path(campaign.receiver.id) %>" data-remote="true">

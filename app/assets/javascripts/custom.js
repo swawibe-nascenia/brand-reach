@@ -476,6 +476,27 @@ $(function(){
         });
     });
 
+/*=== brand campaign pause/start state toggle button ======*/
+    $('.js-campaign-on-of-switch').change(function(){
+        var id = $(this).data('id');
+        var status = $('#setting-on-off-switch-' + id).is(':checked');
+        console.log('new status is '+ status);
+        var requestPath = '/campaigns/campaign_status_change';
+        $.ajax({
+            type: 'put',
+            url: requestPath,
+            dataType: "json",
+            data: {
+                    authenticity_token: $('meta[name="csrf-token"]').attr('content'),
+                    status: status,
+                    id: id
+                  },
+            success: function(data) {
+                console.log(data)
+            }
+        });
+    });
+
 });
 // end of document.ready() method
 

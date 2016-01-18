@@ -11,9 +11,10 @@ class Campaign < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   enum post_type: [:status_update, :profile_photo, :cover_photo, :video_post, :photo_post]
-  enum schedule_type: [:daily, :date_range]
-  enum card_expiration_month: [:january, :february, :march, :april, :may, :june, :july, :august, :september, :october, :november, :december]
-  enum status: [:waiting, :accepted, :denied, :engaged]
+  enum schedule_type: [:ongoing, :date_range]
+  enum card_expiration_month: [:january, :february, :march, :april, :may, :june, :july,
+                               :august, :september, :october, :november, :december]
+  enum status: [:waiting, :accepted, :denied, :engaged, :paused, :stopped]
 
   # ----------------------------------------------------------------------
   # == Attributes == #
@@ -59,9 +60,9 @@ class Campaign < ActiveRecord::Base
   # == Scopes and Other macros == #
   # ----------------------------------------------------------------------
   # influencer's campaigns
-  scope :engaged_campaigns_for, ->(user) { where(status: self.statuses[:engaged], receiver: user).order('id DESC') }
+  scope :engaged_campaigns_for, ->(user) { where(status: [self.statuses[:engaged],self.statuses[:paused],self.statuses[:stopped]], receiver: user).order('id DESC') }
   # brand's campaigns
-  scope :engaged_campaigns_from, ->(user) { where(status: self.statuses[:engaged], sender: user).order('id DESC') }
+  scope :engaged_campaigns_from, ->(user) { where(status: [self.statuses[:engaged],self.statuses[:paused],self.statuses[:stopped]], sender: user).order('id DESC') }
 
   # ----------------------------------------------------------------------
   # == Instance methods == #
@@ -148,6 +149,11 @@ class Campaign < ActiveRecord::Base
     end
   end
 
+  def self.stop_expire_campaigns
+    logger.info 'Update campaign status running'
+    Campaign.where('schedule_type = ? AND end_date < ?', Campaign.schedule_types[:date_range], DateTime.now).update_all(status => Campaign[:stopped])
+  end
+
   private
 
   def first_message_body
@@ -168,8 +174,8 @@ class Campaign < ActiveRecord::Base
       Campaign Name:  #{self.name}
       Type of Post : #{self.post_type.humanize}
       #{post_type_content}
-      Start Date : #{self.start_date.strftime('%d-%m-%Y')}
-      End Date : #{self.end_date.strftime('%d-%m-%Y')}
+      Start Date : #{self.start_date.try(:strftime, '%d-%m-%Y') || 'NA'}
+      End Date : #{self.end_date.try(:strftime, '%d-%m-%Y') || 'NA'}
       Payment : #{self.cost} INR
       Facebook Account: #{self.facebook_account.name}
 

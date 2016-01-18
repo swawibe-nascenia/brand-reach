@@ -76,7 +76,7 @@ Rails.application.routes.draw do
       # get :campaigns
       # get :brand_campaign
       post :update_activity
-      post :campaign_status_change
+      put :campaign_status_change
       get :export
       get :new_brand_payment
       patch :create_brand_payment

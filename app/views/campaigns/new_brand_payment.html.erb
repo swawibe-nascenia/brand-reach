@@ -51,8 +51,8 @@
   <dl class="payment-information dl-horizontal">
     <dt>Campaign Name </dt><dd> <%= @campaign.name %></dd>
     <dt>Type of Post </dt> <dd><%= @campaign.post_type.humanize %></dd>
-    <dt>Start Date </dt> <dd><%= @campaign.start_date.strftime('%d-%m-%Y') %></dd>
-    <dt>End Date </dt> <dd><%= @campaign.end_date && @campaign.end_date.strftime('%d-%m-%Y') %></dd>
+    <dt>Start Date </dt> <dd><%= @campaign.start_date.try(:strftime, '%d-%m-%Y') || 'NA' %></dd>
+    <dt>End Date </dt> <dd><%= @campaign.end_date.try(:strftime, '%d-%m-%Y') || 'NA' %></dd>
     <dt>Payment </dt> <dd><%= @campaign.cost %> INR</dd>
     <br/>
     <dt>Campaign Heading </dt> <dd><%= @campaign.headline %></dd>

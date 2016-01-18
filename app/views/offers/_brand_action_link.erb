@@ -1,0 +1,15 @@
+<% if offer.engaged? %>
+    <span class="text-success">Running Campaign</span>
+<% elsif offer.paused? %>
+    <span class="text-success">Paused Campaign</span>
+<% elsif offer.engaged? %>
+    <span class="text-red">Stopped Campaign</span>
+<% elsif offer.deleted_by_influencer? %>
+    <span class="text-danger">Offer deleted</span>
+<% elsif offer.accepted? %>
+    <%= link_to 'Engage', new_brand_payment_campaigns_path(id: offer.id), class: 'btn btn-accept button-border-blue engage' %>
+<% elsif offer.denied? %>
+    <span class="text-danger">Offer denied</span>
+<% else %>
+    Pending request
+<% end %>

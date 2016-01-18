@@ -43,12 +43,21 @@ class CampaignsController < ApplicationController
                                  end
     # @campaign.name = @campaign.name.downcase if  campaign_params[:name].present?
 
-    unless @campaign.date_range?
-      @campaign.start_date = Time.now.strftime('%d/%m/%Y')
-    end
+    unless @campaign.ongoing?
+      temp_start_date = campaign_params[:start_date].to_date
+      temp_start_time =  params[:start_time].to_time
 
-    if @campaign.daily?
-      @campaign.end_date = @campaign.start_date + 1.day
+      temp_end_date = campaign_params[:end_date].to_date
+      temp_end_time =  params[:end_time].to_time
+
+      @campaign.start_date = DateTime.new(
+                                            temp_start_date.year, temp_start_date.month, temp_start_date.day,
+                                            temp_start_time.hour, temp_start_time.min
+                                          )
+      @campaign.end_date = DateTime.new(
+                                          temp_end_date.year, temp_end_date.month, temp_end_date.day,
+                                          temp_end_time.hour, temp_end_time.min
+                                        )
     end
 
     if @campaign.save
@@ -66,9 +75,17 @@ class CampaignsController < ApplicationController
 
   def campaign_status_change
     campaign = Campaign.find(params[:id])
-    campaign.campaign_active = params[:campaign_active]
+
+    if params[:status] == 'true'
+      campaign.status = Campaign.statuses[:engaged]
+    else
+      campaign.status = Campaign.statuses[:paused]
+    end
     campaign.save
-    nil
+
+    respond_to do |format|
+      format.json{ render json: {status: true} }
+    end
   end
 
   def update_activity
@@ -141,19 +158,19 @@ class CampaignsController < ApplicationController
   end
 
   def campaign_image
-
   end
 
   private
 
   def campaign_params
-    params.require(:campaign).permit(:name, :text, :headline, :start_date,
-                                     :social_account_page_name, :receiver_id, :sender_id, :end_date,
-                                     :campaign_active, :cost, :facebook_account_id, :post_type,
-                                     :number_of_likes, :number_of_post_reach, :number_of_comments,
-                                     :number_of_shares, :card_number, :id,
-                                     :card_expiration_year, :card_holder_name, :schedule_type, :card_expiration_month
-    )
+    params.require(:campaign).permit(:name, :text, :headline, :social_account_page_name,
+                                     :receiver_id, :sender_id, :campaign_active, :cost,
+                                     :facebook_account_id, :post_type, :number_of_likes,
+                                     :number_of_post_reach, :number_of_comments, :id,
+                                     :number_of_shares, :card_number, :card_expiration_year,
+                                     :card_holder_name, :schedule_type, :card_expiration_month,
+                                     :start_date, :end_date
+                    )
   end
 
   def influencer_campaign

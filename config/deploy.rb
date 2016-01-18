@@ -1,8 +1,10 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
+require 'whenever/capistrano'
 
 set :application, 'brand-reach'
 set :repo_url, 'git@github.com:rafi-nascenia/brand-reach.git'
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
