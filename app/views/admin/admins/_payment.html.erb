@@ -1,6 +1,11 @@
 
 <tr id="payment-<%= payment.id %>">
-  <td><%= payment.user.first_name %></td>
+  <% bank_account = BankAccount.find(payment.bank_account_id) %>
+  <td><%= payment.user.full_name %></td>
+  <td><%= bank_account.bank_name %></td>
+  <td><%= bank_account.account_name %></td>
+  <td><%= bank_account.account_number %></td>
+  <td><%= payment.user.balance %></td>
   <td><%= payment.amount_billed %></td>
   <td>
       <% if payment.pending? %>
