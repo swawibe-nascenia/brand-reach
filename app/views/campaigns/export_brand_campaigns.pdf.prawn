@@ -23,8 +23,8 @@ prawn_document(:page_layout => :landscape) do |pdf|
       campaign.number_of_post_reach,
       campaign.number_of_comments,
       campaign.number_of_shares,
-      campaign.start_date,
-      campaign.end_date.present? ? campaign.end_date : 'NA'
+      campaign.start_date.present? ? campaign.start_date.strftime('%d-%m-%y') : 'NA',
+      campaign.end_date.present? ? campaign.end_date.strftime('%d-%m-%y') : 'NA'
     ]
  end
 
