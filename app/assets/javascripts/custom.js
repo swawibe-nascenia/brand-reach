@@ -498,10 +498,19 @@ $(function(){
     });
 
 //    campaign toggle button confirmation
-    $(document).on('click', '.onoffswitch-label', function (event) {
-        if (!confirm("Are you sure?")) {
-            return false;
-        }
+    $('.onoffswitch').on('click', '.onoffswitch-label', function(event) {
+        var checkbox = $(this).prev()[0];
+        event.preventDefault();
+        bootbox.confirm({
+            message: "Are you sure to switch state?",
+            closeButton: false,
+            callback: function(result) {
+                if (result) {
+                    checkbox.checked = !checkbox.checked;
+                    $(checkbox).change();
+                }
+            }
+        });
     });
 
 });
