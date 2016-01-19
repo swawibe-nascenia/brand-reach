@@ -347,11 +347,13 @@
 //        disable set start and end date radio button
         function disableSetDate(){
             $('.date-range').prop('disabled', 'disabled');
+            $('.daily').prop('checked', 'checked');
         }
 
         //        enable set start and end date radio button
         function enableSetDate(){
             $('.date-range').removeAttr('disabled');
+            $('.date-range').removeAttr('checked');
         }
 
    /*============ new campaign image upload form trigger ====*/
