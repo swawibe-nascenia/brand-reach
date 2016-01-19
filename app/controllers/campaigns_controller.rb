@@ -191,7 +191,7 @@ class CampaignsController < ApplicationController
     @all_campaigns = Campaign.engaged_campaigns_from(current_user)
 
     if @campaigns.blank?
-      flash[:error] = 'You have no campaign'
+      flash[:error] = 'You have no campaign yet. Please View a profile to create one right away!'
       return redirect_to explores_path
     end
 
