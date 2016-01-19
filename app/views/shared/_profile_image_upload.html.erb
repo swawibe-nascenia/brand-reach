@@ -1,5 +1,9 @@
 <%= stylesheet_link_tag 'profile-image-upload', media: 'all' %>
-
+<style>
+  .jcrop-holder{
+      display: none;
+  }
+</style>
 <div id="profile_image_upload_modal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content profile-image-modal-content">
@@ -62,7 +66,7 @@
                 $('#profile-pic-preview').hide();
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    $('#profile-pic-preview').show();
+//                    $('#profile-pic-preview').show();
                     $('#profile-pic-preview').attr("src", e.target.result);
                     $('#profile-pic-preview').Jcrop({
                         onChange: update_crop,
@@ -83,7 +87,7 @@
                         if(imageWidth > 166){
                             leftPadding = imageWidth - 166;
                         }
-
+                        $('.jcrop-holder').show();
                         $('.image-upload-btn-container').css('padding-left', leftPadding);
                     } );
                 };
