@@ -200,7 +200,7 @@ class User < ActiveRecord::Base
   end
 
   def location
-    "#{state_name}, #{country_name}"
+    "#{city}, #{state_name}, #{country_name}"
   end
 
   def unread_messages

@@ -23,7 +23,7 @@
                 <%= f.label :bank_name, 'Bank Name' %>
               </div>
               <div class="col-sm-8">
-                <%= f.text_field :bank_name, maxlength: 100, size: 20 %>
+                <%= f.text_field :bank_name, maxlength: 100, size: 20, 'data-parsley-required' => 'true'  %>
               </div>
             </div>
 
@@ -32,7 +32,7 @@
                 <%= f.label :address, 'Address' %>
               </div>
               <div class="col-sm-8">
-                <%= f.text_field :address, maxlength: 150, size: 20 %>
+                <%= f.text_field :address, maxlength: 150, size: 20, 'data-parsley-required' => 'true' %>
               </div>
             </div>
 
@@ -41,7 +41,7 @@
                 <%= f.label :city, 'City' %>
               </div>
               <div class="col-sm-8">
-                <%= f.text_field :city, maxlength: 50, size: 20 %>
+                <%= f.text_field :city, maxlength: 50, size: 20, 'data-parsley-required' => 'true' %>
               </div>
             </div>
 
@@ -81,7 +81,7 @@
                 <%= f.label :account_name, 'Account Name' %>
               </div>
               <div class="col-sm-8">
-                <%= f.text_field :account_name, maxlength: 50, size: 20 %>
+                <%= f.text_field :account_name, maxlength: 50, size: 20, 'data-parsley-required' => 'true' %>
               </div>
             </div>
 
@@ -90,7 +90,7 @@
                 <%= f.label :account_number, 'Account Number' %>
               </div>
               <div class="col-sm-8">
-                <%= f.text_field :account_number, maxlength: 50, size: 20 %>
+                <%= f.text_field :account_number, maxlength: 50, size: 20, 'data-parsley-required' => 'true' %>
               </div>
             </div>
 
@@ -108,7 +108,7 @@
                 <%= f.label :routing_number, 'Routing Number' %>
               </div>
               <div class="col-sm-8">
-                <%= f.text_field :routing_number, maxlength: 50, size: 20 %>
+                <%= f.text_field :routing_number, maxlength: 50, size: 20, 'data-parsley-required' => 'true' %>
               </div>
             </div>
 
@@ -117,7 +117,7 @@
                 <%= f.label :bic, 'BIC (Swift Code)' %>
               </div>
               <div class="col-sm-8">
-                <%= f.text_field :bic, maxlength: 30, size: 20 %>
+                <%= f.text_field :bic, maxlength: 30, size: 20, 'data-parsley-required' => 'true' %>
               </div>
             </div>
 
@@ -126,7 +126,7 @@
                 <%= f.label :iban, 'IBAN' %>
               </div>
               <div class="col-sm-8">
-                <%= f.text_field :iban, maxlength: 30, size: 20 %>
+                <%= f.text_field :iban, maxlength: 30, size: 20, 'data-parsley-required' => 'true' %>
               </div>
             </div>
 
@@ -144,3 +144,9 @@
     </div>
   </div>
 </div>
+
+<script>
+    $(function () {
+        $('.bank-account-modal').parsley();
+    })
+</script>
