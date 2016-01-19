@@ -123,6 +123,38 @@ class Campaign < ActiveRecord::Base
 
     accepted_offer && active_offer && sender.active? && receiver.active?
   end
+
+  def get_start_time
+    if profile_photo? || cover_photo?
+      start_date.strftime('%I:%M')
+    else
+      'NA'
+    end
+  end
+
+  def get_end_time
+    if profile_photo? || cover_photo?
+      end_date.strftime('%I:%M')
+    else
+      'NA'
+    end
+  end
+
+  def get_start_date
+    if profile_photo? || cover_photo?
+      start_date.strftime('%I:%M')
+    else
+      'NA'
+    end
+  end
+
+  def get_end_date
+    if profile_photo? || cover_photo?
+      end_date.strftime('%I:%M')
+    else
+      'NA'
+    end
+  end
   # ----------------------------------------------------------------------
   # == Class methods == #
   # ----------------------------------------------------------------------
