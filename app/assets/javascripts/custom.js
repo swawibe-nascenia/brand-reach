@@ -500,9 +500,15 @@ $(function(){
 //    campaign toggle button confirmation
     $('.onoffswitch').on('click', '.onoffswitch-label', function(event) {
         var checkbox = $(this).prev()[0];
+        var message = '';
+        if( $(checkbox).is(':checked')){
+           message = 'Are you sure to pause this campaign ? '
+        }else{
+            message = 'Are you sure to restart this campaign ? '
+        }
         event.preventDefault();
         bootbox.confirm({
-            message: "Are you sure to switch state?",
+            message: message,
             closeButton: false,
             callback: function(result) {
                 if (result) {
