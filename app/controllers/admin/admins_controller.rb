@@ -205,7 +205,7 @@ class Admin::AdminsController < ApplicationController
   # influencer payment requests
   def payment_request
     authorize :admin, :manage_brandreach?
-    @payment_requests = InfluencerPayment.includes(:user)
+    @payment_requests = InfluencerPayment.includes(:user).order('id DESC')
 
     @payment_requests = @payment_requests.page params[:page]
   end
