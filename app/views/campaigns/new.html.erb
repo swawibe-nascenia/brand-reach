@@ -261,7 +261,9 @@
             social_account_index = $('#social_account').find('option:selected').index();
             $('#post_type option:first').prop('selected', 'selected');
             $('#post_cost').val(costs[social_account_index][0]);
+//            initial setting
             showHide(0);
+            disableSetDate();
         });
 
         $('#post_type').change(function() {
@@ -272,28 +274,35 @@
                 if (this.value == 0) {
                     $('#post_cost').val(costs[social_account_index][0]);
                     showHide(this.value);
+                    disableSetDate();
                 }
                 else if (this.value == 1) {
                     $('#post_cost').val( costs[social_account_index][1] );
                     showHide(this.value);
+                    enableSetDate();
                 }
                 else if (this.value == 2) {
                     $('#post_cost').val(costs[social_account_index][2]);
                     showHide(this.value);
+                    enableSetDate();
                 }
                 else if (this.value == 3) {
                     $('#post_cost').val(costs[social_account_index][3]);
                     showHide(this.value);
+                    disableSetDate();
                 }
                 else if (this.value == 4) {
                     $('#post_cost').val(costs[social_account_index][4]);
                     showHide(this.value);
+                    disableSetDate();
                 }
             }
 
         });
 
+//        inition setting
         showHide(0);
+        disableSetDate();
 
 /*===== display other field depending on post type value ====*/
 /* ===== show_item either 0,1,2,3 that will show and other will hide =*/
@@ -333,6 +342,16 @@
             $('.start_time').hide();
             $('.end_time').hide();
 
+        }
+
+//        disable set start and end date radio button
+        function disableSetDate(){
+            $('.date-range').prop('disabled', 'disabled');
+        }
+
+        //        enable set start and end date radio button
+        function enableSetDate(){
+            $('.date-range').removeAttr('disabled');
         }
 
    /*============ new campaign image upload form trigger ====*/
