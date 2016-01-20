@@ -40,6 +40,7 @@ class CampaignsController < ApplicationController
                                    when 1 then params[:profile_photo_url]
                                    when 2 then params[:cover_photo_url]
                                    when 3 then params[:video_url]
+                                   when 4 then params[:post_photo_url]
                                  end
     # @campaign.name = @campaign.name.downcase if  campaign_params[:name].present?
 

@@ -6,9 +6,12 @@
         <% if params[:type] == 'profile' %>
             $("input[name='profile_photo_url']").val('<%= @image.image_path.url %>');
             $("input[name='profile_photo_url']").parsley().validate();
-        <% else %>
+        <% elsif params[:type] == 'cover' %>
             $("input[name='cover_photo_url']").val('<%= @image.image_path.url %>');
             $("input[name='cover_photo_url']").parsley().validate();
+        <% else %>
+            $("input[name='post_photo_url']").val('<%= @image.image_path.url %>');
+            $("input[name='post_photo_url']").parsley().validate();
         <% end %>
     <% else %>
         <!--image upload for offer message attachment-->

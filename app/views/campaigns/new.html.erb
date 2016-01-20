@@ -91,10 +91,10 @@
               <!--photo post field-->
               <div class="form-group" id="post-type-4">
                 <%= f.label :campaign_content, 'Choose a photo', class: 'control-label label-with-img' %>
-                <span class="glyphicon glyphicon-camera image-icon" title="Add Image" id="upload-cover-photo"></span>
+                <span class="glyphicon glyphicon-camera image-icon" title="Add Image" id="upload-post-photo"></span>
 
-                <div class="display-inline">
-                  <%= f.text_field :campaign_content, class: 'form-control input-with-img', name: 'photo_url' %>
+                <div class="display-inline campaign-name-input">
+                  <%= f.text_field :campaign_content, class: 'form-control input-with-img', name: 'post_photo_url' %>
                 </div>
               </div>
 
@@ -188,6 +188,16 @@
       </div>
       <%= hidden_field_tag :campaign_image, 1 %>
       <%= hidden_field_tag 'type', 'profile' %>
+  <% end %>
+
+  <!-- campaign image upload form for cover photo -->
+  <%= form_for Image.new, html: {class: 'image-upload-form add_image', id: ''} do |f| %>
+      <!-- this is your file input tag, so i hide it!-->
+      <div style='height: 0px;width: 0px; overflow:hidden;'>
+        <%= f.file_field :image_path, name: 'image[image_path]', id: 'campaign-post-photo' %>
+      </div>
+      <%= hidden_field_tag :campaign_image, 1 %>
+      <%= hidden_field_tag 'type', 'post' %>
   <% end %>
 
 </div>
@@ -358,12 +368,18 @@
         }
 
    /*============ new campaign image upload form trigger ====*/
+   /*============ add every post type here that need imag upload ====*/
         $('#upload-profile-photo').click(function(){
             $('#campaign-profile-photo').click();
         });
 // cover photo
         $('#upload-cover-photo').click(function(){
             $('#campaign-cover-photo').click();
+        });
+
+// cover photo
+        $('#upload-post-photo').click(function(){
+            $('#campaign-post-photo').click();
         });
 
         $('.add_image').fileupload({
@@ -406,8 +422,8 @@
             }
         });
 
-/*=====  validating dynamic fields for this page ========*/
-
+/*===== validating dynamic fields for this page . ========*/
+/*===== add every post type here that required field    ========*/
         function makeRequired(element){
             makeOptional$element();
 
@@ -419,6 +435,11 @@
                 $("input[name=cover_photo_url]").attr("required", "required");
                 $("input[name=cover_photo_url]").parsley().destroy();
                 $("input[name=cover_photo_url]").parsley();
+
+            }else if( element == 4){
+                $("input[name=post_photo_url]").attr("required", "required");
+                $("input[name=post_photo_url]").parsley().destroy();
+                $("input[name=post_photo_url]").parsley();
 
             }
         }

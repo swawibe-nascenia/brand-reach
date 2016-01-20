@@ -927,6 +927,7 @@ only screen and (max-width: 480px) {
 
 .new-campaign-tab-content .image-icon{
     padding-right: 10px;
+    cursor: pointer;
 }
 
 @media
