@@ -141,7 +141,7 @@ class Campaign < ActiveRecord::Base
   end
 
   def get_start_date
-    if profile_photo? || cover_photo?
+    if start_date?
       start_date.strftime('%d-%m-%y')
     else
       'NA'
@@ -149,7 +149,7 @@ class Campaign < ActiveRecord::Base
   end
 
   def get_end_date
-    if profile_photo? || cover_photo?
+    if end_date?
       end_date.strftime('%d-%m-%y')
     else
       'NA'

@@ -14,7 +14,7 @@ prawn_document(:page_layout => :landscape) do |pdf|
 
  pdf.move_down(20)
 
- table_data= [['Campaign Name', 'Post Likes', 'Reach', 'Comments', 'Shares', 'Campaign Starts', 'Campaign Ends']]
+ table_data= [['Campaign Name', 'Post Likes', 'Reach', 'Comments', 'Shares', 'Starts', 'Starts Time', 'Ends', 'Ends Time']]
 
  @campaigns.each do |campaign|
     table_data << [
@@ -23,12 +23,14 @@ prawn_document(:page_layout => :landscape) do |pdf|
       campaign.number_of_post_reach,
       campaign.number_of_comments,
       campaign.number_of_shares,
-      campaign.start_date.present? ? campaign.start_date.strftime('%d-%m-%y') : 'NA',
-      campaign.end_date.present? ? campaign.end_date.strftime('%d-%m-%y') : 'NA'
+      campaign.get_start_date,
+      campaign.get_start_time,
+      campaign.get_end_date,
+      campaign.get_end_time
     ]
  end
 
-  pdf.table(table_data, :column_widths => [200, 75, 50, 75, 75, 125, 125], :cell_style => { inline_format: true, border_color: 'C0C0C0', padding: 4, align: :center, font: 'Helvetica', text_color: '5D5D5D', size: 12 }) do
+  pdf.table(table_data, :column_widths => [150, 75, 50, 75, 75, 100, 50, 100, 50], :cell_style => { inline_format: true, border_color: 'C0C0C0', padding: 4, align: :center, font: 'Helvetica', text_color: '5D5D5D', size: 12 }) do
           self.row_colors = %w(FFFFFF f6f6f6)
           row(0).background_color = 'D9D9D9'
           row(0).text_color = '606060'
