@@ -189,6 +189,11 @@ class Campaign < ActiveRecord::Base
 
   private
 
+  # Start Date : #{self.get_start_date}
+  # End Date : #{self.get_end_date}
+  # Start Time : #{self.get_start_time}
+  # End Time : #{self.get_end_time}
+
   def first_message_body
     post_type_content = case post_type
              when 'status_update' then "Status Message: #{campaign_content}"
@@ -207,8 +212,8 @@ class Campaign < ActiveRecord::Base
       Campaign Name:  #{self.name}
       Type of Post : #{self.post_type.humanize}
       #{post_type_content}
-      Start Date : #{self.start_date.try(:strftime, '%d-%m-%Y') || 'NA'}
-      End Date : #{self.end_date.try(:strftime, '%d-%m-%Y') || 'NA'}
+      Start Date : #{self.start_date.try(:strftime, '%d-%m-%Y-%I-%M-%P') || 'NA'}
+      End Date : #{self.end_date.try(:strftime, '%d-%m-%Y-%I-%M-%P') || 'NA'}
       Payment : #{self.cost} INR
       Facebook Account: #{self.facebook_account.name}
 
