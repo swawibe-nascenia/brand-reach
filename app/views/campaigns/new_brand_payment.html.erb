@@ -53,8 +53,8 @@
     <dt>Type of Post </dt> <dd><%= @campaign.post_type.humanize %></dd>
     <dt>Start Date </dt> <dd><%= @campaign.start_date.try(:strftime, '%d-%m-%Y') || 'NA' %></dd>
     <dt>End Date </dt> <dd><%= @campaign.end_date.try(:strftime, '%d-%m-%Y') || 'NA' %></dd>
-    <dt>Heading </dt> <dd><%= @campaign.headline %></dd>
-    <dt>Description </dt> <dd><%= @campaign.text %></dd>
+    <dt>Heading </dt> <dd><%= @campaign.headline.present? ? @campaign.headline : 'NA' %></dd>
+    <dt>Description </dt> <dd><%= @campaign.text.present? ? @campaign.text : 'NA' %></dd>
     <dt>Payment </dt> <dd><%= @campaign.cost %> INR</dd>
   </dl>
 
