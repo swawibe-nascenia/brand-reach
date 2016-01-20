@@ -95,6 +95,7 @@ class CampaignMailer < ApplicationMailer
   def notify_campaign_pause(campaign)
     @campaign = campaign
     @receiver = @campaign.receiver
+    @brand = @campaign.sender
     @message = case @campaign.post_type
                  when 'status_update' then 'You can now remove your status message.'
                  when 'profile_photo' then 'You can now remove your profile photo.'
@@ -109,12 +110,13 @@ class CampaignMailer < ApplicationMailer
   def notify_campaign_restart(campaign)
     @campaign = campaign
     @receiver = @campaign.receiver
+    @brand = @campaign.sender
     @message = case @campaign.post_type
-               when 'status_update' then 'You can now use campaign status message.'
-               when 'profile_photo' then 'You can now use campaign profile photo.'
-               when 'cover_photo' then 'You can now use campaign cover photo.'
-               when 'video_post' then 'You can now use campaign video post.'
-               when 'photo_post' then 'You can now use campaign photo post.'
+               when 'status_update' then 'Please update your status with campaign status message.'
+               when 'profile_photo' then 'Please update your profile photo with campaign  image.'
+               when 'cover_photo' then 'Please update your cover photo with campaign image.'
+               when 'video_post' then 'Please post campaign video.'
+               when 'photo_post' then 'Please post campaign photo.'
                end
     Rails.logger.info "==========================Campaign restart send to #{@receiver.full_name}================"
     mail(to: @receiver.email, subject: 'Campaign pause notification')
@@ -123,6 +125,7 @@ class CampaignMailer < ApplicationMailer
   def notify_campaign_stop(campaign)
     @campaign = campaign
     @receiver = @campaign.receiver
+    @brand = @campaign.sender
     @message = case @campaign.post_type
                when 'status_update' then 'You can now remove your status message.'
                when 'profile_photo' then 'You can now remove your profile photo.'
