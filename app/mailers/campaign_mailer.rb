@@ -119,7 +119,7 @@ class CampaignMailer < ApplicationMailer
                when 'photo_post' then 'Please post campaign photo.'
                end
     Rails.logger.info "==========================Campaign restart send to #{@receiver.full_name}================"
-    mail(to: @receiver.email, subject: 'Campaign pause notification')
+    mail(to: @receiver.email, subject: 'Campaign restart notification')
   end
 
   def notify_campaign_stop(campaign)
@@ -134,6 +134,6 @@ class CampaignMailer < ApplicationMailer
                when 'photo_post' then 'You can now remove your photo post.'
                end
     Rails.logger.info "==========================Campaign stop send to #{@receiver.full_name}================"
-    mail(to: @receiver.email, subject: 'Campaign pause notification')
+    mail(to: @receiver.email, subject: 'Campaign stop notification')
   end
 end
