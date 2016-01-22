@@ -89,7 +89,7 @@
   <div class="content-wrapper">
     <section class="header-content">
       <div class="row">
-        <%= image_tag('Logo.png', :class => 'image img-responsive header-logo display-inline-block', :alt => 'Logo') %>
+        <%= image_tag('Logo.svg', :class => 'image img-responsive header-logo display-inline-block', :alt => 'Logo') %>
         <div class="about-welcome">
           <p class=" welcome"> Welcome
             back, <%= current_user.try(:full_name).present? ? current_user.full_name : 'USER' %>!</p>
