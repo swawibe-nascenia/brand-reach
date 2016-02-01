@@ -254,9 +254,22 @@
 
 .offer-text {
     margin-left: 15px;
-    width: calc(100% - 600px);
+    width: 45%;
     color: #333;
 }
+
+@media (max-width: 1300px) {
+    .offer-text {
+        width: 38%;
+    }
+}
+
+@media (max-width: 1050px) {
+    .offer-text {
+        width: 32%;
+    }
+}
+
 
 .offer-text:hover{
     text-decoration: underline;
