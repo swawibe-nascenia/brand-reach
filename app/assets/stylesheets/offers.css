@@ -291,15 +291,13 @@
 }
 
 .offer-header .offer-time {
-    padding-top: 16px;
-    display: inline;
+    padding-top: 13px;
     width: 70px;
 }
 
 .offer-body {
     padding-left: 158px;
     margin-top: 20px;
-
 }
 
 .message {
