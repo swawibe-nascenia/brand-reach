@@ -262,6 +262,13 @@
     text-decoration: underline;
 }
 
+.offer-header .action{
+    width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .offer-time {
     float: right;
     margin-right: 20px;
@@ -273,6 +280,7 @@
 
 .offer-header .offer-time {
     padding-top: 16px;
+    display: inline;
 }
 
 .offer-body {
