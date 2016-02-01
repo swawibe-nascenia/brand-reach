@@ -271,7 +271,6 @@
 
 .offer-time {
     float: right;
-    margin-right: 20px;
     font-family: 'Hind', sans-serif;
     font-weight: 500;
     font-size: 10.4pt;
@@ -281,6 +280,7 @@
 .offer-header .offer-time {
     padding-top: 16px;
     display: inline;
+    width: 70px;
 }
 
 .offer-body {
