@@ -196,12 +196,20 @@ class Campaign < ActiveRecord::Base
 
   def first_message_body
     post_type_content = case post_type
-             when 'status_update' then "Status Message: #{campaign_content}"
-             when 'profile_photo' then "Profile Photo link: <a href=#{campaign_content} target='_blank'> Image </a>"
-             when 'cover_photo' then "Cover Photo link: <a href=#{campaign_content} target='_blank'> Image </a>"
-             when 'video_post' then  "Video link: <a href=#{campaign_content} target='_blank'> Video </a>"
-             when 'photo_post' then "Photo link: <a href=#{campaign_content} target='_blank'> Image </a>"
-            end
+                          when 'status_update' then "Status Message: #{campaign_content}"
+                          when 'profile_photo' then "Profile Photo link: <a href=#{campaign_content} target='_blank'> Image </a>"
+                          when 'cover_photo' then "Cover Photo link: <a href=#{campaign_content} target='_blank'> Image </a>"
+                          when 'video_post' then  "Video link: <a href=#{campaign_content} target='_blank'> Video </a>"
+                          when 'photo_post' then "Photo link: <a href=#{campaign_content} target='_blank'> Image </a>"
+                        end
+
+    if self.post_type == 'profile_photo' || self.post_type == 'cover_photo'
+      campaign_heading = ''
+      campaign_description = ''
+    else
+      campaign_heading = "Campaign Heading : #{self.headline.present? ? self.headline : 'NA'}"
+      campaign_description = "Campaign Description : #{self.text.present? ? self.text : 'NA'}"
+    end
 
     <<MESSAGE
       Hi #{self.receiver.first_name},
@@ -217,8 +225,8 @@ class Campaign < ActiveRecord::Base
       Payment : #{self.cost} INR
       Facebook Account: #{self.facebook_account.name}
 
-      Campaign Heading : #{self.headline}
-      Campaign Description : #{self.text}
+      #{campaign_heading}
+      #{campaign_description}
 MESSAGE
   end
 
