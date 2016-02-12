@@ -20,12 +20,12 @@
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <div class="input_container">
           <div class="label_l">Email</div>
-          <input data-parsley-id="6021" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[email]" id="user_email" type="text">
+          <input data-parsley-id="6021" class="login_input" data-parsley-required="true" data-parsley-error-message="Email is required" data-parsley-trigger="change" name="user[email]" id="user_email" type="text">
           <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
         </div>
         <div class="input_container">
           <div class="label_l">Password</div>
-          <input data-parsley-id="6194" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[password]" id="user_password" type="password">
+          <input data-parsley-id="6194" class="login_input" data-parsley-required="true" data-parsley-error-message="Password is required" data-parsley-trigger="change" name="user[password]" id="user_password" type="password">
           <ul id="parsley-id-6194" class="parsley-errors-list"></ul>
         </div>
         <div class="input_container remember-me-input">
