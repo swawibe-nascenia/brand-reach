@@ -19,12 +19,12 @@
           <div class="row">
             <div class="col-md-12">
               <label for="category"> Category </label>
-              <%= select_tag :category, options_for_select(Category.all.order(:name).pluck(:name)), {id: 'explore-category', prompt: 'Select a Category'} %>
+              <%= select_tag :category, options_for_select(Category.all.order(:name).pluck(:name)), {id: 'explore-category', prompt: 'Select a Category', class: 'double-arrow-select-icon'} %>
             </div>
 
             <div class="col-md-12">
               <label for="Followers"> Followers </label>
-              <%= select_tag 'followers', options_for_select(followers_drop_down), {id: 'explore-followers', prompt: 'Choose a range'} %>
+              <%= select_tag 'followers', options_for_select(followers_drop_down), {id: 'explore-followers', prompt: 'Choose a range', class: 'double-arrow-select-icon'} %>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
           <div class="row">
             <div class="col-md-12">
               <label for="social-media-platform"> Social Media Platform </label>
-              <select name="social_media_platform" id="explore-social-media">
+              <select name="social_media_platform" id="explore-social-media" class="double-arrow-select-icon">
                 <option value="">Select a Social Media Platform</option>
                 <option value="fb">Facebook</option>
               </select>
@@ -41,7 +41,7 @@
 
             <div class="col-md-12">
               <label for="influencer_price"> Price </label>
-              <%= select_tag 'price', options_for_select(price_drop_down), {id: 'explore-price', prompt: 'Choose a range'} %>
+              <%= select_tag 'price', options_for_select(price_drop_down), {id: 'explore-price', prompt: 'Choose a range', class: 'double-arrow-select-icon'} %>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
               <label for="influencer_country"> Location </label>
               <%= country_select_tag :country, '', {:id => 'explore-country', prompt: 'Select Country'} %>
               <div id="explore-state">
-                <select name="state" class="country-responsive-font">
+                <select name="state" class="country-responsive-font double-arrow-select-icon">
                   <option value="">Select State</option>
                 </select>
               </div>
@@ -71,4 +71,11 @@
 
   <div id="profile-modal"></div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var d = document.getElementById("country");
+        d.className += "double-arrow-select-icon";
+    });
+</script>
 

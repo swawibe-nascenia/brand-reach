@@ -3,10 +3,10 @@
   <% country = Carmen::Country.coded(parent_region) %>
 
   <% if country.nil? %>
-      <select class="country-responsive-font" name="state"><option value="">Select State</option></select>
+      <select class="country-responsive-font double-arrow-select-icon" name="state"><option value="">Select State</option></select>
   <% elsif country.subregions? %>
       <%= subregion_select(:user, :state, parent_region, {prompt: 'Select state'},
-                           { :class => 'profile-dropdown-color country-responsive-font', data:{'parsley-required' => 'true'} }) %>
+                           { :class => 'profile-dropdown-color country-responsive-font double-arrow-select-icon', data:{'parsley-required' => 'true'} }) %>
   <% else %>
       <%= text_field(:user, :state) %>
   <% end %>

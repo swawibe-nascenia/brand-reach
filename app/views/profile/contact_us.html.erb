@@ -14,7 +14,7 @@
         <div class="get-in-touch-category">
           <%= f.label :category, 'Category', class: 'category-name display-inline' %>
           <%= f.select :category, options_for_select(ContactUsCategory.all.order(:name).pluck(:name)),
-                       {}, { :class => 'category-list display-inline' } %>
+                       {}, { :class => 'category-list display-inline double-arrow-select-icon' } %>
         </div>
 
         <div class="get-in-touch-message">
