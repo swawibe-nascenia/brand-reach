@@ -5,7 +5,10 @@ class InfluencersController < ApplicationController
   respond_to :html, :js
 
   def show
-    respond_with(@influencer)
+    if params[:id].present?
+      @account = FacebookAccount.find(params[:id])
+      respond_with(@account)
+    end
   end
 
   def search

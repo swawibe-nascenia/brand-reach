@@ -1,16 +1,16 @@
 <div class="search-result">
-  <% influencers.each_slice(4) do |influncer_group| %>
+  <% accounts.each_slice(4) do |account_group| %>
       <div class="row padding-less-column-parent">
-        <% influncer_group.each do |influencer| %>
+        <% account_group.each do |account| %>
             <div class="col-md-3 col-sm-6 col-sm-12">
               <div class="search-result-item">
                 <div class="search-result-image">
-                  <%= image_tag(influencer.profile_picture, class: 'img-responsive explore-search-image') %>
+                  <%= image_tag(account.influencer.profile_picture, class: 'img-responsive explore-search-image') %>
                 </div>
                 <div class="influencer-data">
-                  <div class="influencer-name" title="<%= influencer.full_name %>"> <%= influencer.full_name %> </div>
-                  <p class="influencer-address"><%= influencer.location %></p>
-                  <% categories = (influencer.categories.pluck(:name).join(', ') if influencer.categories.present?) || '' %>
+                  <div class="influencer-name" title="<%= account.name %>"> <%= account.name %> </div>
+                  <p class="influencer-address"><%= account.influencer.location %></p>
+                  <% categories = (account.influencer.categories.pluck(:name).join(', ') if account.influencer.categories.present?) || '' %>
                   <% need_help = categories.size > 27  %>
                   <!-- show all industries on click -->
                   <div class="industry-container">
@@ -22,17 +22,14 @@
                     </span>
                   </div>
                   <!--end -->
-                  <p class="influencer-biography"><%= truncate(influencer.short_bio, length: 100) %> </p>
+                  <p class="influencer-biography"><%= truncate(account.influencer.short_bio, length: 100) %> </p>
 
                   <p>
                     <%= image_tag('explore-followers.png', :alt => 'number-of-follower') %> Total
-                    Likes: &nbsp;<%= influencer.max_followers %>
+                    Likes: &nbsp;<%= account.number_of_followers %>
                   </p>
-
-                  <p> <%= image_tag('fb-icon.png', :alt => 'number-of-pages') %>
-                    Pages: &nbsp;<%= influencer.active_facebook_accounts.count %></p>
                 </div>
-                <%= link_to 'VIEW PROFILE', influencer_path(influencer), remote: true, :class => 'btn btn-primary btn-view-profile' %>
+                <%= link_to 'VIEW PROFILE', influencer_path(account), remote: true, :class => 'btn btn-primary btn-view-profile' %>
               </div>
             </div>
         <% end %>
@@ -41,7 +38,7 @@
 </div>
 
 <div class="pagination-center-align">
-  <%= paginate influencers %>
+  <%= paginate accounts %>
 </div>
 
 <script type="text/javascript">

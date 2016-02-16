@@ -1,5 +1,5 @@
-<% if @influencer.active? %>
-    $('#profile-modal').html("<%= j render(:partial => 'influencers/profile_modal', :locals => { influencer: @influencer}) %>");
+<% if @account.influencer.active? %>
+    $('#profile-modal').html("<%= j render(:partial => 'influencers/profile_modal', :locals => { account: @account}) %>");
     $('#show-brands-profile').modal('show');
 <% else %>
     alert('Sorry this user is not active now. Please choose others');

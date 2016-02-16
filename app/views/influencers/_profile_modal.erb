@@ -9,34 +9,34 @@
         <h4 class="modal-title" id="myModalLabel"></h4>
       </div>
       <div class="modal-body">
-          <div class="display-inline-block influencer-modal-image">
-            <%= image_tag(influencer.profile_picture, :class => 'explore-influencer-picture', :alt => 'profile-picture') %>
-          </div>
+        <div class="display-inline-block influencer-modal-image">
+          <%= image_tag(account.influencer.profile_picture, :class => 'explore-influencer-picture', :alt => 'profile-picture') %>
+        </div>
 
-          <div class="display-inline-block influencer-modal-details">
-            <h4 class="font-raleway"><%= influencer.full_name %></h4>
-            <p class="title font-raleway"></p>
-            <p class="influencer-address font-raleway"> <%= influencer.location %></p>
-          </div>
+        <div class="display-inline-block influencer-modal-details">
+          <h4 class="font-raleway"><%= account.influencer.full_name %></h4>
+          <p class="title font-raleway"></p>
+          <p class="influencer-address font-raleway"> <%= account.influencer.location %></p>
+        </div>
 
-          <div class="display-inline-block pull-right like-send-request">
-            <div class="follower-box font-raleway">
-              <div class="follower-number display-inline-block"><%= influencer.max_followers %></div>
-              <div class="view-profile-likes display-inline-block">&nbsp;Likes</div>
-            </div>
-            <div class="btn-box btn-send-request">
-              <%= link_to 'Send Request', new_campaign_path(receiver_id: influencer.id, social_account_id: influencer.active_facebook_accounts.first.id), class: 'btn-brand-send-campaign-request', data: {href: new_campaign_path(receiver_id: influencer.id)} %>
-            </div>
+        <div class="display-inline-block pull-right like-send-request">
+          <div class="follower-box font-raleway">
+            <div class="follower-number display-inline-block"><%= account.number_of_followers %></div>
+            <div class="view-profile-likes display-inline-block">&nbsp;Likes</div>
           </div>
+          <div class="btn-box btn-send-request">
+            <%= link_to 'Send Request', new_campaign_path(receiver_id: account.influencer.id, social_account_id: account.id), class: 'btn-brand-send-campaign-request', data: {href: new_campaign_path(receiver_id: account.influencer.id)} %>
+          </div>
+        </div>
 
         <div class="">
           <p class="profile-info font-raleway">
-            <%= influencer.short_bio %>
+            <%= account.influencer.short_bio %>
           </p>
         </div>
         <!-- start of pricing section -->
 
-        <% if influencer.active_facebook_accounts.present? %>
+        <% if account.present? %>
 
             <h4 class="font-raleway"> Pricing</h4>
 
@@ -44,15 +44,12 @@
               <div class="col-md-12">
                 <div class="social-account-tabs">
                   <ul class="nav nav-tabs social-account-nav-tabs responsive influencer-social-account-nav-tabs">
-                    <% influencer.active_facebook_accounts.each do |account| %>
-                        <li class="influencer-social-account-tab" data-id="<%= account.id %>">
-                          <a data-toggle="tab" href="#fb_<%= account.id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %>
-                          </a></li>
-                    <% end %>
+                    <li class="influencer-social-account-tab" data-id="<%= account.id %>">
+                      <a data-toggle="tab" href="#fb_<%= account.id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %>
+                      </a></li>
                   </ul>
 
                   <div class="tab-content responsive social-account-tab-content font-raleway">
-                    <% influencer.active_facebook_accounts.each do |account| %>
                         <div id="fb_<%= account.id %>" class="tab-pane">
 
                           <%= render 'facebook/page_insights', account: account %>
@@ -87,7 +84,6 @@
                             </div>
                           </div>
                         </div>
-                    <% end %>
                   </div>
                 </div>
               </div>
@@ -97,19 +93,19 @@
         <div class="social-media-info font-raleway"> Social Media Information</div>
         <p>
           <span class="view-profile-fb-twitter-color">Facebook:</span>
-          <a href="<%= "https://www.facebook.com/app_scoped_user_id/#{influencer.uid}/" %>">
-            <%= "https://www.facebook.com/app_scoped_user_id/#{influencer.uid}/" %>
+          <a href="<%= "https://www.facebook.com/app_scoped_user_id/#{account.influencer.uid}/" %>">
+            <%= "https://www.facebook.com/app_scoped_user_id/#{account.influencer.uid}/" %>
           </a>
         </p>
 
         <div class="row">
           <div class="col-md-6">
             <div class="view-profile-industry font-raleway"> Industry</div>
-            <p class="font-raleway"><%= influencer.categories.pluck(:name).join(', ') if influencer.categories.present? %></p>
+            <p class="font-raleway"><%= account.influencer.categories.pluck(:name).join(', ') if account.influencer.categories.present? %></p>
           </div>
           <div class="col-md-6">
             <div class="view-profile-industry font-raleway"> Location</div>
-            <p class="font-raleway"><%= influencer.location %></p>
+            <p class="font-raleway"><%= account.influencer.location %></p>
           </div>
         </div>
       </div>
