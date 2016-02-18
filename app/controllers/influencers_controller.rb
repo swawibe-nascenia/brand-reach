@@ -1,7 +1,4 @@
 class InfluencersController < ApplicationController
-
-  before_action :set_influencer, only: [:show]
-
   respond_to :html, :js
 
   def show
@@ -18,12 +15,12 @@ class InfluencersController < ApplicationController
                          .pluck(:id)
 
     @campaigns = Campaign.where(id: all_offers_key)
-                         .includes(:messages)
-                         .where('messages.body LIKE :search OR
+                     .includes(:messages)
+                     .where('messages.body LIKE :search OR
                                  campaigns.name LIKE :search OR
                                  campaigns.text LIKE :search OR
                                  campaigns.headline LIKE :search',
-                                search: wildcard_search).references(:messages)
+                            search: wildcard_search).references(:messages)
 
     @influencers = User.active_influencers.includes(:categories).where('categories.name LIKE :search OR
                                                   first_name LIKE :search OR
@@ -40,13 +37,7 @@ class InfluencersController < ApplicationController
                                                   state_name LIKE :search OR
                                                   country_name LIKE :search OR
                                                   balance LIKE :search ',
-                                                  search: wildcard_search).references(:categories)
-                                             .where(id: current_user.id)
-  end
-
-  private
-
-  def set_influencer
-    @influencer = User.find(params[:id])
+                                                                       search: wildcard_search).references(:categories)
+                       .where(id: current_user.id)
   end
 end
