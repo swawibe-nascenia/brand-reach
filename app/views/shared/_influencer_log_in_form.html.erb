@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<div class="brand-new-modal-body__aside influencer-login-modal-aside">
+  <a href="#"><%= image_tag('logo_white.svg', :class => 'img-responsive login-modal-logo', :alt => 'logo') %></a>
+  <div class="influencer-login-modal-aside-description">
+    Joining Brand Reach puts you in front of influencers from top industries that are searching to connect with brands like you.
+  </div>
+</div>
+
+<div class="brand-new-modal-body__content influencer-login-modal-content">
+  <button area-label="Close" class="close" data-dismiss="modal" type="button">&times;</button>
+  <div class="influencer-login-modal-content-description">
+    <h4>FOR BRANDS</h4>
+
+    <% if params[:controller] == 'public' %>
+        <div id="sign-in-validation-error">
+        </div>
+    <% end %>
+    <form class="show-spinner-on-submit" method="post" accept-charset="UTF-8" action="/users/sign_in" data-remote="<%= params[:controller] == 'public' %>" data-parsley-validate="">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <div class="input_container">
+        <div class="label_l">Email</div>
+        <input data-parsley-id="6021" class="login_input" data-parsley-type="email" data-parsley-required="true" data-parsley-error-message="Email is required" data-parsley-trigger="change" name="user[email]" id="user_email" type="text">
+        <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
+      </div>
+      <div class="input_container">
+        <div class="label_l">Password</div>
+        <input data-parsley-id="6194" class="login_input" data-parsley-required="true" data-parsley-error-message="Password is required" data-parsley-trigger="change" name="user[password]" id="user_password" type="password">
+        <ul id="parsley-id-6194" class="parsley-errors-list"></ul>
+      </div>
+      <button class="btn-modal" type="submit">
+        Login
+      </button>
+
+      <%= link_to 'Forgot password?', '#forgotpassword', { class: 'forgot-password-link', data: {toggle: 'modal', dismiss: 'modal'} } %>
+    </form>
+
+    </br>
+    </br>
+
+    <div>Are you an Influencer, please login here</div>
+
+  </div>
+
+</div>
+
