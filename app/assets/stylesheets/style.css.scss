@@ -1922,3 +1922,37 @@ div.modal-content{
 .public-page-logo {
   width: 136px;
 }
+/*=======================*/
+/* new modal design style */
+/*--------------------------*/
+
+// new provided design 19/2/2016
+.brand-new-modal{
+  width: 68%;
+  border-radius: 6px;
+
+  &-header{
+  }
+
+  &-body{
+    width: 100%;
+    &__aside{
+      width: 42%;
+    }
+
+    &__content{
+      width: 58%;
+    }
+  }
+
+  &-footer{
+  }
+}
+
+.btn-modal{
+  border: 2px solid #00C9F3;
+  border-radius: 50%;
+  padding: 28px;
+  text-align: center;
+}
+
