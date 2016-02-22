@@ -12,35 +12,45 @@
   <div class="brand-login-modal-content-description">
     <h4>FOR BRANDS</h4>
 
-    <% if params[:controller] == 'public' %>
-        <div id="sign-in-validation-error">
+    <ul class="login-sign-up-ul" id="influencer_login_sign_up">
+      <li class="active display-inline"><a data-toggle="tab" href="#influencer_login">Login</a></li> /
+      <li class="display-inline"><a data-toggle="tab" href="#influencer_sign_up">Sign Up</a></li>
+    </ul>
+
+    <div id="influencer_login" class="tab-pane fade in active">
+      <% if params[:controller] == 'public' %>
+          <div id="sign-in-validation-error">
+          </div>
+      <% end %>
+      <form class="show-spinner-on-submit" method="post" accept-charset="UTF-8" action="/users/sign_in" data-remote="<%= params[:controller] == 'public' %>" data-parsley-validate="">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+        <div class="input_container">
+          <input data-parsley-id="6021" class="new-modal-input" placeholder="Email" data-parsley-type="email" data-parsley-required="true" data-parsley-error-message="Email is required" data-parsley-trigger="change" name="user[email]" id="user_email" type="text">
+          <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
         </div>
-    <% end %>
-    <form class="show-spinner-on-submit" method="post" accept-charset="UTF-8" action="/users/sign_in" data-remote="<%= params[:controller] == 'public' %>" data-parsley-validate="">
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-      <div class="input_container">
-        <input data-parsley-id="6021" class="new-modal-input" placeholder="Email" data-parsley-type="email" data-parsley-required="true" data-parsley-error-message="Email is required" data-parsley-trigger="change" name="user[email]" id="user_email" type="text">
-        <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
-      </div>
+        <div class="input_container">
+          <input data-parsley-id="6194" class="new-modal-input" placeholder="Password" data-parsley-required="true" data-parsley-error-message="Password is required" data-parsley-trigger="change" name="user[password]" id="user_password" type="password">
+          <ul id="parsley-id-6194" class="parsley-errors-list"></ul>
+        </div>
 
-      <div class="input_container">
-        <input data-parsley-id="6194" class="new-modal-input" placeholder="Password" data-parsley-required="true" data-parsley-error-message="Password is required" data-parsley-trigger="change" name="user[password]" id="user_password" type="password">
-        <ul id="parsley-id-6194" class="parsley-errors-list"></ul>
-      </div>
+        <button class="btn-modal" type="submit">
+          Login
+        </button>
 
-      <button class="btn-modal" type="submit">
-        Login
-      </button>
+        <%= link_to 'Forgot password?', '#forgotpassword', { class: 'forgot-password-link', data: {toggle: 'modal', dismiss: 'modal'} } %>
+      </form>
 
-      <%= link_to 'Forgot password?', '#forgotpassword', { class: 'forgot-password-link', data: {toggle: 'modal', dismiss: 'modal'} } %>
-    </form>
+      </br>
+      </br>
 
-    </br>
-    </br>
+      <div>Are you an Influencer, please login here</div>
 
-    <div>Are you an Influencer, please login here</div>
+    </div>
+  </div>
 
+  <div id="influencer_sign_up" class="tab-pane fade">
   </div>
 
 </div>
