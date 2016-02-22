@@ -1927,7 +1927,7 @@ div.modal-content{
 /*--------------------------*/
 
 // new provided design 19/2/2016
-.brand-new-modal{
+.new-modal{
   width: 68%;
   border-radius: 6px;
 
@@ -1940,6 +1940,7 @@ div.modal-content{
       width: 42%;
       background-color: #00ADEF;
       display: inline-block;
+      padding: 60px 40px 50px;
     }
 
     &__content{
@@ -1961,17 +1962,17 @@ div.modal-content{
   color: #00ADEF;
 }
 
-.influencer-login-modal-aside {
-  padding: 60px 40px 50px;
+.login-modal-aside {
 
   &-description {
     color: white;
     font-size: 14px;
     padding-top: 40px;
   }
+
 }
 
-.influencer-login-modal-content{
+.brand-login-modal-content{
   width: 57%;
 
   &-description {
