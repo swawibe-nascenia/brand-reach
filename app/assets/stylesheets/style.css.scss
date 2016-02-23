@@ -1928,8 +1928,14 @@ div.modal-content{
 
 // new provided design 19/2/2016
 .new-modal{
-  width: 68%;
-  border-radius: 6px;
+  &-content{
+    overflow: hidden;
+  }
+
+  & &-dialog{
+    width: 68%;
+    margin: 30px auto;
+  }
 
   &-header{
   }
@@ -1937,15 +1943,31 @@ div.modal-content{
   &-body{
     width: 100%;
     &__aside{
+      background-color: #00adef;
+      bottom: 0;
+      color: white;
+      float: left;
+      font-size: 14px;
+      padding: 45px 20px;
+      position: absolute;
+      top: 0;
       width: 42%;
-      background-color: #00ADEF;
-      display: inline-block;
-      padding: 60px 40px 50px;
+
+      @media (max-width: 500px) {
+        display: none;
+      }
+
     }
 
     &__content{
       width: 58%;
-      display: inline-block;
+      padding: 45px 20px;
+      margin-left: 42%;
+
+      @media (max-width: 500px) {
+        width: 100%;
+        margin-left: 0;
+      }
     }
   }
 
@@ -1962,39 +1984,41 @@ div.modal-content{
   color: #00ADEF;
 }
 
-.login-modal-aside {
-
-  &-description {
-    color: white;
-    font-size: 14px;
-    padding-top: 40px;
-  }
-
-}
-
-.brand-login-modal-content{
-  width: 57%;
-
-  &-description {
-    padding: 45px 20px;
-  }
-}
-
-.login-sign-up-ul {
-  padding-left: 0;
-  font-size: 15px;
-}
-
+//.login-modal-aside {
+//
+//  &-description {
+//    color: white;
+//    font-size: 14px;
+//    padding-top: 40px;
+//  }
+//
+//}
+//
+//.brand-login-modal-content{
+//  width: 57%;
+//
+//  &-description {
+//    padding: 45px 20px;
+//  }
+//}
+//
+//.login-sign-up-ul {
+//  padding-left: 0;
+//  font-size: 15px;
+//}
+//
 .new-modal-input {
   border: none;
   border-bottom: 2px solid #00ADEF;
 }
+//
+//#new-modal-close {
+//  color: #d9d9d9;
+//  font-size: 3em;
+//  opacity: 1.5;
+//  font-weight: 100;
+//  margin-top: 10px;
+//  margin-right: 15px;
+//}
 
-#new-modal-close {
-  color: #d9d9d9;
-  font-size: 3em;
-  opacity: 1.5;
-  font-weight: 100;
-  margin-top: 10px;
-  margin-right: 15px;
-}
+

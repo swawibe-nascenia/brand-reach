@@ -1,10 +1,9 @@
 <%= stylesheet_link_tag 'influencers_home', media: 'all' %>
 
-<div aria-hidden="false" class="modal fade in" id="signin">
+<div aria-hidden="false" class="modal new-modal fade in" id="signin">
   <div class="modal-backdrop fade in"></div>
-  <div class="modal-dialog modal-md modal-dialog-sign-in">
-    <div class="modal-content">
-
+  <div class="modal-dialog modal-md new-modal-dialog">
+    <div class="modal-content new-modal-content">
       <% if params[:action] == 'home' %>
           <%= render 'shared/influencer_log_in_form' %>
       <% else %>
