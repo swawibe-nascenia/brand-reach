@@ -2052,4 +2052,12 @@ div.modal-content{
   margin-right: -10px;
 }
 
+.social-media-select{
+  padding-top: 38px;
+  
+  @media (max-width: 991px) {
+    padding-top: 0;
+  }
+}
+
 

@@ -343,6 +343,7 @@ $(function(){
        var socialMedia = $('#explore-social-media').val();
        var country = $('#country').val();
        var state = $('#user_state').val();
+       var post_type = $('#post_type').val();
        var price = $('#explore-price').val();
        var followers = $('#explore-followers').val();
 
@@ -358,6 +359,7 @@ $(function(){
                 social_media: socialMedia,
                 country: country,
                 state: state,
+                post_type: post_type,
                 price: price,
                 followers: followers,
                 'authenticity_token': $('meta[name="csrf-token"]').attr('content')
