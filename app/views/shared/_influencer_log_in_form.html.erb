@@ -46,11 +46,54 @@
       </br>
 
       <div>Are you an Influencer, please login here</div>
-
     </div>
-  </div>
 
-  <div id="influencer_sign_up" class="tab-pane fade">
+
+    <div id="influencer_sign_up" class="tab-pane fade">
+      <div class="row" id="brand-signup">
+        <div class="col-md-12">
+
+          <div id="validation-error" class="text-danger"></div>
+          <div id="success-message" class="text-success"></div>
+          </br>
+          <form class="show-spinner-on-submit" id="ajax-signup" method="post" accept-charset="UTF-8" action="/users" data-remote="true" data-parsley-validate="">
+
+            <div class="input_container">
+              <input data-parsley-id="6021" class="new-modal-input" placeholder="First Name" data-parsley-required="true" data-parsley-trigger="change" name="user[first_name]" id="user_email" type="text">
+              <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
+            </div>
+
+            <div class="input_container">
+              <input data-parsley-id="6021" class="new-modal-input" placeholder="Last Name" data-parsley-required="true" data-parsley-trigger="change" name="user[last_name]" id="user_email" type="text">
+              <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
+            </div>
+
+            <div class="input_container">
+              <input data-parsley-id="6021" class="new-modal-input" placeholder="Email" data-parsley-required="true" data-parsley-type="email" data-parsley-trigger="change" name="user[email]" id="user_email" type="text">
+              <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
+            </div>
+
+            <div class="input_container">
+              <input data-parsley-id="6021" data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$" class="new-modal-input" placeholder="Phone" data-parsley-required="true" data-parsley-trigger="change" name="user[phone]" id="user_phone" type="text">
+              <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
+            </div>
+            <div class="input_container">
+              <input data-parsley-id="6194" class="new-modal-input" placeholder="Company Name" data-parsley-required="true" data-parsley-trigger="change" name="user[company_name]" id="user_company_name" type="text">
+              <ul id="parsley-id-6194" class="parsley-errors-list"></ul>
+            </div>
+
+            <button class="btn-modal" type="submit">
+              Sign Up
+            </button>
+          </form>
+
+          </br>
+
+          <div>Are you an Influencer, please Sign up here</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </div>

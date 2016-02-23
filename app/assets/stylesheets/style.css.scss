@@ -899,7 +899,7 @@ th {
 }
 
 #brand-signup {
-  margin: 0 0 15px;
+  //margin: 0 0 15px;
 }
 
 #company-short-bio {
@@ -1858,7 +1858,6 @@ a .offer-box:last-child{
 
 div.modal-content{
   border-radius: 6px;
-  margin-top: 15%;
 }
 
 @media (max-width: 572px) {
@@ -1955,6 +1954,10 @@ div.modal-content{
   & &-dialog{
     width: 50%;
     margin: 30px auto;
+
+    .modal-content {
+      margin-top: 15%;
+    }
 
     @media (max-width: 1024px) {
       width: 75%;
