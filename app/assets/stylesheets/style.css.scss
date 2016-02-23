@@ -1031,6 +1031,10 @@ textarea#company-short-bio{
   display : inline-block !important;
 }
 
+.display-none {
+  display: none;
+}
+
 .remove-both-margin {
   margin-right: 0;
   margin-left: 0;
@@ -1853,8 +1857,10 @@ a .offer-box:last-child{
 }
 
 div.modal-content{
-  border-radius: 0;
+  border-radius: 6px;
+  margin-top: 15%;
 }
+
 @media (max-width: 572px) {
   #signup .sign-up-close {
     margin-right: 0;
@@ -1931,6 +1937,19 @@ div.modal-content{
 
   &-content{
     overflow: hidden;
+
+    .new-modal-close {
+      color: #d9d9d9;
+      font-size: 3em;
+      opacity: 1.5;
+      font-weight: 100;
+      margin-top: -35px;
+      margin-right: -10px;
+
+      @media (max-width: 767px) {
+        font-size: 2.4em;
+      }
+    }
   }
 
   & &-dialog{
@@ -1971,6 +1990,10 @@ div.modal-content{
         width: 100%;
         bottom: auto;
         padding: 20px 30px;
+
+        #new-modal-close-responsive {
+          display: block;
+        }
       }
 
       .login-modal-logo {
@@ -1986,10 +2009,15 @@ div.modal-content{
 
       @media (max-width: 767px) {
         width: 100%;
-        margin-top: 15%;
+        margin-top: 20%;
         margin-left: 0;
+
         .forgot-password-link {
           padding-top: 10px;
+        }
+
+        #new-modal-close-button {
+          display: none;
         }
       }
     }
@@ -2041,15 +2069,6 @@ div.modal-content{
   &:focus {
     outline: none;
   }
-}
-
-#new-modal-close {
-  color: #d9d9d9;
-  font-size: 3em;
-  opacity: 1.5;
-  font-weight: 100;
-  margin-top: -35px;
-  margin-right: -10px;
 }
 
 
