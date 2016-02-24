@@ -20,6 +20,7 @@
 </head>
 <body>
 <%= stylesheet_link_tag 'brands_home', media: 'all', 'data-turbolinks-track' => true %>
+<% user_type =  params[:action] == 'brand_home' ? 'brand' : 'influencer' %>
 
 <%#= render partial: 'shared/flash_messages', flash: flash %>
 <div class="welcome_bar">
@@ -34,7 +35,7 @@
       <% else %>
             <a class="hidden-xs" href="<%= faqs_public_index_path %>">FAQs</a>
             <% unless params[:controller] == 'sessions' %>
-                <a class="hidden-xs" href='#signin'  data-toggle = 'modal'>Login</a>
+                <a class="hidden-xs" href='<%= load_sign_in_sign_up_modal_public_index_path(user_type: user_type, type: 'sign_in') %>'  data-remote = 'true'>Login</a>
             <% end %>
       <% end %>
       </p>
@@ -93,7 +94,11 @@
           <% else %>
               <li class="visible-xs-inline"><a href="<%= faqs_public_index_path %>" class="<%= current_path(faqs_public_index_path) %>">FAQs</a></li>
               <li class="visible-xs-inline"><a href='#signin'  data-toggle = 'modal'>LOGIN</a></li>
-              <li><%= link_to 'SIGN UP FREE', '#signup', 'data-toggle' => 'modal', :class => 'btn-custom btn-theme text-white raleway-semibold' %></li>
+              <li>
+                <%= link_to 'SIGN UP FREE',
+                            load_sign_in_sign_up_modal_public_index_path(user_type: user_type, type: 'sign_up'),
+                            remote: true, :class => 'btn-custom btn-theme text-white raleway-semibold' %>
+              </li>
           <% end %>
         </ul>
       </div>
@@ -110,10 +115,13 @@
     <%= render 'shared/footer_other_page' %>
 <% end %>
 
-<%= render partial: 'shared/sign_up_modal'%>
-<%= render partial: 'shared/sign_in_modal'%>
+<%#= render partial: 'shared/sign_up_modal'%>
+<%#= render partial: 'shared/sign_in_modal'%>
 <%= render partial: 'shared/sign_up_success_message'%>
 <%= render partial: 'shared/forgot_password'%>
+
+<div class="public-page-modal-container">
+</div>
 
 </body>
 </html>

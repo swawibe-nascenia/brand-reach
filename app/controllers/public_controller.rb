@@ -49,6 +49,9 @@ class PublicController < ApplicationController
   def sign_up_requirements
   end
 
+  def load_sign_in_sign_up_modal
+  end
+
 protected
 	def set_service
 		# @service = InsightService.new current_user

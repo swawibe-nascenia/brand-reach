@@ -14,26 +14,27 @@
     <h4>FOR INFLUENCERS</h4>
 
     <ul class="login-sign-up-ul" id="influencer_login_sign_up">
-      <li class="active display-inline"><a data-toggle="tab" href="#influencer_login">Login</a></li> /
-      <li class="display-inline"><a data-toggle="tab" href="#influencer_sign_up">Sign Up</a></li>
+      <li class="display-inline <%= 'active' if type == 'sign_in' %>"><a data-toggle="tab" href="#influencer_login">Login</a></li> /
+      <li class="display-inline <%= 'active' if type == 'sign_up' %>"><a data-toggle="tab" href="#influencer_sign_up">Sign Up</a></li>
     </ul>
 
-    <div id="influencer_login" class="tab-pane fade-out active">
-      <%= link_to "Facebook &nbsp;#{image_tag('Fb-icon-modal.png')}".html_safe, user_omniauth_authorize_path('facebook'), :class => 'btn-modal'%>
+    <div id="influencer_login" class="tab-pane fade-out <%= 'active' if type == 'sign_in' %>">
+      <button class="btn-modal" type="submit">
+        Facebook
+      </button>
       </br>
       </br>
-      </br>
-      </br>
-      <div>Are you an Brand, please login <a href="<%= brand_home_public_index_path %>">here</a>.</div>
+      <div>Are you an Brand, please login <a href="#">here</a>.</div>
     </div>
 
-    <div id="influencer_sign_up" class="tab-pane fade-out">
-      <%= link_to "Facebook &nbsp;#{image_tag('Fb-icon-modal.png')}".html_safe, user_omniauth_authorize_path('facebook'), :class => 'btn-modal'%>
+
+    <div id="influencer_sign_up" class="tab-pane fade-out <%= 'active' if type == 'sign_up' %>">
+      <button class="btn-modal" type="submit">
+        Facebook
+      </button>
       </br>
       </br>
-      </br>
-      </br>
-      <div>Are you an Brand, please login <a href="<%= brand_home_public_index_path %>">here</a>.</div>
+      <div>Are you an Brand, please login <a href="#">here</a>.</div>
     </div>
 
   </div>

@@ -4,10 +4,10 @@
   <div class="modal-backdrop fade in"></div>
   <div class="modal-dialog modal-md new-modal-dialog">
     <div class="modal-content new-modal-content">
-      <% if params[:action] == 'brand_home' %>
-          <%= render 'shared/brand_log_in_sign_up_form' %>
+      <% if user_type == 'brand' %>
+          <%= render partial: 'shared/brand_log_in_sign_up_form', locals: { type: type } %>
       <% else %>
-          <%= render 'shared/influencer_log_in_sign_up_form' %>
+          <%= render partial: 'shared/influencer_log_in_sign_up_form', locals: { type: type } %>
       <% end %>
     </div>
   </div>

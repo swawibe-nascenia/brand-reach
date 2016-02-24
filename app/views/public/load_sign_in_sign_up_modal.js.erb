@@ -1,0 +1,4 @@
+ $('.public-page-modal-container').html("<%= j render(:partial => 'shared/sign_in_modal',
+                                :locals => { user_type: params[:user_type], type: params[:type] }) %>");
+
+ $('#signin').modal('show');

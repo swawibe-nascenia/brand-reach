@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       get :faqs
       get :terms
       get 'sign-up-requirements', to:  'public#sign_up_requirements'
+      get :load_sign_in_sign_up_modal
     end
   end
 
