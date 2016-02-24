@@ -24,9 +24,8 @@
       </br>
       </br>
       </br>
-      <div>Are you an Brand, please login <a href="#">here</a>.</div>
+      <div>Are you an Brand, please login <a href="<%= brand_home_public_index_path %>">here</a>.</div>
     </div>
-
 
     <div id="influencer_sign_up" class="tab-pane fade-out">
       <%= link_to "Facebook &nbsp;#{image_tag('Fb-icon-modal.png')}".html_safe, user_omniauth_authorize_path('facebook'), :class => 'btn-modal'%>
@@ -34,7 +33,7 @@
       </br>
       </br>
       </br>
-      <div>Are you an Brand, please login <a href="#">here</a>.</div>
+      <div>Are you an Brand, please login <a href="<%= brand_home_public_index_path %>">here</a>.</div>
     </div>
 
   </div>
