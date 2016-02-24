@@ -8,17 +8,17 @@
   <button area-label="Close" class="close new-modal-close display-none" id="new-modal-close-responsive" data-dismiss="modal" type="button">&times;</button>
 </div>
 
-<div class="new-modal-body__content brand-login-modal-content">
+<div class="new-modal-body__content">
   <button area-label="Close" class="close new-modal-close" id="new-modal-close-button" data-dismiss="modal" type="button">&times;</button>
   <div class="brand-login-modal-content-description">
     <h4>FOR BRANDS</h4>
 
-    <ul class="login-sign-up-ul" id="influencer_login_sign_up">
-      <li class="active display-inline"><a data-toggle="tab" href="#influencer_login">Login</a></li> /
-      <li class="display-inline"><a data-toggle="tab" href="#influencer_sign_up">Sign Up</a></li>
+    <ul class="login-sign-up-ul" id="brand_login_sign_up">
+      <li class="active display-inline"><a data-toggle="tab" href="#brand_login">Login</a></li> /
+      <li class="display-inline"><a data-toggle="tab" href="#brand_sign_up">Sign Up</a></li>
     </ul>
 
-    <div id="influencer_login" class="tab-pane fade-out in active">
+    <div id="brand_login" class="tab-pane fade in active">
       <% if params[:controller] == 'public' %>
           <div id="sign-in-validation-error">
           </div>
@@ -45,11 +45,11 @@
 
       </br>
 
-      <div>Are you an Influencer, please login here</div>
+      <div>Are you an Influencer, please login <a href="#">here</a>.</div>
     </div>
 
 
-    <div id="influencer_sign_up" class="tab-pane fade-out">
+    <div id="brand_sign_up" class="tab-pane fade">
       <div class="row" id="brand-signup">
         <div class="col-md-12">
 
@@ -89,7 +89,7 @@
 
           </br>
 
-          <div>Are you an Influencer, please Sign up here</div>
+          <div>Are you an Influencer, please Sign up <a href="#">here</a>.</div>
         </div>
       </div>
     </div>

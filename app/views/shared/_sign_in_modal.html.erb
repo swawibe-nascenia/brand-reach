@@ -4,10 +4,10 @@
   <div class="modal-backdrop fade in"></div>
   <div class="modal-dialog modal-md new-modal-dialog">
     <div class="modal-content new-modal-content">
-      <% if params[:action] == 'home' %>
+      <% if params[:action] == 'brand_home' %>
           <%= render 'shared/brand_log_in_sign_up_form' %>
       <% else %>
-
+          <%= render 'shared/influencer_log_in_sign_up_form' %>
       <% end %>
     </div>
   </div>
