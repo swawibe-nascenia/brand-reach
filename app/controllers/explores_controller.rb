@@ -35,23 +35,33 @@ class ExploresController < ApplicationController
     @influencers = @influencers.where(state: params[:state]) if params[:state].present?
     @influencers = @influencers.where(country: params[:country]) if params[:country].present?
 
-    # if params[:price].present?
-    #   price_range = Range.new(*params[:price].split('..').map(&:to_i))
-    #   @influencers = @influencers.where(fb_average_cost: price_range)
-    # end
-    #
-    # if params[:followers].present?
-    #   followers = Range.new(*params[:followers].split('..').map(&:to_i))
-    #   @influencers = @influencers.where(max_followers: followers)
-    # end
-    #
-    #
-    # @influencers = @influencers.order(:name).page(params[:page]).per(8)
-    #
-    # @influencers
+    #get all account for selected influencer
+    @accounts = FacebookAccount.where(influencer_id: @influencers.pluck(:id))
+
+    if params[:price].present?
+      price_range = Range.new(*params[:price].split('..').map(&:to_i))
+
+      # Status Update => 0
+      # Profile Photo => 1
+      # Cover Photo => 2
+      # Video Post => 3
+      # Photo Post => 4
+      @accounts = case params[:post_type].to_i
+                    when 0 then @accounts.where(status_update_cost: price_range)
+                    when 1 then @accounts.where(profile_photo_cost: price_range)
+                    when 2 then @accounts.where(cover_photo_cost: price_range)
+                    when 3 then @accounts.where(video_post_cost: price_range)
+                    when 4 then @accounts.where(photo_post_cost: price_range)
+                  end
+    end
+
+    if params[:followers].present?
+      followers = Range.new(*params[:followers].split('..').map(&:to_i))
+      @accounts = @accounts.where(number_of_followers: followers)
+    end
 
     # send only selected influence's account
-    @accounts = FacebookAccount.where(influencer_id: @influencers.pluck(:id)).page(params[:page]).per(8)
+    @accounts = @accounts.page(params[:page]).per(8)
   end
 
   private
