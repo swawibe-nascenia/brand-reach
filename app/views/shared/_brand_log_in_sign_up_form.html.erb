@@ -59,12 +59,12 @@
           <form class="show-spinner-on-submit" id="ajax-signup" method="post" accept-charset="UTF-8" action="/users" data-remote="true" data-parsley-validate="">
 
             <div class="input_container">
-              <input data-parsley-id="6021" class="new-modal-input" placeholder="First Name" data-parsley-required="true" data-parsley-trigger="change" name="user[first_name]" id="user_email" type="text">
+              <input data-parsley-id="6021" class="new-modal-input" placeholder="First Name" data-parsley-pattern="/^[A-Za-z\s]+$/" data-parsley-required="true" data-parsley-trigger="change" name="user[first_name]" id="user_email" type="text">
               <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
             </div>
 
             <div class="input_container">
-              <input data-parsley-id="6021" class="new-modal-input" placeholder="Last Name" data-parsley-required="true" data-parsley-trigger="change" name="user[last_name]" id="user_email" type="text">
+              <input data-parsley-id="6021" class="new-modal-input" placeholder="Last Name" data-parsley-pattern="/^[A-Za-z\s]+$/" data-parsley-required="true" data-parsley-trigger="change" name="user[last_name]" id="user_email" type="text">
               <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
             </div>
 
@@ -74,7 +74,7 @@
             </div>
 
             <div class="input_container">
-              <input data-parsley-id="6021" data-parsley-pattern="(^[\+]?[0-9]+[-]?[0-9]+[-]?[0-9]+$)" class="new-modal-input" placeholder="Phone" data-parsley-required="true" data-parsley-trigger="change" name="user[phone]" id="user_phone" type="text">
+              <input data-parsley-id="6021" data-parsley-pattern="(^[\+]?[0-9]+[-]?[0-9]+[-]?[0-9]+$)" class="new-modal-input" placeholder="Phone" data-parsley-required="true" data-parsley-length = '[10, 14]' data-parsley-trigger="change" name="user[phone]" id="user_phone" type="text">
               <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
             </div>
             <div class="input_container">
