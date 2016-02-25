@@ -19,8 +19,8 @@ class PasswordsController < Devise::PasswordsController
        flash[:success] = 'Something went wrong. Please try again.'
      end
    else
-     @messages << 'This email account was not found.'
-     flash[:error] = 'This email account was not found.'
+     @messages << 'This email address was not found.'
+     flash[:error] = 'This email address was not found.'
    end
 
    respond_to do |format|

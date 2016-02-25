@@ -62,12 +62,12 @@ class SessionsController < Devise::SessionsController
     else
       #   user not found by email
       if params[:admin].present?
-        flash[:error] = 'This e-mail ID was not found.'
+        flash[:error] = 'This email address was not found.'
         redirect_to admin_path
       else
         respond_to do |format|
-          format.js { @messages << 'This e-mail ID was not found.' }
-          format.html { flash.now[:error] = 'This e-mail ID was not found.' }
+          format.js { @messages << 'This email address was not found.' }
+          format.html { flash.now[:error] = 'This email address was not found.' }
         end
       end
 
