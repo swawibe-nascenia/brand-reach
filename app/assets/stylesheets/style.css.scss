@@ -1951,7 +1951,7 @@ div.modal-content{
     }
   }
 
-  & &-dialog{
+  &-dialog{
     width: 50%;
     margin: 30px auto;
 
@@ -2010,6 +2010,12 @@ div.modal-content{
       padding: 45px 30px;
       margin-left: 42%;
 
+      .reset-password {
+        color: #00ADEF;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
       @media (max-width: 767px) {
         width: 100%;
         margin-top: 20%;
@@ -2053,6 +2059,7 @@ div.modal-content{
     font-size: 14px;
     padding-top: 40px;
     font-family: "Raleway", sans-serif;
+    font-weight: 500;
     @media (max-width: 767px) {
       display: none;
     }
@@ -2089,7 +2096,7 @@ div.modal-content{
 
 .social-media-select{
   padding-top: 38px;
-  
+
   @media (max-width: 991px) {
     padding-top: 0;
   }
@@ -2097,4 +2104,8 @@ div.modal-content{
 
 .login-sign-up-ul li.active a{
   color: #00ADEF;
+}
+
+.raleway-font {
+  font-family: "Raleway", sans-serif;
 }
