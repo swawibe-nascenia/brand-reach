@@ -23,11 +23,11 @@
         <div class="form-group">
           <div class="col-md-6">
             <%= f.label :first_name, 'First Name' %>
-            <%= f.text_field :first_name, maxlength: 20, 'data-parsley-required' => 'true', 'data-parsley-pattern'=> '(/^[A-Za-z\s]+$/)' %>
+            <%= f.text_field :first_name, maxlength: 20, 'data-parsley-required' => 'true', 'data-parsley-pattern'=> '^[A-Za-z\s]+$' %>
           </div>
           <div class="col-md-6">
             <%= f.label :last_name, 'Last Name' %>
-            <%= f.text_field :last_name, maxlength: 20, 'data-parsley-required' => 'true', 'data-parsley-pattern'=> '(/^[A-Za-z\s]+$/)' %>
+            <%= f.text_field :last_name, maxlength: 20, 'data-parsley-required' => 'true', 'data-parsley-pattern'=> '^[A-Za-z\s]+$' %>
           </div>
         </div>
 
