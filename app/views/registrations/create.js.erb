@@ -1,7 +1,7 @@
 $('.btn.has-spinner').removeClass('active');
 <% if @success %>
     $('#request-sent').modal('show');
-    $('#signup').modal('hide');
+    $('#signin').modal('hide');
 <% else %>
     console.log('---------------- render sign up errors-----------------------' );
     $('#success-message').html('');
