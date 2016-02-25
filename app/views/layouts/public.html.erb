@@ -35,7 +35,7 @@
       <% else %>
             <a class="hidden-xs" href="<%= faqs_public_index_path %>">FAQs</a>
             <% unless params[:controller] == 'sessions' %>
-                <a class="hidden-xs" href='<%= load_sign_in_sign_up_modal_public_index_path(user_type: user_type, type: 'sign_in') %>'  data-remote = 'true'>Login</a>
+                <a class="hidden-xs" href='javascript:;' id="js-sign-in-btn">Login</a>
             <% end %>
       <% end %>
       </p>
@@ -96,8 +96,9 @@
               <li class="visible-xs-inline"><a href='#signin'  data-toggle = 'modal'>LOGIN</a></li>
               <li>
                 <%= link_to 'SIGN UP FREE',
-                            load_sign_in_sign_up_modal_public_index_path(user_type: user_type, type: 'sign_up'),
-                            remote: true, :class => 'btn-custom btn-theme text-white raleway-semibold' %>
+                            'javascript:;',
+                            :class => 'btn-custom btn-theme text-white raleway-semibold',
+                            id: 'js-sign-up-btn'    %>
               </li>
           <% end %>
         </ul>
@@ -121,12 +122,10 @@
 <%= render partial: 'shared/forgot_password'%>
 
 <div class="public-page-modal-container">
-  <% if params[:sign_in_modal] || params[:sign_up_modal] %>
-             <% type = params[:sign_in_modal] ? 'sign_in' : 'sign_up' %>
+     <% type = params[:sign_in_modal] ? 'sign_in' : 'sign_up' %>
 
-             <%= render(:partial => 'shared/sign_in_modal',
-                                    :locals => { user_type: user_type, type: type }) %>
-  <% end %>
+     <%= render(:partial => 'shared/sign_in_modal',
+                            :locals => { user_type: user_type, type: type }) %>
 </div>
 
 </body>
@@ -137,7 +136,9 @@
 <script>
     $(function () {
 //        show sing in modal
+        <% if params[:sign_in_modal] || params[:sign_up_modal] %>
              $('#signin').modal('show');
+        <% end %>
 
         $('#nav-contact-us a').click(function(){
             $('html, body').animate({
@@ -193,5 +194,29 @@
         function greetingText(date_string){
              return date_string.split('>')[1].split('</')[0] == 'am' ? 'morning' : 'afternoon'
         }
-    });
+
+        $('#js-sign-up-btn').click(function(){
+            showLoginSingnUpModal('sign_up');
+        });
+
+        $('#js-sign-in-btn').click(function(){
+            showLoginSingnUpModal('sign_in');
+        });
+    }); // end of document ready function
+
+        function showLoginSingnUpModal(type){
+            $('#signin').modal('show');
+
+            if( type == 'sign_in'){
+              $('.js-sign-in').addClass('active');
+              $('.js-sign-up').removeClass('active');
+            }else{
+                $('.js-sign-up').addClass('active');
+                $('.js-sign-in').removeClass('active');
+            }
+        }
+
+        function resetSignUpFormData(){
+            $('#ajax-signup')[0].reset();
+        }
 </script>

@@ -14,11 +14,11 @@
     <h4>FOR BRANDS</h4>
 
     <ul class="login-sign-up-ul" id="brand_login_sign_up">
-      <li class="display-inline <%= 'active' if type == 'sign_in' %> "><a data-toggle="tab" href="#brand_login">Login</a></li> /
-      <li class="display-inline <%= 'active' if type == 'sign_up' %>"><a data-toggle="tab" href="#brand_sign_up">Sign Up</a></li>
+      <li class="display-inline js-sign-in <%= 'active' if type == 'sign_in' %> "><a data-toggle="tab" href="#login">Login</a></li> /
+      <li class="display-inline js-sign-up <%= 'active' if type == 'sign_up' %>"><a data-toggle="tab" href="#sign_up">Sign Up</a></li>
     </ul>
 
-    <div id="brand_login" class="tab-pane fade-out <%= 'active' if type == 'sign_in' %>">
+    <div id="login" class="tab-pane fade-out js-sign-in <%= 'active' if type == 'sign_in' %>">
       <% if params[:controller] == 'public' %>
           <div id="sign-in-validation-error">
           </div>
@@ -49,7 +49,7 @@
     </div>
 
 
-    <div id="brand_sign_up" class="tab-pane fade-out <%= 'active' if type == 'sign_up' %>">
+    <div id="sign_up" class="tab-pane fade-out js-sign-up <%= 'active' if type == 'sign_up' %>">
       <div class="row" id="brand-signup">
         <div class="col-md-12">
 
