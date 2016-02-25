@@ -22,9 +22,12 @@
               <%= select_tag :category, options_for_select(Category.all.order(:name).pluck(:name)), {id: 'explore-category', prompt: 'Select a Category', class: 'double-arrow-select-icon'} %>
             </div>
 
-            <div class="col-md-12">
-              <label for="Followers"> Followers </label>
-              <%= select_tag 'followers', options_for_select(followers_drop_down), {id: 'explore-followers', prompt: 'Choose a range', class: 'double-arrow-select-icon'} %>
+            <div class="col-md-12 social-media-select">
+              <label for="social-media-platform"> Social Media Platform </label>
+              <select name="social_media_platform" id="explore-social-media" class="double-arrow-select-icon">
+                <option value="">Select a Social Media Platform</option>
+                <option value="fb">Facebook</option>
+              </select>
             </div>
           </div>
         </div>
@@ -32,16 +35,22 @@
         <div class="col-md-4">
           <div class="row">
             <div class="col-md-12">
-              <label for="social-media-platform"> Social Media Platform </label>
-              <select name="social_media_platform" id="explore-social-media" class="double-arrow-select-icon">
-                <option value="">Select a Social Media Platform</option>
-                <option value="fb">Facebook</option>
-              </select>
+              <label for="influencer_price"> Price </label>
+              <%= select_tag 'post_type',
+                             options_for_select(post_type_drop_down),
+                             class: 'double-arrow-select-icon'
+              %>
+
+                <div>
+                  <%= select_tag 'price',
+                                 options_for_select(price_drop_down),
+                                 {id: 'explore-price', prompt: 'Choose a range', class: 'double-arrow-select-icon'} %>
+                </div>
             </div>
 
             <div class="col-md-12">
-              <label for="influencer_price"> Price </label>
-              <%= select_tag 'price', options_for_select(price_drop_down), {id: 'explore-price', prompt: 'Choose a range', class: 'double-arrow-select-icon'} %>
+              <label for="Followers"> Followers </label>
+              <%= select_tag 'followers', options_for_select(followers_drop_down), {id: 'explore-followers', prompt: 'Choose a range', class: 'double-arrow-select-icon'} %>
             </div>
           </div>
         </div>

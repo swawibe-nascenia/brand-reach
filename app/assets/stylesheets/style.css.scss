@@ -2087,6 +2087,14 @@ div.modal-content{
   color: #bcbdbf;
 }
 
+.social-media-select{
+  padding-top: 38px;
+  
+  @media (max-width: 991px) {
+    padding-top: 0;
+  }
+}
+
 .login-sign-up-ul li.active a{
   color: #00ADEF;
 }
