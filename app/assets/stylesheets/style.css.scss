@@ -2010,6 +2010,10 @@ div.modal-content{
       padding: 45px 30px;
       margin-left: 42%;
 
+      & a.btn-modal {
+        text-decoration: none;
+      }
+
       .reset-password {
         color: #00ADEF;
         font-size: 16px;
