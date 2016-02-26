@@ -49,6 +49,7 @@ Rails.application.routes.draw do
 
   # named route for existing working code
   get '/search', to: 'influencers#search', as: 'search_influencers'
+  get '/messages', to: 'offers#index', as: 'messages'
 
   resources :influencers, only: [:show] do
     collection do

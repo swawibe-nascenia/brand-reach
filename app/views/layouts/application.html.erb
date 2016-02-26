@@ -93,7 +93,7 @@
         <% if current_user.brand? %>
 
             <li class="<%= (params[:controller] == 'offers') ? 'active' : '' %>">
-              <a href="<%= offers_path %>">
+              <a href="<%= messages_path %>">
                 <span class="glyphicon glyphicon-envelope"></span><span class="space-sidebar">MESSAGES
                 <span class="unread-message">
                     <% if current_user.unread_messages > 0 %>
