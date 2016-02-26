@@ -1934,6 +1934,8 @@ div.modal-content{
 // new provided design 19/2/2016
 .new-modal{
 
+  font-family: "Raleway", sans-serif;
+
   &-content{
     overflow: hidden;
 
@@ -1944,16 +1946,23 @@ div.modal-content{
       font-weight: 100;
       margin-top: -35px;
       margin-right: -10px;
+      font-family: sans-serif;
 
       @media (max-width: 767px) {
         font-size: 2.4em;
       }
     }
+
+    & .new-modal-title {
+      color: black;
+      padding-bottom: 5px;
+    }
   }
 
-  &-dialog{
-    width: 50%;
+  & &-dialog{
+    width: 58%;
     margin: 30px auto;
+    max-width: 810px;
 
     .modal-content {
       margin-top: 15%;
@@ -2000,7 +2009,12 @@ div.modal-content{
       }
 
       .login-modal-logo {
-        width: 160px;
+        width: 200px;
+
+        @media (max-width: 767px) {
+          width: 160px;
+        }
+
       }
 
     }
@@ -2060,7 +2074,7 @@ div.modal-content{
 
   &-description {
     color: white;
-    font-size: 14px;
+    font-size: 15px;
     padding-top: 40px;
     font-family: "Raleway", sans-serif;
     font-weight: 500;
