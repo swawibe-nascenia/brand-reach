@@ -18,7 +18,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   # setup gmail smtp for this environment
-  config.action_mailer.default_url_options = { host: '45.79.183.165', port: 80 }
+  config.action_mailer.default_url_options = { host: 'staging.thebrandreach.com', port: 80 }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
