@@ -14,8 +14,8 @@
         </div>
 
         <div class="display-inline-block influencer-modal-details">
-          <h4 class="font-raleway"><%= account.influencer.full_name %></h4>
-          <p class="title font-raleway"></p>
+          <h4 class="title font-raleway"><%= account.name %></h4>
+          <p class="font-raleway"><a href="<%= show_user_profile_path(account.influencer.id) %>" data-remote="true"><%= account.influencer.name %></a></p>
           <p class="influencer-address font-raleway"> <%= account.influencer.location %></p>
         </div>
 
@@ -43,47 +43,40 @@
             <div class="row pricing-section">
               <div class="col-md-12">
                 <div class="social-account-tabs">
-                  <ul class="nav nav-tabs social-account-nav-tabs responsive influencer-social-account-nav-tabs">
-                    <li class="influencer-social-account-tab" data-id="<%= account.id %>">
-                      <a data-toggle="tab" href="#fb_<%= account.id %>"><i class="social-account-fa-edit fa fa-facebook"></i> <%= account.name %>
-                      </a></li>
-                  </ul>
 
-                  <div class="tab-content responsive social-account-tab-content font-raleway">
-                        <div id="fb_<%= account.id %>" class="tab-pane">
+                  <div class="responsive social-account-tab-content influencer-social-tab-content font-raleway">
 
-                          <%= render 'facebook/page_insights', account: account %>
-                          <br/>
+                    <%= render 'facebook/page_insights', account: account %>
+                    <br/>
 
-                          <div class="form-group">
-                            <div class="col-md-6 col-sm-12 col-xs-12">
-                              <%= label_tag :status_update_cost, 'Status Update' %>
-                              <%= text_field_tag '', account.status_update_cost, :disabled => true %> INR
-                            </div>
-                            <div class="col-md-6 col-sm-12 col-xs-12">
-                              <%= label_tag :cover_photo_cost, 'Cover Photo' %>
-                              <%= text_field_tag '', account.cover_photo_cost, :disabled => true %> INR
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="col-md-6 col-sm-12 col-xs-12">
-                              <%= label_tag :profile_photo_cost, 'Profile Photo' %>
-                              <%= text_field_tag '', account.profile_photo_cost, :disabled => true %> INR
-                            </div>
-                            <div class="col-md-6 col-sm-12 col-xs-12">
-                              <%= label_tag :video_post_cost, 'Video Post' %>
-                              <%= text_field_tag '', account.video_post_cost, :disabled => true %> INR
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="col-md-6 col-sm-12 col-xs-12">
-                              <%= label_tag :photo_post_cost, 'Photo Post'  %>
-                              <%= text_field_tag '', account.photo_post_cost, :disabled => true %> INR
-                            </div>
-                            <div class="col-md-6 col-sm-12 col-xs-12">
-                            </div>
-                          </div>
-                        </div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <%= label_tag :status_update_cost, 'Status Update' %>
+                        <%= text_field_tag '', account.status_update_cost, :disabled => true %> INR
+                      </div>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <%= label_tag :cover_photo_cost, 'Cover Photo' %>
+                        <%= text_field_tag '', account.cover_photo_cost, :disabled => true %> INR
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <%= label_tag :profile_photo_cost, 'Profile Photo' %>
+                        <%= text_field_tag '', account.profile_photo_cost, :disabled => true %> INR
+                      </div>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <%= label_tag :video_post_cost, 'Video Post' %>
+                        <%= text_field_tag '', account.video_post_cost, :disabled => true %> INR
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <%= label_tag :photo_post_cost, 'Photo Post'  %>
+                        <%= text_field_tag '', account.photo_post_cost, :disabled => true %> INR
+                      </div>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -112,23 +105,3 @@
     </div>
   </div>
 </div>
-
-<script>
-    $('.social-account-nav-tabs a:first').tab('show');
-
-    $(function(){
-        $('.influencer-social-account-tab').click(function(){
-            var offerSendBtn = $('a.btn-brand-send-campaign-request');
-            var baseOfferUrl = offerSendBtn.data('href');
-            console.log('current profile base url is ' + baseOfferUrl);
-
-            var socialAccountId = $(this).data('id');
-            var newUrl = baseOfferUrl + '&social_account_id=' + socialAccountId;
-            offerSendBtn.prop("href", newUrl);
-
-            console.log('Now new url is  ' + offerSendBtn.prop('href'));
-        });
-
-        fakewaffle.responsiveTabs(['xs', 'sm']);
-    });
-</script>

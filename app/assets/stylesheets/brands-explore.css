@@ -412,4 +412,8 @@ only screen and (max-width: 580px){
     }
 }
 
+.social-account-tabs .influencer-social-tab-content {
+    border-top: 1px solid #ddd;
+    padding-top: 0;
+}
 
