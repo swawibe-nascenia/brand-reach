@@ -417,3 +417,6 @@ only screen and (max-width: 580px){
     padding-top: 0;
 }
 
+.vertical-align-middle {
+    vertical-align: middle;
+}

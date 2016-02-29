@@ -9,21 +9,16 @@
         <h4 class="modal-title" id="myModalLabel"></h4>
       </div>
       <div class="modal-body">
-        <div class="display-inline-block influencer-modal-image">
+        <div class="display-inline-block influencer-modal-image vertical-align-middle">
           <%= image_tag(account.influencer.profile_picture, :class => 'explore-influencer-picture', :alt => 'profile-picture') %>
         </div>
 
-        <div class="display-inline-block influencer-modal-details">
+        <div class="display-inline-block influencer-modal-details vertical-align-middle">
           <h4 class="title font-raleway"><%= account.name %></h4>
-          <p class="font-raleway"><a href="<%= show_user_profile_path(account.influencer.id) %>" data-remote="true"><%= account.influencer.name %></a></p>
           <p class="influencer-address font-raleway"> <%= account.influencer.location %></p>
         </div>
 
         <div class="display-inline-block pull-right like-send-request">
-          <div class="follower-box font-raleway">
-            <div class="follower-number display-inline-block"><%= account.number_of_followers %></div>
-            <div class="view-profile-likes display-inline-block">&nbsp;Likes</div>
-          </div>
           <div class="btn-box btn-send-request">
             <%= link_to 'Send Request', new_campaign_path(receiver_id: account.influencer.id, social_account_id: account.id), class: 'btn-brand-send-campaign-request', data: {href: new_campaign_path(receiver_id: account.influencer.id)} %>
           </div>
@@ -97,8 +92,8 @@
             <p class="font-raleway"><%= account.influencer.categories.pluck(:name).join(', ') if account.influencer.categories.present? %></p>
           </div>
           <div class="col-md-6">
-            <div class="view-profile-industry font-raleway"> Location</div>
-            <p class="font-raleway"><%= account.influencer.location %></p>
+            <div class="view-profile-industry font-raleway"> Influencer</div>
+            <p class="font-raleway"><a href="<%= show_user_profile_path(account.influencer.id) %>" data-remote="true"><%= account.influencer.name %></a></p>
           </div>
         </div>
       </div>
