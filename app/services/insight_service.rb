@@ -78,7 +78,7 @@ class InsightService < BaseService
   def get_daily_page_views(id)
     count = 0
     @graph.get_object("#{id}/insights/page_views/day").each do |d|
-      count += d['values'].last['value']
+      count += d['values'].last['value'] if d['values'].last['value']
     end
     count
   end

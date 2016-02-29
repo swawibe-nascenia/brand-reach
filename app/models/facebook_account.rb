@@ -62,6 +62,7 @@ class FacebookAccount < ActiveRecord::Base
     self.profile_picture_url = graph.get_page_profile_picture(self.account_id)
     self.about = graph.get_page_about(self.account_id)
     self.category = graph.get_page_category(self.account_id)
+    self.url = "https://www.facebook.com/#{self.account_id}"
 
     self.likes_by_country = graph.get_likes_by_country(self.account_id)
     self.reach_by_country = graph.get_reach_by_country(self.account_id)
