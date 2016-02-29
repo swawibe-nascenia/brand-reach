@@ -154,6 +154,21 @@ class InsightService < BaseService
     { labels: labels.keys, datasets: datasets }
   end
 
+  def get_page_profile_picture(post_id)
+      resp = @graph.get_object("#{post_id}/picture", { width: 200, redirect: false })
+      resp['data']['url']
+  end
+
+  def get_page_about(post_id)
+    resp = @graph.get_object("#{post_id}?fields=about")
+    resp['about']
+  end
+
+  def get_page_category(post_id)
+    resp = @graph.get_object("#{post_id}?fields=category")
+    resp['category']
+  end
+
   def paginate(resp)
     loop do
       break if resp.count == 0
