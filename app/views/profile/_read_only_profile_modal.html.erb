@@ -94,14 +94,15 @@
             </div>
         <% end %>
 
-        <div class="social-media-info font-raleway"> Social Media Information</div>
-        <p>
-          <span class="view-profile-fb-twitter-color">Facebook:</span>
-          <a href="<%= "https://www.facebook.com/app_scoped_user_id/#{user.uid}/" %>">
-            <%= "https://www.facebook.com/app_scoped_user_id/#{user.uid}/" %>
-          </a>
-        </p>
-
+        <% if user.influencer? %>
+            <div class="social-media-info font-raleway"> Social Media Information</div>
+            <p>
+              <span class="view-profile-fb-twitter-color">Facebook:</span>
+              <a href="<%= "https://www.facebook.com/app_scoped_user_id/#{user.uid}/" %>" target="_blank">
+                <%= "https://www.facebook.com/app_scoped_user_id/#{user.uid}/" %>
+              </a>
+            </p>
+        <% end %>
         <div class="row">
           <div class="col-md-6">
             <div class="view-profile-industry font-raleway"> Industry</div>
@@ -138,13 +139,13 @@
 
 //          search result marking
         <% if search_key.present? %>
-            var searchKey = '<%= params[:search_key] %>';
-            var replaceWord = '<span class=text-danger>' + searchKey + '</span>';
-            var regex = new RegExp(searchKey, 'gi');
+        var searchKey = '<%= params[:search_key] %>';
+        var replaceWord = '<span class=text-danger>' + searchKey + '</span>';
+        var regex = new RegExp(searchKey, 'gi');
 
-            $('#show-readonly-user-profile').find('*').each(function () {
-                $(this).html($(this).html().replace(regex, replaceWord));
-            });
+        $('#show-readonly-user-profile').find('*').each(function () {
+            $(this).html($(this).html().replace(regex, replaceWord));
+        });
         <% end %>
     });
 </script>
