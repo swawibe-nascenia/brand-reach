@@ -50,7 +50,7 @@
           </div>
           <div class="col-md-6">
             <%= f.label :phone %>
-            <%= f.text_field :phone, maxlength: 20, 'data-parsley-pattern' => '(^[\+]?[0-9]+[-]?[0-9]+[-]?[0-9]+$)', 'data-parsley-required' => 'true', 'data-parsley-length' => '[10, 14]' %>
+            <%= f.text_field :phone, maxlength: 20, 'data-parsley-pattern' => '^[\+]?[0-9]+[-]?[0-9]+[-]?[0-9]+$', 'data-parsley-required' => 'true', 'data-parsley-length' => '[10, 14]' %>
           </div>
         </div>
 
