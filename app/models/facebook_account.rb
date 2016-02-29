@@ -76,6 +76,10 @@ class FacebookAccount < ActiveRecord::Base
     self.save(validate: false)
   end
 
+  def page_picture
+    self.profile_picture_url.present? ? self.profile_picture_url : ActionController::Base.helpers.asset_path('facebook_default_page.png')
+  end
+
   def country_data
     data = {}
     self.likes_by_country.each do |country_code, likes|
