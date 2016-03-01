@@ -121,7 +121,7 @@
                   <div class="campaign-date" id="start_end">
                     <div>
                       <%= f.label :start_date, 'Start' %>
-                      <%= f.text_field :start_date, { value: Time.now.strftime('%d/%m/%Y'), class: 'start_date', disabled: 'disabled' } %>
+                      <%= f.text_field :start_date, { value: (Time.now + 10.days).strftime('%d/%m/%Y'), class: 'start_date', disabled: 'disabled' } %>
                       <%= text_field_tag 'start_time',  Time.now.strftime('%I:%M %P'), class: 'start_time' %>
 
                     </div>
@@ -229,21 +229,37 @@
 
         $(".start_date").datepicker({
             dateFormat: "dd/mm/yy",
-            minDate: 0,
+            minDate: 10,
+            minDateForEnd: 1,
             maxDate:"+365D",
             numberOfMonths: 1,
             onSelect: function(selected) {
-                $(".end_date").datepicker("option","minDate", selected)
+                var dt = parseDate(selected);
+                dt.setDate(dt.getDate() + 1);
+
+                var startDate = parseDate($(".start_date").val());
+                var endDate = parseDate($(".end_date").val());
+                var df = daydiff(endDate, startDate);
+
+                console.log('number of day for campaing for start date, end date ' + startDate + ', ' + endDate + ' is ' + df);
+                $(".end_date").datepicker("option","minDate", dt);
             }
         });
 
         $(".end_date").datepicker({
             dateFormat: "dd/mm/yy",
-            minDate: 0,
+            minDate: 11,
             maxDate: "+365D",
             numberOfMonths: 1,
             onSelect: function(selected) {
-                $(".start_date").datepicker("option","maxDate", selected)
+                var dt = parseDate(selected);
+                dt.setDate(dt.getDate() - 1);
+                var startDate = parseDate($(".start_date").val());
+                var endDate = parseDate($(".end_date").val());
+
+                console.log('number of day for campaing is ' + daydiff(endDate, startDate));
+
+                $(".start_date").datepicker("option","maxDate", dt);
             }
         });
 
@@ -452,6 +468,22 @@
 
             $("input[name=cover_photo_url]").parsley().destroy();
             $("input[name=profile_photo_url]").parsley().destroy();
+        }
+
+        /*--------- parse date from dd/mm/yyyy format string -------*/
+        function parseDate(str_date){
+            var pattern = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
+            var arrayDate = str_date.match(pattern);
+            var dt = new Date(arrayDate[3], arrayDate[2] - 1, arrayDate[1]);
+            return dt;
+        }
+
+        /*======= get =======*/
+        function daydiff(end_date, start_date) {
+            console.log('with in daydiff with start_date -- ' + start_date );
+            console.log('with in daydiff with  end_date -- ' + end_date );
+
+            return Math.round((end_date - start_date)/(1000*60*60*24));
         }
     })
 </script>
