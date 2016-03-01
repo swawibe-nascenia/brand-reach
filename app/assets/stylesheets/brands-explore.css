@@ -94,6 +94,11 @@
     width: 100%;
     border-radius: 0;
     font-weight: 300;
+    background-color: #00ADEF;
+}
+
+.btn-view-profile:hover, .btn-view-profile:focus {
+    background-color: #00a3e1;
 }
 
 .search-result .row{
