@@ -26,7 +26,7 @@ class ProfileController < ApplicationController
       #   user want to change password
       if password_change_info_correct?
         save_industries
-        if @user.update(user_params.except(:industry, :current_password, :password_confirmation))
+        if @user.update(user_params.except(:industry, :current_password, :password_confirmation, facebook_accounts_attributes: [:category]))
           flash[:success] = 'User Information has been updated successfully.' if flash[:error].nil?
           sign_in @user, bypass: true
           redirect_to profile_profile_index_path
@@ -39,7 +39,7 @@ class ProfileController < ApplicationController
       end
     else
       save_industries
-      if @user.update(user_params.except(:current_password, :password, :password_confirmation, :industry))
+      if @user.update(user_params.except(:current_password, :password, :password_confirmation, :industry, facebook_accounts_attributes: [:category]))
         flash[:success] = 'User Information has been updated successfully.' if flash[:error].nil?
         redirect_to profile_profile_index_path
       else
@@ -232,7 +232,7 @@ class ProfileController < ApplicationController
       :country, :zip_code, :short_bio, :password, :password_confirmation,
       :current_password, :status,:crop_x, :crop_y, :crop_w, :crop_h,
       facebook_accounts_attributes: [:id, :status_update_cost, :profile_photo_cost,
-                                     :cover_photo_cost, :video_post_cost, :photo_post_cost],
+                                     :cover_photo_cost, :video_post_cost, :photo_post_cost, industry: []],
       industry: []
     )
   end
