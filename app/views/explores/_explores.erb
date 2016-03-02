@@ -10,7 +10,7 @@
                 <div class="influencer-data">
                   <div class="influencer-name" title="<%= account.name %>"> <%= account.name %> </div>
                   <p class="influencer-address"><%= account.influencer.location %></p>
-                  <% categories = (account.influencer.categories.pluck(:name).join(', ') if account.influencer.categories.present?) || '' %>
+                  <% categories = (account.categories.pluck(:name).join(', ') if account.categories.present?) || '' %>
                   <% need_help = categories.size > 27  %>
                   <!-- show all industries on click -->
                   <div class="industry-container">
