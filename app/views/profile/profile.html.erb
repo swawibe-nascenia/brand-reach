@@ -45,7 +45,7 @@
         <div class="form-group">
           <div class="col-md-6">
             <%= f.label :industry, class: 'industry-label'%>
-            <%= f.collection_select :industry, @all_industries, :id, :name, { selected: @selected_industries.map(&:id) }, { class: 'chosen', multiple: true, 'data-parsley-required' => 'true', 'data-parsley-errors-container' => '#industry_field_error' }  %>
+            <%= f.collection_select :industry, @all_industries, :id, :name, { selected: @selected_industries.map(&:id) }, { class: 'chosen js-skip-select-box', multiple: true, 'data-parsley-required' => 'true', 'data-parsley-errors-container' => '#industry_field_error' }  %>
             <div id="industry_field_error"></div>
           </div>
           <div class="col-md-6">
@@ -156,6 +156,8 @@
 
   <script>
       $(document).ready(function () {
+          $('select:not(.js-skip-select-box)').selectBox();
+
           $(".chosen").chosen({
               placeholder_text_multiple: 'Select Industry'
           });

@@ -16,5 +16,6 @@
  *= require parsley
  *= require jquery.Jcrop.min
  *= require jquery-ui-timepicker-addon
+ *= require jquery.selectBox
  *= require_self
  */

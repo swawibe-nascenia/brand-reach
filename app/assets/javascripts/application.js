@@ -28,6 +28,7 @@
 //= require local_time
 //=require jquery-fileupload/basic
 //=require jquery-ui-timepicker-addon
+//=require jquery.selectBox
 // require turbolinks
 // require_tree .
 
