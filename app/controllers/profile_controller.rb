@@ -26,6 +26,7 @@ class ProfileController < ApplicationController
       #   user want to change password
       if password_change_info_correct?
         save_industries
+        save_account_category
         if @user.update(user_params.except(:industry, :current_password, :password_confirmation, facebook_accounts_attributes: [:category]))
           flash[:success] = 'User Information has been updated successfully.' if flash[:error].nil?
           sign_in @user, bypass: true
@@ -39,6 +40,7 @@ class ProfileController < ApplicationController
       end
     else
       save_industries
+      save_account_category
       if @user.update(user_params.except(:current_password, :password, :password_confirmation, :industry, facebook_accounts_attributes: [:category]))
         flash[:success] = 'User Information has been updated successfully.' if flash[:error].nil?
         redirect_to profile_profile_index_path
@@ -273,6 +275,17 @@ class ProfileController < ApplicationController
       ids = user_params[:industry][1..-1]
       @user.category_ids = ids
       @user.save
+    end
+  end
+
+  def save_account_category
+    if params[:user][:facebook_accounts_attributes].present?
+      params[:user][:facebook_accounts_attributes].each do |key, value|
+        facebook_account = FacebookAccount.find value[:id]
+        ids = value[:category][1..-1]
+        facebook_account.category_ids = ids
+        facebook_account.save
+      end
     end
   end
 end
