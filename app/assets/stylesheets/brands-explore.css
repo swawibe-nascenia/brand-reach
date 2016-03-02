@@ -74,6 +74,9 @@
 
 .brands-explore-content-wrapper .influencer-address {
     font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .influencer-data {
