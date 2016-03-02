@@ -86,5 +86,11 @@
         var d = document.getElementById("country");
         d.className += "double-arrow-select-icon";
     });
+
+    // if there is any modal remains after one close
+    // add modal-open class to document body
+    $(document).on('hidden.bs.modal', '.modal', function () {
+        $('.modal:visible').length && $(document.body).addClass('modal-open');
+    });
 </script>
 
