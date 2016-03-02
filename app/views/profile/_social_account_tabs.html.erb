@@ -45,7 +45,7 @@
                 <%= g.number_field :photo_post_cost, { inputmode: 'numeric', pattern: '[0-9]*', min: 0, maxlength: '12' } %> INR/day
               </div>
               <div class="col-md-6 col-sm-12 col-xs-12">
-                  <%= g.label :category, class: 'industry-label' %>
+                  <%= g.label :category, 'Industry', class: 'industry-label' %>
                   <%= g.collection_select :category,  @all_industries, :id, :name, { selected: g.object.try(:categories).try(:map, &:id).present? ? g.object.try(:categories).try(:map, &:id) : [] }, { class: 'chosen influencer-industry', multiple: true, 'data-parsley-required' => 'true', 'data-parsley-errors-container' => '.industry_field_error' }  %>
                   <div class="display-inline-block" style="width: 55px"></div>
                   <div class="industry_field_error"></div>
