@@ -236,13 +236,8 @@
             onSelect: function(selected) {
                 var dt = parseDate(selected);
                 dt.setDate(dt.getDate() + 1);
-
-                var startDate = parseDate($(".start_date").val());
-                var endDate = parseDate($(".end_date").val());
-                var df = daydiff(endDate, startDate);
-
-                console.log('number of day for campaing for start date, end date ' + startDate + ', ' + endDate + ' is ' + df);
                 $(".end_date").datepicker("option","minDate", dt);
+                adjustTotalCost();
             }
         });
 
@@ -254,12 +249,8 @@
             onSelect: function(selected) {
                 var dt = parseDate(selected);
                 dt.setDate(dt.getDate() - 1);
-                var startDate = parseDate($(".start_date").val());
-                var endDate = parseDate($(".end_date").val());
-
-                console.log('number of day for campaing is ' + daydiff(endDate, startDate));
-
                 $(".start_date").datepicker("option","maxDate", dt);
+                adjustTotalCost();
             }
         });
 
@@ -294,21 +285,25 @@
 
         $('#post_type').change(function() {
             if (costs.length) {
-                // Dont change value 0..3 here, they are post types of campaign.
+                // Dont change value 0..4 here, they are post types of campaign.
                 // if need any change then synchronize with enum in Campaign model
-                // 0 = status update, 1 = profile photo, 2 = cover photo, 3 = video post, 4 = photo post
+                // 0 = status update,
+                // 1 = profile photo,
+                // 2 = cover photo,
+                // 3 = video post,
+                // 4 = photo post
                 if (this.value == 0) {
                     $('#post_cost').val(costs[social_account_index][0]);
                     showHide(this.value);
                     disableSetDate();
                 }
                 else if (this.value == 1) {
-                    $('#post_cost').val( costs[social_account_index][1] );
+                    $('#post_cost').val( costs[social_account_index][1] * getDayDiff() );
                     showHide(this.value);
                     enableSetDate();
                 }
                 else if (this.value == 2) {
-                    $('#post_cost').val(costs[social_account_index][2]);
+                    $('#post_cost').val(costs[social_account_index][2] * getDayDiff());
                     showHide(this.value);
                     enableSetDate();
                 }
@@ -480,10 +475,22 @@
 
         /*======= get =======*/
         function daydiff(end_date, start_date) {
-            console.log('with in daydiff with start_date -- ' + start_date );
-            console.log('with in daydiff with  end_date -- ' + end_date );
-
             return Math.round((end_date - start_date)/(1000*60*60*24));
+        }
+
+        function getDayDiff(){
+            var startDate = parseDate($(".start_date").val());
+            var endDate = parseDate($(".end_date").val());
+            return daydiff(endDate, startDate);
+        }
+
+        /*---- calculate total cost for cover/profile photo post type ----------*/
+        function adjustTotalCost(){
+            var post_type = parseInt($('#post_type').val());
+
+            if(post_type == 1 || post_type == 2){
+                $('#post_cost').val(costs[social_account_index][post_type] * getDayDiff());
+            }
         }
     })
 </script>
