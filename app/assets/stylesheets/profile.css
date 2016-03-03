@@ -69,6 +69,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     display: inline;
 }
 
+.personal-info-without-fb .selectBox {
+    width: 70% !important;
+    display: inline;
+}
+
 #user_industry_chosen {
     width: 70% !important;
 }
@@ -381,6 +386,10 @@ div.awesomplete > ul > li {
     .personal-info-without-fb label, .personal-info-without-fb input, .personal-info-without-fb select, .personal-info-without-fb .form-group textarea {
         width: 49%;
     }
+    .personal-info-without-fb .selectBox {
+        width: 49% !important;
+        min-width: 49% !important;
+    }
 
     #user_industry_chosen {
         width: 49% !important;
@@ -400,6 +409,10 @@ div.awesomplete > ul > li {
         display: block;
         text-align: left;
         width: 100%;
+    }
+
+    .personal-info-without-fb .selectBox {
+        width: 100% !important;
     }
 
     #user_industry_chosen {

@@ -19,6 +19,10 @@
     font-size: 13px;
 }
 
+.brands-explore-advance-search .selectBox{
+    width: 100% !important;
+}
+
 .brands-explore-advance-search label {
     margin-top: 15px;
     font-size: 13px;
