@@ -500,7 +500,7 @@ $(function(){
     });
 
 //    campaign toggle button confirmation
-    $('.onoffswitch').on('click', '.onoffswitch-label', function(event) {
+    $('.js-campaign-on-of-switch').on('click', '.onoffswitch-label', function(event) {
         var checkbox = $(this).prev()[0];
         var message = '';
         if( $(checkbox).is(':checked')){
