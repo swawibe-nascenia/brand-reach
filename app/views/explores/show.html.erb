@@ -19,12 +19,12 @@
           <div class="row">
             <div class="col-md-12">
               <label for="category"> Category </label>
-              <%= select_tag :category, options_for_select(Category.all.order(:name).pluck(:name)), {id: 'explore-category', prompt: 'Select a Category', class: 'double-arrow-select-icon'} %>
+              <%= select_tag :category, options_for_select(Category.all.order(:name).pluck(:name)), {id: 'explore-category', prompt: 'Select a Category', class: ''} %>
             </div>
 
             <div class="col-md-12 social-media-select">
               <label for="social-media-platform"> Social Media Platform </label>
-              <select name="social_media_platform" id="explore-social-media" class="double-arrow-select-icon">
+              <select name="social_media_platform" id="explore-social-media" class="">
                 <option value="">Select a Social Media Platform</option>
                 <option value="fb">Facebook</option>
               </select>
@@ -38,19 +38,19 @@
               <label for="influencer_price"> Price </label>
               <%= select_tag 'post_type',
                              options_for_select(post_type_drop_down),
-                             class: 'double-arrow-select-icon'
+                             class: ''
               %>
 
                 <div>
                   <%= select_tag 'price',
                                  options_for_select(price_drop_down),
-                                 {id: 'explore-price', prompt: 'Choose a range', class: 'double-arrow-select-icon'} %>
+                                 {id: 'explore-price', prompt: 'Choose a range', class: ''} %>
                 </div>
             </div>
 
             <div class="col-md-12">
               <label for="Followers"> Followers </label>
-              <%= select_tag 'followers', options_for_select(followers_drop_down), {id: 'explore-followers', prompt: 'Choose a range', class: 'double-arrow-select-icon'} %>
+              <%= select_tag 'followers', options_for_select(followers_drop_down), {id: 'explore-followers', prompt: 'Choose a range', class: ''} %>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@
               <label for="influencer_country"> Location </label>
               <%= country_select_tag :country, '', {:id => 'explore-country', prompt: 'Select Country'} %>
               <div id="explore-state">
-                <select name="state" class="country-responsive-font double-arrow-select-icon">
+                <select name="state" class="country-responsive-font">
                   <option value="">Select State</option>
                 </select>
               </div>
@@ -84,9 +84,9 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('select').selectBox();
-
-        var d = document.getElementById("country");
-        d.className += "double-arrow-select-icon";
+//
+//        var d = document.getElementById("country");
+//        d.className += "double-arrow-select-icon";
     });
 
     // if there is any modal remains after one close
