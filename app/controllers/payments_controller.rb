@@ -110,7 +110,7 @@ class PaymentsController < ApplicationController
         render 'payments/export_influencer_payments'
       end
       format.xls do
-        headers['Content-Disposition'] = "attachment; filename=\"campaigns_list_influencer_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.xls\""
+        headers['Content-Disposition'] = "attachment; filename=\"payments_list_influencer_#{Time.now.strftime('%Y%m%d_%H_%M_%S')}.xls\""
         render 'payments/export_influencer_payments'
       end
     end
