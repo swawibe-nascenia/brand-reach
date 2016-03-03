@@ -209,7 +209,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 /* style for making compatible with 320 to 767 px devices */
 @media (max-width: 768px) {
-    .brands-profile-page-wrapper input, .brands-profile-page-wrapper select, .personal-info-form .form-group textarea, .social-account-tabs .influencer-industry {
+    .brands-profile-page-wrapper input, .brands-profile-page-wrapper select, .personal-info-form .form-group textarea {
         width: 65%;
     }
 
@@ -221,7 +221,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         width: 80%;
     }
 
-    .social-account-tabs input, .social-account-tabs .influencer-industry {
+    .social-account-tabs input {
         width: 34%;
     }
 }
@@ -448,13 +448,13 @@ div.awesomplete > ul > li {
 }
 
 @media (max-width: 900px) {
-    .social-account-tabs input, .social-account-tabs .influencer-industry {
+    .social-account-tabs input {
         width: 60%;
     }
 }
 
 @media (max-width: 768px) {
-    .social-account-tabs input, .social-account-tabs .influencer-industry {
+    .social-account-tabs input {
         width: 34%;
     }
 
@@ -532,4 +532,9 @@ div.awesomplete > ul > li[aria-selected="true"] {
     .js-social-account-tab .chosen-container {
         width: 34% !important;
     }
+
+    .social-account-tabs label {
+        width: 85px;
+    }
+
 }
