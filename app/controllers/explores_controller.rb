@@ -25,18 +25,18 @@ class ExploresController < ApplicationController
                                                   search: wildcard_search).references(:categories)
     end
 
-    if params[:category].present?
-      category = Category.find_by_name params[:category]
-      influencer_ids = category.users.pluck(:id)
-      @influencers = @influencers.where(id: influencer_ids)
-    end
-
     # @influencers = @influencers.where(industry: params[:social_media]) if params[:social_media].present?
     @influencers = @influencers.where(state: params[:state]) if params[:state].present?
     @influencers = @influencers.where(country: params[:country]) if params[:country].present?
 
     #get all account for selected influencer
     @accounts = FacebookAccount.where(influencer_id: @influencers.pluck(:id))
+
+    if params[:category].present?
+      category = Category.find_by_name params[:category]
+      facebook_account_ids = category.facebook_accounts.pluck(:id)
+      @accounts = @accounts.where(id: facebook_account_ids)
+    end
 
     if params[:price].present?
       price_range = Range.new(*params[:price].split('..').map(&:to_i))
