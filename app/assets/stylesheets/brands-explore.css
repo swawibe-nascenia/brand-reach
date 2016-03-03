@@ -3,8 +3,9 @@
 }
 
 .brands-explore-advance-search{
-    background-color: #f9f9f9;
-    padding: 5px;
+    background-color: white;
+    padding: 50px;
+    margin: -25px -50px -30px;
 }
 
 .brands-explore-advance-search select{
