@@ -130,7 +130,7 @@ class ProfileController < ApplicationController
           account.fetch_insights
         end
 
-        account.save(validate: false)
+        account.save
       end
     end
 
