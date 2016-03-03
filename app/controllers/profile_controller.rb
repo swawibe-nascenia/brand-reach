@@ -127,6 +127,7 @@ class ProfileController < ApplicationController
                                   })
 
         if account.id.blank?
+          logger.info "new account with name #{account.name} and error #{account.errors.messages}"
           account.fetch_insights
         end
 
