@@ -179,7 +179,12 @@ class User < ActiveRecord::Base
                       })
 
       user.name = auth.info.name
-      user.first_name = auth.info.first_name
+      user.first_name = if auth.info.middle_name
+                          "#{auth.info.first_name} #{auth.info.middle_name}"
+                        else
+                          auth.info.first_name
+                        end
+
       user.last_name = auth.info.last_name
       user.facebook_profile_url = auth.info.link
 
