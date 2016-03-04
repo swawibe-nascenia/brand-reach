@@ -1,1 +1,5 @@
-<%= render 'select_accounts_partial' %>
+<% if @errors.present? %>
+    <%= render partial: 'select_accounts_partial', locals: { errors: @errors } %>
+<% else %>
+    <%= render partial: 'select_accounts_partial', locals: { errors: nil } %>
+<% end %>

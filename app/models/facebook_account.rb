@@ -76,7 +76,9 @@ class FacebookAccount < ActiveRecord::Base
 
     self.insights_updated_at = DateTime.now
 
-    self.save(validate: false)
+    unless self.new_record?
+      self.save(validate: false)
+    end
   end
 
   def page_picture

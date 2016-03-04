@@ -1,3 +1,4 @@
+<% errors = [] unless defined? errors %>
 <% content_for :head do %>
     <%= stylesheet_link_tag 'profile.css', media: 'all' %>
 <% end %>
@@ -9,6 +10,13 @@
   <p class="alert alert-danger">
     Please select at least one social account before continuing to use the site
   </p>
+  <% if errors.present? %>
+      <% errors.each do |error| %>
+          <p class="alert alert-danger">
+            <%= error %>
+          </p>
+      <% end %>
+  <% end %>
 
   <button type="button" class="btn btn-account button-border-yellow js-add-account" href="javascript:">MANAGE ACCOUNT</button>
 

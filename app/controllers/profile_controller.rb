@@ -98,11 +98,12 @@ class ProfileController < ApplicationController
 
   def update_accounts
     graph = InsightService.new(params[:access_token])
+    @errors = []
 
     # TODO need to change accept to active
     active_account_ids = @user.campaigns_received.where(status: Campaign.statuses[:accepted]).pluck(:facebook_account_id)
 
-    @user.active_facebook_accounts.where.not(id: active_account_ids).update_all(is_active: false)
+    @user.active_facebook_accounts.where.not(id: active_account_ids, account_id: params[:accounts]).update_all(is_active: false)
 
     if params[:accounts].present?
       params[:accounts].each do |account_id|
@@ -131,13 +132,13 @@ class ProfileController < ApplicationController
           account.fetch_insights
         end
 
-        account.save
+        @errors << "Cannot proceed with the request as the page  #{account.name} you have selected is already on our portal"  unless account.save
       end
     end
 
     udpate_user_profile(@user)
 
-    if @user.in_limbo?
+    if @user.in_limbo? # new user
       if @user.active_facebook_accounts.count > 0
         @user.active_facebook_accounts.each do |account|
           account.fetch_insights
