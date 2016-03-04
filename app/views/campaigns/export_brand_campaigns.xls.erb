@@ -1,5 +1,5 @@
 <%- headers = ['Campaign Name', 'Post Likes', 'Reach', 'Comments', 'Shares', 'Campaign Starts', 'Start time', 'Campaign Ends', 'End time'] -%>
-<%= CSV.generate_line headers %>
+<%= CSV.generate_line(headers, col_sep: "\t") %>
 <% @campaigns.each do |campaign| %>
-    <%= CSV.generate_line([campaign.name, campaign.number_of_likes, campaign.number_of_post_reach, campaign.number_of_comments, campaign.number_of_shares, campaign.get_start_date, campaign.get_start_time, campaign.get_end_date, campaign.get_end_time]).html_safe.strip %>
+    <%= CSV.generate_line([campaign.name, campaign.number_of_likes, campaign.number_of_post_reach, campaign.number_of_comments, campaign.number_of_shares, campaign.get_start_date, campaign.get_start_time, campaign.get_end_date, campaign.get_end_time], col_sep: "\t" ).html_safe -%>
 <% end %>
