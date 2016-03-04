@@ -9,7 +9,6 @@
                 </div>
                 <div class="influencer-data">
                   <div class="influencer-name" title="<%= account.name %>"> <%= account.name %> </div>
-                  <p class="influencer-address"><%= account.influencer.location %></p>
                   <% categories = (account.categories.pluck(:name).join(', ') if account.categories.present?) || '' %>
                   <% need_help = categories.size > 27  %>
                   <!-- show all industries on click -->
@@ -22,9 +21,9 @@
                     </span>
                   </div>
                   <!--end -->
-                  <p class="influencer-biography"><%= truncate(account.influencer.short_bio, length: 100) %> </p>
+                  <p class="influencer-biography"><%= truncate(account.about, length: 100) %> </p>
 
-                  <p>
+                  <p class="total-likes">
                     <%= image_tag('explore-followers.png', :alt => 'number-of-follower') %> Total
                     Likes: &nbsp;<%= account.number_of_followers %>
                   </p>

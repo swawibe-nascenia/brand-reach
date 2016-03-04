@@ -1,5 +1,6 @@
 .brands-explore-content-wrapper{
-    margin: 30px 50px;
+    padding: 30px 50px;
+    background-color: #f9f9f9;
 }
 
 .brands-explore-advance-search{
@@ -93,6 +94,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
     height: 72px;
+}
+
+.total-likes {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .btn-view-profile {
@@ -351,7 +358,7 @@ only screen and (max-width: 950px) {
     }
 
     .brands-explore-content-wrapper{
-        margin: 30px 30px;
+        padding: 30px 30px;
     }
 
 }
