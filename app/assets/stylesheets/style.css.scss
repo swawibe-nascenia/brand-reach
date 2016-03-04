@@ -1989,7 +1989,7 @@ div.modal-content{
       color: white;
       float: left;
       font-size: 15px;
-      padding: 70px 55px;
+      padding: 50px 55px;
       position: absolute;
       top: 0;
       width: 42%;
@@ -2088,6 +2088,7 @@ div.modal-content{
 .login-sign-up-ul {
   padding-left: 0;
   font-size: 15px;
+  font-weight: 500;
 }
 
 .new-modal-input {
@@ -2130,4 +2131,8 @@ div.modal-content{
 
 .social-account-tab-content .chosen-container .chosen-drop {
   position: inherit;
+}
+
+.here-underline {
+  text-decoration: underline;
 }
