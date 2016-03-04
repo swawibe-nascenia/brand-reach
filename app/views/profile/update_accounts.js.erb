@@ -1,2 +1,3 @@
 $('.social-account-tabs').html('<%= j render partial: 'social_account_tabs' %>');
+$('.error-messages-container').html('<%= j render partial: 'shared/show_account_exist_errors', locals: {errors: @errors} %>');
 $('#AddFacebookAccount').modal('hide');

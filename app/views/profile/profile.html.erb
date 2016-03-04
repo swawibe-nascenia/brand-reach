@@ -11,7 +11,9 @@
 
 <div class="brands-profile-page-wrapper">
 
-  <%= render 'shared/show_errors', :object => @user%>
+  <div class="error-messages-container">
+    <%= render 'shared/show_errors', :object => @user%>
+  </div>
   <%= image_tag(@user.profile_picture(:thumb), :class => 'profile-picture center-block img-circle', :alt => 'profile-picture') %>
 
   <%= form_for @user, url: profile_path(@user), data: { parsley_validate: '', parsley_excluded: 'input[type=number], .social-account-tab-content .influencer-industry, #user_country, #user_state' } , html: {class: 'form-horizontal personal-info-form', id: 'edit_user'} do |f| %>

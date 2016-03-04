@@ -132,7 +132,7 @@ class ProfileController < ApplicationController
           account.fetch_insights
         end
 
-        @errors << "Cannot proceed with the request as the page  #{account.name} you have selected is already on our portal"  unless account.save
+        @errors << "Cannot proceed with the request as the page  #{account.name} you have selected is already on our portal"  unless account.save || account.persisted?
       end
     end
 
