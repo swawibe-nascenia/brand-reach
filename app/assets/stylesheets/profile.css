@@ -547,7 +547,7 @@ div.awesomplete > ul > li[aria-selected="true"] {
     }
 
     .social-account-tabs label {
-        width: 85px;
+        width: 100px;
     }
 
 }
