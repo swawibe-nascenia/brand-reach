@@ -445,7 +445,7 @@ only screen and (max-width: 768px){
 .search-result-item {
     width: 25%;
     display: inline-block;
-    min-width: 220px;
+    min-width: 215px;
 }
 
 @media (max-width: 768px) {
