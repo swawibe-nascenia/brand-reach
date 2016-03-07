@@ -441,3 +441,15 @@ only screen and (max-width: 768px){
 .vertical-align-middle {
     vertical-align: middle;
 }
+
+.search-result-item {
+    width: 25%;
+    display: inline-block;
+    min-width: 220px;
+}
+
+@media (max-width: 768px) {
+    .search-result-item {
+        width: 100%;
+    }
+}

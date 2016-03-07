@@ -2,7 +2,6 @@
   <% accounts.each_slice(4) do |account_group| %>
       <div class="row padding-less-column-parent">
         <% account_group.each do |account| %>
-            <div class="col-md-3 col-sm-6 col-sm-12">
               <div class="search-result-item">
                 <div class="search-result-image">
                   <%= image_tag(account.page_picture, class: 'img-responsive explore-search-image') %>
@@ -30,7 +29,6 @@
                 </div>
                 <%= link_to 'View Page', influencer_path(account), remote: true, :class => 'btn btn-primary btn-view-profile' %>
               </div>
-            </div>
         <% end %>
       </div>
   <% end %>
