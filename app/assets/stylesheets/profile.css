@@ -227,7 +227,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     }
 
     .social-account-tabs input {
-        width: 34%;
+        width: 25%;
     }
 }
 
@@ -468,7 +468,7 @@ div.awesomplete > ul > li {
 
 @media (max-width: 768px) {
     .social-account-tabs input {
-        width: 34%;
+        width: 25%;
     }
 
     .add-fb-modal-dialog {
@@ -543,7 +543,7 @@ div.awesomplete > ul > li[aria-selected="true"] {
 
 @media (max-width: 768px) {
     .js-social-account-tab .chosen-container {
-        width: calc(34% + 58px) !important;
+        width: calc(25% + 58px) !important;
     }
 
     .social-account-tabs label {
