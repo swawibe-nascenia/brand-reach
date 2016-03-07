@@ -371,7 +371,7 @@ only screen and (max-width: 767px) {
     }
 
     .influencer-profile-modal input {
-        width: 25%;
+        width: 24%;
     }
 }
 
@@ -406,7 +406,7 @@ only screen and (max-width: 768px){
     }
 
     .influencer-profile-modal label {
-        width: 110px;
+        width: 104px;
     }
 
     .influencer-modal-image, .influencer-modal-details, .like-send-request {
