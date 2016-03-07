@@ -261,7 +261,7 @@
 }
 
 .social-account-tab-content .form-group input {
-    width: 33%;
+    width: 25%;
 }
 
 .social-account-tabs .social-account-nav-tabs li a {
@@ -376,7 +376,7 @@ only screen and (max-width: 767px) {
 }
 
 @media
-only screen and (max-width: 580px){
+only screen and (max-width: 768px){
     .like-send-request {
         float: none !important;
     }
