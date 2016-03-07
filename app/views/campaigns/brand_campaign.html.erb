@@ -149,6 +149,8 @@
             $(this).tab('show');
         });
 
+        $('select').selectBox();
+
         $(document).on('click', '#engagement_list', function () {
             document.getElementById("performance-blue").style.display = 'none';
             document.getElementById("performance-black").style.display = 'inline';
