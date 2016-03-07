@@ -12,7 +12,7 @@
   <div class="row campaign-view">
     <%= form_tag(nil, method: 'get') do %>
         <%= label_tag :name, 'Choose an account' %>
-        <%= select_tag 'id', options_from_collection_for_select(@accounts, 'id', 'name', @account.id), prompt: 'Choose an account to view the statistics', class: 'double-arrow-select-icon' %>
+        <%= select_tag 'id', options_from_collection_for_select(@accounts, 'id', 'name', @account.id), prompt: 'Choose an account to view the statistics', class: '' %>
         <%= button_tag 'VIEW', class: 'btn-fb-insight-camp-show' %>
     <% end %>
   </div>
@@ -274,3 +274,9 @@
     <!-- /.box-header -->
   </div>
 </section>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('select').selectBox();
+    });
+</script>

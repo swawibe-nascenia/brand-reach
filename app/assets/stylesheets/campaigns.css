@@ -686,6 +686,12 @@ only screen and (max-width: 560px) {
     width: 55%;
 }
 
+.campaign-view .selectBox {
+    margin-bottom: 1px;
+    width: 55% !important;
+    padding: 2px;
+}
+
 .btn-campaign-view {
     color: white;
     padding: 5px 10px;
@@ -794,6 +800,10 @@ only screen and (max-width: 768px) {
         width: 100%;
         text-align: center;
         margin-top: 10px;
+    }
+
+    .campaign-view .selectBox {
+        width: 100% !important;
     }
 
     .campaign-view label {
