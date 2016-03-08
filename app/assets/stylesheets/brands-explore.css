@@ -119,6 +119,10 @@
     margin-left: 0;
 }
 
+.search-result {
+    margin-right: -30px;
+}
+
 .padding-less-column-parent > [class *='col-']{
     padding-left: 0;
     padding-right: 4px;
@@ -443,13 +447,16 @@ only screen and (max-width: 768px){
 }
 
 .search-result-item {
-    width: 25%;
     display: inline-block;
-    min-width: 215px;
+    width: 220px;
 }
 
 @media (max-width: 768px) {
     .search-result-item {
         width: 100%;
+    }
+
+    .search-result {
+        margin-right: 0;
     }
 }

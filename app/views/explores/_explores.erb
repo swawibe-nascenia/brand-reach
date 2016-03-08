@@ -1,35 +1,31 @@
 <div class="search-result">
-  <% accounts.each_slice(4) do |account_group| %>
-      <div class="row padding-less-column-parent">
-        <% account_group.each do |account| %>
-            <div class="search-result-item">
-              <div class="search-result-image">
-                <%= image_tag(account.page_picture, class: 'img-responsive explore-search-image') %>
-              </div>
-              <div class="influencer-data">
-                <div class="influencer-name" title="<%= account.name %>"> <%= account.name %> </div>
-                <% categories = (account.categories.pluck(:name).join(', ') if account.categories.present?) || '' %>
-                <% need_help = categories.size > 27  %>
-                <!-- show all industries on click -->
-                <div class="industry-container">
-                  <p class="influencer-industry <%= need_help ? 'click-able' : '' %>">
-                    <%= categories %>
-                  </p>
+  <% accounts.each do |account| %>
+      <div class="search-result-item">
+        <div class="search-result-image">
+          <%= image_tag(account.page_picture, class: 'img-responsive explore-search-image') %>
+        </div>
+        <div class="influencer-data">
+          <div class="influencer-name" title="<%= account.name %>"> <%= account.name %> </div>
+          <% categories = (account.categories.pluck(:name).join(', ') if account.categories.present?) || '' %>
+          <% need_help = categories.size > 27  %>
+          <!-- show all industries on click -->
+          <div class="industry-container">
+            <p class="influencer-industry <%= need_help ? 'click-able' : '' %>">
+              <%= categories %>
+            </p>
                     <span class="title-tooltip">
                       <%= categories %>
                     </span>
-                </div>
-                <!--end -->
-                <p class="influencer-biography"><%= truncate(account.about, length: 100) %> </p>
+          </div>
+          <!--end -->
+          <p class="influencer-biography"><%= truncate(account.about, length: 100) %> </p>
 
-                <p class="total-likes">
-                  <%= image_tag('explore-followers.png', :alt => 'number-of-follower') %> Total
-                  Likes: &nbsp;<%= account.number_of_followers %>
-                </p>
-              </div>
-              <%= link_to 'View Page', influencer_path(account), remote: true, :class => 'btn btn-primary btn-view-profile' %>
-            </div>
-        <% end %>
+          <p class="total-likes">
+            <%= image_tag('explore-followers.png', :alt => 'number-of-follower') %> Total
+            Likes: &nbsp;<%= account.number_of_followers %>
+          </p>
+        </div>
+        <%= link_to 'View Page', influencer_path(account), remote: true, :class => 'btn btn-primary btn-view-profile' %>
       </div>
   <% end %>
 </div>
