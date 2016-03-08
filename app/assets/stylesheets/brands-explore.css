@@ -120,7 +120,7 @@
 }
 
 .search-result {
-    margin-right: -30px;
+    /*margin-right: -30px;*/
 }
 
 .padding-less-column-parent > [class *='col-']{
@@ -451,12 +451,14 @@ only screen and (max-width: 768px){
     width: 200px;
 }
 
+@media (max-width: 767px) {
+    .search-result {
+        margin: 0 auto;
+    }
+}
+
 @media (max-width: 480px) {
     .search-result-item {
         width: 100%;
-    }
-
-    .search-result {
-        margin-right: 0;
     }
 }
