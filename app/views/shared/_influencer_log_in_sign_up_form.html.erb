@@ -14,8 +14,8 @@
     <div class="new-modal-title">FOR INFLUENCERS</div>
 
     <ul class="login-sign-up-ul" id="influencer_login_sign_up">
-      <li class="display-inline js-sign-in <%= 'active' if type == 'sign_in' %>"><a data-toggle="tab" href="#login">Login</a></li> /
-      <li class="display-inline js-sign-up <%= 'active' if type == 'sign_up' %>"><a data-toggle="tab" href="#sign_up">Sign Up</a></li>
+      <li class="display-inline js-sign-in <%= 'active' if type == 'sign_in' %>"><a data-toggle="tab" href="#influencer_login">Login</a></li> /
+      <li class="display-inline js-sign-up <%= 'active' if type == 'sign_up' %>"><a data-toggle="tab" href="#influencer_sign_up">Sign Up</a></li>
     </ul>
 
     <div id="influencer_login" class="tab-pane fade-out js-sign-in <%= 'active' if type == 'sign_in' %>">
@@ -25,7 +25,7 @@
       </br>
       </br>
       </br>
-      <div>Are you an Brand, please login <a href="<%= brand_home_public_index_path(sign_in_modal: true) %>"><span class="here-underline">here</span></a>.</div>
+      <div>Are you an Brand, please login  <a href="<%= brand_home_public_index_path(sign_in_modal: true) %>"><span class="here-underline">here</span></a>.</div>
     </div>
 
 
@@ -36,7 +36,7 @@
       </br>
       </br>
       </br>
-      <div>Are you an Brand, please login <a href="<%= brand_home_public_index_path(sign_up_modal: true) %>"><span class="here-underline">here</span></a>.</div>
+      <div>Are you an Brand, please Sign up <a href="<%= brand_home_public_index_path(sign_up_modal: true) %>"><span class="here-underline">here</span></a>.</div>
     </div>
 
   </div>
