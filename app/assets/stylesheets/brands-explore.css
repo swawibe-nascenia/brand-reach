@@ -1,5 +1,5 @@
 .brands-explore-content-wrapper{
-    padding: 30px 50px;
+    padding: 30px 40px;
     background-color: #f9f9f9;
 }
 
@@ -448,10 +448,10 @@ only screen and (max-width: 768px){
 
 .search-result-item {
     display: inline-block;
-    width: 220px;
+    width: 200px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .search-result-item {
         width: 100%;
     }
