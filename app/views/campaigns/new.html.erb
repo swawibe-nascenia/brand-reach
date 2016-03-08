@@ -41,14 +41,14 @@
               <div class="form-group">
                 <%= f.label :facebook_account_id, 'Choose Social Account Name', class: 'control-label' %>
                 <div class="display-inline">
-                  <%= f.select :facebook_account_id, options_for_select(@influencer.active_facebook_accounts.map{ |account| [account.name, account.id] }, @campaign.facebook_account_id), {}, { :class => 'form-control type-of-post double-arrow-select-icon', :id => 'social_account' } %>
+                  <%= f.select :facebook_account_id, options_for_select(@influencer.active_facebook_accounts.map{ |account| [account.name, account.id] }, @campaign.facebook_account_id), {}, { :class => 'form-control type-of-post', :id => 'social_account' } %>
                 </div>
               </div>
 
               <div class="form-group">
                 <%= f.label :post_type, 'Choose the type of post', class: 'control-label' %>
                 <div class="display-inline">
-                  <%= f.select :post_type, options_for_select(Campaign.post_types.map{ |type, value| [type.titleize, value] }, Campaign.post_types[@campaign.post_type]), {}, { :class => 'form-control type-of-post double-arrow-select-icon', :id => 'post_type' } %>
+                  <%= f.select :post_type, options_for_select(Campaign.post_types.map{ |type, value| [type.titleize, value] }, Campaign.post_types[@campaign.post_type]), {}, { :class => 'form-control type-of-post', :id => 'post_type' } %>
                 </div>
               </div>
 
@@ -205,6 +205,8 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+
+        $('select').selectBox();
 
 //        hide parsely error ul list for start and end date
         $('#parsley-id-' + $('.start_date').data('parsley-id')).remove();
@@ -380,8 +382,8 @@
             $('.daily').prop('checked', 'checked');
         }
 
-   /*============ new campaign image upload form trigger ====*/
-   /*============ add every post type here that need imag upload ====*/
+        /*============ new campaign image upload form trigger ====*/
+        /*============ add every post type here that need imag upload ====*/
         $('#upload-profile-photo').click(function(){
             $('#campaign-profile-photo').click();
         });
@@ -435,8 +437,8 @@
             }
         });
 
-/*===== validating dynamic fields for this page . ========*/
-/*===== add every post type here that required field    ========*/
+        /*===== validating dynamic fields for this page . ========*/
+        /*===== add every post type here that required field    ========*/
         function makeRequired(element){
             makeOptional$element();
 
