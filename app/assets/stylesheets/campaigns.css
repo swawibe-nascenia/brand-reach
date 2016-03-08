@@ -39,7 +39,7 @@
     padding: 5px 36px;
     background-color: #00c9f3;
     font-family: 'Raleway', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 11pt;
     border-radius: 0;
 }
@@ -663,10 +663,10 @@ only screen and (max-width: 560px) {
     color: white;
     width: 215px;
     font-size: 14px;
-    font-weight: 300;
+    font-weight: 500;
     margin-right: 4px;
     border-radius: 0;
-    font-family: 'Raleway Light', 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 
 .campaign-view {

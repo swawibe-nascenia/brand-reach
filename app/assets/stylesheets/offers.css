@@ -15,6 +15,8 @@
     color: white;
     font-size: 13px;
     padding: 3px 7px;
+    font-weight: 500;
+    font-family: "Raleway", sans-serif;
 }
 
 .btn-image-add{
@@ -26,6 +28,8 @@
     padding: 3px 7px;
     vertical-align: middle;
     cursor: pointer;
+    font-weight: 500;
+    font-family: "Raleway", sans-serif;
 }
 
 .btn-accept:hover{
@@ -99,7 +103,7 @@
     padding: 5px 26px;
     background-color: #f8c102;
     font-family: 'Raleway', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 15px;
 }
 

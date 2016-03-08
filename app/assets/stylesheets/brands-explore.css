@@ -106,7 +106,7 @@
 .btn-view-profile {
     width: 100%;
     border-radius: 0;
-    font-weight: 300;
+    font-weight: 500;
     background-color: #00ADEF;
 }
 
@@ -295,7 +295,7 @@
     color: #d9d9d9;
     font-size: 3.4em;
     opacity: 1.5;
-    font-weight: 100;
+    font-weight: 300;
     margin-top: -20px;
 }
 

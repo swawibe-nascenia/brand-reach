@@ -53,8 +53,7 @@ body {
   margin-right: 6px;
   padding: 0;
   width: 35px;
-  /*line-height: 40px;*/
-  /*margin: 0 3px;*/
+  font-weight: 500;
 }
 
 .btn-circle:active {
@@ -682,13 +681,6 @@ button.view-country {
 @media (max-width: 440px) {
   .go-button {
     padding-left: 5px;
-  }
-
-  /*.btn-circle {*/
-  /*margin: 0;*/
-  /*}*/
-  .view-country {
-    /*font-size: .7em;*/
   }
 }
 
@@ -1638,9 +1630,9 @@ a .offer-box:last-child{
   border: medium none;
   border-radius: 0;
   color: #ffffff;
-  font-weight: 300;
+  font-weight: 500;
   padding: 9px 10px;
-  font-family: 'Raleway Light', 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif;
   &:hover {
     background-color: #00b6e2;
     color: #ffffff;
@@ -1794,8 +1786,7 @@ a .offer-box:last-child{
   line-height: 1;
   min-width: 112px;
   padding: 9px 10px;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .set-fb-activity-table .media-heading {
@@ -1837,8 +1828,8 @@ a .offer-box:last-child{
   border: medium none;
   border-radius: 0;
   color: #ffffff;
-  font-weight: 300;
-  font-family: 'Raleway Light', 'Raleway', sans-serif;
+  font-weight: 500;
+  font-family: 'Raleway', sans-serif;
   &:hover {
     background-color: #00b6e2;
     color: #ffffff;
@@ -1848,8 +1839,8 @@ a .offer-box:last-child{
 .bootbox .btn-default{
   border: medium none;
   border-radius: 0;
-  font-weight: 300;
-  font-family: 'Raleway Light', 'Raleway', sans-serif;
+  font-weight: 500;
+  font-family: 'Raleway', sans-serif;
   &:hover {
     background-color: #f4f4f4;
     color: #333;
