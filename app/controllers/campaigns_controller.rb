@@ -44,12 +44,12 @@ class CampaignsController < ApplicationController
                                  end
     # @campaign.name = @campaign.name.downcase if  campaign_params[:name].present?
 
-    unless @campaign.ongoing?
+    # unless @campaign.ongoing?
       temp_start_date = campaign_params[:start_date].to_date
-      temp_start_time =  params[:start_time].to_time
+      temp_start_time =  [1,2].include?(campaign_params[:post_type].to_i) ? params[:start_time].to_time : '12:00 am'.to_time
 
       temp_end_date = campaign_params[:end_date].to_date
-      temp_end_time =  params[:end_time].to_time
+      temp_end_time =  [1,2].include?(campaign_params[:post_type].to_i) ? params[:end_time].to_time : '11:59 pm'.to_time
 
       @campaign.start_date = DateTime.new(
                                             temp_start_date.year, temp_start_date.month, temp_start_date.day,
@@ -59,7 +59,7 @@ class CampaignsController < ApplicationController
                                           temp_end_date.year, temp_end_date.month, temp_end_date.day,
                                           temp_end_time.hour, temp_end_time.min
                                         )
-    end
+    # end
 
     if @campaign.save
       @campaign.create_first_message

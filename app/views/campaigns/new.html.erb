@@ -55,7 +55,7 @@
               <!--status update filed-->
               <div class="form-group" id="post-type-0">
                 <%= f.label :campaign_content, 'Status Message', class: 'control-label description-label' %>
-                <div class="display-inline">
+                <div class="display-inline campaign-name-input">
                   <%= f.text_area :campaign_content, rows: 4, class: 'form-control input-with-img campaign-description', name: 'status_message' %>
                 </div>
               </div>
@@ -83,7 +83,7 @@
               <!--video post filed-->
               <div class="form-group" id="post-type-3">
                 <%= f.label :campaign_content, 'Video URL', class: 'control-label' %>
-                <div class="display-inline">
+                <div class="display-inline campaign-name-input">
                   <%= f.text_field :campaign_content, class: 'form-control input-with-img', name: 'video_url' %>
                 </div>
               </div>
@@ -99,7 +99,7 @@
               </div>
 
               <div class="form-group">
-                <%= f.label :cost, 'Cost ( INR )', class: 'control-label' %>
+                <%= f.label :cost, 'Total Cost ( INR )', class: 'control-label' %>
                 <div class="display-inline">
                   <%= f.text_field :cost, { class: 'form-control campaign-cost-input', value: @campaign.cost.present? ? @campaign.cost : @costs[0][0], readonly: true, 'data-parsley-excluded' => 'input[type=text]', id: 'post_cost' } %>
                 </div>
@@ -108,13 +108,13 @@
               <div class="form-group">
                 <%= f.label '', 'Schedule Post', class: 'control-label' %>
                 <div class="display-inline">
-                  <div class="display-inline">
-                    <%= f.radio_button :schedule_type, 'ongoing', { :checked => true, class: 'daily btn-radio' } %>
-                    <span>Run my ad set continuously starting today</span>
-                  </div>
+                  <!--<div class="display-inline">-->
+                    <%#= f.radio_button :schedule_type, 'ongoing', { :checked => true, class: 'daily btn-radio' } %>
+                    <!--<span>Run my ad set continuously starting today</span>-->
+                  <!--</div>-->
 
                   <div class="display-inline">
-                    <%= f.radio_button :schedule_type, 'date_range', class: 'date-range btn-radio' %>
+                    <%#= f.radio_button :schedule_type, 'date_range', class: 'date-range btn-radio' %>
                     <span>Set a start and end date</span>
                   </div>
 
@@ -297,7 +297,7 @@
                 if (this.value == 0) {
                     $('#post_cost').val(costs[social_account_index][0]);
                     showHide(this.value);
-                    disableSetDate();
+                    enableSetDate();
                 }
                 else if (this.value == 1) {
                     $('#post_cost').val( costs[social_account_index][1] * getDayDiff() );
@@ -312,12 +312,12 @@
                 else if (this.value == 3) {
                     $('#post_cost').val(costs[social_account_index][3]);
                     showHide(this.value);
-                    disableSetDate();
+                    enableSetDate();
                 }
                 else if (this.value == 4) {
                     $('#post_cost').val(costs[social_account_index][4]);
                     showHide(this.value);
-                    disableSetDate();
+                    enableSetDate();
                 }
             }
 
@@ -325,7 +325,7 @@
 
 //        inition setting
         showHide(0);
-        disableSetDate();
+//        disableSetDate();
 
 /*===== display other field depending on post type value ====*/
 /* ===== show_item either 0,1,2,3 that will show and other will hide =*/
@@ -442,29 +442,55 @@
         function makeRequired(element){
             makeOptional$element();
 
-            if(element == 1){
+            if(element == 0){
+                $("textarea[name=status_message]").attr("required", "required");
+                $("#campaign_text").attr("required", "required");
+                $("#campaign_headline").attr("required", "required");
+                $("textarea[name=status_message]").parsley();
+                $("#campaign_text").parsley();
+                $("#campaign_headline").parsley();
+            }else if(element == 1){
                 $("input[name=profile_photo_url]").attr("required", "required");
-                $("input[name=profile_photo_url]").parsley().destroy();
                 $("input[name=profile_photo_url]").parsley();
             }else if( element == 2){
                 $("input[name=cover_photo_url]").attr("required", "required");
-                $("input[name=cover_photo_url]").parsley().destroy();
                 $("input[name=cover_photo_url]").parsley();
+
+            }else if( element == 3){
+                $("input[name=video_url]").attr("required", "required");
+                $("#campaign_text").attr("required", "required");
+                $("#campaign_headline").attr("required", "required");
+                $("input[name=video_url]").parsley();
+                $("#campaign_text").parsley();
+                $("#campaign_headline").parsley();
 
             }else if( element == 4){
                 $("input[name=post_photo_url]").attr("required", "required");
-                $("input[name=post_photo_url]").parsley().destroy();
-                $("input[name=post_photo_url]").parsley();
+                $("#campaign_text").attr("required", "required");
+                $("#campaign_headline").attr("required", "required");
 
+                $("input[name=post_photo_url]").parsley();
+                $("#campaign_text").parsley();
+                $("#campaign_headline").parsley();
             }
         }
 
         function makeOptional$element(){
             $("input[name=cover_photo_url]").removeAttr("required");
             $("input[name=profile_photo_url]").removeAttr("required");
+            $("input[name=video_url]").removeAttr("required");
+            $("input[name=post_photo_url]").removeAttr("required");
+            $("textarea[name=status_message]").removeAttr("required");
+            $("#campaign_text").removeAttr("required");
+            $("#campaign_headline").removeAttr("required");
 
             $("input[name=cover_photo_url]").parsley().destroy();
             $("input[name=profile_photo_url]").parsley().destroy();
+            $("input[name=video_url]").parsley().destroy();
+            $("input[name=post_photo_url]").parsley().destroy();
+            $("textarea[name=status_message]").parsley().destroy();
+            $("#campaign_text").parsley().destroy();
+            $("#campaign_headline").parsley().destroy();
         }
 
         /*--------- parse date from dd/mm/yyyy format string -------*/
