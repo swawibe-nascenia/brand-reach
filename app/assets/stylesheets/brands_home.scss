@@ -487,15 +487,12 @@ ul.menu-item li {
   font-family: 'Hind', sans-serif;
   margin: 0;
 }
+
 .footer-info-padding{
-  padding-left: 15px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
-@media  (min-width: 1010px){
-  .footer-info-padding{
-    padding-left: 0;
-  }
-}
 @media screen and (max-width: 600px){
   .footer {
     //height: 98px;
