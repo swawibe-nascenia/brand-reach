@@ -84,14 +84,18 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('select').selectBox();
+        explorePageCardResize();
     });
 
-    $( window ).resize(function() {
+    $(window).resize(explorePageCardResize);
+
     // making search container horizontally center aligned
+
+    function explorePageCardResize(){
         var containerWidth = $('#search-result-container').width();
         var searchItemWidth = $('.search-result-item').width();
         var innerContainerWidth = containerWidth - (containerWidth % 214);
-        if (containerWidth < 708 && containerWidth > 420)
+        if (containerWidth < 708 && containerWidth > 405)
         {
             $('.search-result').css('width', innerContainerWidth);
         }
@@ -100,7 +104,7 @@
         {
             $('.search-result').css('width', 'auto');
         }
-    });
+    }
 
     // if there is any modal remains after one close
     // add modal-open class to document body
