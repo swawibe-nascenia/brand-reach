@@ -25,6 +25,7 @@
           <div class="input_container">
             <div class="label_l">Email</div>
             <%= f.text_field :email, class: 'login_input', data: {:'parsley-trigger' => 'change',
+                                                                  :'parsley-type' => 'email',
                                                                  :'parsley-required' => 'true'} %>
           </div>
           <button class="br-btn-submit" type="submit">
