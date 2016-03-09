@@ -84,6 +84,7 @@ class User < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   validates :email, presence: true, uniqueness: true
+  validates :uid, uniqueness: true, if: 'uid.present?'
   validates :phone, format: { with: /(^[\+]?[0-9]+[-]?[0-9]+[-]?[0-9]+$)/, message: 'Number format is not correct.' }, if: 'phone.present?'
   validates_confirmation_of :password
   # validates_length_of :password, :minimum => 6, :allow_blank => true
