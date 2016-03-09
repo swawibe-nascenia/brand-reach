@@ -12,7 +12,7 @@
 
     <div class="amount-withdraw">
       <%= label_tag 'withdraw_amount', 'Amount to Withdraw' %>
-      <%= number_field_tag 'withdraw_amount', '' %>
+      <%= number_field_tag 'withdraw_amount', '', data:{ 'parsley-type' => 'number'} %>
       <%= button_tag 'WITHDRAW', :class => 'btn btn-withdraw button-border-yellow', id: 'btn-amount-withdraw' %>
     </div>
   </div>

@@ -197,10 +197,10 @@ $(function(){
                 errorMessage = 'Please enter an amount greater than zero.';
                 break;
             case withdrawAmount > currentBalance:
-                errorMessage = 'Please enter an amount not greater than current balance.';
+                errorMessage = 'Please enter an amount not greater than available balance.';
                 break;
             case (BankAccountId === undefined || BankAccountId === null):
-                errorMessage = 'Please add a bank account to proceed.';
+                errorMessage = 'Please select a bank account to proceed.';
                 break;
         }
 
