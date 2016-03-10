@@ -222,6 +222,12 @@ class Admin::AdminsController < ApplicationController
     end
   end
 
+  def show_contact_us_mails
+    authorize :admin, :manage_brandreach?
+
+    @contact_us_mails = ContactUs.includes(:user).where.not(user_id: nil).page(params[:page])
+  end
+
   private
 
   def admin_params

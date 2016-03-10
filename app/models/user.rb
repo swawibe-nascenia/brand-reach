@@ -73,6 +73,7 @@ class User < ActiveRecord::Base
   has_many :campaigns_received, class_name: 'Campaign', foreign_key: 'receiver_id', dependent: :destroy
   has_many :bank_accounts, dependent: :destroy
   has_many :influencer_payments, dependent: :destroy
+  has_many :contact_uses, class_name: 'ContactUs', dependent: :destroy
   # has_many :contact_uses, class_name: 'ContactUs', dependent: :destroy
   has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id'
   has_and_belongs_to_many :categories
