@@ -113,6 +113,7 @@ Rails.application.routes.draw do
         get :brand_list
         get 'payment-request', to: 'admins#payment_request'
         put :make_payment_paid
+        get 'contact-us', to: 'admins#show_contact_us_mails'
       end
 
       member do
