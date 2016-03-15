@@ -187,6 +187,9 @@ GEM
     orm_adapter (0.5.0)
     parsley-rails (2.0.7.0)
       railties (>= 3.0.0)
+    passenger (5.0.26)
+      rack
+      rake (>= 0.8.1)
     pdf-core (0.6.0)
     prawn (2.0.2)
       pdf-core (~> 0.6.0)
@@ -334,6 +337,7 @@ DEPENDENCIES
   omniauth-facebook
   orm_adapter
   parsley-rails
+  passenger (~> 5.0.20)
   prawn-rails
   pubnub (~> 3.7.9)
   pundit (= 1.0.1)
