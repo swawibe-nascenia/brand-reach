@@ -39,5 +39,9 @@ production:
   pubnub_subscribe_key: "sub-c-726bd9f8-3a48-11e4-87bf-02ee2ddab7fe"
   pubnub_publish_key: "pub-c-0da552d0-4fd6-4ec6-b841-7ed3b689312a"
   pubnub_secret_key: "sec-c-YjM1N2M1YzQtZDU3YS00NjM2LWFmNDYtMGJmMGI3ZTVlMzEx"
+  ccavenue_working_key: CD1D07267064B35491DDFD12A42DBF60
+  ccavenue_access_code: AVMQ07CK67CA86QMAC
+  ccavenue_merchant_id: 80330
+  min_fb_likes_for_registration: 5
   from_email: 'support@thebrandreach.com'
   admin_email: ''
