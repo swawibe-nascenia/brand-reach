@@ -58,7 +58,7 @@ gem 'prawn-rails'
 
 # Use Capistrano for deployment
 group :development, :test do
-    gem 'capistrano-passenger'
+    gem 'capistrano-passenger', '~> 0.2.0'
     gem 'capistrano-rails'
     gem 'capistrano-rvm'
 end
