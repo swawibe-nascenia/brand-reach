@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
                                      :last_name
                                     ]
 
-  FACEBOOK_ACCOUNT_COMPLETENESS = [:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost]
+  FACEBOOK_ACCOUNT_COMPLETENESS = [:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost, :photo_post_cost]
 
   MIN_LIKES_FOR_REGISTRATION = CONFIG[:min_fb_likes_for_registration]
 
