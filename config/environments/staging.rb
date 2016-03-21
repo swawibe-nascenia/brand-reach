@@ -24,11 +24,11 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.smtp_settings = {
-      address:              'smtp.gmail.com',
-      port:                 587,
-      domain:               'my_app.com',
-      user_name:            'hasanuzzaman@nascenia.com',
-      password:             '284sumon',
+      address:              'smtpout.secureserver.net',
+      port:                 80,
+      domain:               'www.thebrandreach.com',
+      user_name:            'mc@thebrandreach.com',
+      password:             'nirvanalabs',
       authentication:       'plain',
       enable_starttls_auto: true  }
 
