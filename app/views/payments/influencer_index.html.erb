@@ -15,7 +15,7 @@
         <%= number_field_tag 'withdraw_amount', '',
                              data: { 'parsley-min' => '1','parsley-max' => current_user.balance,
                                      'parsley-errors-container' => '#p-error-container-inf-payment',
-                                     'parsley-max-message' => 'Amount should not be greater than current balance.'
+                                     'parsley-max-message' => 'Amount should not be greater than available balance.'
                                 }
         %>
         <div id="p-error-container-inf-payment"></div>
