@@ -43,8 +43,9 @@ class CampaignMailer < ApplicationMailer
     mail(to: @receiver.email, subject: 'New message to campaign')
   end
 
-  def contact_us_mail(contact_us_params)
+  def contact_us_mail(contact_us_params, user)
     @message = contact_us_params[:message]
+    @user = user
     mail(to: 'superadmin@thebrandreach.com', subject: contact_us_params[:category])
   end
 

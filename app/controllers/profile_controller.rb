@@ -161,7 +161,7 @@ class ProfileController < ApplicationController
     @contact_us.user_id = current_user.id
 
     if @contact_us.save
-      CampaignMailer.contact_us_mail(contact_us_params).deliver_now
+      CampaignMailer.contact_us_mail(contact_us_params, current_user).deliver_now
       flash[:success] = 'Message sent successfully'
       redirect_to contact_us_profile_index_path
     else
