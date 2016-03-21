@@ -206,6 +206,7 @@
 
         function showLoginSingnUpModal(type){
             $('#signin').modal('show');
+            resetSignUpFormData();
 
             if( type == 'sign_in'){
               $('.js-sign-in').addClass('active');
@@ -218,5 +219,6 @@
 
         function resetSignUpFormData(){
             $('#ajax-signup')[0].reset();
+            $('#validation-error').html('');
         }
 </script>
