@@ -17,7 +17,19 @@ class Admin::InvitationsController < ApplicationController
 
   def create
     authorize :admin, :manage_brandreach?
-    @invitation = Admin::Invitation.create(invitation_params)
+
+    @invitation = Admin::Invitation.new(invitation_params)
+
+    @success = true
+    @messages = []
+
+    if @invitation.save
+      CampaignMailer.influencer_invitation(@invitation).deliver_now
+    else
+      @messages = @invitation.errors.full_messages
+      @success = false
+    end
+
   end
 
   def brand_invitation

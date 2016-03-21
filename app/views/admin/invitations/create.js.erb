@@ -1,5 +1,9 @@
-$('#invitation-modal').modal('hide');
-$('.modal-container').html("<%= j render(:partial => 'shared/success_message',
-           :locals => { message: influencer_invitation_success_message }) %>");
+<% if @success %>
+    $('#invitation-modal').modal('hide');
+    $('.modal-container').html("<%= j render(:partial => 'shared/success_message',
+               :locals => { message: influencer_invitation_success_message }) %>");
 
-$('.invitation-table tbody').append("<%= j render @invitation  %>");
+    $('.invitation-table tbody').append("<%= j render @invitation  %>");
+<% else %>
+    $('#validation-error').html("<%= j render(:partial => 'shared/errors', :locals => { messages: @messages }) %>" );
+<% end %>
