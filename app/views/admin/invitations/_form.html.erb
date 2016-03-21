@@ -13,13 +13,15 @@
           <div class="input_container">
             <div class="label_l">First Name</div>
             <%= f.text_field :first_name, class: 'login_input', data: {:'parsley-trigger' => 'change',
-                                                                 :'parsley-required' => 'true'} %>
+                                                                 :'parsley-required' => 'true',
+                                                                 :'parsley-pattern' => '/^[A-Za-z\s]+$/'} %>
           </div>
 
             <div class="input_container">
               <div class="label_l">Last Name</div>
               <%= f.text_field :last_name, class: 'login_input', data: {:'parsley-trigger' => 'change',
-                                                                   :'parsley-required' => 'true'} %>
+                                                                   :'parsley-required' => 'true',
+                                                                   :'parsley-pattern' => '/^[A-Za-z\s]+$/'} %>
             </div>
 
           <div class="input_container">
