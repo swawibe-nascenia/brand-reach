@@ -108,7 +108,7 @@ Rails.application.routes.draw do
       collection do
         get 'brands-request', to: 'admins#brands_request'
         get :profile
-        get '/manage-admins', to: 'admins#manage_admins'
+        get 'manage-admins', to: 'admins#manage_admins'
         get :influencer_list
         get :brand_list
         get 'payment-request', to: 'admins#payment_request'
@@ -146,7 +146,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: 'explores#show', as: 'brand_root', :constraints => lambda { |request| request.env['warden'].user.brand? }
     root to: 'facebook#insights', as: 'influencer_root', :constraints => lambda { |request| request.env['warden'].user.influencer? }
-    root to: 'admins#profile', as: 'admin_root'
+    root to: 'admin/admins#manage_admins', as: 'admin_root'
   end
 
 
