@@ -35,7 +35,6 @@
                 <div class="label_l">Email</div>
                 <input class="login_input"
                        data-parsley-required="true"
-                       data-parsley-required="true"
                        data-parsley-type="email"
                        name="user[email]"
                        id="user_email"
@@ -44,7 +43,7 @@
 
               <div class="input_container">
                 <div class="label_l">Phone</div>
-                <input data-parsley-id="6021" class="login_input" data-parsley-required="true" data-parsley-trigger="change" name="user[phone]" id="user_phone" type="text">
+                <input data-parsley-id="6021" class="login_input" data-parsley-pattern="(^[\+]?[0-9]+[-]?[0-9]+[-]?[0-9]+$)" data-parsley-length = '[10, 14]' data-parsley-required="true" data-parsley-trigger="change" name="user[phone]" id="user_phone" type="text">
                 <ul id="parsley-id-6021" class="parsley-errors-list"></ul>
               </div>
               <div class="input_container">
