@@ -44,7 +44,7 @@
             <div class="label_l">Confirm password</div>
             <input class="login_input" data-parsley-minlength="[6]" id="user_password_confirmation" type="password"
                    name="user[password_confirmation]" autocomplete="off" data-parsley-required="true"
-                   data-parsley-trigger="change">
+                   data-parsley-trigger="change" data-parsley-equalto="#user_password" data-parsley-error-message="Confirmation password does not match with password">
           </div>
           <button class="br-btn-submit" type="submit">
             SUBMIT
