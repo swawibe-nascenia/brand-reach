@@ -26,27 +26,27 @@ class User < ActiveRecord::Base
   Industry = ['Health and Beauty', 'Technology', 'Startups', 'Internet', 'Food', 'Restaurants', 'Automobile']
 
   BRAND_PROFILE_COMPLETENESS = [
-                                :company_name,
-                                :company_email,
-                                :phone, :city,
-                                :state,
-                                :country,
-                                :zip_code,
-                                :short_bio,
-                                :first_name,
-                                :last_name
-                                ]
+      :company_name,
+      :company_email,
+      :phone, :city,
+      :state,
+      :country,
+      :zip_code,
+      :short_bio,
+      :first_name,
+      :last_name
+  ]
 
   INFLUENCER_PROFILE_COMPLETENESS = [
-                                     :phone,
-                                     :city,
-                                     :state,
-                                     :country,
-                                     :zip_code,
-                                     :short_bio,
-                                     :first_name,
-                                     :last_name
-                                    ]
+      :phone,
+      :city,
+      :state,
+      :country,
+      :zip_code,
+      :short_bio,
+      :first_name,
+      :last_name
+  ]
 
   FACEBOOK_ACCOUNT_COMPLETENESS = [:status_update_cost, :profile_photo_cost, :cover_photo_cost, :video_post_cost]
 
@@ -84,7 +84,8 @@ class User < ActiveRecord::Base
   # == Validations == #
   # ----------------------------------------------------------------------
 
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true
+  validates :email, uniqueness: true, if: :uniqueness_of_email
   validates :uid, uniqueness: true, if: 'uid.present?'
   validates :phone, format: { with: /(^[\+]?[0-9]+[-]?[0-9]+[-]?[0-9]+$)/, message: 'Number format is not correct.' }, if: 'phone.present?'
   validates_confirmation_of :password
@@ -110,11 +111,11 @@ class User < ActiveRecord::Base
   scope :inactive_influencers, ->{ where( user_type: user_types[:influencer], status: User.statuses[:inactive])}
   scope :suspended_influencers, ->{ where( user_type: user_types[:influencer], status: User.statuses[:suspended])}
   scope :active_suspended_influencers, ->{ where( user_type: user_types[:influencer],
-                                                    status: [
-                                                        User.statuses[:active],
-                                                        User.statuses[:suspended]
-                                                    ]
-                                                  )}
+                                                  status: [
+                                                      User.statuses[:active],
+                                                      User.statuses[:suspended]
+                                                  ]
+  )}
 
   scope :active_brands, ->{ where( user_type: user_types[:brand], status: User.statuses[:active])}
   scope :inactive_brands, ->{ where( user_type: user_types[:brand],  status: User.statuses[:inactive])}
@@ -122,10 +123,10 @@ class User < ActiveRecord::Base
   scope :waiting_brands, ->{ where( user_type: user_types[:brand],  status: User.statuses[:waiting])}
   scope :suspended_brands, ->{ where( user_type: user_types[:brand],  status: User.statuses[:suspended])}
   scope :active_suspended_brands, ->{ where( user_type: user_types[:brand],
-                                            status: [
-                                                User.statuses[:active],
-                                                User.statuses[:suspended]
-                                            ])}
+                                             status: [
+                                                 User.statuses[:active],
+                                                 User.statuses[:suspended]
+                                             ])}
 
   singleton_class.send(:alias_method, :influencers, :active_influencers)
   singleton_class.send(:alias_method, :brands, :active_brands)
@@ -149,6 +150,17 @@ class User < ActiveRecord::Base
 
   def profile_picture(version = :thumb)
     self.image.present? ? self.image.url(version).to_s : ActionController::Base.helpers.asset_path('default_profile_picture.png')
+  end
+
+  def uniqueness_of_email
+    if self.brand?
+      if User.find_by_email(self.email) && User.find_by_email(self.email).invited?
+        errors.add(:email, ' activation link already sent. Please activate your account from email address')
+        return false
+      end
+    end
+
+    return true
   end
 
   # ----------------------------------------------------------------------
@@ -301,11 +313,11 @@ class User < ActiveRecord::Base
 
   def update_profile_completion_status
     if self.influencer?
-       if active_facebook_accounts.blank?
-         Rails.logger.info  "===================No Facebook Account is connected"
-         update_column(:profile_complete, false)
-         return
-       end
+      if active_facebook_accounts.blank?
+        Rails.logger.info  "===================No Facebook Account is connected"
+        update_column(:profile_complete, false)
+        return
+      end
 
       active_facebook_accounts.each do |facebook_account|
         FACEBOOK_ACCOUNT_COMPLETENESS.each do |field|
