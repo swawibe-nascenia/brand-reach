@@ -1,3 +1,4 @@
+<% unless User.find_by_email(invitation.email) %>
 <tr>
   <td><%= invitation.first_name %></td>
   <td><%= invitation.last_name %></td>
@@ -5,3 +6,4 @@
   <td><%= invitation.time %></td>
   <td><%= link_to 'Re-invite', influencer_resend_admin_invitation_path(invitation), remote: true %></td>
 </tr>
+<% end %>
