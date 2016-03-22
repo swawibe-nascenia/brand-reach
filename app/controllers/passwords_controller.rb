@@ -46,7 +46,7 @@ class PasswordsController < Devise::PasswordsController
     else
       if resource.errors.messages[:reset_password_token]
         resource.errors.messages.delete(:reset_password_token)
-        resource.errors.messages[:password_reset_link] = ['has already been used']
+        resource.errors.messages[:password_reset_link] = ['has already been used. Use most recent reset link or contact with administrator.']
       end
       respond_with resource
     end
