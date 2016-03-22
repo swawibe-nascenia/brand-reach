@@ -1350,10 +1350,19 @@ a .offer-box:last-child{
 .admin-sign-in-form{
   border: 2px solid #999999;
   margin: 9% 32%;
-  padding: 44px;
+  padding: 65px;
   background-color: #f5fafa;
   font-size: 13px;
+
+  @media (min-width: 1415px) {
+    margin: 9% 25%;
+  }
+
+  @media (max-width: 800px) {
+    margin: 9% 18%;
+  }
 }
+
 .admin-sign-in-form a{
   font-size: 12px;
 }
