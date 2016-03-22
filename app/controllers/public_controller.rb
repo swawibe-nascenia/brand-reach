@@ -37,6 +37,7 @@ class PublicController < ApplicationController
 
   def get_in_touch
     CampaignMailer.get_in_touch_mail(params).deliver_now
+    flash[:success] = 'Your message is sent'
     redirect_to influencer_home_public_index_path
   end
 
