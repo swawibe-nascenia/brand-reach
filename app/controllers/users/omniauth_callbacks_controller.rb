@@ -28,8 +28,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           redirect_to new_user_registration_url
         end
       else
-        flash[:error] = 'Your account suspended by admin.'
-        redirect_to new_user_session_path
+        flash[:error] = 'Your account suspended by admin. Please contact with admin for activation.'
+        redirect_to root_path
       end
     else
       flash[:error] = 'Email has already been taken. Please sign in here.'
