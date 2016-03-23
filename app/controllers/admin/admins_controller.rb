@@ -137,12 +137,16 @@ class Admin::AdminsController < ApplicationController
     logger.info "-----------Rails session now #{session.inspect}"
 
     if @user
-      @user.update_column(:status, User.statuses[:suspended])
-      session.delete(user_id: @user.id)
-      logger.info "------------Rails session now #{       session.delete(user_id: @user.id)
-                  }"
-      @success = true
-      @message = 'Successfully suspend user account.'
+      if @user.engaged_campaigns.present?
+        @message = 'Cannot be deactivate at this point. The selected user has active campaigns running.'
+      else
+        @user.update_column(:status, User.statuses[:suspended])
+        session.delete(user_id: @user.id)
+        logger.info "------------Rails session now #{       session.delete(user_id: @user.id)
+                    }"
+        @success = true
+        @message = 'Successfully suspend user account.'
+      end
     end
   end
 
