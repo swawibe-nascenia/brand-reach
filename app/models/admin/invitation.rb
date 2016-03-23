@@ -22,7 +22,7 @@ class Admin::Invitation < ActiveRecord::Base
   # ----------------------------------------------------------------------
   # == Validations == #
   # ----------------------------------------------------------------------
-  validates :email, uniqueness: true
+  validates :email, uniqueness: true, if: :uniqueness_of_email_in_user_table
 
   # ----------------------------------------------------------------------
   # == Callbacks == #
@@ -57,6 +57,14 @@ class Admin::Invitation < ActiveRecord::Base
   # ----------------------------------------------------------------------
 
   private
+
+  def uniqueness_of_email_in_user_table
+    if User.find_by_email(self.email)
+      errors.add(:email, ' address is already activated as a Brand or an Influencer in our portal. Please use another email')
+      return false
+    end
+    return true
+  end
 
   def send_invitation
     Rails.logger.info "=============== Send invitaions to callback ================"

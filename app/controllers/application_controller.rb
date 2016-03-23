@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     response.headers['Expires'] = 'Fri, 01 Jan 1990 00:00:00 GMT'
   end
 
-  # override of device method that contain redirect logic after sing in
+  # override of device method that contain redirect logic after sign in
   def after_sign_in_path_for(resource)
     Rails.logger.info "Current user is #{current_user.user_type} and profile compete status is #{current_user.profile_complete?}"
     if current_user.super_admin?
@@ -30,6 +30,14 @@ class ApplicationController < ActionController::Base
       explores_path
     else
       profile_profile_index_path
+    end
+  end
+
+  def after_sign_out_path_for(resource_or_scope)
+    if session[:admin_or_super_admin].admin? || session[:admin_or_super_admin].super_admin?
+      return admin_url
+    else
+      return root_url
     end
   end
 
@@ -78,20 +86,20 @@ class ApplicationController < ActionController::Base
       end
 
       User::BRAND_PROFILE_COMPLETENESS.each do |field|
-         error_messages << "*  #{field.to_s.camelize(:lower)} is required field" unless current_user.send("#{field}?")
-       end
+        error_messages << "*  #{field.to_s.camelize(:lower)} is required field" unless current_user.send("#{field}?")
+      end
 
-       current_user.active_facebook_accounts.each do |facebook_account|
-         User::FACEBOOK_ACCOUNT_COMPLETENESS.each do |field|
-           unless facebook_account.send("#{field}").present?
-             error_messages << "*  #{field.to_s.camelize} of #{facebook_account.name} is required field" unless facebook_account.send("#{field}").present?
-           end
-         end
-       end
+      current_user.active_facebook_accounts.each do |facebook_account|
+        User::FACEBOOK_ACCOUNT_COMPLETENESS.each do |field|
+          unless facebook_account.send("#{field}").present?
+            error_messages << "*  #{field.to_s.camelize} of #{facebook_account.name} is required field" unless facebook_account.send("#{field}").present?
+          end
+        end
+      end
 
       flash[:error] = error_messages
       redirect_to profile_profile_index_path
-     end
+    end
   end
 
   def check_profile_social_accounts
