@@ -134,6 +134,14 @@ module ApplicationHelper
     }
   end
 
+  def local_time_convert(time)
+    if time.to_date == Date.today
+      local_time(time, '%I:%M %P')
+    else
+      local_time(time, '%d-%m-%Y')
+    end
+  end
+
   def home_path
     if current_user && current_user.brand?
       brand_home_public_index_path

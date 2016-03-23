@@ -4,7 +4,7 @@
   <td><%= user.email %></td>
   <td><%= user.phone %></td>
   <td><%= user.company_name %></td>
-  <td><%= user.time %></td>
+  <td><%= local_time_convert(user.created_at) %></td>
   <% if user.brand? && !user.waiting? %>
   <td>
     <a href="<%= reset_user_password_admin_admin_path(user) %>" data-remote="true" class="text-success user-password-change" data-id="<%= user.email %>">

@@ -4,6 +4,6 @@
   <td><%= brand.email %></td>
   <td><%= brand.phone %></td>
   <td><%= brand.company_name %></td>
-  <td><%= brand.time %></td>
+  <td><%= local_time_convert(brand.created_at) %></td>
   <td><%= link_to 'Re-invite', brand_resend_admin_invitation_path(brand), remote: true %></td>
 </tr>
