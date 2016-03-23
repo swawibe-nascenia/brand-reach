@@ -62,6 +62,11 @@ class CampaignMailer < ApplicationMailer
     mail(from: 'mc@thebrandreach.com', to: user.email, subject: 'Brandreach account activate')
   end
 
+  def account_activate_after_deactivate_notification_to_user(user)
+    @user = user
+    mail(from: 'mc@thebrandreach.com', to: user.email, subject: 'Brandreach account activate')
+  end
+
   def get_in_touch_mail(params)
     @full_name = params[:full_name]
     @email = params[:email]

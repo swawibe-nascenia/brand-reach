@@ -1,6 +1,6 @@
 <% if @success %>
-//    $('tr#user-<%= @user.id %>').remove();
     window.location.reload();
 <% else %>
-    alert("<%= @message %>");
+    bootbox.alert({message: '<%= @message %>',
+        closeButton: false});
 <% end %>

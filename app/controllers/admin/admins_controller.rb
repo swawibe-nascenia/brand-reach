@@ -159,17 +159,27 @@ class Admin::AdminsController < ApplicationController
                        ]).first
 
     @success = false
-    @message = 'User deactivate request fail'
+    @message = 'User activate request fail'
 
     if @user
-      password = Devise.friendly_token.first(8)
-      @user.password = password
-      @user.password_confirmation = password
-      @user.status = User.statuses[:active]
-      @user.save(validate: false)
-      CampaignMailer.account_activate_notification_to_user(@user, password).deliver_now
+      if @user.suspended?
+        @user.status = User.statuses[:active]
+        @user.save(validate: false)
+        CampaignMailer.account_activate_after_deactivate_notification_to_user(@user).deliver_now
+
+
+      else
+        password = Devise.friendly_token.first(8)
+        @user.password = password
+        @user.password_confirmation = password
+        @user.status = User.statuses[:active]
+        @user.save(validate: false)
+        CampaignMailer.account_activate_notification_to_user(@user, password).deliver_now
+
+      end
+
       @success = true
-      @message = 'Successfully deactivate user.'
+      @message = 'Successfully activate user.'
     end
   end
 
