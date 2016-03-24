@@ -1,22 +1,26 @@
-<% if offer.waiting? %>
-    <%= link_to 'Accept', accept_offer_path(offer, authenticity_token: form_authenticity_token), class: 'btn btn-accept button-border-blue', method: :put, remote: true %>
-    &nbsp;
-    <%= link_to 'Deny', deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'deny', method: :put, remote: true %>
-    <%= link_to 'Undo Deny', undo_deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'undo-deny hidden', method: :put, remote: true %>
-<% elsif offer.denied? %>
-    <% if offer.deny_undo_able? %>
-        <%= link_to 'Accept', accept_offer_path(offer, authenticity_token: form_authenticity_token), class: 'btn btn-accept hidden', method: :put, remote: true %>
-        <%= link_to 'Deny', deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'deny hidden', method: :put, remote: true %>
-        <%= link_to 'Undo Deny', undo_deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'undo-deny', method: :put, remote: true %>
+<% if offer.end_date.present? && offer.end_date > DateTime.now %>
+    <% if offer.waiting? %>
+        <%= link_to 'Accept', accept_offer_path(offer, authenticity_token: form_authenticity_token), class: 'btn btn-accept button-border-blue', method: :put, remote: true %>
+        &nbsp;
+        <%= link_to 'Deny', deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'deny', method: :put, remote: true %>
+        <%= link_to 'Undo Deny', undo_deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'undo-deny hidden', method: :put, remote: true %>
+    <% elsif offer.denied? %>
+        <% if offer.deny_undo_able? %>
+            <%= link_to 'Accept', accept_offer_path(offer, authenticity_token: form_authenticity_token), class: 'btn btn-accept hidden', method: :put, remote: true %>
+            <%= link_to 'Deny', deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'deny hidden', method: :put, remote: true %>
+            <%= link_to 'Undo Deny', undo_deny_offer_path(offer, authenticity_token: form_authenticity_token), class: 'undo-deny', method: :put, remote: true %>
+        <% else %>
+            <span class="text-danger">Denied Campaign</span>
+        <% end %>
+    <% elsif offer.engaged? %>
+        <span class="text-color-engage">Running Campaign</span>
+    <% elsif offer.paused? %>
+        <span class="text-color-pause">Paused Campaign</span>
+    <% elsif offer.stopped? %>
+        <span class="text-red">Stopped Campaign</span>
     <% else %>
-        <span class="text-danger">Denied Campaign</span>
+        <span class="text-color-accept">Accepted Campaign</span>
     <% end %>
-<% elsif offer.engaged? %>
-    <span class="text-color-engage">Running Campaign</span>
-<% elsif offer.paused? %>
-    <span class="text-color-pause">Paused Campaign</span>
-<% elsif offer.stopped? %>
-    <span class="text-red">Stopped Campaign</span>
 <% else %>
-    <span class="text-color-accept">Accepted Campaign</span>
+    <span class="text-danger">Campaign expired</span>
 <% end %>
