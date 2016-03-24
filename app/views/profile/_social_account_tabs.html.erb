@@ -22,9 +22,10 @@
             <div class="form-group">
               <div class="col-md-6 col-sm-12 col-xs-12">
                 <%= g.label :status_update_cost, 'Status Update' %>
-                <%= g.number_field :status_update_cost, 'data-parsley-required' => 'true', 'data-parsley-type' => 'number', 'data-parsley-min' => '0', 'data-parsley-errors-container' => "#status_update_cost_#{ g.object.id}" %> INR/day
+                <%= g.number_field :status_update_cost, 'data-parsley-required' => 'true', 'data-parsley-type' => 'number', 'data-parsley-min' => '0', 'data-parsley-errors-container' => "#status_update_cost_#{ g.object.id}" %> INR<div class="display-inline-block extra-space"></div>
                 <div id="status_update_cost_<%= g.object.id %>"></div>
               </div>
+
               <div class="col-md-6 col-sm-12 col-xs-12">
                 <%= g.label :cover_photo_cost, 'Cover Photo' %>
                 <%= g.number_field :cover_photo_cost, 'data-parsley-required' => 'true', 'data-parsley-type' => 'number', 'data-parsley-min' => '0', 'data-parsley-errors-container' => "#cover_photo_cost_#{ g.object.id}" %> INR/day
@@ -33,20 +34,20 @@
             </div>
             <div class="form-group">
               <div class="col-md-6 col-sm-12 col-xs-12">
+                <%= g.label :video_post_cost, 'Video Post' %>
+                <%= g.number_field :video_post_cost, 'data-parsley-required' => 'true', 'data-parsley-type' => 'number', 'data-parsley-min' => '0', 'data-parsley-errors-container' => "#video_post_cost_#{ g.object.id}" %> INR<div class="display-inline-block extra-space"></div>
+                <div id="video_post_cost_<%= g.object.id %>"></div>
+              </div>
+              <div class="col-md-6 col-sm-12 col-xs-12">
                 <%= g.label :profile_photo_cost, 'Profile Photo' %>
                 <%= g.number_field :profile_photo_cost, 'data-parsley-required' => 'true', 'data-parsley-type' => 'number', 'data-parsley-min' => '0', 'data-parsley-errors-container' => "#profile_photo_cost_#{ g.object.id}" %> INR/day
                 <div id="profile_photo_cost_<%= g.object.id %>"></div>
-              </div>
-              <div class="col-md-6 col-sm-12 col-xs-12">
-                <%= g.label :video_post_cost, 'Video Post' %>
-                <%= g.number_field :video_post_cost, 'data-parsley-required' => 'true', 'data-parsley-type' => 'number', 'data-parsley-min' => '0', 'data-parsley-errors-container' => "#video_post_cost_#{ g.object.id}" %> INR/day
-                <div id="video_post_cost_<%= g.object.id %>"></div>
               </div>
             </div>
             <div class="form-group">
               <div class="col-md-6 col-sm-12 col-xs-12">
                 <%= g.label :photo_post_cost, 'Photo Post' %>
-                <%= g.number_field :photo_post_cost, 'data-parsley-required' => 'true', 'data-parsley-type' => 'number', 'data-parsley-min' => '0', 'data-parsley-errors-container' => "#photo_post_cost_#{ g.object.id}" %> INR/day
+                <%= g.number_field :photo_post_cost, 'data-parsley-required' => 'true', 'data-parsley-type' => 'number', 'data-parsley-min' => '0', 'data-parsley-errors-container' => "#photo_post_cost_#{ g.object.id}" %> INR<div class="display-inline-block extra-space"></div>
                 <div id="photo_post_cost_<%= g.object.id %>"></div>
               </div>
               <div class="col-md-6 col-sm-12 col-xs-12">
