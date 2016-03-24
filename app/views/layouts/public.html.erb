@@ -107,7 +107,7 @@
   </div>
 </div>
 <div class="public-page-flash-message">
-    <%= render partial: 'shared/flash_messages', flash: flash unless flash[:notice].eql?('Signed out successfully.') %>
+    <%= render partial: 'shared/flash_messages', flash: flash %>
 </div>
 <%= yield %>
 

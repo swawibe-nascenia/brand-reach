@@ -188,19 +188,20 @@ class ProfileController < ApplicationController
   end
 
   def deactivate_account
-    @user.status = User.statuses[:inactive]
-
     if @user.engaged_campaigns.present?
       flash[:error] = 'You have a running/engaged campaigns. So you can not deactivate now.'
+      redirect_to settings_profile_index_path
     else
+      @user.status = User.statuses[:inactive]
+
       if @user.save(validate: false)
         flash[:success] = 'Account Deactivated successfully'
+        redirect_to destroy_user_session_path
       else
         flash[:error] = 'Account deactivation failed'
+        redirect_to settings_profile_index_path
       end
     end
-
-    redirect_to destroy_user_session_path
   end
 
   def faqs
@@ -235,13 +236,13 @@ class ProfileController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :company_name,
-      :company_email, :image, :email_remainder_active, :sms_remainder_active,
-      :phone, :street_address, :landmark, :city, :state, :is_available,
-      :country, :zip_code, :short_bio, :password, :password_confirmation,
-      :current_password, :status,:crop_x, :crop_y, :crop_w, :crop_h,
-      facebook_accounts_attributes: [:id, :status_update_cost, :profile_photo_cost,
-                                     :cover_photo_cost, :video_post_cost, :photo_post_cost, category: []],
-      industry: []
+                                 :company_email, :image, :email_remainder_active, :sms_remainder_active,
+                                 :phone, :street_address, :landmark, :city, :state, :is_available,
+                                 :country, :zip_code, :short_bio, :password, :password_confirmation,
+                                 :current_password, :status,:crop_x, :crop_y, :crop_w, :crop_h,
+                                 facebook_accounts_attributes: [:id, :status_update_cost, :profile_photo_cost,
+                                                                :cover_photo_cost, :video_post_cost, :photo_post_cost, category: []],
+                                 industry: []
     )
   end
 
