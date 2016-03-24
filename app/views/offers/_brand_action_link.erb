@@ -1,19 +1,19 @@
-<% if offer.end_date.present? && offer.end_date > DateTime.now %>
-    <% if offer.engaged? %>
-        <span class="text-color-engage">Running Campaign</span>
-    <% elsif offer.paused? %>
-        <span class="text-color-pause">Paused Campaign</span>
-    <% elsif offer.stopped? %>
-        <span class="text-color-stop">Stopped Campaign</span>
-    <% elsif offer.deleted_by_influencer? %>
-        <span class="text-danger">Offer deleted</span>
-    <% elsif offer.accepted? %>
+<% if offer.engaged? %>
+    <span class="text-color-engage">Running Campaign</span>
+<% elsif offer.paused? %>
+    <span class="text-color-pause">Paused Campaign</span>
+<% elsif offer.stopped? %>
+    <span class="text-color-stop">Stopped Campaign</span>
+<% elsif offer.deleted_by_influencer? %>
+    <span class="text-danger">Offer deleted</span>
+<% elsif offer.accepted? %>
+    <% if offer.end_date.present? && offer.end_date > DateTime.now %>
         <%= link_to 'Engage', new_brand_payment_campaigns_path(id: offer.id), class: 'btn btn-accept button-border-blue engage' %>
-    <% elsif offer.denied? %>
-        <span class="text-danger">Offer denied</span>
     <% else %>
-        <span class="text-color-waiting">Pending request</span>
+        <span class="text-danger">Campaign expired</span>
     <% end %>
+<% elsif offer.denied? %>
+    <span class="text-danger">Offer denied</span>
 <% else %>
-    <span class="text-danger">Campaign expired</span>
+    <span class="text-color-waiting">Pending request</span>
 <% end %>
