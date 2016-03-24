@@ -188,12 +188,16 @@ class ProfileController < ApplicationController
   end
 
   def deactivate_account
-    @user.status = User.statuses[:active]
+    @user.status = User.statuses[:inactive]
 
-    if @user.save(validate: false)
-      flash[:success] = 'Account Deactivated successfully'
+    if @user.engaged_campaigns.present?
+      flash[:error] = 'You have a running/engaged campaigns. So you can not deactivate now.'
     else
-      flash[:error] = 'Account could not Deactivated'
+      if @user.save(validate: false)
+        flash[:success] = 'Account Deactivated successfully'
+      else
+        flash[:error] = 'Account deactivation failed'
+      end
     end
 
     redirect_to destroy_user_session_path
