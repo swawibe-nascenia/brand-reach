@@ -30,3 +30,15 @@ end
 every 5.minutes do
   runner 'Campaign.stop_expire_campaigns', :environment => 'staging'
 end
+
+
+set :environment, 'production'
+
+every :day, :at => '12:00 am' do
+  runner 'Campaign.fetch_all_insights', :environment => 'production'
+  runner 'FacebookAccount.fetch_all_insights', :environment => 'production'
+end
+
+every 5.minutes do
+  runner 'Campaign.stop_expire_campaigns', :environment => 'production'
+end
