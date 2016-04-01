@@ -37,12 +37,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        var view_profile;
-        $('.btn-view-profile').click(function () {
-            view_profile = $(this);
-            $(this).attr('disabled', 'disabled');
-        });
-
         $('#profile-modal').on('hidden.bs.modal', function () {
             view_profile.attr('disabled', false);
         });
