@@ -213,14 +213,17 @@
             if( type == 'sign_in'){
               $('.js-sign-in').addClass('active');
               $('.js-sign-up').removeClass('active');
-            }else{
+            }
+            else{
                 $('.js-sign-up').addClass('active');
                 $('.js-sign-in').removeClass('active');
             }
         }
 
         function resetSignUpFormData(){
-            $('#ajax-signup')[0].reset();
-            $('#validation-error').html('');
+            if(document.getElementById('ajax-signup')) {
+                $('#ajax-signup')[0].reset();
+                $('#validation-error').html('');
+            }
         }
 </script>
