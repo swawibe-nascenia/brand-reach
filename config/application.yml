@@ -42,6 +42,6 @@ production:
   ccavenue_working_key: CD1D07267064B35491DDFD12A42DBF60
   ccavenue_access_code: AVMQ07CK67CA86QMAC
   ccavenue_merchant_id: 80330
-  min_fb_likes_for_registration: 100000
+  min_fb_likes_for_registration: 5
   from_email: 'support@thebrandreach.com'
   admin_email: ''
