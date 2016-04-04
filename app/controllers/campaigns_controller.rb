@@ -48,8 +48,14 @@ class CampaignsController < ApplicationController
       temp_start_date = campaign_params[:start_date].to_date
       temp_start_time =  [1,2].include?(campaign_params[:post_type].to_i) ? params[:start_time].to_time : '12:00 am'.to_time
 
-      temp_end_date = campaign_params[:end_date].to_date
-      temp_end_time =  [1,2].include?(campaign_params[:post_type].to_i) ? params[:end_time].to_time : '11:59 pm'.to_time
+      if campaign_params[:end_date].present?
+        temp_end_date = campaign_params[:end_date].to_date
+        temp_end_time =  [1,2].include?(campaign_params[:post_type].to_i) ? params[:end_time].to_time : '11:59 pm'.to_time
+      else
+        temp_end_date = Time.now.to_time+10.days
+        temp_end_time = '11:59 pm'.to_time+10.days
+      end
+
 
       @campaign.start_date = DateTime.new(
                                             temp_start_date.year, temp_start_date.month, temp_start_date.day,
@@ -69,7 +75,7 @@ class CampaignsController < ApplicationController
       @influencer = User.find(params[:campaign][:receiver_id])
       @costs = User.find(params[:campaign][:receiver_id]).active_facebook_accounts.pluck(
           :status_update_cost, :profile_photo_cost, :cover_photo_cost,
-          :video_post_cost)
+          :video_post_cost, :photo_post_cost)
       render action: 'new'
     end
   end

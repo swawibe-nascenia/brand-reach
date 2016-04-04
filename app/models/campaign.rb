@@ -206,9 +206,11 @@ class Campaign < ActiveRecord::Base
     if self.post_type == 'profile_photo' || self.post_type == 'cover_photo'
       campaign_heading = ''
       campaign_description = ''
+      end_date = "#{self.end_date.try(:strftime, '%d-%m-%Y %I:%M %P') || 'NA'}"
     else
       campaign_heading = "Campaign Heading : #{self.headline.present? ? self.headline : 'NA'}"
       campaign_description = "Campaign Description : #{self.text.present? ? self.text : 'NA'}"
+      end_date = 'NA'
     end
 
     <<MESSAGE
@@ -220,8 +222,8 @@ class Campaign < ActiveRecord::Base
       Campaign Name:  #{self.name}
       Type of Post : #{self.post_type.humanize}
       #{post_type_content}
-      Start Date : #{self.start_date.try(:strftime, '%d-%m-%Y-%I-%M-%P') || 'NA'}
-      End Date : #{self.end_date.try(:strftime, '%d-%m-%Y-%I-%M-%P') || 'NA'}
+      Start Date : #{self.start_date.try(:strftime, '%d-%m-%Y %I:%M %P') || 'NA'}
+      End Date : #{end_date}
       Payment : #{self.cost} INR
       Facebook Account: #{self.facebook_account.name}
 

@@ -276,6 +276,16 @@
             $('#post_cost').val(costs[social_account_index][0]);
         }
 
+        if($('#post_type').find('option:selected').index())
+        {
+            console.log('check');
+            showHide($('#post_type').find('option:selected').index());
+        }
+        else
+        {
+            showHide(0);
+        }
+
         $('#social_account').change(function() {
             social_account_index = $('#social_account').find('option:selected').index();
             $('#post_type option:first').prop('selected', 'selected');
@@ -323,10 +333,6 @@
 
         });
 
-//        inition setting
-        showHide(0);
-//        disableSetDate();
-
 /*===== display other field depending on post type value ====*/
 /* ===== show_item either 0,1,2,3 that will show and other will hide =*/
         function showHide(show_item){
@@ -346,10 +352,13 @@
             $(base_id_text + show_item).show();
             makeRequired(show_item);
 
-            if( show_item == 1 || show_item == 2){
-                showStartEndTime();
-            }else{
-                hideStartEndTime();
+            showStartEndTime();
+
+            if( show_item == 0 || show_item == 3 || show_item == 4){
+                hideEndDateEndTime();
+            }
+            else {
+                $('.remove-campaign-div').hide();
             }
         }
 
@@ -357,7 +366,8 @@
         function showStartEndTime(){
             $('.start_time').show();
             $('.end_time').show();
-            $('.remove-campaign-div').hide();
+            $('.end_date').prop('disabled',false);
+            $('.end_time').prop('disabled',false);
 
         }
 
@@ -365,6 +375,13 @@
         function hideStartEndTime(){
             $('.start_time').hide();
             $('.end_time').hide();
+            $('.remove-campaign-div').show();
+
+        }
+
+        function hideEndDateEndTime(){
+            $('.end_date').prop('disabled',true);
+            $('.end_time').prop('disabled',true);
             $('.remove-campaign-div').show();
 
         }
@@ -444,10 +461,8 @@
 
             if(element == 0){
                 $("textarea[name=status_message]").attr("required", "required");
-                $("#campaign_text").attr("required", "required");
                 $("#campaign_headline").attr("required", "required");
                 $("textarea[name=status_message]").parsley();
-                $("#campaign_text").parsley();
                 $("#campaign_headline").parsley();
             }else if(element == 1){
                 $("input[name=profile_photo_url]").attr("required", "required");
