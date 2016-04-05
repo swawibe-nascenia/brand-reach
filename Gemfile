@@ -76,6 +76,6 @@ end
 
 group :production do
 	# gem 'pg'
-  gem 'rails_12factor'
+  # gem 'rails_12factor'
   gem 'passenger', '~> 5.0.20'
 end
