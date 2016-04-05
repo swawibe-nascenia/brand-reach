@@ -104,7 +104,7 @@ class InsightService < BaseService
   def get_post_reach(post_id)
     count = 0
 
-    @graph.get_object("#{post_id}/insights/post_impressions_unique").each do |d|
+    @graph.get_object("#{post_id}/insights/page_posts_impressions_unique").each do |d|
       count += d['values'].last['value']
     end
 
