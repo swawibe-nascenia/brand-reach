@@ -1,4 +1,5 @@
 <%= javascript_include_tag 'responsive-tabs' %>
+<%= stylesheet_link_tag 'profile_modal', media: 'all' %>
 
 <div class="modal fade modal-profile" id="show-brands-profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog influencer-profile-modal" role="document">
@@ -76,6 +77,85 @@
               </div>
             </div>
         <% end %>
+
+        <div class="color-gray stat-country bg-white">
+
+          <br>
+          <br>
+          STATISTICS BY COUNTRY / CITIES
+        </div>
+
+        <div class="box box-info">
+          <div class="box-body">
+            <table class="table no-margin table-striped table-responsive statistic-table active" id="stats-countries">
+              <thead>
+              <tr>
+                <th>
+                  <div class="dropdown">
+                    <label class="drop-down-label">VIEW BY:</label>
+                    <button class="btn view-country dropdown-toggle" type="button" data-toggle="dropdown">
+                      <i class="fa fa-angle-down angle-down-cities pull-right"></i>
+                      COUNTRY
+                    </button>
+                    <ul class="dropdown-menu custom-dropdown-menu">
+                      <li><a href="#stats-cities" class="js-stats-toggle">CITIES</a></li>
+                    </ul>
+                  </div>
+                </th>
+                <th> <span class="glyphicon icon-love"></span> &nbsp;Likes </th>
+                <th> <span class="glyphicon icon-comment"></span> &nbsp;Post Reach </th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @account.country_data.each do |country_name, data| %>
+                  <tr>
+                    <td><span class="flag-icon flag-icon-<%= data[:country_code].downcase %>"></span> <%= country_name %></td>
+                    <td><%= number_with_delimiter(data[:likes]) %></td>
+                    <td><%= number_with_delimiter(data[:reach]) %></td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+
+            <table class="table no-margin table-striped table-responsive statistic-table" id="stats-cities">
+              <thead>
+              <tr>
+                <th>
+                  <div class="dropdown">
+                    <label class="drop-down-label">VIEW BY:</label>
+                    <button class="btn view-country dropdown-toggle" type="button" data-toggle="dropdown">
+                      <i class="fa fa-angle-down angle-down-cities pull-right"></i>
+                      Cities
+                    </button>
+                    <ul class="dropdown-menu custom-dropdown-menu">
+                      <li><a href="#stats-countries" class="js-stats-toggle">Country</a></li>
+                    </ul>
+                  </div>
+                </th>
+                <th> <span class="glyphicon icon-love"></span> &nbsp;Likes </th>
+                <th> <span class="glyphicon icon-comment"></span> &nbsp;Post Reach </th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @account.city_data.each do |city_name, data| %>
+                  <tr>
+                    <td><%= city_name %></td>
+                    <td><%= number_with_delimiter(data[:likes]) %></td>
+                    <td><%= number_with_delimiter(data[:reach]) %></td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+
+            <script>
+                $('.js-stats-toggle').click(function() {
+                    $('.statistic-table').removeClass('active');
+                    $($(this).attr('href')).addClass('active');
+                    return false;
+                });
+            </script>
+          </div>
+        </div>
 
         <div class="social-media-info font-raleway"> Social Media Information</div>
         <p>

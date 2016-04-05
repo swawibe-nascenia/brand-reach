@@ -1,0 +1,46 @@
+.stat-country, .box.box-info, .stat-gender {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.box.box-info {
+    padding-bottom: 0;
+}
+
+@media
+only screen and (max-width: 560px) {
+
+    tr, td {
+        display: block;
+        border: 1px solid #dddddd;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .statistic-table thead tr {
+        position: inherit;
+        top: 0;
+        left: 0;
+    }
+
+    .statistic-table thead th:nth-child(n+2) {
+        display: none;
+    }
+
+    .statistic-table thead th:nth-child(1) {
+        display: block;
+    }
+
+    .statistic-table tbody tr td {
+        padding-left: 10px;
+    }
+
+    .statistic-table > tbody > tr > td:nth-of-type(1):before { content: "Country/City : "; font-weight: bold; }
+    .statistic-table > tbody > tr > td:nth-of-type(2):before { content: "Likes : ";  font-weight: bold; }
+    .statistic-table > tbody > tr > td:nth-of-type(3):before { content: "Post Reach : ";  font-weight: bold; }
+
+}
