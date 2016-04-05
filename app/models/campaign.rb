@@ -101,12 +101,13 @@ class Campaign < ActiveRecord::Base
   end
 
   def date_validation
-    if self[:end_date].present? && (self[:end_date] < self[:start_date])
-      errors[:End] << 'Date must be greater than Start Date'
-      return false
-    else
-      return true
+    if self.post_type == 'profile_photo' || self.post_type == 'cover_photo'
+      if self[:end_date].present? && (self[:end_date] < self[:start_date])
+        errors[:End] << 'Date must be greater than Start Date'
+        return false
+      end
     end
+    return true
   end
 
   def create_first_message
