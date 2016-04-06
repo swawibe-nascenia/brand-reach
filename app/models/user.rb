@@ -210,6 +210,10 @@ class User < ActiveRecord::Base
       user.remote_image_url = graph.get_profile_picture
     end
 
+    if user.status == 'inactive'
+      user.status = User.statuses[:active]
+    end
+
     user.access_token = auth.credentials.token
     user
   end
