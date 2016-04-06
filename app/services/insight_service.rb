@@ -111,6 +111,16 @@ class InsightService < BaseService
     count
   end
 
+  def get_post_reach_of_post(post_id)
+    count = 0
+
+    @graph.get_object("#{post_id}/insights/post_impressions_unique").each do |d|
+      count += d['values'].last['value']
+    end
+
+    count
+  end
+
   def get_likes_by_country(id)
     get_aggregate_by_region(id, 'likes', 'country')
   end
