@@ -36,7 +36,7 @@
         <div class="form-group">
           <div class="col-md-6">
             <%= f.label :company_name, 'Company Name' %>
-            <%= f.text_field :company_name, maxlength: 50, 'data-parsley-required' => 'true' %>
+            <%= f.text_field :company_name, maxlength: 50 %>
           </div>
           <div class="col-md-6">
             <%= f.label :company_email, current_user.brand? ? 'Company Email' : 'Email' %>
@@ -65,7 +65,7 @@
             </div>
             <div>
               <%= f.label :zip_code %>
-              <%= f.text_field :zip_code, maxlength: 20, 'data-parsley-required' => 'true' %>
+              <%= f.text_field :zip_code, maxlength: 20 %>
             </div>
           </div>
 
