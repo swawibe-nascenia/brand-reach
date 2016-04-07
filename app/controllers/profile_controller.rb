@@ -127,10 +127,8 @@ class ProfileController < ApplicationController
                                       post_reach: page_info[:post_reach],
                                   })
 
-        if account.id.blank?
-          logger.info "new account with name #{account.name} and error #{account.errors.messages}"
-          account.fetch_insights
-        end
+        logger.info "new account with name #{account.name} and error #{account.errors.messages}"
+        account.fetch_insights
 
         @errors << "Cannot proceed with the request as the page  #{account.name} you have selected is already on our portal"  unless account.save || account.persisted?
       end
@@ -149,6 +147,10 @@ class ProfileController < ApplicationController
       else
         # show form with error
       end
+    end
+
+    if @user.active_facebook_accounts.count < 1
+      @user.update_column(:status, User.statuses[:in_limbo])
     end
   end
 
