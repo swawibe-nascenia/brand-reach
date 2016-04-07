@@ -34,11 +34,22 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource_or_scope)
-    if session[:admin_or_super_admin].present? && ( session[:admin_or_super_admin].admin? || session[:admin_or_super_admin].super_admin? )
-      return admin_url
-    else
-      return root_url
+    if session[:admin_or_super_admin].present?
+      if session[:admin_or_super_admin].present?
+        if session[:admin_or_super_admin].admin? || session[:admin_or_super_admin].super_admin?
+          return admin_url
+        else
+          return root_url
+        end
+      else
+        if session[:admin_or_super_admin]['user_type'] == 'admin' || session[:admin_or_super_admin]['user_type'] == 'super_admin'
+          return admin_url
+        else
+          return root_url
+        end
+      end
     end
+    return root_url
   end
 
   # pundit authorization error handling
