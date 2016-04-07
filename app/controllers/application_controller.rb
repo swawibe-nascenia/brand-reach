@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource_or_scope)
     if session[:admin_or_super_admin].present?
-      if session[:admin_or_super_admin].present?
+      if session[:admin_or_super_admin].is_a?(User)
         if session[:admin_or_super_admin].admin? || session[:admin_or_super_admin].super_admin?
           return admin_url
         else
