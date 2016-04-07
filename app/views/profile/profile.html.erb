@@ -165,6 +165,15 @@
               placeholder_text_multiple: 'Select Industry'
           });
 
+          var seconds = 2;
+          $(document).on("click", ".btn-profile-page-add-fb", function() {
+              var btn = $(this);
+              btn.prop('disabled', true);
+              setTimeout(function(){
+                  btn.prop('disabled', false);
+              },seconds*1000);
+          });
+
           $('.personal-info-form').submit(function(e){
               var country_code = $('#user_country').find('option:selected').val();
               var phone_number =  $('#user_phone').val();
