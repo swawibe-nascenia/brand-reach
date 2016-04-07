@@ -75,6 +75,11 @@ class SessionsController < Devise::SessionsController
   end
 
   def destroy
+    if current_user.present? && current_user.influencer?
+      if current_user.active_facebook_accounts.count < 1
+        current_user.update_column(:status, User.statuses[:in_limbo])
+      end
+    end
     session[:admin_or_super_admin] = current_user
     signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
     # set_flash_message :notice, :signed_out if signed_out && is_flashing_format?
