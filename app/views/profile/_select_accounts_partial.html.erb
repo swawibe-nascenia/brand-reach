@@ -23,9 +23,22 @@
   <%= render 'shared/add_account_modal', remote: false %>
 
   <script>
+
     $(window).load(function() {
       $('.js-add-account').click();
     });
+
+    $(document).ready(function () {
+        var seconds = 2;
+        $(document).on("click", ".js-add-account", function () {
+            var btn = $(this);
+            btn.prop('disabled', true);
+            setTimeout(function () {
+                btn.prop('disabled', false);
+            }, seconds * 1000);
+        });
+    });
+
   </script>
 
 </div>
