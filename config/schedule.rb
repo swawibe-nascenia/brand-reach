@@ -20,16 +20,16 @@
 # Learn more: http://github.com/javan/whenever
 
 # global environment set
-set :environment, 'staging'
-
-every :day, :at => '12:00 am' do
-   runner 'Campaign.fetch_all_insights', :environment => 'staging'
-   runner 'FacebookAccount.fetch_all_insights', :environment => 'staging'
-end
-
-every 5.minutes do
-  runner 'Campaign.stop_expire_campaigns', :environment => 'staging'
-end
+# set :environment, 'staging'
+#
+# every :day, :at => '12:00 am' do
+#    runner 'Campaign.fetch_all_insights', :environment => 'staging'
+#    runner 'FacebookAccount.fetch_all_insights', :environment => 'staging'
+# end
+#
+# every 5.minutes do
+#   runner 'Campaign.stop_expire_campaigns', :environment => 'staging'
+# end
 
 
 set :environment, 'production'
