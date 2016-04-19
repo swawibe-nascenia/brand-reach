@@ -97,7 +97,9 @@ class ProfileController < ApplicationController
   end
 
   def update_accounts
-    graph = InsightService.new(params[:access_token])
+    # now we use user access token instead temp generated token
+    # TODO we need to think how we can handle facebook authentication problem
+    graph = InsightService.new(current_user.access_token)
     @errors = []
 
     # TODO need to change accept to active
