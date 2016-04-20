@@ -101,7 +101,7 @@ class ProfileController < ApplicationController
     # TODO we need to think how we can handle facebook authentication problem
     graph = InsightService.new(current_user.access_token)
     @errors = []
-
+    logger.info "------------------------------------parameter from browser are #{params[:accounts].inspect}"
     # TODO need to change accept to active
     active_account_ids = @user.campaigns_received.where(status: Campaign.statuses[:accepted]).pluck(:facebook_account_id)
 
@@ -109,10 +109,12 @@ class ProfileController < ApplicationController
 
     if params[:accounts].present?
       params[:accounts].each do |account_id|
+        logger.info "------------------------------------with in account update with  #{account_id}"
         page_info = graph.get_page_info(account_id)
 
         account = @user.facebook_accounts.where(account_id: account_id).first
         if account.blank?
+          logger.info "account blank with provided id"
           account = @user.facebook_accounts.build
         end
 
@@ -132,9 +134,11 @@ class ProfileController < ApplicationController
         if account.id.blank?
           logger.info "new account with name #{account.name} and error #{account.errors.messages}"
           account.fetch_insights
+          @errors << "Cannot proceed with the request as the page  #{account.name} you have selected is already on our portal"  unless account.save || account.persisted?
+        else
+          logger.info "Update existing account with id and account_id are #{account.id} and #{account.account_id}"
+          account.save(validate: false)
         end
-
-        @errors << "Cannot proceed with the request as the page  #{account.name} you have selected is already on our portal"  unless account.save || account.persisted?
       end
     end
 
