@@ -89,30 +89,34 @@ class FacebookAccount < ActiveRecord::Base
   def country_data
     data = {}
     self.likes_by_country.each do |country_code, likes|
-      country_name = ISO3166::Country[country_code].name
-      if data[country_name].blank?
-        data[country_name] = {
-            country_code: country_code,
-            country_lat: ISO3166::Country[country_code].latitude_dec,
-            country_lon: ISO3166::Country[country_code].longitude_dec,
-            likes: 0,
-            reach: 0
-        }
+      country_name = ISO3166::Country[country_code].try(:name) if ISO3166::Country[country_code].present?
+      if country_name.present?
+        if data[country_name].blank?
+          data[country_name] = {
+              country_code: country_code,
+              country_lat: ISO3166::Country[country_code].latitude_dec,
+              country_lon: ISO3166::Country[country_code].longitude_dec,
+              likes: 0,
+              reach: 0
+          }
+        end
+        data[country_name][:likes] += likes
       end
-      data[country_name][:likes] += likes
     end
     self.reach_by_country.each do |country_code, reach|
-      country_name = ISO3166::Country[country_code].name
-      if data[country_name].blank?
-        data[country_name] = {
-            country_code: country_code,
-            country_lat: ISO3166::Country[country_code].latitude_dec,
-            country_lon: ISO3166::Country[country_code].longitude_dec,
-            likes: 0,
-            reach: 0
-        }
+      country_name = ISO3166::Country[country_code].try(:name) if ISO3166::Country[country_code].present?
+      if country_name.present?
+        if data[country_name].blank?
+          data[country_name] = {
+              country_code: country_code,
+              country_lat: ISO3166::Country[country_code].latitude_dec,
+              country_lon: ISO3166::Country[country_code].longitude_dec,
+              likes: 0,
+              reach: 0
+          }
+        end
+        data[country_name][:reach] += reach
       end
-      data[country_name][:reach] += reach
     end
     data
   end

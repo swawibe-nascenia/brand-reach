@@ -29,7 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'therubyracer'
 gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'twitter-bootstrap-rails'
-gem 'country_select'
+gem 'country_select', '~> 2.5.2'
 gem 'carmen-rails', '~> 1.0.1'
 gem 'carrierwave'
 gem 'mini_magick'
