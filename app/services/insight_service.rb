@@ -181,7 +181,7 @@ class InsightService < BaseService
 
   def paginate(resp)
     loop do
-      break if resp.count == 0
+      break if resp.nil? || resp.count == 0
       yield resp
       resp = resp.next_page
     end
