@@ -80,13 +80,23 @@ class SessionsController < Devise::SessionsController
         current_user.update_column(:status, User.statuses[:in_limbo])
       end
     end
-    session[:admin_or_super_admin] = current_user
+
+    if current_user.present?
+      if current_user.admin? || current_user.super_admin?
+        after_sign_out_redirect_url = admin_url
+      else
+        after_sign_out_redirect_url = root_url
+      end
+    else
+      after_sign_out_redirect_url = root_url
+    end
+
     signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
     # set_flash_message :notice, :signed_out if signed_out && is_flashing_format?
     yield if block_given?
     respond_to do |format|
       format.all { head :no_content }
-      format.any(*navigational_formats) { redirect_to after_sign_out_path_for(resource_name) }
+      format.any(*navigational_formats) { redirect_to after_sign_out_redirect_url }
     end
   end
 end
