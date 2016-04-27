@@ -85,7 +85,7 @@ class InsightService < BaseService
 
   def get_number_of_posts(id)
     count = 0
-    self.paginate(@graph.get_object("#{id}/posts")) do |data|
+    self.paginate(@graph.get_object("#{id}/posts", {:limit => 100})) do |data|
       count += data.count
     end
     count
@@ -181,9 +181,13 @@ class InsightService < BaseService
 
   def paginate(resp)
     loop do
-      break if resp.nil? || resp.count == 0
-      yield resp
-      resp = resp.next_page
+      begin
+        break if resp.nil? || resp.count == 0
+        yield resp
+        resp = resp.next_page
+      rescue => error
+        logger.info "Get Error in Paginate block when doing resp.next_page #{error.inspect}"
+      end
     end
   end
 

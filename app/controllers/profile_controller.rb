@@ -113,13 +113,15 @@ class ProfileController < ApplicationController
         page_info = graph.get_page_info(account_id)
 
         account = @user.facebook_accounts.where(account_id: account_id).first
-        if account.blank?
+
+        if account.present?
+          account.update_column(:is_active, true)
+        else
           logger.info "account blank with provided id"
           account = @user.facebook_accounts.build
         end
 
         account.assign_attributes({
-                                      is_active: true,
                                       name: page_info[:name],
                                       account_id: account_id,
                                       access_token: page_info[:access_token],
@@ -131,14 +133,12 @@ class ProfileController < ApplicationController
                                       post_reach: page_info[:post_reach],
                                   })
 
-        if account.id.blank?
-          logger.info "new account with name #{account.name} and error #{account.errors.messages}"
-          account.fetch_insights
-          @errors << "Cannot proceed with the request as the page  #{account.name} you have selected is already on our portal"  unless account.save || account.persisted?
-        else
-          logger.info "Update existing account with id and account_id are #{account.id} and #{account.account_id}"
-          account.save(validate: false)
-        end
+      if account.id.blank?
+        logger.info "new account with name #{account.name} and error #{account.errors.messages}"
+        account.fetch_insights
+      end
+
+      @errors << "Cannot proceed with the request as the page  #{account.name} you have selected is already on our portal"  unless account.save || account.persisted?
       end
     end
 
