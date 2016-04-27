@@ -168,6 +168,7 @@ class User < ActiveRecord::Base
   # call this method to authenticate user by facebook
   def self.authenticate_user_by_facebook(auth, params)
     user = User.find_by(uid: auth.uid)
+    user = User.find_by(email: auth.info.email) unless user
 
     # create new user if user not found_by email
     unless user

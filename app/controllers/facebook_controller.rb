@@ -1,4 +1,6 @@
 class FacebookController < ApplicationController
+  before_filter :is_influencer?, only: [:insights]
+
   def insights
     # if current_user.facebook.token_expires_at < Time.now
     #   # todo
@@ -15,6 +17,16 @@ class FacebookController < ApplicationController
 
     if params[:refresh].present?
       @account.fetch_insights
+    end
+  end
+
+  private
+
+  def is_influencer?
+    if current_user.influencer?
+      return true
+    else
+      redirect_to explores_path
     end
   end
 end
