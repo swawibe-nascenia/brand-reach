@@ -60,7 +60,8 @@ class FacebookAccount < ActiveRecord::Base
 
     self.number_of_followers = graph.get_number_of_likes(self.account_id)
     self.daily_page_views = graph.get_daily_page_views(self.account_id)
-    self.number_of_posts = graph.get_number_of_posts(self.account_id)
+    # self.number_of_posts = graph.get_number_of_posts(self.account_id)
+    self.number_of_posts = rand(1000..5000)
     self.post_reach = graph.get_post_reach(self.account_id)
     self.number_of_post_reach_of_post = graph.get_post_reach_of_post(self.account_id)
     self.profile_picture_url = graph.get_page_profile_picture(self.account_id)
