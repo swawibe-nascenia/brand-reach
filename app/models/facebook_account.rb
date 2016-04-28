@@ -77,7 +77,7 @@ class FacebookAccount < ActiveRecord::Base
     self.reach_by_country = graph.get_reach_by_country(self.account_id)
     self.likes_by_city = graph.get_likes_by_city(self.account_id)
     self.reach_by_city = graph.get_reach_by_city(self.account_id)
-    self.likes_by_gender_age_month = graph.get_likes_by_gender(self.account_id, 1.month.ago)
+    self.likes_by_gender_age_month = graph.get_likes_by_gender(self.account_id, 4.month.ago)
     self.likes_by_gender_age_week = graph.get_likes_by_gender(self.account_id, 1.week.ago)
 
     self.insights_updated_at = DateTime.now
