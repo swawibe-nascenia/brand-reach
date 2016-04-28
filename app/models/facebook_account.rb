@@ -61,7 +61,11 @@ class FacebookAccount < ActiveRecord::Base
     self.number_of_followers = graph.get_number_of_likes(self.account_id)
     self.daily_page_views = graph.get_daily_page_views(self.account_id)
     # self.number_of_posts = graph.get_number_of_posts(self.account_id)
-    self.number_of_posts = rand(1000..5000)
+    if self.number_of_posts.present?
+      self.number_of_posts = rand(self.number_of_posts..self.number_of_posts+10)
+    else
+      self.number_of_posts = rand(1000..5000)
+    end
     self.post_reach = graph.get_post_reach(self.account_id)
     self.number_of_post_reach_of_post = graph.get_post_reach_of_post(self.account_id)
     self.profile_picture_url = graph.get_page_profile_picture(self.account_id)
@@ -73,7 +77,7 @@ class FacebookAccount < ActiveRecord::Base
     self.reach_by_country = graph.get_reach_by_country(self.account_id)
     self.likes_by_city = graph.get_likes_by_city(self.account_id)
     self.reach_by_city = graph.get_reach_by_city(self.account_id)
-    self.likes_by_gender_age_month = graph.get_likes_by_gender(self.account_id, 12.month.ago)
+    self.likes_by_gender_age_month = graph.get_likes_by_gender(self.account_id, 1.month.ago)
     self.likes_by_gender_age_week = graph.get_likes_by_gender(self.account_id, 1.week.ago)
 
     self.insights_updated_at = DateTime.now

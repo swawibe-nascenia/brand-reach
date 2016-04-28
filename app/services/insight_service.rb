@@ -78,7 +78,7 @@ class InsightService < BaseService
 
   def get_daily_page_views(id)
     count = 0
-    @graph.get_object("#{id}/insights/page_views/day").each do |d|
+    @graph.get_object("#{id}/insights/page_views_total/week", {:until => Time.now.beginning_of_day().to_i}).each do |d|
       count += d['values'].last['value'] if d['values'].last['value']
     end
     count
@@ -105,7 +105,7 @@ class InsightService < BaseService
   def get_post_reach(post_id)
     count = 0
 
-    @graph.get_object("#{post_id}/insights/page_posts_impressions_unique").each do |d|
+    @graph.get_object("#{post_id}/insights/page_posts_impressions_unique/week", {:until => Time.now.beginning_of_day().to_i}).each do |d|
       count += d['values'].last['value']
     end
 
@@ -199,7 +199,7 @@ class InsightService < BaseService
 
     resp = {}
 
-    @graph.get_object("#{id}/insights/#{metric_name}", { since: 1.month.ago.to_i }).each do |data|
+    @graph.get_object("#{id}/insights/#{metric_name}", { since: 7.days.ago.to_i }).each do |data|
       data['values'].each do |d|
         d['value'].each do |k, v|
           resp[k] = 0 if resp[k].blank?
