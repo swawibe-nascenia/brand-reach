@@ -213,6 +213,10 @@ class User < ActiveRecord::Base
       user.status = User.statuses[:active]
     end
 
+    if auth.uid.present? && user.uid.nil?
+      user.uid = auth.uid
+    end
+
     user.access_token = auth.credentials.token
     user
   end
