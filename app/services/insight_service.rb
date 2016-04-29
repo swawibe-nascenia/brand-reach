@@ -138,9 +138,15 @@ class InsightService < BaseService
     get_aggregate_by_region(id, 'impressions', 'city')
   end
 
-  def get_likes_by_gender(id, since)
-    labels = {}
-    datasets = {}
+  def get_likes_by_gender(id, since, previous_data)
+    if previous_data.nil?
+      labels = {}
+      datasets = {}
+    else
+      labels = previous_data[:labels]
+      labels = Hash[ *labels.collect { |v| [ v, true ] }.flatten ]
+      datasets = previous_data[:datasets]
+    end
 
     @graph.get_object("#{id}/insights/page_fans_gender_age", { since: since }).each do |data|
       data['values'].each do |d|
