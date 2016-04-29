@@ -179,7 +179,12 @@ class Campaign < ActiveRecord::Base
 
   def self.fetch_all_insights
     Campaign.where('status = ? AND social_account_activity_id IS NOT NULL', self.statuses[:engaged]).each do |campaign|
-      campaign.fetch_insights
+      begin
+        campaign.try(:fetch_insights)
+      rescue
+        Rails.logger.info "................. Could not able to update campaign '#{campaign.name}'. Influencer need to update facebook authentication again from facebook app settings ........................."
+        next
+      end
     end
   end
 
