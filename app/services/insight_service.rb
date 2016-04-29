@@ -193,7 +193,7 @@ class InsightService < BaseService
         yield resp
         resp = resp.next_page
       rescue => error
-        logger.info "Get Error in Paginate block when doing resp.next_page #{error.inspect}"
+        Rails.logger.info "Get Error in Paginate block when doing resp.next_page #{error.inspect}"
       end
     end
   end

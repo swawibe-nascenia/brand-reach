@@ -79,8 +79,8 @@ class FacebookAccount < ActiveRecord::Base
     self.reach_by_city = graph.get_reach_by_city(self.account_id)
 
     if self.insights_updated_at.present?
-      self.likes_by_gender_age_month = graph.get_likes_by_gender(self.account_id, 2.days.ago, self.likes_by_gender_age_month)
-      self.likes_by_gender_age_week = graph.get_likes_by_gender(self.account_id, 2.days.ago, self.likes_by_gender_age_week)
+      self.likes_by_gender_age_month = graph.get_likes_by_gender(self.account_id, 12.month.ago, self.likes_by_gender_age_month)
+      self.likes_by_gender_age_week = graph.get_likes_by_gender(self.account_id, 1.week.ago, self.likes_by_gender_age_week)
     else
       self.likes_by_gender_age_month = graph.get_likes_by_gender(self.account_id, 12.month.ago, nil)
       self.likes_by_gender_age_week = graph.get_likes_by_gender(self.account_id, 1.week.ago, nil)
@@ -211,7 +211,12 @@ class FacebookAccount < ActiveRecord::Base
 
   def self.fetch_all_insights
     FacebookAccount.where(is_active: true).each do |account|
-      account.fetch_insights
+      begin
+        account.try(:fetch_insights)
+      rescue
+        Rails.logger.info "................. Could not able to update facebook page '#{account.name}'. Influencer need to update facebook authentication again from facebook app settings ........................."
+        next
+      end
     end
   end
 end
