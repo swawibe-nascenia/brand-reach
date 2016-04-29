@@ -122,20 +122,20 @@ class InsightService < BaseService
     count
   end
 
-  def get_likes_by_country(id)
-    get_aggregate_by_region(id, 'likes', 'country')
+  def get_likes_by_country(id, since, previous_data)
+    get_aggregate_by_region(id, 'likes', 'country', since, previous_data)
   end
 
-  def get_reach_by_country(id)
-    get_aggregate_by_region(id, 'impressions', 'country')
+  def get_reach_by_country(id, since, previous_data)
+    get_aggregate_by_region(id, 'impressions', 'country', since, previous_data)
   end
 
-  def get_likes_by_city(id)
-    get_aggregate_by_region(id, 'likes', 'city')
+  def get_likes_by_city(id, since, previous_data)
+    get_aggregate_by_region(id, 'likes', 'city', since, previous_data)
   end
 
-  def get_reach_by_city(id)
-    get_aggregate_by_region(id, 'impressions', 'city')
+  def get_reach_by_city(id, since, previous_data)
+    get_aggregate_by_region(id, 'impressions', 'city', since, previous_data)
   end
 
   def get_likes_by_gender(id, since, previous_data)
@@ -200,12 +200,16 @@ class InsightService < BaseService
 
   private
 
-  def get_aggregate_by_region(id, metric, region)
+  def get_aggregate_by_region(id, metric, region, since, previous_data)
     metric_name = metric == 'likes' ? "page_fans_#{region}" : "page_impressions_by_#{region}_unique"
 
-    resp = {}
+    if previous_data.nil?
+      resp = {}
+    else
+      resp = previous_data
+     end
 
-    @graph.get_object("#{id}/insights/#{metric_name}", { since: 7.days.ago.to_i }).each do |data|
+    @graph.get_object("#{id}/insights/#{metric_name}", { since: since }).each do |data|
       data['values'].each do |d|
         d['value'].each do |k, v|
           resp[k] = 0 if resp[k].blank?

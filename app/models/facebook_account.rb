@@ -60,28 +60,36 @@ class FacebookAccount < ActiveRecord::Base
 
     self.number_of_followers = graph.get_number_of_likes(self.account_id)
     self.daily_page_views = graph.get_daily_page_views(self.account_id)
+    #
     # self.number_of_posts = graph.get_number_of_posts(self.account_id)
+    #
     if self.number_of_posts.present?
       self.number_of_posts = rand(self.number_of_posts..self.number_of_posts+10)
     else
       self.number_of_posts = rand(1000..5000)
     end
+
     self.post_reach = graph.get_post_reach(self.account_id)
     self.number_of_post_reach_of_post = graph.get_post_reach_of_post(self.account_id)
     self.profile_picture_url = graph.get_page_profile_picture(self.account_id)
     self.about = graph.get_page_about(self.account_id)
     self.category = graph.get_page_category(self.account_id)
     self.url = "https://www.facebook.com/#{self.account_id}"
-
-    self.likes_by_country = graph.get_likes_by_country(self.account_id)
-    self.reach_by_country = graph.get_reach_by_country(self.account_id)
-    self.likes_by_city = graph.get_likes_by_city(self.account_id)
-    self.reach_by_city = graph.get_reach_by_city(self.account_id)
-
+    #
+    # Only first time, facebook data will be called for 15 days, but in next update it will only fetch data for one day
+    #
     if self.insights_updated_at.present?
+      self.likes_by_country = graph.get_likes_by_country(self.account_id, 2.days.ago, self.likes_by_country)
+      self.reach_by_country = graph.get_reach_by_country(self.account_id, 2.days.ago, self.reach_by_country)
+      self.likes_by_city = graph.get_likes_by_city(self.account_id, 2.days.ago, self.likes_by_city)
+      self.reach_by_city = graph.get_reach_by_city(self.account_id, 2.days.ago, self.reach_by_city)
       self.likes_by_gender_age_month = graph.get_likes_by_gender(self.account_id, 2.days.ago, self.likes_by_gender_age_month)
       self.likes_by_gender_age_week = graph.get_likes_by_gender(self.account_id, 2.days.ago, self.likes_by_gender_age_week)
     else
+      self.likes_by_country = graph.get_likes_by_country(self.account_id, 15.days.ago, nil)
+      self.reach_by_country = graph.get_reach_by_country(self.account_id, 15.days.ago, nil)
+      self.likes_by_city = graph.get_likes_by_city(self.account_id, 15.days.ago, nil)
+      self.reach_by_city = graph.get_reach_by_city(self.account_id, 15.days.ago, nil)
       self.likes_by_gender_age_month = graph.get_likes_by_gender(self.account_id, 12.month.ago, nil)
       self.likes_by_gender_age_week = graph.get_likes_by_gender(self.account_id, 1.week.ago, nil)
     end
