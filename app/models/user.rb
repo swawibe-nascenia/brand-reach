@@ -126,7 +126,7 @@ class User < ActiveRecord::Base
                                                  User.statuses[:suspended]
                                              ])}
 
-  singleton_class.send(:alias_method, :influencers, :active_influencers)
+  singleton_class.send(:alias_method, :infsluencers, :active_influencers)
   singleton_class.send(:alias_method, :brands, :active_brands)
 
 
