@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-  before_action :current_user_campaign?, only: [:new_brand_payment]
+  # before_action :current_user_campaign?, only: [:new_brand_payment]
   respond_to :html, :js, :csv
 
   protect_from_forgery :except => [:confirm_brand_payment]
@@ -161,7 +161,7 @@ class CampaignsController < ApplicationController
         redirect_to new_brand_payment_campaigns_path(@campaign.id)
       end
     else
-      flash[:error] = "Payment system error: #{data['failure_message']}"
+      flash[:error] = "Payment system error: #{data['status_message']}"
       redirect_to new_brand_payment_campaigns_path(@campaign.id)
     end
   end
