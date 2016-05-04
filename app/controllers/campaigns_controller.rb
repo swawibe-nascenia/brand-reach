@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-  # before_action :current_user_campaign?, only: [:new_brand_payment]
+  before_action :current_user_campaign?, only: [:new_brand_payment]
   respond_to :html, :js, :csv
 
   protect_from_forgery :except => [:confirm_brand_payment]
