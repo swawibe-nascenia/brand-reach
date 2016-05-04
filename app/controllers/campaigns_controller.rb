@@ -162,7 +162,9 @@ class CampaignsController < ApplicationController
       end
     else
       flash[:error] = "Payment system error: #{data['status_message']}"
-      redirect_to new_brand_payment_campaigns_path(@campaign.id)
+      respond_to do |f|
+        f.html { redirect_to new_brand_payment_campaigns_path(@campaign.id) }
+      end
     end
   end
 
@@ -280,7 +282,8 @@ class CampaignsController < ApplicationController
      if current_user.campaigns_sent.where(status: Campaign.statuses[:accepted], deleted_by_influencer: false, deleted_by_brand: false).pluck(:id).include?(params[:id].to_i)
        true
      else
-       flash[:alert] = 'This Campaign is not Accessible' if flash.empty?
+       Rails.logger.info "#{flash}"
+       flash[:alert] = 'This Campaign is not Accessible'
        redirect_to offers_path
      end
   end
