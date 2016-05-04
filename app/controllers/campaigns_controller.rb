@@ -283,7 +283,11 @@ class CampaignsController < ApplicationController
        true
      else
        Rails.logger.info "Flash Message: ......... #{flash.inspect} .............."
-       flash[:alert] = 'This Campaign is not Accessible' unless flash.present?
+       if flash[:error].present?
+         flash[:alert] = flash[:error]
+       else
+         flash[:alert] = 'This Campaign is not Accessible'
+       end
        redirect_to offers_path
      end
   end
