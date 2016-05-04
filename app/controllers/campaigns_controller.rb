@@ -282,7 +282,7 @@ class CampaignsController < ApplicationController
      if current_user.campaigns_sent.where(status: Campaign.statuses[:accepted], deleted_by_influencer: false, deleted_by_brand: false).pluck(:id).include?(params[:id].to_i)
        true
      else
-       Rails.logger.info "#{flash}"
+       Rails.logger.info "Flash Message: ......... #{flash.inspect} .............."
        flash[:alert] = 'This Campaign is not Accessible'
        redirect_to offers_path
      end
