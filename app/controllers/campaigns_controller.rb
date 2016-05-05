@@ -285,7 +285,7 @@ class CampaignsController < ApplicationController
        Rails.logger.info "Flash Message: ......... #{flash.inspect} .............."
        if flash[:error].present?
          flash[:alert] = flash[:error]
-         flash[:alert] << ' Please try again with valid information after 10-15 minutes.'
+         flash[:alert] += ' Please try again with valid information after 10-15 minutes.'
        else
          flash[:alert] = 'This Campaign is not Accessible'
        end
