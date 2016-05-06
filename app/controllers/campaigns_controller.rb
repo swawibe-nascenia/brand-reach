@@ -162,6 +162,7 @@ class CampaignsController < ApplicationController
       end
     else
       flash[:error] = "Payment system error: #{data['status_message']}"
+      Rails.logger.info "............. if payment get error show params : #{params.inspect} ......................."
       redirect_to offers_path
     end
   end

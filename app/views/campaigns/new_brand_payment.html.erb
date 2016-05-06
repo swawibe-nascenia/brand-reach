@@ -58,7 +58,7 @@
     <dt>Payment </dt> <dd><%= @campaign.cost %> INR</dd>
   </dl>
 
-  <form method="post" action="https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction">
+  <form method="post" action="https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction">
     <input type="hidden" name="encRequest" value="<%= encrypted_data %>" />
     <input type="hidden" name="access_code" value="<%= access_code %>" />
     <input class="br-btn-submit btn-book-now" type="submit" name="submit" value="ENGAGE NOW" />
