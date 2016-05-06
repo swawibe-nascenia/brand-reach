@@ -162,9 +162,7 @@ class CampaignsController < ApplicationController
       end
     else
       flash[:error] = "Payment system error: #{data['status_message']}"
-      respond_to do |f|
-        f.html { redirect_to new_brand_payment_campaigns_path(@campaign.id) }
-      end
+      redirect_to offers_path
     end
   end
 
