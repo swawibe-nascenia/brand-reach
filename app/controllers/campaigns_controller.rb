@@ -161,7 +161,7 @@ class CampaignsController < ApplicationController
         redirect_to new_brand_payment_campaigns_path(@campaign.id)
       end
     else
-      flash[:error] = "Payment system error: #{data['status_message']}"
+      flash[:error] = "Payment not complete as: #{data['status_message']}. Please try again with valid information after 10-15 minutes."
       Rails.logger.info "............. if payment get error show params : #{params.inspect} ......................."
       redirect_to offers_path
     end
@@ -282,12 +282,7 @@ class CampaignsController < ApplicationController
        true
      else
        Rails.logger.info "Flash Message: ......... #{flash.inspect} .............."
-       if flash[:error].present?
-         flash[:alert] = flash[:error]
-         flash[:alert] += '. Please try again with valid information after 10-15 minutes.'
-       else
-         flash[:alert] = 'This Campaign is not Accessible'
-       end
+       flash[:alert] = 'This Campaign is not Accessible'
        redirect_to offers_path
      end
   end
