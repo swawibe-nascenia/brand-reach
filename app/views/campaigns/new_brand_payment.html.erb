@@ -22,7 +22,7 @@
          billing_country: ISO3166::Country[current_user.country].name,
          billing_tel: current_user.phone,
          billing_email: current_user.email,
-         merchant_param: Time.now(),
+         checksum: Time.now.to_i,
      }
      merchant_data = payment_params.to_query
 
