@@ -59,7 +59,7 @@
             });
 
             var createForm = function(authResp, campaignId, pageId, activityId) {
-                FB.api('/'+ pageId +'/feed?fields=id,message,status_type,story,picture', function(resp) {
+                FB.api('/'+ pageId +'/feed?limit=20&fields=id,message,status_type,story,picture', function(resp) {
                     var html = template({
                         accounts: resp.data.map(function(account) {
                             account.active = account.id == activityId;
