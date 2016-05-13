@@ -31,7 +31,7 @@
             });
 
             var createForm = function(authResp) {
-                FB.api('/me/accounts?type=pages&limit=100?fields=id,name,likes,picture', function(resp) {
+                FB.api('/me/accounts?type=pages&limit=25&fields=id,name,likes,picture', function(resp) {
                     var selected = $('.social-account-tabs .js-social-account-tab').map(function() {
                       return $(this).attr('id');
                     }).toArray();
