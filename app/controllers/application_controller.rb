@@ -77,14 +77,20 @@ class ApplicationController < ActionController::Base
         error_messages << '* Connect your facebook account with value to complete your profile.'
       end
 
-      User::BRAND_PROFILE_COMPLETENESS.each do |field|
-        error_messages << "*  #{field.to_s.camelize(:lower)} is required field" unless current_user.send("#{field}?")
+      if current_user.influencer?
+        User::INFLUENCER_PROFILE_COMPLETENESS.each do |field|
+          error_messages << "*  #{field.to_s.humanize} is required to complete your profile" unless current_user.send("#{field}?")
+        end
+      else
+        User::BRAND_PROFILE_COMPLETENESS.each do |field|
+          error_messages << "*  #{field.to_s.humanize} is required to complete your profile" unless current_user.send("#{field}?")
+        end
       end
 
       current_user.active_facebook_accounts.each do |facebook_account|
         User::FACEBOOK_ACCOUNT_COMPLETENESS.each do |field|
           unless facebook_account.send("#{field}").present?
-            error_messages << "*  #{field.to_s.camelize} of #{facebook_account.name} is required field" unless facebook_account.send("#{field}").present?
+            error_messages << "*  #{field.to_s.humanize} of #{facebook_account.name} is required to complete your profile" unless facebook_account.send("#{field}").present?
           end
         end
       end

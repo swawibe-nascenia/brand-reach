@@ -29,13 +29,19 @@ class ExploresController < ApplicationController
     @influencers = @influencers.where(state: params[:state]) if params[:state].present?
     @influencers = @influencers.where(country: params[:country]) if params[:country].present?
 
+    @communities = @influencers.where(influencer_type: User.influencer_types[:community])
+    @celebrities = @influencers.where(influencer_type: User.influencer_types[:celebrity])
+
     #get all account for selected influencer
-    @accounts = FacebookAccount.where(influencer_id: @influencers.pluck(:id))
+    # @accounts = FacebookAccount.where(influencer_id: @influencers.pluck(:id))
+    @communities_accounts = FacebookAccount.where(influencer_id: @communities.pluck(:id))
+    @celebrities_accounts = FacebookAccount.where(influencer_id: @celebrities.pluck(:id))
 
     if params[:category].present?
       category = Category.find_by_name params[:category]
       facebook_account_ids = category.facebook_accounts.pluck(:id)
-      @accounts = @accounts.where(id: facebook_account_ids)
+      @communities_accounts = @communities_accounts.where(id: facebook_account_ids)
+      @celebrities_accounts = @celebrities_accounts.where(id: facebook_account_ids)
     end
 
     if params[:price].present?
@@ -46,22 +52,33 @@ class ExploresController < ApplicationController
       # Cover Photo => 2
       # Video Post => 3
       # Photo Post => 4
-      @accounts = case params[:post_type].to_i
-                    when 0 then @accounts.where(status_update_cost: price_range)
-                    when 1 then @accounts.where(profile_photo_cost: price_range)
-                    when 2 then @accounts.where(cover_photo_cost: price_range)
-                    when 3 then @accounts.where(video_post_cost: price_range)
-                    when 4 then @accounts.where(photo_post_cost: price_range)
-                  end
+      @communities_accounts = case params[:post_type].to_i
+                    when 0 then @communities_accounts.where(status_update_cost: price_range)
+                    when 1 then @communities_accounts.where(profile_photo_cost: price_range)
+                    when 2 then @communities_accounts.where(cover_photo_cost: price_range)
+                    when 3 then @communities_accounts.where(video_post_cost: price_range)
+                    when 4 then @communities_accounts.where(photo_post_cost: price_range)
+                              end
+
+      @celebrities_accounts = case params[:post_type].to_i
+                                when 0 then @celebrities_accounts.where(status_update_cost: price_range)
+                                when 1 then @celebrities_accounts.where(profile_photo_cost: price_range)
+                                when 2 then @celebrities_accounts.where(cover_photo_cost: price_range)
+                                when 3 then @celebrities_accounts.where(video_post_cost: price_range)
+                                when 4 then @celebrities_accounts.where(photo_post_cost: price_range)
+                              end
+
     end
 
     if params[:followers].present?
       followers = Range.new(*params[:followers].split('..').map(&:to_i))
-      @accounts = @accounts.where(number_of_followers: followers)
+      @communities_accounts = @communities_accounts.where(number_of_followers: followers)
+      @celebrities_accounts = @celebrities_accounts.where(number_of_followers: followers)
     end
 
     # send only selected influence's account
-    @accounts = @accounts.page(params[:page]).per(8)
+    @communities_accounts = @communities_accounts.page(params[:community_page]).per(8)
+    @celebrities_accounts = @celebrities_accounts.page(params[:celebrity_page]).per(8)
   end
 
   private

@@ -36,7 +36,7 @@ class FacebookAccount < ActiveRecord::Base
 
   validates :access_token, presence: true
   validates :name, :account_id, uniqueness: {message: 'Cannot proceed with the request as one of the pages you have selected is already on our portal'}
-  validates :categories, presence: { message: '( Industry ) field is required' }, on: :update
+  validates :categories, presence: { message: '( Industry ) field is required for searching your page. Please check all added pages Industry field' }, on: :update
   validates :status_update_cost, :profile_photo_cost, :cover_photo_cost,
             :video_post_cost, :photo_post_cost,
             :numericality => {:greater_than_or_equal_to => 0}, presence: true, on: :update

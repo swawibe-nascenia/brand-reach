@@ -22,13 +22,13 @@ class User < ActiveRecord::Base
   #              inactive -> Deactivated by user, shows no where
   enum status: [:active, :invited, :waiting, :inactive, :suspended, :in_limbo]
   enum gender: [:male, :female, :other]
+  enum influencer_type: [:community, :celebrity]
 
   Industry = ['Health and Beauty', 'Technology', 'Startups', 'Internet', 'Food', 'Restaurants', 'Automobile']
 
   BRAND_PROFILE_COMPLETENESS = [
       :company_email,
       :phone,
-      :city,
       :state,
       :country,
       :short_bio,
@@ -37,11 +37,8 @@ class User < ActiveRecord::Base
   ]
 
   INFLUENCER_PROFILE_COMPLETENESS = [
-      :phone,
-      :city,
       :state,
       :country,
-      :short_bio,
       :first_name,
       :last_name
   ]
@@ -90,8 +87,8 @@ class User < ActiveRecord::Base
   # validates_length_of :password, :minimum => 6, :allow_blank => true
   validates :zip_code, zipcode: { country_code_attribute: :country }, if: 'zip_code.present?'
   validates :short_bio, length: { maximum: 1000 }
-  validates :first_name, :last_name, :phone, :city, :country, :state,
-            :company_email, :short_bio, presence: true, on: :update, if: Proc.new{|u| u.brand? || u.influencer?}
+  validates :first_name, :last_name, :country, :state, presence: true, on: :update, if: Proc.new{|u| u.brand? || u.influencer? }
+  validates :phone, :company_email, :short_bio, presence: true, on: :update, if: Proc.new{|u| u.brand? || (u.influencer? && u.community?) }
 
 
   # ----------------------------------------------------------------------
@@ -169,6 +166,7 @@ class User < ActiveRecord::Base
   def self.authenticate_user_by_facebook(auth, params)
     user = User.find_by(uid: auth.uid)
     user = User.find_by(email: auth.info.email) unless user
+    influencer_type = params['influencer_type']
 
     # create new user if user not found_by email
     unless user
@@ -176,6 +174,12 @@ class User < ActiveRecord::Base
 
       if graph.get_max_likes(auth.uid) < User::MIN_LIKES_FOR_REGISTRATION
         return false
+      end
+
+      if influencer_type == '1'
+        influencer_user_type = User.influencer_types[:celebrity]
+      else
+        influencer_user_type = User.influencer_types[:community]
       end
 
       Rails.logger.info '------------------------ user registration process initialize-------------'
@@ -188,6 +192,7 @@ class User < ActiveRecord::Base
                           password: Devise.friendly_token[0,20],
                           status: User.statuses[:in_limbo],
                           user_type: User.user_types[:influencer],
+                          influencer_type: influencer_user_type
                       })
 
       user.name = auth.info.name

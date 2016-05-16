@@ -75,7 +75,21 @@
 
   <hr/>
   <div id="search-result-container">
-    <%= render 'explores/explores', {accounts: @accounts} %>
+
+    <ul id="explore-tabs" class="nav nav-tabs" data-tabs="tabs">
+      <li class="<%= params[:tab_name] != 'celebrity_tab' ? 'active' : '' %>" id="community-tab"><a href="#community" data-toggle="tab">Community</a></li>
+      <li class="<%= params[:tab_name] == 'celebrity_tab' ? 'active' : '' %>" id="celebrity-tab"><a href="#celebrity" data-toggle="tab">Celebrity</a></li>
+    </ul>
+
+    <div id="explore-tab-content" class="tab-content">
+      <div class="tab-pane <%= params[:tab_name] != 'celebrity_tab' ? 'in active' : '' %>" id="community">
+        <%= render 'explores/explores', { accounts: @communities_accounts, page_name: 'community_page' } %>
+      </div>
+
+      <div class="tab-pane <%= params[:tab_name] == 'celebrity_tab' ? 'in active' : '' %>" id="celebrity">
+        <%= render 'explores/explore_celebrity', { accounts: @celebrities_accounts, page_name: 'celebrity_page' } %>
+      </div>
+    </div>
   </div>
 
   <div id="profile-modal"></div>
@@ -85,6 +99,7 @@
     $(document).ready(function () {
         $('select').selectBox();
         explorePageCardResize();
+        $('#explore-tabs').tab();
     });
 
     $(window).resize(explorePageCardResize);
