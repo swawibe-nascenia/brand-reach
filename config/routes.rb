@@ -82,6 +82,7 @@ Rails.application.routes.draw do
       get :new_brand_payment
       patch :create_brand_payment
       post :confirm_brand_payment
+      get 'campaign-to-celebrity', to: 'campaigns#campaign_request_for_celebrities'
     end
     member do
     end

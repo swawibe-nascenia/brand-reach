@@ -1,0 +1,24 @@
+<h3>Campaign request come from: </h3>
+<p><strong>New campaign request from : </strong><%= @sender.full_name %></p>
+<p><strong>Request sender email : </strong><%= @sender.email %></p>
+<p><strong>Request sender phone : </strong><%= @sender.phone.present? ? @sender.phone : 'NA' %></p>
+<p><strong>Request sender address : </strong><%= @sender.full_address.present? ? @sender.full_address : 'NA' %></p>
+
+</br>
+<h3>Campaign request for : </h3>
+<p><strong>Influencer name : </strong><%= @receiver.full_name %></p>
+<p><strong>Influencer email : </strong><%= @receiver.email %></p>
+<p><strong>Influencer phone : </strong><%= @receiver.phone.present? ? @receiver.phone : 'NA' %></p>
+<p><strong>Influencer address : </strong><%= @receiver.full_address.present? ? @receiver.full_address : 'NA' %></p>
+
+</br>
+<h3>Requested page's details are :</h3>
+<p><strong>Page name : </strong><%= @page.name %></p>
+<p><strong>Industry : </strong><%= @page.categories.pluck(:name).join(', ') if @page.categories.present? %></p>
+<p><strong>Status update : </strong><%= @page.status_update_cost %> INR</p>
+<p><strong>Video post : </strong><%= @page.video_post_cost %> INR</p>
+<p><strong>Photo post : </strong><%= @page.photo_post_cost %> INR</p>
+<p><strong>Cover photo : </strong><%= @page.cover_photo_cost %> INR</p>
+<p><strong>Profile photo : </strong><%= @page.profile_photo_cost %> INR</p>
+
+

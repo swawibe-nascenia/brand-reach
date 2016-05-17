@@ -170,6 +170,14 @@ class CampaignsController < ApplicationController
   def campaign_image
   end
 
+  def campaign_request_for_celebrities
+    @sender = current_user
+    @receiver = User.find(params[:receiver_id])
+    @page = FacebookAccount.find(params[:social_account_id])
+    CampaignMailer.mail_to_admin_for_campaign_request_to_celebrity(@sender, @receiver, @page).deliver_now
+    return
+  end
+
   private
 
   def campaign_params

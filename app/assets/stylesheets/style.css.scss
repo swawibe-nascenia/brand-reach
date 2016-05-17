@@ -1770,6 +1770,10 @@ a .offer-box:last-child{
   }
 }
 
+.btn-brand-send-campaign-request:focus {
+  color: white;
+}
+
 .btn-brand-campaign-view{
   @extend .br-btn-primary;
   padding: 5px 10px;
