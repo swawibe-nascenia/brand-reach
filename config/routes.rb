@@ -82,7 +82,7 @@ Rails.application.routes.draw do
       get :new_brand_payment
       patch :create_brand_payment
       post :confirm_brand_payment
-      get 'campaign-to-celebrity', to: 'campaigns#campaign_request_for_celebrities'
+      post 'campaign-to-celebrity', to: 'campaigns#campaign_request_for_celebrities'
     end
     member do
     end
@@ -110,6 +110,7 @@ Rails.application.routes.draw do
         get 'brands-request', to: 'admins#brands_request'
         get :profile
         get 'manage-admins', to: 'admins#manage_admins'
+        get 'celebrity-campaigns', to: 'admins#show_celebrities_campaign'
         get :influencer_list
         get :brand_list
         get 'payment-request', to: 'admins#payment_request'
@@ -122,6 +123,7 @@ Rails.application.routes.draw do
         put :deactivate_user
         get :reset_user_password
         delete :delete_user
+        delete :remove_celebrities_campaign
       end
     end
 

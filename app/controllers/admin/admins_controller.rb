@@ -242,6 +242,27 @@ class Admin::AdminsController < ApplicationController
     @contact_us_mails = ContactUs.includes(:user).where.not(user_id: nil).page(params[:page])
   end
 
+  def show_celebrities_campaign
+    authorize :admin, :manage_brandreach?
+    @celebrity_campaign_list = CelebrityCampaign.all
+
+    @celebrity_campaign_list = @celebrity_campaign_list.page params[:page]
+  end
+
+  def remove_celebrities_campaign
+    authorize :admin, :manage_brandreach?
+    @celebrity_campaign = CelebrityCampaign.find(params[:id])
+    @success = false
+    @message = ''
+
+    if @celebrity_campaign
+      @celebrity_campaign.destroy
+      @success = true
+    else
+      @message = 'Campaign is not found.'
+    end
+  end
+
   private
 
   def admin_params

@@ -113,6 +113,13 @@ module ApplicationHelper
     }
   end
 
+  def campaign_delete_success_message
+    {
+        head: 'Campaign delete status:',
+        message: 'Campaign delete is successful.'
+    }
+  end
+
   def user_delete_fail_message
     {
         head: 'User delete status:',
