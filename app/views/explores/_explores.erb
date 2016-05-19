@@ -31,5 +31,5 @@
 </div>
 
 <div class="pagination-center-align">
-  <%= paginate accounts, param_name: page_name, :params => {:tab_name => 'community_tab'} %>
+  <%= paginate accounts, remote: true, param_name: page_name, :params => {:tab_name => 'community_tab'} %>
 </div>
