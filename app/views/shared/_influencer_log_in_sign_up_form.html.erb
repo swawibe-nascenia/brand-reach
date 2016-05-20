@@ -22,7 +22,6 @@
       <%= link_to "Facebook &nbsp;#{image_tag('Fb-icon-modal.png')}".html_safe, user_omniauth_authorize_path('facebook', influencer_type: 0), :class => 'btn-modal'%>
       </br>
       </br>
-      <div>Are you a Celebrity, please check here &nbsp;<%= check_box_tag 'influencer-type' %></div>
       </br>
       </br>
       </br>
@@ -34,6 +33,7 @@
       <%= link_to "Facebook &nbsp;#{image_tag('Fb-icon-modal.png')}".html_safe, user_omniauth_authorize_path('facebook'), :class => 'btn-modal'%>
       </br>
       </br>
+      <div><%= check_box_tag 'influencer-type' %>&nbsp;&nbsp;Are you a Celebrity, please check here </div>
       </br>
       </br>
       </br>
