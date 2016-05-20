@@ -148,6 +148,6 @@ class CampaignMailer < ApplicationMailer
     @receiver = receiver
     @page = page
     Rails.logger.info "========================== New campaign request for celebrity: #{@receiver.full_name} , sender name: #{@sender.full_name} , page name: #{@page.name} ================"
-    mail(to: 'swawibe@bdipo.com', from: 'mc@thebrandreach.com', subject: "New campaign request from Brand: #{@sender.full_name} to Influencer: #{@receiver.full_name} for Page name: #{@page.name}")
+    mail(to: 'mc@thebrandreach.com', from: 'mc@thebrandreach.com', subject: "New campaign request from Brand: #{@sender.full_name} to Influencer: #{@receiver.full_name} for Page name: #{@page.name}")
   end
 end
