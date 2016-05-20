@@ -1,0 +1,10 @@
+<% if @success %>
+$('#campaign-' + <%= @celebrity_campaign.id %>).remove();
+$('.modal-container').html("<%= j render(:partial => 'shared/success_message',
+                                :locals => { message: campaign_delete_success_message }) %>");
+
+<% else %>
+bootbox.alert({message: '<%= @message %>',
+    closeButton: false});
+window.location.reload();
+<% end %>

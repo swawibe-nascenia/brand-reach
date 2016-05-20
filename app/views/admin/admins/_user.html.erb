@@ -4,6 +4,9 @@
   <td><%= user.email %></td>
   <td><%= user.phone %></td>
   <td><%= user.company_name %></td>
+  <% if user.influencer? %>
+    <td><%= user.influencer_type %></td>
+  <% end %>
   <td><%= local_time_convert(user.created_at) %></td>
   <% if user.brand? && !user.waiting? %>
   <td>

@@ -326,6 +326,7 @@ $(function(){
     });
 
     $(document).on('change', '#explore-state #user_state', function(){
+
         makeAdvanceSearch();
     });
 

@@ -1,0 +1,36 @@
+<% title 'Celebrities Campaign List' %>
+
+<div class="admin-page-wrapper">
+  <h1 class="admin-header display-inline-block">Celebrities Campaign List</h1>
+  <table class="table table-responsive admin-table active-influencer-table">
+    <thead>
+    <tr>
+      <th>Brand Name</th>
+      <th>Brand Email</th>
+      <th>Brand Phone</th>
+      <th>Celebrity Name</th>
+      <th>Celebrity Email</th>
+      <th>Celebrity Phone</th>
+      <th>Celebrity Page</th>
+      <th>Request Date</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%  @celebrity_campaign_list.each do |campaign| %>
+        <tr id="campaign-<%= campaign.id %>">
+          <td><%= campaign.sender.full_name %></td>
+          <td><%= campaign.sender.email %></td>
+          <td><%= campaign.sender.phone %></td>
+          <td><%= campaign.receiver.full_name %></td>
+          <td><%= campaign.receiver.email %></td>
+          <td><%= campaign.receiver.phone.present? ? campaign.receiver.phone : 'NA' %></td>
+          <td><%= campaign.page.name %></td>
+          <td><%= local_time_convert(campaign.created_at) %></td>
+          <td><%= link_to image_tag('trash-icon.png'), 'javascript:;', class: 'js-remove-celebrity-campaign', title: 'delete campaign', data: {id: campaign.id, toggle: 'pop' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= paginate @celebrity_campaign_list %>
+</div>

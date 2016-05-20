@@ -142,4 +142,12 @@ class CampaignMailer < ApplicationMailer
     Rails.logger.info "==========================Campaign stop send to #{@receiver.full_name}================"
     mail(to: @receiver.email, subject: 'Campaign stop notification')
   end
+
+  def mail_to_admin_for_campaign_request_to_celebrity(sender, receiver, page)
+    @sender = sender
+    @receiver = receiver
+    @page = page
+    Rails.logger.info "========================== New campaign request for celebrity: #{@receiver.full_name} , sender name: #{@sender.full_name} , page name: #{@page.name} ================"
+    mail(to: 'swawibe@bdipo.com', from: 'mc@thebrandreach.com', subject: "New campaign request from Brand: #{@sender.full_name} to Influencer: #{@receiver.full_name} for Page name: #{@page.name}")
+  end
 end

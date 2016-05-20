@@ -19,9 +19,10 @@
     </ul>
 
     <div id="influencer_login" class="tab-pane fade-out js-sign-in <%= 'active' if type == 'sign_in' %>">
-      <%= link_to "Facebook &nbsp;#{image_tag('Fb-icon-modal.png')}".html_safe, user_omniauth_authorize_path('facebook'), :class => 'btn-modal'%>
+      <%= link_to "Facebook &nbsp;#{image_tag('Fb-icon-modal.png')}".html_safe, user_omniauth_authorize_path('facebook', influencer_type: 0), :class => 'btn-modal'%>
       </br>
       </br>
+      <div>Are you a Celebrity, please check here &nbsp;<%= check_box_tag 'influencer-type' %></div>
       </br>
       </br>
       </br>
@@ -42,4 +43,20 @@
   </div>
 
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#influencer-type').click(function() {
+            var influencer_input;
+            influencer_input = $('#influencer-type').prop('checked');
+            if(influencer_input) {
+                $('#influencer_login a[href*="influencer_type"]').attr('href','/users/auth/facebook?influencer_type=1')
+            }
+            else {
+                $('#influencer_login a[href*="influencer_type"]').attr('href','/users/auth/facebook?influencer_type=0')
+            }
+            console.log($('#influencer_login a[href*="influencer_type"]').attr('href'));
+        });
+    });
+</script>
 

@@ -40,26 +40,26 @@
   </div>
 </div>
 
-<script type="text/javascript">
-    $(function () {
-        $('#profile-pic-edit').Jcrop({
-            onChange: update_crop,
-            onSelect: update_crop,
-            boxWidth: getWindoWidth(),
-            aspectRatio: 1,
-            setSelect: [10, 10, 200, 200]
-        }, function () {
-            var imageWidth = $('#profile-pic-edit').width();
-            console.log('image edit modal image width ' + imageWidth);
-            setModalMaxWidthImageCrop($('#profile_image_edit_modal .modal-dialog'), imageWidth, 260 );
-        });
-
-        function update_crop(coords) {
-            $('#crop_x_crop').val(coords.x);
-            $('#crop_y_crop').val(coords.y);
-            $('#crop_w_crop').val(coords.w);
-            $('#crop_h_crop').val(coords.h);
-        }
-    });
-</script>
+<!--<script type="text/javascript">-->
+//    $(function () {
+//        $('#profile-pic-edit').Jcrop({
+//            onChange: update_crop,
+//            onSelect: update_crop,
+//            boxWidth: getWindoWidth(),
+//            aspectRatio: 1,
+//            setSelect: [10, 10, 200, 200]
+//        }, function () {
+//            var imageWidth = $('#profile-pic-edit').width();
+//            console.log('image edit modal image width ' + imageWidth);
+//            setModalMaxWidthImageCrop($('#profile_image_edit_modal .modal-dialog'), imageWidth, 260 );
+//        });
+//
+//        function update_crop(coords) {
+//            $('#crop_x_crop').val(coords.x);
+//            $('#crop_y_crop').val(coords.y);
+//            $('#crop_w_crop').val(coords.w);
+//            $('#crop_h_crop').val(coords.h);
+//        }
+//    });
+<!--</script>-->
 

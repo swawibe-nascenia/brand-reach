@@ -170,6 +170,20 @@ class CampaignsController < ApplicationController
   def campaign_image
   end
 
+  def campaign_request_for_celebrities
+    @sender = current_user
+    @receiver = User.find(params[:receiver_id])
+    @page = FacebookAccount.find(params[:social_account_id])
+
+    begin
+      CampaignMailer.mail_to_admin_for_campaign_request_to_celebrity(@sender, @receiver, @page).deliver_now
+    rescue
+      flash[:error] = 'Mail did not send to the Brandreach Successfully. Please try again to send request sometimes later'
+      redirect_to explores_path
+    end
+    CelebrityCampaign.create(sender_id: @sender.id, receiver_id: @receiver.id, page_id: @page.id)
+  end
+
   private
 
   def campaign_params

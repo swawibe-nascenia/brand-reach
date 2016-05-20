@@ -1,0 +1,38 @@
+<%= stylesheet_link_tag  'campaigns', media: 'all' %>
+
+<% title 'Celebrity campaign request' %>
+
+<div class="campaign-create-wrapper">
+
+  <div class="payment font-color-pink">Your campaign request successfully sent to the Brandreach for following celebrity. Brandreach will contact you later. Thanks!</div>
+
+  <div>
+    <%= image_tag(@receiver.profile_picture, :class => 'campaign-influencer-picture payment-influencer-picture', :alt => 'profile-picture') %>
+    <div class="influencer-description">
+      <a href="<%= show_user_profile_path(@receiver.id) %>" data-remote="true">
+        <h4><%= @receiver.full_name || 'USER' %></h4>
+      </a>
+      <p class="influencer-title"><%= @receiver.categories.pluck(:name).join(', ') if @receiver.categories.present? %> </p>
+      <p class="influencer-address"> <%= @receiver.full_address  %> </p>
+    </div>
+  </div>
+
+  <div>
+    <p class="influencer-profile-info payment-profile-info">
+      <%= @receiver.short_bio %>
+    </p>
+  </div>
+
+  <div class="payment font-color-pink">Your requested page's details are : </div>
+
+  <dl class="payment-information dl-horizontal">
+    <dt>Requested Page Name </dt> <dd> <%= @page.name %></dd>
+    <dt>Industry </dt> <dd> <%= @page.categories.pluck(:name).join(', ') if @page.categories.present? %></dd>
+    <dt>Status update </dt> <dd><%= @page.status_update_cost %> INR</dd>
+    <dt>Video post </dt> <dd><%= @page.video_post_cost %> INR</dd>
+    <dt>Photo post </dt> <dd><%= @page.photo_post_cost %> INR</dd>
+    <dt>Cover photo </dt> <dd><%= @page.cover_photo_cost %> INR</dd>
+    <dt>Profile photo </dt> <dd><%= @page.profile_photo_cost %> INR</dd>
+  </dl>
+
+</div>

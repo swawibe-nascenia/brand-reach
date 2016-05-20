@@ -1,1 +1,2 @@
-$('#search-result-container').html("<%= escape_javascript (render 'explores/explores', {accounts: @accounts}) %>");
+$('#community').html("<%= escape_javascript (render 'explores/explores', {accounts: @communities_accounts, page_name: 'community_page'}) %>");
+$('#celebrity').html("<%= escape_javascript (render 'explores/explore_celebrity', {accounts: @celebrities_accounts, page_name: 'celebrity_page'}) %>");

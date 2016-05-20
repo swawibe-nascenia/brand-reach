@@ -103,6 +103,34 @@ $(function () {
         });
     });
 
+
+
+    /*=== delete campaign =========*/
+    $('.js-remove-celebrity-campaign').click(function () {
+        var campaign_id = $(this).data('id');
+
+        bootbox.confirm({
+            message: 'Do you really want to delete this campaign?',
+            closeButton: false,
+            callback: function (result) {
+                if (result) {
+                    $.ajax({
+                        type: 'delete',
+                        url: '/admins/' + campaign_id + '/remove_celebrities_campaign',
+                        dataType: "script",
+                        data: {
+                            'authenticity_token': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function (data) {
+                            console.log(data)
+                        }
+                    });
+                }
+            }
+        });
+    });
+
+
 /*========== make influencer payment request paid =====*/
     $('.js-make-payment-paid').click(function(){
         var paymentId = $(this).data('id');

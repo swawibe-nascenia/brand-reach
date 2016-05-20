@@ -20,7 +20,11 @@
 
         <div class="display-inline-block pull-right like-send-request">
           <div class="btn-box btn-send-request">
-            <%= link_to 'Send Request', new_campaign_path(receiver_id: account.influencer.id, social_account_id: account.id), class: 'btn-brand-send-campaign-request', data: {href: new_campaign_path(receiver_id: account.influencer.id)} %>
+            <% if account.influencer.community? %>
+                <%= link_to 'Send Request', new_campaign_path(receiver_id: account.influencer.id, social_account_id: account.id), class: 'btn-brand-send-campaign-request', data: {href: new_campaign_path(receiver_id: account.influencer.id)} %>
+            <% else %>
+                <%= link_to 'Send Request', campaign_to_celebrity_campaigns_path(receiver_id: account.influencer.id, social_account_id: account.id), method: :post, class: 'btn-brand-send-campaign-request' %>
+            <% end %>
           </div>
         </div>
 

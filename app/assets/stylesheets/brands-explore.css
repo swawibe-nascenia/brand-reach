@@ -56,6 +56,12 @@
     position: relative;
 }
 
+#explore-tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
 .brands-explore-content-wrapper .influencer-industry.click-able{
     cursor: pointer;
     text-decoration: underline;
@@ -120,7 +126,11 @@
 }
 
 .search-result {
-    /*margin-right: -30px;*/
+    padding-top: 10px;
+}
+
+#explore-tabs>li.active>a, #explore-tabs>li.active>a:hover, #explore-tabs>li.active>a:focus {
+    background-color: #f9f9f9;
 }
 
 .padding-less-column-parent > [class *='col-']{
