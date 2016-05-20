@@ -7,7 +7,9 @@ class ExploresController < ApplicationController
 
     if params[:search_key].present?
       wildcard_search = "%#{params[:search_key].strip! || params[:search_key]}%"
-      @influencers = @influencers.includes(:categories).where('categories.name LIKE :search OR
+      @influencers = @influencers.includes(:categories, :facebook_accounts).where('categories.name LIKE :search OR
+                                                  facebook_accounts.name LIKE :search OR
+                                                  facebook_accounts.about LIKE :search OR
                                                   first_name LIKE :search OR
                                                   last_name LIKE :search OR
                                                   users.name LIKE :search OR

@@ -30,7 +30,7 @@
 
 
     <div id="influencer_sign_up" class="tab-pane fade-out js-sign-up <%= 'active' if type == 'sign_up' %>">
-      <%= link_to "Facebook &nbsp;#{image_tag('Fb-icon-modal.png')}".html_safe, user_omniauth_authorize_path('facebook'), :class => 'btn-modal'%>
+      <%= link_to "Facebook &nbsp;#{image_tag('Fb-icon-modal.png')}".html_safe, user_omniauth_authorize_path('facebook', influencer_type: 0), :class => 'btn-modal'%>
       </br>
       </br>
       <div><%= check_box_tag 'influencer-type' %>&nbsp;&nbsp;Are you a Celebrity, please check here </div>
@@ -50,12 +50,12 @@
             var influencer_input;
             influencer_input = $('#influencer-type').prop('checked');
             if(influencer_input) {
-                $('#influencer_login a[href*="influencer_type"]').attr('href','/users/auth/facebook?influencer_type=1')
+                $('#influencer_sign_up a[href*="influencer_type"]').attr('href','/users/auth/facebook?influencer_type=1')
             }
             else {
-                $('#influencer_login a[href*="influencer_type"]').attr('href','/users/auth/facebook?influencer_type=0')
+                $('#influencer_sign_up a[href*="influencer_type"]').attr('href','/users/auth/facebook?influencer_type=0')
             }
-            console.log($('#influencer_login a[href*="influencer_type"]').attr('href'));
+            console.log($('#influencer_sign_up a[href*="influencer_type"]').attr('href'));
         });
     });
 </script>

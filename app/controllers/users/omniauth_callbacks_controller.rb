@@ -3,7 +3,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     authentication_params = request.env['omniauth.params']
     authentication_info = request.env['omniauth.auth']
-    influencer_type = authentication_params['influencer_type']
 
     @user = User.authenticate_user_by_facebook(authentication_info, authentication_params)
 
