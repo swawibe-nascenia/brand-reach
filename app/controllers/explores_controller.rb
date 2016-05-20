@@ -77,8 +77,8 @@ class ExploresController < ApplicationController
     end
 
     # send only selected influence's account
-    @communities_accounts = @communities_accounts.page(params[:community_page]).per(8)
-    @celebrities_accounts = @celebrities_accounts.page(params[:celebrity_page]).per(8)
+    @communities_accounts = @communities_accounts.page(params[:community_page])
+    @celebrities_accounts = @celebrities_accounts.page(params[:celebrity_page])
   end
 
   private
