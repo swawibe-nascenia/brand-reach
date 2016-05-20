@@ -1,8 +1,9 @@
 <h3>Campaign request come from: </h3>
-<p><strong>New campaign request from : </strong><%= @sender.full_name %></p>
-<p><strong>Request sender email : </strong><%= @sender.email %></p>
-<p><strong>Request sender phone : </strong><%= @sender.phone.present? ? @sender.phone : 'NA' %></p>
-<p><strong>Request sender address : </strong><%= @sender.full_address.present? ? @sender.full_address : 'NA' %></p>
+<p><strong>Brand name : </strong><%= @sender.full_name %></p>
+<p><strong>Brand email : </strong><%= @sender.email %></p>
+<p><strong>Brand phone : </strong><%= @sender.phone.present? ? @sender.phone : 'NA' %></p>
+<p><strong>Brand company : </strong><%= @sender.company_name.present? ? @sender.company_name : 'NA' %></p>
+<p><strong>Brand address : </strong><%= @sender.full_address.present? ? @sender.full_address : 'NA' %></p>
 
 </br>
 <h3>Campaign request for : </h3>
