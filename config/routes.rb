@@ -121,6 +121,8 @@ Rails.application.routes.draw do
       member do
         put :activate_user
         put :deactivate_user
+        put :make_celebrity
+        put :make_community
         get :reset_user_password
         delete :delete_user
         delete :remove_celebrities_campaign

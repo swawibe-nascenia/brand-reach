@@ -1,0 +1,8 @@
+<% if @success %>
+bootbox.alert({message: '<%= @message %>',
+    closeButton: false});
+window.location.reload();
+<% else %>
+bootbox.alert({message: '<%= @message %>',
+    closeButton: false});
+<% end %>

@@ -5,15 +5,25 @@
   <td><%= user.phone %></td>
   <td><%= user.company_name %></td>
   <% if user.influencer? %>
-    <td><%= user.influencer_type %></td>
+      <td>
+        <% if user.community? %>
+            <a href="javascript:;" class="text-danger make-celebrity" data-id="<%= user.id %>">
+              <h5>Celebrity</h5>
+            </a>
+        <% else %>
+            <a href="javascript:;" class="text-success make-community" data-id="<%= user.id %>">
+              <h5>Community</h5>
+            </a>
+        <% end %>
+      </td>
   <% end %>
   <td><%= local_time_convert(user.created_at) %></td>
   <% if user.brand? && !user.waiting? %>
-  <td>
-    <a href="<%= reset_user_password_admin_admin_path(user) %>" data-remote="true" class="text-success user-password-change" data-id="<%= user.email %>">
-    <h5>Reset Password</h5>
-    </a>
-  </td>
+      <td>
+        <a href="<%= reset_user_password_admin_admin_path(user) %>" data-remote="true" class="text-success user-password-change" data-id="<%= user.email %>">
+          <h5>Reset Password</h5>
+        </a>
+      </td>
   <% end %>
   <td>
     <% if user.active? %>
@@ -30,9 +40,9 @@
 </tr>
 
 <script>
-  $('.user-password-change')
+    $('.user-password-change')
 
-  $(document).ready(function () {
-      $('[data-toggle="pop"]').popover({trigger: 'hover', placement: "bottom"});
-  });
+    $(document).ready(function () {
+        $('[data-toggle="pop"]').popover({trigger: 'hover', placement: "bottom"});
+    });
 </script>

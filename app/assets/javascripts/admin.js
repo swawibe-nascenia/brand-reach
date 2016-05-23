@@ -53,6 +53,53 @@ $(function () {
         });
     });
 
+    $('.make-celebrity').click(function () {
+        var userId = $(this).data('id');
+
+        bootbox.confirm({
+            message: "Do you really want to make this influencer to Celebrity?",
+            closeButton: false,
+            callback: function (result) {
+                if (result) {
+                    $.ajax({
+                        type: 'put',
+                        url: '/admins/' + userId + '/make_celebrity',
+                        dataType: "script",
+                        data: {
+                            'authenticity_token': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function (data) {
+                            console.log(data)
+                        }
+                    });
+                }
+            }
+        });
+    });
+
+    $('.make-community').click(function () {
+        var userId = $(this).data('id');
+
+        bootbox.confirm({
+            message: "Do you really want to make this influencer to Community?",
+            closeButton: false,
+            callback: function (result) {
+                if (result) {
+                    $.ajax({
+                        type: 'put',
+                        url: '/admins/' + userId + '/make_community',
+                        dataType: "script",
+                        data: {
+                            'authenticity_token': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function (data) {
+                            console.log(data)
+                        }
+                    });
+                }
+            }
+        });
+    });
 
     $('.remove-admin').click(function () {
         var adminId = $(this).data('id');

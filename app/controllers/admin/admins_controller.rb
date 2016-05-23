@@ -183,6 +183,38 @@ class Admin::AdminsController < ApplicationController
     end
   end
 
+  def make_celebrity
+    authorize :admin, :manage_brandreach?
+
+    @user = User.where(id: params[:id], user_type: [User.user_types[:influencer]]).first
+    @success = false
+    @message = 'Influencer still is a Community.'
+
+    if @user
+      @user.influencer_type = User.influencer_types[:celebrity]
+      @user.save(validate: false)
+
+      @success = true
+      @message = 'Successfully Influencer converted to a Celebrity.'
+    end
+  end
+
+  def make_community
+    authorize :admin, :manage_brandreach?
+
+    @user = User.where(id: params[:id], user_type: [User.user_types[:influencer]]).first
+    @success = false
+    @message = 'Influencer still is a Celebrity.'
+
+    if @user
+      @user.influencer_type = User.influencer_types[:community]
+      @user.save(validate: false)
+
+      @success = true
+      @message = 'Successfully Influencer converted to a Community.'
+    end
+  end
+
   def reset_user_password
     authorize :admin, :manage_brandreach?
     @user = User.where(user_type: User.user_types[:brand], id: params[:id]).first
