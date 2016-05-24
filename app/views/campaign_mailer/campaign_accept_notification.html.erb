@@ -1,2 +1,13 @@
-<h4>Hi, <%= @receiver.full_name %></h4>
-<p> Your campaign <strong><%= @campaign.name %></strong> have been accepted by <strong><%= @campaign.receiver.full_name %></strong> to your Brandreach profile</p>
+<h4>Hi, <%= @sender.full_name %></h4>
+
+<p>your email address: <strong><%= @sender.email.present? ? @sender.email : 'NA' %></strong></p>
+<p>your phone: <strong><%= @sender.phone.present? ? @sender.phone : 'NA' %></strong></p>
+<p>your company: <strong><%=  @sender.company_name.present? ?  @sender.company_name : 'NA' %></strong></p>
+<p>your address: <strong><%= @sender.full_address.present? ? @sender.full_address : 'NA' %></strong></p>
+
+<h4> Your campaign has been accepted. Campaign details are below: </h4>
+
+<p><h5>Campaign name: <strong><%= @campaign.name %></strong></h5></p>
+<p>Acceptor's email address: <strong><%= @campaign.receiver.email.present? ? @campaign.receiver.email : 'NA' %></strong></p>
+<p>Acceptor's phone: <strong><%= @campaign.receiver.phone.present? ? @campaign.receiver.phone : 'NA' %></strong></p>
+<p>Acceptor's address: <strong><%= @campaign.receiver.full_address.present? ? @campaign.receiver.full_address : 'NA' %></strong></p>

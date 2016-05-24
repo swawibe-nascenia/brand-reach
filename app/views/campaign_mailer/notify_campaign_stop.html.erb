@@ -1,3 +1,14 @@
 <h4>Hi, <%= @receiver.full_name %></h4>
-<p> <strong><%= @brand.name.capitalize %></strong> restarted campaign <strong><%= @campaign.name %></strong>.</p>
-<P><%= @message %></P>
+
+<p>your email address: <strong><%= @receiver.email.present? ? @receiver.email : 'NA' %></strong></p>
+<p>your phone: <strong><%= @receiver.phone.present? ? @receiver.phone : 'NA' %></strong></p>
+<p>your company: <strong><%=  @receiver.company_name.present? ?  @receiver.company_name : 'NA' %></strong></p>
+<p>your address: <strong><%= @receiver.full_address.present? ? @receiver.full_address : 'NA' %></strong></p>
+
+<h4> Your campaign has been stopped. Details are below: </h4>
+
+<h5><p><%= @message %></p></h5>
+<p><h5>Campaign name: <strong><%= @campaign.name %></strong></h5></p>
+<p>Brand email address: <strong><%= @brand.email.present? ? @brand.email : 'NA' %></strong></p>
+<p>Brand phone: <strong><%= @brand.phone.present? ? @brand.phone : 'NA' %></strong></p>
+<p>Brand address: <strong><%= @brand.full_address.present? ? @brand.full_address : 'NA' %></strong></p>

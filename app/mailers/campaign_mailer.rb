@@ -1,65 +1,67 @@
 class CampaignMailer < ApplicationMailer
   default from: 'mc@thebrandreach.com'
+  @@mc_email = 'nazrul.islam@nascenia.com'
+  @@super_admin_email = 'superadmin@thebrandreach.com'
 
   def new_campaign_notification(campaign)
     @campaign = campaign
     @receiver = @campaign.receiver
     Rails.logger.info "==========================New campaign request send to #{@receiver.full_name}================"
-    mail(to: @receiver.email, subject: 'New campaign request')
+    mail(to: "#{@receiver.email}, #{@@mc_email}" , subject: 'New campaign request')
   end
 
   def campaign_accept_notification(campaign)
     @campaign = campaign
-    @receiver = @campaign.sender
+    @sender = @campaign.sender
     Rails.logger.info "========================== Campaign  Accepted notification send to #{@receiver.full_name}================"
-    mail(to: @receiver.email, subject: 'Campaign has been accepted')
+    mail(to: "#{@sender.email}, #{@@mc_email}", subject: 'Campaign has been accepted')
   end
 
   def campaign_deny_notification(campaign)
     @campaign = campaign
-    @receiver = @campaign.sender
+    @sender = @campaign.sender
     Rails.logger.info "==========================Campaign Deny notification send to #{@receiver.full_name}================"
-    mail(to: @receiver.email, subject: 'Campaign has been denied')
+    mail(to: "#{@sender.email}, #{@@mc_email}", subject: 'Campaign has been denied')
   end
 
   def campaign_deny_undo_notification(campaign)
     @campaign = campaign
-    @receiver = @campaign.sender
+    @sender = @campaign.sender
     Rails.logger.info "==========================Campaign Deny Undo notification send to #{@receiver.full_name}================"
-    mail(to: @receiver.email, subject: 'Campaign deny has been undo')
+    mail(to: "#{@sender.email}, #{@@mc_email}", subject: 'Campaign deny has been undo')
   end
 
   def campaign_new_message_notification(message)
     @message = message
     @receiver = @message.receiver
     Rails.logger.info "========================== Campaign new message notification send to #{@receiver.full_name}================"
-    mail(to: @receiver.email, subject: 'New message to campaign')
+    mail(to: "#{@receiver.email}, #{@@mc_email}", subject: 'New message to campaign')
   end
 
   def campaign_start_notification(campaign)
     @campaign = campaign
     @receiver = @campaign.receiver
     Rails.logger.info "========================== Campaign start notification send to #{@receiver.full_name}================"
-    mail(to: @receiver.email, subject: 'New message to campaign')
+    mail(to: "#{@receiver.email}, #{@@mc_email}", subject: 'New message to campaign')
   end
 
   def contact_us_mail(contact_us_params, user)
     @message = contact_us_params[:message]
     @user = user
-    mail(to: 'superadmin@thebrandreach.com', subject: contact_us_params[:category])
+    mail(to: @@super_admin_email, subject: contact_us_params[:category])
   end
 
   def sing_up_notification_to_admin(user)
     @user = user
     Rails.logger.info "========================== Send User: #{user.inspect} sign up notification to admin.================"
-    mail(from: 'mc@thebrandreach.com', to: 'mc@thebrandreach.com', subject: 'New user sign up to Brandreach')
+    mail(from: @@mc_email, to: 'mc@thebrandreach.com', subject: 'New user sign up to Brandreach')
   end
 
   def account_activate_notification_to_user(user, password)
     @user = user
     @password = password
     Rails.logger.info "========================== User: #{user.inspect} account has been successfully activated.================"
-    mail(from: 'mc@thebrandreach.com', to: user.email, subject: 'Brandreach account activate')
+    mail(from: @@mc_email, to: user.email, subject: 'Brandreach account activate')
   end
 
   def account_activate_after_deactivate_notification_to_user(user)
@@ -72,7 +74,7 @@ class CampaignMailer < ApplicationMailer
     @email = params[:email]
     @phone_number = params[:phone_number]
     @message = params[:message]
-    mail(from: 'mc@thebrandreach.com', to: 'superadmin@thebrandreach.com', subject: 'Get In Touch Message')
+    mail(from: @@mc_email, to: 'superadmin@thebrandreach.com', subject: 'Get In Touch Message')
   end
 
   def influencer_invitation (influencer_invitation)
@@ -82,7 +84,7 @@ class CampaignMailer < ApplicationMailer
     @brandReach = root_url(sign_up_modal: true)
     subject = "We'd like to have you on Brandreach.
                Be a influencer on one of the most amazing knowledge sharing platforms."
-    mail(from: 'mc@thebrandreach.com', to: @mail, subject: subject)
+    mail(from: @@mc_email, to: @mail, subject: subject)
   end
 
   def brand_invitation (brand, row_token)
@@ -95,7 +97,7 @@ class CampaignMailer < ApplicationMailer
     # @brandReach = root_url
     subject = "We'd like to have you on Brandreach.
                Be a brand on one of the most amazing knowledge sharing platforms."
-    mail(from: 'mc@thebrandreach.com', to: @mail, subject: subject)
+    mail(from: @@mc_email, to: @mail, subject: subject)
   end
 
   def notify_campaign_pause(campaign)
@@ -110,7 +112,7 @@ class CampaignMailer < ApplicationMailer
                  when 'photo_post' then 'You can now remove your photo post.'
                end
     Rails.logger.info "==========================Campaign pause send to #{@receiver.full_name}================"
-    mail(to: @receiver.email, subject: 'Campaign pause notification')
+    mail(to: "#{@receiver.email}, #{@@mc_email}", subject: 'Campaign pause notification')
   end
 
   def notify_campaign_restart(campaign)
@@ -125,7 +127,7 @@ class CampaignMailer < ApplicationMailer
                when 'photo_post' then 'Please post campaign photo.'
                end
     Rails.logger.info "==========================Campaign restart send to #{@receiver.full_name}================"
-    mail(to: @receiver.email, subject: 'Campaign restart notification')
+    mail(to: "#{@receiver.email}, #{@@mc_email}", subject: 'Campaign restart notification')
   end
 
   def notify_campaign_stop(campaign)
@@ -140,7 +142,7 @@ class CampaignMailer < ApplicationMailer
                when 'photo_post' then 'You can now remove your photo post.'
                end
     Rails.logger.info "==========================Campaign stop send to #{@receiver.full_name}================"
-    mail(to: @receiver.email, subject: 'Campaign stop notification')
+    mail(to: "#{@receiver.email}, #{@@mc_email}", subject: 'Campaign stop notification')
   end
 
   def mail_to_admin_for_campaign_request_to_celebrity(sender, receiver, page)
@@ -148,6 +150,6 @@ class CampaignMailer < ApplicationMailer
     @receiver = receiver
     @page = page
     Rails.logger.info "========================== New campaign request for celebrity: #{@receiver.full_name} , sender name: #{@sender.full_name} , page name: #{@page.name} ================"
-    mail(to: 'mc@thebrandreach.com', from: 'mc@thebrandreach.com', subject: "New campaign request from Brand: #{@sender.full_name} to Influencer: #{@receiver.full_name} for Page name: #{@page.name}")
+    mail(to: "#{@@mc_email}", from: @@mc_email, subject: "New campaign request from Brand: #{@sender.full_name} to Influencer: #{@receiver.full_name} for Page name: #{@page.name}")
   end
 end

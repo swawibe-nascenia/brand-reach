@@ -1,2 +1,13 @@
 <h4>Hi, <%= @receiver.full_name %></h4>
-<p> Your campaign <strong><%= @campaign.name %></strong> have been started by <strong><%= @campaign.sender.full_name %></strong> to your Brandreach profile</p>
+
+<p>your email address: <strong><%= @receiver.email.present? ? @receiver.email : 'NA' %></strong></p>
+<p>your phone: <strong><%= @receiver.phone.present? ? @receiver.phone : 'NA' %></strong></p>
+<p>your company: <strong><%=  @receiver.company_name.present? ?  @receiver.company_name : 'NA' %></strong></p>
+<p>your address: <strong><%= @receiver.full_address.present? ? @receiver.full_address : 'NA' %></strong></p>
+
+<h4>Your campaign has been started. Campaign details are below: </h4>
+
+<p><h5>Campaign name: <strong><%= @campaign.name %></strong></h5></p>
+<p>Brand email address: <strong><%= @campaign.sender.email.present? ? @campaign.sender.email : 'NA' %></strong></p>
+<p>Brand phone: <strong><%= @campaign.sender.phone.present? ? @campaign.sender.phone : 'NA' %></strong></p>
+<p>Brand address: <strong><%= @campaign.sender.full_address.present? ? @campaign.sender.full_address : 'NA' %></strong></p>
