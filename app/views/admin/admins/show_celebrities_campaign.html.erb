@@ -19,13 +19,26 @@
     <tbody>
     <%  @celebrity_campaign_list.each do |campaign| %>
         <tr id="campaign-<%= campaign.id %>">
-          <td><%= campaign.sender.full_name %></td>
-          <td><%= campaign.sender.email %></td>
-          <td><%= campaign.sender.phone %></td>
-          <td><%= campaign.receiver.full_name %></td>
-          <td><%= campaign.receiver.email %></td>
-          <td><%= campaign.receiver.phone.present? ? campaign.receiver.phone : 'NA' %></td>
-          <td><%= campaign.page.name %></td>
+          <% if campaign.sender.present? %>
+              <td><%= campaign.sender.full_name %></td>
+              <td><%= campaign.sender.email %></td>
+              <td><%= campaign.sender.phone %></td>
+          <% else %>
+              <td class="text-red">Brands Deleted</td>
+              <td class="text-red">Brands Deleted</td>
+              <td class="text-red">Brands Deleted</td>
+          <% end %>
+          <% if campaign.receiver.present? %>
+              <td><%= campaign.receiver.full_name %></td>
+              <td><%= campaign.receiver.email %></td>
+              <td><%= campaign.receiver.phone.present? ? campaign.receiver.phone : 'NA' %></td>
+              <td><%= campaign.page.name %></td>
+          <% else %>
+              <td class="text-red">Celebrity Deleted</td>
+              <td class="text-red">Celebrity Deleted</td>
+              <td class="text-red">Celebrity Deleted</td>
+              <td class="text-red">Celebrity Deleted</td>
+          <% end %>
           <td><%= local_time_convert(campaign.created_at) %></td>
           <td><%= link_to image_tag('trash-icon.png'), 'javascript:;', class: 'js-remove-celebrity-campaign', title: 'delete campaign', data: {id: campaign.id, toggle: 'pop' } %></td>
         </tr>

@@ -290,7 +290,7 @@
     width: 111px;
 }
 
-.influencer-profile-modal input {
+.influencer-profile-modal input[type=text] {
     background-color: white;
     padding: 4px;
 }

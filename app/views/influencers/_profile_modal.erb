@@ -23,7 +23,9 @@
             <% if account.influencer.community? %>
                 <%= link_to 'Send Request', new_campaign_path(receiver_id: account.influencer.id, social_account_id: account.id), class: 'btn-brand-send-campaign-request', data: {href: new_campaign_path(receiver_id: account.influencer.id)} %>
             <% else %>
-                <%= link_to 'Send Request', campaign_to_celebrity_campaigns_path(receiver_id: account.influencer.id, social_account_id: account.id), method: :post, class: 'btn-brand-send-campaign-request' %>
+                <%= form_tag(campaign_to_celebrity_campaigns_path(receiver_id: account.influencer.id, social_account_id: account.id), method: 'post', id: 'celebrity_request_confirm') do %>
+                    <%= submit_tag 'Send Request', class: 'btn-brand-send-campaign-request' %>
+                <% end %>
             <% end %>
           </div>
         </div>
@@ -183,3 +185,15 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+    $('#celebrity_request_confirm').submit(function(e) {
+        var currentForm = this;
+        e.preventDefault();
+        bootbox.confirm("All our Celebrities charge is more than 20,000 INR. Do you want to send request to Celebrity? ", function(result) {
+            if (result) {
+                currentForm.submit();
+            }
+        });
+    });
+</script>
