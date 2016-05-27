@@ -147,6 +147,7 @@ class InsightService < BaseService
       labels = Hash[ *labels.collect { |v| [ v, true ] }.flatten ]
       datasets = previous_data[:datasets]
     end
+    age_group = {}
 
     @graph.get_object("#{id}/insights/page_fans_gender_age", { since: since }).each do |data|
       data['values'].each do |d|
@@ -165,15 +166,24 @@ class InsightService < BaseService
           datasets[g][t] = 0 if datasets[g][t].blank?
           datasets[g][t] = [v, datasets[g][t]].max
         end
+
+        d['value'].each do |k, v|
+          g, a = k.split('.')
+
+          age_group[g] = {} if age_group[g].blank?
+          age_group[g][a] = 0 if age_group[g][a].blank?
+          age_group[g][a] = [v, age_group[g][a]].max
+        end
+        age_group = age_group.map{|k,v| [k,v.sort.to_h]}.to_h
       end
     end
 
-    { labels: labels.keys, datasets: datasets }
+    { labels: labels.keys, datasets: datasets, age_group: age_group }
   end
 
   def get_page_profile_picture(account_id)
-      resp = @graph.get_object("#{account_id}/picture", { width: 200, redirect: false })
-      resp['data']['url']
+    resp = @graph.get_object("#{account_id}/picture", { width: 200, redirect: false })
+    resp['data']['url']
   end
 
   def get_page_about(account_id)
@@ -207,7 +217,7 @@ class InsightService < BaseService
       resp = {}
     else
       resp = previous_data
-     end
+    end
 
     @graph.get_object("#{id}/insights/#{metric_name}", { since: since }).each do |data|
       data['values'].each do |d|
