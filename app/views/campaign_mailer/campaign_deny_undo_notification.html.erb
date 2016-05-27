@@ -7,7 +7,7 @@
 
 <h4> Your campaign has been deny undo. Details are below: </h4>
 
-<p><h5>Campaign name: <strong><%= @campaign.name %></strong></h5></p>
+<p>Campaign name: <strong><%= @campaign.name %></strong></p>
 <p>Influencer email address: <strong><%= @campaign.receiver.email.present? ? @campaign.receiver.email : 'NA' %></strong></p>
 <p>Influencer phone: <strong><%= @campaign.receiver.phone.present? ? @campaign.receiver.phone : 'NA' %></strong></p>
 <p>Influencer address: <strong><%= @campaign.receiver.full_address.present? ? @campaign.receiver.full_address : 'NA' %></strong></p>

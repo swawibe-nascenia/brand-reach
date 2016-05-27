@@ -1,6 +1,6 @@
 class CampaignMailer < ApplicationMailer
   default from: 'mc@thebrandreach.com'
-  @@mc_email = 'nazrul.islam@nascenia.com'
+  @@mc_email = 'mc@thebrandreach.com'
   @@super_admin_email = 'superadmin@thebrandreach.com'
 
   def new_campaign_notification(campaign)
@@ -13,21 +13,21 @@ class CampaignMailer < ApplicationMailer
   def campaign_accept_notification(campaign)
     @campaign = campaign
     @sender = @campaign.sender
-    Rails.logger.info "========================== Campaign  Accepted notification send to #{@receiver.full_name}================"
+    Rails.logger.info "========================== Campaign  Accepted notification send to #{@sender.full_name}================"
     mail(to: "#{@sender.email}, #{@@mc_email}", subject: 'Campaign has been accepted')
   end
 
   def campaign_deny_notification(campaign)
     @campaign = campaign
     @sender = @campaign.sender
-    Rails.logger.info "==========================Campaign Deny notification send to #{@receiver.full_name}================"
+    Rails.logger.info "==========================Campaign Deny notification send to #{@sender.full_name}================"
     mail(to: "#{@sender.email}, #{@@mc_email}", subject: 'Campaign has been denied')
   end
 
   def campaign_deny_undo_notification(campaign)
     @campaign = campaign
     @sender = @campaign.sender
-    Rails.logger.info "==========================Campaign Deny Undo notification send to #{@receiver.full_name}================"
+    Rails.logger.info "==========================Campaign Deny Undo notification send to #{@sender.full_name}================"
     mail(to: "#{@sender.email}, #{@@mc_email}", subject: 'Campaign deny has been undo')
   end
 

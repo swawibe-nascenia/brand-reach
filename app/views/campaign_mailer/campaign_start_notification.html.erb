@@ -7,7 +7,7 @@
 
 <h4>Your campaign has been started. Campaign details are below: </h4>
 
-<p><h5>Campaign name: <strong><%= @campaign.name %></strong></h5></p>
+<p>Campaign name: <strong><%= @campaign.name %></strong></p>
 <p>Brand email address: <strong><%= @campaign.sender.email.present? ? @campaign.sender.email : 'NA' %></strong></p>
 <p>Brand phone: <strong><%= @campaign.sender.phone.present? ? @campaign.sender.phone : 'NA' %></strong></p>
 <p>Brand address: <strong><%= @campaign.sender.full_address.present? ? @campaign.sender.full_address : 'NA' %></strong></p>

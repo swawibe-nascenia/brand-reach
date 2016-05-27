@@ -6,7 +6,7 @@
 
 <h4> You have been received new campaign. Campaign details are below: </h4>
 
-<p><h5>Campaign name: <strong><%= @campaign.name %></strong></h5></p>
+<p>Campaign name: <strong><%= @campaign.name %></strong></p>
 <p>Brand email address: <strong><%= @campaign.sender.email.present? ? @campaign.sender.email : 'NA' %></strong></p>
 <p>Brand phone: <strong><%= @campaign.sender.phone.present? ? @campaign.sender.phone : 'NA' %></strong></p>
 <p>Brand company name: <strong><%=  @campaign.sender.company_name.present? ?  @campaign.sender.company_name : 'NA' %></strong></p>
