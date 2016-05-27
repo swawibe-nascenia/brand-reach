@@ -121,7 +121,7 @@
                   <div class="campaign-date" id="start_end">
                     <div>
                       <%= f.label :start_date, 'Start' %>
-                      <%= f.text_field :start_date, { value: (Time.now + 10.days).strftime('%d/%m/%Y'), class: 'start_date', disabled: 'disabled' } %>
+                      <%= f.text_field :start_date, { value: (Time.now + 3.days).strftime('%d/%m/%Y'), class: 'start_date', disabled: 'disabled' } %>
                       <%= text_field_tag 'start_time',  Time.now.strftime('%I:%M %P'), class: 'start_time' %>
 
                     </div>
@@ -231,7 +231,7 @@
 
         $(".start_date").datepicker({
             dateFormat: "dd/mm/yy",
-            minDate: 10,
+            minDate: 3,
             minDateForEnd: 1,
             maxDate:"+365D",
             numberOfMonths: 1,
@@ -245,7 +245,7 @@
 
         $(".end_date").datepicker({
             dateFormat: "dd/mm/yy",
-            minDate: 11,
+            minDate: 4,
             maxDate: "+365D",
             numberOfMonths: 1,
             onSelect: function(selected) {
