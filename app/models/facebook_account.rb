@@ -154,6 +154,21 @@ class FacebookAccount < ActiveRecord::Base
     end
   end
 
+  def age_range_data
+    if self.likes_by_gender_age_month[:age_group].present?
+      male_hash = self.likes_by_gender_age_month[:age_group]['M']
+      female_hash =  self.likes_by_gender_age_month[:age_group]['F']
+
+      male_hash.map do |age_range, number|
+        {
+            age_range: age_range,
+            male: number,
+            female: female_hash[age_range],
+        }
+      end
+    end
+  end
+
   def city_data
     data = {}
     self.likes_by_city.each do |city_name, likes|

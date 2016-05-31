@@ -1,4 +1,6 @@
 <%= javascript_include_tag 'responsive-tabs' %>
+<%= javascript_include_tag 'ammap/amcharts' %>
+<%= javascript_include_tag 'ammap/serial' %>
 <%= stylesheet_link_tag 'profile_modal', media: 'all' %>
 
 <div class="modal fade modal-profile" id="show-brands-profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -83,6 +85,65 @@
               </div>
             </div>
         <% end %>
+
+        <span class="color-gray stat-gender">STATISTICS BY GENDER AGE RANGE</span>
+        <div class="box">
+          <div class="box-body">
+            <div class="pad">
+              <!-- Map will be created here -->
+              <div id="show-age-map" style="height: 325px;"></div>
+
+              <script>
+                  var chart = AmCharts.makeChart( "show-age-map", {
+                      type: "serial",
+                      depth3D: 30,
+                      angle: 40,
+                      colors: ["#a9e5ed", "#EA358C"],
+                      legend: {
+                          horizontalGap: 10,
+                          useGraphSettings: true,
+                          markerSize: 10
+                      },
+
+                      dataProvider: <%= @account.age_range_data.to_json.html_safe %>,
+
+                      "valueAxes": [ {
+                          "stackType": "regular",
+                          "axisAlpha": 0,
+                          "gridAlpha": 0
+                      } ],
+
+                      "graphs": [ {
+                          "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>Age [[category]]: <b>[[value]]</b></span>",
+                          "fillAlphas": 0.8,
+                          "labelText": "[[value]]",
+                          "lineAlpha": 0.4,
+                          "title": "MALE",
+                          "type": "column",
+                          "color": "#000000",
+                          "valueField": "male"
+                      }, {
+                          "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>Age [[category]]: <b>[[value]]</b></span>",
+                          "fillAlphas": 0.8,
+                          "labelText": "[[value]]",
+                          "lineAlpha": 0.4,
+                          "title": "FEMALE",
+                          "type": "column",
+                          "color": "#000000",
+                          "valueField": "female"
+                      } ],
+                      "categoryField": "age_range",
+                      "categoryAxis": {
+                          "gridPosition": "start",
+                          "axisAlpha": 0,
+                          "gridAlpha": 0,
+                          "position": "left"
+                      }
+                  });
+              </script>
+            </div>
+          </div>
+        </div>
 
         <div class="color-gray stat-country bg-white">
 
