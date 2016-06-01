@@ -192,6 +192,14 @@ ul.menu-item li {
   padding-bottom: 10px;
 }
 
+.identity .text-upper-identity {
+  font-size: 74px;
+  font-family: 'Helvetica Neue 35 Thin', sans-serif;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1;
+}
+
 .identity .text-lower {
   font-family: 'Varela', sans-serif;
   font-weight: 500;
@@ -199,6 +207,15 @@ ul.menu-item li {
   font-size: 30px;
   line-height: 1.2;
   letter-spacing: -0.6px;
+}
+
+.identity .text-lower-identity {
+  font-family: 'Varela', sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.2;
 }
 
 .text-get-listed {
@@ -266,6 +283,9 @@ ul.menu-item li {
   .identity .text-upper {
     font-size: 55px;
 
+  }
+  .identity .text-upper-identity {
+    font-size: 55px;
   }
 }
 
