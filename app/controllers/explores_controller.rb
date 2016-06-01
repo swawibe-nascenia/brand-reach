@@ -47,7 +47,12 @@ class ExploresController < ApplicationController
     end
 
     if params[:price].present?
-      price_range = Range.new(*params[:price].split('..').map(&:to_i))
+      range_start = params[:price].split('..').first.to_i
+      range_start = range_start * (0.83333333)
+      range_end = params[:price].split('..').last.to_i
+      range_end = range_end * (0.83333333)
+
+      price_range = Range.new(range_start, range_end)
 
       # Status Update => 0
       # Profile Photo => 1

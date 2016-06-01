@@ -7,6 +7,8 @@ class FacebookAccount < ActiveRecord::Base
   # == Constants == #
   # ----------------------------------------------------------------------
 
+  PRICE_PERCENT_CHANGE = 0.20
+
   # ----------------------------------------------------------------------
   # == Attributes == #
   # ----------------------------------------------------------------------
@@ -207,6 +209,15 @@ class FacebookAccount < ActiveRecord::Base
 
   def has_engaged_capmaign?
     campaigns.where(status: Campaign.statuses[:engaged]).count
+  end
+
+  def self.increase_price_for_brand(user, price)
+    if user.brand?
+      price += (PRICE_PERCENT_CHANGE*price)
+      price
+    else
+      price
+    end
   end
 
   private

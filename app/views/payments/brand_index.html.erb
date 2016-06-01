@@ -56,7 +56,7 @@
                     <td><%= transaction.campaign.name %></td>
                     <td><%= transaction.billed_date.present? ? transaction.billed_date.strftime('%B %d, %Y') : 'NA' %></td>
                     <td><%= sprintf('BP%05d', transaction.id) %></td>
-                    <td><%= transaction.amount_billed %></td>
+                    <td><%= FacebookAccount.increase_price_for_brand(current_user, transaction.amount_billed) %></td>
                     <td>
                       <% if transaction.pending? %>
                           <span class="status-circle status-pending"></span>Pending

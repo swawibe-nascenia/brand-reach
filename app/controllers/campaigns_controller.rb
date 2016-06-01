@@ -4,6 +4,8 @@ class CampaignsController < ApplicationController
 
   protect_from_forgery :except => [:confirm_brand_payment]
 
+  @@PRICE_PERCENT_CHANGE = 0.2
+
   def index
     if current_user.brand?
       brand_campaign
@@ -19,13 +21,14 @@ class CampaignsController < ApplicationController
       @costs = User.find(params[:receiver_id].to_i).active_facebook_accounts.pluck(
           :status_update_cost, :profile_photo_cost, :cover_photo_cost,
           :video_post_cost, :photo_post_cost)
+
+      @costs = @costs.map{ |x| x.map{|x| x+x*@@PRICE_PERCENT_CHANGE}} if @costs.present?
       @campaign = Campaign.new(sender_id: current_user.id,
                                receiver_id: params[:receiver_id], facebook_account_id: params[:social_account_id])
     else
       flash[:notice] = 'Your requested Influencer is not active now. Please chose others.'
       redirect_to explore_path
     end
-
   end
 
   def create
@@ -45,26 +48,26 @@ class CampaignsController < ApplicationController
     # @campaign.name = @campaign.name.downcase if  campaign_params[:name].present?
 
     # unless @campaign.ongoing?
-      temp_start_date = campaign_params[:start_date].to_date
-      temp_start_time =  [1,2].include?(campaign_params[:post_type].to_i) ? params[:start_time].to_time : '12:00 am'.to_time
+    temp_start_date = campaign_params[:start_date].to_date
+    temp_start_time =  [1,2].include?(campaign_params[:post_type].to_i) ? params[:start_time].to_time : '12:00 am'.to_time
 
-      if campaign_params[:end_date].present?
-        temp_end_date = campaign_params[:end_date].to_date
-        temp_end_time =  [1,2].include?(campaign_params[:post_type].to_i) ? params[:end_time].to_time : '11:59 pm'.to_time
-      else
-        temp_end_date = Time.now.to_time+10.days
-        temp_end_time = '11:59 pm'.to_time+10.days
-      end
+    if campaign_params[:end_date].present?
+      temp_end_date = campaign_params[:end_date].to_date
+      temp_end_time =  [1,2].include?(campaign_params[:post_type].to_i) ? params[:end_time].to_time : '11:59 pm'.to_time
+    else
+      temp_end_date = Time.now.to_time+10.days
+      temp_end_time = '11:59 pm'.to_time+10.days
+    end
 
 
-      @campaign.start_date = DateTime.new(
-                                            temp_start_date.year, temp_start_date.month, temp_start_date.day,
-                                            temp_start_time.hour, temp_start_time.min
-                                          )
-      @campaign.end_date = DateTime.new(
-                                          temp_end_date.year, temp_end_date.month, temp_end_date.day,
-                                          temp_end_time.hour, temp_end_time.min
-                                        )
+    @campaign.start_date = DateTime.new(
+        temp_start_date.year, temp_start_date.month, temp_start_date.day,
+        temp_start_time.hour, temp_start_time.min
+    )
+    @campaign.end_date = DateTime.new(
+        temp_end_date.year, temp_end_date.month, temp_end_date.day,
+        temp_end_time.hour, temp_end_time.min
+    )
     # end
 
     if @campaign.save
@@ -76,6 +79,7 @@ class CampaignsController < ApplicationController
       @costs = User.find(params[:campaign][:receiver_id]).active_facebook_accounts.pluck(
           :status_update_cost, :profile_photo_cost, :cover_photo_cost,
           :video_post_cost, :photo_post_cost)
+      @costs = @costs.map{ |x| x.map{|x| x+x*@@PRICE_PERCENT_CHANGE}} if @costs.present?
       render action: 'new'
     end
   end
@@ -132,6 +136,7 @@ class CampaignsController < ApplicationController
     crypto = CryptoService.new
     data_string = crypto.decrypt(params[:encResp], CONFIG[:ccavenue_working_key])
     data = Rack::Utils.parse_nested_query(data_string)
+    increased_cost = @campaign.cost + @campaign.cost * @@PRICE_PERCENT_CHANGE
 
     Rails.logger.debug(data)
     @campaign = Campaign.find(data['order_id'])
@@ -142,7 +147,7 @@ class CampaignsController < ApplicationController
     end
 
     if data['order_status'] == 'Success'
-      if data['amount'].to_i == @campaign.cost
+      if data['amount'].to_i == increased_cost
         payment = BrandPayment.new
         payment.campaign = @campaign
         payment.billed_date = Date.today
@@ -194,7 +199,7 @@ class CampaignsController < ApplicationController
                                      :number_of_shares, :card_number, :card_expiration_year,
                                      :card_holder_name, :schedule_type, :card_expiration_month,
                                      :start_date, :end_date
-                    )
+    )
   end
 
   def influencer_campaign
@@ -292,12 +297,12 @@ class CampaignsController < ApplicationController
   end
 
   def current_user_campaign?
-     if current_user.campaigns_sent.where(status: Campaign.statuses[:accepted], deleted_by_influencer: false, deleted_by_brand: false).pluck(:id).include?(params[:id].to_i)
-       true
-     else
-       Rails.logger.info "Flash Message: ......... #{flash.inspect} .............."
-       flash[:alert] = 'This Campaign is not Accessible'
-       redirect_to offers_path
-     end
+    if current_user.campaigns_sent.where(status: Campaign.statuses[:accepted], deleted_by_influencer: false, deleted_by_brand: false).pluck(:id).include?(params[:id].to_i)
+      true
+    else
+      Rails.logger.info "Flash Message: ......... #{flash.inspect} .............."
+      flash[:alert] = 'This Campaign is not Accessible'
+      redirect_to offers_path
+    end
   end
 end

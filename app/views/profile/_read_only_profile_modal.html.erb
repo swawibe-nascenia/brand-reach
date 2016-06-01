@@ -63,27 +63,27 @@
                           <div class="form-group">
                             <div class="col-md-6 col-sm-12 col-xs-12">
                               <%= label_tag :status_update_cost, 'Status Update' %>
-                              <%= text_field_tag '', account.status_update_cost, :disabled => true %> INR<div class="display-inline-block extra-space"></div>
+                              <%= text_field_tag '', FacebookAccount.increase_price_for_brand(current_user, account.status_update_cost), :disabled => true %> INR<div class="display-inline-block extra-space"></div>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12">
                               <%= label_tag :cover_photo_cost, 'Cover Photo' %>
-                              <%= text_field_tag '', account.cover_photo_cost, :disabled => true %> INR/day
+                              <%= text_field_tag '', FacebookAccount.increase_price_for_brand(current_user, account.cover_photo_cost), :disabled => true %> INR/day
                             </div>
                           </div>
                           <div class="form-group">
                             <div class="col-md-6 col-sm-12 col-xs-12">
                               <%= label_tag :video_post_cost, 'Video Post' %>
-                              <%= text_field_tag '', account.video_post_cost, :disabled => true %> INR<div class="display-inline-block extra-space"></div>
+                              <%= text_field_tag '', FacebookAccount.increase_price_for_brand(current_user, account.video_post_cost), :disabled => true %> INR<div class="display-inline-block extra-space"></div>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12">
                               <%= label_tag :profile_photo_cost, 'Profile Photo' %>
-                              <%= text_field_tag '', account.profile_photo_cost, :disabled => true %> INR/day
+                              <%= text_field_tag '', FacebookAccount.increase_price_for_brand(current_user, account.profile_photo_cost), :disabled => true %> INR/day
                             </div>
                           </div>
                           <div class="form-group">
                             <div class="col-md-6 col-sm-12 col-xs-12">
                               <%= label_tag :photo_post_cost, 'Photo Post' %>
-                              <%= text_field_tag '', account.photo_post_cost, :disabled => true %> INR<div class="display-inline-block extra-space"></div>
+                              <%= text_field_tag '', FacebookAccount.increase_price_for_brand(current_user, account.photo_post_cost), :disabled => true %> INR<div class="display-inline-block extra-space"></div>
                             </div>
                           </div>
                         </div>

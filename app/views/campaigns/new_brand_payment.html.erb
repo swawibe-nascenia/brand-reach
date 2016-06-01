@@ -7,11 +7,12 @@
   <%
      working_key = CONFIG[:ccavenue_working_key]
      access_code = CONFIG[:ccavenue_access_code]
+     increased_cost = @campaign.cost + @campaign.cost * 0.20
 
      payment_params = {
          merchant_id: CONFIG[:ccavenue_merchant_id],
          order_id: @campaign.id,
-         amount: @campaign.cost,
+         amount: increased_cost,
          currency: 'INR',
          redirect_url: confirm_brand_payment_campaigns_url,
          billing_name: current_user.full_name,
@@ -55,7 +56,7 @@
     <dt>End Date </dt> <dd><%= @campaign.end_date.try(:strftime, '%d-%m-%Y') || 'NA' %></dd>
     <dt>Heading </dt> <dd><%= @campaign.headline.present? ? @campaign.headline : 'NA' %></dd>
     <dt>Description </dt> <dd><%= @campaign.text.present? ? @campaign.text : 'NA' %></dd>
-    <dt>Payment </dt> <dd><%= @campaign.cost %> INR</dd>
+    <dt>Payment </dt> <dd><%= FacebookAccount.increase_price_for_brand(current_user, @campaign.cost) %> INR</dd>
   </dl>
 
   <form method="post" action="https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction">

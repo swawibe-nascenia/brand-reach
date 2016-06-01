@@ -231,7 +231,6 @@ class Campaign < ActiveRecord::Base
       #{post_type_content}
       Start Date : #{self.start_date.try(:strftime, '%d-%m-%Y %I:%M %P') || 'NA'}
       End Date : #{end_date}
-      Payment : #{self.cost} INR
       Facebook Account: #{self.facebook_account.name}
 
       #{campaign_heading}
