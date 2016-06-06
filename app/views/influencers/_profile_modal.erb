@@ -172,13 +172,12 @@
               </tr>
               </thead>
               <tbody>
-              <% @account.country_data.each do |country_name, data| %>
-                  <tr>
-                    <td><span class="flag-icon flag-icon-<%= data[:country_code].downcase %>"></span> <%= country_name %></td>
-                    <td><%= number_with_delimiter(data[:likes]) %></td>
-                    <td><%= number_with_delimiter(data[:reach]) %></td>
-                  </tr>
-              <% end %>
+              <% india = @account.country_data['India'] %>
+              <tr>
+                <td><span class="flag-icon flag-icon-<%= india[:country_code].downcase %>"></span> India</td>
+                <td><%= number_with_delimiter(india[:likes]) %></td>
+                <td><%= number_with_delimiter(india[:reach]) %></td>
+              </tr>
               </tbody>
             </table>
 
@@ -202,13 +201,15 @@
               </tr>
               </thead>
               <tbody>
-              <% @account.city_data.each do |city_name, data| %>
-                  <tr>
-                    <td><%= city_name %></td>
-                    <td><%= number_with_delimiter(data[:likes]) %></td>
-                    <td><%= number_with_delimiter(data[:reach]) %></td>
-                  </tr>
-              <% end %>
+              <% @account.city_data.map { |city_name, data| %>
+                  <% if city_name.ends_with?('India') %>
+                      <tr>
+                        <td><%= city_name %></td>
+                        <td><%= number_with_delimiter(data[:likes]) %></td>
+                        <td><%= number_with_delimiter(data[:reach]) %></td>
+                      </tr>
+                  <% end %>
+              <% } %>
               </tbody>
             </table>
 
