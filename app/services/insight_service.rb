@@ -29,10 +29,10 @@ class InsightService < BaseService
 
   def get_post_info(post_id)
     post_info = {}
-    data = @graph.get_object("#{post_id}?fields=likes,comments,shares")
+    data = @graph.get_object("#{post_id}?fields=likes.summary(true),comments.summary(true),shares")
 
-    post_info[:number_of_likes] = data['likes'].present? ? data['likes']['data'].length : 0
-    post_info[:number_of_comments] = data['comments'].present? ? data['comments']['data'].length : 0
+    post_info[:number_of_likes] = data['likes'].present? ? data['likes']['summary']['total_count'] : 0
+    post_info[:number_of_comments] = data['comments'].present? ? data['comments']['summary']['total_count'] : 0
     post_info[:number_of_shares] = data['shares'].present? ? data['shares']['count'] : 0
 
     post_info
