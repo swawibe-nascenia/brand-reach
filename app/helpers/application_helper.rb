@@ -150,7 +150,7 @@ module ApplicationHelper
   end
 
   def local_time_long_format(time)
-    local_time(time, '%d-%m-%Y %I:%M %P')
+    local_time(time, '%d-%m-%Y %I:%M:%S %P')
   end
 
   def home_path

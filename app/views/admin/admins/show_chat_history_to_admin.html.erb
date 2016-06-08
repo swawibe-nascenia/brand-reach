@@ -2,38 +2,7 @@
 
 <div class="admin-page-wrapper">
   <h1 class="admin-header display-inline-block">All Chat History</h1>
-  <div class="table-responsive">
-    <table class="table admin-table">
-      <thead>
-      <tr>
-        <th>Sender</th>
-        <th>Receiver</th>
-        <th>Campaign name</th>
-        <th>Send Time</th>
-        <th>Message</th>
-      </tr>
-      </thead>
-      <tbody>
-      <%  @messages.each do |message| %>
-          <tr id="campaign-<%= message.id %>">
-            <td>
-              <a href="<%= show_user_profile_path(message.sender.id) %>" data-remote="true">
-                <%= message.sender.full_name %>
-              </a>
-            </td>
-            <td>
-              <a href="<%= show_user_profile_path(message.receiver.id) %>" data-remote="true">
-                <%= message.receiver.full_name %>
-              </a>
-            </td>
-            <td><%= message.campaign.name %></td>
-            <td><%= local_time_long_format(message.created_at) %></td>
-            <td><%= simple_format(message.body) %></td>
-          </tr>
-      <% end %>
-      </tbody>
-    </table>
-    <%= paginate @messages %>
+  <div class="table-responsive" id="chat-history-table">
+    <%= render 'admin/admins/chat_history_table_body' %>
   </div>
-
 </div>
