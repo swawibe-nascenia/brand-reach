@@ -108,6 +108,9 @@ class ApplicationController < ActionController::Base
 
   def block_admin_user
     if user_signed_in? && (current_user.admin? || current_user.super_admin?)
+      if params[:action].present? && params[:action] == 'show_user' && current_user.super_admin?
+        return
+      end
       redirect_to after_sign_in_path_for(current_user)
     end
   end

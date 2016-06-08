@@ -295,6 +295,12 @@ class Admin::AdminsController < ApplicationController
     end
   end
 
+  def show_chat_history_to_admin
+    authorize :admin, :manage_admins?
+    @messages = Message.order('created_at DESC')
+    @messages = @messages.page params[:page]
+  end
+
   private
 
   def admin_params

@@ -92,6 +92,11 @@
     white-space: nowrap;
 }
 
+.influencer-profile-modal .influencer-address {
+    font-size: 13px;
+    width: 80%;
+}
+
 .influencer-data {
     margin: 10px 10px 17px;
 }

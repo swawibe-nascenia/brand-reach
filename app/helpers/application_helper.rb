@@ -149,6 +149,10 @@ module ApplicationHelper
     end
   end
 
+  def local_time_long_format(time)
+    local_time(time, '%d-%m-%Y %I:%M %P')
+  end
+
   def home_path
     if current_user && current_user.brand?
       brand_home_public_index_path

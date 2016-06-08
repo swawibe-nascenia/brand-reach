@@ -116,6 +116,7 @@ Rails.application.routes.draw do
         get 'payment-request', to: 'admins#payment_request'
         put :make_payment_paid
         get 'contact-us', to: 'admins#show_contact_us_mails'
+        get 'show-chat-history', to: 'admins#show_chat_history_to_admin'
       end
 
       member do

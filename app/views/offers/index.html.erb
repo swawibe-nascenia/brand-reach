@@ -1,7 +1,8 @@
 <%= stylesheet_link_tag 'offers.css', media: 'all' %>
 
 <% if current_user.brand? %>
-    <% title 'Messages' %> <% else %>
+    <% title 'Messages' %>
+<% else %>
     <% title 'Offers' %>
 <% end %>
 

@@ -83,6 +83,11 @@
                 <span class="space-sidebar">Admins</span>
               </a>
             </li>
+            <li class="<%= current_path show_chat_history_admin_admins_path %>">
+              <a href="<%= show_chat_history_admin_admins_path %>">
+                <span class="space-sidebar">Chat History</span>
+              </a>
+            </li>
         <% end %>
 
         <% if policy(:admin).manage_brandreach? %>
