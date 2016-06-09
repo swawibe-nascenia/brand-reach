@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'brand-reach'
-set :repo_url, 'git@github.com:rafi-nascenia/brand-reach.git'
+set :repo_url, 'git@github.com:fuadomar/brandreach.git'
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 # Default branch is :master
