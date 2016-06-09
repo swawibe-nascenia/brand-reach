@@ -136,10 +136,10 @@ class CampaignsController < ApplicationController
     crypto = CryptoService.new
     data_string = crypto.decrypt(params[:encResp], CONFIG[:ccavenue_working_key])
     data = Rack::Utils.parse_nested_query(data_string)
-    increased_cost = @campaign.cost + @campaign.cost * @@PRICE_PERCENT_CHANGE
 
     Rails.logger.debug(data)
     @campaign = Campaign.find(data['order_id'])
+    increased_cost = @campaign.cost + @campaign.cost * @@PRICE_PERCENT_CHANGE
 
     if @campaign.blank?
       flash[:error] = 'Invalid campaign ID'
