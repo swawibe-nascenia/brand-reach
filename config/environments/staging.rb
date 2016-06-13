@@ -24,8 +24,8 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.smtp_settings = {
-      address:              'smtpout.secureserver.net',
-      port:                 80,
+      address:              'smtpout.asia.secureserver.net',
+      port:                 25,
       domain:               'www.thebrandreach.com',
       user_name:            'mc@thebrandreach.com',
       password:             'nirvanalabs',
