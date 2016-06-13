@@ -39,6 +39,6 @@ every :day, :at => '12:00 am' do
   runner 'FacebookAccount.fetch_all_insights', :environment => 'production'
 end
 
-every 5.minutes do
+every 30.minutes do
   runner 'Campaign.stop_expire_campaigns', :environment => 'production'
 end
