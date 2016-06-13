@@ -1,6 +1,7 @@
 class CampaignMailer < ApplicationMailer
-  default from: 'mc@thebrandreach.com'
+  default from: 'stb@thebrandreach.com'
   @@mc_email = 'mc@thebrandreach.com'
+  @@stb_email = 'stb@thebrandreach.com'
   @@super_admin_email = 'superadmin@thebrandreach.com'
 
   def new_campaign_notification(campaign)
@@ -54,19 +55,19 @@ class CampaignMailer < ApplicationMailer
   def sing_up_notification_to_admin(user)
     @user = user
     Rails.logger.info "========================== Send User: #{user.inspect} sign up notification to admin.================"
-    mail(from: @@mc_email, to: 'mc@thebrandreach.com', subject: 'New user sign up to Brandreach')
+    mail(from: @@stb_email, to: 'mc@thebrandreach.com', subject: 'New user sign up to Brandreach')
   end
 
   def account_activate_notification_to_user(user, password)
     @user = user
     @password = password
     Rails.logger.info "========================== User: #{user.inspect} account has been successfully activated.================"
-    mail(from: @@mc_email, to: user.email, subject: 'Brandreach account activate')
+    mail(from: @@stb_email, to: user.email, subject: 'Brandreach account activate')
   end
 
   def account_activate_after_deactivate_notification_to_user(user)
     @user = user
-    mail(from: 'mc@thebrandreach.com', to: user.email, subject: 'Brandreach account activate')
+    mail(from: @@stb_email, to: user.email, subject: 'Brandreach account activate')
   end
 
   def get_in_touch_mail(params)
@@ -74,7 +75,7 @@ class CampaignMailer < ApplicationMailer
     @email = params[:email]
     @phone_number = params[:phone_number]
     @message = params[:message]
-    mail(from: @@mc_email, to: 'superadmin@thebrandreach.com', subject: 'Get In Touch Message')
+    mail(from: @@stb_email, to: 'superadmin@thebrandreach.com', subject: 'Get In Touch Message')
   end
 
   def influencer_invitation (influencer_invitation)
@@ -84,7 +85,7 @@ class CampaignMailer < ApplicationMailer
     @brandReach = root_url(sign_up_modal: true)
     subject = "We'd like to have you on Brandreach.
                Be a influencer on one of the most amazing knowledge sharing platforms."
-    mail(from: @@mc_email, to: @mail, subject: subject)
+    mail(from: @@stb_email, to: @mail, subject: subject)
   end
 
   def brand_invitation (brand, row_token)
@@ -97,7 +98,7 @@ class CampaignMailer < ApplicationMailer
     # @brandReach = root_url
     subject = "We'd like to have you on Brandreach.
                Be a brand on one of the most amazing knowledge sharing platforms."
-    mail(from: @@mc_email, to: @mail, subject: subject)
+    mail(from: @@stb_email, to: @mail, subject: subject)
   end
 
   def notify_campaign_pause(campaign)
@@ -150,6 +151,6 @@ class CampaignMailer < ApplicationMailer
     @receiver = receiver
     @page = page
     Rails.logger.info "========================== New campaign request for celebrity: #{@receiver.full_name} , sender name: #{@sender.full_name} , page name: #{@page.name} ================"
-    mail(to: "#{@@mc_email}", from: @@mc_email, subject: "New campaign request from Brand: #{@sender.full_name} to Influencer: #{@receiver.full_name} for Page name: #{@page.name}")
+    mail(to: "#{@@mc_email}", from: @@stb_email, subject: "New campaign request from Brand: #{@sender.full_name} to Influencer: #{@receiver.full_name} for Page name: #{@page.name}")
   end
 end

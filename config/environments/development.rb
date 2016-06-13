@@ -24,8 +24,8 @@ Rails.application.configure do
       address:              'smtpout.asia.secureserver.net',
       port:                 25,
       domain:               'www.thebrandreach.com',
-      user_name:            'mc@thebrandreach.com',
-      password:             'nirvanalabs',
+      user_name:            'stb@thebrandreach.com',
+      password:             'TheBrandre@ch',
       authentication:       'plain',
       enable_starttls_auto: true  }
 
