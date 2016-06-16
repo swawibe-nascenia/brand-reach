@@ -139,7 +139,7 @@ class CampaignsController < ApplicationController
 
     Rails.logger.debug(data)
     @campaign = Campaign.find(data['order_id'])
-    increased_cost = @campaign.cost + @campaign.cost * @@PRICE_PERCENT_CHANGE
+    real_cost = (@campaign.cost * 0.83333333).ceil
 
     if @campaign.blank?
       flash[:error] = 'Invalid campaign ID'
@@ -147,17 +147,17 @@ class CampaignsController < ApplicationController
     end
 
     if data['order_status'] == 'Success'
-      if data['amount'].to_i == increased_cost
+      if data['amount'].to_i == @campaign.cost
         payment = BrandPayment.new
         payment.campaign = @campaign
         payment.billed_date = Date.today
-        payment.amount_billed = @campaign.cost
+        payment.amount_billed = real_cost
         payment.status = BrandPayment.statuses[:paid]
         payment.save
 
         @campaign.update_attributes({ status: Campaign.statuses[:engaged] })
 
-        @campaign.receiver.update_column(:balance, @campaign.receiver.balance + @campaign.cost)
+        @campaign.receiver.update_column(:balance, @campaign.receiver.balance + real_cost)
 
         flash[:success] = 'Payment completed successfully'
         redirect_to payments_path
