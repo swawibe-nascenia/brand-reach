@@ -28,7 +28,7 @@
   <dl class="payment-information dl-horizontal">
     <dt>Requested Page Name </dt> <dd> <%= @page.name %></dd>
     <dt>Industry </dt> <dd> <%= @page.categories.pluck(:name).join(', ') if @page.categories.present? %></dd>
-    <dt>Status update </dt> <dd><%= FacebookAccount.increase_price_for_brand(current_user, status_update_cost) %> INR</dd>
+    <dt>Status update </dt> <dd><%= FacebookAccount.increase_price_for_brand(current_user, @page.status_update_cost) %> INR</dd>
     <dt>Video post </dt> <dd><%= FacebookAccount.increase_price_for_brand(current_user, @page.video_post_cost) %> INR</dd>
     <dt>Photo post </dt> <dd><%= FacebookAccount.increase_price_for_brand(current_user, @page.photo_post_cost) %> INR</dd>
     <dt>Cover photo </dt> <dd><%= FacebookAccount.increase_price_for_brand(current_user, @page.cover_photo_cost) %> INR</dd>

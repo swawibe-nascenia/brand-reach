@@ -16,10 +16,10 @@
 <h3>Requested page's details are :</h3>
 <p><strong>Page name : </strong><%= @page.name %></p>
 <p><strong>Industry : </strong><%= @page.categories.pluck(:name).join(', ') if @page.categories.present? %></p>
-<p><strong>Status update : </strong><%= FacebookAccount.increase_price_for_brand(current_user, status_update_cost) %> INR</p>
-<p><strong>Video post : </strong><%= FacebookAccount.increase_price_for_brand(current_user, video_post_cost) %> INR</p>
-<p><strong>Photo post : </strong><%= FacebookAccount.increase_price_for_brand(current_user, photo_post_cost) %> INR</p>
-<p><strong>Cover photo : </strong><%= FacebookAccount.increase_price_for_brand(current_user, cover_photo_cost) %> INR</p>
-<p><strong>Profile photo : </strong><%= FacebookAccount.increase_price_for_brand(current_user, profile_photo_cost) %> INR</p>
+<p><strong>Status update : </strong><%= FacebookAccount.increase_price_for_brand(@receiver, @page.status_update_cost) %> INR</p>
+<p><strong>Video post : </strong><%= FacebookAccount.increase_price_for_brand(@receiver, @page.video_post_cost) %> INR</p>
+<p><strong>Photo post : </strong><%= FacebookAccount.increase_price_for_brand(@receiver, @page.photo_post_cost) %> INR</p>
+<p><strong>Cover photo : </strong><%= FacebookAccount.increase_price_for_brand(@receiver, @page.cover_photo_cost) %> INR</p>
+<p><strong>Profile photo : </strong><%= FacebookAccount.increase_price_for_brand(@receiver, @page.profile_photo_cost) %> INR</p>
 
 
