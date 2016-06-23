@@ -138,6 +138,54 @@ class InsightService < BaseService
     get_aggregate_by_region(id, 'impressions', 'city', since, previous_data)
   end
 
+  def get_total_action_button_clicks(id, since)
+    labels = {}
+    datasets = {}
+
+    @graph.get_object("#{id}/insights/page_cta_clicks_logged_in_total/day", {since: since, :until => Time.now.beginning_of_day().to_i}).each do |data|
+      data['values'].each do |d|
+        t = d['end_time'].to_date.strftime('%B %d')
+        labels[t] = true
+
+        g = 'M'
+        datasets[g] = {} if datasets[g].blank?
+        datasets[g][t] = 0 if datasets[g][t].blank?
+
+        d['value'].each do |k, v|
+          datasets[g] = {} if datasets[g].blank?
+          datasets[g][t] = 0 if datasets[g][t].blank?
+          datasets[g][t] = v
+        end
+      end
+    end
+      { labels: labels.keys, datasets: datasets }
+      #count += d['values'].last['value'].values if d['values'].last['value'].values
+      #count
+  end
+
+  def get_total_people_action_button_clicks(id, since)
+    labels = {}
+    datasets = {}
+
+    @graph.get_object("#{id}/insights/page_cta_clicks_logged_in_unique/day", {since: since, :until => Time.now.beginning_of_day().to_i}).each do |data|
+      data['values'].each do |d|
+        t = d['end_time'].to_date.strftime('%B %d')
+        labels[t] = true
+
+        g = 'M'
+        datasets[g] = {} if datasets[g].blank?
+        datasets[g][t] = 0 if datasets[g][t].blank?
+
+        d['value'].each do |k, v|
+          datasets[g] = {} if datasets[g].blank?
+          datasets[g][t] = 0 if datasets[g][t].blank?
+          datasets[g][t] = v
+        end
+      end
+    end
+    { labels: labels.keys, datasets: datasets }
+  end
+
   def get_likes_by_gender(id, since, previous_data)
     if previous_data.nil?
       labels = {}

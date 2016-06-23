@@ -19,6 +19,8 @@ class FacebookAccount < ActiveRecord::Base
   serialize :reach_by_city
   serialize :likes_by_gender_age_month
   serialize :likes_by_gender_age_week
+  serialize :total_action_button_clicks
+  serialize :total_people_action_button_clicks
 
   # ----------------------------------------------------------------------
   # == File Uploader == #
@@ -62,6 +64,8 @@ class FacebookAccount < ActiveRecord::Base
 
     self.number_of_followers = graph.get_number_of_likes(self.account_id)
     self.daily_page_views = graph.get_daily_page_views(self.account_id)
+    self.total_action_button_clicks = graph.get_total_action_button_clicks(self.account_id, 1.week.ago)
+    self.total_people_action_button_clicks = graph.get_total_people_action_button_clicks(self.account_id, 1.week.ago)
     #
     # self.number_of_posts = graph.get_number_of_posts(self.account_id)
     #
@@ -182,6 +186,44 @@ class FacebookAccount < ActiveRecord::Base
       data[city_name][:reach] += reach
     end
     data
+  end
+
+  def action_line_chart_data
+    color = ['#3d6ad6']
+    {
+        labels: self.total_action_button_clicks[:labels],
+        datasets: self.total_action_button_clicks[:datasets].map do |date, data|
+          puts "===================Date:#{date} : Data #{data}"
+          {
+              label: date,
+              strokeColor: color,
+              pointColor: color,
+              pointStrokeColor: color,
+              pointHighlightFill: color,
+              pointHighlightStroke: color,
+              data: data
+          }
+        end,
+    }
+  end
+
+  def people_action_line_chart_data
+    color = ['#EA358C']
+    {
+        labels: self.total_people_action_button_clicks[:labels],
+        datasets: self.total_people_action_button_clicks[:datasets].map do |date, data|
+          puts "===================Date:#{date} : Data #{data}"
+          {
+              label: date,
+              strokeColor: color,
+              pointColor: color,
+              pointStrokeColor: color,
+              pointHighlightFill: color,
+              pointHighlightStroke: color,
+              data: data
+          }
+        end,
+    }
   end
 
   def gender_line_chart_data

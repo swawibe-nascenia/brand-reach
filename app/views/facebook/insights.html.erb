@@ -50,42 +50,42 @@
             <div id="world-map-markers" style="height: 325px;"></div>
 
             <script>
-                (function() {
-                    var map = AmCharts.makeChart( "world-map-markers", {
-                        type: "map",
+              (function() {
+                var map = AmCharts.makeChart( "world-map-markers", {
+                  type: "map",
 
-                        areasSettings: {
-                            autoZoom: false,
-                            rollOverOutlineColor: "#000000",
-                            selectedColor: "#000000",
-                            outlineAlpha: 1,
-                            outlineColor: "#FFFFFF",
-                            outlineThickness: 1,
-                            color: "#000000"
-                        },
+                  areasSettings: {
+                    autoZoom: false,
+                    rollOverOutlineColor: "#000000",
+                    selectedColor: "#000000",
+                    outlineAlpha: 1,
+                    outlineColor: "#FFFFFF",
+                    outlineThickness: 1,
+                    color: "#000000"
+                  },
 
-                        dataProvider: {
-                            map: "continentsLow",
+                  dataProvider: {
+                    map: "continentsLow",
 
-                            areas: ['africa', 'asia', 'australia', 'europe', 'north_america', 'south_america'].map(function(continent) {
-                                return {
-                                    id: continent,
-                                    mouseEnabled: false,
-                                    pattern: {
-                                        url: '<%= url_to_image('map-pattern.png') %>',
-                                        width: 5,
-                                        height: 5
-                                    }
-                                };
-                            }),
-
-                            images: <%= @account.country_map_data.map{ |data| data[:imageURL] = path_to_image('map-marker.svg'); data }.to_json.html_safe %>
-                        },
-                        zoomControl: {
-                            homeButtonEnabled: false
+                    areas: ['africa', 'asia', 'australia', 'europe', 'north_america', 'south_america'].map(function(continent) {
+                      return {
+                        id: continent,
+                        mouseEnabled: false,
+                        pattern: {
+                          url: '<%= url_to_image('map-pattern.png') %>',
+                          width: 5,
+                          height: 5
                         }
-                    });
-                })();
+                      };
+                    }),
+
+                    images: <%= @account.country_map_data.map{ |data| data[:imageURL] = path_to_image('map-marker.svg'); data }.to_json.html_safe %>
+                  },
+                  zoomControl: {
+                    homeButtonEnabled: false
+                  }
+                });
+              })();
             </script>
           </div>
         </div>
@@ -99,52 +99,52 @@
             <div id="show-age-map" style="height: 325px;"></div>
 
             <script>
-                var chart = AmCharts.makeChart( "show-age-map", {
-                    type: "serial",
-                    depth3D: 30,
-                    angle: 40,
-                    colors: ["#a9e5ed", "#EA358C"],
-                    legend: {
-                        horizontalGap: 10,
-                        useGraphSettings: true,
-                        markerSize: 10
-                    },
+              var chart = AmCharts.makeChart( "show-age-map", {
+                type: "serial",
+                depth3D: 30,
+                angle: 40,
+                colors: ["#a9e5ed", "#EA358C"],
+                legend: {
+                  horizontalGap: 10,
+                  useGraphSettings: true,
+                  markerSize: 10
+                },
 
-                    dataProvider: <%= @account.age_range_data.to_json.html_safe %>,
+                dataProvider: <%= @account.age_range_data.to_json.html_safe %>,
 
-                    "valueAxes": [ {
-                        "stackType": "regular",
-                        "axisAlpha": 0,
-                        "gridAlpha": 0
-                    } ],
+                "valueAxes": [ {
+                  "stackType": "regular",
+                  "axisAlpha": 0,
+                  "gridAlpha": 0
+                } ],
 
-                    "graphs": [ {
-                        "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>Age [[category]]: <b>[[value]]</b></span>",
-                        "fillAlphas": 0.8,
-                        "labelText": "[[value]]",
-                        "lineAlpha": 0.4,
-                        "title": "MALE",
-                        "type": "column",
-                        "color": "#000000",
-                        "valueField": "male"
-                    }, {
-                        "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>Age [[category]]: <b>[[value]]</b></span>",
-                        "fillAlphas": 0.8,
-                        "labelText": "[[value]]",
-                        "lineAlpha": 0.4,
-                        "title": "FEMALE",
-                        "type": "column",
-                        "color": "#000000",
-                        "valueField": "female"
-                    } ],
-                    "categoryField": "age_range",
-                    "categoryAxis": {
-                        "gridPosition": "start",
-                        "axisAlpha": 0,
-                        "gridAlpha": 0,
-                        "position": "left"
-                    }
-                });
+                "graphs": [ {
+                  "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>Age [[category]]: <b>[[value]]</b></span>",
+                  "fillAlphas": 0.8,
+                  "labelText": "[[value]]",
+                  "lineAlpha": 0.4,
+                  "title": "MALE",
+                  "type": "column",
+                  "color": "#000000",
+                  "valueField": "male"
+                }, {
+                  "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>Age [[category]]: <b>[[value]]</b></span>",
+                  "fillAlphas": 0.8,
+                  "labelText": "[[value]]",
+                  "lineAlpha": 0.4,
+                  "title": "FEMALE",
+                  "type": "column",
+                  "color": "#000000",
+                  "valueField": "female"
+                } ],
+                "categoryField": "age_range",
+                "categoryAxis": {
+                  "gridPosition": "start",
+                  "axisAlpha": 0,
+                  "gridAlpha": 0,
+                  "position": "left"
+                }
+              });
             </script>
           </div>
         </div>
@@ -183,64 +183,201 @@
         <!-- Sales Chart Canvas -->
         <canvas id="salesChart" height="180"></canvas>
       </div>
-      <!-- /.chart-responsive -->
+
+      </br>
+      <section class="chart-info">
+        <span class="color-gray stat-gender">STATISTICS BY TOTAL ACTIONS ON PAGE</span>
+      </section>
+      </br>
+
+      <div class="chart">
+        <canvas id="actionChart" height="100"></canvas>
+      </div>
+
+      <script>
+        // Get context with jQuery - using jQuery's .get() method.
+        var actionChartCanvas = $("#actionChart").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        var actionChart = new Chart(actionChartCanvas);
+
+        var actionChartData = {
+          labels: <%= @account.action_line_chart_data[:labels].to_json.html_safe %>,
+          datasets: <%= @account.action_line_chart_data[:datasets].to_json.html_safe %>
+        };
+
+        var actionChartOptions = {
+          type: 'line',
+          //Boolean - If we should show the scale at all
+          //showScale: true,
+          //Boolean - Whether grid lines are shown across the chart
+          scaleShowGridLines: true,
+          //String - Colour of the grid lines
+          scaleGridLineColor: "rgba(0,0,0,.05)",
+          //Number - Width of the grid lines
+          scaleGridLineWidth: 1,
+          //Boolean - Whether to show horizontal lines (except X axis)
+          scaleShowHorizontalLines: true,
+          //Boolean - Whether to show vertical lines (except Y axis)
+          scaleShowVerticalLines: false,
+          //Boolean - Whether the line is curved between points
+          bezierCurve: true,
+          //Number - Tension of the bezier curve between points
+          bezierCurveTension: 0.3,
+          //Boolean - Whether to show a dot for each point
+          pointDot: false,
+          //Number - Radius of each point dot in pixels
+          pointDotRadius: 4,
+          //Number - Pixel width of point dot stroke
+          pointDotStrokeWidth: 1,
+          //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+          pointHitDetectionRadius: 20,
+          //Boolean - Whether to show a stroke for datasets
+          datasetStroke: true,
+          //Number - Pixel width of dataset stroke
+          datasetStrokeWidth: 2,
+          //Boolean - Whether to fill the dataset with a color
+          datasetFill: false,
+          //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+          maintainAspectRatio: false,
+          //Boolean - whether to make the chart responsive to window resizing
+          responsive: true
+        };
+
+        <% if @account.action_line_chart_data[:datasets].present? %>
+        //Create the line chart
+        actionChart.Line(actionChartData, actionChartOptions);
+        <% else %>
+        $('.chart-info').hide();
+        $('.chart').hide();
+        <% end %>
+      </script>
+
+      </br>
+      <section class="chart-info">
+        <span class="color-gray stat-gender">STATISTICS BY PEOPLE WHO CLICKED ACTION BUTTON</span>
+      </section>
+      </br>
+      <div class="chart">
+        <canvas id="peopleActionChart" height="100"></canvas>
+      </div>
+
+      <script>
+        // Get context with jQuery - using jQuery's .get() method.
+        var peopleActionChartCanvas = $("#peopleActionChart").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        var peopleActionChart = new Chart(peopleActionChartCanvas);
+
+        var peopleActionChartData = {
+          labels: <%= @account.people_action_line_chart_data[:labels].to_json.html_safe %>,
+          datasets: <%= @account.people_action_line_chart_data[:datasets].to_json.html_safe %>
+        };
+
+        var peopleActionChartOptions = {
+          type: 'line',
+          //Boolean - If we should show the scale at all
+          //showScale: true,
+          //Boolean - Whether grid lines are shown across the chart
+          scaleShowGridLines: true,
+          //String - Colour of the grid lines
+          scaleGridLineColor: "rgba(0,0,0,.05)",
+          //Number - Width of the grid lines
+          scaleGridLineWidth: 1,
+          //Boolean - Whether to show horizontal lines (except X axis)
+          scaleShowHorizontalLines: true,
+          //Boolean - Whether to show vertical lines (except Y axis)
+          scaleShowVerticalLines: false,
+          //Boolean - Whether the line is curved between points
+          bezierCurve: true,
+          //Number - Tension of the bezier curve between points
+          bezierCurveTension: 0.3,
+          //Boolean - Whether to show a dot for each point
+          pointDot: false,
+          //Number - Radius of each point dot in pixels
+          pointDotRadius: 4,
+          //Number - Pixel width of point dot stroke
+          pointDotStrokeWidth: 1,
+          //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+          pointHitDetectionRadius: 20,
+          //Boolean - Whether to show a stroke for datasets
+          datasetStroke: true,
+          //Number - Pixel width of dataset stroke
+          datasetStrokeWidth: 2,
+          //Boolean - Whether to fill the dataset with a color
+          datasetFill: false,
+          //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+          maintainAspectRatio: false,
+          //Boolean - whether to make the chart responsive to window resizing
+          responsive: true
+        };
+
+        <% if @account.people_action_line_chart_data[:datasets].present? %>
+        //Create the line chart
+        peopleActionChart.Line(peopleActionChartData, peopleActionChartOptions);
+        <% else %>
+        $('.chart-info').hide();
+        $('.chart').hide();
+        <% end %>
+      </script>
+
     </div>
 
+
+
     <script>
-        // Get context with jQuery - using jQuery's .get() method.
-        var salesChartCanvas = $("#salesChart").get(0).getContext("2d");
-        // This will get the first returned node in the jQuery collection.
-        var salesChart = new Chart(salesChartCanvas);
+      // Get context with jQuery - using jQuery's .get() method.
+      var salesChartCanvas = $("#salesChart").get(0).getContext("2d");
+      // This will get the first returned node in the jQuery collection.
+      var salesChart = new Chart(salesChartCanvas);
 
-        var salesChartData = {
-            labels: <%= @account.gender_line_chart_data[:labels].to_json.html_safe %>,
-            datasets: <%= @account.gender_line_chart_data[:datasets].to_json.html_safe %>
-        };
+      var salesChartData = {
+        labels: <%= @account.gender_line_chart_data[:labels].to_json.html_safe %>,
+        datasets: <%= @account.gender_line_chart_data[:datasets].to_json.html_safe %>
+      };
 
-        var salesChartOptions = {
-            //Boolean - If we should show the scale at all
-            showScale: true,
-            //Boolean - Whether grid lines are shown across the chart
-            scaleShowGridLines: true,
-            //String - Colour of the grid lines
-            scaleGridLineColor: "rgba(0,0,0,.05)",
-            //Number - Width of the grid lines
-            scaleGridLineWidth: 1,
-            //Boolean - Whether to show horizontal lines (except X axis)
-            scaleShowHorizontalLines: true,
-            //Boolean - Whether to show vertical lines (except Y axis)
-            scaleShowVerticalLines: false,
-            //Boolean - Whether the line is curved between points
-            bezierCurve: true,
-            //Number - Tension of the bezier curve between points
-            bezierCurveTension: 0.3,
-            //Boolean - Whether to show a dot for each point
-            pointDot: false,
-            //Number - Radius of each point dot in pixels
-            pointDotRadius: 4,
-            //Number - Pixel width of point dot stroke
-            pointDotStrokeWidth: 1,
-            //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-            pointHitDetectionRadius: 20,
-            //Boolean - Whether to show a stroke for datasets
-            datasetStroke: true,
-            //Number - Pixel width of dataset stroke
-            datasetStrokeWidth: 2,
-            //Boolean - Whether to fill the dataset with a color
-            datasetFill: true,
-            //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-            maintainAspectRatio: false,
-            //Boolean - whether to make the chart responsive to window resizing
-            responsive: true
-        };
+      var salesChartOptions = {
+        //Boolean - If we should show the scale at all
+        showScale: true,
+        //Boolean - Whether grid lines are shown across the chart
+        scaleShowGridLines: true,
+        //String - Colour of the grid lines
+        scaleGridLineColor: "rgba(0,0,0,.05)",
+        //Number - Width of the grid lines
+        scaleGridLineWidth: 1,
+        //Boolean - Whether to show horizontal lines (except X axis)
+        scaleShowHorizontalLines: true,
+        //Boolean - Whether to show vertical lines (except Y axis)
+        scaleShowVerticalLines: false,
+        //Boolean - Whether the line is curved between points
+        bezierCurve: true,
+        //Number - Tension of the bezier curve between points
+        bezierCurveTension: 0.3,
+        //Boolean - Whether to show a dot for each point
+        pointDot: false,
+        //Number - Radius of each point dot in pixels
+        pointDotRadius: 4,
+        //Number - Pixel width of point dot stroke
+        pointDotStrokeWidth: 1,
+        //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+        pointHitDetectionRadius: 20,
+        //Boolean - Whether to show a stroke for datasets
+        datasetStroke: true,
+        //Number - Pixel width of dataset stroke
+        datasetStrokeWidth: 2,
+        //Boolean - Whether to fill the dataset with a color
+        datasetFill: true,
+        //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+        maintainAspectRatio: false,
+        //Boolean - whether to make the chart responsive to window resizing
+        responsive: true
+      };
 
-        <% if @account.gender_line_chart_data[:datasets].present? %>
-            //Create the line chart
-            salesChart.Line(salesChartData, salesChartOptions);
-        <% else %>
-            $('.chart-info').hide();
-            $('.chart').hide();
-        <% end %>
+      <% if @account.gender_line_chart_data[:datasets].present? %>
+      //Create the line chart
+      salesChart.Line(salesChartData, salesChartOptions);
+      <% else %>
+      $('.chart-info').hide();
+      $('.chart').hide();
+      <% end %>
     </script>
 
     <!-- TABLE: LATEST ORDERS -->
@@ -275,11 +412,11 @@
           </thead>
           <tbody>
           <% @account.country_data.each do |country_name, data| %>
-            <tr>
-              <td><span class="flag-icon flag-icon-<%= data[:country_code].downcase %>"></span> <%= country_name %></td>
-              <td><%= number_with_delimiter(data[:likes]) %></td>
-              <td><%= number_with_delimiter(data[:reach]) %></td>
-            </tr>
+              <tr>
+                <td><span class="flag-icon flag-icon-<%= data[:country_code].downcase %>"></span> <%= country_name %></td>
+                <td><%= number_with_delimiter(data[:likes]) %></td>
+                <td><%= number_with_delimiter(data[:reach]) %></td>
+              </tr>
           <% end %>
           </tbody>
         </table>
@@ -305,20 +442,20 @@
           </thead>
           <tbody>
           <% @account.city_data.each do |city_name, data| %>
-            <tr>
-              <td><%= city_name %></td>
-              <td><%= number_with_delimiter(data[:likes]) %></td>
-              <td><%= number_with_delimiter(data[:reach]) %></td>
-            </tr>
+              <tr>
+                <td><%= city_name %></td>
+                <td><%= number_with_delimiter(data[:likes]) %></td>
+                <td><%= number_with_delimiter(data[:reach]) %></td>
+              </tr>
           <% end %>
           </tbody>
         </table>
 
         <script>
           $('.js-stats-toggle').click(function() {
-              $('.statistic-table').removeClass('active');
-              $($(this).attr('href')).addClass('active');
-              return false;
+            $('.statistic-table').removeClass('active');
+            $($(this).attr('href')).addClass('active');
+            return false;
           });
         </script>
 
@@ -336,7 +473,7 @@
 </section>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('select').selectBox();
-    });
+  $(document).ready(function () {
+    $('select').selectBox();
+  });
 </script>
