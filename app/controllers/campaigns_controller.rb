@@ -147,7 +147,7 @@ class CampaignsController < ApplicationController
     end
 
     if data['order_status'] == 'Success'
-      if data['amount'].to_i == @campaign.cost
+      if data['amount'].to_i == @campaign.cost.floor
         payment = BrandPayment.new
         payment.campaign = @campaign
         payment.billed_date = Date.today

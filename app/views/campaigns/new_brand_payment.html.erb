@@ -7,12 +7,11 @@
   <%
      working_key = CONFIG[:ccavenue_working_key]
      access_code = CONFIG[:ccavenue_access_code]
-     increased_cost = @campaign.cost + @campaign.cost * 0.20
 
      payment_params = {
          merchant_id: CONFIG[:ccavenue_merchant_id],
          order_id: @campaign.id,
-         amount: increased_cost,
+         amount: @campaign.cost,
          currency: 'INR',
          redirect_url: confirm_brand_payment_campaigns_url,
          billing_name: current_user.full_name,
