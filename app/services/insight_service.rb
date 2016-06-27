@@ -144,7 +144,7 @@ class InsightService < BaseService
 
     @graph.get_object("#{id}/insights/page_cta_clicks_logged_in_total/day", {since: since, :until => Time.now.beginning_of_day().to_i}).each do |data|
       data['values'].each do |d|
-        t = d['end_time'].to_date.strftime('%B %d')
+        t = d['end_time'].to_date.prev_day.strftime('%B %d')
         labels[t] = true
 
         g = 'M'
@@ -169,7 +169,7 @@ class InsightService < BaseService
 
     @graph.get_object("#{id}/insights/page_cta_clicks_logged_in_unique/day", {since: since, :until => Time.now.beginning_of_day().to_i}).each do |data|
       data['values'].each do |d|
-        t = d['end_time'].to_date.strftime('%B %d')
+        t = d['end_time'].to_date.prev_day.strftime('%B %d')
         labels[t] = true
 
         g = 'M'
@@ -184,6 +184,69 @@ class InsightService < BaseService
       end
     end
     { labels: labels.keys, datasets: datasets }
+  end
+
+  def get_actions_by_gender_age_week(id)
+    labels = {}
+    datasets = {}
+    age_group = {}
+
+    @graph.get_object("#{id}/insights/page_cta_clicks_by_age_gender_logged_in_unique/week", { :until => Time.now.beginning_of_day().to_i }).each do |data|
+      data['values'].each do |d|
+        t = d['end_time'].to_date.strftime('%B %d')
+        labels[t] = true
+
+        ['M', 'F', 'U'].each do |g|
+          datasets[g] = {} if datasets[g].blank?
+          datasets[g][t] = 0 if datasets[g][t].blank?
+        end
+
+        d['value'].each do |key, value|
+          value.each do |key1, value1|
+            age = key1
+            value1.each do |key2, value2|
+              age_group[key2] = {} if age_group[key2].blank?
+              age_group[key2][age] = 0 if age_group[key2][age].blank?
+              age_group[key2][age] = value2
+            end
+          end
+        end
+
+        age_group = age_group.map{|k,v| [k,v.sort.to_h]}.to_h
+      end
+    end
+
+    { labels: labels.keys, datasets: datasets, age_group: age_group }
+  end
+
+  def get_actions_by_device_week(id)
+    labels = {}
+    datasets = {}
+    user_group = {}
+
+    @graph.get_object("#{id}/insights/page_cta_clicks_by_site_logged_in_unique/week", { :until => Time.now.beginning_of_day().to_i }).each do |data|
+      data['values'].each do |d|
+        t = d['end_time'].to_date.prev_day.strftime('%B %d')
+        labels[t] = true
+
+        ['WWW', 'MOBILE'].each do |g|
+          datasets[g] = {} if datasets[g].blank?
+          datasets[g][t] = 0 if datasets[g][t].blank?
+        end
+
+        d['value'].each do |key, value|
+          value.each do |key1, value1|
+            user_group[key1] = {} if user_group[key1].blank?
+            user_group[key1][t] = 0 if user_group[key1][t].blank?
+            user_group[key1][t] = value1
+          end
+        end
+
+        user_group = user_group.map{|k,v| [k,v.sort.to_h]}.to_h
+      end
+    end
+
+    { labels: labels.keys, datasets: datasets, user_group: user_group }
   end
 
   def get_likes_by_gender(id, since, previous_data)

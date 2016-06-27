@@ -21,6 +21,8 @@ class FacebookAccount < ActiveRecord::Base
   serialize :likes_by_gender_age_week
   serialize :total_action_button_clicks
   serialize :total_people_action_button_clicks
+  serialize :actions_by_gender_age_week
+  serialize :actions_by_device_week
 
   # ----------------------------------------------------------------------
   # == File Uploader == #
@@ -66,6 +68,8 @@ class FacebookAccount < ActiveRecord::Base
     self.daily_page_views = graph.get_daily_page_views(self.account_id)
     self.total_action_button_clicks = graph.get_total_action_button_clicks(self.account_id, 1.week.ago)
     self.total_people_action_button_clicks = graph.get_total_people_action_button_clicks(self.account_id, 1.week.ago)
+    self.actions_by_gender_age_week = graph.get_actions_by_gender_age_week(self.account_id)
+    self.actions_by_device_week = graph.get_actions_by_device_week(self.account_id)
     #
     # self.number_of_posts = graph.get_number_of_posts(self.account_id)
     #
@@ -175,6 +179,37 @@ class FacebookAccount < ActiveRecord::Base
     end
   end
 
+  def age_range_action_data
+    if self.actions_by_gender_age_week[:age_group].present?
+      male_hash = self.actions_by_gender_age_week[:age_group]['M']
+      female_hash =  self.actions_by_gender_age_week[:age_group]['F']
+
+      male_hash.map do |age_range, number|
+        {
+            age_range: age_range,
+            male: number,
+            female: female_hash[age_range],
+        }
+      end
+    end
+  end
+
+
+  def action_device_data
+    if self.actions_by_device_week[:user_group].present?
+      mobile_hash = self.actions_by_device_week[:user_group]['MOBILE']
+      computer_hash =  self.actions_by_device_week[:user_group]['WWW']
+
+      mobile_hash.map do |user_group, number|
+        {
+            user_group: user_group,
+            mobile: number,
+            computer: computer_hash[user_group],
+        }
+      end
+    end
+  end
+
   def city_data
     data = {}
     self.likes_by_city.each do |city_name, likes|
@@ -206,6 +241,19 @@ class FacebookAccount < ActiveRecord::Base
         end,
     }
   end
+
+  # def action_line_chart_data
+  #   if self.total_action_button_clicks[:datasets].present?
+  #     action_hash = self.total_action_button_clicks[:datasets]['M']
+  #
+  #     action_hash.map do |date, number|
+  #       {
+  #           date: date,
+  #           number: number,
+  #       }
+  #     end
+  #   end
+  # end
 
   def people_action_line_chart_data
     color = ['#EA358C']
