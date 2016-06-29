@@ -64,15 +64,12 @@ body {
 .btn-circle:hover{
   background-color: #00b6e2;
 }
+
 .btn-modal-submit {
   background-color: #e23f3a;
   color: #fff;
   font-size: 14px;
   font-weight: 600;
-}
-
-.btn-modal-submit:hover {
-  color: #ffffff;
 }
 
 .rounded-input-box {
@@ -907,7 +904,6 @@ th {
   width: 400px;
 }
 
-
 #signup .modal-header {
   border-bottom: medium none;
   padding: 21px 30px;
@@ -973,9 +969,11 @@ th {
   background-color: #ffb734;
   border-color: #e69f1d;
 }
+
 .alert a.close{
   text-decoration: none;
 }
+
 .global-modal .modal-header h3,#signin .modal-header h3, #signup .modal-header h3{
   color: #00c9f3;
   font-weight: 600;
@@ -984,6 +982,7 @@ th {
 #mfPreviewBar {
   display: none;
 }
+
 textarea#company-short-bio{
   width: 100%;
 }
@@ -1003,10 +1002,13 @@ textarea#company-short-bio{
 .right-zero-padding {
   padding-right: 0;
 }
+
 /* faq page style */
+
 .mleft20{
   margin-left: 20px;
 }
+
 .inner_bg {
   background: #fff none repeat scroll 0 0;
   width: 100%;
@@ -1032,18 +1034,23 @@ textarea#company-short-bio{
   margin-right: 0;
   margin-left: 0;
 }
+
 .container {
   width: 1030px;
 }
+
 /*working */
+
 .panel-warning > .panel-heading {
   background-color: #fcf8e3;
   border-color: #faebcc;
   color: #ffffff;
 }
+
 .expandable {
   cursor: pointer;
 }
+
 #faq .panel-heading {
   border-bottom: 1px solid transparent;
   border-top-left-radius: 3px;
@@ -1052,33 +1059,42 @@ textarea#company-short-bio{
   background-color: #00c9f3;
   margin-bottom: 1px;
 }
+
 /* working */
+
 #faq .panel-body.expandable {
   padding: 0 22px;
 }
+
 #faq .panel-body.expandable h4 {
   color: #00b6e2;
   font-size: 15px;
   font-weight: bold;
 }
+
 #faq .expanded {
   padding: 5px 22px;
 }
+
 .panel > .list-group, .panel > .panel-collapse > .list-group {
   margin-bottom: 0;
 }
+
 .list-group {
   margin-bottom: 20px;
   padding-left: 0;
 }
+
 .panel > .list-group .list-group-item, .panel > .panel-collapse > .list-group .list-group-item {
   border-radius: 0;
   border-width: 1px 0;
 }
+
 .list-group-item:first-child {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
+
 .list-group-item {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -1087,22 +1103,27 @@ textarea#company-short-bio{
   padding: 10px 15px;
   position: relative;
 }
+
 #faq .expanded .list-group-item h5 {
   color: #00c9f3;
 }
+
 h5, .h5 {
   font-size: 14px;
 }
+
 .faq-container .panel.panel-warning{
   border: 0;
   padding: 0;
 }
+
 #faq .panel-heading h3 {
   color: #fff;
   margin: 0;
   padding: 0;
   font-size: 16px;
 }
+
 /* faq page style end */
 
 // spinner button
@@ -1125,7 +1146,9 @@ h5, .h5 {
   opacity: 1;
   max-width: 50px;
 }
+
 /* success request notification */
+
 .success_icon{
   background: image-url("success-icon.png") no-repeat ;
   float: left;
@@ -1133,16 +1156,20 @@ h5, .h5 {
   padding: 0 0 0 25px;
   width: 100%;
 }
+
 .info_p {
   font-size: 15px;
   margin: -15px 0 20px !important;
 }
+
 .global-modal-title{
 
 }
+
 .title>p:first-child{
   display: inline-block;
 }
+
 .unread-message{
   padding-left: 2px;
   font-weight: bold;
@@ -1173,9 +1200,22 @@ h5, .h5 {
 .contact-us .form-control:focus {
   border-color: #f4503b !important;
 }
+
 // jcrop style
+
 .jcrop-keymgr{
   margin-left: -10000px !important;
+}
+
+#page_loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: image-url("page-loader.gif") 50% 50% no-repeat rgba(0, 0, 0, 0.1);
+  display: none;
 }
 
 .loader {
@@ -1226,9 +1266,8 @@ h5, .h5 {
   width: 120px;
 }
 
-
-
 // faq page style sheet
+
 .group-1,.group-2{
   display: block;
 }
@@ -1238,6 +1277,7 @@ h5, .h5 {
 .image-input-container{
   display: inline-block;
 }
+
 .image-input-container, #user_image{
   width: 250px;
 }
@@ -1311,13 +1351,13 @@ a .offer-box:last-child{
   margin-bottom: 5px;
 }
 
-
 // profile image crop modal style
 
 #profile_image_edit_modal .modal-dialog{
   max-width: 600px;
   height: auto;
 }
+
 @media (max-width: 767px) {
   #profile_image_edit_modal .modal-dialog{
     width: 95%;
@@ -1327,9 +1367,11 @@ a .offer-box:last-child{
     padding-right: 5px;
   }
 }
+
 .image-field{
   margin-top: 10px;
 }
+
 #profile_image_edit_modal .modal-footer{
   padding: 15px 0;
 }
@@ -1347,6 +1389,7 @@ a .offer-box:last-child{
   font-family: 'Raleway', sans-serif;
   color: #333333;
 }
+
 .admin-sign-in-form{
   border: 2px solid #999999;
   margin: 9% 32%;
@@ -1374,13 +1417,13 @@ a .offer-box:last-child{
   font-family: "Raleway", sans-serif;
 }
 
-
 .profile-item{
   font-weight: bold;
   display: inline-block;
   width: 145px;
   vertical-align: top;
 }
+
 .profile-value{
   display: inline-block;
   font-weight: 500;
@@ -1889,6 +1932,7 @@ div.modal-content{
 .text-color-engage{
   color: green;
 }
+
 .text-color-waiting{
   color: #22448E;
 }
@@ -2059,6 +2103,10 @@ div.modal-content{
 
   &-footer{
   }
+}
+
+.btn-outline-transparent {
+  outline-color: transparent;
 }
 
 .btn-modal{

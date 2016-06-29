@@ -2,6 +2,7 @@
     height: 100%;
     background-color: #f9f9f9;
 }
+
 .payment-main-content{
     padding: 20px;
 }
@@ -169,7 +170,6 @@ only screen and (max-width: 1000px) {
     background-color: #ed1b26;
 }
 
-
 .payments_table th:nth-child(1), .payments_table td:nth-child(1) {
     text-align: center ;
 }
@@ -276,7 +276,6 @@ only screen and (max-width: 768px) {
     padding: 0;
     width: 40%;
 }
-
 
 @media
 only screen and (max-width: 1140px) {
@@ -523,8 +522,6 @@ only screen and (max-width: 768px) {
     font-weight: 600;
     font-size: 11pt;
 }
-
-
 
 .bank-account-modal label, .bank-account-modal input, .bank-account-modal select {
     padding: 5px 3px;

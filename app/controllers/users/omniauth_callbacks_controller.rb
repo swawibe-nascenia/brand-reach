@@ -1,6 +1,11 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
+    if current_user && current_user.brand?
+      redirect_to brand_root_path
+      return
+    end
+
     authentication_params = request.env['omniauth.params']
     authentication_info = request.env['omniauth.auth']
 
