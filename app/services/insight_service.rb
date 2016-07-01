@@ -141,6 +141,7 @@ class InsightService < BaseService
   def get_total_action_button_clicks(id, since)
     labels = {}
     datasets = {}
+    flag = 0
 
     @graph.get_object("#{id}/insights/page_cta_clicks_logged_in_total/day", {since: since, :until => Time.now.beginning_of_day().to_i}).each do |data|
       data['values'].each do |d|
@@ -155,10 +156,11 @@ class InsightService < BaseService
           datasets[g] = {} if datasets[g].blank?
           datasets[g][t] = 0 if datasets[g][t].blank?
           datasets[g][t] = v
+          flag = 1 if v
         end
       end
     end
-      { labels: labels.keys, datasets: datasets }
+      { labels: labels.keys, datasets: datasets, flag: flag }
       #count += d['values'].last['value'].values if d['values'].last['value'].values
       #count
   end
@@ -166,6 +168,7 @@ class InsightService < BaseService
   def get_total_people_action_button_clicks(id, since)
     labels = {}
     datasets = {}
+    flag = 0
 
     @graph.get_object("#{id}/insights/page_cta_clicks_logged_in_unique/day", {since: since, :until => Time.now.beginning_of_day().to_i}).each do |data|
       data['values'].each do |d|
@@ -180,10 +183,11 @@ class InsightService < BaseService
           datasets[g] = {} if datasets[g].blank?
           datasets[g][t] = 0 if datasets[g][t].blank?
           datasets[g][t] = v
+          flag = 1 if v
         end
       end
     end
-    { labels: labels.keys, datasets: datasets }
+    { labels: labels.keys, datasets: datasets, flag: flag }
   end
 
   def get_actions_by_gender_age_week(id)

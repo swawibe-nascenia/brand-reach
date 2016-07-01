@@ -194,7 +194,6 @@ class FacebookAccount < ActiveRecord::Base
     end
   end
 
-
   def action_device_data
     if self.actions_by_device_week[:user_group].present?
       mobile_hash = self.actions_by_device_week[:user_group]['MOBILE']
@@ -225,10 +224,9 @@ class FacebookAccount < ActiveRecord::Base
 
   def action_line_chart_data
     color = ['#3d6ad6']
-    {
+    actionHash = {
         labels: self.total_action_button_clicks[:labels],
         datasets: self.total_action_button_clicks[:datasets].map do |date, data|
-          puts "===================Date:#{date} : Data #{data}"
           {
               label: date,
               strokeColor: color,
@@ -239,25 +237,14 @@ class FacebookAccount < ActiveRecord::Base
               data: data
           }
         end,
+        flag: self.total_action_button_clicks[:flag],
     }
+    actionHash
   end
-
-  # def action_line_chart_data
-  #   if self.total_action_button_clicks[:datasets].present?
-  #     action_hash = self.total_action_button_clicks[:datasets]['M']
-  #
-  #     action_hash.map do |date, number|
-  #       {
-  #           date: date,
-  #           number: number,
-  #       }
-  #     end
-  #   end
-  # end
 
   def people_action_line_chart_data
     color = ['#EA358C']
-    {
+    peopleHash = {
         labels: self.total_people_action_button_clicks[:labels],
         datasets: self.total_people_action_button_clicks[:datasets].map do |date, data|
           puts "===================Date:#{date} : Data #{data}"
@@ -271,7 +258,9 @@ class FacebookAccount < ActiveRecord::Base
               data: data
           }
         end,
+        flag: self.total_people_action_button_clicks[:flag],
     }
+    peopleHash
   end
 
   def gender_line_chart_data
