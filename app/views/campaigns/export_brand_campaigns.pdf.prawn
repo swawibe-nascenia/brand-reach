@@ -20,7 +20,7 @@ prawn_document(:page_layout => :landscape) do |pdf|
     table_data << [
       campaign.name,
       campaign.number_of_likes,
-      campaign.number_of_post_reach,
+      campaign.number_of_post_reach_of_post,
       campaign.number_of_comments,
       campaign.number_of_shares,
       campaign.get_start_date,
