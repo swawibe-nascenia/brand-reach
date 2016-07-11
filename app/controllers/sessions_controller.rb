@@ -42,12 +42,12 @@ class SessionsController < Devise::SessionsController
             #   authentication fail
             Rails.logger.info "------------------- current sign in authentication fail for #{ user.inspect }"
             if params[:admin].present?
-              flash[:error] = 'Email, password not matching'
+              flash[:error] = "The email and password you entered don't match."
               redirect_to admin_path
             else
               respond_to do |format|
-                format.js { @messages << 'Email, password not matching' }
-                format.html { flash.now[:error] = 'Email, password not matching' }
+                format.js { @messages << "The email and password you entered don't match." }
+                format.html { flash.now[:error] = "The email and password you entered don't match." }
               end
             end
           end
