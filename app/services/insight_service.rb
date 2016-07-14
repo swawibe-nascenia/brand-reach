@@ -38,6 +38,18 @@ class InsightService < BaseService
     post_info
   end
 
+  def get_post_click_number(post_id)
+    post_click_data = @graph.get_object("#{post_id}/insights/post_consumptions")
+    post_click_number = post_click_data.last['values'].last['value'].present? ? post_click_data.last['values'].last['value'] : 0
+    post_click_number
+  end
+
+  def get_post_link_click_number(post_id)
+    post_link_click_data = @graph.get_object("#{post_id}/insights/post_consumptions_by_type")
+    post_link_click_number = post_link_click_data.last['values'].last['value']['link clicks'].present? ? post_link_click_data.last['values'].last['value']['link clicks'] : 0
+    post_link_click_number
+  end
+
   def get_pages(id)
     pages = []
     @graph.get_object("#{id}/accounts").each do |d|

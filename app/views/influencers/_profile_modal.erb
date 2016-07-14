@@ -11,7 +11,7 @@
       </div>
       <div class="modal-body">
         <div class="display-inline-block influencer-modal-image vertical-align-middle">
-          <%= image_tag(account.page_picture, :class => 'explore-influencer-picture', :alt => 'profile-picture') %>
+          <%= image_tag(image_validation(account), :class => 'explore-influencer-picture', :alt => 'profile-picture') %>
         </div>
 
         <div class="display-inline-block influencer-modal-details vertical-align-middle">
@@ -338,7 +338,7 @@
 
                 //Create the line chart
                 actionChart.Line(actionChartData, actionChartOptions);
-
+                $(this).off('shown.bs.modal');
               });
             </script>
         <% end %>
@@ -407,6 +407,7 @@
                 //Create the line chart
                 peopleActionChart.Line(peopleActionChartData, peopleActionChartOptions);
 
+                $(this).off('shown.bs.modal');
               });
             </script>
         <% end %>

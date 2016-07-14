@@ -81,6 +81,8 @@ class Campaign < ActiveRecord::Base
     self.number_of_comments = data[:number_of_comments]
     self.number_of_shares = data[:number_of_shares]
     self.number_of_post_reach_of_post = graph.get_post_reach_of_post(self.social_account_activity_id)
+    self.post_click_number = graph.get_post_click_number(self.social_account_activity_id)
+    self.post_link_click_number = graph.get_post_link_click_number(self.social_account_activity_id)
 
     self.save
   end

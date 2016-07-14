@@ -2,7 +2,7 @@
   <% accounts.each do |account| %>
       <div class="search-result-item">
         <div class="search-result-image">
-          <%= image_tag(account.page_picture, class: 'img-responsive explore-search-image') %>
+          <%= image_tag(image_validation(account), class: 'img-responsive explore-search-image') %>
         </div>
         <div class="influencer-data">
           <div class="influencer-name" title="<%= account.name %>"> <%= account.name %> </div>
