@@ -169,8 +169,8 @@ module ApplicationHelper
 
   def image_validation(account)
     img_url = account.page_picture
-    res = Net::HTTP.get_response(URI.parse(img_url))
-    img_url = ActionController::Base.helpers.asset_path('facebook_default_page.png') unless res.code == '200'
+    # res = Net::HTTP.get_response(URI.parse(img_url))
+    # img_url = ActionController::Base.helpers.asset_path('facebook_default_page.png') unless res.code == '200'
     img_url
   end
 end
