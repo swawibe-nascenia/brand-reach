@@ -40,6 +40,14 @@ module ApplicationHelper
     ]
   end
 
+  def post_reach_drop_down
+    [
+        ['1,00,000 to 25,00,000', '100000..2500000'],
+        ['25,00,000 to 75,00,000', '2500000..7500000'],
+        ['75,00,000+', '7500000..461168601']
+    ]
+  end
+
   def post_type_drop_down
     [
       ['Status Update', 0],
@@ -165,12 +173,5 @@ module ApplicationHelper
 
   def offer_receiver_id(offer)
     current_user.id == offer.sender_id ? offer.receiver_id : offer.sender_id
-  end
-
-  def image_validation(account)
-    img_url = account.page_picture
-    # res = Net::HTTP.get_response(URI.parse(img_url))
-    # img_url = ActionController::Base.helpers.asset_path('facebook_default_page.png') unless res.code == '200'
-    img_url
   end
 end

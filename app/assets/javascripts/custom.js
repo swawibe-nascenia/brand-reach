@@ -338,6 +338,10 @@ $(function(){
         makeAdvanceSearch();
     });
 
+    $('#explore-post-reach').change(function(){
+        makeAdvanceSearch();
+    });
+
    function makeAdvanceSearch(){
        var searchKey = $('#search-keyword').val();
        var category = $('#explore-category').val();
@@ -347,6 +351,7 @@ $(function(){
        var post_type = $('#post_type').val();
        var price = $('#explore-price').val();
        var followers = $('#explore-followers').val();
+       var post_reach = $('#explore-post-reach').val();
 
        console.log('Current selected state code is ' + state);
 
@@ -363,6 +368,7 @@ $(function(){
                 post_type: post_type,
                 price: price,
                 followers: followers,
+                post_reach: post_reach,
                 'authenticity_token': $('meta[name="csrf-token"]').attr('content')
            },
            success: function(data) {
@@ -386,6 +392,7 @@ $(function(){
         $('#user_state_code_wrapper').html(state_select);
         $('#explore-price').val('');
         $('#explore-followers').val('');
+        $('#explore-post-reach').val('');
     }
 
     // fixed navigation
@@ -693,5 +700,3 @@ function getInternetExplorerVersion()
 function changeBootBoxConfirm(){
     
 }
-
-
