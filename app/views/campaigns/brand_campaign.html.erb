@@ -48,7 +48,7 @@
 
       <div class="info-box-custom col-md-3 col-sm-6 col-xs-6">
         <div class="info-box-content">
-          <p class="info-box-data page-view-data-color"><%= number_with_delimiter(@campaigns.pluck(:number_of_post_reach).sum) %></p>
+          <p class="info-box-data page-view-data-color"><%= number_with_delimiter(@campaigns.pluck(:number_of_post_reach_of_post).sum) %></p>
 
           <p class="info-box-text">POST REACH</p>
         </div>
