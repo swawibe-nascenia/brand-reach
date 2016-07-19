@@ -44,7 +44,7 @@ class ProfileController < ApplicationController
     else
       save_industries
       save_account_category
-      if @user.email.empty? && user_params[:company_email].present?
+      if @user.email.nil? && user_params[:company_email].present?
         @user.email = user_params[:company_email]
       end
       if @user.update(user_params.except(:current_password, :password, :password_confirmation, :industry, facebook_accounts_attributes: [:category]))
