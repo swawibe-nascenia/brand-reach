@@ -2,38 +2,15 @@
 
 <% title 'Influencers Home | The Brand Reach' %>
 
-<div class="identity" xmlns="http://www.w3.org/1999/html">
+<div class="identity" id="identity" xmlns="http://www.w3.org/1999/html">
   <div class="wrapper-content">
     <div class="text-upper">
-      <h1 class="text-upper-identity">CUT THROUGH THE</h1>
-      <h1 class="text-upper-identity">NOISE WITH </h1>
+      <h1 class="text-upper-identity">CUT THROUGH </h1>
+      <h1 class="text-upper-identity">THE NOISE WITH </h1>
     </div>
     <div class="text-lower">
       <h1 class="text-lower-identity influencer-text">INFLUENCER</h1>
       <h1 class="text-lower-identity influencer-text">MARKETING</h1>
-    </div>
-  </div>
-</div>
-
-<div class="statistics">
-  <div class="wrapper-content">
-
-    <div class="text-top helvetica-neue-light"> Statistics</div>
-    <div class="stats-block">
-      <span class="numeric color-brand count" data-value="75">0</span>
-      <span class="textual"> BRANDS </span>
-    </div>
-    <div class="stats-block">
-      <span class="numeric color-influencer count" data-value="350">0</span>
-      <span class="textual"> INFLUENCERS </span>
-    </div>
-    <div class="stats-block">
-      <span class="numeric color-campaign count" data-value="470">0</span>
-      <span class="textual"> CAMPAIGNS </span>
-    </div>
-    <div class="stats-block posts-padding">
-      <span class="numeric color-posts count" data-value="940">0</span>
-      <span class="textual"> POSTS </span>
     </div>
   </div>
 </div>
@@ -90,24 +67,47 @@
     <div class="what-we-do-block-container">
       <div class="what-we-do-block">
         <span class="image"><%= image_tag('what_we_do1.png', :class => 'what-we-do-picture') %></span>
-        <span class="textual"> Identify </span>
+        <span class="textual"> Sales/Referrals </span>
       </div>
       <div class="what-we-do-block">
         <span class="image"> <%= image_tag('what_we_do2.png', :class => 'what-we-do-picture') %></span>
-        <span class="textual leverage"> Leverage content across platforms</span>
+        <span class="textual leverage"> Audience Demographics </span>
       </div>
       <div class="what-we-do-block">
         <span class="image"><%= image_tag('what_we_do3.png', :class => 'what-we-do-picture') %></span>
-        <span class="textual scale"> Scale your influence </span>
+        <span class="textual scale"> Awareness </span>
       </div>
       <div class="what-we-do-block">
         <span class="image"><%= image_tag('what_we_do4.png', :class => 'what-we-do-picture') %></span>
-        <span class="textual"> Measure </span>
+        <span class="textual"> Demographics/Audience </span>
       </div>
       <div class="what-we-do-block">
         <span class="image"><%= image_tag('what_we_do5.png', :class => 'what-we-do-picture') %></span>
-        <span class="textual"> Technology </span>
+        <span class="textual"> Trends/Behaviour Change </span>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="statistics">
+  <div class="wrapper-content">
+
+    <div class="text-top helvetica-neue-light"> Statistics</div>
+    <div class="stats-block">
+      <span class="numeric color-brand count" data-value="75">0</span>
+      <span class="textual"> BRANDS </span>
+    </div>
+    <div class="stats-block">
+      <span class="numeric color-influencer count" data-value="350">0</span>
+      <span class="textual"> INFLUENCERS </span>
+    </div>
+    <div class="stats-block">
+      <span class="numeric color-campaign count" data-value="470">0</span>
+      <span class="textual"> CAMPAIGNS </span>
+    </div>
+    <div class="stats-block posts-padding">
+      <span class="numeric color-posts count" data-value="940">0</span>
+      <span class="textual"> POSTS </span>
     </div>
   </div>
 </div>
@@ -122,15 +122,12 @@
       <span><a href="#" data-toggle="popover" title="1.3M Followers"><%= image_tag('katrina-kaif.png', :class => 'influencers-picture') %></a></span>
       <span><a href="#" data-toggle="popover" title="1.9M Followers"><%= image_tag('taylor-swift.png', :class => 'influencers-picture') %></a></span>
     </div>
-    <% if !user_signed_in? %>
-        </br>
-        </br>
-        </br>
-        <div class="text-block">
-          Join us for effective story telling
-          </br>SIGN UP NOW
-        </div>
-    <% end %>
+    </br>
+    </br>
+    </br>
+    <div class="text-block">
+      Sign Up Now and Join Us For Effective Story Telling
+    </div>
   </div>
 </div>
 
@@ -144,16 +141,12 @@
       <span><a href=" https://www.tajhotels.com/en-in/home/" data-toggle="popover" target="_blank" title="Taj Hotel"><%= image_tag('taj_hotel.png', :class => 'influencers-picture') %></a></span>
       <span></span>
     </div>
-    <% if !user_signed_in? %>
-        </br>
-        </br>
-        </br>
-        <div class="text-block helvetica-neue-light">
-          Sign up now to get seen on social media
-          </br>SIGN UP NOW
-        </div>
-    <% end %>
-
+    </br>
+    </br>
+    </br>
+    <div class="text-block helvetica-neue-light">
+      Sign up now to get seen on social media
+    </div>
   </div>
 </div>
 
@@ -162,6 +155,18 @@
 <script>
     $(document).ready(function () {
         $('[data-toggle="popover"]').popover({trigger: 'hover', placement: "bottom"});
+
+        // for nav bar show and hide
+        $('.navbar-header button').click(function() {
+          if ($("#myNavbar.in").length)
+          {
+            $("#myNavbar").collapse('hide');
+          }
+          else
+          {
+            $("#myNavbar").collapse('show');
+          }
+        });
 
         var path = '//easy.myfonts.net/v2/js?sid=10257(font-family=Helvetica+Neue+35+Thin)&sid=10261(font-family=Helvetica+Neue+75+Bold)&sid=10263(font-family=Helvetica+Neue+45+Light)&sid=10265(font-family=Helvetica+Neue+65+Medium)&key=uhXXeSVbUB',
                 protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),

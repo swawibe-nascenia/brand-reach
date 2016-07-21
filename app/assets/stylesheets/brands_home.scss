@@ -205,7 +205,6 @@ ul.menu-item li {
   font-family: 'Varela', sans-serif;
   font-weight: 500;
   color: #ff8500;
-  font-size: 30px;
   line-height: 1.2;
   letter-spacing: -0.6px;
 }
@@ -282,17 +281,13 @@ ul.menu-item li {
 
 @media screen and (max-width: 650px) {
   .identity .text-upper {
-    font-size: 55px;
-
-  }
-  .identity .text-upper-identity {
     font-size: 36px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .identity .text-upper {
-    font-size: 55px;
+    font-size: 36px;
     padding-top: 0px;
     padding-right: 63%;
   }
@@ -303,17 +298,22 @@ ul.menu-item li {
 }
 
 .statistics {
-  background: #333333 none repeat scroll 0 0;
+  background: #ffffff none repeat scroll 0 0;
   color: white;
   /*height: 300px;*/
   padding: 65px 0 100px;
   font-family: Helvetica Neue, Roboto, sans-serif;
   font-weight: 300;
+  border-bottom: 1px solid #dcbda1;
 }
 
 .statistics .text-top {
-  font-size: 30px;
+  font-family: Georgia, serif;
+  font-size: 36px;
+  font-weight: bold;
   padding-bottom: 35px;
+  line-height: 1.2;
+  color: #ff8500;
 }
 
 .statistics .stats-block {
@@ -345,6 +345,7 @@ ul.menu-item li {
   font-size: 20px;
   font-weight: 300;
   padding-left: 4px;
+  color: #00aeef;
 }
 
 .about-us {
@@ -651,7 +652,7 @@ ul.menu-item li {
   clear: both;
 }
 .fb-twitter a{
-  color: #fff;
+  color: #000000;
 }
 .fb-twitter .fa{
   line-height: 16px;
@@ -820,8 +821,8 @@ ul.menu-item li {
   width: 127px;
 }
 .welcome_bar {
-  background: rgba(0, 201, 243, 1) none repeat scroll 0 0;
-  color: #fff;
+  background: rgba(255,255,255, 0.9) none repeat scroll 0 0;
+  color: #000000;
   font-size: 12px;
   font-weight: 600;
   overflow: hidden;
@@ -844,7 +845,7 @@ ul.menu-item li {
   margin: 0;
 }
 .welcome_bar p a {
-  color: #fff;
+  color: #000000;
   margin: 0 35px 0 0;
 }
 .socialmedia {
@@ -970,7 +971,7 @@ body > .sticky-footer-wrapper{
   display: inline-block;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .what-is-influencer-marketing .influencer-marketing-image-right {
     display: none;
   }
@@ -1024,7 +1025,7 @@ body > .sticky-footer-wrapper{
   font-weight: normal;
   line-height: 1.5;
   margin-top: 15px;
-  max-width: 528px;
+  max-width: 768px;
 }
 
 @media screen and (max-width: 1010px) {

@@ -79,8 +79,8 @@
 
       <div class="collapse navbar-collapse home-menu" id="myNavbar">
         <ul class="nav navbar-nav my-nav-bar <%= user_signed_in? ? 'last-nav-item' : ''%>">
-          <li id="nav-influencer-marketing"><a href="#what_is_influencer_marketing">WHAT IS INFLUENCER MARKETING</a></li>
-          <li id="nav-what-we-do"><a href="#what_we_do">WHAT DO WE DO</a></li>
+          <li id="nav-home"><a href="#identity">HOME</a></li>
+          <li id="nav-influencer-marketing"><a href="#what_is_influencer_marketing">ABOUT US</a></li>
           <li id="nav-influencers"><a href="#influencers">INFLUENCERS</a></li>
           <li id="nav-brands"><a href="#brands">BRANDS</a></li>
 
@@ -155,7 +155,7 @@
 
         $('#nav-influencer-marketing a').click(function(){
             $('html, body').animate({
-                scrollTop: $( $.attr(this, 'href') ).offset().top - 100
+                scrollTop: $( $.attr(this, 'href') ).offset().top
             }, 1000);
             return false;
         });
@@ -174,9 +174,9 @@
           return false;
         });
 
-        $('#nav-what-we-do a').click(function(){
+        $('#nav-home a').click(function(){
           $('html, body').animate({
-            scrollTop: $( $.attr(this, 'href') ).offset().top - 100
+            scrollTop: $( $.attr(this, 'href') ).offset().top
           }, 1000);
           return false;
         });
