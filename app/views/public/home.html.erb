@@ -5,10 +5,12 @@
 <div class="identity" xmlns="http://www.w3.org/1999/html">
   <div class="wrapper-content">
     <div class="text-upper">
-      <h1 class="text-upper-identity">Get Listed,</h1>
+      <h1 class="text-upper-identity">CUT THROUGH THE</h1>
+      <h1 class="text-upper-identity">NOISE WITH </h1>
     </div>
     <div class="text-lower">
-      <h2 class="text-lower-identity influencer-text">Be an influencer and advocate brands you love.</h2>
+      <h1 class="text-lower-identity influencer-text">INFLUENCER</h1>
+      <h1 class="text-lower-identity influencer-text">MARKETING</h1>
     </div>
   </div>
 </div>
@@ -36,42 +38,81 @@
   </div>
 </div>
 
-<div class="about-us" id="about_us">
+<div class="what-is-influencer-marketing" id="what_is_influencer_marketing">
+  <div class="wrapper-content">
+    <div class="influencer-marketing-responsive">
+      <div class="text-top helvetica-neue-light ">
+        What is Influencer Marketing
+      </div>
+      <div class="text-description">
+        <p>
+          Brands’ communication to their target audience has changed massively
+          over the last 5 years. Social Media has been one of the most important
+          platforms to communicate. But today, a modern consumer often looks at
+          opinions, reviews, recommendations and an emotional connection. The
+          consumer has become much more demanding and desires authenticity.
+          We help brands achieve the consumer’s trust through Influencer Marketing
+          by creating content on social media through people that have built their
+          own highly engaged communities and religious followers.
+          </br>
+          </br>
+          Social Influencers have become the most powerful partners in the world of
+          marketing, yet most of the brands remain ignorant of their value. The
+          Brand Reach provides a platform for all these brands to easily connect to
+          these powerful influencers, understand their value through our analytics
+          and create a viral campaign online.
+        </p>
+      </div>
+    </div>
+    <div class="influencer-marketing-image-right">
+      <span class="image"><%= image_tag('influencer_marketing.png', :class => 'influencer-marketing-image') %></span>
+    </div>
+    <div class="influencer-marketing-image-medium">
+      <span class="image"><%= image_tag('influencer_marketing_medium.png', :class => 'influencer-marketing-mobile-image') %></span>
+    </div>
+  </div>
+</div>
+
+<div class="what-we-do" id="what_we_do">
   <div class="wrapper-content">
     <div class="text-top helvetica-neue-light">
-      About Us
+      What Do We Do For You
     </div>
 
-    <div class="text-description"> We initiate branding
-     </br>campaigns and advocate high
-     </br>quality brand engagement.</div>
+    <div class="text-description">
+      <p>
+        At The Brand Reach, with an enthusiastic and young in-house team,
+        we redefine word-of-mouth through the campaign set
+        for your target audience under your budget.
+      </p>
+    </div>
 
-    <div class="about-us-block-container">
-      <div class="about-us-block">
-        <span class="image"><%= image_tag('Identify.svg') %></span>
+    <div class="what-we-do-block-container">
+      <div class="what-we-do-block">
+        <span class="image"><%= image_tag('what_we_do1.png', :class => 'what-we-do-picture') %></span>
         <span class="textual"> Identify </span>
       </div>
-      <div class="about-us-block">
-        <span class="image"> <%= image_tag('Leverage.svg') %></span>
+      <div class="what-we-do-block">
+        <span class="image"> <%= image_tag('what_we_do2.png', :class => 'what-we-do-picture') %></span>
         <span class="textual leverage"> Leverage content across platforms</span>
       </div>
-      <div class="about-us-block">
-        <span class="image"><%= image_tag('Scale.svg') %></span>
+      <div class="what-we-do-block">
+        <span class="image"><%= image_tag('what_we_do3.png', :class => 'what-we-do-picture') %></span>
         <span class="textual scale"> Scale your influence </span>
       </div>
-      <div class="about-us-block">
-        <span class="image"><%= image_tag('Measure.svg') %></span>
+      <div class="what-we-do-block">
+        <span class="image"><%= image_tag('what_we_do4.png', :class => 'what-we-do-picture') %></span>
         <span class="textual"> Measure </span>
       </div>
-      <div class="about-us-block">
-        <span class="image"><%= image_tag('Technology.svg') %></span>
+      <div class="what-we-do-block">
+        <span class="image"><%= image_tag('what_we_do5.png', :class => 'what-we-do-picture') %></span>
         <span class="textual"> Technology </span>
       </div>
     </div>
   </div>
 </div>
 
-<div class="brands">
+<div class="brands" id="influencers">
   <div class="wrapper-content">
     <div class="text-top few-brand helvetica-neue-light">Few of our Influencers</div>
     <div class="brands-block">
@@ -81,6 +122,38 @@
       <span><a href="#" data-toggle="popover" title="1.3M Followers"><%= image_tag('katrina-kaif.png', :class => 'influencers-picture') %></a></span>
       <span><a href="#" data-toggle="popover" title="1.9M Followers"><%= image_tag('taylor-swift.png', :class => 'influencers-picture') %></a></span>
     </div>
+    <% if !user_signed_in? %>
+        </br>
+        </br>
+        </br>
+        <div class="text-block">
+          Join us for effective story telling
+          </br>SIGN UP NOW
+        </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="brands" id="brands">
+  <div class="wrapper-content">
+    <div class="text-top few-brand helvetica-neue-light">Who We Work With</div>
+    <div class="brands-block">
+      <span><a href="http://www.justfix.com/" data-toggle="popover" target="_blank" title="JustFix.com"><%= image_tag('just_fix.png', :class => 'influencers-picture') %></a></span>
+      <span><a href="http://www.babyaha.com/" data-toggle="popover" target="_blank" title="BabyAha.com"><%= image_tag('baby_aha.png', :class => 'influencers-picture') %></a></span>
+      <span><a href="http://www.thebirthplace.com/" data-toggle="popover" target="_blank" title="The Birthplace"><%= image_tag('the_birthplace.png', :class => 'influencers-picture') %></a></span>
+      <span><a href=" https://www.tajhotels.com/en-in/home/" data-toggle="popover" target="_blank" title="Taj Hotel"><%= image_tag('taj_hotel.png', :class => 'influencers-picture') %></a></span>
+      <span></span>
+    </div>
+    <% if !user_signed_in? %>
+        </br>
+        </br>
+        </br>
+        <div class="text-block helvetica-neue-light">
+          Sign up now to get seen on social media
+          </br>SIGN UP NOW
+        </div>
+    <% end %>
+
   </div>
 </div>
 

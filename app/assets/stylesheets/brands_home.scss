@@ -177,15 +177,15 @@ ul.menu-item li {
 }
 
 .identity {
-  background: image-url("header-image.png") no-repeat scroll center center / cover ;
+  background: image-url("header-image-new.png") no-repeat scroll center center / cover ;
   height: 620px;
   padding-top: 70px;
   margin-top: 12px;
 }
 
 .identity .text-upper {
-  font-family: 'Helvetica Neue 35 Thin', sans-serif;
-  font-size: 74px;
+  //font-family: 'Helvetica Neue 35 Thin', sans-serif;
+  //font-size: 74px;
   letter-spacing: -0.6px;
   padding-top: 135px;
   line-height: 1;
@@ -193,8 +193,9 @@ ul.menu-item li {
 }
 
 .identity .text-upper-identity {
-  font-size: 74px;
-  font-family: 'Helvetica Neue 35 Thin', sans-serif;
+  font-size: 36px;
+  font-family: Georgia, serif;
+  color: #00aeef;
   margin-top: 0;
   margin-bottom: 0;
   line-height: 1;
@@ -203,16 +204,16 @@ ul.menu-item li {
 .identity .text-lower {
   font-family: 'Varela', sans-serif;
   font-weight: 500;
-  color: #00aeef;
+  color: #ff8500;
   font-size: 30px;
   line-height: 1.2;
   letter-spacing: -0.6px;
 }
 
 .identity .text-lower-identity {
-  font-family: 'Varela', sans-serif;
-  font-weight: 500;
-  font-size: 30px;
+  font-family: Georgia, serif;
+  font-weight: normal;
+  font-size: 36px;
   margin-top: 0;
   margin-bottom: 0;
   line-height: 1.2;
@@ -285,7 +286,19 @@ ul.menu-item li {
 
   }
   .identity .text-upper-identity {
+    font-size: 36px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .identity .text-upper {
     font-size: 55px;
+    padding-top: 0px;
+    padding-right: 63%;
+  }
+
+  .identity .text-lower {
+    padding-right: 68%;
   }
 }
 
@@ -416,8 +429,69 @@ ul.menu-item li {
   }
 }
 
+.influencers {
+  padding: 61px 0 50px;
+  border-bottom: 1px solid #dcbda1;
+}
+
+.influencers .text-top {
+  font-family: Georgia, serif;
+  font-size: 36px;
+  font-weight: bold;
+  padding-bottom: 20px;
+  line-height: 1.2;
+  color: #ff8500;
+  text-align: right;
+  display: inline;
+}
+
+.influencers .text-block {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  line-height: 1.5;
+  text-align: left;
+  padding-bottom: 15px;
+  font-weight: normal;
+  color: #00aeef;
+}
+//
+//.sign-up {
+//  margin-left: 860px;
+//  margin-right: 0px;
+//  padding: 9px 10px;
+//  height: 36px;
+//  font-weight: 600;
+//  font-size: 13px;
+//  text-align: left;
+//  display: inline;
+//}
+
+.influencers .brands-block .popover {
+  background: #ebebeb;
+  border-radius: 1px;
+  margin-top: 70px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .influencers .brands-block .popover {
+    margin-top: 65px;
+  }
+}
+
+@media (max-width: 767px) {
+  .influencers .brands-block .popover {
+    margin-top: 60px;
+  }
+}
+
+.influencers .brands-block .popover-content {
+  padding: 0;
+}
+
 .brands {
   padding: 61px 0 100px;
+  border-bottom: 1px solid #dcbda1;
 }
 
 .collapsing{
@@ -427,9 +501,22 @@ ul.menu-item li {
 }
 
 .brands .text-top {
-  font-size: 30px;
-  font-weight: 300;
+  font-family: Georgia, serif;
+  font-size: 36px;
+  font-weight: bold;
   padding-bottom: 20px;
+  line-height: 1.2;
+  color: #ff8500;
+}
+
+.brands .text-block {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  line-height: 1.5;
+  text-align: left;
+  padding-bottom: 15px;
+  font-weight: normal;
+  color: #00aeef;
 }
 
 .brands-block span {
@@ -460,10 +547,11 @@ ul.menu-item li {
 }
 
 .contact-us {
-  background-image: image-url("get-in-touch.png");
-  background-size: cover;
-  background-position: 50%;
-  background-repeat: no-repeat;
+  background-color: #ffffff;
+  //background-image: image-url("get-in-touch.png");
+  //background-size: cover;
+  //background-position: 50%;
+  //background-repeat: no-repeat;
   -webkit-filter: saturate(1.5);
   filter: saturate(1.5);
 }
@@ -477,10 +565,12 @@ ul.menu-item li {
   border-radius: 2px;
   font-family: Varela;
   padding: 13px 17px;
+  border-color: #00aeef;
 }
 .contact-us .contact-form input[type="text"],input[type="email"],input[type="tel"]{
   height: 48px;
 }
+
 .form-group{
   margin-bottom: 11px;
 }
@@ -492,7 +582,8 @@ ul.menu-item li {
 }
 
 .contact-us .text-top {
-  color: #ffffff;
+  font-family: Georgia, serif;
+  color: #ff8500;
   font-size: 30px;
   font-weight: 100;
   padding-left: 0;
@@ -501,7 +592,7 @@ ul.menu-item li {
 
 .footer {
   padding: 11px 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.75);
   color: #ffffff;
   font-size: 12px;
   font-family: 'Hind', sans-serif;
@@ -677,7 +768,7 @@ ul.menu-item li {
     margin-right: 10px;
   }
 
-  .footer-info-padding, .contact-form .text-top, .brands .few-brand, .about-us .text-top, .statistics .text-top, .identity, .about-us .text-description, .fb-twitter {
+  .footer-info-padding, .contact-form .text-top, .brands .text-top, .brands .few-brand, .influencers .text-block, .brands .text-block, .about-us .text-top, .statistics .text-top, .what-we-do .text-top, .what-is-influencer-marketing .text-top, .identity, .about-us .text-description, .fb-twitter {
     text-align: center;
   }
 
@@ -845,3 +936,166 @@ body > .sticky-footer-wrapper{
   }
 }
 
+.what-is-influencer-marketing {
+  padding: 60px 0;
+  border-bottom: 1px solid #dcbda1;
+  background-color: #ffffff;
+}
+
+.what-is-influencer-marketing .text-top {
+  font-family: Georgia, serif;
+  font-size: 36px;
+  font-weight: bold;
+  padding-bottom: 20px;
+  line-height: 1.2;
+  color: #ff8500;
+}
+
+.influencer-marketing-responsive {
+  width: 55%;
+  display: inline-block;
+}
+
+.what-is-influencer-marketing .text-description {
+  font-family: Georgia,serif;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #00aeef;
+}
+
+.what-is-influencer-marketing .influencer-marketing-image-right {
+  width: 45%;
+  float: right;
+  display: inline-block;
+}
+
+@media screen and (max-width: 767px) {
+  .what-is-influencer-marketing .influencer-marketing-image-right {
+    display: none;
+  }
+
+  .what-is-influencer-marketing .influencer-marketing-image-medium {
+    max-width: 1000px;
+    padding-right: 20px;
+    display: block;
+  }
+
+  .influencer-marketing-mobile-image {
+    width: 100%;
+  }
+
+  .influencer-marketing-responsive {
+    width: 100%;
+    display: block;
+  }
+
+  .what-is-influencer-marketing .text-description {
+    padding-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .what-is-influencer-marketing .influencer-marketing-image-medium {
+    display: none;
+  }
+}
+
+.what-we-do {
+  background-color: #ffffff;
+  padding: 60px 0;
+  border-bottom: 1px solid #dcbda1;
+  font-weight: 300;
+}
+
+.what-we-do .text-top {
+  font-family: Georgia, serif;
+  font-size: 36px;
+  font-weight: bold;
+  padding-bottom: 20px;
+  line-height: 1.2;
+  color: #ff8500;
+}
+
+.what-we-do .text-description {
+  font-family: Georgia,serif;
+  color: #00aeef;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.5;
+  margin-top: 15px;
+  max-width: 528px;
+}
+
+@media screen and (max-width: 1010px) {
+  .what-we-do .text-description {
+    font-family: Georgia,serif;
+    font-size: 16px;
+  }
+}
+
+.what-we-do-block {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 40px;
+  width: 127px;
+  margin-right: 50px;
+}
+
+.what-we-do-block span {
+  display: block;
+  line-height: 1;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.what-we-do-block .textual {
+  color: #ffffff;
+  font-size: 20px;
+  font-family: 'Varela', sans-serif;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media screen and (max-width: 953px) {
+  .what-we-do-block{
+    margin-right: 16px;
+  }
+}
+
+@media screen and (max-width: 768px){
+
+  .what-we-do .text-top {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.2;
+    color: #ff8500;
+  }
+
+  .what-we-do-block {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .what-we-do-block span {
+    text-align: center;
+  }
+
+  .what-we-do .text-description {
+    font-family: Georgia,serif;
+    font-size: 16px;
+  }
+
+  .what-we-do-block .textual {
+    padding-left: 0;
+    width: auto;
+  }
+}
+
+.what-we-do-picture {
+  border-radius: 50%;
+  width:117px;
+  height:117px;
+  overflow: hidden;
+}

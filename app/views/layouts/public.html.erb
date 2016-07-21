@@ -79,11 +79,12 @@
 
       <div class="collapse navbar-collapse home-menu" id="myNavbar">
         <ul class="nav navbar-nav my-nav-bar <%= user_signed_in? ? 'last-nav-item' : ''%>">
-          <li><%= link_to 'INFLUENCERS', influencer_home_public_index_path, class: current_path(influencer_home_public_index_path) %></li>
-          <li><%= link_to 'BRANDS', brand_home_public_index_path, class: current_path(brand_home_public_index_path) %></li>
+          <li id="nav-influencer-marketing"><a href="#what_is_influencer_marketing">WHAT IS INFLUENCER MARKETING</a></li>
+          <li id="nav-what-we-do"><a href="#what_we_do">WHAT DO WE DO</a></li>
+          <li id="nav-influencers"><a href="#influencers">INFLUENCERS</a></li>
+          <li id="nav-brands"><a href="#brands">BRANDS</a></li>
 
           <% if params[:action] == 'home' || params[:action] == 'brand_home' %>
-              <li id="about"><a href="#about_us">ABOUT US</a></li>
               <li id="nav-contact-us"><a href="#contact_us">CONTACT US</a></li>
           <% else %>
               <li id="about"><a href="<%=influencer_home_public_index_path%>#about_us">ABOUT US</a></li>
@@ -152,11 +153,32 @@
             return false;
         });
 
-        $('#about a').click(function(){
+        $('#nav-influencer-marketing a').click(function(){
             $('html, body').animate({
-                scrollTop: $( $.attr(this, 'href') ).offset().top
+                scrollTop: $( $.attr(this, 'href') ).offset().top - 100
             }, 1000);
             return false;
+        });
+
+        $('#nav-influencers a').click(function(){
+          $('html, body').animate({
+            scrollTop: $( $.attr(this, 'href') ).offset().top
+          }, 1000);
+          return false;
+        });
+
+        $('#nav-brands a').click(function(){
+          $('html, body').animate({
+            scrollTop: $( $.attr(this, 'href') ).offset().top
+          }, 1000);
+          return false;
+        });
+
+        $('#nav-what-we-do a').click(function(){
+          $('html, body').animate({
+            scrollTop: $( $.attr(this, 'href') ).offset().top - 100
+          }, 1000);
+          return false;
         });
 
 
