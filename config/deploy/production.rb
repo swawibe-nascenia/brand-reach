@@ -9,6 +9,7 @@
 server '45.33.91.216', user: 'deployer', roles: %w{app db web}
 
 set :deploy_to, '~/apps/brand-reach'
+set :branch, 'master'
 
 # role-based syntax
 # ==================
