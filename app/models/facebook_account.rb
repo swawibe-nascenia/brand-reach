@@ -247,7 +247,6 @@ class FacebookAccount < ActiveRecord::Base
     peopleHash = {
         labels: self.total_people_action_button_clicks[:labels],
         datasets: self.total_people_action_button_clicks[:datasets].map do |date, data|
-          puts "===================Date:#{date} : Data #{data}"
           {
               label: date,
               strokeColor: color,

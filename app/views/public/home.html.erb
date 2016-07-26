@@ -2,7 +2,7 @@
 
 <% title 'Influencers Home | The Brand Reach' %>
 
-<div class="identity" id="identity" xmlns="http://www.w3.org/1999/html">
+<div class="identity" id="identity_top" xmlns="http://www.w3.org/1999/html">
   <div class="wrapper-content">
     <div class="text-upper">
       <h1 class="text-upper-identity">CUT THROUGH </h1>
@@ -12,6 +12,9 @@
       <h1 class="text-lower-identity influencer-text">INFLUENCER</h1>
       <h1 class="text-lower-identity influencer-text">MARKETING</h1>
     </div>
+  </div>
+  <div class="header-image-responsive">
+    <span class="image"><%= image_tag('header-image-new.png', :class => 'header-image-new-responsive') %></span>
   </div>
 </div>
 
@@ -41,11 +44,8 @@
         </p>
       </div>
     </div>
-    <div class="influencer-marketing-image-right">
-      <span class="image"><%= image_tag('influencer_marketing.png', :class => 'influencer-marketing-image') %></span>
-    </div>
     <div class="influencer-marketing-image-medium">
-      <span class="image"><%= image_tag('influencer_marketing_medium.png', :class => 'influencer-marketing-mobile-image') %></span>
+      <%= image_tag('influencer_marketing_medium.png', :class => 'influencer-marketing-mobile-image') %>
     </div>
   </div>
 </div>
@@ -94,20 +94,16 @@
 
     <div class="text-top helvetica-neue-light"> Statistics</div>
     <div class="stats-block">
-      <span class="numeric color-brand count" data-value="75">0</span>
-      <span class="textual"> BRANDS </span>
+      <span class="numeric color-influencer count" data-value="<%= @total_follower_number %>">0</span>
+      <span class="textual"> FOLLOWERS </span>
     </div>
     <div class="stats-block">
-      <span class="numeric color-influencer count" data-value="350">0</span>
+      <span class="numeric color-brand count" data-value="<%= @influencer_number %>">0</span>
       <span class="textual"> INFLUENCERS </span>
     </div>
     <div class="stats-block">
-      <span class="numeric color-campaign count" data-value="470">0</span>
-      <span class="textual"> CAMPAIGNS </span>
-    </div>
-    <div class="stats-block posts-padding">
-      <span class="numeric color-posts count" data-value="940">0</span>
-      <span class="textual"> POSTS </span>
+      <span class="numeric color-posts count" data-value="<%= @total_post_reach %>">0</span>
+      <span class="textual"> POST REACH </span>
     </div>
   </div>
 </div>
@@ -116,11 +112,11 @@
   <div class="wrapper-content">
     <div class="text-top few-brand helvetica-neue-light">Few of our Influencers</div>
     <div class="brands-block">
-      <span><a href="#" data-toggle="popover" title="2.3M Followers"><%= image_tag('Hrithik_Roshan.png', :class => 'influencers-picture') %></a></span>
-      <span><a href="#" data-toggle="popover" title="2.5M Followers"><%= image_tag('Akshay-kumar.png', :class => 'influencers-picture') %></a></span>
-      <span><a href="#" data-toggle="popover" title="2.9M Followers"><%= image_tag('shahrukh-khan.png', :class => 'influencers-picture') %></a></span>
-      <span><a href="#" data-toggle="popover" title="1.3M Followers"><%= image_tag('katrina-kaif.png', :class => 'influencers-picture') %></a></span>
-      <span><a href="#" data-toggle="popover" title="1.9M Followers"><%= image_tag('taylor-swift.png', :class => 'influencers-picture') %></a></span>
+      <span><a href="#" data-toggle="popover" title="Akhil Akkineni"><%= image_tag('akhil_akkineni.jpg', :class => 'influencers-picture') %></a></span>
+      <span><a href="#" data-toggle="popover" title="Girls Facts"><%= image_tag('girls_facts.jpg', :class => 'influencers-picture') %></a></span>
+      <span><a href="#" data-toggle="popover" title="Laksmi Rai"><%= image_tag('laksmi_rai.jpg', :class => 'influencers-picture') %></a></span>
+      <span><a href="#" data-toggle="popover" title="Shraddha Das"><%= image_tag('shraddha-das.jpg', :class => 'influencers-picture') %></a></span>
+      <span><a href="#" data-toggle="popover" title="Back Benchers"><%= image_tag('the_back_benchers.jpg', :class => 'influencers-picture') %></a></span>
     </div>
     </br>
     </br>
@@ -138,8 +134,8 @@
       <span><a href="http://www.justfix.com/" data-toggle="popover" target="_blank" title="JustFix.com"><%= image_tag('just_fix.png', :class => 'influencers-picture') %></a></span>
       <span><a href="http://www.babyaha.com/" data-toggle="popover" target="_blank" title="BabyAha.com"><%= image_tag('baby_aha.png', :class => 'influencers-picture') %></a></span>
       <span><a href="http://www.thebirthplace.com/" data-toggle="popover" target="_blank" title="The Birthplace"><%= image_tag('the_birthplace.png', :class => 'influencers-picture') %></a></span>
-      <span><a href=" https://www.tajhotels.com/en-in/home/" data-toggle="popover" target="_blank" title="Taj Hotel"><%= image_tag('taj_hotel.png', :class => 'influencers-picture') %></a></span>
-      <span></span>
+      <span><a href="https://www.tajhotels.com/en-in/home/" data-toggle="popover" target="_blank" title="Taj Hotel"><%= image_tag('taj_hotel.png', :class => 'influencers-picture') %></a></span>
+      <span><a href="http://www.talkloud.co.in/" data-toggle="popover" target="_blank" title="Talk Loud"><%= image_tag('talk_loud.png', :class => 'influencers-picture') %></a></span>
     </div>
     </br>
     </br>
