@@ -11,7 +11,7 @@
       </div>
       <div class="modal-body">
         <div class="display-inline-block influencer-modal-image vertical-align-middle">
-          <%= image_tag(image_validation(account), :class => 'explore-influencer-picture', :alt => 'profile-picture') %>
+          <%= image_tag(account.page_picture, :class => 'explore-influencer-picture', :alt => 'profile-picture') %>
         </div>
 
         <div class="display-inline-block influencer-modal-details vertical-align-middle">
@@ -421,7 +421,39 @@
 
         <div class="box box-info">
           <div class="box-body">
-            <table class="table no-margin table-striped table-responsive statistic-table active" id="stats-countries">
+            <table class="table no-margin table-striped table-responsive statistic-table active" id="stats-cities">
+              <thead>
+              <tr>
+                <th>
+                  <div class="dropdown">
+                    <label class="drop-down-label">VIEW BY:</label>
+                    <button class="btn view-country dropdown-toggle" type="button" data-toggle="dropdown">
+                      <i class="fa fa-angle-down angle-down-cities pull-right"></i>
+                      CITIES
+                    </button>
+                    <ul class="dropdown-menu custom-dropdown-menu">
+                      <li><a href="#stats-countries" class="js-stats-toggle">Country</a></li>
+                    </ul>
+                  </div>
+                </th>
+                <th> <span class="glyphicon icon-love"></span> &nbsp;Likes </th>
+                <th> <span class="glyphicon icon-comment"></span> &nbsp;Post Reach( Past 1 Year ) </th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @account.city_data.map { |city_name, data| %>
+                  <% if city_name.ends_with?('India') %>
+                      <tr>
+                        <td><%= city_name %></td>
+                        <td><%= number_with_delimiter(data[:likes]) %></td>
+                        <td><%= number_with_delimiter(data[:reach]) %></td>
+                      </tr>
+                  <% end %>
+              <% } %>
+              </tbody>
+            </table>
+
+            <table class="table no-margin table-striped table-responsive statistic-table" id="stats-countries">
               <thead>
               <tr>
                 <th>
@@ -447,38 +479,6 @@
                 <td><%= number_with_delimiter(india[:likes]) %></td>
                 <td><%= number_with_delimiter(india[:reach]) %></td>
               </tr>
-              </tbody>
-            </table>
-
-            <table class="table no-margin table-striped table-responsive statistic-table" id="stats-cities">
-              <thead>
-              <tr>
-                <th>
-                  <div class="dropdown">
-                    <label class="drop-down-label">VIEW BY:</label>
-                    <button class="btn view-country dropdown-toggle" type="button" data-toggle="dropdown">
-                      <i class="fa fa-angle-down angle-down-cities pull-right"></i>
-                      Cities
-                    </button>
-                    <ul class="dropdown-menu custom-dropdown-menu">
-                      <li><a href="#stats-countries" class="js-stats-toggle">Country</a></li>
-                    </ul>
-                  </div>
-                </th>
-                <th> <span class="glyphicon icon-love"></span> &nbsp;Likes </th>
-                <th> <span class="glyphicon icon-comment"></span> &nbsp;Post Reach </th>
-              </tr>
-              </thead>
-              <tbody>
-              <% @account.city_data.map { |city_name, data| %>
-                  <% if city_name.ends_with?('India') %>
-                      <tr>
-                        <td><%= city_name %></td>
-                        <td><%= number_with_delimiter(data[:likes]) %></td>
-                        <td><%= number_with_delimiter(data[:reach]) %></td>
-                      </tr>
-                  <% end %>
-              <% } %>
               </tbody>
             </table>
 

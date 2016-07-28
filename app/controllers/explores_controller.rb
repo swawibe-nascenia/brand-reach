@@ -83,6 +83,12 @@ class ExploresController < ApplicationController
       @celebrities_accounts = @celebrities_accounts.where(number_of_followers: followers)
     end
 
+    if params[:post_reach].present?
+      post_reach = Range.new(*params[:post_reach].split('..').map(&:to_i))
+      @communities_accounts = @communities_accounts.where(post_reach: post_reach)
+      @celebrities_accounts = @celebrities_accounts.where(post_reach: post_reach)
+    end
+
     # send only selected influence's account
     @communities_accounts = @communities_accounts.page(params[:community_page]).per(100)
     @celebrities_accounts = @celebrities_accounts.page(params[:celebrity_page]).per(100)

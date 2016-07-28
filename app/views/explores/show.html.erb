@@ -68,6 +68,14 @@
             </div>
           </div>
         </div>
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col-md-12">
+              <label for="post_reach"> Post Reach </label>
+              <%= select_tag 'post_reach', options_for_select(post_reach_drop_down), {id: 'explore-post-reach', prompt: 'Choose a range', class: ''} %>
+            </div>
+          </div>
+        </div>
       </div>
     </form>
   </div>
