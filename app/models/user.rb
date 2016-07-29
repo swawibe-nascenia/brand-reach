@@ -165,14 +165,17 @@ class User < ActiveRecord::Base
   # call this method to authenticate user by facebook
   def self.authenticate_user_by_facebook(auth, params)
     user = User.find_by(uid: auth.uid)
-    if auth.info.email.present?
-      user = User.find_by(email: auth.info.email) unless user
+
+    if auth.info.email.present? && user.nil?
+      user = User.find_by(email: auth.info.email)
     end
     influencer_type = params['influencer_type']
 
     # create new user if user not found_by email
     unless user
       graph = InsightService.new(auth.credentials.token)
+
+      Rails.logger.info "Before checking max likes ................. #{graph} .................. Max likes: #{graph.get_max_likes(auth.uid)} ....... "
 
       if graph.get_max_likes(auth.uid) < User::MIN_LIKES_FOR_REGISTRATION
         return false
@@ -220,9 +223,8 @@ class User < ActiveRecord::Base
       user.status = User.statuses[:active]
     end
 
-    if auth.uid.present? && user.uid.nil?
-      user.uid = auth.uid
-    end
+    user.uid = auth.uid if auth.uid.present?
+    user.email = auth.info.email if auth.info.email.present?
 
     user.access_token = auth.credentials.token
     user
