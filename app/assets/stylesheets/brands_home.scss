@@ -34,15 +34,12 @@
   color: black;
   font-weight: lighter;
   border-bottom: 1px solid #00c9f3;
-//  now both small and medium device fixed navigation bar
   position: fixed;
   //top: 50px;
   right: 0;
   left: 0;
   z-index: 99;
   background-color: white;
-
-//  padding-top: 16px;
 }
 
 //@media screen and (min-width: 768px) {
@@ -739,36 +736,45 @@ ul.menu-item li {
   width: 100%;
   z-index: 100;
 }
+
 .welcome_bar .left {
   float: left;
 }
+
 .welcome_bar .right {
   float: right;
 }
+
 .welcome_bar .right {
   float: right;
 }
+
 .welcome_bar p {
   float: left;
   margin: 0;
 }
+
 .welcome_bar p a {
   color: #fff;
   margin: 0 35px 0 0;
 }
+
 .socialmedia {
   float: right;
   margin: 0 0 0 3px;
 }
+
 .socialmedia .space{
   display: inline-block;
   padding-left: 5px;
   padding-right: 0;
 }
+
 .navbar-toggle{
   padding-right: 0;
   margin-right: 0;
 }
+
 .last-nav-item{
   margin-right: -15px;
 }
@@ -785,6 +791,7 @@ ul.menu-item li {
   margin-bottom: 20px;
 
 }
+
 /*====  comment for making fixed navigation bar for all device ===== */
 //@media (max-width: 767px){
 //  .faq-container{
@@ -792,9 +799,11 @@ ul.menu-item li {
 //    padding-top: 0;
 //  }
 //}
+
 .panel-body, .list-group{
   display: none;
 }
+
 html, body, .sticky-footer-wrapper{ height: 90%; }
 body > .sticky-footer-wrapper{
   height: auto;
@@ -809,12 +818,14 @@ body > .sticky-footer-wrapper{
   margin-top: -3em;
   background-color: rgba(0 , 0, 0, 0.5);
 }
+
 @media (max-width: 767px)  {
   .footer-non-home-page {
     height: 60px;
     margin-top: 0;
   }
 }
+
 .sticky-footer-wrapper{
   padding-bottom: 3em;
 }
@@ -826,6 +837,7 @@ body > .sticky-footer-wrapper{
   padding-top: 53px;
   width: 400px;
 }
+
 @media (max-width: 767px) {
   .sign-in-form-container{
     margin-top: 0;

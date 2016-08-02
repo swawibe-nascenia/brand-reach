@@ -62,7 +62,7 @@ class Campaign < ActiveRecord::Base
   # influencer's campaigns
   scope :engaged_campaigns_for, ->(user) { where(status: [self.statuses[:engaged],self.statuses[:paused],self.statuses[:stopped]], receiver: user).where('end_date > ?', DateTime.now).order('id DESC') }
   # brand's campaigns
-  scope :engaged_campaigns_from, ->(user) { where(status: [self.statuses[:engaged],self.statuses[:paused],self.statuses[:stopped]], sender: user).where('end_date > ?', DateTime.now).order('id DESC') }
+  scope :engaged_campaigns_from, ->(user) { where(status: [self.statuses[:engaged],self.statuses[:paused],self.statuses[:stopped]], sender: user).order('id DESC') }
 
   # ----------------------------------------------------------------------
   # == Instance methods == #

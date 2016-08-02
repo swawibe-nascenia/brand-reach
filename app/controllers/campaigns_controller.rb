@@ -33,7 +33,7 @@ class CampaignsController < ApplicationController
 
   def create
     @campaign = Campaign.new(campaign_params.except(:post_type,
-                                                    :card_expiration_month, :card_expiration_year, :name))
+                                                    :card_expiration_month, :card_expiration_year, :name, :schedule_type))
     @campaign.post_type = campaign_params[:post_type].to_i
     @campaign.card_expiration_month = campaign_params[:card_expiration_month].to_i
     @campaign.card_expiration_year = campaign_params[:card_expiration_year].to_i
@@ -45,6 +45,13 @@ class CampaignsController < ApplicationController
                                    when 3 then params[:video_url]
                                    when 4 then params[:post_photo_url]
                                  end
+    @campaign.schedule_type = case campaign_params[:post_type].to_i
+                                   when 0 then 'ongoing'
+                                   when 1 then 'date_range'
+                                   when 2 then 'date_range'
+                                   when 3 then 'ongoing'
+                                   when 4 then 'ongoing'
+                              end
     # @campaign.name = @campaign.name.downcase if  campaign_params[:name].present?
 
     # unless @campaign.ongoing?
