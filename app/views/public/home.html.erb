@@ -8,82 +8,157 @@
 <div class="identity" xmlns="http://www.w3.org/1999/html">
   <div class="wrapper-content">
     <div class="text-upper">
-      <h1 class="text-upper-identity">Get Listed,</h1>
+      <h1 class="text-upper-identity">Influencer Marketing</h1>
+      <h1 class="text-upper-identity">Platform With</h1>
     </div>
-    <div class="text-lower">
-      <h2 class="text-lower-identity influencer-text">Be an influencer and advocate brands you love.</h2>
-    </div>
-  </div>
-</div>
-
-<div class="statistics">
-  <div class="wrapper-content">
-
-    <div class="text-top helvetica-neue-light"> Statistics</div>
-    <div class="stats-block">
-      <span class="numeric color-brand count" data-value="75">0</span>
-      <span class="textual"> BRANDS </span>
-    </div>
-    <div class="stats-block">
-      <span class="numeric color-influencer count" data-value="350">0</span>
-      <span class="textual"> INFLUENCERS </span>
-    </div>
-    <div class="stats-block">
-      <span class="numeric color-campaign count" data-value="470">0</span>
-      <span class="textual"> CAMPAIGNS </span>
-    </div>
-    <div class="stats-block posts-padding">
-      <span class="numeric color-posts count" data-value="940">0</span>
-      <span class="textual"> POSTS </span>
+    <div class="image-lower">
+      <p><span class="image"><%= image_tag('analytics-&-reports.png', :class => 'analytics-image') %></span></p>
     </div>
   </div>
 </div>
 
-<div class="about-us" id="about_us">
+<div class="about-us" id="about-us">
   <div class="wrapper-content">
-    <div class="text-top helvetica-neue-light">
-      About Us
+    <div class="text-top">
+      <span class="image"><%= image_tag('who-are-we.png', :class => 'who-are-we-image') %></span>
     </div>
 
-    <div class="text-description"> We initiate branding
-     </br>campaigns and advocate high
-     </br>quality brand engagement.</div>
+    <div class="text-description">
+      <p>
+        Brands' communication to their target audience has changed massively over the last 5 years. Social Media
+        has been one of the most important platforms to communicate. But today, a modern consumer often looks at
+        opinions, reviews, recommendations and an emotional connection. The consumer has become much more demanding
+        and desires authenticity. We help brands achieve the consumer's trust through Influencer Marketing by creating
+        content on social media through people that have built their own highly engaged communities and religious
+        followers.
+      </p>
+    </div>
 
-    <div class="about-us-block-container">
-      <div class="about-us-block">
-        <span class="image"><%= image_tag('Identify.svg') %></span>
-        <span class="textual"> Identify </span>
-      </div>
-      <div class="about-us-block">
-        <span class="image"> <%= image_tag('Leverage.svg') %></span>
-        <span class="textual leverage"> Leverage content across platforms</span>
-      </div>
-      <div class="about-us-block">
-        <span class="image"><%= image_tag('Scale.svg') %></span>
-        <span class="textual scale"> Scale your influence </span>
-      </div>
-      <div class="about-us-block">
-        <span class="image"><%= image_tag('Measure.svg') %></span>
-        <span class="textual"> Measure </span>
-      </div>
-      <div class="about-us-block">
-        <span class="image"><%= image_tag('Technology.svg') %></span>
-        <span class="textual"> Technology </span>
-      </div>
+  </div>
+</div>
+
+<div class="influencers" id="influencers">
+  <div class="wrapper-content">
+    <div class="text-top">
+      <span class="image"><%= image_tag('influencers-with-text.png', :class => 'influencers-text-top-image') %></span>
+    </div>
+
+    <div class="text-description">
+      <p>
+        Social Influencers have become the most powerful partners in the world of marketing, yet most of the
+        brands remain ignorant of their value. The Brand Reach provides a platform for all these brands to
+        easily connect to these powerful influencers, understand their value through our analytics and create
+        a viral campaign online.
+      </p>
     </div>
   </div>
 </div>
 
-<div class="brands">
+<div class="influencers-list">
   <div class="wrapper-content">
-    <div class="text-top few-brand helvetica-neue-light">Few of our Influencers</div>
-    <div class="brands-block">
-      <span><a href="#" onclick="return false" data-toggle="popover" title="Akhil Akkineni" ><%= image_tag('akhil_akkineni.jpg', :class => 'influencers-picture') %></a></span>
-      <span><a href="#" onclick="return false" data-toggle="popover" title="Girls Facts"><%= image_tag('girls_facts.jpg', :class => 'influencers-picture') %></a></span>
-      <span><a href="#" onclick="return false" data-toggle="popover" title="Laksmi Rai"><%= image_tag('laksmi_rai.jpg', :class => 'influencers-picture') %></a></span>
-      <span><a href="#" onclick="return false" data-toggle="popover" title="Shraddha Das"><%= image_tag('shraddha_das.jpg', :class => 'influencers-picture') %></a></span>
-      <span><a href="#" onclick="return false" data-toggle="popover" title="Back Benchers"><%= image_tag('back_benchers.jpg', :class => 'influencers-picture') %></a></span>
+    <div class="text-top"><span class="numeric red count" data-value="<%= @influencer_number %>">0</span> Influencers Reaching <span class="numeric white count" data-value="<%= @total_follower_number %>">200180</span> Followers</div>
+    <div class="influencers-list-block-container">
+      <div class="influencers-list-block">
+          <div class="shadow-blue">
+            <span><%= image_tag('raai-laxmi.png', :class => 'influencers-picture') %></span>
+            <div class="influencers-list-text">
+              <a href="https://www.facebook.com/IamLakshmiRai" target="_blank"><%= image_tag('FB-icon.png', :class => '') %></a>
+               <br>
+               <span class="influencers-text-upper white">Raai Laxmi</span>
+               <br>
+               <span class="influencers-text-middle white">Total Followers</span>
+               <br>
+               <span class="influencers-text-lower">6.32 M</span>
+            </div>
+          </div>
+      </div>
+
+      <div class="influencers-list-block">
+        <div class="shadow-blue"><span>
+          <%= image_tag('akhil_akkineni.png', :class => 'influencers-picture') %></span>
+          <div class="influencers-list-text">
+            <a href="https://www.facebook.com/AkhilAkkineni/" target="_blank"><%= image_tag('FB-icon.png', :class => '') %></a>
+            <br>
+            <span class="influencers-text-upper white">Akhil Akkineni</span>
+            <br>
+            <span class="influencers-text-middle white">Total Followers</span>
+            <br>
+            <span class="influencers-text-lower">1.27 M</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="influencers-list-block">
+        <div class="shadow-blue">
+          <span><%= image_tag('shraddha_das.png', :class => 'influencers-picture') %></span>
+          <div class="influencers-list-text">
+            <a href="https://www.facebook.com/shraddhadas/" target="_blank"><%= image_tag('FB-icon.png', :class => '') %></a>
+            <br>
+            <span class="influencers-text-upper white">Shraddha Das</span>
+            <br>
+            <span class="influencers-text-middle white">Total Followers</span>
+            <br>
+            <span class="influencers-text-lower">2.35 M</span>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="influencers-list-block-container">
+      <div class="influencers-list-block">
+        <div class="shadow-blue">
+          <span><%= image_tag('hair_tutorial.png', :class => 'influencers-picture') %></span>
+          <div class="influencers-list-text">
+            <a href="https://www.facebook.com/Hair-Tutorial-1675662322676008/" target="_blank"><%= image_tag('FB-icon.png', :class => '') %></a>
+            <br>
+            <span class="influencers-text-upper black">Hair Tutorial</span>
+            <br>
+            <span class="influencers-text-middle">Total Followers</span>
+            <br>
+            <span class="influencers-text-lower">1.38 M</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="influencers-list-block">
+        <div class="shadow-blue">
+          <span><%= image_tag('daily_dose_of_troll.png', :class => 'influencers-picture') %></span>
+          <div class="influencers-list-text">
+            <a href="https://www.facebook.com/9ddot" target="_blank"><%= image_tag('FB-icon.png', :class => '') %></a>
+            <br>
+            <span class="influencers-text-upper black">Daily Dose of Troll</span>
+            <br>
+            <span class="influencers-text-middle">Total Followers</span>
+            <br>
+            <span class="influencers-text-lower">1.3 M</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="influencers-list-block">
+        <div class="shadow-blue">
+          <span><%= image_tag('back_benchers.png', :class => 'influencers-picture') %></span>
+          <div class="influencers-list-text">
+            <a href="https://www.facebook.com/thebackbenchersofficial/" target="_blank"><%= image_tag('FB-icon.png', :class => '') %></a>
+            <br>
+            <span class="influencers-text-upper black">The Back Benchers</span>
+            <br>
+            <span class="influencers-text-middle">Total Followers</span>
+            <br>
+            <span class="influencers-text-lower">2.5 M</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+      <!--<span><a href="#" onclick="return false" data-toggle="popover" title="Akhil Akkineni" ><%= image_tag('akhil_akkineni.jpg', :class => 'influencers-picture') %></a></span>-->
+      <!--<span><a href="#" onclick="return false" data-toggle="popover" title="Girls Facts"><%= image_tag('girls_facts.jpg', :class => 'influencers-picture') %></a></span>-->
+      <!--<span><a href="#" onclick="return false" data-toggle="popover" title="Laksmi Rai"><%= image_tag('laksmi_rai.jpg', :class => 'influencers-picture') %></a></span>-->
+      <!--<span><a href="#" onclick="return false" data-toggle="popover" title="Shraddha Das"><%= image_tag('shraddha_das.jpg', :class => 'influencers-picture') %></a></span>-->
+      <!--<span><a href="#" onclick="return false" data-toggle="popover" title="Back Benchers"><%= image_tag('back_benchers.jpg', :class => 'influencers-picture') %></a></span>-->
+
   </div>
 </div>
 

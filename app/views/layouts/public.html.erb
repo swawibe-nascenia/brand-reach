@@ -78,17 +78,17 @@
         </button>
       </div>
 
-      <div class="collapse navbar-collapse home-menu" id="myNavbar">
+      <div class="collapse navbar-collapse home-menu " id="myNavbar">
         <ul class="nav navbar-nav my-nav-bar <%= user_signed_in? ? 'last-nav-item' : ''%>">
-          <li><%= link_to 'INFLUENCERS', influencer_home_public_index_path, class: current_path(influencer_home_public_index_path) %></li>
-          <li><%= link_to 'BRANDS', brand_home_public_index_path, class: current_path(brand_home_public_index_path) %></li>
+          <li><%= link_to 'INFLUENCERS', influencer_home_public_index_path, class: current_path(influencer_home_public_index_path), class: 'btn-custom text-white' %></li>
+          <li><%= link_to 'BRANDS', brand_home_public_index_path, class: current_path(brand_home_public_index_path), class: 'btn-custom text-white' %></li>
 
           <% if params[:action] == 'home' || params[:action] == 'brand_home' %>
-              <li id="about"><a href="#about_us">ABOUT US</a></li>
-              <li id="nav-contact-us"><a href="#contact_us">CONTACT US</a></li>
+              <li id="about"><a href="#about-us" class="btn-custom text-white">ABOUT US</a></li>
+              <li id="nav-contact-us"><a href="#contact_us" class="btn-custom text-white">CONTACT US</a></li>
           <% else %>
-              <li id="about"><a href="<%=influencer_home_public_index_path%>#about_us">ABOUT US</a></li>
-              <li id="nav-contact-us"><a href="<%=influencer_home_public_index_path%>#contact_us">CONTACT US</a></li>
+              <li id="about"><a href="<%=influencer_home_public_index_path%>#about_us" class="btn-custom text-white">ABOUT US</a></li>
+              <li id="nav-contact-us"><a href="<%=influencer_home_public_index_path%>#contact_us" class="btn-custom">CONTACT US</a></li>
           <% end %>
 
           <% if user_signed_in? %>

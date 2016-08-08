@@ -1,4 +1,6 @@
-<%= stylesheet_link_tag 'brands_home', media: 'all', 'data-turbolinks-track' => true %>
+<% content_for :head do %>
+    <%= stylesheet_link_tag 'brands_home', media: 'all', 'data-turbolinks-track' => true %>
+<% end %>
 
 <% title 'Brand Home | The Brand Reach' %>
 
@@ -11,29 +13,6 @@
     <div class="text-lower">
       <h2 class="text-lower-identity">Enlist top creators & influencers to</h2>
       <h2 class="text-lower-identity">leverage your brand.</h2>
-    </div>
-  </div>
-</div>
-
-<div class="statistics">
-  <div class="wrapper-content">
-
-    <div class="text-top helvetica-neue-light"> Statistics</div>
-    <div class="stats-block">
-      <span class="numeric color-brand count" data-value="75">0</span>
-      <span class="textual"> BRANDS </span>
-    </div>
-    <div class="stats-block">
-      <span class="numeric color-influencer count" data-value="350">0</span>
-      <span class="textual"> INFLUENCERS </span>
-    </div>
-    <div class="stats-block">
-      <span class="numeric color-campaign count" data-value="470">0</span>
-      <span class="textual"> CAMPAIGNS </span>
-    </div>
-    <div class="stats-block posts-padding">
-      <span class="numeric color-posts count" data-value="940">0</span>
-      <span class="textual"> POSTS </span>
     </div>
   </div>
 </div>
