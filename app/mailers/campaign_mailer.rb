@@ -1,8 +1,8 @@
 class CampaignMailer < ApplicationMailer
   default from: 'stb@thebrandreach.com'
-  @@mc_email = 'mc@thebrandreach.com'
+  @@mc_email = 'coo@thebrandreach.com'
   @@stb_email = 'stb@thebrandreach.com'
-  @@super_admin_email = 'superadmin@thebrandreach.com'
+  @@super_admin_email = 'hello@thebrandreach.com'
 
   def new_campaign_notification(campaign)
     @campaign = campaign

@@ -92,52 +92,52 @@
               <div id="show-age-map" style="height: 325px;"></div>
 
               <script>
-                  var chart1 = AmCharts.makeChart( "show-age-map", {
-                      type: "serial",
-                      depth3D: 30,
-                      angle: 40,
-                      colors: ["#a9e5ed", "#EA358C"],
-                      legend: {
-                          horizontalGap: 10,
-                          useGraphSettings: true,
-                          markerSize: 10
-                      },
+                var chart1 = AmCharts.makeChart( "show-age-map", {
+                  type: "serial",
+                  depth3D: 30,
+                  angle: 40,
+                  colors: ["#a9e5ed", "#EA358C"],
+                  legend: {
+                    horizontalGap: 10,
+                    useGraphSettings: true,
+                    markerSize: 10
+                  },
 
-                      dataProvider: <%= @account.age_range_data.to_json.html_safe %>,
+                  dataProvider: <%= @account.age_range_data.to_json.html_safe %>,
 
-                      "valueAxes": [ {
-                          "stackType": "regular",
-                          "axisAlpha": 0,
-                          "gridAlpha": 0
-                      } ],
+                  "valueAxes": [ {
+                    "stackType": "regular",
+                    "axisAlpha": 0,
+                    "gridAlpha": 0
+                  } ],
 
-                      "graphs": [ {
-                          "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>Age [[category]]: <b>[[value]]</b></span>",
-                          "fillAlphas": 0.8,
-                          "labelText": "[[value]]",
-                          "lineAlpha": 0.4,
-                          "title": "MALE",
-                          "type": "column",
-                          "color": "#000000",
-                          "valueField": "male"
-                      }, {
-                          "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>Age [[category]]: <b>[[value]]</b></span>",
-                          "fillAlphas": 0.8,
-                          "labelText": "[[value]]",
-                          "lineAlpha": 0.4,
-                          "title": "FEMALE",
-                          "type": "column",
-                          "color": "#000000",
-                          "valueField": "female"
-                      } ],
-                      "categoryField": "age_range",
-                      "categoryAxis": {
-                          "gridPosition": "start",
-                          "axisAlpha": 0,
-                          "gridAlpha": 0,
-                          "position": "left"
-                      }
-                  });
+                  "graphs": [ {
+                    "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>Age [[category]]: <b>[[value]]</b></span>",
+                    "fillAlphas": 0.8,
+                    "labelText": "[[value]]",
+                    "lineAlpha": 0.4,
+                    "title": "MALE",
+                    "type": "column",
+                    "color": "#000000",
+                    "valueField": "male"
+                  }, {
+                    "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>Age [[category]]: <b>[[value]]</b></span>",
+                    "fillAlphas": 0.8,
+                    "labelText": "[[value]]",
+                    "lineAlpha": 0.4,
+                    "title": "FEMALE",
+                    "type": "column",
+                    "color": "#000000",
+                    "valueField": "female"
+                  } ],
+                  "categoryField": "age_range",
+                  "categoryAxis": {
+                    "gridPosition": "start",
+                    "axisAlpha": 0,
+                    "gridAlpha": 0,
+                    "position": "left"
+                  }
+                });
               </script>
             </div>
           </div>
@@ -421,7 +421,37 @@
 
         <div class="box box-info">
           <div class="box-body">
-            <table class="table no-margin table-striped table-responsive statistic-table active" id="stats-cities">
+            <table class="table no-margin table-striped table-responsive statistic-table active" id="stats-countries">
+              <thead>
+              <tr>
+                <th>
+                  <div class="dropdown">
+                    <label class="drop-down-label">VIEW BY:</label>
+                    <button class="btn view-country dropdown-toggle" type="button" data-toggle="dropdown">
+                      <i class="fa fa-angle-down angle-down-cities pull-right"></i>
+                      COUNTRY
+                    </button>
+                    <ul class="dropdown-menu custom-dropdown-menu">
+                      <li><a href="#stats-cities" class="js-stats-toggle">CITIES</a></li>
+                    </ul>
+                  </div>
+                </th>
+                <th> <span class="glyphicon icon-love"></span> &nbsp;Likes </th>
+                <th> <span class="glyphicon icon-comment"></span> &nbsp;Post Reach( Past 1 Year ) </th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @account.country_data.each do |country_name, data| %>
+                  <tr>
+                    <td><span class="flag-icon flag-icon-<%= data[:country_code].downcase %>"></span> <%= country_name %></td>
+                    <td><%= number_with_delimiter(data[:likes]) %></td>
+                    <td><%= number_with_delimiter(data[:reach]) %></td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+
+            <table class="table no-margin table-striped table-responsive statistic-table" id="stats-cities">
               <thead>
               <tr>
                 <th>
@@ -441,53 +471,22 @@
               </tr>
               </thead>
               <tbody>
-              <% @account.city_data.map { |city_name, data| %>
-                  <% if city_name.ends_with?('India') %>
-                      <tr>
-                        <td><%= city_name %></td>
-                        <td><%= number_with_delimiter(data[:likes]) %></td>
-                        <td><%= number_with_delimiter(data[:reach]) %></td>
-                      </tr>
-                  <% end %>
-              <% } %>
-              </tbody>
-            </table>
-
-            <table class="table no-margin table-striped table-responsive statistic-table" id="stats-countries">
-              <thead>
-              <tr>
-                <th>
-                  <div class="dropdown">
-                    <label class="drop-down-label">VIEW BY:</label>
-                    <button class="btn view-country dropdown-toggle" type="button" data-toggle="dropdown">
-                      <i class="fa fa-angle-down angle-down-cities pull-right"></i>
-                      COUNTRY
-                    </button>
-                    <ul class="dropdown-menu custom-dropdown-menu">
-                      <li><a href="#stats-cities" class="js-stats-toggle">CITIES</a></li>
-                    </ul>
-                  </div>
-                </th>
-                <th> <span class="glyphicon icon-love"></span> &nbsp;Likes </th>
-                <th> <span class="glyphicon icon-comment"></span> &nbsp;Post Reach </th>
-              </tr>
-              </thead>
-              <tbody>
-              <% india = @account.country_data['India'] %>
-              <tr>
-                <td><span class="flag-icon flag-icon-<%= india[:country_code].downcase %>"></span> India</td>
-                <td><%= number_with_delimiter(india[:likes]) %></td>
-                <td><%= number_with_delimiter(india[:reach]) %></td>
-              </tr>
+              <% @account.city_data.each do |city_name, data| %>
+                  <tr>
+                    <td><%= city_name %></td>
+                    <td><%= number_with_delimiter(data[:likes]) %></td>
+                    <td><%= number_with_delimiter(data[:reach]) %></td>
+                  </tr>
+              <% end %>
               </tbody>
             </table>
 
             <script>
-                $('.js-stats-toggle').click(function() {
-                    $('.statistic-table').removeClass('active');
-                    $($(this).attr('href')).addClass('active');
-                    return false;
-                });
+              $('.js-stats-toggle').click(function() {
+                $('.statistic-table').removeClass('active');
+                $($(this).attr('href')).addClass('active');
+                return false;
+              });
             </script>
           </div>
         </div>
@@ -516,13 +515,13 @@
 </div>
 
 <script type="text/javascript">
-    $('#celebrity_request_confirm').submit(function(e) {
-        var currentForm = this;
-        e.preventDefault();
-        bootbox.confirm("All our Celebrities charge is more than 20,000 INR. Do you want to send request to Celebrity? ", function(result) {
-            if (result) {
-                currentForm.submit();
-            }
-        });
+  $('#celebrity_request_confirm').submit(function(e) {
+    var currentForm = this;
+    e.preventDefault();
+    bootbox.confirm("All our Celebrities charge is more than 20,000 INR. Do you want to send request to Celebrity? ", function(result) {
+      if (result) {
+        currentForm.submit();
+      }
     });
+  });
 </script>

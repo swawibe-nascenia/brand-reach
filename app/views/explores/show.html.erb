@@ -59,9 +59,9 @@
           <div class="row">
             <div class="col-md-12">
               <label for="influencer_country"> Location </label>
-              <!--<#%= country_select_tag :country, '', {:id => 'explore-country', prompt: 'Select Country'} %>-->
+              <%= country_select_tag :country, '', {:id => 'explore-country', prompt: 'Select Country'} %>
               <div id="explore-state">
-                <select name="state" class="country-responsive-font" id="state">
+                <select name="state" class="country-responsive-font">
                   <option value="">Select State</option>
                 </select>
               </div>
@@ -71,7 +71,7 @@
 
         <div class="col-md-4">
           <div class="row">
-            <div class="col-md-12 social-media-select">
+            <div class="col-md-12">
               <label for="post_reach"> Post Reach </label>
               <%= select_tag 'post_reach', options_for_select(post_reach_drop_down), {id: 'explore-post-reach', prompt: 'Choose a range', class: ''} %>
             </div>

@@ -315,23 +315,13 @@ $(function(){
         makeAdvanceSearch();
     });
 
-    // $('.brands-explore-advance-search #country').change(function(){
-    //     var countryCode = $(this).val();
-    //     var url = "/subregion_options?parent_region=" + countryCode;
-    //     $('#explore-state').load(url, function(){
-    //         console.log('Load is perform ');
-    //         makeAdvanceSearch();
-    //     });
-    // });
-
-    $(document).ready(function(){
-        var countryCode = 'In';
+    $('.brands-explore-advance-search #country').change(function(){
+        var countryCode = $(this).val();
         var url = "/subregion_options?parent_region=" + countryCode;
         $('#explore-state').load(url, function(){
             console.log('Load is perform ');
             makeAdvanceSearch();
         });
-
     });
 
     $(document).on('change', '#explore-state #user_state', function(){
@@ -355,7 +345,7 @@ $(function(){
        var searchKey = $('#search-keyword').val();
        var category = $('#explore-category').val();
        var socialMedia = $('#explore-social-media').val();
-       var country = 'In';
+       var country = $('#country').val();
        var state = $('#user_state').val();
        var post_type = $('#post_type').val();
        var price = $('#explore-price').val();
@@ -396,9 +386,9 @@ $(function(){
         $('#search-keyword').val('');
         $('#explore-category').val('');
         $('#explore-social-media').val('');
-        $('#user_state').val('');
-        // var state_select = '<select class="country-responsive-font" name="state"><option value="">Select State</option></select>';
-        // $('#user_state_code_wrapper').html(state_select);
+        $('#country').val('');
+        var state_select = '<select class="country-responsive-font" name="state"><option value="">Select State</option></select>';
+        $('#user_state_code_wrapper').html(state_select);
         $('#explore-price').val('');
         $('#explore-followers').val('');
         $('#explore-post-reach').val('');
