@@ -55,7 +55,7 @@ class CampaignMailer < ApplicationMailer
   def sing_up_notification_to_admin(user)
     @user = user
     Rails.logger.info "========================== Send User: #{user.inspect} sign up notification to admin.================"
-    mail(from: @@stb_email, to: 'mc@thebrandreach.com', subject: 'New user sign up to Brandreach')
+    mail(from: @@stb_email, to: @@mc_email, subject: 'New user sign up to Brandreach')
   end
 
   def account_activate_notification_to_user(user, password)
