@@ -75,7 +75,7 @@ class CampaignMailer < ApplicationMailer
     @email = params[:email]
     @phone_number = params[:phone_number]
     @message = params[:message]
-    mail(from: @@stb_email, to: 'superadmin@thebrandreach.com', subject: 'Get In Touch Message')
+    mail(from: @@stb_email, to: @@super_admin_email, subject: 'Get In Touch Message')
   end
 
   def influencer_invitation (influencer_invitation)
