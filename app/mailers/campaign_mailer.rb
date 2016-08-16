@@ -1,5 +1,5 @@
 class CampaignMailer < ApplicationMailer
-  default from: 'stb@thebrandreach.com'
+  default from: 'The BrandReach <stb@thebrandreach.com>'
   @@mc_email = 'coo@thebrandreach.com'
   @@stb_email = 'stb@thebrandreach.com'
   @@super_admin_email = 'hello@thebrandreach.com'
@@ -121,11 +121,11 @@ class CampaignMailer < ApplicationMailer
     @receiver = @campaign.receiver
     @brand = @campaign.sender
     @message = case @campaign.post_type
-               when 'status_update' then 'Please update your status with campaign status message.'
-               when 'profile_photo' then 'Please update your profile photo with campaign  image.'
-               when 'cover_photo' then 'Please update your cover photo with campaign image.'
-               when 'video_post' then 'Please post campaign video.'
-               when 'photo_post' then 'Please post campaign photo.'
+                 when 'status_update' then 'Please update your status with campaign status message.'
+                 when 'profile_photo' then 'Please update your profile photo with campaign  image.'
+                 when 'cover_photo' then 'Please update your cover photo with campaign image.'
+                 when 'video_post' then 'Please post campaign video.'
+                 when 'photo_post' then 'Please post campaign photo.'
                end
     Rails.logger.info "==========================Campaign restart send to #{@receiver.full_name}================"
     mail(to: "#{@receiver.email}, #{@@mc_email}", subject: 'Campaign restart notification')
@@ -136,11 +136,11 @@ class CampaignMailer < ApplicationMailer
     @receiver = @campaign.receiver
     @brand = @campaign.sender
     @message = case @campaign.post_type
-               when 'status_update' then 'You can now remove your status message.'
-               when 'profile_photo' then 'You can now remove your profile photo.'
-               when 'cover_photo' then 'You can now remove your cover photo.'
-               when 'video_post' then 'You can now remove your video post.'
-               when 'photo_post' then 'You can now remove your photo post.'
+                 when 'status_update' then 'You can now remove your status message.'
+                 when 'profile_photo' then 'You can now remove your profile photo.'
+                 when 'cover_photo' then 'You can now remove your cover photo.'
+                 when 'video_post' then 'You can now remove your video post.'
+                 when 'photo_post' then 'You can now remove your photo post.'
                end
     Rails.logger.info "==========================Campaign stop send to #{@receiver.full_name}================"
     mail(to: "#{@receiver.email}, #{@@mc_email}", subject: 'Campaign stop notification')
